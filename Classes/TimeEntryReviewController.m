@@ -292,14 +292,15 @@
 			footerView = [[UIView alloc] init];
 			
 			//we would like to show a gloosy red button, so get the image first
-			UIImage *image = [[UIImage imageNamed:@"redButton.png"]
-							  stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+			//UIImage *image = [[UIImage imageNamed:@"redButton.png"]
+			//				  stretchableImageWithLeftCapWidth:12 topCapHeight:0];
 			
 			//create the button
 			//ColorfulButton *disclaimerButton = [[ColorfulButton alloc] initWithFrame:CGRectMake(10, 10, 300, 44)];
 			UIButton *sendButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-			[sendButton setBackgroundImage:image forState:UIControlStateNormal];
-			
+			//[sendButton setBackgroundImage:image forState:UIControlStateNormal];
+            [sendButton setBackgroundColor:[UIColor colorWithRed:(255/255.0) green:(20/255.0) blue:(20/255.0) alpha:1]];
+
 			
 			//the button should be as big as a table view cell
 			[sendButton setFrame:CGRectMake(10, 10, 300, 44)];

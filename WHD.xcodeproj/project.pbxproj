@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		3DAA1CB717A7F15000FD5035 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DAA1CB617A7F15000FD5035 /* Images.xcassets */; };
 		3E07F945121EF32700A74657 /* UITableViewCellWithSubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E07F944121EF32700A74657 /* UITableViewCellWithSubtitle.m */; };
 		3E07F9B4121F0C9E00A74657 /* TimeEntryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E07F9B3121F0C9E00A74657 /* TimeEntryController.m */; };
 		3E0ED160122C74CE00F13925 /* help-es.html in Resources */ = {isa = PBXBuildFile; fileRef = 3E0ED15F122C74CE00F13925 /* help-es.html */; };
@@ -123,6 +124,7 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* WHD_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHD_Prefix.pch; sourceTree = "<group>"; };
+		3DAA1CB617A7F15000FD5035 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WHD/Images.xcassets; sourceTree = "<group>"; };
 		3E07F943121EF32700A74657 /* UITableViewCellWithSubtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITableViewCellWithSubtitle.h; sourceTree = "<group>"; };
 		3E07F944121EF32700A74657 /* UITableViewCellWithSubtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITableViewCellWithSubtitle.m; sourceTree = "<group>"; };
 		3E07F9B2121F0C9E00A74657 /* TimeEntryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeEntryController.h; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3DAA1CB617A7F15000FD5035 /* Images.xcassets */,
 				3E6D2470122B609400404E7B /* Localizable.strings */,
 				3EA76BBF127F0F15006F9E00 /* PayDisclaimerViewController.xib */,
 				3E40CF1D125D0AC600A9F9C8 /* StartBreakViewController.xib */,
@@ -552,6 +555,11 @@
 			isa = PBXProject;
 			attributes = {
 				ORGANIZATIONNAME = "Cascades Technologies";
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = FRPCGFXS7Q;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WHD" */;
 			compatibilityVersion = "Xcode 3.1";
@@ -604,6 +612,7 @@
 				3E74497212285B59000130C7 /* CommentsEntryViewController.xib in Resources */,
 				3E74493112285741000130C7 /* DefaultTimeViewController.xib in Resources */,
 				3E66A14312158A4A00066C94 /* whd.sqlite in Resources */,
+				3DAA1CB717A7F15000FD5035 /* Images.xcassets in Resources */,
 				3E74496E12285B44000130C7 /* TextEntryViewController.xib in Resources */,
 				3E74496612285B0F000130C7 /* CurrencyEntryViewController.xib in Resources */,
 				3E744958122859ED000130C7 /* TimerViewController.xib in Resources */,
@@ -939,13 +948,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WHD_Prefix.pch;
 				INFOPLIST_FILE = "WHD-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Timesheet;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -955,13 +970,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WHD_Prefix.pch;
 				INFOPLIST_FILE = "WHD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Timesheet;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos4.2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -985,15 +1005,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WHD_Prefix.pch;
 				INFOPLIST_FILE = "WHD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Timesheet;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C45C0E06-04D9-4ED3-A742-01DC87D3804C";
 				SDKROOT = iphoneos4.2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1018,6 +1042,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: U.S. Department of Labor (FRPCGFXS7Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4C5B1F50-A547-4F66-B597-245110607000</string>
+	<key>IDESourceControlProjectName</key>
+	<string>WHD</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DFCB1D01-096C-4112-813C-1A43B13CDC8E</key>
+		<string>ssh://github.com//USDepartmentofLabor/DOL-Timesheet</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WHD.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DFCB1D01-096C-4112-813C-1A43B13CDC8E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com//USDepartmentofLabor/DOL-Timesheet</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DFCB1D01-096C-4112-813C-1A43B13CDC8E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DFCB1D01-096C-4112-813C-1A43B13CDC8E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DOL-Timesheet</string>
+		</dict>
+	</array>
+</dict>
+</plist>
