@@ -406,7 +406,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 		UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 28)] autorelease];
 		label.backgroundColor = [UIColor clearColor];
 		label.font = [UIFont systemFontOfSize:15];
-		label.textAlignment = UITextAlignmentCenter;
+		label.textAlignment = NSTextAlignmentCenter;
 		label.textColor = [UIColor darkGrayColor];
 		label.text = [NSString stringWithFormat:NSLocalizedString(@"Sub-Total: %02dh %02dm",@"Sub-Total"), [conversionInfo hour], [conversionInfo minute]];
 		//Accesibility
@@ -459,7 +459,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 		UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 28)] autorelease];
 		label.backgroundColor = [UIColor clearColor];
 		label.font = [UIFont systemFontOfSize:15];
-		label.textAlignment = UITextAlignmentCenter;
+		label.textAlignment = NSTextAlignmentCenter;
 		label.textColor = [UIColor darkGrayColor];
 		label.text = [NSString stringWithFormat:NSLocalizedString(@"Total Hours: %02dh %02dm", @"Accesibility for time entry"), [conversionInfo hour], [conversionInfo minute]];
 		
@@ -539,9 +539,16 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 		}
 	}
 	CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
-	
-	subtitleSize = [subtitleText sizeWithFont:[UIFont fontWithName:@"Helvetica" size:14.0] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
-	titleSize = [titleText sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+	NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+	//subtitleSize = [subtitleText sizeWithFont:[UIFont fontWithName:@"Helvetica" size:14.0] constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
+    CGRect subTitletextRect = [subtitleText boundingRectWithSize:constraintSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:14.0], NSParagraphStyleAttributeName:paragraphStyle.copy} context:nil];
+    subtitleSize = subTitletextRect.size;
+                                                                                                                           
+                                                                                                                    
+//	titleSize = [titleText sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+    CGRect titleTextRect = [titleText boundingRectWithSize:constraintSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:14]} context:nil];
+    titleSize = titleTextRect.size;
 	
 	return titleSize.height + subtitleSize.height + 20;
 }

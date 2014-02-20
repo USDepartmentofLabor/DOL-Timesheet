@@ -183,7 +183,7 @@
 		controller.navigationBar.tintColor = self.navigationController.navigationBar.tintColor;
 		
 		//Show the mail window modally
-		[self presentModalViewController:controller animated:YES];
+		[self presentViewController:controller animated:YES completion:nil];
 		[controller release];
 	}
 	
@@ -225,7 +225,7 @@
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
 	[self becomeFirstResponder];
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -
@@ -513,7 +513,7 @@
 		
 		
 		navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-		[self presentModalViewController:navController animated:YES];
+		[self presentViewController:navController animated:YES completion:nil];
 		
 		[controller release];
 		[navController release];
@@ -533,7 +533,7 @@
 		
 		
 		navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-		[self presentModalViewController:navController animated:YES];
+		[self presentViewController:navController animated:YES completion:nil];
 		
 		[controller release];
 		[navController release];
@@ -559,11 +559,11 @@
 	
 	self.selectedEmployers = employers;
 	[exportTableView reloadData];
-	[self.navigationController dismissModalViewControllerAnimated:YES];
+	[self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)didCancelJobs:(JobListViewController *)controller {
-	[self.navigationController dismissModalViewControllerAnimated:YES];
+	[self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -
@@ -575,7 +575,7 @@
 	controller.peoplePickerDelegate = self;
 	
 	controller.navigationBar.tintColor = self.navigationController.navigationBar.tintColor;
-	[self.navigationController presentModalViewController:controller animated:YES];
+	[self.navigationController presentViewController:controller animated:YES completion:nil];
 	[controller release];
 }
 
@@ -590,7 +590,7 @@
 		
 		CFStringRef emailValueSelected = ABMultiValueCopyValueAtIndex(emails, identifier);
 		
-		[self.navigationController dismissModalViewControllerAnimated:YES ];
+		[self.navigationController dismissViewControllerAnimated:YES completion:nil];
 		
 		UITableViewCell *cell = [exportTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 		UITextField *emailtext = (UITextField *)[cell viewWithTag:EMAIL_TEXTFIELD_TAG];
@@ -606,7 +606,7 @@
 }
 
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker {
-	[self.navigationController dismissModalViewControllerAnimated:YES];
+	[self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)exportDatesViewController:(ExportDatesViewController *)controller didSaveDates:(NSMutableArray *)values {
@@ -625,11 +625,11 @@
 	}
 	[exportTableView reloadData];
 	
-	[self.navigationController dismissModalViewControllerAnimated:YES];
+	[self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didCancelDates:(ExportDatesViewController *)controller {
-	[self.navigationController dismissModalViewControllerAnimated:YES];
+	[self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -
