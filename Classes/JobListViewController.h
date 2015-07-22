@@ -10,7 +10,7 @@
 
 @protocol JobListViewControllerDelegate;
 
-@interface JobListViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
+@interface JobListViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource> {
 	IBOutlet UITableView *jobsTableView;
 	NSMutableArray *employersArray;
 	id<JobListViewControllerDelegate>delegate;

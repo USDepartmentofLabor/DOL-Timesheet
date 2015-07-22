@@ -112,6 +112,10 @@
 		5EE484D311BFB81E0074107F /* WeekDayPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE484D111BFB81E0074107F /* WeekDayPickerViewController.m */; };
 		5EE54D3A11B7C9AF0029338E /* TimeEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE54D3811B7C9AF0029338E /* TimeEntryViewController.m */; };
 		5EF7EE89121967D2008CD856 /* CurrencyEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7EE87121967D2008CD856 /* CurrencyEntryViewController.m */; };
+		835A72DD1B6052BF00C6CA2D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 835A72DC1B6052BF00C6CA2D /* libsqlite3.dylib */; };
+		835A72E01B60541700C6CA2D /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 835A72DE1B6052E200C6CA2D /* libGoogleAnalyticsServices.a */; };
+		835C595F1B60547500636DA1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C595E1B60547500636DA1 /* CoreData.framework */; };
+		835C59611B60553E00636DA1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C59601B60553E00636DA1 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -291,6 +295,19 @@
 		5EF7EE86121967D2008CD856 /* CurrencyEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyEntryViewController.h; sourceTree = "<group>"; };
 		5EF7EE87121967D2008CD856 /* CurrencyEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyEntryViewController.m; sourceTree = "<group>"; };
 		5EF7EE88121967D2008CD856 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Classes/English.lproj/CurrencyEntryViewController.xib; sourceTree = "<group>"; };
+		835A72D31B60527D00C6CA2D /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		835A72D41B60527D00C6CA2D /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		835A72D51B60527D00C6CA2D /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		835A72D61B60527D00C6CA2D /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		835A72D71B60527D00C6CA2D /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		835A72D81B60527D00C6CA2D /* GAIFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		835A72D91B60527D00C6CA2D /* GAILogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		835A72DA1B60527D00C6CA2D /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		835A72DB1B60527D00C6CA2D /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		835A72DC1B6052BF00C6CA2D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		835A72DE1B6052E200C6CA2D /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		835C595E1B60547500636DA1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		835C59601B60553E00636DA1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* WHD-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WHD-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -299,11 +316,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				835A72E01B60541700C6CA2D /* libGoogleAnalyticsServices.a in Frameworks */,
+				835A72DD1B6052BF00C6CA2D /* libsqlite3.dylib in Frameworks */,
+				5EA9C15112102CF800418B1C /* libsqlite3.0.dylib in Frameworks */,
+				835C59611B60553E00636DA1 /* libz.dylib in Frameworks */,
+				835C595F1B60547500636DA1 /* CoreData.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				5EA9C12E12102C5600418B1C /* QuartzCore.framework in Frameworks */,
-				5EA9C15112102CF800418B1C /* libsqlite3.0.dylib in Frameworks */,
 				5E8B882B12244E5F00D37184 /* MessageUI.framework in Frameworks */,
 				3EFD5F7E1224B5DA00167F0C /* AddressBook.framework in Frameworks */,
 				3EFD5F971224B5EA00167F0C /* AddressBookUI.framework in Frameworks */,
@@ -398,6 +419,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				835A72D21B60527000C6CA2D /* Analytics */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				5EA9C14512102C6700418B1C /* Images */,
@@ -467,13 +489,17 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				835C59601B60553E00636DA1 /* libz.dylib */,
+				835C595E1B60547500636DA1 /* CoreData.framework */,
+				835A72DE1B6052E200C6CA2D /* libGoogleAnalyticsServices.a */,
+				835A72DC1B6052BF00C6CA2D /* libsqlite3.dylib */,
+				5EA9C15012102CF800418B1C /* libsqlite3.0.dylib */,
 				3E289FE9122A26FB00C1F8D0 /* SystemConfiguration.framework */,
 				3EFD5F961224B5EA00167F0C /* AddressBookUI.framework */,
 				5EA9C12D12102C5600418B1C /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
-				5EA9C15012102CF800418B1C /* libsqlite3.0.dylib */,
 				5E8B882A12244E5F00D37184 /* MessageUI.framework */,
 				3EFD5F7D1224B5DA00167F0C /* AddressBook.framework */,
 			);
@@ -526,6 +552,22 @@
 			);
 			name = DBObjects;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		835A72D21B60527000C6CA2D /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				835A72D31B60527D00C6CA2D /* GAIDictionaryBuilder.h */,
+				835A72D41B60527D00C6CA2D /* GAIEcommerceProduct.h */,
+				835A72D51B60527D00C6CA2D /* GAIEcommerceProductAction.h */,
+				835A72D61B60527D00C6CA2D /* GAIEcommercePromotion.h */,
+				835A72D71B60527D00C6CA2D /* GAITracker.h */,
+				835A72D81B60527D00C6CA2D /* GAIFields.h */,
+				835A72D91B60527D00C6CA2D /* GAILogger.h */,
+				835A72DA1B60527D00C6CA2D /* GAI.h */,
+				835A72DB1B60527D00C6CA2D /* GAITrackedViewController.h */,
+			);
+			name = Analytics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -959,7 +1001,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WHD_Prefix.pch;
 				INFOPLIST_FILE = "WHD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = Timesheet;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -980,7 +1026,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WHD_Prefix.pch;
 				INFOPLIST_FILE = "WHD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = Timesheet;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1015,7 +1065,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = WHD_Prefix.pch;
 				INFOPLIST_FILE = "WHD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = Timesheet;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "847E36D3-CD10-407D-B9CB-FA9CB3A2BFA5";

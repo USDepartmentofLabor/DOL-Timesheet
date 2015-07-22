@@ -34,6 +34,9 @@
 - (void)viewDidLoad {
 	
     [super viewDidLoad];
+    
+    // View name for Google Analytics
+    self.screenName = @"Timesheet Screen";
 	
 	self.navigationItem.leftBarButtonItem = nil;
 	

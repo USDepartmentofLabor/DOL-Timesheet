@@ -10,8 +10,9 @@
 #import "EditJobViewController.h"
 #import "TimeEntryViewController.h"
 #import "StartBreakViewController.h"
+#import "GAITrackedViewController.h"
 
-@interface JobViewController : UIViewController<StartBreakViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, EditJobViewControllerDelegate, TimeEntryViewControllerDelegate, UIActionSheetDelegate> {
+@interface JobViewController : GAITrackedViewController<StartBreakViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, EditJobViewControllerDelegate, TimeEntryViewControllerDelegate, UIActionSheetDelegate> {
 
 	IBOutlet UITableView *jobsTableView;
 	IBOutlet UIImageView *backgroundView;

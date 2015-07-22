@@ -13,6 +13,7 @@
 #import "ExportViewController.h"
 #import "HelpViewController.h"
 #import "ContactViewController.h"
+#import "GAI.h"
 
 @implementation WHDAppDelegate
 
@@ -23,6 +24,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	
     // Override point for customization after application launch
+    
+    // Init Google Analytics
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [GAI sharedInstance].dispatchInterval = 20;
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-61504244-2"];
 	
 	//Copy database to the user's phone if needed.
 	[self copyDatabaseIfNeeded];
@@ -58,7 +65,7 @@
 	NSArray *controllers = [NSArray arrayWithObjects:jobNavController, reviewNavController, exportNavController, helpViewController, contactViewController, nil];
 	tabBarController.viewControllers = controllers;
 	
-	[window addSubview:tabBarController.view];
+    [window setRootViewController:tabBarController];
     [window makeKeyAndVisible];
 	
 	return YES;
