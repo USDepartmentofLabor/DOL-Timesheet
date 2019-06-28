@@ -1,0 +1,228 @@
+
+/* Class = "UILabel"; text = "City"; ObjectID = "0oE-y3-V8D"; */
+"0oE-y3-V8D.text" = "City";
+
+/* Class = "UITextField"; placeholder = "Email address"; ObjectID = "1SJ-v3-eIJ"; */
+"1SJ-v3-eIJ.placeholder" = "Email address";
+
+/* Class = "UILabel"; text = "State"; ObjectID = "20x-J2-Qxr"; */
+"20x-J2-Qxr.text" = "State";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "450-Qx-5vh"; */
+"450-Qx-5vh.text" = "0";
+
+/* Class = "UILabel"; text = "State"; ObjectID = "4v8-Fc-c7s"; */
+"4v8-Fc-c7s.text" = "State";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5h8-ZD-JTy"; */
+"5h8-ZD-JTy.text" = "Label";
+
+/* Class = "UILabel"; text = "Who do you work for?"; ObjectID = "6O6-wW-fOq"; */
+"6O6-wW-fOq.text" = "Who do you work for?";
+
+/* Class = "UIButton"; normalTitle = "Minimum Wage Table"; ObjectID = "8nB-6a-frk"; */
+"8nB-6a-frk.normalTitle" = "Minimum Wage Table";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9Ay-o3-k2J"; */
+"9Ay-o3-k2J.text" = "Label";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "9f2-Ub-meU"; */
+"9f2-Ub-meU.text" = "0";
+
+/* Class = "UISegmentedControl"; ANl-cA-2pM.segmentTitles[0] = "About"; ObjectID = "ANl-cA-2pM"; */
+"ANl-cA-2pM.segmentTitles[0]" = "About";
+
+/* Class = "UISegmentedControl"; ANl-cA-2pM.segmentTitles[1] = "Glossary"; ObjectID = "ANl-cA-2pM"; */
+"ANl-cA-2pM.segmentTitles[1]" = "Glossary";
+
+/* Class = "UISegmentedControl"; ANl-cA-2pM.segmentTitles[2] = "Resources"; ObjectID = "ANl-cA-2pM"; */
+"ANl-cA-2pM.segmentTitles[2]" = "Resources";
+
+/* Class = "UIButton"; normalTitle = "Yes"; ObjectID = "CSu-bs-D3K"; */
+"CSu-bs-D3K.normalTitle" = "Yes";
+
+/* Class = "UILabel"; text = "Zip Code"; ObjectID = "Csd-xx-RZy"; */
+"Csd-xx-RZy.text" = "Zip Code";
+
+/* Class = "UIButton"; normalTitle = "No"; ObjectID = "DCr-MR-fWD"; */
+"DCr-MR-fWD.normalTitle" = "No";
+
+/* Class = "UILabel"; text = "Full Name"; ObjectID = "DhF-pK-PnG"; */
+"DhF-pK-PnG.text" = "Full Name";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "EP3-Za-0SH"; */
+"EP3-Za-0SH.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "Per Hour"; ObjectID = "Eus-V4-y6r"; */
+"Eus-V4-y6r.text" = "Per Hour";
+
+/* Class = "UILabel"; text = "Total Break (Hours)"; ObjectID = "F5J-wR-eQC"; */
+"F5J-wR-eQC.text" = "Total Break (Hours)";
+
+/* Class = "UIBarButtonItem"; title = "Contact"; ObjectID = "GXD-Fz-3QQ"; */
+"GXD-Fz-3QQ.title" = "Contact";
+
+/* Class = "UIButton"; normalTitle = "X"; ObjectID = "HRq-h0-VOa"; */
+"HRq-h0-VOa.normalTitle" = "X";
+
+/* Class = "UIBarButtonItem"; title = "Email"; ObjectID = "JnA-c8-pUk"; */
+"JnA-c8-pUk.title" = "Email";
+
+/* Class = "UILabel"; text = "Hourly"; ObjectID = "JrK-H3-InD"; */
+"JrK-H3-InD.text" = "Hourly";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "KIk-LJ-4Nb"; */
+"KIk-LJ-4Nb.text" = "Email";
+
+/* Class = "UILabel"; text = "The WHD app is a timesheet keeping app designed and produced by the U.S. Department of Labor’s OCIO Division…."; ObjectID = "L81-sG-jq3"; */
+"L81-sG-jq3.text" = "The WHD app is a timesheet keeping app designed and produced by the U.S. Department of Labor’s OCIO Division….";
+
+/* Class = "UILabel"; text = "City"; ObjectID = "LJ8-Ql-m0R"; */
+"LJ8-Ql-m0R.text" = "City";
+
+/* Class = "UILabel"; text = "Please setup your profile"; ObjectID = "LRd-cR-6gc"; */
+"LRd-cR-6gc.text" = "Please setup your profile";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "MSL-ad-VCj"; */
+"MSL-ad-VCj.text" = "Address";
+
+/* Class = "UITextField"; placeholder = "Email address"; ObjectID = "MVW-cU-g4n"; */
+"MVW-cU-g4n.placeholder" = "Email address";
+
+/* Class = "UILabel"; text = "Day"; ObjectID = "PFG-dh-xM2"; */
+"PFG-dh-xM2.text" = "Day";
+
+/* Class = "UIButton"; normalTitle = "Period"; ObjectID = "PnK-y3-ygP"; */
+"PnK-y3-ygP.normalTitle" = "Period";
+
+/* Class = "UITextField"; placeholder = "$0.00"; ObjectID = "QeH-me-g6a"; */
+"QeH-me-g6a.placeholder" = "$0.00";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "REW-rM-J0E"; */
+"REW-rM-J0E.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Bi-Weekly"; ObjectID = "TGD-Ri-z5U"; */
+"TGD-Ri-z5U.normalTitle" = "Bi-Weekly";
+
+/* Class = "UILabel"; text = "Phone"; ObjectID = "Trc-tO-om1"; */
+"Trc-tO-om1.text" = "Phone";
+
+/* Class = "UIButton"; normalTitle = "Weekly"; ObjectID = "UWp-hi-AZT"; */
+"UWp-hi-AZT.normalTitle" = "Weekly";
+
+/* Class = "UILabel"; text = "You should be eligible for minimum wage."; ObjectID = "VBr-cM-Vo4"; */
+"VBr-cM-Vo4.text" = "You should be eligible for minimum wage.";
+
+/* Class = "UIButton"; normalTitle = "Add Another Rate"; ObjectID = "WJy-hf-Crt"; */
+"WJy-hf-Crt.normalTitle" = "Add Another Rate";
+
+/* Class = "UIButton"; normalTitle = "Department Of Labor"; ObjectID = "WyP-w6-CMT"; */
+"WyP-w6-CMT.normalTitle" = "Department Of Labor";
+
+/* Class = "UILabel"; text = "Mon 01/01/2019"; ObjectID = "XAC-kt-sbb"; */
+"XAC-kt-sbb.text" = "Mon 01/01/2019";
+
+/* Class = "UITextField"; placeholder = "$0.00"; ObjectID = "XVn-Ok-ILT"; */
+"XVn-Ok-ILT.placeholder" = "$0.00";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "ZP4-E6-3Hg"; */
+"ZP4-E6-3Hg.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "Za5-6z-8eL"; */
+"Za5-6z-8eL.normalTitle" = "Next";
+
+/* Class = "UILabel"; text = "Per Hour"; ObjectID = "ZxN-bm-eV8"; */
+"ZxN-bm-eV8.text" = "Per Hour";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "ag4-5w-zqv"; */
+"ag4-5w-zqv.text" = "Email";
+
+/* Class = "UITextField"; placeholder = "$7.75"; ObjectID = "eSV-mZ-7dl"; */
+"eSV-mZ-7dl.placeholder" = "$7.75";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "egb-CB-pnX"; */
+"egb-CB-pnX.normalTitle" = "Next";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "exJ-Fh-xBF"; */
+"exJ-Fh-xBF.text" = "Address";
+
+/* Class = "UILabel"; text = "Federal Minimum Wage is $7.25"; ObjectID = "f8Q-k9-I9U"; */
+"f8Q-k9-I9U.text" = "Federal Minimum Wage is $7.25";
+
+/* Class = "UIButton"; normalTitle = "Annually"; ObjectID = "fgq-ml-AKj"; */
+"fgq-ml-AKj.normalTitle" = "Annually";
+
+/* Class = "UILabel"; text = "Full Name"; ObjectID = "fqz-61-fTN"; */
+"fqz-61-fTN.text" = "Full Name";
+
+/* Class = "UILabel"; text = "John Doe"; ObjectID = "hsl-bb-VUG"; */
+"hsl-bb-VUG.text" = "John Doe";
+
+/* Class = "UILabel"; text = "Total"; ObjectID = "ijH-Yr-02B"; */
+"ijH-Yr-02B.text" = "Total";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "lOH-CS-b5g"; */
+"lOH-CS-b5g.normalTitle" = "Next";
+
+/* Class = "UILabel"; text = "Total Worked(Hours)"; ObjectID = "mu7-bo-n9y"; */
+"mu7-bo-n9y.text" = "Total Worked(Hours)";
+
+/* Class = "UILabel"; text = "Employer"; ObjectID = "nBW-A4-7jA"; */
+"nBW-A4-7jA.text" = "Employer";
+
+/* Class = "UILabel"; text = "*This information is not shared with anyone unless you choose the option to share with your employer or any third party recipients. …*"; ObjectID = "nWC-I9-IUW"; */
+"nWC-I9-IUW.text" = "*This information is not shared with anyone unless you choose the option to share with your employer or any third party recipients. …*";
+
+/* Class = "UISegmentedControl"; nbT-aT-cqV.segmentTitles[0] = "Employee"; ObjectID = "nbT-aT-cqV"; */
+"nbT-aT-cqV.segmentTitles[0]" = "Employee";
+
+/* Class = "UISegmentedControl"; nbT-aT-cqV.segmentTitles[1] = "Employer"; ObjectID = "nbT-aT-cqV"; */
+"nbT-aT-cqV.segmentTitles[1]" = "Employer";
+
+/* Class = "UIButton"; normalTitle = "Daily"; ObjectID = "o73-aB-rTG"; */
+"o73-aB-rTG.normalTitle" = "Daily";
+
+/* Class = "UILabel"; text = "Employer"; ObjectID = "pkB-jV-L8z"; */
+"pkB-jV-L8z.text" = "Employer";
+
+/* Class = "UILabel"; text = "Salary"; ObjectID = "qDn-i2-HGj"; */
+"qDn-i2-HGj.text" = "Salary";
+
+/* Class = "UILabel"; text = "Phone"; ObjectID = "qEU-xC-Pmp"; */
+"qEU-xC-Pmp.text" = "Phone";
+
+/* Class = "UILabel"; text = "Hourly/Weekly"; ObjectID = "rA5-jz-SQF"; */
+"rA5-jz-SQF.text" = "Hourly/Weekly";
+
+/* Class = "UITextField"; placeholder = "Rate 1"; ObjectID = "rf1-3O-9GS"; */
+"rf1-3O-9GS.placeholder" = "Rate 1";
+
+/* Class = "UILabel"; text = "Zip Code"; ObjectID = "sBy-AB-enh"; */
+"sBy-AB-enh.text" = "Zip Code";
+
+/* Class = "UILabel"; text = "Salary"; ObjectID = "sxj-3c-krx"; */
+"sxj-3c-krx.text" = "Salary";
+
+/* Class = "UILabel"; text = "Hourly"; ObjectID = "t9w-Tr-Od4"; */
+"t9w-Tr-Od4.text" = "Hourly";
+
+/* Class = "UILabel"; text = "Rate Name"; ObjectID = "tUe-iM-kE5"; */
+"tUe-iM-kE5.text" = "Rate Name";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "tky-8o-QJU"; */
+"tky-8o-QJU.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "veU-qt-gsl"; */
+"veU-qt-gsl.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "vfJ-P7-Ayw"; */
+"vfJ-P7-Ayw.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "Profile Setup"; ObjectID = "vzM-t4-e6h"; */
+"vzM-t4-e6h.text" = "Profile Setup";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "wMX-sg-5rW"; */
+"wMX-sg-5rW.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "My Profile"; ObjectID = "yyH-a0-Yzm"; */
+"yyH-a0-Yzm.text" = "My Profile";

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Address" representedClassName="Address" syncable="YES" codeGenerationType="category">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="addresses" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="DateLog" representedClassName="DateLog" syncable="YES" codeGenerationType="category">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="employmentInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmploymentInfo" inverseName="dateLogs" inverseEntity="EmploymentInfo" syncable="YES"/>
+        <relationship name="timeLogs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TimeLog" inverseName="dateLog" inverseEntity="TimeLog" syncable="YES"/>
+    </entity>
+    <entity name="Employee" representedClassName="Employee" parentEntity="User" syncable="YES" codeGenerationType="category">
+        <relationship name="employers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmploymentInfo" inverseName="employee" inverseEntity="EmploymentInfo" syncable="YES"/>
+    </entity>
+    <entity name="Employer" representedClassName="Employer" parentEntity="User" syncable="YES" codeGenerationType="category">
+        <relationship name="employees" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="EmploymentInfo" inverseName="employer" inverseEntity="EmploymentInfo" syncable="YES"/>
+    </entity>
+    <entity name="EmploymentInfo" representedClassName="EmploymentInfo" syncable="YES" codeGenerationType="category">
+        <attribute name="covered" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="employmentNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minimumWage" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="payFrequencyValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="supervisorEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="supervisorName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="typeValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="workWeekStartDayValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="dateLogs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DateLog" inverseName="employmentInfo" inverseEntity="DateLog" syncable="YES"/>
+        <relationship name="employee" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Employee" inverseName="employers" inverseEntity="Employee" syncable="YES"/>
+        <relationship name="employer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Employer" inverseName="employees" inverseEntity="Employer" syncable="YES"/>
+        <relationship name="hourlyRate" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HourlyRate" inverseName="paymentInfo" inverseEntity="HourlyRate" syncable="YES"/>
+        <relationship name="salary" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Salary" inverseName="paymentnfo" inverseEntity="Salary" syncable="YES"/>
+    </entity>
+    <entity name="HourlyPaymentTimeLog" representedClassName="HourlyPaymentTimeLog" parentEntity="TimeLog" syncable="YES" codeGenerationType="category">
+        <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="hourlyRate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HourlyRate" inverseName="timeLog" inverseEntity="HourlyRate" syncable="YES"/>
+    </entity>
+    <entity name="HourlyRate" representedClassName="HourlyRate" syncable="YES" codeGenerationType="category">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="paymentInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmploymentInfo" inverseName="hourlyRate" inverseEntity="EmploymentInfo" syncable="YES"/>
+        <relationship name="timeLog" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HourlyPaymentTimeLog" inverseName="hourlyRate" inverseEntity="HourlyPaymentTimeLog" syncable="YES"/>
+    </entity>
+    <entity name="Salary" representedClassName="Salary" syncable="YES" codeGenerationType="category">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="salaryTypeValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="paymentnfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmploymentInfo" inverseName="salary" inverseEntity="EmploymentInfo" syncable="YES"/>
+    </entity>
+    <entity name="TimeLog" representedClassName="TimeLog" syncable="YES" codeGenerationType="category">
+        <attribute name="breakTime" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="dateLog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DateLog" inverseName="timeLogs" inverseEntity="DateLog" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="category">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="currentUser" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="addresses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Address" inverseName="user" inverseEntity="Address" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Address" positionX="-314.63671875" positionY="-178.578125" width="128" height="150"/>
+        <element name="DateLog" positionX="-90" positionY="-18" width="128" height="120"/>
+        <element name="Employee" positionX="-119.17578125" positionY="64.859375" width="128" height="60"/>
+        <element name="Employer" positionX="-72.69140625" positionY="-189.33984375" width="128" height="60"/>
+        <element name="EmploymentInfo" positionX="88.921875" positionY="141.55859375" width="128" height="270"/>
+        <element name="HourlyPaymentTimeLog" positionX="-108" positionY="-36" width="128" height="75"/>
+        <element name="HourlyRate" positionX="90.97265625" positionY="314.71875" width="128" height="120"/>
+        <element name="Salary" positionX="-48.43359375" positionY="357.30859375" width="128" height="105"/>
+        <element name="TimeLog" positionX="-108" positionY="-36" width="128" height="135"/>
+        <element name="User" positionX="-313.4453125" positionY="26.13671875" width="128" height="150"/>
+    </elements>
+</model>

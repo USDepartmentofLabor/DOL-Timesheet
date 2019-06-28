@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DOLLogo" translatesAutoresizingMaskIntoConstraints="NO" id="a4n-ko-dMs" userLabel="DOLImageView">
+                                <rect key="frame" x="52" y="8" width="75" height="75"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PoweredByOCIO" translatesAutoresizingMaskIntoConstraints="NO" id="k6g-8H-eFO" userLabel="OCIOImageView">
+                                <rect key="frame" x="0.0" y="358" width="896" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Ffy-a0-ZaW">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="70"/>
+                                    </constraint>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smC-nd-0rl">
+                                <rect key="frame" x="296.5" y="94.5" width="303" height="225.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whdLogo" translatesAutoresizingMaskIntoConstraints="NO" id="D5N-Fg-PpB" userLabel="WHDLogo">
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="177"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3w1-tG-OdJ" userLabel="AppView">
+                                        <rect key="frame" x="0.0" y="187" width="303" height="38.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DOL Timesheet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rd-wt-CI3">
+                                                <rect key="frame" x="0.0" y="5" width="303" height="33.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                <color key="textColor" name="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="56"/>
+                                                </variation>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="8rd-wt-CI3" secondAttribute="bottom" id="OZo-kn-tRv"/>
+                                            <constraint firstItem="8rd-wt-CI3" firstAttribute="leading" secondItem="3w1-tG-OdJ" secondAttribute="leading" id="Z3b-hH-3V5"/>
+                                            <constraint firstItem="8rd-wt-CI3" firstAttribute="top" secondItem="3w1-tG-OdJ" secondAttribute="top" constant="5" id="oyx-9Y-V1N"/>
+                                            <constraint firstAttribute="trailing" secondItem="8rd-wt-CI3" secondAttribute="trailing" id="sCY-HL-pJ7"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="3w1-tG-OdJ" firstAttribute="top" secondItem="D5N-Fg-PpB" secondAttribute="bottom" constant="10" id="6DT-q1-ort"/>
+                                    <constraint firstAttribute="bottom" secondItem="3w1-tG-OdJ" secondAttribute="bottom" id="9ZZ-8g-GLf"/>
+                                    <constraint firstItem="D5N-Fg-PpB" firstAttribute="top" secondItem="smC-nd-0rl" secondAttribute="top" id="ILg-cs-BuP"/>
+                                    <constraint firstItem="3w1-tG-OdJ" firstAttribute="leading" secondItem="smC-nd-0rl" secondAttribute="leading" id="Qoa-pk-2g5"/>
+                                    <constraint firstAttribute="trailing" secondItem="3w1-tG-OdJ" secondAttribute="trailing" id="ZsW-Ay-HDP"/>
+                                    <constraint firstItem="D5N-Fg-PpB" firstAttribute="centerX" secondItem="smC-nd-0rl" secondAttribute="centerX" id="ho3-5r-txJ"/>
+                                    <constraint firstItem="D5N-Fg-PpB" firstAttribute="leading" secondItem="smC-nd-0rl" secondAttribute="leading" id="lBa-jw-ALx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="a4n-ko-dMs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="38J-7l-88b"/>
+                            <constraint firstItem="k6g-8H-eFO" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="LWa-Ys-ze7"/>
+                            <constraint firstItem="a4n-ko-dMs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="QY3-Wl-FfC"/>
+                            <constraint firstItem="k6g-8H-eFO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Wwy-7h-afr"/>
+                            <constraint firstItem="smC-nd-0rl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ZFu-8O-c7s"/>
+                            <constraint firstItem="smC-nd-0rl" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="aRW-DH-tDK"/>
+                            <constraint firstItem="smC-nd-0rl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dyV-iq-QtQ"/>
+                            <constraint firstAttribute="trailing" secondItem="k6g-8H-eFO" secondAttribute="trailing" id="v3K-m0-uBW"/>
+                            <constraint firstItem="k6g-8H-eFO" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ztQ-ie-BWf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="50.724637681159422" y="374.33035714285711"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="DOLLogo" width="75" height="75"/>
+        <image name="PoweredByOCIO" width="2200" height="368"/>
+        <image name="whdLogo" width="303" height="177"/>
+        <namedColor name="darkTextColor">
+            <color red="0.35686274509803922" green="0.38039215686274508" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LabelInfoView" customModule="DOL_Timesheet" customModuleProvider="target">
+            <connections>
+                <outlet property="infoButton" destination="MFy-SI-Q3L" id="kOs-jt-R85"/>
+                <outlet property="label" destination="uLI-8h-HN9" id="qF1-W5-Fgm"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLI-8h-HN9">
+                    <rect key="frame" x="0.0" y="49" width="43.5" height="146"/>
+                    <color key="tintColor" name="appPrimaryColor"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" staticText="YES" header="YES"/>
+                    </accessibility>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFy-SI-Q3L">
+                    <rect key="frame" x="47.5" y="173" width="366.5" height="22"/>
+                    <connections>
+                        <action selector="infoClicked:" destination="-1" eventType="touchUpInside" id="wQX-bE-f4x"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="uLI-8h-HN9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="0sO-St-HDS"/>
+                <constraint firstItem="uLI-8h-HN9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="8yV-Zf-1rA"/>
+                <constraint firstAttribute="bottom" secondItem="uLI-8h-HN9" secondAttribute="bottom" constant="5" id="E55-Ia-03B"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MFy-SI-Q3L" secondAttribute="trailing" id="OM7-pd-HOT"/>
+                <constraint firstItem="MFy-SI-Q3L" firstAttribute="leading" secondItem="uLI-8h-HN9" secondAttribute="trailing" constant="4" id="bQr-GY-ze6"/>
+                <constraint firstItem="MFy-SI-Q3L" firstAttribute="bottom" secondItem="uLI-8h-HN9" secondAttribute="bottom" id="que-gh-ja5"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="140.57971014492756" y="-378.34821428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="appPrimaryColor">
+            <color red="0.12549019607843137" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
