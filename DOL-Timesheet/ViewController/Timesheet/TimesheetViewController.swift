@@ -308,24 +308,19 @@ class TimesheetViewController: UIViewController {
             periodStraightTimeEarningsStackView.isHidden = false
             periodOvertimeEarningsStackView.isHidden = false
             periodEarningsStackView.insertArrangedSubview(periodStraightTimeEarningsStackView, at: 0)
-            periodEarningsStackView.insertArrangedSubview(periodOvertimeEarningsStackView, at: 1)
             periodEarningsStackView.isHidden = false
             periodStraightTimeTitle.text = NSLocalizedString("straight_earnings", comment: "Straight Time Earnings")
             periodStraightTimeAmount.text = viewModel?.currentPeriod?.straightTimeAmountStr
-            let straightTimeCalculationsStr = viewModel?.currentPeriod?.straightTimeCalculationsStr ?? ""
-
-            if straightTimeCalculationsStr.isEmpty {
-//                periodStraightTimeSubTitle.text = ""
-            }
-            else {
-//                periodStraightTimeSubTitle.text = NSLocalizedString("straight_time_calculation", comment: "Straight Time Earnings")
-            }
-            
-//            periodStraightTimeCalculations.text = straightTimeCalculationsStr
             
             if viewModel?.currentEmploymentModel?.overtimeEligible ?? false {
+                periodEarningsStackView.insertArrangedSubview(periodOvertimeEarningsStackView, at: 1)
                 periodOvertimeTitle.text = NSLocalizedString("overtime", comment: "Overtime")
                 periodOvertimeAmount.text = viewModel?.periodOvertimeAmountStr
+            }
+            else {
+                periodOvertimeEarningsStackView.isHidden = true
+                periodOvertimeTitle.text = ""
+                periodOvertimeAmount.text = ""
             }
         }
     }

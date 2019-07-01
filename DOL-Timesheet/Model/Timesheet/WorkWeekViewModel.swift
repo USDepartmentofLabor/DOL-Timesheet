@@ -28,7 +28,7 @@ class WorkWeekViewModel {
     var isWorkWeekClosed: Bool {
         let todaysDate = Date().removeTimeStamp()
         return (currentWorkWeek.endDate.compare(todaysDate) != .orderedDescending) ||
-            totalTimeWorked >= Int(WorkWeekViewModel.WORK_WEEK_SECONDS)
+            totalTimeWorked >= WorkWeekViewModel.WORK_WEEK_SECONDS
     }
     
     init(employmentInfo: EmploymentInfo, period: Period, workWeek: WorkWeek) {
@@ -74,10 +74,10 @@ class WorkWeekViewModel {
 
 // MARK: Totals
 extension WorkWeekViewModel {
-    var totalTimeWorked: Int {
-        let hoursWorked = currentWorkWeek.days.reduce(0) {
+    var totalTimeWorked: Double {
+        let hoursWorked = currentWorkWeek.days.reduce(0.0) {
             let dateLog = employmentInfo.log(forDate: $1)
-            return $0 + Int((dateLog?.totalHoursWorked ?? 0))
+            return $0 + (dateLog?.totalHoursWorked ?? 0)
         }
     
         return hoursWorked
@@ -86,7 +86,7 @@ extension WorkWeekViewModel {
 //        }
     }
     
-    var totalHoursWorked: Int {
+    var totalHoursWorked: Double {
         let timeWorked = totalTimeWorked
         if timeWorked > 0 {
             return timeWorked / 3600
@@ -99,10 +99,10 @@ extension WorkWeekViewModel {
         return Date.secondsToHoursMinutes(seconds: Double(totalTimeWorked))
     }
     
-    var totalBreakTime: Int {
-        return currentWorkWeek.days.reduce(0) {
+    var totalBreakTime: Double {
+        return currentWorkWeek.days.reduce(0.0) {
             let dateLog = employmentInfo.log(forDate: $1)
-            return $0 + Int(dateLog?.totalBreak ?? 0)
+            return $0 + (dateLog?.totalBreak ?? 0)
         }
     }
     
@@ -209,7 +209,7 @@ extension WorkWeekViewModel {
         }
     }
     var overtime: Double {
-        if totalTimeWorked > Int(WorkWeekViewModel.WORK_WEEK_SECONDS) {
+        if totalTimeWorked > WorkWeekViewModel.WORK_WEEK_SECONDS {
             return Double(totalTimeWorked) - (WorkWeekViewModel.WORK_WEEK_SECONDS)
         }
         
@@ -238,6 +238,20 @@ extension WorkWeekViewModel {
     
     var overtimeCalculationStr: String {
         return "\(regularRateStr) x 0.5 x \(overtimeHoursStr)"
+    }
+    
+    var overtimePaymentTimeInfo : String {
+        var overtimeInfo = ""
+        if overtimeAmount > 0, !isEndingInPeriod {
+            if employmentInfo.payFrequency == .daily {
+                let msg = NSLocalizedString("overtime_on_date", comment: "Overtime on Date")
+                overtimeInfo = String(format: msg, currentWorkWeek.endDate.formattedDate)
+            }
+            else {
+                overtimeInfo = NSLocalizedString("overtime_next_pay_period", comment: "Overtime will be paid in next pay period")
+            }
+        }
+        return overtimeInfo
     }
 }
 

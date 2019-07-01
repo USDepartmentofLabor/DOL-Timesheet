@@ -111,12 +111,7 @@ class EarningsTableViewCell: UITableViewCell {
             overtimeAmountLabel.text = viewModel.overtimeAmountStr
             overtimeCalculationLabel.text = viewModel.overtimeCalculationStr
             
-            if viewModel.overtimeAmount > 0, !viewModel.isEndingInPeriod {
-                overtimeInfoLabel.text = NSLocalizedString("overtime_next_pay_period", comment: "Overtime will be paid in next pay period")
-            }
-            else {
-                overtimeInfoLabel.text = ""
-            }
+            overtimeInfoLabel.text = viewModel.overtimePaymentTimeInfo
         }
         else {
             overtimeView.isHidden = true
