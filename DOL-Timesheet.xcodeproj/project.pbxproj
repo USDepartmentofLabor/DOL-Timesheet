@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03226D5522DF9B70003864A4 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03226D5422DF9B70003864A4 /* WebKit.framework */; };
 		032430DE2285D81800E86E3E /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032430DD2285D81800E86E3E /* TimePickerViewController.swift */; };
 		0324C3DD2260E47100712576 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324C3DC2260E47100712576 /* AppDelegate.swift */; };
 		0324C3DF2260E47100712576 /* TimesheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324C3DE2260E47100712576 /* TimesheetViewController.swift */; };
@@ -118,6 +119,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03226D5422DF9B70003864A4 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		032430DD2285D81800E86E3E /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
 		0324C3D92260E47100712576 /* DOL-Timesheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DOL-Timesheet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0324C3DC2260E47100712576 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03226D5522DF9B70003864A4 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +245,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03226D5322DF9B70003864A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				03226D5422DF9B70003864A4 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0324C3D02260E47100712576 = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +260,7 @@
 				0324C3F32260E47200712576 /* DOL-TimesheetTests */,
 				0324C3FE2260E47200712576 /* DOL-TimesheetUITests */,
 				0324C3DA2260E47100712576 /* Products */,
+				03226D5322DF9B70003864A4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -912,15 +924,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LTK6MX8TBS;
+				DEVELOPMENT_TEAM = 4A936SEER3;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "gov.dol.whdtimesheet.DOL-Timesheet2";
+				PRODUCT_BUNDLE_IDENTIFIER = "gov.dol.whd.DOL-Timesheet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -930,15 +944,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LTK6MX8TBS;
+				DEVELOPMENT_TEAM = 4A936SEER3;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "gov.dol.whdtimesheet.DOL-Timesheet2";
+				PRODUCT_BUNDLE_IDENTIFIER = "gov.dol.whd.DOL-Timesheet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
