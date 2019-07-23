@@ -46,9 +46,6 @@ class ManageUsersViewController: UIViewController {
         }
     }
     
-    deinit {
-        print("Manage Users Deinit")
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -46,11 +46,7 @@ class SetupHourlyPaymentViewController: SetupBaseEmploymentViewController {
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
     }
-    
-    deinit {
-        print("Deinit SetupHourly")
-    }
-    
+        
     @objc func keyboardWillShow(notification: NSNotification) {
         let userInfo: NSDictionary = notification.userInfo! as NSDictionary
         let keyboardInfo = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue

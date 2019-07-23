@@ -147,10 +147,6 @@ class SetupProfileViewController: UIViewController {
                                                object: nil)
     }
     
-    deinit {
-        print("Deinit SetupProfile")
-    }
-    
     @objc func keyboardWillShow(notification: NSNotification) {
         let userInfo: NSDictionary = notification.userInfo! as NSDictionary
         let keyboardInfo = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue
@@ -371,6 +367,10 @@ class SetupProfileViewController: UIViewController {
             !zipcode.isEmpty, !Util.isValidPostalCode(postalCode: zipcode) {
             errorStr = NSLocalizedString("err_invalid_zipcode", comment: "Please provide valid zipcode")
         }
+        else if let phoneNumber = phoneTextField.text?.trimmingCharacters(in: .whitespaces),
+            !phoneNumber.isEmpty, !Util.isValidPhoneNumber(phoneNumber: phoneNumber) {
+            errorStr = NSLocalizedString("err_invalid_phonenumber", comment: "Please provide valid phoneNumber")
+        }
         else if let emailAddress = emailTextField.text?.trimmingCharacters(in: .whitespaces),
             !emailAddress.isEmpty, !Util.isValidEmailAddress(emailAddress: emailAddress) {
             errorStr = NSLocalizedString("err_invalid_emailaddress", comment: "Please provide valid email")
@@ -403,10 +403,6 @@ class SetupProfileViewController: UIViewController {
     
     override func preferredContentSizeDidChange(forChildContentContainer container: UIContentContainer) {
         super.preferredContentSizeDidChange(forChildContentContainer: container)
-        if let child = container as? InfoPopupViewController {
-            print(child.preferredContentSize.height)
-//            container.updateConstraints()
-        }
     }
 }
 

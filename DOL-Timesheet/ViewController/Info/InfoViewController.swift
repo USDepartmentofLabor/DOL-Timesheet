@@ -23,9 +23,6 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var glossaryContainerView: UIView!
     @IBOutlet weak var resourcesContainerView: UIView!
     
-    deinit {
-        print("deinit Info")
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()

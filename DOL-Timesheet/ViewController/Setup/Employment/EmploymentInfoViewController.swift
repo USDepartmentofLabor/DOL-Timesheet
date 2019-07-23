@@ -121,6 +121,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         }
         
         nameTitleLabel.text = "\(nameTitle)*"
+        nameTitleLabel.accessibilityLabel = "\(nameTitle)* Required"
         
         // remove Skip button from navbar
         if viewModel?.employmentUser != nil {
@@ -179,10 +180,6 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
                                                object: nil)
     }
     
-    deinit {
-        print("EmploymentInfo Deinit")
-    }
-    
     @objc func keyboardWillShow(notification: NSNotification) {
         let userInfo: NSDictionary = notification.userInfo! as NSDictionary
         let keyboardInfo = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue
@@ -218,6 +215,10 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         else if let zipcode = zipcodeTextField.text?.trimmingCharacters(in: .whitespaces),
             !zipcode.isEmpty, !Util.isValidPostalCode(postalCode: zipcode) {
             errorStr = NSLocalizedString("err_invalid_zipcode", comment: "Please provide valid zipcode")
+        }
+        else if let phoneNumber = phoneTextField.text?.trimmingCharacters(in: .whitespaces),
+            !phoneNumber.isEmpty, !Util.isValidPhoneNumber(phoneNumber: phoneNumber) {
+            errorStr = NSLocalizedString("err_invalid_phonenumber", comment: "Please provide valid phoneNumber")
         }
         else if let emailAddress = emailTextField.text?.trimmingCharacters(in: .whitespaces),
             !emailAddress.isEmpty, !Util.isValidEmailAddress(emailAddress: emailAddress) {

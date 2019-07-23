@@ -90,6 +90,7 @@
 "total_Earnings_collapse_hint" = "Tap to hide Details";
 "overtime_next_pay_period" = "Overtime will be paid in next pay period.";
 "overtime_on_date" = "Overtime will be paid on %@.";
+"display_details" = "Tap to display details";
 
 "prev_period" = "Previous Period";
 "next_period" = "Next Period";
@@ -128,6 +129,7 @@
 "err_break_more_than_hours_worked" = "Break time can not be more that hours worked";
 "err_select_hourly_rate" = "Please select hourly rate";
 "err_invalid_zipcode" = "Please provide valid zip code";
+"err_invalid_phonenumber" = "Please provide valid phone number";
 "err_invalid_emailaddress" = "Please provide valid email address";
 "err_enter_valid_minimum_wage" = "Please enter minimum wage";
 "err_enter_valid_salary" = "Please enter salary amount";

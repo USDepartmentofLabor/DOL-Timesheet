@@ -32,6 +32,8 @@ class GlossaryTableViewCell: UITableViewCell {
     func setupView() {
         titleLabel.scaleFont(forDataType: .glossaryTitle)
         descLabel.scaleFont(forDataType: .glossaryText)
+        descLabel.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 1, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
+
         setupAccessibility()
     }
     

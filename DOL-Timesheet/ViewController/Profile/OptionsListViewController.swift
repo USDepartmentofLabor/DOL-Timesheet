@@ -73,9 +73,6 @@ class OptionsListViewController<T : OptionsProtocol>: UITableViewController {
     
     var didSelect: (UIViewController, T?) -> () = { _,_  in }
     
-    deinit {
-        print("deinit Options VC")
-    }
     init(options: [T], title: String, addRowTitle: String? = nil) {
         self.options = options
         super.init(style: .plain)

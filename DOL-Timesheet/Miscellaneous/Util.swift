@@ -23,6 +23,13 @@ class Util {
         return emailPredicate.evaluate(with: emailAddress)
     }
     
+    static func isValidPhoneNumber(phoneNumber: String) -> Bool {
+        let phoneRegex = "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$"
+        
+        let phonePredicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return phonePredicate.evaluate(with: phoneNumber)
+    }
+    
     static var isVoiceOverRunning: Bool {
         get {
             return UIAccessibility.isVoiceOverRunning

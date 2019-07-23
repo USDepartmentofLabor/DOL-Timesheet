@@ -388,7 +388,6 @@ extension TimesheetViewModel {
         do {
             try csvStr.write(to: path, atomically: true, encoding: String.Encoding.utf8)
         } catch {
-            print("Failed to create file")
             print("\(error)")
         }
         

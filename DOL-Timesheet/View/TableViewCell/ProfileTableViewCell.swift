@@ -37,6 +37,7 @@ class ProfileTableViewCell: UITableViewCell {
     func setupAccessibility() {
         isAccessibilityElement = false
         accessibilityElements = [nameLabel as Any, addressLabel as Any, paymentLabel as Any]
+        nameLabel.accessibilityHint = NSLocalizedString("display_details", comment: "Tap to display details")
     }
     
     func displayEmployee(employmentModel: EmploymentModel) {

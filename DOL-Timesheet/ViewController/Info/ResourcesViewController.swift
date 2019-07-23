@@ -24,9 +24,6 @@ class ResourcesViewController: UIViewController {
     
     @IBOutlet weak var footerTitleLabel: UILabel!
     
-    deinit {
-        print("deinit")
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,18 +52,24 @@ class ResourcesViewController: UIViewController {
         contactTextView.textContainer.lineFragmentPadding = 0
         whdWebsiteTextView.textContainerInset = UIEdgeInsets.zero
         whdWebsiteTextView.textContainer.lineFragmentPadding = 0
+        
+        phoneTextView1.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 1, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
+        phoneTextView2.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 1, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
     }
     
     func displayInfo() {
-        let emailText = NSAttributedString(string: "Send an email to the Wage and Hour Division", attributes: [NSAttributedString.Key.link: ResourcesViewController.emailLink, NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText)])
+        let emailText = NSAttributedString(string: "Send an email to the Wage and Hour Division", attributes: [NSAttributedString.Key.link: ResourcesViewController.emailLink, NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
+            NSAttributedString.Key.underlineStyle: 1])
         emailTextView.attributedText = emailText
         
         let contactText = NSAttributedString(string: "Contact the office nearest you", attributes: [NSAttributedString.Key.link: ResourcesViewController.contactOfficeLink,
-            NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText)])
+            NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
+            NSAttributedString.Key.underlineStyle: 1])
         contactTextView.attributedText = contactText
 
         let websiteText = NSAttributedString(string: "Wage & Hour website", attributes: [NSAttributedString.Key.link: ResourcesViewController.whdWebsiteLink,
-            NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText)])
+            NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
+            NSAttributedString.Key.underlineStyle: 1])
         whdWebsiteTextView.attributedText = websiteText
     }
 }

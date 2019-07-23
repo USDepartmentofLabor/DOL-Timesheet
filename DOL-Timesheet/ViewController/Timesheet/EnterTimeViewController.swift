@@ -37,10 +37,6 @@ class EnterTimeViewController: UIViewController {
     
     var keyboardHeight: CGFloat = 0
     
-    deinit {
-        print("Enter Time deinit called")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

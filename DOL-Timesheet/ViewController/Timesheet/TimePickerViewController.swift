@@ -22,9 +22,6 @@ class TimePickerViewController: UIViewController {
     var countdownDuration: TimeInterval = 0
     var currentDate: Date?
     
-    deinit {
-        print("TimePicker deinit called")
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
