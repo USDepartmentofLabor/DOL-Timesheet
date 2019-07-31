@@ -14,6 +14,7 @@ protocol TimePickerProtocol: class {
 
 class TimePickerViewController: UIViewController {
 
+    static let DEFAULT_BREAK_TIME = 20 * 60  // Default to 20 min
     @IBOutlet weak var datePicker: UIDatePicker!
     var sourceView: UIView!
     
@@ -39,7 +40,7 @@ class TimePickerViewController: UIViewController {
     func setupView() {
         datePicker.datePickerMode = pickerMode
         if pickerMode == .countDownTimer {
-            let duration: Int = countdownDuration > 0 ? Int(countdownDuration) : 900 // Default to 15 min
+            let duration: Int = countdownDuration > 0 ? Int(countdownDuration) : TimePickerViewController.DEFAULT_BREAK_TIME
             let calendar = Calendar(identifier: .gregorian)
             let date = DateComponents(calendar: calendar, hour: 0, minute: 0, second: duration).date!
             datePicker.setDate(date, animated: true)
