@@ -17,6 +17,8 @@ class SummaryTableViewCell: UITableViewCell {
     @IBOutlet weak var totalOvertimeTitleLabel: UILabel!
     @IBOutlet weak var totalOvertimeLabel: UILabel!
     
+    @IBOutlet weak var ovetimeHoursStackView: UIStackView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()

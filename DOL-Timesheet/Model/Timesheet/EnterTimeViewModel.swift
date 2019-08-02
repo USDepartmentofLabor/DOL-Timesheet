@@ -124,6 +124,29 @@ struct EnterTimeViewModel {
 }
 
 extension EnterTimeViewModel {
+    // If the time spans over midnight then split the time
+    // to startTime - 11.59 and next Day - 12:00 - endTime
+    func splitTime(endTime: Date, for timeLog: TimeLog) {
+        if let startTime = timeLog.startTime {
+            timeLog.endTime = startTime.endOfDay()
+            
+            let nextDateEndTime =  endTime.addDays(days: 1)
+            let nextDateStartTime = nextDateEndTime.startOfDay()
+            
+            let nextDayLog = dateLog.employmentInfo?.log(forDate: nextDateStartTime) ?? dateLog.employmentInfo?.createLog(forDate: nextDateStartTime)
+            let nextTimeLog = nextDayLog?.createTimeLog()
+            nextTimeLog?.startTime = nextDateStartTime
+            nextTimeLog?.endTime = nextDateEndTime
+            if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog,
+                let nextHourlyTimeLog = nextTimeLog as? HourlyPaymentTimeLog {
+                nextHourlyTimeLog.hourlyRate = hourlyTimeLog.hourlyRate
+                nextHourlyTimeLog.value = hourlyTimeLog.value
+            }
+        }
+    }
+}
+
+extension EnterTimeViewModel {
     func csv() -> String {
         var csvStr: String = ""
         dateLog.sortedTimeLogs?.forEach {

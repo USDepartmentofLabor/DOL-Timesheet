@@ -67,6 +67,8 @@
 		03347448228C826900A67E97 /* WorkWeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03347447228C826900A67E97 /* WorkWeekViewModel.swift */; };
 		0334744A228C9DEF00A67E97 /* TimesheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03347449228C9DEF00A67E97 /* TimesheetViewModel.swift */; };
 		033FB84E2296E658006BA459 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FB84D2296E658006BA459 /* String+Extension.swift */; };
+		033FFFA922F1D47A00969E6D /* ImportOldDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FFFA822F1D47A00969E6D /* ImportOldDB.swift */; };
+		033FFFAB22F1F60E00969E6D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 033FFFAA22F1F60E00969E6D /* libsqlite3.tbd */; };
 		036D71952277445300CC62CE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 036D71932277445300CC62CE /* Localizable.strings */; };
 		036D71982277529400CC62CE /* PaymentFrequencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036D71972277529400CC62CE /* PaymentFrequencyTableViewCell.swift */; };
 		0374ECCA228602B500D1C503 /* TimeLog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374ECC8228602B500D1C503 /* TimeLog+CoreDataClass.swift */; };
@@ -185,6 +187,8 @@
 		03347447228C826900A67E97 /* WorkWeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkWeekViewModel.swift; sourceTree = "<group>"; };
 		03347449228C9DEF00A67E97 /* TimesheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetViewModel.swift; sourceTree = "<group>"; };
 		033FB84D2296E658006BA459 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		033FFFA822F1D47A00969E6D /* ImportOldDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportOldDB.swift; sourceTree = "<group>"; };
+		033FFFAA22F1F60E00969E6D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		036D71942277445300CC62CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "DOL-Timesheet/en.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		036D71972277529400CC62CE /* PaymentFrequencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFrequencyTableViewCell.swift; sourceTree = "<group>"; };
 		0374ECC8228602B500D1C503 /* TimeLog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeLog+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				033FFFAB22F1F60E00969E6D /* libsqlite3.tbd in Frameworks */,
 				03226D5522DF9B70003864A4 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,6 +253,7 @@
 		03226D5322DF9B70003864A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				033FFFAA22F1F60E00969E6D /* libsqlite3.tbd */,
 				03226D5422DF9B70003864A4 /* WebKit.framework */,
 			);
 			name = Frameworks;
@@ -454,11 +460,20 @@
 		032C9F132264E80300FB1468 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
+				033FFFA722F1D44100969E6D /* ImportPreviousTimesheet */,
 				03E68177226635CC002F2345 /* Employment */,
 				032C9F142264E83A00FB1468 /* IntroductionViewController.swift */,
 				032C9F162264EB3700FB1468 /* SetupProfileViewController.swift */,
 			);
 			path = Setup;
+			sourceTree = "<group>";
+		};
+		033FFFA722F1D44100969E6D /* ImportPreviousTimesheet */ = {
+			isa = PBXGroup;
+			children = (
+				033FFFA822F1D47A00969E6D /* ImportOldDB.swift */,
+			);
+			path = ImportPreviousTimesheet;
 			sourceTree = "<group>";
 		};
 		036D7196227744A200CC62CE /* Resources */ = {
@@ -667,6 +682,7 @@
 				0324C4122260EAB800712576 /* Data.swift in Sources */,
 				0374ECCA228602B500D1C503 /* TimeLog+CoreDataClass.swift in Sources */,
 				0324C3DD2260E47100712576 /* AppDelegate.swift in Sources */,
+				033FFFA922F1D47A00969E6D /* ImportOldDB.swift in Sources */,
 				03E6818422665E90002F2345 /* PaymentTypeTableViewCell.swift in Sources */,
 				03E68182226644B9002F2345 /* SetupPaymentTypeViewController.swift in Sources */,
 				03E6817922663604002F2345 /* EmploymentInfoViewController.swift in Sources */,

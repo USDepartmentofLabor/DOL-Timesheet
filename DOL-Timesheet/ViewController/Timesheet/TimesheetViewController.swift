@@ -537,7 +537,14 @@ extension TimesheetViewController: UITableViewDataSource {
         }
         
         cell.totalValueLabel.text = viewModel.hoursWorked(workWeek: indexPath.section)
-        cell.totalOvertimeLabel.text = viewModel.overTimeHours(workWeek: indexPath.section)
+
+        if viewModel.currentEmploymentModel?.overtimeEligible ?? false {
+            cell.totalOvertimeLabel.text = viewModel.overTimeHours(workWeek: indexPath.section)
+            cell.ovetimeHoursStackView.isHidden = false
+        }
+        else {
+            cell.ovetimeHoursStackView.isHidden = true
+        }
     }
     
     func configure(cell: EarningsTableViewCell, at indexPath: IndexPath) {

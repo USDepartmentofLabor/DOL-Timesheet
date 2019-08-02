@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        setupDB()
+        importOldDB()
         setupApprearance()
         return true
     }
@@ -58,52 +58,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSAttributedString.Key.foregroundColor: UIColor.white],
                                                             for: .normal)
     }
-        
-/*
-    func setupDB() {
-        var notFirstTime = UserDefaults.standard.bool(forKey: "firstTime")
-        if notFirstTime {
-            return
+    
+    func importOldDB() {
+        let updatedDBVersion = "UpdatedDBVersion"
+
+        let versionUpdated = UserDefaults.standard.bool(forKey: updatedDBVersion)
+        if versionUpdated == false {
+            let importDB = ImportOldDB()
+            importDB.importDB()
+            UserDefaults.standard.set(true, forKey: updatedDBVersion)
         }
-
-        notFirstTime = true
-        UserDefaults.standard.set(notFirstTime, forKey: "firstTime")
-
-        let context = CoreDataManager.shared().viewManagedContext
-
-        let model = UserProfileModel()
-        let employee = model.createEmployee(name: "Nidhi Chawla", street1: "qe23 dsfsf", city: "Sterling", state: "VA", zipCode: "21222", currentUser: true)
-        
-        let employer1 = model.createEmployer(name: "ECS Federal", street1: "122 CSt", city: "Washington", state: "DC", zipCode: "20002")
-        
-        let employmentInfo1 = EmploymentInfo(context: context)
-        employmentInfo1.minimumWage = 9.00
-        employmentInfo1.covered = true
-        employmentInfo1.payFrequency = .weekly
-        employmentInfo1.paymentType = .hourly
-        let hourlyRate1 = HourlyRate(context: context)
-        hourlyRate1.name = "Rate1"
-        hourlyRate1.value = 50
-        employmentInfo1.addToHourlyRate(hourlyRate1)
-        
-        let hourlyRate2 = HourlyRate(context: context)
-        hourlyRate2.name = "Night Rate"
-        hourlyRate2.value = 90
-        employmentInfo1.addToHourlyRate(hourlyRate2)
-
-        employmentInfo1.employer = employer1
-        employee.addToEmployers(employmentInfo1)
-        
-        let employer2 = model.createEmployer(name: "Library of Cong", street1: "999 sdf", city: "Washington", state: "DC", zipCode: "22002")
-        let employmentInfo2 = EmploymentInfo(context: context)
-        employmentInfo2.minimumWage = 16.00
-        employmentInfo2.covered = true
-        employmentInfo2.payFrequency = .weekly
-        employmentInfo2.paymentType = .salary
-        employmentInfo2.employer = employer2
-        employee.addToEmployers(employmentInfo2)
-        CoreDataManager.shared().saveContext(context: context)
     }
-*/
 }
 

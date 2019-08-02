@@ -32,6 +32,8 @@ class SetupProfileViewController: UIViewController {
     @IBOutlet weak var employeeBtn: RadioButton!
     @IBOutlet weak var employerBtn: RadioButton!
     
+    
+    @IBOutlet weak var addressTitleLabel: TitleValueLabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameTextField: UnderlinedTextField!
     @IBOutlet weak var street1TextField: UnderlinedTextField!
@@ -56,6 +58,21 @@ class SetupProfileViewController: UIViewController {
 //            profileImageView.image = profileImage
             if let profileImage = profileImage {
                 profileImageView.maskCircle(anyImage: profileImage)
+            }
+        }
+    }
+    
+    var profileType = UserType.employee {
+        didSet {
+            if profileType == .employee {
+                employeeBtn.isSelected = true
+                employerBtn.isSelected = false
+                addressTitleLabel.text = NSLocalizedString("home_address", comment: "Work Address")
+            }
+            else {
+                employeeBtn.isSelected = false
+                employerBtn.isSelected = true
+                addressTitleLabel.text = NSLocalizedString("work_address", comment: "Work Address")
             }
         }
     }
@@ -110,7 +127,8 @@ class SetupProfileViewController: UIViewController {
     func displayInfo() {
         guard let profileUser = viewModel.profileModel.currentUser else {
             manageEmploymentContentView.removeFromSuperview()
-            employeeBtn.isSelected = true
+            
+            profileType = .employee
             isWizard = true
             return
         }
@@ -132,8 +150,8 @@ class SetupProfileViewController: UIViewController {
         phoneTextField.text = profileUser.phone
         emailTextField.text = profileUser.email
         profileImageView.maskCircle(anyImage: profileUser.image?.normalizedImage() ?? #imageLiteral(resourceName: "profile-black"))
-        employerBtn.isSelected = viewModel.profileModel.isEmployer
-        employeeBtn.isSelected = !viewModel.profileModel.isEmployer
+        
+        profileType = viewModel.profileModel.isEmployer ? .employer : .employee
     }
 
     func registerKeyboardNotifications() {
@@ -208,9 +226,9 @@ class SetupProfileViewController: UIViewController {
             changeToEmployee(employer: employer)
         }
         else {
-            employeeBtn.isSelected = true
-            employerBtn.isSelected = false
+            profileType = .employee
         }
+
     }
     
     fileprivate func changeToEmployee(employer: Employer) {
@@ -238,13 +256,11 @@ class SetupProfileViewController: UIViewController {
     func toggleUserType() {
         if let employer = viewModel.profileModel.currentUser as? Employer {
             viewModel.changeToEmployee(employer: employer)
-            employeeBtn.isSelected = true
-            employerBtn.isSelected = false
+            profileType = .employee
         }
         else if let employee = viewModel.profileModel.currentUser as? Employee {
             viewModel.changeToEmployer(employee: employee)
-            employeeBtn.isSelected = false
-            employerBtn.isSelected = true
+            profileType = .employer
         }
         
         manageVC?.viewModel = ProfileViewModel(context: viewModel.managedObjectContext.childManagedObjectContext())
@@ -256,8 +272,7 @@ class SetupProfileViewController: UIViewController {
             changeToEmployer(employee: employee)
         }
         else {
-            employeeBtn.isSelected = false
-            employerBtn.isSelected = true
+            profileType = .employer
         }
     }
     

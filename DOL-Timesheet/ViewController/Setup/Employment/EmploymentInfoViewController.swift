@@ -32,6 +32,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
     @IBOutlet weak var employmentInfoView: UIView!
     
     @IBOutlet weak var employmentTitleLabel: UILabel!
+    @IBOutlet weak var addressTitleLabel: TitleValueLabel!
     @IBOutlet weak var supervisorNameTextField: UnderlinedTextField!
     @IBOutlet weak var supervisorEmailTextField: UnderlinedTextField!
     @IBOutlet weak var employmentNumberTextField: UnderlinedTextField!
@@ -102,6 +103,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         employmentTitleLabel.scaleFont(forDataType: .sectionTitle)
         
         let nameTitle: String
+        let addressTitle: String
         // If Employer
         if let viewModel = viewModel, viewModel.isProfileEmployer {
             title = NSLocalizedString("add_employee", comment: "Add Employee Title")
@@ -110,6 +112,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
             userTitleLabel.text = NSLocalizedString("employee", comment: "Employee")
             nameTitle = NSLocalizedString("full_name", comment: "Full Name")
             titleInfoView.infoType = .employee
+            addressTitle = NSLocalizedString("home_address", comment: "Home Address")
         }
         else {
             title = NSLocalizedString("add_employer", comment: "Add Employee Title")
@@ -118,10 +121,12 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
             userTitleLabel.text = NSLocalizedString("employer", comment: "Employer")
             nameTitle = NSLocalizedString("company_name", comment: "Company Name")
             titleInfoView.infoType = .employer
+            addressTitle = NSLocalizedString("work_address", comment: "Work Address")
         }
         
         nameTitleLabel.text = "\(nameTitle)*"
         nameTitleLabel.accessibilityLabel = "\(nameTitle)* Required"
+        addressTitleLabel.text = addressTitle
         
         // remove Skip button from navbar
         if viewModel?.employmentUser != nil {

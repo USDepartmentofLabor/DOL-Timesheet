@@ -129,10 +129,10 @@
                                     <constraint firstItem="rA5-jz-SQF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1yn-yY-FiZ" secondAttribute="leading" constant="10" id="sLz-fI-1Mn"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBq-f9-ZDF">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBq-f9-ZDF">
                                 <rect key="frame" x="15" y="163.5" width="384" height="636.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGP-uC-jiL" userLabel="EmployeeEmployerView">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SGP-uC-jiL" userLabel="EmployeeEmployerView">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="142"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Employer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBW-A4-7jA" userLabel="EmployeeEmployerLabel">
@@ -154,14 +154,14 @@
                                                     <segue destination="feV-ld-dej" kind="presentation" identifier="manageUsers" id="IDX-Kc-Y9E"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" restorationIdentifier="Z" translatesAutoresizingMaskIntoConstraints="NO" id="ehZ-hv-MNe" userLabel="SelectUserDropDownView" customClass="DropDownView" customModule="DOL_Timesheet" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="Z" translatesAutoresizingMaskIntoConstraints="NO" id="ehZ-hv-MNe" userLabel="SelectUserDropDownView" customClass="DropDownView" customModule="DOL_Timesheet" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="39.5" width="384" height="45"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="yVk-b0-xiE"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBf-uS-7kO" userLabel="PeriodView">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zBf-uS-7kO" userLabel="PeriodView">
                                                 <rect key="frame" x="0.0" y="92.5" width="384" height="44.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buz-cD-KaT" userLabel="PeriodLabel">
@@ -222,7 +222,7 @@
                                             <constraint firstItem="EP3-Za-0SH" firstAttribute="centerY" secondItem="nBW-A4-7jA" secondAttribute="centerY" id="mF0-jS-hfq"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csU-F1-tJe" userLabel="TimeView">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="csU-F1-tJe" userLabel="TimeView">
                                         <rect key="frame" x="0.0" y="154" width="384" height="659.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2J-kN-Xx8" userLabel="EnterTimeView">
@@ -502,6 +502,7 @@
                                                                             </constraints>
                                                                         </tableViewCellContentView>
                                                                         <connections>
+                                                                            <outlet property="ovetimeHoursStackView" destination="0o4-eu-oAj" id="93o-HB-exM"/>
                                                                             <outlet property="totalOvertimeLabel" destination="ob8-q7-JSr" id="4Tg-Tn-bMr"/>
                                                                             <outlet property="totalOvertimeTitleLabel" destination="N2g-Mb-6fQ" id="hAB-Cz-Cq2"/>
                                                                             <outlet property="totalTitleLabel" destination="gP3-eg-Ygh" id="LJQ-k4-fV9"/>
@@ -1244,26 +1245,20 @@
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAu-9Y-OUb" userLabel="EndTitleLabel">
-                                                                                <rect key="frame" x="96" y="0.0" width="96" height="50"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UlI-cI-Ne0">
-                                                                                <rect key="frame" x="192" y="0.0" width="96" height="50"/>
+                                                                                <rect key="frame" x="96" y="0.0" width="96" height="50"/>
                                                                                 <subviews>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcb-4s-iPd">
-                                                                                        <rect key="frame" x="14" y="0.0" width="68" height="50"/>
+                                                                                        <rect key="frame" x="21.5" y="0.0" width="53.5" height="50"/>
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Break" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3R-Zf-Rkb" userLabel="BreakTitleLabel">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="44" height="50"/>
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3R-Zf-Rkb" userLabel="EndTimeTitleLabel">
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="50"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
-                                                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJj-ji-jWf" userLabel="BreakTimeInfoButton" customClass="InfoButton" customModule="DOL_Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="46" y="0.0" width="22" height="50"/>
+                                                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJj-ji-jWf" userLabel="EndTimeInfoButton" customClass="InfoButton" customModule="DOL_Timesheet" customModuleProvider="target">
+                                                                                                <rect key="frame" x="31.5" y="0.0" width="22" height="50"/>
                                                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             </button>
                                                                                         </subviews>
@@ -1286,6 +1281,44 @@
                                                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mcb-4s-iPd" secondAttribute="trailing" id="KQ2-rj-tNb"/>
                                                                                     <constraint firstAttribute="bottom" secondItem="mcb-4s-iPd" secondAttribute="bottom" id="UaB-Qq-pJN"/>
                                                                                     <constraint firstItem="mcb-4s-iPd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UlI-cI-Ne0" secondAttribute="leading" id="yXm-HN-7BJ"/>
+                                                                                </constraints>
+                                                                            </view>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRf-7y-lu7">
+                                                                                <rect key="frame" x="192" y="0.0" width="96" height="50"/>
+                                                                                <subviews>
+                                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZ3-6c-12D">
+                                                                                        <rect key="frame" x="14" y="0.0" width="68" height="50"/>
+                                                                                        <subviews>
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Break" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ui4-DA-Exb" userLabel="BreakTitleLabel">
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="44" height="50"/>
+                                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                                <nil key="highlightedColor"/>
+                                                                                            </label>
+                                                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTh-Mv-Luo" userLabel="BreakTimeInfoButton" customClass="InfoButton" customModule="DOL_Timesheet" customModuleProvider="target">
+                                                                                                <rect key="frame" x="46" y="0.0" width="22" height="50"/>
+                                                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            </button>
+                                                                                        </subviews>
+                                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstItem="ui4-DA-Exb" firstAttribute="leading" secondItem="XZ3-6c-12D" secondAttribute="leading" id="469-ZG-5Qj"/>
+                                                                                            <constraint firstItem="ui4-DA-Exb" firstAttribute="top" secondItem="XZ3-6c-12D" secondAttribute="top" id="Xlj-q7-OVC"/>
+                                                                                            <constraint firstItem="ZTh-Mv-Luo" firstAttribute="leading" secondItem="ui4-DA-Exb" secondAttribute="trailing" constant="2" id="ZM1-U9-UmN"/>
+                                                                                            <constraint firstAttribute="bottom" secondItem="ui4-DA-Exb" secondAttribute="bottom" id="aLK-ew-yZd"/>
+                                                                                            <constraint firstItem="ZTh-Mv-Luo" firstAttribute="top" secondItem="XZ3-6c-12D" secondAttribute="top" id="mBW-5w-vzi"/>
+                                                                                            <constraint firstAttribute="bottom" secondItem="ZTh-Mv-Luo" secondAttribute="bottom" id="mlq-Yk-dhi"/>
+                                                                                            <constraint firstAttribute="trailing" secondItem="ZTh-Mv-Luo" secondAttribute="trailing" id="xMz-vL-Twz"/>
+                                                                                        </constraints>
+                                                                                    </view>
+                                                                                </subviews>
+                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="bottom" secondItem="XZ3-6c-12D" secondAttribute="bottom" id="08u-8d-zfN"/>
+                                                                                    <constraint firstItem="XZ3-6c-12D" firstAttribute="top" secondItem="xRf-7y-lu7" secondAttribute="top" id="1Tw-pr-jUt"/>
+                                                                                    <constraint firstItem="XZ3-6c-12D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xRf-7y-lu7" secondAttribute="leading" id="GWO-kQ-Qa2"/>
+                                                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XZ3-6c-12D" secondAttribute="trailing" id="IJD-3Q-GYr"/>
+                                                                                    <constraint firstItem="XZ3-6c-12D" firstAttribute="centerX" secondItem="xRf-7y-lu7" secondAttribute="centerX" id="cg0-ob-AGY"/>
                                                                                 </constraints>
                                                                             </view>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVH-VJ-T5X" userLabel="HourlyRateTitleLabel">
@@ -1515,13 +1548,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="3tg-dB-P4m"/>
                     <connections>
-                        <outlet property="breakTimeInfoButton" destination="hJj-ji-jWf" id="xMQ-hY-yo2"/>
-                        <outlet property="breakTimeTitleLabel" destination="I3R-Zf-Rkb" id="Qrw-89-QPN"/>
+                        <outlet property="breakTimeInfoButton" destination="ZTh-Mv-Luo" id="lMI-pf-FPH"/>
+                        <outlet property="breakTimeTitleLabel" destination="ui4-DA-Exb" id="Hzs-mY-cMs"/>
                         <outlet property="commentTextView" destination="MHd-cw-JjA" id="Xcq-6l-UxN"/>
                         <outlet property="commentsTitleLabel" destination="0K2-pz-MO9" id="0ce-vS-B5y"/>
                         <outlet property="contentView" destination="skK-8U-FUa" id="fnH-N6-kVA"/>
                         <outlet property="editBtn" destination="vqQ-jl-ALQ" id="dTT-V7-1dk"/>
-                        <outlet property="endTitleLabel" destination="qAu-9Y-OUb" id="cDK-IP-XZx"/>
+                        <outlet property="endTimeInfoBtn" destination="hJj-ji-jWf" id="Gd5-hn-I5y"/>
+                        <outlet property="endTitleLabel" destination="I3R-Zf-Rkb" id="Nov-yx-fsB"/>
                         <outlet property="enterTimeView" destination="q6n-Qp-6MH" id="4dK-Zs-0US"/>
                         <outlet property="hourlyRateTitleLabel" destination="rVH-VJ-T5X" id="h4V-Cn-Pyc"/>
                         <outlet property="paymentTypeLabel" destination="rx2-r5-dIo" id="x8H-Rh-GQ6"/>

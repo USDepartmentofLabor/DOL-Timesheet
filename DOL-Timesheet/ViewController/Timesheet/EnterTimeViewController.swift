@@ -25,6 +25,8 @@ class EnterTimeViewController: UIViewController {
     @IBOutlet weak var endTitleLabel: UILabel!
     @IBOutlet weak var breakTimeTitleLabel: UILabel!
     
+    
+    @IBOutlet weak var endTimeInfoBtn: InfoButton!
     @IBOutlet weak var breakTimeInfoButton: InfoButton!
     @IBOutlet weak var hourlyRateTitleLabel: UILabel!
     @IBOutlet weak var commentsTitleLabel: UILabel!
@@ -91,6 +93,9 @@ class EnterTimeViewController: UIViewController {
         breakTimeTitleLabel.scaleFont(forDataType: .columnHeader)
         hourlyRateTitleLabel.scaleFont(forDataType: .columnHeader)
         commentTextView.scaleFont(forDataType: .enterCommentsValue)
+        
+        endTimeInfoBtn.infoType = .endTime
+        endTimeInfoBtn.delegate = self
         
         breakTimeInfoButton.infoType = .breakTime
         breakTimeInfoButton.delegate = self
@@ -257,7 +262,14 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
     }
     
     func isValid(endTime: Date, for timeLog: TimeLog?) -> Bool {
-        guard let viewModel = viewModel else {
+        guard let viewModel = viewModel, let timeLog = timeLog else {
+            return false
+        }
+
+        // If endTime is before StartTime
+        // Warn if this spans over next day?
+        if timeLog.startTime?.compare(endTime) != .orderedAscending {
+            handleNightShift(endTime: endTime, for: timeLog)
             return false
         }
         
@@ -268,6 +280,20 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
         }
         
         return true
+    }
+    
+    func handleNightShift(endTime: Date, for timeLog: TimeLog) {
+        let message = ""
+        let title = ""
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("yes", comment: "Yes"), style: .default, handler: { [weak self] (action) in
+            guard let strongSelf = self else { return }
+            strongSelf.viewModel?.splitTime(endTime: endTime, for: timeLog)
+            strongSelf.tableView.reloadData()
+        }))
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("no", comment: "No"), style: .cancel, handler: nil))
+        present(alertController, animated: false)
     }
     
     func isValid(breakTime: Double, for timeLog: TimeLog?) -> Bool {

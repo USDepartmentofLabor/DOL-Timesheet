@@ -314,6 +314,11 @@ extension TimesheetViewModel {
         
         let dateLog = childEmploymentInfo.log(forDate: date) ?? childEmploymentInfo.createLog(forDate: date)
         
+        if dateLog.timeLogs?.count ?? 0 < 1 {
+            // Create the First TimeLog
+            dateLog.createTimeLog()
+        }
+        
         return EnterTimeViewModel(dateLog: dateLog)
     }
 }

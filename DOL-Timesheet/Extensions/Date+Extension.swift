@@ -175,3 +175,22 @@ extension Date {
         return false
     }
 }
+
+extension Date {
+    func startOfDay() -> Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+    
+    func endOfDay() -> Date {
+        return startOfDay().addingTimeInterval(24*60*60)
+    }
+    
+    func isMidnight() -> Bool {
+        let dateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: self)
+        
+        return (dateComponents.hour == 0 &&
+            dateComponents.minute == 0 &&
+            dateComponents.second == 0) ? true : false
+    }
+}
+

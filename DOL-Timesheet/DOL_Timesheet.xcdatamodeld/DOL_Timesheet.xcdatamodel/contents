@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Address" representedClassName="Address" syncable="YES" codeGenerationType="category">
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -71,6 +71,7 @@
         <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="addresses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Address" inverseName="user" inverseEntity="Address" syncable="YES"/>
     </entity>
     <elements>
@@ -83,6 +84,6 @@
         <element name="HourlyRate" positionX="90.97265625" positionY="314.71875" width="128" height="120"/>
         <element name="Salary" positionX="-48.43359375" positionY="357.30859375" width="128" height="105"/>
         <element name="TimeLog" positionX="-108" positionY="-36" width="128" height="135"/>
-        <element name="User" positionX="-313.4453125" positionY="26.13671875" width="128" height="150"/>
+        <element name="User" positionX="-313.4453125" positionY="26.13671875" width="128" height="165"/>
     </elements>
 </model>

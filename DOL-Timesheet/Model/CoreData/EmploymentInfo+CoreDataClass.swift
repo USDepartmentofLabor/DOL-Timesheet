@@ -47,16 +47,13 @@ public class EmploymentInfo: NSManagedObject {
     // Get DateLog for date
     func log(forDate date: Date) ->  DateLog? {
         let dateLogSet = dateLogs as? Set<DateLog>
-        return (dateLogSet?.filter{$0.date == date}.first)
+        return (dateLogSet?.filter{$0.date == date.removeTimeStamp()}.first)
     }
     
     func createLog(forDate date: Date) -> DateLog {
         let dateLog =  DateLog(context: managedObjectContext!)
         dateLog.date = date.removeTimeStamp()
         addToDateLogs(dateLog)
-        
-        // Create the First TimeLog
-        _ = dateLog.createTimeLog()
         
         return dateLog
     }

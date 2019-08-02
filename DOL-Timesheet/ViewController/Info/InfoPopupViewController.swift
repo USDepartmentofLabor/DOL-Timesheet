@@ -32,6 +32,7 @@ enum Info: String {
     case employer_salary
     case overtime
     case overtimePay
+    case endTime
     case breakTime
     case unknown
     
@@ -76,6 +77,8 @@ enum Info: String {
             title = NSLocalizedString("info_overtime", comment: "Overtime")
         case .overtimePay:
             title = NSLocalizedString("info_overtime_pay", comment: "Overtime Pay")
+        case .endTime:
+            title = NSLocalizedString("info_end_time", comment: "End Time")
         case .breakTime:
             title = NSLocalizedString("info_break_time", comment: "Break Time")
         case .unknown:

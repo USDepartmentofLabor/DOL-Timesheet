@@ -35,7 +35,7 @@ class ProfileModel {
     
     var profileExists: Bool {
         get {
-            return currentUser != nil
+            return (currentUser != nil && currentUser?.name != nil)
         }
     }
     
@@ -60,7 +60,7 @@ class ProfileModel {
         newUser.imageData = user.imageData
         _currentUser = nil
 
-        return user
+        return newUser
     }
     
     func newProfile(type: UserType, name: String) -> User {

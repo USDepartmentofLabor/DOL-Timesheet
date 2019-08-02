@@ -24,6 +24,8 @@
 "salary_employee" = "What is your salary?";
 "overtime_eligible_employee" = "Are you eligible for overtime pay (non-exempt)?";
 "confirm_delete_employers" = "Changing from employee to employer will delete all existing employers. Are you sure you want to delete all employers?";
+"home_address" = "Home Address";
+"work_address" = "Work Address";
 
 
 "employer" = "Employer";
@@ -98,6 +100,8 @@
 "straight_time_calculation" = "Hours Worked x Hourly Rate";
 "overtime" = "Overtime Pay";
 "click_enter_time" = "Tap to Enter time";
+"yes" = "Yes";
+"no" = "no";
 
 // Enter Time
 "start_time_hint" = "Tap To Select Start Time";
@@ -162,6 +166,7 @@
 "info_overtime" = "Overtime generally is due for any hours an employee works beyond 40 in a workweek, and must be paid at one-and-one-half times the employee’s regular rate of pay.";
 "info_overtime_pay" = "Overtime generally is due for any hours an employee works beyond 40 in a workweek, and must be paid at one-and-one-half times the employee’s regular rate of pay.";
 "info_break_time" = "Rest periods of short duration, usually 20 minutes or less, are common in industry and are customarily paid for as working time. These short periods must be counted as hours worked. Bona fide meal periods (typically 30 minutes or more) generally need not be compensated as work time. The employee must be completely relieved from duty for the purpose of eating regular meals in order for that time not to count as work time.For purposes of this D O L-Timesheet, all break time in excess of 20 minutes will be deducted from your total hours of work. For questions regarding proper deductions for break time, <a href=\"http://www.dol.gov/whd/contact_us.htm\">contact the Wage and Hour Division.</a>";
+"info_end_time" = "";
 
 "info_pay_title" = "Pay";
 "info_overtime_title" = "Overtime";

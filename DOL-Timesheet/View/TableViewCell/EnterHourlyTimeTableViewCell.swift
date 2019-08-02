@@ -139,7 +139,16 @@ class EnterHourlyTimeTableViewCell: UITableViewCell {
             timePickerVC.countdownDuration = countdownDuration
         }
         else if mode == .time {
-            timePickerVC.currentDate = date
+            if let date = date {
+                timePickerVC.currentDate = date
+            }
+            else if let logDate = timeLog?.dateLog?.date {
+                var dateComponent = Calendar.current.dateComponents([.year, .month, .day], from: logDate)
+                let timeComponent = Calendar.current.dateComponents([.hour, .minute], from: Date())
+                dateComponent.hour = timeComponent.hour
+                dateComponent.minute = timeComponent.minute
+                timePickerVC.currentDate = Calendar.current.date(from: dateComponent)
+            }
         }
         
         delegate?.showPicker(cell: self, sender: sender, pickerVC: timePickerVC)
@@ -198,7 +207,12 @@ extension EnterHourlyTimeTableViewCell: TimePickerProtocol {
             }
         }
         else if sourceView == endTimeView {
-            let time = datePicker.date.removeSeconds()
+            var time = datePicker.date.removeSeconds()
+            
+            if time.isMidnight() {
+                time = time.addDays(days: 1)
+            }
+            
             if delegate?.isValid(endTime: time, for: timeLog) ?? true {
                 timeLog?.endTime = time
                 endTimeView.title = time.formattedTime

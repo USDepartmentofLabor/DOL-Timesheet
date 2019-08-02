@@ -63,7 +63,11 @@ struct State: OptionsProtocol {
                                   State(code: "WV", title: "West Virginia"),
                                   State(code: "WI", title: "Wisconsin"),
                                   State(code: "WY", title: "Wyoming"),
-                                  State(code: "PR", title: "Puerto Rico")]
+                                  State(code: "AS", title: "American Samoa"),
+                                  State(code: "GU", title: "Guam"),
+                                  State(code: "MP", title: "Commonwealth of the Northern Mariana Islands"),
+                                  State(code: "PR", title: "Puerto Rico"),
+                                  State(code: "VI", title: "U.S. Virgin Islands")]
 }
 
 class OptionsListViewController<T : OptionsProtocol>: UITableViewController {
@@ -130,6 +134,7 @@ class OptionsListViewController<T : OptionsProtocol>: UITableViewController {
         }
         
         cell.textLabel?.textAlignment = .center
+        cell.textLabel?.numberOfLines = 0
         cell.textLabel?.scaleFont(forDataType: .nameValueText)
         return cell
     }
