@@ -283,8 +283,8 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
     }
     
     func handleNightShift(endTime: Date, for timeLog: TimeLog) {
-        let message = ""
-        let title = ""
+        let message = NSLocalizedString("warning_split_time", comment: "Time will be entered for next day")
+        let title = NSLocalizedString("warning", comment: "Warning")
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: NSLocalizedString("yes", comment: "Yes"), style: .default, handler: { [weak self] (action) in
             guard let strongSelf = self else { return }

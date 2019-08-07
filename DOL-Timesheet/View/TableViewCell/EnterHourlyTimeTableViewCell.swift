@@ -29,6 +29,8 @@ class EnterHourlyTimeTableViewCell: UITableViewCell {
         }
     }
     
+    
+    @IBOutlet weak var enterTimeStackView: UIStackView!
     @IBOutlet weak var startTimeView: DropDownView!
     @IBOutlet weak var endTimeView: DropDownView!
     @IBOutlet weak var breakTimeView: DropDownView!
@@ -110,7 +112,9 @@ class EnterHourlyTimeTableViewCell: UITableViewCell {
             hourlyRateView.title = title ?? ""
         }
         else if hourlyRateView != nil {
+            enterTimeStackView.removeArrangedSubview(hourlyRateView)
             hourlyRateView.removeFromSuperview()
+            accessibilityElements = [startTimeView as Any, endTimeView as Any, breakTimeView as Any, commentsTitleLabel as Any, commentsTextView as Any]
         }
         
         displayBreakTime(timeInSeconds: timeLog?.breakTime ?? 0)

@@ -99,6 +99,10 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         paymentTypeTextField.delegate = self
         startDateTextField.delegate = self
         
+        if Util.isVoiceOverRunning {
+            phoneTextField.keyboardType = .numbersAndPunctuation
+        }
+
         userTitleLabel.scaleFont(forDataType: .sectionTitle)
         employmentTitleLabel.scaleFont(forDataType: .sectionTitle)
         

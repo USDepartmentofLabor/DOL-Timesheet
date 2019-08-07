@@ -23,7 +23,7 @@ class IntroductionViewController: UIViewController {
     func setupView() {
         title = "Introduction"
         label1.scaleFont(forDataType: .introductionText)
-        label2.scaleFont(forDataType: .introductionText)
+        label2.scaleFont(forDataType: .introductionBoldText)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

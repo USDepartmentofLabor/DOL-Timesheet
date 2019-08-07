@@ -120,6 +120,10 @@ class SetupProfileViewController: UIViewController {
         phoneTextField.delegate = self
         emailTextField.delegate = self
         
+        if Util.isVoiceOverRunning {
+            phoneTextField.keyboardType = .numbersAndPunctuation
+        }
+        
         scrollView.keyboardDismissMode = .onDrag
         displayInfo()
     }

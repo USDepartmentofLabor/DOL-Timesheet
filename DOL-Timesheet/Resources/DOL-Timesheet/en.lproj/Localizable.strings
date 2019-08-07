@@ -101,7 +101,8 @@
 "overtime" = "Overtime Pay";
 "click_enter_time" = "Tap to Enter time";
 "yes" = "Yes";
-"no" = "no";
+"no" = "No";
+"close" = "Close";
 
 // Enter Time
 "start_time_hint" = "Tap To Select Start Time";
@@ -145,7 +146,8 @@
 "err_camera_denied" = "Camera access is denied";
 "err_title_minimum_wage" = "Below minimum wage";
 "err_invalid_supervisor_emailaddress" = "Please provide valid supervisor email address";
-
+"warning" = "Warning";
+"warning_split_time" = "Are you sure you want to enter in hours for the next day?";
 
 
 "info_employee_employer" = "Select whether you want to use this app as an employer, or as an employee. Keep in mind that not all people who work are necessarily employees under the FLSA. There is no single rule or test for determining whether an individual is an employee for purposes of the FLSA or an independent contractor. Determination of employee status does not depend on isolated factors, but on the economic realities of the situation and the circumstances of the total activity. The following factors should be considered when determining whether a worker is an employee or independent contractor:\n1.    The extent to which the services rendered are an integral part of the principal's business.\n2.    The permanency of the relationship.\n3.    The amount of the alleged contractor's investment in facilities and equipment.\n4.    The nature and degree of control by the principal.\n5.    The alleged contractor's opportunities for profit and loss.\n6.    The amount of initiative, judgment, or foresight in open market competition with others required for the success of the claimed independent contractor.\n7.    The degree of independent business organization and operation.";
@@ -166,7 +168,7 @@
 "info_overtime" = "Overtime generally is due for any hours an employee works beyond 40 in a workweek, and must be paid at one-and-one-half times the employee’s regular rate of pay.";
 "info_overtime_pay" = "Overtime generally is due for any hours an employee works beyond 40 in a workweek, and must be paid at one-and-one-half times the employee’s regular rate of pay.";
 "info_break_time" = "Rest periods of short duration, usually 20 minutes or less, are common in industry and are customarily paid for as working time. These short periods must be counted as hours worked. Bona fide meal periods (typically 30 minutes or more) generally need not be compensated as work time. The employee must be completely relieved from duty for the purpose of eating regular meals in order for that time not to count as work time.For purposes of this D O L-Timesheet, all break time in excess of 20 minutes will be deducted from your total hours of work. For questions regarding proper deductions for break time, <a href=\"http://www.dol.gov/whd/contact_us.htm\">contact the Wage and Hour Division.</a>";
-"info_end_time" = "";
+"info_end_time" = "If you work an overnight shift, hours after midnight will populate your timesheet on the next day";
 
 "info_pay_title" = "Pay";
 "info_overtime_title" = "Overtime";

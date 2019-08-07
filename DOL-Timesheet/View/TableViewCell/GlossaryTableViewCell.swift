@@ -40,5 +40,6 @@ class GlossaryTableViewCell: UITableViewCell {
     func setupAccessibility() {
         isAccessibilityElement = false
         accessibilityElements  = [titleLabel as Any, descLabel as Any]
+        titleLabel.accessibilityTraits = [.staticText, .header]
     }
 }

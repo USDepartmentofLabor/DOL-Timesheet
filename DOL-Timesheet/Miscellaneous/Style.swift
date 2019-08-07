@@ -49,6 +49,7 @@ struct Style {
         case resourcesText
         case resourcesFooterText
         case introductionText
+        case introductionBoldText
     }
 
     fileprivate static let styleMap: [DataType: (String, CGFloat, UIFont.TextStyle)] =
@@ -89,7 +90,8 @@ struct Style {
          .aboutText: ("AvenirNext-Regular", 15, .caption2),
          .resourcesText: ("AvenirNext-Regular", 15, .subheadline),
          .resourcesFooterText: ("AvenirNext-DemiBold", 15, .headline),
-         .introductionText: ("AvenirNext-Regular", 15, .body)]
+         .introductionText: ("AvenirNext-Regular", 15, .body),
+        .introductionBoldText: ("AvenirNext-DemiBold", 15, .body)]
 
     static func scaledFont(forDataType type: DataType) -> UIFont {
         let (fontName, fontSize, textStyle) = styleMap[type]!

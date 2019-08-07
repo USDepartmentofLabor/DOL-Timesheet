@@ -1846,7 +1846,7 @@
                                                                                                 <rect key="frame" x="95" y="16" width="172" height="19"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                                                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next" textContentType="tel"/>
                                                                                             </textField>
                                                                                         </subviews>
                                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2554,10 +2554,13 @@
                                 <rect key="frame" x="20" y="72" width="366" height="770"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdl-KL-DtF">
-                                        <rect key="frame" x="0.0" y="0.0" width="366" height="770"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="720"/>
                                         <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="displayLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Cse-Cn-drC">
+                                                <rect key="frame" x="123" y="10" width="120" height="120"/>
+                                            </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8gx-wx-lrE">
-                                                <rect key="frame" x="0.0" y="0.0" width="366" height="385"/>
+                                                <rect key="frame" x="0.0" y="140" width="366" height="385"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNm-Ka-g6b" userLabel="label1">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="313.5"/>
@@ -2575,7 +2578,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ph8-da-mxe" userLabel="FooterView">
-                                                <rect key="frame" x="0.0" y="413" width="366" height="30"/>
+                                                <rect key="frame" x="0.0" y="553" width="366" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Llv-24-LBQ" userLabel="NextButton" customClass="NavigationButton" customModule="DOL_Timesheet" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="30"/>
@@ -2595,23 +2598,39 @@
                                             </view>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="Cse-Cn-drC" firstAttribute="top" secondItem="Rdl-KL-DtF" secondAttribute="top" constant="10" id="5VD-BH-8hi"/>
                                             <constraint firstItem="8gx-wx-lrE" firstAttribute="leading" secondItem="Rdl-KL-DtF" secondAttribute="leading" id="5qz-hN-0fR"/>
                                             <constraint firstAttribute="trailing" secondItem="8gx-wx-lrE" secondAttribute="trailing" id="K0b-Df-aKr"/>
+                                            <constraint firstItem="8gx-wx-lrE" firstAttribute="top" secondItem="Cse-Cn-drC" secondAttribute="bottom" constant="10" id="Rya-CY-RG3"/>
                                             <constraint firstItem="ph8-da-mxe" firstAttribute="leading" secondItem="8gx-wx-lrE" secondAttribute="leading" id="T3w-ZD-l12"/>
-                                            <constraint firstItem="8gx-wx-lrE" firstAttribute="top" secondItem="Rdl-KL-DtF" secondAttribute="top" id="UEe-AP-YsD"/>
                                             <constraint firstItem="ph8-da-mxe" firstAttribute="top" secondItem="8gx-wx-lrE" secondAttribute="bottom" constant="28" id="ZZ0-E9-3hK"/>
                                             <constraint firstAttribute="bottom" secondItem="ph8-da-mxe" secondAttribute="bottom" constant="20" id="jri-CO-Opc"/>
+                                            <constraint firstItem="Cse-Cn-drC" firstAttribute="centerX" secondItem="Rdl-KL-DtF" secondAttribute="centerX" id="oyl-CE-ql1"/>
                                             <constraint firstItem="8gx-wx-lrE" firstAttribute="trailing" secondItem="ph8-da-mxe" secondAttribute="trailing" id="xdL-HT-W4W"/>
                                         </constraints>
                                     </scrollView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PoweredByOCIO" translatesAutoresizingMaskIntoConstraints="NO" id="gtz-D0-Cec">
+                                        <rect key="frame" x="0.0" y="720" width="366" height="50"/>
+                                        <accessibility key="accessibilityConfiguration" label="Powered By OCIO">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="PNS-7v-Iqw">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                                            </constraint>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="gtz-D0-Cec" secondAttribute="trailing" id="2G8-Si-3sj"/>
                                     <constraint firstAttribute="top" secondItem="Rdl-KL-DtF" secondAttribute="top" id="4Gl-IO-Adz"/>
+                                    <constraint firstItem="gtz-D0-Cec" firstAttribute="top" secondItem="Rdl-KL-DtF" secondAttribute="bottom" id="4Qg-4K-ca8"/>
                                     <constraint firstItem="Rdl-KL-DtF" firstAttribute="leading" secondItem="jPk-kE-QxU" secondAttribute="leading" id="6mX-zy-vCS"/>
                                     <constraint firstAttribute="trailing" secondItem="Rdl-KL-DtF" secondAttribute="trailing" id="8Gz-yL-Lxp"/>
-                                    <constraint firstAttribute="bottom" secondItem="Rdl-KL-DtF" secondAttribute="bottom" id="Hn5-Uv-R0W"/>
                                     <constraint firstItem="8gx-wx-lrE" firstAttribute="width" secondItem="jPk-kE-QxU" secondAttribute="width" id="Jfr-T7-jKF"/>
+                                    <constraint firstAttribute="bottom" secondItem="gtz-D0-Cec" secondAttribute="bottom" id="b2j-vl-Gp0"/>
+                                    <constraint firstItem="gtz-D0-Cec" firstAttribute="leading" secondItem="jPk-kE-QxU" secondAttribute="leading" id="vFd-zG-QZu"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2632,7 +2651,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aam-9m-Vt1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2616" y="-1375"/>
+            <point key="canvasLocation" x="2615.9420289855075" y="-1375.4464285714284"/>
         </scene>
         <!--Setup Payment Type View Controller-->
         <scene sceneID="bMy-sk-3de">
@@ -2753,7 +2772,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="PoweredByOCIO" width="2200" height="368"/>
         <image name="add" width="21" height="16"/>
+        <image name="displayLogo" width="120" height="120"/>
         <image name="garbage" width="20" height="20"/>
         <image name="profile-black" width="34" height="34"/>
         <namedColor name="appPrimaryColor">

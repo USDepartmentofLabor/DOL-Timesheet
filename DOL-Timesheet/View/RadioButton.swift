@@ -17,7 +17,7 @@ class RadioButton: UIButton {
     }
         
     func configure() {
-        let unselectedImage = #imageLiteral(resourceName: "radioUnnSelect")
+        let unselectedImage = #imageLiteral(resourceName: "radioUnSelect")
         let selectedImage = #imageLiteral(resourceName: "radioSelect")
         setImage(selectedImage, for: .selected)
         setImage(unselectedImage, for: .normal)

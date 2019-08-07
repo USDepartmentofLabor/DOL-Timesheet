@@ -94,6 +94,9 @@ class InfoPopupViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var infoTextView: UITextView!
+    
+    @IBOutlet weak var closeBtn: UIButton!
+    
     var infoValue: Info?
     weak var delegate: InfoPopupDelegate?
     
@@ -105,13 +108,15 @@ class InfoPopupViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        let currentSize =  view.bounds.size
-//        let infosize = infoTextView.intrinsicContentSize
-        preferredContentSize = contentView.bounds.size
+        preferredContentSize =  CGSize(width: contentView.bounds.size.width,
+                                       height: contentView.bounds.size.height + 30)
     }
-
+    
     func setupView() {
 //        infoLabel.scaleFont(forDataType: .aboutText)
+        infoTextView.textContainerInset = UIEdgeInsets.zero
+        infoTextView.textContainer.lineFragmentPadding = 0
+
         infoTextView.delegate = self
         if let title = infoValue?.title {
             let htmlAttributedStr = NSMutableAttributedString(withLocalizedHTMLString: title)
@@ -122,6 +127,15 @@ class InfoPopupViewController: UIViewController {
         else {
            infoTextView.text = ""
         }
+        setupAccessibility()
+    }
+    
+    @IBAction func closeClick(_ sender: Any) {
+        dismiss(animated: false, completion: nil)
+    }
+    
+    func setupAccessibility() {
+        closeBtn.accessibilityLabel = NSLocalizedString("close", comment: "Close")
     }
 }
 
@@ -134,4 +148,6 @@ extension InfoPopupViewController: UITextViewDelegate {
         
         return false
     }
+    
+    
 }

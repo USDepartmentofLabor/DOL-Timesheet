@@ -33,13 +33,13 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "WHD_appicon_120x120.png",
+      "filename" : "120x120app.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "WHD_appicon_180x180.png",
+      "filename" : "180x180app.png",
       "scale" : "3x"
     },
     {
@@ -80,19 +80,19 @@
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "WHD_appicon_152x152.png",
+      "filename" : "152x152app.png",
       "scale" : "2x"
     },
     {
       "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "WHD_appicon_167x167.png",
+      "filename" : "167x167app.png",
       "scale" : "2x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "WHD_appicon_1024x1024.png",
+      "filename" : "1024x1024app-1.png",
       "scale" : "1x"
     }
   ],

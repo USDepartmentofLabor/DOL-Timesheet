@@ -28,7 +28,7 @@ class UnderlinedTextField: UITextField, UITextFieldDelegate {
         backgroundColor = UIColor.clear
         scaleFont(forDataType: .nameValueText)
         lineView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0.5))
-        lineView.backgroundColor = UIColor.gray
+        lineView.backgroundColor = UIColor(named: "borderColor")
         self.addSubview(lineView)
         
         // VFL AutoLayout
