@@ -33,7 +33,14 @@ class SetupProfileViewController: UIViewController {
     @IBOutlet weak var employerBtn: RadioButton!
     
     
+    @IBOutlet weak var nameTitleLabel: TitleValueLabel!
     @IBOutlet weak var addressTitleLabel: TitleValueLabel!
+    @IBOutlet weak var cityTitleLabel: TitleValueLabel!
+    @IBOutlet weak var stateTitleLabel: TitleValueLabel!
+    @IBOutlet weak var zipCodeTitleLabel: TitleValueLabel!
+    @IBOutlet weak var phoneTitleLabel: TitleValueLabel!
+    @IBOutlet weak var emailTitleLabel: TitleValueLabel!
+
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameTextField: UnderlinedTextField!
     @IBOutlet weak var street1TextField: UnderlinedTextField!
@@ -120,12 +127,31 @@ class SetupProfileViewController: UIViewController {
         phoneTextField.delegate = self
         emailTextField.delegate = self
         
-        if Util.isVoiceOverRunning {
-            phoneTextField.keyboardType = .numbersAndPunctuation
-        }
-        
         scrollView.keyboardDismissMode = .onDrag
+        setupAccessibility()
+        
         displayInfo()
+    }
+    
+    func setupAccessibility() {
+        var titleLabel = NSLocalizedString("full_name", comment: "")
+        nameTextField.accessibilityLabel = titleLabel
+
+        titleLabel.append(" ")
+        titleLabel.append(NSLocalizedString("required", comment: "Required"))
+        nameTitleLabel.accessibilityLabel =  titleLabel
+        street1TextField.accessibilityLabel = NSLocalizedString("street1", comment: "Stree1")
+        street2TextField.accessibilityLabel = NSLocalizedString("street2", comment: "Stree2")
+        cityTextField.accessibilityLabel = cityTitleLabel.text
+        stateTextField.accessibilityLabel = stateTitleLabel.text
+        zipcodeTextField.accessibilityLabel = zipCodeTitleLabel.text
+        phoneTextField.accessibilityLabel = phoneTitleLabel.text
+        emailTextField.accessibilityLabel = emailTitleLabel.text
+        
+        stateTextField.accessibilityTraits = [.button, .staticText]
+        stateTextField.accessibilityHint = NSLocalizedString("state_hint", comment: "Tap to Select State")
+        
+        profileImageView.accessibilityHint = NSLocalizedString("profile_image_new_hint", comment: "Tap to select profile photo")
     }
     
     func displayInfo() {
@@ -153,8 +179,14 @@ class SetupProfileViewController: UIViewController {
         zipcodeTextField.text = profileUser.address?.zipCode
         phoneTextField.text = profileUser.phone
         emailTextField.text = profileUser.email
-        profileImageView.maskCircle(anyImage: profileUser.image?.normalizedImage() ?? #imageLiteral(resourceName: "profile-black"))
+        profileImageView.maskCircle(anyImage: profileUser.image?.normalizedImage() ?? #imageLiteral(resourceName: "Default Profile Photo"))
+        profileImageView.accessibilityHint = (profileUser.image == nil) ?
+            NSLocalizedString("profile_image_new_hint", comment: "Tap to select profile photo") :
+            NSLocalizedString("profile_image_hint", comment: "Tap to update profile photo")
         
+        zipcodeTextField.attributedPlaceholder = NSAttributedString(string: "XXXXX / XXXXX-XXXX", attributes:
+            [NSAttributedString.Key.foregroundColor:  UIColor.borderColor,
+             NSAttributedString.Key.font: Style.scaledFont(forDataType: .nameValueText)])
         profileType = viewModel.profileModel.isEmployer ? .employer : .employee
     }
 
@@ -454,14 +486,15 @@ extension SetupProfileViewController {
     }
     
     func takeCameraPermission() {
-        let alertController = UIAlertController(title: NSLocalizedString("err_title", comment: "Error"),
+        let title = NSLocalizedString("err_camera_denied_title", comment: "Camera access is denied")
+        let alertController = UIAlertController(title: title,
                                                 message: NSLocalizedString("err_camera_denied", comment: "Camera access is denied"),
                                                 preferredStyle: .alert)
         
         alertController.addAction(
             UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
         alertController.addAction(
-            UIAlertAction(title: NSLocalizedString("settings", comment: "Settings"), style: .cancel) { _ in
+            UIAlertAction(title: NSLocalizedString("settings", comment: "Settings"), style: .default) { _ in
                 if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url, options: [:], completionHandler: { _ in
                     // Handle
@@ -528,6 +561,8 @@ extension SetupProfileViewController: UIImagePickerControllerDelegate, UINavigat
         if let attachImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             profileImage = attachImage
         }
+        
+        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: nameTitleLabel)
     }
 }
 
@@ -546,6 +581,9 @@ extension SetupProfileViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == stateTextField {
             
+            let announcementMsg = NSLocalizedString("select_state", comment: "Select State")
+            UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementMsg)
+
             DispatchQueue.main.async { [weak self] in
                 self?.view.endEditing(true)
             }
@@ -557,6 +595,8 @@ extension SetupProfileViewController: UITextFieldDelegate {
                     strongSelf.stateTextField.text = state.title
                 }
                 optionsVC.dismiss(animated: true, completion: nil)
+                UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: strongSelf.zipcodeTextField)
+
             }
             
             showPopup(popupController: optionsVC, sender: textField)

@@ -112,9 +112,21 @@ class EarningsTableViewCell: UITableViewCell {
             overtimeCalculationLabel.text = viewModel.overtimeCalculationStr
             
             overtimeInfoLabel.text = viewModel.overtimePaymentTimeInfo
+            overtimeTitleLabel.isHidden = false
+            overtimeAmountLabel.isHidden = false
+            overtimeCalculationTitleLabel.isHidden = false
+            overtimeInfoLabel.isHidden = false
+            overtimeInfoBtn.isHidden = false
+            overtimeCalculationLabel.isHidden = false
         }
         else {
             overtimeView.isHidden = true
+            overtimeTitleLabel.isHidden = true
+            overtimeAmountLabel.isHidden = true
+            overtimeCalculationTitleLabel.isHidden = true
+            overtimeInfoLabel.isHidden = true
+            overtimeInfoBtn.isHidden = true
+            overtimeCalculationLabel.isHidden = true
         }
     }
 }

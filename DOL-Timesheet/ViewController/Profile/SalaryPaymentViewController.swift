@@ -80,6 +80,11 @@ class SalaryPaymentViewController: UIViewController {
         salaryTypeView.accessibilityHint = NSLocalizedString("salary_type_hint", comment:  "Tap to select Salary type")
 
         salaryContentView.accessibilityElements = [titleLabelInfo as Any, salaryLabel as Any, salaryTextField as Any, salaryTypeView as Any]
+        
+        if Util.isVoiceOverRunning {
+            salaryTextField.keyboardType = .numbersAndPunctuation
+            salaryTextField.delegate = self
+        }
     }
     
     func displayInfo() {
@@ -122,3 +127,11 @@ extension SalaryPaymentViewController {
     }
 }
 
+extension SalaryPaymentViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.returnKeyType == .done {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+}

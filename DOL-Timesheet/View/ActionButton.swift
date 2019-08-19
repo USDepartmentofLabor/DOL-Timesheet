@@ -81,7 +81,7 @@ class SubActionButton: UIButton {
     }
     
     func configure() {
-        backgroundColor = UIColor(named: "appSecondary2Color")
+        backgroundColor = UIColor(named: "appPrimaryColor")
         layer.cornerRadius = 4.0
         
         titleLabel?.scaleFont(forDataType: .subActionButton)

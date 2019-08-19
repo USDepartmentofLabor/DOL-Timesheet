@@ -29,6 +29,8 @@ class ManageUsersViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var employmentView: UIView!
     
+    @IBOutlet weak var noView: UIView!
+    @IBOutlet weak var noUsersLabel: UILabel!
     @IBOutlet weak var userHeaderTitleLabel: UILabel!
     @IBOutlet weak var addressHeaderTitleLabel: UILabel!
     @IBOutlet weak var paymentTypeHeaderTitleLabel: UILabel!
@@ -109,10 +111,22 @@ class ManageUsersViewController: UIViewController {
         
         tableView.reloadData()
         
+        if let viewModel = viewModel, viewModel.numberOfEmploymentInfo <= 0 {
+            noView.isHidden = false
+            noUsersLabel.isHidden = false
+            noUsersLabel.text = viewModel.isProfileEmployer ?
+                NSLocalizedString("no_employees", comment: "No Employees") :
+            NSLocalizedString("no_employers", comment: "No Employees")
+        }
+        else {
+            noView.isHidden = true
+            noUsersLabel.isHidden = true
+        }
+        
         UIView.animate(withDuration: 0, animations: {
             self.tableView.layoutIfNeeded()
         }) { (complete) in
-            self.employmentTableViewHeightConstraint.constant = self.tableView.contentSize.height
+            self.employmentTableViewHeightConstraint.constant = self.tableView.contentSize.height > 0 ? self.tableView.contentSize.height : 100
         }
     }
     
@@ -238,6 +252,7 @@ extension ManageUsersViewController: UITableViewDataSource {
                 self.tableView.beginUpdates()
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 self.tableView.endUpdates()
+                self.employmentTableViewHeightConstraint.constant = self.tableView.contentSize.height
         })
         
         present(alertController, animated: true)

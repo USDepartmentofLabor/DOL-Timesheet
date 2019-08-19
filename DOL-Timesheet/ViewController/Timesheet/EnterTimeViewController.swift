@@ -68,7 +68,7 @@ class EnterTimeViewController: UIViewController {
         navigationItem.rightBarButtonItem = saveBtn
         title = viewModel?.title
         
-        tableView.estimatedRowHeight = 130
+        tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableView.automaticDimension
 
         enterTimeView.addBorder()
@@ -126,10 +126,12 @@ class EnterTimeViewController: UIViewController {
             self.tableView.layoutIfNeeded()
         }) { (complete) in
             self.tableViewHeightConstraint.constant = self.tableView.contentSize.height
+            print(self.tableView.contentSize.height)
         }
     }
 
     @objc func cancel(_ sender: Any?) {
+        delegate?.didCancelEnterTime()
         dismiss(animated: true, completion: nil)
     }
 
@@ -142,13 +144,33 @@ class EnterTimeViewController: UIViewController {
         }
         
         viewModel?.save()
-        delegate?.didEnterTime()
+        let annnouncementMsg = NSLocalizedString("save_time_entry", comment: "Saved time for")
+        let announcementStr = String(format: annnouncementMsg, viewModel?.title ?? "")
+        UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementStr)
+        
+
+        delegate?.didEnterTime(enterTimeModel: viewModel)
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func addRowClick(_ sender: Any) {
         _ = viewModel?.addTimeLog()
-        displayTime()
+//        displayTime()
+//        return
+        
+        guard let viewModel = viewModel, let totalLogs = viewModel.numberOfTimeLogs else {return}
+        
+        let newIndexPath = IndexPath(row: totalLogs-1, section: 0)
+        tableView.insertRows(at: [newIndexPath], with: .none)
+        
+        UIView.animate(withDuration: 0, animations: {
+            self.tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: false)
+        }) { (complete) in
+            self.tableViewHeightConstraint.constant = self.tableView.contentSize.height
+            if let cell = self.tableView.cellForRow(at: newIndexPath) as? EnterHourlyTimeTableViewCell {
+                UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: cell)
+            }
+        }
     }
     
     @IBAction func editClick(_ sender: Any) {
@@ -225,13 +247,34 @@ extension EnterTimeViewController: UITableViewDataSource {
         if editingStyle == .delete {
             if let timeLog = viewModel?.timeLogs?[indexPath.row] {
                 deleteTimeLog(timeLog: timeLog)
-                displayTime()
             }
         }
     }
     
     func deleteTimeLog(timeLog: TimeLog) {
-        viewModel?.removeTimeLog(timeLog: timeLog)
+        let titleMsg = NSLocalizedString("delete_time_log", comment: "Delete Time Log")
+        
+        let errorStr: String
+        if let startTimeStr = timeLog.startTime?.formattedTime {
+            let errorMsg = NSLocalizedString("delete_confirm_time_log_with_startdate", comment: "Are you sure you want to delete?")
+            errorStr = String(format: errorMsg, startTimeStr)
+        }
+        else {
+            errorStr = NSLocalizedString("delete_confirm_time_log", comment: "Are you sure you want to delete?")
+        }
+        
+        let alertController = UIAlertController(title: titleMsg,
+                                                message: errorStr,
+                                                preferredStyle: .alert)
+        
+        alertController.addAction(
+            UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+        alertController.addAction(
+            UIAlertAction(title: NSLocalizedString("delete", comment: "Delete"), style: .destructive) { _ in
+                self.viewModel?.removeTimeLog(timeLog: timeLog)
+                self.displayTime()
+        })
+        present(alertController, animated: true)
     }
 
 }
@@ -324,8 +367,9 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
 
 
 extension EnterTimeViewController {
-    public func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+    public override func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         
+        super.popoverPresentationControllerDidDismissPopover(popoverPresentationController)
         if let timePicketVC = popoverPresentationController.presentedViewController as? TimePickerViewController {
                 timePicketVC.delegate?.timeChanged(sourceView: timePicketVC.sourceView, datePicker: timePicketVC.datePicker)
         }
@@ -338,3 +382,4 @@ extension EnterTimeViewController: UITextViewDelegate {
         scrollView.scrollRectToVisible(aRect, animated: true)
     }
 }
+

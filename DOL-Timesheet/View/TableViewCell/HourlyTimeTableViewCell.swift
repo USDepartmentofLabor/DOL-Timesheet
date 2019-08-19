@@ -17,6 +17,20 @@ class HourlyTimeTableViewCell: UITableViewCell {
     @IBOutlet weak var workedHoursLabel: UILabel!
     @IBOutlet weak var breakHoursLabel: UILabel!
 
+    var breakHours: String = "" {
+        didSet {
+            breakHoursLabel.text = breakHours
+            breakHoursLabel.accessibilityLabel = NSLocalizedString("total_break", comment: "Total Break") + breakHours
+        }
+    }
+
+    var workedHours: String = "" {
+        didSet {
+            workedHoursLabel.text = workedHours
+            workedHoursLabel.accessibilityLabel = NSLocalizedString("total_worked", comment: "Total Worked") + workedHours
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -25,7 +39,6 @@ class HourlyTimeTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
     
     func setupView() {
@@ -39,6 +52,7 @@ class HourlyTimeTableViewCell: UITableViewCell {
         isAccessibilityElement = false
         dayLabel.accessibilityTraits = .button
         dayLabel.accessibilityHint = NSLocalizedString("click_enter_time", comment: "Tap to Enter time")
+        
         accessibilityElements = [dayLabel as Any, workedHoursLabel as Any, breakHoursLabel as Any]
     }
     

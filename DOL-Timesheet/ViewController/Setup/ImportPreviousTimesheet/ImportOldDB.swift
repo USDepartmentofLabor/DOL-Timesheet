@@ -126,14 +126,11 @@ class ImportOldDB {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
 
         var startDate = timeEntriesStartDate.startOfDay()
-        print(dateFormatter.string(from: startDate))
         while startDate.compare(timeEntriesEndDate) != .orderedDescending {
             let endDate = startDate.addDays(days: 30)
-            print(dateFormatter.string(from: endDate.endOfDay()))
             addTimeLogs(db: db, employmentInfo: employmentInfo, oldEmployer: oldEmployer, startDate: startDate, endDate: endDate.endOfDay())
             
             startDate = endDate.addDays(days: 1).startOfDay()
-            print(dateFormatter.string(from: startDate))
         }
     }
     
@@ -171,17 +168,6 @@ class ImportOldDB {
                 allComments.append("\n")
             }
             timeLog?.comment = allComments + (breakComments ?? "")
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-
-            if let startTime = timeLog?.startTime, let endTime = timeLog?.endTime {
-                print("TimeLog")
-                print(dateFormatter.string(from: startTime))
-                print(dateFormatter.string(from: endTime))
-                print(timeLog?.breakTime)
-                print(timeLog?.comment)
-            }
         }
     }
 }

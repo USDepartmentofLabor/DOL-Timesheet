@@ -145,10 +145,10 @@
                                     <constraint firstItem="rA5-jz-SQF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1yn-yY-FiZ" secondAttribute="leading" constant="10" id="sLz-fI-1Mn"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBq-f9-ZDF">
-                                <rect key="frame" x="15" y="163.5" width="384" height="636.5"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBq-f9-ZDF">
+                                <rect key="frame" x="15" y="163.5" width="384" height="631.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SGP-uC-jiL" userLabel="EmployeeEmployerView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGP-uC-jiL" userLabel="EmployeeEmployerView">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="142"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Employer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBW-A4-7jA" userLabel="EmployeeEmployerLabel">
@@ -170,14 +170,14 @@
                                                     <segue destination="feV-ld-dej" kind="presentation" identifier="manageUsers" id="IDX-Kc-Y9E"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="Z" translatesAutoresizingMaskIntoConstraints="NO" id="ehZ-hv-MNe" userLabel="SelectUserDropDownView" customClass="DropDownView" customModule="DOL_Timesheet" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" restorationIdentifier="Z" translatesAutoresizingMaskIntoConstraints="NO" id="ehZ-hv-MNe" userLabel="SelectUserDropDownView" customClass="DropDownView" customModule="DOL_Timesheet" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="39.5" width="384" height="45"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="yVk-b0-xiE"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zBf-uS-7kO" userLabel="PeriodView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBf-uS-7kO" userLabel="PeriodView">
                                                 <rect key="frame" x="0.0" y="92.5" width="384" height="44.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buz-cD-KaT" userLabel="PeriodLabel">
@@ -238,11 +238,20 @@
                                             <constraint firstItem="EP3-Za-0SH" firstAttribute="centerY" secondItem="nBW-A4-7jA" secondAttribute="centerY" id="mF0-jS-hfq"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="csU-F1-tJe" userLabel="TimeView">
-                                        <rect key="frame" x="0.0" y="154" width="384" height="659.5"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csU-F1-tJe" userLabel="TimeView">
+                                        <rect key="frame" x="0.0" y="154" width="384" height="691.5"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Log" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbI-Iw-n84" userLabel="EnterTimeTileLabel">
+                                                <rect key="frame" x="0.0" y="0.0" width="80.5" height="24"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" staticText="YES" header="YES"/>
+                                                </accessibility>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                <color key="textColor" name="appPrimaryColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2J-kN-Xx8" userLabel="EnterTimeView">
-                                                <rect key="frame" x="0.0" y="0.0" width="384" height="255"/>
+                                                <rect key="frame" x="0.0" y="32" width="384" height="255"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xtP-4T-sDE" userLabel="TimeTitleView">
                                                         <rect key="frame" x="0.0" y="0.0" width="384" height="68.5"/>
@@ -305,7 +314,7 @@
                                                         </constraints>
                                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HourlyTimeTableViewCell" id="PIn-nr-hxt" customClass="HourlyTimeTableViewCell" customModule="DOL_Timesheet" customModuleProvider="target">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HourlyTimeTableViewCell" id="PIn-nr-hxt" customClass="HourlyTimeTableViewCell" customModule="DOL_Timesheet" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="1" width="384" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PIn-nr-hxt" id="kZb-p2-PaS">
@@ -409,6 +418,9 @@
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" header="YES"/>
+                                                </accessibility>
                                                 <constraints>
                                                     <constraint firstItem="xtP-4T-sDE" firstAttribute="top" secondItem="E2J-kN-Xx8" secondAttribute="top" id="29d-zh-TTw"/>
                                                     <constraint firstItem="Apa-IX-HM6" firstAttribute="leading" secondItem="xtP-4T-sDE" secondAttribute="leading" id="5cf-PA-6SJ"/>
@@ -423,14 +435,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0G-f1-9Vd" userLabel="TimeFooterView">
-                                                <rect key="frame" x="0.0" y="267" width="384" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="299" width="384" height="0.0"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="QJr-QR-IO9"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScS-l0-okx" userLabel="SummaryView">
-                                                <rect key="frame" x="0.0" y="279" width="384" height="106"/>
+                                                <rect key="frame" x="0.0" y="311" width="384" height="106"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jE-Kp-EF9" userLabel="SummaryTileLabel">
                                                         <rect key="frame" x="0.0" y="0.0" width="83" height="24"/>
@@ -553,7 +565,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJi-bk-ZSm" userLabel="EarningsView">
-                                                <rect key="frame" x="0.0" y="397" width="384" height="250.5"/>
+                                                <rect key="frame" x="0.0" y="429" width="384" height="250.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earnings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8O-ee-BJR" userLabel="EarningTitleLabel">
                                                         <rect key="frame" x="0.0" y="0.0" width="76" height="24"/>
@@ -697,11 +709,14 @@
                                         <constraints>
                                             <constraint firstItem="E2J-kN-Xx8" firstAttribute="leading" secondItem="csU-F1-tJe" secondAttribute="leading" id="1ga-RK-uOs"/>
                                             <constraint firstItem="ScS-l0-okx" firstAttribute="top" secondItem="J0G-f1-9Vd" secondAttribute="bottom" constant="12" id="2GK-Zh-0Bb"/>
+                                            <constraint firstItem="BbI-Iw-n84" firstAttribute="top" secondItem="csU-F1-tJe" secondAttribute="top" id="4LZ-h0-Mtb"/>
+                                            <constraint firstItem="BbI-Iw-n84" firstAttribute="leading" secondItem="csU-F1-tJe" secondAttribute="leading" id="4ZA-Pd-LOo"/>
                                             <constraint firstItem="LJi-bk-ZSm" firstAttribute="top" secondItem="ScS-l0-okx" secondAttribute="bottom" constant="12" id="6DG-Lg-ZH5"/>
                                             <constraint firstItem="LJi-bk-ZSm" firstAttribute="leading" secondItem="E2J-kN-Xx8" secondAttribute="leading" id="C27-yw-BOC"/>
-                                            <constraint firstItem="E2J-kN-Xx8" firstAttribute="top" secondItem="csU-F1-tJe" secondAttribute="top" id="EkA-5a-B3x"/>
                                             <constraint firstItem="J0G-f1-9Vd" firstAttribute="leading" secondItem="csU-F1-tJe" secondAttribute="leading" id="LbE-DR-iNs"/>
                                             <constraint firstItem="ScS-l0-okx" firstAttribute="leading" secondItem="E2J-kN-Xx8" secondAttribute="leading" id="O4j-ut-2ZH"/>
+                                            <constraint firstItem="E2J-kN-Xx8" firstAttribute="top" secondItem="BbI-Iw-n84" secondAttribute="bottom" constant="8" id="T1C-di-ZW4"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BbI-Iw-n84" secondAttribute="trailing" id="UEK-dw-zU5"/>
                                             <constraint firstAttribute="trailing" secondItem="J0G-f1-9Vd" secondAttribute="trailing" id="ZZX-zN-2cO"/>
                                             <constraint firstAttribute="bottom" secondItem="LJi-bk-ZSm" secondAttribute="bottom" constant="12" id="cMM-Wk-LX9"/>
                                             <constraint firstItem="J0G-f1-9Vd" firstAttribute="top" secondItem="E2J-kN-Xx8" secondAttribute="bottom" constant="12" id="hmq-9r-3el"/>
@@ -722,7 +737,7 @@
                                 </constraints>
                             </scrollView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xj-lT-hYM">
-                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="807" width="414" height="55"/>
                                 <items>
                                     <barButtonItem systemItem="action" id="7jK-dO-jYa">
                                         <connections>
@@ -768,6 +783,7 @@
                         <outlet property="earningsTitleLabel" destination="h8O-ee-BJR" id="o6B-nd-Vdn"/>
                         <outlet property="editBtn" destination="EP3-Za-0SH" id="KOR-3c-Byk"/>
                         <outlet property="employeeEmployerLabel" destination="nBW-A4-7jA" id="5Mv-S4-2HO"/>
+                        <outlet property="enterTimeTitleLabel" destination="BbI-Iw-n84" id="LVl-vB-9Bc"/>
                         <outlet property="headingDayLabel" destination="PFG-dh-xM2" id="Eee-oh-R5G"/>
                         <outlet property="headingTotalBreakLabel" destination="F5J-wR-eQC" id="a8Y-dv-d71"/>
                         <outlet property="headingTotalHoursLabel" destination="mu7-bo-n9y" id="4ch-qI-2T8"/>
@@ -985,6 +1001,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ffY-Gp-Wn8"/>
                     </view>
+                    <connections>
+                        <outlet property="displayLogo" destination="454-se-Ks2" id="sgs-OI-KGa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AWL-CA-PBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1012,16 +1031,15 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="riD-rh-1m5">
                                                     <rect key="frame" x="0.0" y="0.0" width="334" height="500"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfZ-X4-ZH3" userLabel="TitleLabel">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfZ-X4-ZH3" userLabel="TitleLabel">
                                                             <rect key="frame" x="5" y="5" width="324" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" contentInsetAdjustmentBehavior="never" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMy-qR-5II">
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Lorem " translatesAutoresizingMaskIntoConstraints="NO" id="HMy-qR-5II">
                                                             <rect key="frame" x="5" y="25.5" width="324" height="474.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="22"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" lookupSuggestion="YES"/>
@@ -1145,7 +1163,7 @@
                                                     </textView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIY-Mo-aNO" userLabel="FooterTitleLabel">
                                                         <rect key="frame" x="0.0" y="297" width="344" height="122"/>
-                                                        <string key="text">All services are free and confidential, whether you are documented or not. Please remember that your employer cannot terminate you or in any other manner discriminate against you for filing a complaint with WHD.</string>
+                                                        <string key="text">All services are free and confidential, whether you are documented or not. Please remember that your employer cannot terminate you or in any other manner discriminate against you for filing a complaint with Wage and Hour Division.</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

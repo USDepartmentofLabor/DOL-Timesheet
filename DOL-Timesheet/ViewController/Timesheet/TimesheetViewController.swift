@@ -13,7 +13,8 @@ import MessageUI
 protocol TimesheetViewControllerDelegate: class {
     func didUpdateUser()
     func didUpdateEmploymentInfo()
-    func didEnterTime()
+    func didEnterTime(enterTimeModel: EnterTimeViewModel?)
+    func didCancelEnterTime()
 }
 
 class TimesheetViewController: UIViewController {
@@ -33,6 +34,7 @@ class TimesheetViewController: UIViewController {
     @IBOutlet weak var prevPeriodBtn: UIButton!
     @IBOutlet weak var nextPeriodBtn: UIButton!
     
+    @IBOutlet weak var enterTimeTitleLabel: UILabel!
     @IBOutlet weak var headingDayLabel: UILabel!
     @IBOutlet weak var headingTotalHoursLabel: UILabel!
     @IBOutlet weak var headingTotalBreakLabel: UILabel!
@@ -161,6 +163,7 @@ class TimesheetViewController: UIViewController {
         headingDayLabel.scaleFont(forDataType: .columnHeader)
         headingTotalHoursLabel.scaleFont(forDataType: .columnHeader)
         headingTotalBreakLabel.scaleFont(forDataType: .columnHeader)
+        enterTimeTitleLabel.scaleFont(forDataType: .timesheetSectionTitle)
         summaryTitleLabel.scaleFont(forDataType: .timesheetSectionTitle)
         earningsTitleLabel.scaleFont(forDataType: .timesheetSectionTitle)
         totalTitleLabel.scaleFont(forDataType: .timesheetTimeTotal)
@@ -187,16 +190,18 @@ class TimesheetViewController: UIViewController {
                                       borderWidth: 4.0,
                                       cornerRadius: 0.0)
         
-        setupAceessibility()
+        setupAccessibility()
     }
     
-    func setupAceessibility() {
+    func setupAccessibility() {
         periodView.isAccessibilityElement = false
         periodView.accessibilityElements = [periodLabel as Any, prevPeriodBtn as Any, nextPeriodBtn as Any]
         prevPeriodBtn.accessibilityLabel = NSLocalizedString("prev_period", comment: "Previuos Period")
         nextPeriodBtn.accessibilityLabel = NSLocalizedString("next_period", comment: "Next Period")
         
         totalEarningsBtn.accessibilityHint = NSLocalizedString("total_Earnings_expand_hint", comment: "Tap to view Details")
+        
+        totalTitleLabel.accessibilityLabel = NSLocalizedString("period_total", comment: "Period Total")
     }
     
     func displayInfo() {
@@ -214,7 +219,8 @@ class TimesheetViewController: UIViewController {
         profileBtn.widthAnchor.constraint(equalToConstant: 40).isActive = true
         profileBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
         profileBtn.addBorder(borderColor: .white, borderWidth: 0.5, cornerRadius: profileBtn.bounds.size.width / 2)
-
+        
+        profileBtn.accessibilityHint = NSLocalizedString("profile_hint", comment: "Tap to update Prodile")
         profileBtn.addTarget(self, action: #selector(profileClicked(sender:)), for: UIControl.Event.touchDown)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileBtn)
 
@@ -265,7 +271,14 @@ class TimesheetViewController: UIViewController {
 
         totalHoursWorkedLabel.text = viewModel.totalHoursTime()
         totalBreakLabel.text = viewModel.totalBreakTime()
+        
+        let hoursWorkedAccessibilityLabel = NSLocalizedString("period_total_hours_worked", comment: "Period Total Hours Worked") + (totalHoursWorkedLabel.text ?? "")
+        totalHoursWorkedLabel.accessibilityLabel = hoursWorkedAccessibilityLabel
 
+        let hoursBreakAccessibilityLabel = NSLocalizedString("period_total_hours_break", comment: "Period Total Hours Break") + (totalBreakLabel.text ?? "")
+        totalBreakLabel.accessibilityLabel = hoursBreakAccessibilityLabel
+
+        
         viewModel.updateWorkWeeks()
         displaySummary()
         displayEarnings()
@@ -393,6 +406,16 @@ class TimesheetViewController: UIViewController {
     func setCurrentUser(user: User) {
         viewModel?.setCurrentEmploymentModel(for: user)
         displayEmploymentInfo()
+
+        let annnouncementMsg: String
+        if viewModel?.userProfileModel.isProfileEmployer ?? false {
+            annnouncementMsg = NSLocalizedString("select_employee", comment: "Employee Selected ")
+        }
+        else {
+            annnouncementMsg = NSLocalizedString("select_employer", comment: "Employer Selected")
+        }
+        let announcementStr = String(format: annnouncementMsg, user.name ?? "")
+        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: selectUserDropDownView)
     }
     
     func addNewUser() {
@@ -402,11 +425,13 @@ class TimesheetViewController: UIViewController {
     @IBAction func prevNextClick(_ sender: Any) {
         viewModel?.nextPeriod(direction: .backward)
         displayPeriodInfo()
+        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: periodLabel)
     }
     
     @IBAction func nextPeriodClick(_ sender: Any) {
         viewModel?.nextPeriod(direction: .forward)
         displayPeriodInfo()
+        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: periodLabel)
     }
     
     @IBAction func contactWHDClick(_ sender: Any) {
@@ -527,8 +552,8 @@ extension TimesheetViewController: UITableViewDataSource {
         }
 
         cell.currentDate = viewModel.currentPeriod?.date(at: indexPath.row)
-        cell.breakHoursLabel.text = viewModel.totalBreakTime(forDate: (cell.currentDate!))
-        cell.workedHoursLabel.text = viewModel.totalHoursTime(forDate: (cell.currentDate!))
+        cell.workedHours = viewModel.totalHoursTime(forDate: (cell.currentDate!))
+        cell.breakHours = viewModel.totalBreakTime(forDate: (cell.currentDate!))
     }
     
     func configure(cell: SummaryTableViewCell, at indexPath: IndexPath) {
@@ -541,9 +566,13 @@ extension TimesheetViewController: UITableViewDataSource {
         if viewModel.currentEmploymentModel?.overtimeEligible ?? false {
             cell.totalOvertimeLabel.text = viewModel.overTimeHours(workWeek: indexPath.section)
             cell.ovetimeHoursStackView.isHidden = false
+            cell.totalOvertimeLabel.isHidden = false
+            cell.totalOvertimeTitleLabel.isHidden = false
         }
         else {
             cell.ovetimeHoursStackView.isHidden = true
+            cell.totalOvertimeLabel.isHidden = true
+            cell.totalOvertimeTitleLabel.isHidden = true
         }
     }
     
@@ -582,20 +611,8 @@ extension TimesheetViewController: UITableViewDelegate {
         }
         
         performSegue(withIdentifier: "enterTime", sender: currentDate)
-//        let destVC = EnterTimeViewController.instantiateFromStoryboard()
-//        destVC.viewModel = viewModel.createEnterTimeViewModel(forDate: currentDate)
-//
-//        present(UINavigationController(rootViewController: destVC), animated: true, completion: nil)
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if tableView == summaryTableView {
-//            return titleForWorkWeek(week: section)
-//        }
-//
-//        return nil
-//    }
-//
     func titleForWorkWeek(week: Int) -> String? {
         guard let workWeekViewModel = viewModel?.workWeekViewModel(at: week) else {
             return nil
@@ -662,6 +679,7 @@ extension TimesheetViewController: EarningsHeaderViewDelegate {
 extension TimesheetViewController {
     func contactWHD() {
         let resourcesVC = ResourcesViewController.instantiateFromStoryboard()
+        resourcesVC.title = NSLocalizedString("contact_us", comment: "Contact Us")
         navigationController?.pushViewController(resourcesVC, animated: true)
     }
     
@@ -708,7 +726,29 @@ extension TimesheetViewController: TimesheetViewControllerDelegate {
         displayEmploymentInfo()
     }
     
-    func didEnterTime() {
+    func didEnterTime(enterTimeModel: EnterTimeViewModel?) {
+//        let annnouncementMsg = NSLocalizedString("save_time_entry", comment: "Saved time for")
+//        
+//        let announcementStr = String(format: annnouncementMsg, enterTimeModel?.title ?? "")
+//        UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementStr)
+//
+        let selectedIndexPath = timeTableView.indexPathForSelectedRow
         displayPeriodInfo()
+        
+        if Util.isVoiceOverRunning,
+            let selectedIndexPath = selectedIndexPath,
+            let cell = timeTableView.cellForRow(at: selectedIndexPath) {
+            UIAccessibility.post(notification: UIAccessibility.Notification.screenChanged, argument: cell)
+        }
+    }
+    
+    func didCancelEnterTime() {
+        guard Util.isVoiceOverRunning else {return}
+        
+        let selectedIndexPath = timeTableView.indexPathForSelectedRow
+        if let selectedIndexPath = selectedIndexPath,
+            let cell = timeTableView.cellForRow(at: selectedIndexPath) {
+            UIAccessibility.post(notification: UIAccessibility.Notification.screenChanged, argument: cell)
+        }
     }
 }

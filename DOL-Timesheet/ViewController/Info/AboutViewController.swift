@@ -10,12 +10,23 @@ import UIKit
 
 class AboutViewController: UIViewController {
 
-    let items = ["The Department of Labor is providing this app as a public service. This is a service that is continually under development. The user should be aware that, while we try to keep the information timely and accurate, there will often be a delay between official publication of the materials and their appearance in or modification of this system. Further, the conclusions reached by this system rely on the accuracy of the data provided by the user. Therefore, we make no express or implied guarantees. The Federal Register and the Code of Federal Regulations remain the official sources for regulatory information published by the Department of Labor. We will make every effort to correct errors brought to our attention.",
-       "Please note that information input via this app is never shared with the Department of Labor for any purposes.",
+    @IBOutlet weak var displayLogo: UIImageView!
+    
+    let items = [NSLocalizedString("introduction_text1", comment: "Introduction text1"),
+       NSLocalizedString("introduction_text2", comment: "Introduction text2"),
        "Version Number: \(Bundle.main.versionNumber).\(Bundle.main.buildNumber)"]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupView()
+    }
+    
+    func setupView() {
+        setupAccessibility()
+    }
+    
+    func setupAccessibility() {
+        displayLogo.isAccessibilityElement = true
+        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
     }
 }
 
@@ -31,8 +42,12 @@ extension AboutViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "aboutCell")
         
-    
-        cell.textLabel?.scaleFont(forDataType: .aboutText)
+        if indexPath.row == 1 {
+            cell.textLabel?.scaleFont(forDataType: .introductionBoldText)
+        }
+        else {
+            cell.textLabel?.scaleFont(forDataType: .aboutText)
+        }
         cell.textLabel?.text = items[indexPath.row]
         cell.textLabel?.numberOfLines = 0
         

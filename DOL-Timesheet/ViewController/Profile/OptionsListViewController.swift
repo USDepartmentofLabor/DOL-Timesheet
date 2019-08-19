@@ -133,7 +133,8 @@ class OptionsListViewController<T : OptionsProtocol>: UITableViewController {
             cell.textLabel?.text = addNewRowTitle
         }
         
-        cell.textLabel?.textAlignment = .center
+        cell.indentationLevel = 2
+        cell.textLabel?.textAlignment = .left
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.scaleFont(forDataType: .nameValueText)
         return cell

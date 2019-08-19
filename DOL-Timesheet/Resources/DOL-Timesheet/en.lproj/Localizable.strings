@@ -8,6 +8,7 @@
 
 
 //
+"whd_logo" = "WHD Logo";
 "employee" = "Employee";
 "employees" = "Employees";
 "add_employee" = "Add Employee";
@@ -26,7 +27,8 @@
 "confirm_delete_employers" = "Changing from employee to employer will delete all existing employers. Are you sure you want to delete all employers?";
 "home_address" = "Home Address";
 "work_address" = "Work Address";
-
+"street1" = "Address Line 1";
+"street2" = "Address Line 2";
 
 "employer" = "Employer";
 "employers" = "Employers";
@@ -44,6 +46,12 @@
 "salary_employer" = "What is your employee's salary?";
 "overtime_eligible_employer" = "Is your employee eligible for overtime pay (non-exempt)?";
 "confirm_delete_employees" = "Changing from employer to employee will delete all existing employees. Are you sure you want to delete all employees?";
+"rate_amount" = "Rate Amount";
+"minimum_wage_amount" = "Minimum Wage Amount";
+"resources" = "Resources";
+"contact_us" = "Contact Us";
+"no_employees" = "No Employees";
+"no_employers" = "No Employers";
 
 // Salary Type
 "salary_annually" = "Annually";
@@ -83,8 +91,10 @@
 // TimeSheet
 "add_new_employer" = "Add New Employer";
 "add_new_employee" = "Add New Employee";
+"profile_hint" = "Tap To update Profile";
 "employee_user_hint" = "Tap To Select Employee";
 "employer_user_hint" = "Tap To Select Employer";
+"state_hint" = "Tap to select state";
 "salary_type_hint" = "Tap To Select Salary Type";
 "work_week_hint" = "Tap To Select Work Week Start Day";
 "payment_frequency_hint" = "Tap To Select Payment Frequency";
@@ -92,17 +102,41 @@
 "total_Earnings_collapse_hint" = "Tap to hide Details";
 "overtime_next_pay_period" = "Overtime will be paid in next pay period.";
 "overtime_on_date" = "Overtime will be paid on %@.";
+"period_total" = "Period Total";
+"period_total_hours_worked" = "Total time worked in current period ";
+"period_total_hours_break" = "Total break time in current period ";
 "display_details" = "Tap to display details";
+"start_date_hint" = "Tap to select start date";
+"payment_type_hint" = "Tap to select payment type";
+"skip_employee_hint" = "Skip adding Employee";
+"skip_employer_hint" = "Skip adding Employer";
+"profile_image_new_hint" = "Tap to select profile photo";
+"profile_image_hint" = "Tap to up[date profile photo";
+"required" = "Required";
+"select_state" = "Select State";
+"select_payment_type" = "Select Payment Type";
+"select_start_date" = "Select Start Date";
+"total_worked" = "Total Worked";
+"total_break" = "Total Break";
+"select_employee" = "Employee %@ selected";
+"select_employer" = "Employer %@ selected";
+"delete_time_log" = "Delete Time Log";
+"delete_confirm_time_log_with_startdate" = "Are you sure you want to delete the time log with Start Time %@?";
+"delete_confirm_time_log" = "Are you sure you want to delete the time log?";
+"delete_hourly_rate" = "Delete Hourly Rate";
+"delete_confirm_hourly_rate_log" = "Are you sure you want to delete %@?";
 
 "prev_period" = "Previous Period";
 "next_period" = "Next Period";
 "straight_earnings" = "Straight Time Earnings";
 "straight_time_calculation" = "Hours Worked x Hourly Rate";
 "overtime" = "Overtime Pay";
+"details" = "Details";
 "click_enter_time" = "Tap to Enter time";
 "yes" = "Yes";
 "no" = "No";
 "close" = "Close";
+"save_time_entry" = "Saved time log for %@";
 
 // Enter Time
 "start_time_hint" = "Tap To Select Start Time";
@@ -121,6 +155,7 @@
 "delete_employee" = "Delete Employee";
 "delete_confirm_employer_info" = "Deleting employer will delete all time logged for employer. Are you sure you want to delete employer?";
 "delete_confirm_employee_info" = "Deleting employee will delete all time logged for employee. Are you sure you want to delete employee?";
+"hourly_rate_deleted" = "Hourly Rate Deleted";
 
 // Error Strings
 "err_title" = "Error";
@@ -130,10 +165,10 @@
 "err_enter_name" = "Please enter name";
 "err_more_than_24_hours" = " Total hours for day can not be more that 24 hours";
 "err_startTime_before_endtime" = "End time should be after start time";
-"err_time_between_start_endtime" = "%@ lies in between timelog %@ and %@";
+"err_time_between_start_endtime" = "%@ lies in between time %@ and %@";
 "err_break_more_than_hours_worked" = "Break time can not be more that hours worked";
 "err_select_hourly_rate" = "Please select hourly rate";
-"err_invalid_zipcode" = "Please provide valid zip code";
+"err_invalid_zipcode" = "Please provide valid zip code with format XXXXX or XXXXX-XXXX";
 "err_invalid_phonenumber" = "Please provide valid phone number";
 "err_invalid_emailaddress" = "Please provide valid email address";
 "err_enter_valid_minimum_wage" = "Please enter minimum wage";
@@ -143,7 +178,8 @@
 "err_add_hourly_rate" = "Please add hourly rate";
 "err_add_hourly_rate_name" = "Please specify name for hourly rate";
 "err_add_hourly_rate_value" = "Please specify hourly rate amount";
-"err_camera_denied" = "Camera access is denied";
+"err_camera_denied_title" = "Timesheet does not have access to your camera.";
+"err_camera_denied" = "To enable access, click on Settings to allow access to camera.";
 "err_title_minimum_wage" = "Below minimum wage";
 "err_invalid_supervisor_emailaddress" = "Please provide valid supervisor email address";
 "warning" = "Warning";
@@ -167,7 +203,7 @@
 "info_employer_salary" = "Enter the amount of the salary you pay your employee, and how frequently.";
 "info_overtime" = "Overtime generally is due for any hours an employee works beyond 40 in a workweek, and must be paid at one-and-one-half times the employee’s regular rate of pay.";
 "info_overtime_pay" = "Overtime generally is due for any hours an employee works beyond 40 in a workweek, and must be paid at one-and-one-half times the employee’s regular rate of pay.";
-"info_break_time" = "Rest periods of short duration, usually 20 minutes or less, are common in industry and are customarily paid for as working time. These short periods must be counted as hours worked. Bona fide meal periods (typically 30 minutes or more) generally need not be compensated as work time. The employee must be completely relieved from duty for the purpose of eating regular meals in order for that time not to count as work time.For purposes of this D O L-Timesheet, all break time in excess of 20 minutes will be deducted from your total hours of work. For questions regarding proper deductions for break time, <a href=\"http://www.dol.gov/whd/contact_us.htm\">contact the Wage and Hour Division.</a>";
+"info_break_time" = "Rest periods of short duration, usually 20 minutes or less, are common in industry and are customarily paid for as working time. These short periods must be counted as hours worked. Bona fide meal periods (typically 30 minutes or more) generally need not be compensated as work time. The employee must be completely relieved from duty for the purpose of eating regular meals in order for that time not to count as work time. For purposes of this D O L-Timesheet, all break time in excess of 20 minutes will be deducted from your total hours of work. For questions regarding proper deductions for break time, <a href=\"http://www.dol.gov/whd/contact_us.htm\">contact the Wage and Hour Division.</a>";
 "info_end_time" = "If you work an overnight shift, hours after midnight will populate your timesheet on the next day";
 
 "info_pay_title" = "Pay";
@@ -182,3 +218,7 @@
 "info_glossary_overtime" = "The federal overtime provisions are contained in the Fair Labor Standards Act (FLSA). Unless exempt, employees covered by this law must receive overtime pay for hours they work over 40 in a workweek at a rate not less than time and one-half their regular rates of pay. There is no limit on the number of hours employees aged 16 and older may work in any workweek. The law does not require overtime pay for work on Saturdays, Sundays, holidays, or regular days of rest, unless overtime is worked on such days.\n\nThe FLSA applies on a workweek basis. An employee's workweek is a fixed and regularly recurring period of 168 hours — seven consecutive 24-hour periods. It need not coincide with the calendar week, but may begin on any day and at any hour of the day. Different workweeks may be established for different employees or groups of employees. Averaging of hours over two or more weeks is not permitted. Normally, overtime pay earned in a particular workweek must be paid on the regular pay day for the pay period in which the wages were earned.";
 "info_glossary_minimum_wage" = "The federal minimum wage is $7.25 per hour. Many states also have their own minimum wage laws. These state laws may provide greater employee protections than federal law; employers must comply with both. Where state law requires a higher minimum wage, that higher standard applies. For more information, or to find the minimum wage required by your state, visit the Wage and Hour Division’s <a href=\"https://www.dol.gov/whd/minwage/america.htm\">Minimum Wage Laws in the State page.</a>";
 "info_glossary_work_week" = "An employee's workweek is a fixed and regularly recurring period of seven consecutive 24-hour periods. It does not have to coincide with the calendar week, nor does it necessarily align with when employees actually receive their pay. The employer determines when the workweek begins and ends for the purpose of keeping track of employees’ work time each week. For example, the workweek may begin Monday at 12:00am and end Sunday night at 11:59pm.  Workers may be paid for time they worked during a workweek several days after the workweek ends.";
+
+"introduction_text1" = "The Department of Labor is providing this app as a public service. This is a service that is continually under development. The user should be aware that, while we try to keep the information timely and accurate, there will often be a delay between official publication of the materials and their appearance in or modification of this system. Further, the conclusions reached by this system rely on the accuracy of the data provided by the user. Therefore, we make no express or implied guarantees. The Federal Register and the Code of Federal Regulations remain the official sources for regulatory information published by the Department of Labor. We will make every effort to correct errors brought to our attention.";
+
+"introduction_text2" = "Please note that information input via this app is never shared with the Department of Labor for any purposes.";

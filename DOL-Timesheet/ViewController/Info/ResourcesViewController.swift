@@ -32,7 +32,6 @@ class ResourcesViewController: UIViewController {
     }
 
     func setupView() {
-        title = "Resources"
         contactTitleLabel.scaleFont(forDataType: .resourcesText)
         phoneTextView1.scaleFont(forDataType: .resourcesText)
         phoneTextView2.scaleFont(forDataType: .resourcesText)
@@ -67,7 +66,7 @@ class ResourcesViewController: UIViewController {
             NSAttributedString.Key.underlineStyle: 1])
         contactTextView.attributedText = contactText
 
-        let websiteText = NSAttributedString(string: "Wage & Hour website", attributes: [NSAttributedString.Key.link: ResourcesViewController.whdWebsiteLink,
+        let websiteText = NSAttributedString(string: "Wage and Hour Division website", attributes: [NSAttributedString.Key.link: ResourcesViewController.whdWebsiteLink,
             NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
             NSAttributedString.Key.underlineStyle: 1])
         whdWebsiteTextView.attributedText = websiteText

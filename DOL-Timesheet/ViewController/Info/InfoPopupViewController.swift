@@ -97,6 +97,8 @@ class InfoPopupViewController: UIViewController {
     
     @IBOutlet weak var closeBtn: UIButton!
     
+    var completionHandler: (()->Void)?
+    
     var infoValue: Info?
     weak var delegate: InfoPopupDelegate?
     
@@ -113,7 +115,6 @@ class InfoPopupViewController: UIViewController {
     }
     
     func setupView() {
-//        infoLabel.scaleFont(forDataType: .aboutText)
         infoTextView.textContainerInset = UIEdgeInsets.zero
         infoTextView.textContainer.lineFragmentPadding = 0
 
@@ -131,7 +132,7 @@ class InfoPopupViewController: UIViewController {
     }
     
     @IBAction func closeClick(_ sender: Any) {
-        dismiss(animated: false, completion: nil)
+        dismiss(animated: false, completion: completionHandler)
     }
     
     func setupAccessibility() {
@@ -148,6 +149,4 @@ extension InfoPopupViewController: UITextViewDelegate {
         
         return false
     }
-    
-    
 }

@@ -16,6 +16,8 @@ class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var paymentLabel: UILabel!
     
+    @IBOutlet weak var detailsImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,8 +38,11 @@ class ProfileTableViewCell: UITableViewCell {
     
     func setupAccessibility() {
         isAccessibilityElement = false
-        accessibilityElements = [nameLabel as Any, addressLabel as Any, paymentLabel as Any]
-        nameLabel.accessibilityHint = NSLocalizedString("display_details", comment: "Tap to display details")
+        detailsImage.isAccessibilityElement = true
+        detailsImage.accessibilityLabel = NSLocalizedString("details", comment: "Details")
+        detailsImage.accessibilityHint = NSLocalizedString("display_details", comment: "Tap to Display Details")
+        detailsImage.accessibilityTraits = [.button]
+        accessibilityElements = [nameLabel as Any, addressLabel as Any, paymentLabel as Any, detailsImage as Any]
     }
     
     func displayEmployee(employmentModel: EmploymentModel) {

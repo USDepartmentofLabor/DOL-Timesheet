@@ -33,13 +33,10 @@ extension UIViewController: InfoViewDelegate {
         popoverViewController.popoverPresentationController!.delegate = self
         popoverViewController.popoverPresentationController?.sourceView = (sender as! UIView)
         popoverViewController.popoverPresentationController?.sourceRect = (sender as! UIView).bounds
+        popoverViewController.completionHandler = {
+            UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: sender)
+        }
         present(popoverViewController, animated: true, completion: nil)
-        
-//        self.addChild(popoverViewController)
-//        popoverViewController.view.frame = self.view.frame
-////        popoverViewController.view.translatesAutoresizingMaskIntoConstraints = false
-//        self.view.addSubview(popoverViewController.view)
-//        popoverViewController.didMove(toParent: self)
     }
 }
 
@@ -53,6 +50,12 @@ extension UIViewController: UIPopoverPresentationControllerDelegate {
     public func adaptivePresentationStyle(for controller: UIPresentationController,
                                    traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
+    }
+    
+    public func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        if let sourceView = popoverPresentationController.sourceView {
+            UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: sourceView)
+        }
     }
     
 }
@@ -88,6 +91,7 @@ extension UIViewController: InfoPopupDelegate {
     func displayRespources(url: URL) {
         if url.absoluteString == "http://www.dol.gov/whd/contact_us.htm" {
             let resourcesVC = ResourcesViewController.instantiateFromStoryboard()
+            resourcesVC.title = NSLocalizedString("resources", comment: "Resources")
             navigationController?.pushViewController(resourcesVC, animated: true)
         }
         else {

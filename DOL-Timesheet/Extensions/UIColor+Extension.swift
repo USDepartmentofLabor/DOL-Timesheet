@@ -15,9 +15,15 @@ extension UIColor {
         }
     }
     
-    var appSecondaryColor: UIColor? {
+    class var appSecondaryColor: UIColor? {
         get {
             return UIColor(named: "appSecondaryColor")
+        }
+    }
+    
+    class var borderColor: UIColor {
+        get {
+            return UIColor(named: "borderColor") ?? UIColor.gray
         }
     }
 }

@@ -19,6 +19,12 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
     @IBOutlet weak var userTitleLabel: UILabel!
     
     @IBOutlet weak var nameTitleLabel: TitleValueLabel!
+    @IBOutlet weak var cityTitleLabel: TitleValueLabel!
+    @IBOutlet weak var stateTitleLabel: TitleValueLabel!
+    @IBOutlet weak var zipCodeTitleLabel: TitleValueLabel!
+    @IBOutlet weak var phoneTitleLabel: TitleValueLabel!
+    @IBOutlet weak var emailTitleLabel: TitleValueLabel!
+
     @IBOutlet weak var nameTextField: UnderlinedTextField!
     @IBOutlet weak var street1TextField: UnderlinedTextField!
     @IBOutlet weak var street2TextField: UnderlinedTextField!
@@ -33,12 +39,21 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
     
     @IBOutlet weak var employmentTitleLabel: UILabel!
     @IBOutlet weak var addressTitleLabel: TitleValueLabel!
+    
+    @IBOutlet weak var supervisorNameTitleLabel: TitleValueLabel!
+    @IBOutlet weak var supervisorEmailTitleLabel: TitleValueLabel!
+    @IBOutlet weak var employeeNumberTitleLabel: TitleValueLabel!
+    @IBOutlet weak var startDateTitleLabel: TitleValueLabel!
+    @IBOutlet weak var paymentTypeTitleLabel: TitleValueLabel!
+
     @IBOutlet weak var supervisorNameTextField: UnderlinedTextField!
     @IBOutlet weak var supervisorEmailTextField: UnderlinedTextField!
     @IBOutlet weak var employmentNumberTextField: UnderlinedTextField!
     @IBOutlet weak var startDateTextField: UnderlinedTextField!
     @IBOutlet weak var paymentTypeView: UIView!
     @IBOutlet weak var paymentTypeTextField: UnderlinedTextField!
+    
+    @IBOutlet weak var nextBtn: NavigationButton!
     
     var activeField: UIView?
     var startDate: Date = Date() {
@@ -71,7 +86,6 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
 
         assert(viewModel != nil)
         
-        
         // If this is Root ViewController
         if let rootViewController = navigationController?.viewControllers.first,
             rootViewController == self {
@@ -82,6 +96,10 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         employmentInfoView.addBorder()
         
         scrollView.keyboardDismissMode = .onDrag
+
+        zipcodeTextField.attributedPlaceholder = NSAttributedString(string: "XXXXX / XXXXX-XXXX", attributes:
+            [NSAttributedString.Key.foregroundColor:  UIColor.borderColor,
+             NSAttributedString.Key.font: Style.scaledFont(forDataType: .nameValueText)])
 
         titleInfoView.delegate = self
         subTitleLabel.scaleFont(forDataType: .subTitle)
@@ -99,10 +117,6 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         paymentTypeTextField.delegate = self
         startDateTextField.delegate = self
         
-        if Util.isVoiceOverRunning {
-            phoneTextField.keyboardType = .numbersAndPunctuation
-        }
-
         userTitleLabel.scaleFont(forDataType: .sectionTitle)
         employmentTitleLabel.scaleFont(forDataType: .sectionTitle)
         
@@ -129,7 +143,8 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         }
         
         nameTitleLabel.text = "\(nameTitle)*"
-        nameTitleLabel.accessibilityLabel = "\(nameTitle)* Required"
+        nameTitleLabel.accessibilityLabel = "\(nameTitle) Required"
+        nameTextField.accessibilityLabel = nameTitle
         addressTitleLabel.text = addressTitle
         
         // remove Skip button from navbar
@@ -146,8 +161,37 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         else {
             paymentTypeView.removeFromSuperview()
         }
+        
+        setupAccessibility()
     }
     
+    func setupAccessibility() {
+        nameTextField.accessibilityLabel =  nameTitleLabel.accessibilityLabel
+        street1TextField.accessibilityLabel = NSLocalizedString("street1", comment: "Stree1")
+        street2TextField.accessibilityLabel = NSLocalizedString("street2", comment: "Stree2")
+        cityTextField.accessibilityLabel = cityTitleLabel.text
+        stateTextField.accessibilityLabel = stateTitleLabel.text
+        zipcodeTextField.accessibilityLabel = zipCodeTitleLabel.text
+        phoneTextField.accessibilityLabel = phoneTitleLabel.text
+        emailTextField.accessibilityLabel = emailTitleLabel.text
+        
+        stateTextField.accessibilityTraits = [.button, .staticText]
+        stateTextField.accessibilityHint = NSLocalizedString("state_hint", comment: "Tap to Select State")
+        
+        supervisorNameTextField.accessibilityLabel = supervisorNameTitleLabel.text
+        supervisorEmailTextField.accessibilityLabel = supervisorEmailTitleLabel.text
+        startDateTextField.accessibilityLabel = startDateTitleLabel.text
+        paymentTypeTextField.accessibilityLabel = paymentTypeTitleLabel.text
+        employmentNumberTextField.accessibilityLabel = employeeNumberTitleLabel.text
+        
+        startDateTextField.accessibilityTraits = [.button, .staticText]
+        startDateTextField.accessibilityHint = NSLocalizedString("start_date_hint", comment: "Tap to Select Start Date")
+
+        paymentTypeTextField.accessibilityTraits = [.button, .staticText]
+        paymentTypeTextField.accessibilityHint = NSLocalizedString("payment_type_hint", comment: "Tap to Select Payment Type")
+
+    }
+
     func displayInfo() {
         guard let viewModel = viewModel else { return }
         
@@ -283,7 +327,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
 
 extension EmploymentInfoViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == employmentNumberTextField {
+        if textField.returnKeyType == .done {
             textField.resignFirstResponder()
         }
         else {
@@ -301,7 +345,9 @@ extension EmploymentInfoViewController: UITextFieldDelegate {
 //        let aRect = textField.convert(textField.frame, to: scrollView)
 //        scrollView.scrollRectToVisible(aRect, animated: true)
         if textField == stateTextField {
-            
+            let announcementMsg = NSLocalizedString("select_state", comment: "Select State")
+            UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementMsg)
+
             DispatchQueue.main.async { [weak self] in
                 self?.view.endEditing(true)
             }
@@ -313,12 +359,16 @@ extension EmploymentInfoViewController: UITextFieldDelegate {
                     strongSelf.stateTextField.text = state.title
                 }
                 optionsVC.dismiss(animated: true, completion: nil)
+               
+                UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: strongSelf.zipcodeTextField)
             }
             
             showPopup(popupController: optionsVC, sender: textField)
         }
         else if textField == paymentTypeTextField {
-            
+            let announcementMsg = NSLocalizedString("select_payment_type", comment: "Select Payment Type")
+            UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementMsg)
+
             DispatchQueue.main.async { [weak self] in
                 self?.view.endEditing(true)
             }
@@ -331,12 +381,15 @@ extension EmploymentInfoViewController: UITextFieldDelegate {
                     strongSelf.viewModel?.paymentType = paymentType
                 }
                 optionsVC.dismiss(animated: true, completion: nil)
+                UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: strongSelf.nextBtn)
             }
             
             showPopup(popupController: optionsVC, sender: textField)
         }
         else if textField == startDateTextField {
-            
+            let announcementMsg = NSLocalizedString("select_start_date", comment: "Select Start Date")
+            UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementMsg)
+
             DispatchQueue.main.async { [weak self] in
                 self?.view.endEditing(true)
             }
@@ -378,13 +431,16 @@ extension EmploymentInfoViewController: UITextFieldDelegate {
 extension EmploymentInfoViewController: TimePickerProtocol {
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
         startDate = datePicker.date
+        
+        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: startDateTextField)
     }
 }
 
 
 extension EmploymentInfoViewController {
-    public func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+    public override func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         
+        super.popoverPresentationControllerDidDismissPopover(popoverPresentationController)
         if let timePicketVC = popoverPresentationController.presentedViewController as? TimePickerViewController {
             timePicketVC.delegate?.timeChanged(sourceView: timePicketVC.sourceView, datePicker: timePicketVC.datePicker)
         }

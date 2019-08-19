@@ -65,7 +65,7 @@ class TimesheetViewModel {
         case .monthly:
             components.month = 1 * multiplier
         case .biMonthly:
-            components.day = 16 * multiplier
+            components.day = (direction == .forward) ? 16 : -1
         }
 
         let nextStartDate = calendar.date(byAdding: components, to: currentPeriod.startDate)!
@@ -316,7 +316,7 @@ extension TimesheetViewModel {
         
         if dateLog.timeLogs?.count ?? 0 < 1 {
             // Create the First TimeLog
-            dateLog.createTimeLog()
+            _ = dateLog.createTimeLog()
         }
         
         return EnterTimeViewModel(dateLog: dateLog)

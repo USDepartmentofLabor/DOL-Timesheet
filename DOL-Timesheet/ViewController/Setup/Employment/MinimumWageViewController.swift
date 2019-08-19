@@ -74,7 +74,7 @@ class MinimumWageViewController: UIViewController {
     func setupView() {
         federalWageLabel.scaleFont(forDataType: .nameValueText)
         perhourLabel.scaleFont(forDataType: .nameValueText)
-        minimumWageTextField.addTarget(self, action: #selector(minimuWageDidChange(_:)), for: .editingChanged)
+        minimumWageTextField.addTarget(self, action: #selector(minimumWageDidChange(_:)), for: .editingChanged)
         
         eligibilityContentView.addBorder()
         minimumWageContentView.addBorder()
@@ -85,12 +85,16 @@ class MinimumWageViewController: UIViewController {
         minimuWageLabelInfoView.infoType = .minimumWage
         eligibleTitleLabelInfo.infoType = .overtimeEligible
 
-//        setupAccessibility()
-//    }
-//    
-//    func setupAccessibility() {
-//        isAccessibilityElement = false
-//        accessibilityElements = [eligibleTitleLabelInfo as Any, minimumWageTextField as Any]
+        minimumWageTextField.delegate = self
+        setupAccessibility()
+    }
+    
+    func setupAccessibility() {
+        if Util.isVoiceOverRunning {
+            minimumWageTextField.keyboardType = .numbersAndPunctuation
+        }
+        
+        minimumWageTextField.accessibilityLabel = NSLocalizedString("minimum_wage_amount", comment: "Minimum Wage Amount")
     }
     
     func displayInfo() {
@@ -130,8 +134,17 @@ extension MinimumWageViewController {
 }
 
 extension MinimumWageViewController {
-    @objc func minimuWageDidChange(_ textField: UITextField) {
+    @objc func minimumWageDidChange(_ textField: UITextField) {
         minimumWage = textField.text?.currencyAmount() ?? NSNumber(0)
         textField.text = NumberFormatter.localisedCurrencyStr(from: minimumWage)
+    }
+}
+
+extension MinimumWageViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.returnKeyType == .done {
+            textField.resignFirstResponder()
+        }
+        return true
     }
 }

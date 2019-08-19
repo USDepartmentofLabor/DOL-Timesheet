@@ -52,6 +52,13 @@ class HourlyRateTableViewCell: UITableViewCell {
     func setupAccessibility() {
         isAccessibilityElement = false
         accessibilityElements = [rateTitleLabel as Any, rateNameTextField as Any, rateValueTextField as Any, perHourLabel as Any, deleteBtn as Any]
+        
+        rateNameTextField.accessibilityLabel = rateTitleLabel.text
+        rateValueTextField.accessibilityLabel = NSLocalizedString("rate_amount", comment: "Rate Amount")
+        
+        if Util.isVoiceOverRunning {
+            rateValueTextField.keyboardType = .numbersAndPunctuation
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
