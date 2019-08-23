@@ -275,7 +275,12 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         }
         else if let emailAddress = emailTextField.text?.trimmingCharacters(in: .whitespaces),
             !emailAddress.isEmpty, !Util.isValidEmailAddress(emailAddress: emailAddress) {
-            errorStr = NSLocalizedString("err_invalid_emailaddress", comment: "Please provide valid email")
+            if viewModel?.isProfileEmployer ?? false {
+                errorStr = NSLocalizedString("err_invalid_employee_emailaddress", comment: "Please provide valid email")
+            }
+            else {
+                errorStr = NSLocalizedString("err_invalid_employer_emailaddress", comment: "Please provide valid email")
+            }
         }
         else if let supervisorEmailAddress = supervisorEmailTextField.text?.trimmingCharacters(in: .whitespaces),
             !supervisorEmailAddress.isEmpty, !Util.isValidEmailAddress(emailAddress: supervisorEmailAddress) {
