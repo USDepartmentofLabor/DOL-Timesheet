@@ -146,7 +146,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBq-f9-ZDF">
-                                <rect key="frame" x="15" y="163.5" width="384" height="631.5"/>
+                                <rect key="frame" x="15" y="163.5" width="384" height="636.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGP-uC-jiL" userLabel="EmployeeEmployerView">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="142"/>
@@ -265,7 +265,7 @@
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Worked (Hours)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mu7-bo-n9y" userLabel="HoursWorkedLabel">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Worked (Hours)" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mu7-bo-n9y" userLabel="HoursWorkedLabel">
                                                                         <rect key="frame" x="124.5" y="0.0" width="119" height="64.5"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -274,7 +274,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fw7-3m-6j0">
                                                                         <rect key="frame" x="248.5" y="0.0" width="119.5" height="64.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Break (Hours)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5J-wR-eQC" userLabel="BreakHoursLabel">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Break (Hours)" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5J-wR-eQC" userLabel="BreakHoursLabel">
                                                                                 <rect key="frame" x="5.5" y="0.0" width="90" height="64.5"/>
                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -321,11 +321,11 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="384" height="43.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rbY-Kg-trd">
-                                                                            <rect key="frame" x="8" y="8" width="368" height="27.5"/>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rbY-Kg-trd">
+                                                                            <rect key="frame" x="8" y="8" width="364" height="27.5"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon 01/01/2019" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAC-kt-sbb" userLabel="DayLabel">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="122.5" height="27.5"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="118" height="27.5"/>
                                                                                     <accessibility key="accessibilityConfiguration">
                                                                                         <accessibilityTraits key="traits" button="YES" staticText="YES"/>
                                                                                     </accessibility>
@@ -333,14 +333,14 @@
                                                                                     <color key="textColor" name="appPrimaryColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="450-Qx-5vh" userLabel="HoursWorkedLabel">
-                                                                                    <rect key="frame" x="122.5" y="0.0" width="123" height="27.5"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="450-Qx-5vh" userLabel="HoursWorkedLabel">
+                                                                                    <rect key="frame" x="123" y="0.0" width="118" height="27.5"/>
                                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                                                     <color key="textColor" name="darkTextColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZP4-E6-3Hg" userLabel="BreakHoursLabel">
-                                                                                    <rect key="frame" x="245.5" y="0.0" width="122.5" height="27.5"/>
+                                                                                    <rect key="frame" x="246" y="0.0" width="118" height="27.5"/>
                                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                                                     <color key="textColor" name="darkTextColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -350,13 +350,14 @@
                                                                                 <constraint firstAttribute="bottom" secondItem="XAC-kt-sbb" secondAttribute="bottom" id="g6S-no-KGK"/>
                                                                                 <constraint firstItem="XAC-kt-sbb" firstAttribute="top" secondItem="rbY-Kg-trd" secondAttribute="top" id="tYP-BZ-0OX"/>
                                                                             </constraints>
+                                                                            <variation key="heightClass=regular-widthClass=regular" spacing="20"/>
                                                                         </stackView>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstItem="rbY-Kg-trd" firstAttribute="top" secondItem="kZb-p2-PaS" secondAttribute="top" constant="8" id="H1Q-ZN-v2p"/>
                                                                         <constraint firstAttribute="bottom" secondItem="rbY-Kg-trd" secondAttribute="bottom" constant="8" id="gMp-VC-bby"/>
                                                                         <constraint firstItem="rbY-Kg-trd" firstAttribute="leading" secondItem="kZb-p2-PaS" secondAttribute="leading" constant="8" id="qb7-By-AeZ"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="rbY-Kg-trd" secondAttribute="trailing" constant="8" id="rtR-my-YCP"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="rbY-Kg-trd" secondAttribute="trailing" constant="12" id="rtR-my-YCP"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
@@ -381,23 +382,23 @@
                                                                     <constraint firstAttribute="height" constant="1" id="6UA-NK-PHr"/>
                                                                 </constraints>
                                                             </view>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="w2D-ad-cgV">
-                                                                <rect key="frame" x="5" y="8" width="374" height="20.5"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="w2D-ad-cgV">
+                                                                <rect key="frame" x="8" y="8" width="364" height="20.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijH-Yr-02B" userLabel="TotalTitleLabel">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="124.5" height="20.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="118" height="20.5"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tky-8o-QJU" userLabel="HoursWorkedLabel">
-                                                                        <rect key="frame" x="124.5" y="0.0" width="125" height="20.5"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tky-8o-QJU" userLabel="HoursWorkedLabel">
+                                                                        <rect key="frame" x="123" y="0.0" width="118" height="20.5"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                         <color key="textColor" name="darkTextColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9f2-Ub-meU" userLabel="BreakHoursLabel">
-                                                                        <rect key="frame" x="249.5" y="0.0" width="124.5" height="20.5"/>
+                                                                        <rect key="frame" x="246" y="0.0" width="118" height="20.5"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                         <color key="textColor" name="darkTextColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -408,12 +409,12 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="w2D-ad-cgV" firstAttribute="top" secondItem="Apa-IX-HM6" secondAttribute="top" constant="8" id="3kD-3A-QUl"/>
-                                                            <constraint firstAttribute="trailing" secondItem="w2D-ad-cgV" secondAttribute="trailing" constant="5" id="84Z-WM-Lo2"/>
+                                                            <constraint firstAttribute="trailing" secondItem="w2D-ad-cgV" secondAttribute="trailing" constant="12" id="84Z-WM-Lo2"/>
                                                             <constraint firstItem="Xi6-na-afF" firstAttribute="leading" secondItem="Apa-IX-HM6" secondAttribute="leading" id="I6G-Ur-bbl"/>
                                                             <constraint firstAttribute="bottom" secondItem="w2D-ad-cgV" secondAttribute="bottom" constant="8" id="bFn-b9-3vg"/>
                                                             <constraint firstItem="Xi6-na-afF" firstAttribute="top" secondItem="Apa-IX-HM6" secondAttribute="top" id="gmS-rU-sL3"/>
                                                             <constraint firstAttribute="trailing" secondItem="Xi6-na-afF" secondAttribute="trailing" id="r8x-2U-OmI"/>
-                                                            <constraint firstItem="w2D-ad-cgV" firstAttribute="leading" secondItem="Apa-IX-HM6" secondAttribute="leading" constant="5" id="ysN-Xo-tjp"/>
+                                                            <constraint firstItem="w2D-ad-cgV" firstAttribute="leading" secondItem="Apa-IX-HM6" secondAttribute="leading" constant="8" id="ysN-Xo-tjp"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -737,7 +738,7 @@
                                 </constraints>
                             </scrollView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xj-lT-hYM">
-                                <rect key="frame" x="0.0" y="807" width="414" height="55"/>
+                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
                                 <items>
                                     <barButtonItem systemItem="action" id="7jK-dO-jYa">
                                         <connections>
