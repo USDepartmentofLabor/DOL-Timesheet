@@ -144,6 +144,7 @@ extension MinimumWageViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.returnKeyType == .done {
             textField.resignFirstResponder()
+            UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: perhourLabel)
         }
         return true
     }

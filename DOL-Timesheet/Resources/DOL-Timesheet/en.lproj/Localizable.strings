@@ -125,6 +125,7 @@
 "delete_confirm_time_log" = "Are you sure you want to delete the time log?";
 "delete_hourly_rate" = "Delete Hourly Rate";
 "delete_confirm_hourly_rate_log" = "Are you sure you want to delete %@?";
+"delete_rate_hint" = "Tap to delete %@";
 
 "prev_period" = "Previous Period";
 "next_period" = "Next Period";
@@ -168,7 +169,7 @@
 "err_time_between_start_endtime" = "%@ lies in between time %@ and %@.";
 "err_break_more_than_hours_worked" = "Break time can not be more that hours worked.";
 "err_select_hourly_rate" = "Please select hourly rate.";
-"err_invalid_zipcode" = "Please provide valid zip code with format XXXXX or XXXXX-XXXX.";
+"err_invalid_zipcode" = "Please provide valid zip code with format 99999 or 99999-9999.";
 "err_invalid_phonenumber" = "Please provide valid phone number.";
 "err_invalid_employee_emailaddress" = "Please provide valid employee email address.";
 "err_invalid_employer_emailaddress" = "Please provide your valid email address.";

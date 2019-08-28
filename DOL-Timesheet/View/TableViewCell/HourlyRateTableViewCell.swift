@@ -77,6 +77,10 @@ class HourlyRateTableViewCell: UITableViewCell {
         
         rateNameTextField.text = rate.name
         rateValueTextField.text = NumberFormatter.localisedCurrencyStr(from: rate.value)
+        
+        let deleteHint = NSLocalizedString("delete_rate_hint", comment: "Delete Rate?")
+        let deleteMsg = String(format: deleteHint, rate.name ?? "")
+        deleteBtn.accessibilityHint = deleteMsg
     }
 }
 
@@ -90,6 +94,9 @@ extension HourlyRateTableViewCell {
         }
         else if textField == rateNameTextField {
             hourlyRate?.name = textField.text
+            let deleteHint = NSLocalizedString("delete_rate_hint", comment: "Delete Rate?")
+            let deleteMsg = String(format: deleteHint, hourlyRate?.name ?? "")
+            deleteBtn.accessibilityHint = deleteMsg
         }
     }
 }

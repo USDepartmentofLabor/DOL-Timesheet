@@ -97,7 +97,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         
         scrollView.keyboardDismissMode = .onDrag
 
-        zipcodeTextField.attributedPlaceholder = NSAttributedString(string: "XXXXX / XXXXX-XXXX", attributes:
+        zipcodeTextField.attributedPlaceholder = NSAttributedString(string: "99999 / 99999-9999", attributes:
             [NSAttributedString.Key.foregroundColor:  UIColor.borderColor,
              NSAttributedString.Key.font: Style.scaledFont(forDataType: .nameValueText)])
 

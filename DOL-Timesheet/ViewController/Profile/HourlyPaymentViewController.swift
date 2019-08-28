@@ -18,7 +18,8 @@ class HourlyPaymentViewController: UIViewController {
     @IBOutlet weak var hourlyTitleLabel: UILabel!
     @IBOutlet weak var hourlyRateTableView: UITableView!
     @IBOutlet weak var hourlyRateTableViewHeightConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var addRateBtn: SubActionButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -111,6 +112,7 @@ extension HourlyPaymentViewController: UITableViewDataSource {
         
         cell.rateNameTextField.tag = indexPath.row + 1
         cell.rateValueTextField.tag = (indexPath.row+1) * 100
+        cell.perHourLabel.tag = cell.rateValueTextField.tag + 1
         if indexPath.row < (viewModel.hourlyRates?.count ?? 0) - 1 {
             cell.rateValueTextField.returnKeyType = .next
         }
@@ -145,6 +147,7 @@ extension HourlyPaymentViewController: HourlyRateCellDelegate {
             UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: deleteAnnouncement)
 
             self.loadHourlyRate()
+            UIAccessibility.post(notification:  UIAccessibility.Notification.layoutChanged, argument: self.addRateBtn)
         })
         present(alertController, animated: true)
     }
@@ -185,6 +188,10 @@ extension HourlyPaymentViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.returnKeyType == .done {
             textField.resignFirstResponder()
+            let perHourTag = textField.tag + 1
+            if let view = view.viewWithTag(perHourTag) {
+                UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: view)
+            }
         }
         else if textField.returnKeyType == .next {
             let nextTag: Int

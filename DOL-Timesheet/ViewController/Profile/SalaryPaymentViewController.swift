@@ -131,6 +131,7 @@ extension SalaryPaymentViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.returnKeyType == .done {
             textField.resignFirstResponder()
+            UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: salaryTypeView)
         }
         return true
     }

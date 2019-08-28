@@ -126,7 +126,6 @@ class EnterTimeViewController: UIViewController {
             self.tableView.layoutIfNeeded()
         }) { (complete) in
             self.tableViewHeightConstraint.constant = self.tableView.contentSize.height
-            print(self.tableView.contentSize.height)
         }
     }
 
