@@ -184,7 +184,7 @@ class SetupProfileViewController: UIViewController {
             NSLocalizedString("profile_image_new_hint", comment: "Tap to select profile photo") :
             NSLocalizedString("profile_image_hint", comment: "Tap to update profile photo")
         
-        zipcodeTextField.attributedPlaceholder = NSAttributedString(string: "99999 / 99999-9999", attributes:
+        zipcodeTextField.attributedPlaceholder = NSAttributedString(string: "99999 or 99999-9999", attributes:
             [NSAttributedString.Key.foregroundColor:  UIColor.borderColor,
              NSAttributedString.Key.font: Style.scaledFont(forDataType: .nameValueText)])
         profileType = viewModel.profileModel.isEmployer ? .employer : .employee

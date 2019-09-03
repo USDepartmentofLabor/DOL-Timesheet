@@ -27,7 +27,7 @@ class UnderlinedTextField: UITextField, UITextFieldDelegate {
         delegate = self
         backgroundColor = UIColor.clear
         scaleFont(forDataType: .nameValueText)
-        lineView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0.5))
+        lineView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 1))
         lineView.backgroundColor = UIColor.borderColor
         self.addSubview(lineView)
         
