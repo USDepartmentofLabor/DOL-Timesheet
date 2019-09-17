@@ -11,7 +11,7 @@ import UIKit
 class SetupBaseEmploymentViewController: UIViewController {
     var viewModel: EmploymentModel?
     
-    weak var delegate: TimesheetViewControllerDelegate?
+    weak var delegate: TimeViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

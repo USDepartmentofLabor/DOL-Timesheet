@@ -174,6 +174,10 @@ extension Date {
         
         return false
     }
+    
+    func isEqualOnlyDate(date: Date) -> Bool {
+        return self.removeTimeStamp() == date.removeTimeStamp()
+    }
 }
 
 extension Date {
@@ -194,3 +198,18 @@ extension Date {
     }
 }
 
+extension Date {
+    static func splitTime(startTime: Date, endTime: Date) -> [(startTime: Date, endTime: Date)] {
+        var timeRanges = [(startTime: Date, endTime: Date)]()
+        
+        var currentStartTime = startTime
+        while currentStartTime.removeTimeStamp() != endTime.removeTimeStamp() {
+            let currentEndTime = currentStartTime.endOfDay()
+            timeRanges.append((startTime: currentStartTime, endTime: currentEndTime))
+            currentStartTime = currentEndTime
+        }
+        timeRanges.append((startTime: currentStartTime, endTime: endTime))
+        
+        return timeRanges
+    }
+}

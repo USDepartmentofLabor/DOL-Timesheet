@@ -37,7 +37,7 @@ class ManageUsersViewController: UIViewController {
 
     @IBOutlet weak var employmentTableViewHeightConstraint: NSLayoutConstraint!
 
-    weak var delegate: TimesheetViewControllerDelegate?
+    weak var delegate: TimeViewControllerDelegate?
     
     var isEmbeded = false {
         didSet {

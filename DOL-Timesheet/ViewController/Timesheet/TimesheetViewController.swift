@@ -10,23 +10,18 @@ import UIKit
 import MessageUI
 
 
-protocol TimesheetViewControllerDelegate: class {
+protocol TimeViewControllerDelegate: class {
     func didUpdateUser()
     func didUpdateEmploymentInfo()
+}
+
+protocol EnterTimeViewControllerDelegate: class {
     func didEnterTime(enterTimeModel: EnterTimeViewModel?)
     func didCancelEnterTime()
 }
 
-class TimesheetViewController: UIViewController {
+class TimesheetViewController: UIViewController, TimeViewDelegate {
 
-    @IBOutlet weak var marqueeLabel: UILabel!
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var paymentTypeLabel: UILabel!
-    
-    @IBOutlet weak var employeeEmployerLabel: UILabel!
-    @IBOutlet weak var editBtn: UIButton!
-
-    @IBOutlet weak var selectUserDropDownView: DropDownView!
     @IBOutlet weak var periodView: UIView!
     @IBOutlet weak var periodLabel: UILabel!
     @IBOutlet weak var timeView: UIView!
@@ -99,7 +94,6 @@ class TimesheetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = TimesheetViewModel()
         setupView()
         displayInfo()
     }
@@ -124,15 +118,8 @@ class TimesheetViewController: UIViewController {
     }
     
     func setupView() {
-        title = "Timesheet"
+        title = NSLocalizedString("timesheet", comment: "Timesheet")
         
-        let infoItem = UIBarButtonItem.infoButton(target: self, action: #selector(infoClicked(sender:)))
-        navigationItem.rightBarButtonItem = infoItem
-        
-        let useNameTapGesture = UITapGestureRecognizer(target: self, action: #selector(userBtnClick(_:)))
-        useNameTapGesture.cancelsTouchesInView = false
-        selectUserDropDownView.addGestureRecognizer(useNameTapGesture)
-
         timeView.addBorder()
         periodView.addBorder()
         
@@ -153,12 +140,6 @@ class TimesheetViewController: UIViewController {
         earningsTableView.rowHeight = UITableView.automaticDimension
         earningsTableView.estimatedRowHeight = 200
 
-        editBtn.titleLabel?.scaleFont(forDataType: .actionButton)
-        userNameLabel.scaleFont(forDataType: .headingTitle)
-        paymentTypeLabel.scaleFont(forDataType: .timesheetPaymentTypeTitle)
-        employeeEmployerLabel.scaleFont(forDataType: .timesheetSectionTitle)
-        selectUserDropDownView.titleLabel.scaleFont(forDataType: .timesheetSelectedUser)
-        selectUserDropDownView.titleLabel.textColor = UIColor(named: "darkTextColor")
         periodLabel.scaleFont(forDataType: .timesheetPeriod)
         headingDayLabel.scaleFont(forDataType: .columnHeader)
         headingTotalHoursLabel.scaleFont(forDataType: .columnHeader)
@@ -205,49 +186,7 @@ class TimesheetViewController: UIViewController {
     }
     
     func displayInfo() {
-
-        let profileUser = viewModel?.userProfileModel.profileModel.currentUser
-        userNameLabel.text = profileUser?.name
-        
-        let profileImage = profileUser?.image?.normalizedImage() ?? #imageLiteral(resourceName: "profile")
-        
-        let profileBtn = UIButton(type: .custom)
-        profileBtn.setBackgroundImage(profileImage, for: .normal)
-        profileBtn.clipsToBounds = true
-        profileBtn.contentMode = .scaleAspectFill
-        profileBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        profileBtn.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        profileBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        profileBtn.addBorder(borderColor: .white, borderWidth: 0.5, cornerRadius: profileBtn.bounds.size.width / 2)
-        
-        profileBtn.accessibilityHint = NSLocalizedString("profile_hint", comment: "Tap to update Prodile")
-        profileBtn.addTarget(self, action: #selector(profileClicked(sender:)), for: UIControl.Event.touchDown)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileBtn)
-
-        if viewModel?.userProfileModel.isProfileEmployer ?? false {
-            employeeEmployerLabel.text = NSLocalizedString("employee", comment: "Employee")
-            selectUserDropDownView.accessibilityHint = NSLocalizedString("employee_user_hint", comment: "Tap To Select Employee")
-        }
-        else {
-            employeeEmployerLabel.text = NSLocalizedString("employer", comment: "Employer")
-            selectUserDropDownView.accessibilityHint = NSLocalizedString("employer_user_hint", comment: "Tap To Select Employer")
-        }
-        displayEmploymentInfo()
-    }
-
-    func displayEmploymentInfo() {
-        let employmentModel =  viewModel?.currentEmploymentModel
-
-        if employmentModel == nil {
-            let addUserTitle = viewModel?.userProfileModel.addNewUserTitle
-            selectUserDropDownView.title = addUserTitle ?? ""
-        }
-        else {
-            selectUserDropDownView.title = viewModel?.selectedUserName ?? ""
-        }
-        
         viewModel?.updatePeriod()
-        paymentTypeLabel.text = employmentModel?.currentPaymentTypeTitle ?? ""
         displayPeriodInfo()
     }
     
@@ -296,15 +235,9 @@ class TimesheetViewController: UIViewController {
         totalEarningsAmountLabel.text = viewModel.totalEarningsStr
         if viewModel.isBelowMinimumWage() {
             totalEarningsWarningLabel.text = NSLocalizedString("err_title_minimum_wage", comment: "Below MinimumWage").capitalized
-//            marqueeLabel.text = NSLocalizedString("err_title_minimum_wage", comment: "Below MinimumWage").capitalized
-            
-//            UIView.animate(withDuration: 12.0, delay: 1, options: ([.curveLinear, .repeat]), animations: {() -> Void in
-//                self.marqueeLabel.center = CGPoint(x: 0-self.marqueeLabel.bounds.size.width/2, y: self.marqueeLabel.center.y)
-//            }, completion:  { _ in })
         }
         else {
             totalEarningsWarningLabel.text = ""
-            marqueeLabel.text = ""
         }
         refreshEarnings()
     }
@@ -340,88 +273,18 @@ class TimesheetViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "setupProfile",
-            let navVC = segue.destination as? UINavigationController,
-            let introVC = navVC.topViewController as? IntroductionViewController {
-            introVC.delegate = self
-        }
-        else if segue.identifier == "showProfile",
-            let navVC = segue.destination as? UINavigationController,
-            let profileVC = navVC.topViewController as? SetupProfileViewController,
-            let viewModel = viewModel {
-            profileVC.viewModel = ProfileViewModel(context: viewModel.managedObjectContext.childManagedObjectContext())
-            profileVC.delegate = self
-        }
-        else if segue.identifier == "manageUsers",
-            let navVC = segue.destination as? UINavigationController,
-            let manageUserVC = navVC.topViewController as? ManageUsersViewController,
-            let viewModel = viewModel {
-            manageUserVC.viewModel = ProfileViewModel(context: viewModel.managedObjectContext.childManagedObjectContext())
-            manageUserVC.delegate = self
-        }
-        else if segue.identifier == "addEmploymentInfo",
-            let navVC = segue.destination as? UINavigationController,
-            let employmentInfoVC = navVC.topViewController as? EmploymentInfoViewController,
-            let viewModel = viewModel {
-            employmentInfoVC.viewModel = viewModel.userProfileModel.newTempEmploymentModel()
-            employmentInfoVC.delegate = self
-        }
-        else if segue.identifier == "enterTime",
+        if segue.identifier == "enterTime",
             let navVC = segue.destination as? UINavigationController,
             let enterTimeVC = navVC.topViewController as? EnterTimeViewController,
             let currentDate = sender as? Date,
             let viewModel = viewModel {
-                enterTimeVC.viewModel = viewModel.createEnterTimeViewModel(forDate: currentDate)
+                enterTimeVC.viewModel = viewModel.createEnterTimeViewModel(for: currentDate)
+                enterTimeVC.timeSheetModel = viewModel
                 enterTimeVC.delegate = self
         }
     }
     
-    @IBAction func userBtnClick(_ sender: Any) {
-        guard let userProfileModel = viewModel?.userProfileModel else { return }
-        
-        let users: [User]? = userProfileModel.employmentUsers
-        guard users?.count ?? 0 > 0 else {
-            addNewUser()
-            return
-        }
-        
-        let newRowTitle: String = userProfileModel.addNewUserTitle
-        let vc = OptionsListViewController(options: users!,
-                                           title: "", addRowTitle: newRowTitle)
-        vc.didSelect = { [weak self] (popVC: UIViewController, user: User?) in
-            popVC.dismiss(animated: true, completion: nil)
-            guard let strongSelf = self else { return }
-            if let user = user {
-                strongSelf.selectUserDropDownView.title = user.title
-                strongSelf.setCurrentUser(user: user)
-            }
-            else {
-                strongSelf.addNewUser()
-            }
-        }
-        
-        showPopup(popupController: vc, sender: selectUserDropDownView)
-    }
     
-    func setCurrentUser(user: User) {
-        viewModel?.setCurrentEmploymentModel(for: user)
-        displayEmploymentInfo()
-
-        let annnouncementMsg: String
-        if viewModel?.userProfileModel.isProfileEmployer ?? false {
-            annnouncementMsg = NSLocalizedString("select_employee", comment: "Employee Selected ")
-        }
-        else {
-            annnouncementMsg = NSLocalizedString("select_employer", comment: "Employer Selected")
-        }
-        let announcementStr = String(format: annnouncementMsg, user.name ?? "")
-        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: selectUserDropDownView)
-    }
-    
-    func addNewUser() {
-        performSegue(withIdentifier: "addEmploymentInfo", sender: self)
-    }
-
     @IBAction func prevNextClick(_ sender: Any) {
         viewModel?.nextPeriod(direction: .backward)
         displayPeriodInfo()
@@ -434,16 +297,8 @@ class TimesheetViewController: UIViewController {
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: periodLabel)
     }
     
-    @IBAction func contactWHDClick(_ sender: Any) {
-        contactWHD()
-    }
-    
     @IBAction func earningsToggle(_ sender: Any) {
         earningsCollapsed = !earningsCollapsed
-    }
-    
-    @IBAction func exportClicked(_ sender: Any) {
-        export()
     }
     
     func refreshSummary() {
@@ -662,11 +517,15 @@ extension TimesheetViewController: EarningsHeaderViewDelegate {
         
         workWeekViewModel.isCollapsed = !workWeekViewModel.isCollapsed
         
-        earningsTableView.reloadSections([section], with: .automatic)
+        earningsTableView.reloadSections([section], with: .bottom)
+        
+        self.earningsTableViewHeightConstraint.constant = self.earningsTableView.contentSize.height
+
         earningsTableView.beginUpdates()
         earningsTableView.endUpdates()
         
         UIView.animate(withDuration: 0, animations: {
+            self.earningsTableView.setNeedsLayout()
             self.earningsTableView.layoutIfNeeded()
         }) { (complete) in
             self.earningsTableViewHeightConstraint.constant = self.earningsTableView.contentSize.height
@@ -683,7 +542,7 @@ extension TimesheetViewController {
         navigationController?.pushViewController(resourcesVC, animated: true)
     }
     
-    func export() {
+    func export(_ sender: Any) {
         guard let csvPath = viewModel?.csv() else {
             return
         }
@@ -699,6 +558,19 @@ extension TimesheetViewController {
             UIActivity.ActivityType.postToFacebook,
             UIActivity.ActivityType.openInIBooks]
         
+        if let popOver = vc.popoverPresentationController {
+            if let senderBtn = sender as? UIBarButtonItem {
+                popOver.barButtonItem = senderBtn
+            }
+            else {
+                popOver.sourceView = self.view
+            }
+        }
+        
+        vc.completionWithItemsHandler = { (type,completed,items,error) in
+            // Delete the File
+            try? FileManager.default.removeItem(at: csvPath)
+        }
         present(vc, animated: true, completion: nil)
     }
     
@@ -718,14 +590,7 @@ extension TimesheetViewController: MFMailComposeViewControllerDelegate {
     }
 }
 
-extension TimesheetViewController: TimesheetViewControllerDelegate {
-    func didUpdateUser() {
-        displayInfo()
-    }
-    func didUpdateEmploymentInfo() {
-        displayEmploymentInfo()
-    }
-    
+extension TimesheetViewController: EnterTimeViewControllerDelegate {
     func didEnterTime(enterTimeModel: EnterTimeViewModel?) {
 //        let annnouncementMsg = NSLocalizedString("save_time_entry", comment: "Saved time for")
 //        

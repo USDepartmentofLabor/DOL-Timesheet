@@ -21,7 +21,7 @@ class EditEmploymentInfoViewController: UIViewController {
     weak var minimumWageVC: MinimumWageViewController?
     weak var paymentController: UIViewController?
     
-    weak var delegate: TimesheetViewControllerDelegate?
+    weak var delegate: TimeViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -225,7 +225,5 @@ class EditEmploymentInfoViewController: UIViewController {
         
         return true
     }
-
-    
 }
 

@@ -13,7 +13,7 @@ class IntroductionViewController: UIViewController {
     @IBOutlet weak var displayLogo: UIImageView!
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
-    weak var delegate: TimesheetViewControllerDelegate?
+    weak var delegate: TimeViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

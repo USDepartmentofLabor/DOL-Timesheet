@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03226D5522DF9B70003864A4 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03226D5422DF9B70003864A4 /* WebKit.framework */; };
+		0323427C2322F398000450CB /* PunchBreakTime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323427A2322F398000450CB /* PunchBreakTime+CoreDataClass.swift */; };
 		032430DE2285D81800E86E3E /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032430DD2285D81800E86E3E /* TimePickerViewController.swift */; };
 		0324C3DD2260E47100712576 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324C3DC2260E47100712576 /* AppDelegate.swift */; };
 		0324C3DF2260E47100712576 /* TimesheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324C3DE2260E47100712576 /* TimesheetViewController.swift */; };
@@ -33,7 +34,9 @@
 		03264F7222834F8D00FF6010 /* EnterTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03264F7122834F8D00FF6010 /* EnterTimeViewModel.swift */; };
 		03264F7422835E4200FF6010 /* EnterHourlyTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03264F7322835E4200FF6010 /* EnterHourlyTimeTableViewCell.swift */; };
 		032665C222A5645F00F45288 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032665C122A5645F00F45288 /* Bundle+Extension.swift */; };
+		0326DB622326C46500EDA2F7 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0326DB612326C46500EDA2F7 /* ShadowView.swift */; };
 		032719D02284846F00EE8881 /* DateLog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032719CE2284846F00EE8881 /* DateLog+CoreDataClass.swift */; };
+		03272CEA2319864E005A9DB0 /* PunchClock+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03272CE82319864E005A9DB0 /* PunchClock+CoreDataClass.swift */; };
 		0327532D229334160019BA10 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0327532C229334160019BA10 /* Util.swift */; };
 		0328A18422661DDB00957F53 /* InfoPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0328A18322661DDB00957F53 /* InfoPopupViewController.swift */; };
 		0328A18622661EB900957F53 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0328A18522661EB900957F53 /* UIViewController+Extension.swift */; };
@@ -42,6 +45,7 @@
 		0328BCB5227238B8006B695A /* WorkWeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0328BCB4227238B8006B695A /* WorkWeekTableViewCell.swift */; };
 		0328BCB7227244D7006B695A /* SetupSalaryPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0328BCB6227244D7006B695A /* SetupSalaryPaymentViewController.swift */; };
 		0328C44322BC0DC700B3C911 /* GlossaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0328C44222BC0DC700B3C911 /* GlossaryTableViewCell.swift */; };
+		0328F169232808B9005204D4 /* TimeLogBreak+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0328F167232808B9005204D4 /* TimeLogBreak+CoreDataClass.swift */; };
 		032920D722C103C9003E4732 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032920D522C103C9003E4732 /* DropDownView.swift */; };
 		032920D822C103C9003E4732 /* DropDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032920D622C103C9003E4732 /* DropDownView.xib */; };
 		0329260F2289CB7D00DB69AD /* SummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329260E2289CB7D00DB69AD /* SummaryTableViewCell.swift */; };
@@ -58,6 +62,8 @@
 		032C9F1B2264FD1900FB1468 /* ButonWithInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C9F1A2264FD1900FB1468 /* ButonWithInfo.swift */; };
 		032C9F1D2264FFFC00FB1468 /* LabelInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032C9F1C2264FFFC00FB1468 /* LabelInfoView.xib */; };
 		032C9F1F2265000D00FB1468 /* LabelInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C9F1E2265000D00FB1468 /* LabelInfoView.swift */; };
+		032D3CD0231EBC930095AAA8 /* TimeCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D3CCF231EBC930095AAA8 /* TimeCardViewController.swift */; };
+		032D3CD2231EF9BA0095AAA8 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D3CD1231EF9BA0095AAA8 /* TimeViewController.swift */; };
 		032DFD27228B2D8B001A1C3B /* EarningsTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032DFD26228B2D8B001A1C3B /* EarningsTableViewHeaderView.swift */; };
 		032DFD29228B2E00001A1C3B /* EarningsTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032DFD28228B2E00001A1C3B /* EarningsTableViewHeaderView.xib */; };
 		032DFD2C228B5774001A1C3B /* EarningsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032DFD2A228B5774001A1C3B /* EarningsTableViewCell.xib */; };
@@ -122,6 +128,7 @@
 
 /* Begin PBXFileReference section */
 		03226D5422DF9B70003864A4 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		0323427A2322F398000450CB /* PunchBreakTime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PunchBreakTime+CoreDataClass.swift"; sourceTree = "<group>"; };
 		032430DD2285D81800E86E3E /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
 		0324C3D92260E47100712576 /* DOL-Timesheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DOL-Timesheet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0324C3DC2260E47100712576 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,7 +160,9 @@
 		03264F7122834F8D00FF6010 /* EnterTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterTimeViewModel.swift; sourceTree = "<group>"; };
 		03264F7322835E4200FF6010 /* EnterHourlyTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterHourlyTimeTableViewCell.swift; sourceTree = "<group>"; };
 		032665C122A5645F00F45288 /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		0326DB612326C46500EDA2F7 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		032719CE2284846F00EE8881 /* DateLog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateLog+CoreDataClass.swift"; sourceTree = "<group>"; };
+		03272CE82319864E005A9DB0 /* PunchClock+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PunchClock+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0327532C229334160019BA10 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		0328A18322661DDB00957F53 /* InfoPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPopupViewController.swift; sourceTree = "<group>"; };
 		0328A18522661EB900957F53 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -162,6 +171,7 @@
 		0328BCB4227238B8006B695A /* WorkWeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkWeekTableViewCell.swift; sourceTree = "<group>"; };
 		0328BCB6227244D7006B695A /* SetupSalaryPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupSalaryPaymentViewController.swift; sourceTree = "<group>"; };
 		0328C44222BC0DC700B3C911 /* GlossaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossaryTableViewCell.swift; sourceTree = "<group>"; };
+		0328F167232808B9005204D4 /* TimeLogBreak+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeLogBreak+CoreDataClass.swift"; sourceTree = "<group>"; };
 		032920D522C103C9003E4732 /* DropDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		032920D622C103C9003E4732 /* DropDownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownView.xib; sourceTree = "<group>"; };
 		0329260E2289CB7D00DB69AD /* SummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTableViewCell.swift; sourceTree = "<group>"; };
@@ -178,6 +188,8 @@
 		032C9F1A2264FD1900FB1468 /* ButonWithInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButonWithInfo.swift; sourceTree = "<group>"; };
 		032C9F1C2264FFFC00FB1468 /* LabelInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelInfoView.xib; sourceTree = "<group>"; };
 		032C9F1E2265000D00FB1468 /* LabelInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelInfoView.swift; sourceTree = "<group>"; };
+		032D3CCF231EBC930095AAA8 /* TimeCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCardViewController.swift; sourceTree = "<group>"; };
+		032D3CD1231EF9BA0095AAA8 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		032DFD26228B2D8B001A1C3B /* EarningsTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsTableViewHeaderView.swift; sourceTree = "<group>"; };
 		032DFD28228B2E00001A1C3B /* EarningsTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarningsTableViewHeaderView.xib; sourceTree = "<group>"; };
 		032DFD2A228B5774001A1C3B /* EarningsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EarningsTableViewCell.xib; sourceTree = "<group>"; };
@@ -332,6 +344,9 @@
 		0324C4102260E96700712576 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				0328F167232808B9005204D4 /* TimeLogBreak+CoreDataClass.swift */,
+				0323427A2322F398000450CB /* PunchBreakTime+CoreDataClass.swift */,
+				03272CE82319864E005A9DB0 /* PunchClock+CoreDataClass.swift */,
 				0374ECCC228617DA00D1C503 /* HourlyRate+CoreDataClass.swift */,
 				032926102289F2AD00DB69AD /* HourlyPaymentTimeLog+CoreDataClass.swift */,
 				0374ECC8228602B500D1C503 /* TimeLog+CoreDataClass.swift */,
@@ -413,6 +428,8 @@
 				0324C3DE2260E47100712576 /* TimesheetViewController.swift */,
 				03264F6E22834ED100FF6010 /* EnterTimeViewController.swift */,
 				032430DD2285D81800E86E3E /* TimePickerViewController.swift */,
+				032D3CCF231EBC930095AAA8 /* TimeCardViewController.swift */,
+				032D3CD1231EF9BA0095AAA8 /* TimeViewController.swift */,
 			);
 			path = Timesheet;
 			sourceTree = "<group>";
@@ -453,6 +470,7 @@
 				59B1BEA12294588D00F0D37A /* TitleValueLabel.swift */,
 				032C514A22A7F03E0095C1A2 /* RadioButton.swift */,
 				032E5F2B22A99EE400F6EC26 /* BorderedView.swift */,
+				0326DB612326C46500EDA2F7 /* ShadowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -600,6 +618,11 @@
 				TargetAttributes = {
 					0324C3D82260E47100712576 = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					0324C3EF2260E47200712576 = {
 						CreatedOnToolsVersion = 10.2;
@@ -678,12 +701,17 @@
 				03264F6F22834ED100FF6010 /* EnterTimeViewController.swift in Sources */,
 				032DFD2D228B5774001A1C3B /* EarningsTableViewCell.swift in Sources */,
 				59AD9E5D22A16B7F00075193 /* UIFont+Extension.swift in Sources */,
+				03272CEA2319864E005A9DB0 /* PunchClock+CoreDataClass.swift in Sources */,
+				032D3CD2231EF9BA0095AAA8 /* TimeViewController.swift in Sources */,
 				0324C4152260EBBA00712576 /* EmploymentInfo+CoreDataClass.swift in Sources */,
 				0324C4122260EAB800712576 /* Data.swift in Sources */,
+				0323427C2322F398000450CB /* PunchBreakTime+CoreDataClass.swift in Sources */,
 				0374ECCA228602B500D1C503 /* TimeLog+CoreDataClass.swift in Sources */,
 				0324C3DD2260E47100712576 /* AppDelegate.swift in Sources */,
+				032D3CD0231EBC930095AAA8 /* TimeCardViewController.swift in Sources */,
 				033FFFA922F1D47A00969E6D /* ImportOldDB.swift in Sources */,
 				03E6818422665E90002F2345 /* PaymentTypeTableViewCell.swift in Sources */,
+				0328F169232808B9005204D4 /* TimeLogBreak+CoreDataClass.swift in Sources */,
 				03E68182226644B9002F2345 /* SetupPaymentTypeViewController.swift in Sources */,
 				03E6817922663604002F2345 /* EmploymentInfoViewController.swift in Sources */,
 				03F2F5D722821157007B1B68 /* ManageUsersViewController.swift in Sources */,
@@ -715,6 +743,7 @@
 				036D71982277529400CC62CE /* PaymentFrequencyTableViewCell.swift in Sources */,
 				59AD9E6322A1ADB500075193 /* SummaryTableViewHeaderView.swift in Sources */,
 				032C9F152264E83A00FB1468 /* IntroductionViewController.swift in Sources */,
+				0326DB622326C46500EDA2F7 /* ShadowView.swift in Sources */,
 				0324C41D2260FCF600712576 /* InfoViewController.swift in Sources */,
 				03CEDF82226E30120041C3ED /* SetupPaymentFrequencyViewController.swift in Sources */,
 				032C514B22A7F03E0095C1A2 /* RadioButton.swift in Sources */,

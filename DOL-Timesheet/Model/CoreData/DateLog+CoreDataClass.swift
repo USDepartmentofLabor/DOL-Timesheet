@@ -34,7 +34,7 @@ public class DateLog: NSManagedObject {
             
             if let rateOptions = employmentInfo?.sortedRates(), rateOptions.count == 1 {
                 newTimeLog.hourlyRate = rateOptions[0]
-                newTimeLog.value = rateOptions[0].value
+//                newTimeLog.value = rateOptions[0].value
             }
             
             addToTimeLogs(newTimeLog)
@@ -67,8 +67,8 @@ public class DateLog: NSManagedObject {
         let timeLogSet = timeLogs as? Set<TimeLog>
         return timeLogSet?.reduce(0) {
             var breakTime = 0.0
-            if $1.breakTime > EmploymentModel.ALLOWED_BREAK_SECONDS {
-                breakTime = $1.breakTime
+            if $1.totalBreakTime > EmploymentModel.ALLOWED_BREAK_SECONDS {
+                breakTime = $1.totalBreakTime
             }
             return ($0 ?? 0) + breakTime
         } ?? 0
@@ -77,7 +77,6 @@ public class DateLog: NSManagedObject {
     var amountEarned: Double {
         let timeLogSet = timeLogs as? Set<TimeLog>
         return timeLogSet?.reduce(0) {$0 + $1.amountEarned } ?? 0
-    }
-    
+    }    
 }
 

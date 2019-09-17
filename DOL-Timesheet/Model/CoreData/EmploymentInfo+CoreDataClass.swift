@@ -47,7 +47,7 @@ public class EmploymentInfo: NSManagedObject {
     // Get DateLog for date
     func log(forDate date: Date) ->  DateLog? {
         let dateLogSet = dateLogs as? Set<DateLog>
-        return (dateLogSet?.filter{$0.date == date.removeTimeStamp()}.first)
+        return (dateLogSet?.filter{$0.date?.removeTimeStamp() == date.removeTimeStamp()}.first)
     }
     
     func createLog(forDate date: Date) -> DateLog {
@@ -65,4 +65,37 @@ public class EmploymentInfo: NSManagedObject {
                 let secondDate = $1.createdAt ?? Date()
                 return firstDate < secondDate } )
     }
+}
+
+extension EmploymentInfo {
+    func startWork(hourlyRate: HourlyRate?, at date: Date? = nil) {
+        clock = PunchClock(context: managedObjectContext!)
+        clock?.startTime = date?.removeSeconds() ?? Date().removeSeconds()
+        clock?.hourlyRate = hourlyRate
+    }
+    
+    func startBreak(comments: String?, at date: Date? = nil) {
+        let breakClock = PunchBreakTime(context: managedObjectContext!)
+        breakClock.startTime = date?.removeSeconds() ?? Date().removeSeconds()
+        clock?.addToBreakTimes(breakClock)
+        clock?.comments = comments
+    }
+    func endBreak(comments: String?, at date: Date? = nil) {
+        if let currentBreak = clock?.currentBreak {
+            currentBreak.endTime = date?.removeSeconds() ?? Date().removeSeconds()
+        }
+        clock?.comments = comments
+    }
+
+    func endWork(comments: String?) {
+        clock?.comments = comments
+    }
+    
+    func discardClock() {
+        if let clock = clock {
+            managedObjectContext?.delete(clock)
+        }
+        
+        clock = nil
+    }    
 }

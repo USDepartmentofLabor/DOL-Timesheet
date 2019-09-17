@@ -17,7 +17,18 @@ class DropDownView: UIView {
             accessibilityLabel = title
         }
     }
-    
+
+    @IBInspectable var isEnabled: Bool = true {
+        didSet {
+            if isEnabled {
+                self.view.backgroundColor = .clear
+            }
+            else {
+                self.view.backgroundColor = UIColor(named: "disabledColor")
+            }
+        }
+    }
+
     @IBOutlet weak var titleLabel: UILabel!
     var view: UIView!
     

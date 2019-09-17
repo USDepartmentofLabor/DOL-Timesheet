@@ -305,7 +305,7 @@ extension TimesheetViewModel {
 }
 
 extension TimesheetViewModel {
-    func createEnterTimeViewModel(forDate date: Date) -> EnterTimeViewModel? {
+    func createEnterTimeViewModel(for date: Date) -> EnterTimeViewModel? {
        let childContext = managedObjectContext.childManagedObjectContext()
         
         guard let currentEmploymentModel = currentEmploymentModel,
@@ -319,6 +319,48 @@ extension TimesheetViewModel {
             _ = dateLog.createTimeLog()
         }
         
+        return EnterTimeViewModel(dateLog: dateLog)
+    }
+    
+    func createEnterTimeViewModel(for clock: PunchClock, hourlyRate: HourlyRate?) -> EnterTimeViewModel? {
+        guard let clockStartTime = clock.startTime else { return nil }
+        let clockEndTime = Date().removeSeconds()
+        
+        let childContext = managedObjectContext.childManagedObjectContext()
+        guard let currentEmploymentModel = currentEmploymentModel,
+            let childEmploymentInfo = childContext.object(with: currentEmploymentModel.employmentInfo.objectID) as? EmploymentInfo
+            else {return nil}
+        
+        let timeRanges = Date.splitTime(startTime: clockStartTime, endTime: clockEndTime)
+        
+        timeRanges.forEach {
+            let dateLog = childEmploymentInfo.log(forDate: $0.startTime) ?? childEmploymentInfo.createLog(forDate: $0.startTime)
+        
+            let timeLog = dateLog.createTimeLog()
+        
+            if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog,
+                let hourlyRate = hourlyRate,
+                let childHourlyRate = childContext.object(with: hourlyRate.objectID) as? HourlyRate {
+                hourlyTimeLog.hourlyRate = childHourlyRate
+            }
+            
+            timeLog?.startTime = $0.startTime
+            timeLog?.endTime = $0.endTime
+            timeLog?.comment = clock.comments
+            
+            let breakTimeEntries = clock.breakTimesEntries(for: $0.startTime)
+            breakTimeEntries?.forEach {
+                timeLog?.addBreak(startTime: $0.startTime, endTime: $0.endTime)
+            }
+
+            timeLog?.comment = clock.comments
+        }
+
+        let dateLog = childEmploymentInfo.log(forDate: clockStartTime)  ?? childEmploymentInfo.createLog(forDate: clockStartTime)
+        
+        if let childClock = childContext.object(with: clock.objectID) as? PunchClock {
+            childContext.delete(childClock)
+        }
         return EnterTimeViewModel(dateLog: dateLog)
     }
 }
@@ -346,6 +388,57 @@ extension TimesheetViewModel {
             }
         }
         return belowMinWage
+    }
+}
+
+extension TimesheetViewModel {
+    var clockState: ClockState {
+        if let clock = currentEmploymentModel?.employmentInfo.clock {
+            return clock.clockState()
+        }
+
+        // Check if any other employee has clock Started,
+        // In that case no clock function should be enabled.
+        if let clock = PunchClock.getClock(context: managedObjectContext),
+            clock.employment != currentEmploymentModel?.employmentInfo {
+            return .notAllowed
+        }
+        return .none
+    }
+    
+    func clock(action: ClockAction, hourlyRate: HourlyRate? = nil, comments: String?) {
+        switch action {
+        case .startWork:
+            currentEmploymentModel?.employmentInfo.startWork(hourlyRate: hourlyRate)
+            currentEmploymentModel?.save()
+        case .endWork:
+            currentEmploymentModel?.employmentInfo.endWork(comments: comments)
+        case .startBreak:
+            currentEmploymentModel?.employmentInfo.startBreak(comments: comments)
+        case .endBreak:
+            currentEmploymentModel?.employmentInfo.endBreak(comments: comments)
+        case .discardEntry:
+            currentEmploymentModel?.employmentInfo.discardClock()
+        }
+        
+        currentEmploymentModel?.save()
+    }
+
+    var availableClockOptions: [ClockAction] {
+        let actions: [ClockAction]
+        
+        switch clockState {
+        case .notAllowed:
+            actions = [ClockAction]()
+        case .none:
+            actions = [.startWork]
+        case .clockedIn:
+            actions = [.startBreak, .endWork, .discardEntry]
+        case .inBreak:
+            actions = [.endBreak, .endWork, .discardEntry]
+        }
+        
+        return actions
     }
 }
 
@@ -378,7 +471,7 @@ extension TimesheetViewModel {
         csvStr.append(",Date,StartTime,EndTime,Break,Comments,Rate,Daily Comment\n")
         for index in 0...period.numberOfDays() {
             let date = period.date(at: index)
-            let timeModel = createEnterTimeViewModel(forDate: date)
+            let timeModel = createEnterTimeViewModel(for: date)
             csvStr.append("\(timeModel?.csv() ?? "")")
         }
         

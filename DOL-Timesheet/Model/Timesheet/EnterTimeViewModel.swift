@@ -140,7 +140,7 @@ extension EnterTimeViewModel {
             if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog,
                 let nextHourlyTimeLog = nextTimeLog as? HourlyPaymentTimeLog {
                 nextHourlyTimeLog.hourlyRate = hourlyTimeLog.hourlyRate
-                nextHourlyTimeLog.value = hourlyTimeLog.value
+//                nextHourlyTimeLog.value = hourlyTimeLog.value
             }
         }
     }
@@ -150,7 +150,7 @@ extension EnterTimeViewModel {
     func csv() -> String {
         var csvStr: String = ""
         dateLog.sortedTimeLogs?.forEach {
-            csvStr.append(",\(dateLog.date?.formattedDate ?? ""),\($0.startTime?.formattedTime ?? ""),\($0.endTime?.formattedTime ?? ""),\(Date.secondsToHoursMinutes(seconds: $0.breakTime)),\($0.comment ?? "")")
+            csvStr.append(",\(dateLog.date?.formattedDate ?? ""),\($0.startTime?.formattedTime ?? ""),\($0.endTime?.formattedTime ?? ""),\(Date.secondsToHoursMinutes(seconds: $0.totalBreakTime)),\($0.comment ?? "")")
             
             if let hourlyTimeLog = $0 as? HourlyPaymentTimeLog {
                 let rate = hourlyTimeLog.value //hourlyTimeLog.hourlyRate?.value

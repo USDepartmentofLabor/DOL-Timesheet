@@ -30,6 +30,13 @@ struct BreakTime {
     var type: Int?
 }
 
+struct OldClock {
+    var startTime: Date?
+    var endTime: Date?
+    var comments: String?
+    var type: Int?
+}
+
 class ImportOldDB {
     
     let managedContext = CoreDataManager.shared().viewManagedContext
@@ -103,7 +110,7 @@ class ImportOldDB {
         employmentInfo.payFrequency = .weekly
         employmentInfo.paymentType = .hourly
         employmentInfo.minimumWage = Util.FEDERAL_MINIMUM_WAGE
-        employmentInfo.workWeekStartDay = Weekday(rawValue: oldEmployer.startOfWorkWeek) ?? .sunday
+        employmentInfo.workWeekStartDay = Weekday(rawValue: oldEmployer.startOfWorkWeek + 1) ?? .sunday
         
         // Add Hourly Rate
         let hourlyRate = HourlyRate(context: managedContext)
@@ -115,6 +122,7 @@ class ImportOldDB {
         employmentInfo.employee = employee
         
         addTimeLogs(db: db, employmentInfo: employmentInfo, oldEmployer: oldEmployer)
+        addClock(db: db, employmentInfo: employmentInfo, oldEmployer: oldEmployer)
     }
     
     func addTimeLogs(db: SQLiteDatabase, employmentInfo: EmploymentInfo, oldEmployer: OldEmployer) {
@@ -147,8 +155,9 @@ class ImportOldDB {
             timeLog?.startTime = startTime
             timeLog?.endTime = $0.endTime
             let breakTimes = db.getBreakTime(for: $0)
-            timeLog?.breakTime = breakTimes?.reduce(0) {$0 + $1.duration} ?? 0
-
+            let breakDuration = breakTimes?.reduce(0) {$0 + $1.duration} ?? 0
+            timeLog?.addBreak(duration: breakDuration)
+            
             if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
                 hourlyTimeLog.value = $0.hourlyRate.doubleValue
             }
@@ -169,6 +178,35 @@ class ImportOldDB {
             }
             timeLog?.comment = allComments + (breakComments ?? "")
         }
+    }
+    
+    func addClock(db: SQLiteDatabase, employmentInfo: EmploymentInfo, oldEmployer: OldEmployer) {
+        guard let clocks = db.getClock(for: oldEmployer),
+            clocks.count > 0 else { return }
+        
+        let startWork = clocks.filter{$0.type == 0}.first
+        if let startWork = startWork, let startTime = startWork.startTime {
+            var hourlyRate: HourlyRate? = nil
+            if let hourlyRates = employmentInfo.hourlyRate as? Set<HourlyRate> {
+                hourlyRate = hourlyRates.first
+            }
+            employmentInfo.startWork(hourlyRate: hourlyRate, at: startTime)
+            
+            var allComments = ""
+            let breaks = clocks.filter{$0.type != 0}
+            breaks.forEach {
+                if let comments = $0.comments {
+                    allComments.append(" \(comments)")
+                }
+                if let breakStart = $0.startTime {
+                    employmentInfo.startBreak(comments: allComments, at: breakStart)
+                }
+                if let endBreak = $0.endTime {
+                    employmentInfo.endBreak(comments: allComments, at: endBreak)
+                }
+            }
+        }
+        
     }
 }
 
@@ -275,8 +313,9 @@ extension SQLiteDatabase {
             sqlite3_finalize(queryStatement)
         }
         
-        while(sqlite3_step(queryStatement) == SQLITE_ROW) {
-            let startTime = String(cString: sqlite3_column_text(queryStatement, 0))
+        while(sqlite3_step(queryStatement) == SQLITE_ROW),
+            let sqlStartTime = sqlite3_column_text(queryStatement, 0) {
+            let startTime = String(cString: sqlStartTime)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
             
@@ -297,8 +336,9 @@ extension SQLiteDatabase {
             sqlite3_finalize(queryStatement)
         }
         
-        while(sqlite3_step(queryStatement) == SQLITE_ROW) {
-            let endTime = String(cString: sqlite3_column_text(queryStatement, 0))
+        while(sqlite3_step(queryStatement) == SQLITE_ROW),
+            let sqlEndTime = sqlite3_column_text(queryStatement, 0) {
+            let endTime = String(cString: sqlEndTime)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
             
@@ -338,11 +378,14 @@ extension SQLiteDatabase {
         }
 
         var timeEntries = [TimeEntry]()
-        while(sqlite3_step(queryStatement) == SQLITE_ROW) {
+        while(sqlite3_step(queryStatement) == SQLITE_ROW),
+            let sqlStartTime = sqlite3_column_text(queryStatement, 2),
+            let sqlEndTime = sqlite3_column_text(queryStatement, 3) {
+                
             let entryId = sqlite3_column_int(queryStatement, 0)
             _ = sqlite3_column_int(queryStatement, 1) // employerID
-            let startTime = String(cString: sqlite3_column_text(queryStatement, 2))
-            let endTime = String(cString: sqlite3_column_text(queryStatement, 3))
+            let startTime = String(cString: sqlStartTime)
+            let endTime = String(cString: sqlEndTime)
             let hourlyRate = NSNumber(value: sqlite3_column_double(queryStatement, 4))
             
             var comments: String? = nil
@@ -393,4 +436,56 @@ extension SQLiteDatabase {
         return breakTimes
     }
 
+    func getClock(for employer: OldEmployer) -> [OldClock]? {
+        let querySql = "SELECT StartTime, EndTime, Comments, Type FROM Clock WHERE EmployerId = ?;"
+        
+        guard let queryStatement = try? prepareStatement(sql: querySql) else {
+            return nil
+        }
+        
+        defer {
+            sqlite3_finalize(queryStatement)
+        }
+        
+        guard sqlite3_bind_int(queryStatement, 1, Int32(employer.employerId)) == SQLITE_OK else {
+            return nil
+        }
+
+        var clocks = [OldClock]()
+        while(sqlite3_step(queryStatement) == SQLITE_ROW),
+            let sqlStartTime = sqlite3_column_text(queryStatement, 0) {
+                
+            let startTime = String(cString: sqlStartTime)
+                
+            var endTime: String? = nil
+            if let sqlEndTime = sqlite3_column_text(queryStatement, 1) {
+                endTime = String(cString: sqlEndTime)
+            }
+                
+            let type = sqlite3_column_int(queryStatement, 3) // Type
+            
+            var comments: String? = nil
+            if let sqlComments = sqlite3_column_text(queryStatement, 2) {
+                comments = String(cString: sqlComments)
+            }
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            
+            let startDate = dateFormatter.date(from: startTime)
+            var endDate: Date? = nil
+            
+            if let endTime = endTime {
+                endDate = dateFormatter.date(from: endTime)
+            }
+
+            
+            let clock = OldClock(startTime: startDate, endTime: endDate, comments: comments, type: Int(type))
+            clocks.append(clock)
+        }
+        
+        return clocks
+
+        
+    }
 }

@@ -54,7 +54,7 @@ class SetupProfileViewController: UIViewController {
     @IBOutlet weak var manageEmploymentContentView: UIView!
     
     @IBOutlet weak var footerView: UIView!
-    weak var delegate: TimesheetViewControllerDelegate?
+    weak var delegate: TimeViewControllerDelegate?
     
     weak var manageVC: ManageUsersViewController?
     

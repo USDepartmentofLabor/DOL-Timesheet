@@ -33,6 +33,7 @@
         <attribute name="supervisorName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="typeValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="workWeekStartDayValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="clock" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PunchClock" inverseName="employment" inverseEntity="PunchClock" syncable="YES"/>
         <relationship name="dateLogs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DateLog" inverseName="employmentInfo" inverseEntity="DateLog" syncable="YES"/>
         <relationship name="employee" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Employee" inverseName="employers" inverseEntity="Employee" syncable="YES"/>
         <relationship name="employer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Employer" inverseName="employees" inverseEntity="Employer" syncable="YES"/>
@@ -47,8 +48,24 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="clock" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HourlyRate" inverseName="clock" inverseEntity="HourlyRate" syncable="YES"/>
         <relationship name="paymentInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmploymentInfo" inverseName="hourlyRate" inverseEntity="EmploymentInfo" syncable="YES"/>
         <relationship name="timeLog" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HourlyPaymentTimeLog" inverseName="hourlyRate" inverseEntity="HourlyPaymentTimeLog" syncable="YES"/>
+    </entity>
+    <entity name="PunchBreakTime" representedClassName="PunchBreakTime" syncable="YES" codeGenerationType="category">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="clock" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PunchClock" inverseName="breakTimes" inverseEntity="PunchClock" syncable="YES"/>
+    </entity>
+    <entity name="PunchClock" representedClassName="PunchClock" syncable="YES" codeGenerationType="category">
+        <attribute name="comments" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="breakTimes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PunchBreakTime" inverseName="clock" inverseEntity="PunchBreakTime" syncable="YES"/>
+        <relationship name="employment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmploymentInfo" inverseName="clock" inverseEntity="EmploymentInfo" syncable="YES"/>
+        <relationship name="hourlyRate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HourlyRate" syncable="YES"/>
     </entity>
     <entity name="Salary" representedClassName="Salary" syncable="YES" codeGenerationType="category">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -57,12 +74,20 @@
         <relationship name="paymentnfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmploymentInfo" inverseName="salary" inverseEntity="EmploymentInfo" syncable="YES"/>
     </entity>
     <entity name="TimeLog" representedClassName="TimeLog" syncable="YES" codeGenerationType="category">
-        <attribute name="breakTime" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="breakTimeLogs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TimeLogBreak" inverseName="timeLog" inverseEntity="TimeLogBreak" syncable="YES"/>
         <relationship name="dateLog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DateLog" inverseName="timeLogs" inverseEntity="DateLog" syncable="YES"/>
+    </entity>
+    <entity name="TimeLogBreak" representedClassName="TimeLogBreak" syncable="YES" codeGenerationType="category">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="durationValue" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="manualEntry" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="timeLog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimeLog" inverseName="breakTimeLogs" inverseEntity="TimeLog" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="category">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -79,11 +104,14 @@
         <element name="DateLog" positionX="-90" positionY="-18" width="128" height="120"/>
         <element name="Employee" positionX="-119.17578125" positionY="64.859375" width="128" height="60"/>
         <element name="Employer" positionX="-72.69140625" positionY="-189.33984375" width="128" height="60"/>
-        <element name="EmploymentInfo" positionX="88.921875" positionY="141.55859375" width="128" height="270"/>
+        <element name="EmploymentInfo" positionX="88.921875" positionY="141.55859375" width="128" height="285"/>
         <element name="HourlyPaymentTimeLog" positionX="-108" positionY="-36" width="128" height="75"/>
-        <element name="HourlyRate" positionX="90.97265625" positionY="314.71875" width="128" height="120"/>
+        <element name="HourlyRate" positionX="90.97265625" positionY="314.71875" width="128" height="135"/>
+        <element name="PunchBreakTime" positionX="-108" positionY="-36" width="128" height="105"/>
+        <element name="PunchClock" positionX="-108" positionY="-36" width="128" height="150"/>
         <element name="Salary" positionX="-48.43359375" positionY="357.30859375" width="128" height="105"/>
         <element name="TimeLog" positionX="-108" positionY="-36" width="128" height="135"/>
         <element name="User" positionX="-313.4453125" positionY="26.13671875" width="128" height="165"/>
+        <element name="TimeLogBreak" positionX="-108" positionY="-36" width="128" height="135"/>
     </elements>
 </model>

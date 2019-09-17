@@ -19,7 +19,9 @@ extension Employee {
     public func sortedEmployments() -> [EmploymentInfo]? {
         let employments: Set<EmploymentInfo> = employers as! Set<EmploymentInfo>
         return employments.sorted(by:
-            { ($0.employer?.name ?? "") < ($1.employer?.name ?? "")} )
+            { guard let firstCreatedDate = $0.employer?.createdAt else { return false }
+                guard let secondsCreatedDate = $1.employer?.createdAt else { return true }
+                return firstCreatedDate > secondsCreatedDate } )
     }
     
     public func employmentInfo(for user: Employer) -> EmploymentInfo? {

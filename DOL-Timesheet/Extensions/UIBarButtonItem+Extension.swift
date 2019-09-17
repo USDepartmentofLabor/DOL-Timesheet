@@ -21,4 +21,15 @@ extension UIBarButtonItem {
         return UIBarButtonItem(button: infoButton, target: target,
                                action: action)        
     }
+    
+    var isHidden: Bool {
+        get {
+            return tintColor == .clear
+        }
+        set {
+            tintColor = newValue ? .clear : UIColor(named: "appPrimaryColor")
+            isEnabled = !newValue
+            isAccessibilityElement = !newValue
+        }
+    }
 }

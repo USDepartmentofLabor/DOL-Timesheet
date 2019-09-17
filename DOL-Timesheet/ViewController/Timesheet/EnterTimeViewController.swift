@@ -11,11 +11,15 @@ import UIKit
 class EnterTimeViewController: UIViewController {
 
     var viewModel: EnterTimeViewModel?
+    var timeSheetModel: TimesheetViewModel?
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var paymentTypeLabel: UILabel!
+    
+    @IBOutlet weak var dateTitleLabel: UILabel!
+    @IBOutlet weak var dateDropDownView: DropDownView!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -35,7 +39,7 @@ class EnterTimeViewController: UIViewController {
     @IBOutlet weak var footerLabel: UILabel!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
-    weak var delegate: TimesheetViewControllerDelegate?
+    weak var delegate: EnterTimeViewControllerDelegate?
     
     var keyboardHeight: CGFloat = 0
     
@@ -66,7 +70,8 @@ class EnterTimeViewController: UIViewController {
 
         let saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save(_:)))
         navigationItem.rightBarButtonItem = saveBtn
-        title = viewModel?.title
+//        title = viewModel?.title
+        title = NSLocalizedString("manual_time_entry", comment: "Time Entry")
         
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableView.automaticDimension
@@ -74,10 +79,15 @@ class EnterTimeViewController: UIViewController {
         enterTimeView.addBorder()
         commentTextView.addBorder()
         paymentTypeLabel.scaleFont(forDataType: .enterTimePaymentType)
+        dateTitleLabel.scaleFont(forDataType: .enterTimeTitle)
         titleLabel.scaleFont(forDataType: .enterTimeTitle)
         commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
         editBtn.titleLabel?.scaleFont(forDataType: .actionButton)
         scrollView.keyboardDismissMode = .onDrag
+
+        let dateTapGesture = UITapGestureRecognizer(target: self, action: #selector(dateBtnClick(_:)))
+        dateTapGesture.cancelsTouchesInView = false
+        dateDropDownView.addGestureRecognizer(dateTapGesture)
 
         commentTextView.delegate = self
         
@@ -105,6 +115,15 @@ class EnterTimeViewController: UIViewController {
         }
     }
     
+    @objc func dateBtnClick(_ sender: Any) {
+        let datePickerVC = TimePickerViewController.instantiateFromStoryboard()
+        datePickerVC.delegate = self
+        datePickerVC.sourceView = (dateDropDownView)
+        datePickerVC.pickerMode = .date
+
+        showPopup(popupController: datePickerVC, sender: dateDropDownView)
+    }
+    
     func setupSalaryView() {
         hourlyRateTitleLabel.removeFromSuperview()
     }
@@ -114,6 +133,7 @@ class EnterTimeViewController: UIViewController {
     }
     
     func displayInfo() {
+        dateDropDownView.title = viewModel?.title ?? ""
         paymentTypeLabel.text = viewModel?.paymentType?.title
         commentTextView.text = viewModel?.comment
         displayTime()
@@ -136,7 +156,7 @@ class EnterTimeViewController: UIViewController {
 
     @objc func save(_ sender: Any?) {
         viewModel?.comment = commentTextView.text
-        
+                
         if let errorStr = viewModel?.validate() {
             displayError(message: errorStr, title: "Error")
             return
@@ -184,7 +204,7 @@ class EnterTimeViewController: UIViewController {
         else {
             editBtn.setTitle(NSLocalizedString("edit", comment: "Edit"), for: .normal)
         }
-    }
+    }    
 }
 
 extension EnterTimeViewController {
@@ -326,8 +346,7 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
     
     func handleNightShift(endTime: Date, for timeLog: TimeLog) {
         let message = NSLocalizedString("warning_split_time", comment: "Time will be entered for next day")
-        let title = NSLocalizedString("warning", comment: "Warning")
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: NSLocalizedString("yes", comment: "Yes"), style: .default, handler: { [weak self] (action) in
             guard let strongSelf = self else { return }
             strongSelf.viewModel?.splitTime(endTime: endTime, for: timeLog)
@@ -379,6 +398,15 @@ extension EnterTimeViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         let aRect = textView.convert(textView.frame, to: scrollView)
         scrollView.scrollRectToVisible(aRect, animated: true)
+    }
+}
+
+
+extension EnterTimeViewController: TimePickerProtocol {
+    func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
+        viewModel = timeSheetModel?.createEnterTimeViewModel(for: datePicker.date)
+        displayInfo()
+        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: dateDropDownView)
     }
 }
 

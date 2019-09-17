@@ -98,30 +98,35 @@ class EnterHourlyTimeTableViewCell: UITableViewCell {
     }
     
     func displayInfo() {
-        
+        displayTimeLog()
+    }
+    
+    func displayTimeLog() {
         let startTime = timeLog?.startTime?.formattedTime
         startTimeView.title = startTime ?? ""
         
         let endTime = timeLog?.endTime?.formattedTime
         endTimeView.title = endTime ?? ""
 
+        displayHourlyRate()
+        
+        displayBreakTime(timeInSeconds: timeLog?.totalBreakTime ?? 0)
+        commentsTextView.text = timeLog?.comment
+    }
+
+    func displayHourlyRate() {
         if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
-            
             let title = (hourlyTimeLog.value > 0) ? "\(hourlyTimeLog.hourlyRate?.name ?? "") \(NumberFormatter.localisedCurrencyStr(from: hourlyTimeLog.value))" :
-                hourlyTimeLog.hourlyRate?.title
+            hourlyTimeLog.hourlyRate?.title
             hourlyRateView.title = title ?? ""
         }
         else if hourlyRateView != nil {
             enterTimeStackView.removeArrangedSubview(hourlyRateView)
             hourlyRateView.removeFromSuperview()
             accessibilityElements = [startTimeView as Any, endTimeView as Any, breakTimeView as Any, commentsTitleLabel as Any, commentsTextView as Any]
-        }
-        
-        displayBreakTime(timeInSeconds: timeLog?.breakTime ?? 0)
-        commentsTextView.text = timeLog?.comment
+            }
     }
-    
-    
+
     @IBAction func startTimeClick(_ sender: Any) {
         showPicker(mode: .time, sender: startTimeView as Any, date: timeLog?.startTime)
     }
@@ -131,7 +136,7 @@ class EnterHourlyTimeTableViewCell: UITableViewCell {
     }
     
     @IBAction func breakTimeClick(_ sender: Any) {
-        showPicker(mode: .countDownTimer, sender: breakTimeView as Any, countdownDuration: timeLog?.breakTime ?? 0)
+        showPicker(mode: .countDownTimer, sender: breakTimeView as Any, countdownDuration: timeLog?.totalBreakTime ?? 0)
     }
     
     func showPicker(mode: UIDatePicker.Mode, sender: Any, date: Date? = nil, countdownDuration: TimeInterval = 0) {
@@ -171,7 +176,7 @@ class EnterHourlyTimeTableViewCell: UITableViewCell {
                 strongSelf.hourlyRateView.title = hourlyRate.title
                 strongSelf.delegate?.contentDidChange(cell: strongSelf)
                 hourlyTimeLog.hourlyRate = hourlyRate
-                hourlyTimeLog.value = hourlyRate.value
+//                hourlyTimeLog.value = hourlyRate.value
             }
             popVC.dismiss(animated: true, completion: nil)
         }
@@ -236,13 +241,13 @@ extension EnterHourlyTimeTableViewCell: TimePickerProtocol {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { [weak self] (action) in
                 guard let strongSelf = self else {return}
-                strongSelf.timeLog?.breakTime = duration
+                strongSelf.timeLog?.addBreak(duration: duration)
                 strongSelf.displayBreakTime(timeInSeconds: duration)
             }))
             delegate?.showAlert(cell: self, sender: breakTimeView, alertController: alertController)
         }
         else {
-            timeLog?.breakTime = duration
+            timeLog?.addBreak(duration: duration)
             displayBreakTime(timeInSeconds: duration)
         }
     }
