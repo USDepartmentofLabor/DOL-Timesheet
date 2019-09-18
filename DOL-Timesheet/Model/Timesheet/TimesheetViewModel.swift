@@ -399,7 +399,8 @@ extension TimesheetViewModel {
 
         // Check if any other employee has clock Started,
         // In that case no clock function should be enabled.
-        if let clock = PunchClock.getClock(context: managedObjectContext),
+        if !userProfileModel.isProfileEmployer,
+            let clock = PunchClock.getClock(context: managedObjectContext),
             clock.employment != currentEmploymentModel?.employmentInfo {
             return .notAllowed
         }
@@ -486,7 +487,7 @@ extension TimesheetViewModel {
         do {
             try csvStr.write(to: path, atomically: true, encoding: String.Encoding.utf8)
         } catch {
-            print("\(error)")
+//            print("\(error)")
         }
         
         return path

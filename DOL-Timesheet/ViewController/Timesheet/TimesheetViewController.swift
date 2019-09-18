@@ -194,6 +194,8 @@ class TimesheetViewController: UIViewController, TimeViewDelegate {
         periodLabel.text = viewModel?.currentPeriod?.title
         timeTableView.reloadData()
         
+        self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
+        
         UIView.animate(withDuration: 0, animations: {
             self.timeTableView.layoutIfNeeded()
         }) { (complete) in

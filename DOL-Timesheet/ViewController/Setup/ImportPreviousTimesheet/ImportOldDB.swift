@@ -75,12 +75,13 @@ class ImportOldDB {
             let employers = db.getAllEmployers()
             load(db: db, employers: employers)
             
-        } catch SQLiteError.OpenDatabase(let message) {
-            print("Unable to open database. Verify that you created the directory described in the Getting Started section.")
-            print(message)
+        } catch SQLiteError.OpenDatabase( _) {
+            ()
+//            print("Unable to open database. Verify that you created the directory described in the Getting Started section.")
+//            print(message)
         }
-        catch(let error) {
-            print(error)
+        catch( _) {
+//            print(error)
         }
     }
     

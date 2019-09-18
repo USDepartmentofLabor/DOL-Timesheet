@@ -17,7 +17,7 @@
         <relationship name="timeLogs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TimeLog" inverseName="dateLog" inverseEntity="TimeLog" syncable="YES"/>
     </entity>
     <entity name="Employee" representedClassName="Employee" parentEntity="User" syncable="YES" codeGenerationType="category">
-        <relationship name="employers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmploymentInfo" inverseName="employee" inverseEntity="EmploymentInfo" syncable="YES"/>
+        <relationship name="employers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="EmploymentInfo" inverseName="employee" inverseEntity="EmploymentInfo" syncable="YES"/>
     </entity>
     <entity name="Employer" representedClassName="Employer" parentEntity="User" syncable="YES" codeGenerationType="category">
         <relationship name="employees" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="EmploymentInfo" inverseName="employer" inverseEntity="EmploymentInfo" syncable="YES"/>
@@ -111,7 +111,7 @@
         <element name="PunchClock" positionX="-108" positionY="-36" width="128" height="150"/>
         <element name="Salary" positionX="-48.43359375" positionY="357.30859375" width="128" height="105"/>
         <element name="TimeLog" positionX="-108" positionY="-36" width="128" height="135"/>
-        <element name="User" positionX="-313.4453125" positionY="26.13671875" width="128" height="165"/>
         <element name="TimeLogBreak" positionX="-108" positionY="-36" width="128" height="135"/>
+        <element name="User" positionX="-313.4453125" positionY="26.13671875" width="128" height="165"/>
     </elements>
 </model>

@@ -479,9 +479,11 @@ extension SetupProfileViewController {
                 }
             }
         case .restricted:
-            print("Access Restricted")
+            ()
+//            print("Access Restricted")
         @unknown default:
-            print("Unknown Error")
+            ()
+//            print("Unknown Error")
         }
     }
     

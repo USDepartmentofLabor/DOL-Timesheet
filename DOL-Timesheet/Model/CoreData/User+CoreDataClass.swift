@@ -40,8 +40,8 @@ public class User: NSManagedObject {
         
         do {
             fetchResults = try context.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+        } catch _ as NSError {
+//            print("Could not fetch. \(error), \(error.userInfo)")
         }
         
         return fetchResults?.first

@@ -25,6 +25,11 @@ class HourlyPaymentViewController: UIViewController {
         setupView()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        hourlyRateTableViewHeightConstraint.constant = hourlyRateTableView.contentSize.height
+    }
+    
     func setupView() {
         title = NSLocalizedString("hourly_payment_title", comment: "Hourly Payment Title")
         

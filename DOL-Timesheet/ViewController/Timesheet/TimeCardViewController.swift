@@ -124,6 +124,9 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
         if let hourlyRates = viewModel?.currentEmploymentModel?.hourlyRates, hourlyRates.count > 0 {
             currentHourlyRate = hourlyRates[0]
         }
+        else {
+            currentHourlyRate = nil
+        }
         displayClock()
     }
     

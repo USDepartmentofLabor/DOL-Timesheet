@@ -130,7 +130,7 @@
 		03226D5422DF9B70003864A4 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		0323427A2322F398000450CB /* PunchBreakTime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PunchBreakTime+CoreDataClass.swift"; sourceTree = "<group>"; };
 		032430DD2285D81800E86E3E /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
-		0324C3D92260E47100712576 /* DOL-Timesheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DOL-Timesheet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0324C3D92260E47100712576 /* Timesheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timesheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0324C3DC2260E47100712576 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0324C3DE2260E47100712576 /* TimesheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetViewController.swift; sourceTree = "<group>"; };
 		0324C3E12260E47100712576 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -285,7 +285,7 @@
 		0324C3DA2260E47100712576 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0324C3D92260E47100712576 /* DOL-Timesheet.app */,
+				0324C3D92260E47100712576 /* Timesheet.app */,
 				0324C3F02260E47200712576 /* DOL-TimesheetTests.xctest */,
 				0324C3FB2260E47200712576 /* DOL-TimesheetUITests.xctest */,
 			);
@@ -567,7 +567,7 @@
 			);
 			name = "DOL-Timesheet";
 			productName = "DOL-Timesheet";
-			productReference = 0324C3D92260E47100712576 /* DOL-Timesheet.app */;
+			productReference = 0324C3D92260E47100712576 /* Timesheet.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0324C3EF2260E47200712576 /* DOL-TimesheetTests */ = {
@@ -978,7 +978,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gov.dol.whdtimesheet;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Timesheet;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -998,7 +998,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gov.dol.whdtimesheet;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Timesheet;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
