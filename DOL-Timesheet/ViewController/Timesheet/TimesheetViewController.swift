@@ -538,11 +538,6 @@ extension TimesheetViewController: EarningsHeaderViewDelegate {
 
 // MARK: Toolbar Actions
 extension TimesheetViewController {
-    func contactWHD() {
-        let resourcesVC = ResourcesViewController.instantiateFromStoryboard()
-        resourcesVC.title = NSLocalizedString("contact_us", comment: "Contact Us")
-        navigationController?.pushViewController(resourcesVC, animated: true)
-    }
     
     func export(_ sender: Any) {
         guard let csvPath = viewModel?.csv() else {

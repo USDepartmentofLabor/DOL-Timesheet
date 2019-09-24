@@ -9,9 +9,9 @@
 import UIKit
 
 enum InfoSection: Int {
-    case about = 0
-    case glossary
+    case glossary = 0
     case resources
+    case about
 }
 
 
@@ -30,10 +30,12 @@ class InfoViewController: UIViewController {
     
     func setupView() {
         title = "Info"
-        displaySection(section: InfoSection.about)
+        displaySection(section: InfoSection.glossary)
 
         let font = Style.scaledFont(forDataType: .infoSection)
         infoSection.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        
+        infoSection.setios12Style()
     }
     
     

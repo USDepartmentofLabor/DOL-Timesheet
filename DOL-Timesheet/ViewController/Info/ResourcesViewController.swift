@@ -13,6 +13,7 @@ class ResourcesViewController: UIViewController {
     private static let emailLink = "https://webapps.dol.gov/contactwhd/"
     private static let contactOfficeLink = "https://www.dol.gov/whd/local/"
     private static let whdWebsiteLink = "http://www.dol.gov/whd"
+    private static let webadminEmail = "webmaster@dol.gov"
     
     @IBOutlet weak var contactTitleLabel: UILabel!
     @IBOutlet weak var phoneTextView1: UITextView!
@@ -22,6 +23,9 @@ class ResourcesViewController: UIViewController {
     @IBOutlet weak var contactTextView: UITextView!
     @IBOutlet weak var whdWebsiteTextView: UITextView!
     
+    @IBOutlet weak var submitIssuesTitleLabel: UILabel!
+    @IBOutlet weak var webadminTextView: UITextView!
+    @IBOutlet weak var gitHubTextView: UITextView!
     @IBOutlet weak var footerTitleLabel: UILabel!
     
     override func viewDidLoad() {
@@ -32,13 +36,18 @@ class ResourcesViewController: UIViewController {
     }
 
     func setupView() {
-        contactTitleLabel.scaleFont(forDataType: .resourcesText)
+        title = NSLocalizedString("contact_us", comment: "Contact Us")
+        contactTitleLabel.scaleFont(forDataType: .resourcesTitleText)
         phoneTextView1.scaleFont(forDataType: .resourcesText)
         phoneTextView2.scaleFont(forDataType: .resourcesText)
         phoneHoursLabel.scaleFont(forDataType: .resourcesText)
-        emailTextView.scaleFont(forDataType: .resourcesText)
-        contactTextView.scaleFont(forDataType: .resourcesText)
-        whdWebsiteTextView.scaleFont(forDataType: .resourcesText)
+        emailTextView.scaleFont(forDataType: .resourcesTitleText)
+        contactTextView.scaleFont(forDataType: .resourcesTitleText)
+        whdWebsiteTextView.scaleFont(forDataType: .resourcesTitleText)
+        
+        submitIssuesTitleLabel.scaleFont(forDataType: .resourcesTitleText)
+        webadminTextView.scaleFont(forDataType: .resourcesText)
+        gitHubTextView.scaleFont(forDataType: .resourcesText)
         footerTitleLabel.scaleFont(forDataType: .resourcesFooterText)
         
         phoneTextView1.textContainerInset = UIEdgeInsets.zero
@@ -49,11 +58,18 @@ class ResourcesViewController: UIViewController {
         emailTextView.textContainer.lineFragmentPadding = 0
         contactTextView.textContainerInset = UIEdgeInsets.zero
         contactTextView.textContainer.lineFragmentPadding = 0
+        webadminTextView.textContainerInset = UIEdgeInsets.zero
+        webadminTextView.textContainer.lineFragmentPadding = 0
+        gitHubTextView.textContainerInset = UIEdgeInsets.zero
+        gitHubTextView.textContainer.lineFragmentPadding = 0
         whdWebsiteTextView.textContainerInset = UIEdgeInsets.zero
         whdWebsiteTextView.textContainer.lineFragmentPadding = 0
         
         phoneTextView1.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 1, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
         phoneTextView2.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 1, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
+        
+        webadminTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 1, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
+        gitHubTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 1, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
     }
     
     func displayInfo() {
@@ -69,6 +85,6 @@ class ResourcesViewController: UIViewController {
         let websiteText = NSAttributedString(string: "Wage and Hour Division website", attributes: [NSAttributedString.Key.link: ResourcesViewController.whdWebsiteLink,
             NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
             NSAttributedString.Key.underlineStyle: 1])
-        whdWebsiteTextView.attributedText = websiteText
+        whdWebsiteTextView.attributedText = websiteText        
     }
 }

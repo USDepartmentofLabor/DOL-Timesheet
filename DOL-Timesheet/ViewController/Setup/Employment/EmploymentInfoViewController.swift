@@ -34,6 +34,13 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
     @IBOutlet weak var phoneTextField: UnderlinedTextField!
     @IBOutlet weak var emailTextField: UnderlinedTextField!
     
+    @IBOutlet weak var addressLine1View: UIView!
+    @IBOutlet weak var addressLine2View: UIView!
+    @IBOutlet weak var cityView: UIView!
+    @IBOutlet weak var stateView: UIView!
+    @IBOutlet weak var zipCodeView: UIView!
+    
+    @IBOutlet weak var requiredFooterLabel: UILabel!
     
     @IBOutlet weak var employmentInfoView: UIView!
     
@@ -120,32 +127,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         userTitleLabel.scaleFont(forDataType: .sectionTitle)
         employmentTitleLabel.scaleFont(forDataType: .sectionTitle)
         
-        let nameTitle: String
-        let addressTitle: String
-        // If Employer
-        if let viewModel = viewModel, viewModel.isProfileEmployer {
-            title = NSLocalizedString("add_employee", comment: "Add Employee Title")
-            titleInfoView.title = NSLocalizedString("employee_information", comment: "Employee Information")
-            subTitleLabel.text = NSLocalizedString("who_works_for_you", comment: "Who works for you")
-            userTitleLabel.text = NSLocalizedString("employee", comment: "Employee")
-            nameTitle = NSLocalizedString("full_name", comment: "Full Name")
-            titleInfoView.infoType = .employee
-            addressTitle = NSLocalizedString("home_address", comment: "Home Address")
-        }
-        else {
-            title = NSLocalizedString("add_employer", comment: "Add Employee Title")
-            titleInfoView.title = NSLocalizedString("employer_information", comment: "Employer Information")
-            subTitleLabel.text = NSLocalizedString("who_do_you_work_for", comment: "Who do you work for")
-            userTitleLabel.text = NSLocalizedString("employer", comment: "Employer")
-            nameTitle = NSLocalizedString("company_name", comment: "Company Name")
-            titleInfoView.infoType = .employer
-            addressTitle = NSLocalizedString("work_address", comment: "Work Address")
-        }
-        
-        nameTitleLabel.text = "\(nameTitle)*"
-        nameTitleLabel.accessibilityLabel = "\(nameTitle) Required"
-        nameTextField.accessibilityLabel = nameTitle
-        addressTitleLabel.text = addressTitle
+        setupEmploymentType(isProfileEmployer: viewModel?.isProfileEmployer ?? false)
         
         // remove Skip button from navbar
         if viewModel?.employmentUser != nil {
@@ -162,7 +144,65 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
             paymentTypeView.removeFromSuperview()
         }
         
+        requiredFooterLabel.scaleFont(forDataType: .footerText)
         setupAccessibility()
+    }
+    
+    func setupEmploymentType(isProfileEmployer: Bool) {
+        let nameTitle: String
+        let addressTitle: String
+        
+        var tag = nameTextField.tag
+        // If Employer
+        if isProfileEmployer {
+            title = NSLocalizedString("add_employee", comment: "Add Employee Title")
+            titleInfoView.title = NSLocalizedString("employee_information", comment: "Employee Information")
+            subTitleLabel.text = NSLocalizedString("who_works_for_you", comment: "Who works for you")
+            userTitleLabel.text = NSLocalizedString("employee", comment: "Employee")
+            nameTitle = NSLocalizedString("full_name", comment: "Full Name")
+            titleInfoView.infoType = .employee
+            addressTitle = NSLocalizedString("home_address", comment: "Home Address")
+            addressLine1View.isHidden = true
+            addressLine2View.isHidden = true
+            cityView.isHidden = true
+            stateView.isHidden = true
+            zipCodeView.isHidden = true
+            
+            street1TextField.tag = 0
+            street2TextField.tag = 0
+            cityTextField.tag = 0
+            stateTextField.tag = 0
+            zipcodeTextField.tag = 0
+
+        }
+        else {
+            title = NSLocalizedString("add_employer", comment: "Add Employee Title")
+            titleInfoView.title = NSLocalizedString("employer_information", comment: "Employer Information")
+            subTitleLabel.text = NSLocalizedString("who_do_you_work_for", comment: "Who do you work for")
+            userTitleLabel.text = NSLocalizedString("employer", comment: "Employer")
+            nameTitle = NSLocalizedString("company_name", comment: "Company Name")
+            titleInfoView.infoType = .employer
+            addressTitle = NSLocalizedString("work_address", comment: "Work Address")
+            
+            street1TextField.tag = tag+1
+            street2TextField.tag = tag+2
+            cityTextField.tag = tag+3
+            stateTextField.tag = tag+4
+            zipcodeTextField.tag = tag+5
+            tag = tag+5
+        }
+        
+        nameTitleLabel.text = "\(nameTitle)*"
+        nameTitleLabel.accessibilityLabel = "\(nameTitle) Required"
+        nameTextField.accessibilityLabel = nameTitle
+        addressTitleLabel.text = addressTitle
+        
+        phoneTextField.tag = tag+1
+        emailTextField.tag = tag+2
+        supervisorNameTextField.tag = tag+3
+        supervisorEmailTextField.tag = tag+4
+        employmentNumberTextField.tag = tag+5
+        startDateTextField.tag = tag+6
     }
     
     func setupAccessibility() {
@@ -190,6 +230,12 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         paymentTypeTextField.accessibilityTraits = [.button, .staticText]
         paymentTypeTextField.accessibilityHint = NSLocalizedString("payment_type_hint", comment: "Tap to Select Payment Type")
 
+        if Util.isVoiceOverRunning {
+            requiredFooterLabel.isHidden = true
+        }
+        else {
+            requiredFooterLabel.isHidden = false
+        }
     }
 
     func displayInfo() {
@@ -199,11 +245,15 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         let user = viewModel.employmentUser
         
         nameTextField.text = user?.name
-        street1TextField.text = user?.address?.street1
-        street2TextField.text = user?.address?.street2
-        cityTextField.text = user?.address?.city
-        stateTextField.text = user?.address?.state
-        zipcodeTextField.text = user?.address?.zipCode
+        
+        if !viewModel.isProfileEmployer {
+            street1TextField.text = user?.address?.street1
+            street2TextField.text = user?.address?.street2
+            cityTextField.text = user?.address?.city
+            stateTextField.text = user?.address?.state
+            zipcodeTextField.text = user?.address?.zipCode
+        }
+        
         emailTextField.text = user?.email
         phoneTextField.text = user?.phone
         employmentNumberTextField.text = viewModel.employmentNumber
@@ -235,7 +285,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         let userInfo: NSDictionary = notification.userInfo! as NSDictionary
-        let keyboardInfo = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue
+        let keyboardInfo = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
         let keyboardSize = keyboardInfo.cgRectValue.size
         let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + 15, right: 0)
 
@@ -259,13 +309,16 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
     }
     
     func validateInput() -> Bool {
+        guard let viewModel = viewModel else { return false }
+        
         var errorStr: String? = nil
         
         let name = nameTextField.text
         if name == nil || name!.isEmpty {
             errorStr = NSLocalizedString("err_enter_name", comment: "Please provide name")
         }
-        else if let zipcode = zipcodeTextField.text?.trimmingCharacters(in: .whitespaces),
+        else if !viewModel.isProfileEmployer,
+            let zipcode = zipcodeTextField.text?.trimmingCharacters(in: .whitespaces),
             !zipcode.isEmpty, !Util.isValidPostalCode(postalCode: zipcode) {
             errorStr = NSLocalizedString("err_invalid_zipcode", comment: "Please provide valid zipcode")
         }
@@ -275,7 +328,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         }
         else if let emailAddress = emailTextField.text?.trimmingCharacters(in: .whitespaces),
             !emailAddress.isEmpty, !Util.isValidEmailAddress(emailAddress: emailAddress) {
-            if viewModel?.isProfileEmployer ?? false {
+            if viewModel.isProfileEmployer {
                 errorStr = NSLocalizedString("err_invalid_employee_emailaddress", comment: "Please provide valid email")
             }
             else {
@@ -310,12 +363,15 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         }
         
         user?.name = nameTextField.text?.trimmingCharacters(in: .whitespaces)
-        let street1 = street1TextField.text?.trimmingCharacters(in: .whitespaces)
-        let street2 = street2TextField.text?.trimmingCharacters(in: .whitespaces)
-        let city = cityTextField.text?.trimmingCharacters(in: .whitespaces)
-        let state = stateTextField.text?.trimmingCharacters(in: .whitespaces)
-        let zipCode = zipcodeTextField.text?.trimmingCharacters(in: .whitespaces)
-        user?.setAddress(street1: street1, street2: street2, city: city, state: state, zipCode: zipCode)
+        
+        if !viewModel.isProfileEmployer {
+            let street1 = street1TextField.text?.trimmingCharacters(in: .whitespaces)
+            let street2 = street2TextField.text?.trimmingCharacters(in: .whitespaces)
+            let city = cityTextField.text?.trimmingCharacters(in: .whitespaces)
+            let state = stateTextField.text?.trimmingCharacters(in: .whitespaces)
+            let zipCode = zipcodeTextField.text?.trimmingCharacters(in: .whitespaces)
+            user?.setAddress(street1: street1, street2: street2, city: city, state: state, zipCode: zipCode)
+        }
         
         user?.phone = phoneTextField.text?.trimmingCharacters(in: .whitespaces)
         user?.email = emailTextField.text?.trimmingCharacters(in: .whitespaces)

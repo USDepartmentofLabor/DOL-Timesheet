@@ -98,11 +98,13 @@ class ManageUsersViewController: UIViewController {
             titleLabel.text = NSLocalizedString("employees", comment: "Employees")
             userHeaderTitleLabel.text = NSLocalizedString("employee", comment: "Employee")
             addBtn.accessibilityLabel = NSLocalizedString("add_employee", comment: "Add Employee")
+            addressHeaderTitleLabel.isHidden = true
         }
         else {
             titleLabel.text = NSLocalizedString("employers", comment: "Employers")
             userHeaderTitleLabel.text = NSLocalizedString("employer", comment: "Employer")
             addBtn.accessibilityLabel = NSLocalizedString("add_employer", comment: "Add Employer")
+            addressHeaderTitleLabel.isHidden = false
         }
         
         if userNameLabel != nil {
@@ -203,11 +205,13 @@ extension ManageUsersViewController: UITableViewDataSource {
         
         if viewModel?.isProfileEmployer ?? false {
             cell.nameLabel.text = employmentModel.employeeName
-            cell.addressLabel.text = employmentModel.employeeAddress?.description
+//            cell.addressLabel.text = employmentModel.employeeAddress?.description
+            cell.addressLabel.isHidden = true
         }
         else {
             cell.nameLabel.text = employmentModel.employerName
             cell.addressLabel.text = employmentModel.employerAddress?.description
+            cell.addressLabel.isHidden = false
         }
             
         cell.paymentLabel.text = employmentModel.paymentTypeTitle

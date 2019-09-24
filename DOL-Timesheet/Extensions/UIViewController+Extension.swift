@@ -91,7 +91,6 @@ extension UIViewController: InfoPopupDelegate {
     func displayRespources(url: URL) {
         if url.absoluteString == "http://www.dol.gov/whd/contact_us.htm" {
             let resourcesVC = ResourcesViewController.instantiateFromStoryboard()
-            resourcesVC.title = NSLocalizedString("resources", comment: "Resources")
             navigationController?.pushViewController(resourcesVC, animated: true)
         }
         else {

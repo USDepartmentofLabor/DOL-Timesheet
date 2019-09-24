@@ -75,6 +75,7 @@
 		033FB84E2296E658006BA459 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FB84D2296E658006BA459 /* String+Extension.swift */; };
 		033FFFA922F1D47A00969E6D /* ImportOldDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FFFA822F1D47A00969E6D /* ImportOldDB.swift */; };
 		033FFFAB22F1F60E00969E6D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 033FFFAA22F1F60E00969E6D /* libsqlite3.tbd */; };
+		03427DC42339178700B2F4E6 /* UISegmentControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03427DC32339178700B2F4E6 /* UISegmentControl+Extension.swift */; };
 		036D71952277445300CC62CE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 036D71932277445300CC62CE /* Localizable.strings */; };
 		036D71982277529400CC62CE /* PaymentFrequencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036D71972277529400CC62CE /* PaymentFrequencyTableViewCell.swift */; };
 		0374ECCA228602B500D1C503 /* TimeLog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374ECC8228602B500D1C503 /* TimeLog+CoreDataClass.swift */; };
@@ -201,6 +202,7 @@
 		033FB84D2296E658006BA459 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		033FFFA822F1D47A00969E6D /* ImportOldDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportOldDB.swift; sourceTree = "<group>"; };
 		033FFFAA22F1F60E00969E6D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		03427DC32339178700B2F4E6 /* UISegmentControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentControl+Extension.swift"; sourceTree = "<group>"; };
 		036D71942277445300CC62CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "DOL-Timesheet/en.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		036D71972277529400CC62CE /* PaymentFrequencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFrequencyTableViewCell.swift; sourceTree = "<group>"; };
 		0374ECC8228602B500D1C503 /* TimeLog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeLog+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				033FB84D2296E658006BA459 /* String+Extension.swift */,
 				59AD9E5C22A16B7F00075193 /* UIFont+Extension.swift */,
 				59AD9E5E22A1806900075193 /* UILabel+Extension.swift */,
+				03427DC32339178700B2F4E6 /* UISegmentControl+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				0326DB622326C46500EDA2F7 /* ShadowView.swift in Sources */,
 				0324C41D2260FCF600712576 /* InfoViewController.swift in Sources */,
 				03CEDF82226E30120041C3ED /* SetupPaymentFrequencyViewController.swift in Sources */,
+				03427DC42339178700B2F4E6 /* UISegmentControl+Extension.swift in Sources */,
 				032C514B22A7F03E0095C1A2 /* RadioButton.swift in Sources */,
 				037C226C2278C8730021A309 /* ProfileTableViewCell.swift in Sources */,
 				032560112268BE8D00BF64C5 /* SetupHourlyPaymentViewController.swift in Sources */,
@@ -969,8 +973,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -989,8 +994,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -25,6 +25,7 @@ class SetupProfileViewController: UIViewController {
     
     @IBOutlet weak var myProfileTitleLabel: UILabel!
     
+    @IBOutlet weak var requiredFooterLabel: UILabel!
     
     @IBOutlet weak var employeeEmployerView: UIView!
     @IBOutlet weak var employeeEmployerInfoView: LabelInfoView!
@@ -51,6 +52,12 @@ class SetupProfileViewController: UIViewController {
     @IBOutlet weak var phoneTextField: UnderlinedTextField!
     @IBOutlet weak var emailTextField: UnderlinedTextField!
     
+    @IBOutlet weak var addressLine1View: UIView!
+    @IBOutlet weak var addressLine2View: UIView!
+    @IBOutlet weak var cityView: UIView!
+    @IBOutlet weak var stateView: UIView!
+    @IBOutlet weak var zipCodeView: UIView!
+
     @IBOutlet weak var manageEmploymentContentView: UIView!
     
     @IBOutlet weak var footerView: UIView!
@@ -71,16 +78,48 @@ class SetupProfileViewController: UIViewController {
     
     var profileType = UserType.employee {
         didSet {
+            var tag = 1
+            nameTextField.tag = tag
+            tag = tag + 1
             if profileType == .employee {
                 employeeBtn.isSelected = true
                 employerBtn.isSelected = false
                 addressTitleLabel.text = NSLocalizedString("home_address", comment: "Work Address")
+                
+                addressLine1View.isHidden = true
+                addressLine2View.isHidden = true
+                cityView.isHidden = true
+                stateView.isHidden = true
+                zipCodeView.isHidden = true
+                
+                street1TextField.tag = 0
+                street2TextField.tag = 0
+                cityTextField.tag = 0
+                stateTextField.tag = 0
+                zipcodeTextField.tag = 0
+
             }
             else {
                 employeeBtn.isSelected = false
                 employerBtn.isSelected = true
                 addressTitleLabel.text = NSLocalizedString("work_address", comment: "Work Address")
+                
+                addressLine1View.isHidden = false
+                addressLine2View.isHidden = false
+                cityView.isHidden = false
+                stateView.isHidden = false
+                zipCodeView.isHidden = false
+
+                street1TextField.tag = tag
+                street2TextField.tag = tag+1
+                cityTextField.tag = tag+2
+                stateTextField.tag = tag+3
+                zipcodeTextField.tag = tag+4
+                tag = tag+5
             }
+            
+            phoneTextField.tag = tag
+            emailTextField.tag = tag+1
         }
     }
     
@@ -126,6 +165,7 @@ class SetupProfileViewController: UIViewController {
         zipcodeTextField.delegate = self
         phoneTextField.delegate = self
         emailTextField.delegate = self
+        requiredFooterLabel.scaleFont(forDataType: .footerText)
         
         scrollView.keyboardDismissMode = .onDrag
         setupAccessibility()
@@ -151,6 +191,13 @@ class SetupProfileViewController: UIViewController {
         stateTextField.accessibilityTraits = [.button, .staticText]
         stateTextField.accessibilityHint = NSLocalizedString("state_hint", comment: "Tap to Select State")
         
+        if Util.isVoiceOverRunning {
+            requiredFooterLabel.isHidden = true
+        }
+        else {
+            requiredFooterLabel.isHidden = false
+        }
+        
         profileImageView.accessibilityHint = NSLocalizedString("profile_image_new_hint", comment: "Tap to select profile photo")
     }
     
@@ -172,11 +219,15 @@ class SetupProfileViewController: UIViewController {
         navigationItem.rightBarButtonItem = saveBtn
         
         nameTextField.text = profileUser.name
-        street1TextField.text = profileUser.address?.street1
-        street2TextField.text = profileUser.address?.street2
-        cityTextField.text = profileUser.address?.city
-        stateTextField.text = profileUser.address?.state
-        zipcodeTextField.text = profileUser.address?.zipCode
+        
+        if viewModel.isProfileEmployer {
+            street1TextField.text = profileUser.address?.street1
+            street2TextField.text = profileUser.address?.street2
+            cityTextField.text = profileUser.address?.city
+            stateTextField.text = profileUser.address?.state
+            zipcodeTextField.text = profileUser.address?.zipCode
+        }
+        
         phoneTextField.text = profileUser.phone
         emailTextField.text = profileUser.email
         profileImageView.maskCircle(anyImage: profileUser.image?.normalizedImage() ?? #imageLiteral(resourceName: "Default Profile Photo"))
@@ -203,7 +254,7 @@ class SetupProfileViewController: UIViewController {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         let userInfo: NSDictionary = notification.userInfo! as NSDictionary
-        let keyboardInfo = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue
+        let keyboardInfo = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
         let keyboardSize = keyboardInfo.cgRectValue.size
         let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + 15, right: 0)
         scrollView.contentInset = contentInsets
@@ -393,12 +444,14 @@ class SetupProfileViewController: UIViewController {
         
         profileUser.name = nameTextField.text?.trimmingCharacters(in: .whitespaces) ?? ""
         
-        let street1 = street1TextField.text?.trimmingCharacters(in: .whitespaces)
-        let street2 = street2TextField.text?.trimmingCharacters(in: .whitespaces)
-        let city = cityTextField.text?.trimmingCharacters(in: .whitespaces)
-        let state = stateTextField.text?.trimmingCharacters(in: .whitespaces)
-        let zipcode = zipcodeTextField.text?.trimmingCharacters(in: .whitespaces)
-        profileUser.setAddress(street1: street1, street2: street2, city: city, state: state, zipCode: zipcode)
+        if viewModel.profileModel.isEmployer {
+            let street1 = street1TextField.text?.trimmingCharacters(in: .whitespaces)
+            let street2 = street2TextField.text?.trimmingCharacters(in: .whitespaces)
+            let city = cityTextField.text?.trimmingCharacters(in: .whitespaces)
+            let state = stateTextField.text?.trimmingCharacters(in: .whitespaces)
+            let zipcode = zipcodeTextField.text?.trimmingCharacters(in: .whitespaces)
+            profileUser.setAddress(street1: street1, street2: street2, city: city, state: state, zipCode: zipcode)
+        }
         
         profileUser.phone = phoneTextField.text?.trimmingCharacters(in: .whitespaces)
         profileUser.email = emailTextField.text?.trimmingCharacters(in: .whitespaces)
@@ -414,7 +467,8 @@ class SetupProfileViewController: UIViewController {
         if name == nil || name!.isEmpty {
             errorStr = NSLocalizedString("err_enter_name", comment: "Please provide name")
         }
-        else if let zipcode = zipcodeTextField.text?.trimmingCharacters(in: .whitespaces),
+        else if viewModel.isProfileEmployer,
+            let zipcode = zipcodeTextField.text?.trimmingCharacters(in: .whitespaces),
             !zipcode.isEmpty, !Util.isValidPostalCode(postalCode: zipcode) {
             errorStr = NSLocalizedString("err_invalid_zipcode", comment: "Please provide valid zipcode")
         }
