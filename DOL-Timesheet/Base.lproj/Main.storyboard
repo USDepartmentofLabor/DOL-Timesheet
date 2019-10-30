@@ -1582,7 +1582,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbm-cn-ITT" userLabel="AddButton">
-                                                        <rect key="frame" x="130.5" y="134" width="44" height="32"/>
+                                                        <rect key="frame" x="130.5" y="139" width="44" height="22"/>
                                                         <accessibility key="accessibilityConfiguration" label="Add Time Log"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="nd8-vb-Dov"/>
