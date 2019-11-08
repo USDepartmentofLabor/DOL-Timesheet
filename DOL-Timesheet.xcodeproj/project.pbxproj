@@ -50,6 +50,8 @@
 		032920D822C103C9003E4732 /* DropDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032920D622C103C9003E4732 /* DropDownView.xib */; };
 		0329260F2289CB7D00DB69AD /* SummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329260E2289CB7D00DB69AD /* SummaryTableViewCell.swift */; };
 		032926122289F2AD00DB69AD /* HourlyPaymentTimeLog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032926102289F2AD00DB69AD /* HourlyPaymentTimeLog+CoreDataClass.swift */; };
+		0329BFEF237306D0006AB18A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 033FFFAA22F1F60E00969E6D /* libsqlite3.tbd */; };
+		0329BFF2237341F7006AB18A /* ImportDBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329BFF1237341F7006AB18A /* ImportDBViewController.swift */; };
 		0329EBD4226780CF0001EDE7 /* MinimumWageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329EBD3226780CF0001EDE7 /* MinimumWageViewController.swift */; };
 		0329EBD622678ED90001EDE7 /* SetupBaseEmploymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329EBD522678ED90001EDE7 /* SetupBaseEmploymentViewController.swift */; };
 		0329EBD82267A2720001EDE7 /* WebInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329EBD72267A2720001EDE7 /* WebInfoViewController.swift */; };
@@ -64,6 +66,8 @@
 		032C9F1F2265000D00FB1468 /* LabelInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C9F1E2265000D00FB1468 /* LabelInfoView.swift */; };
 		032D3CD0231EBC930095AAA8 /* TimeCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D3CCF231EBC930095AAA8 /* TimeCardViewController.swift */; };
 		032D3CD2231EF9BA0095AAA8 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D3CD1231EF9BA0095AAA8 /* TimeViewController.swift */; };
+		032DBDCF2375BAED00A8A7ED /* ImportDBSucessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032DBDCE2375BAED00A8A7ED /* ImportDBSucessViewController.swift */; };
+		032DBDD12375BDAD00A8A7ED /* ImportDBFailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032DBDD02375BDAD00A8A7ED /* ImportDBFailedViewController.swift */; };
 		032DFD27228B2D8B001A1C3B /* EarningsTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032DFD26228B2D8B001A1C3B /* EarningsTableViewHeaderView.swift */; };
 		032DFD29228B2E00001A1C3B /* EarningsTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032DFD28228B2E00001A1C3B /* EarningsTableViewHeaderView.xib */; };
 		032DFD2C228B5774001A1C3B /* EarningsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032DFD2A228B5774001A1C3B /* EarningsTableViewCell.xib */; };
@@ -73,8 +77,7 @@
 		03347448228C826900A67E97 /* WorkWeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03347447228C826900A67E97 /* WorkWeekViewModel.swift */; };
 		0334744A228C9DEF00A67E97 /* TimesheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03347449228C9DEF00A67E97 /* TimesheetViewModel.swift */; };
 		033FB84E2296E658006BA459 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FB84D2296E658006BA459 /* String+Extension.swift */; };
-		033FFFA922F1D47A00969E6D /* ImportOldDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FFFA822F1D47A00969E6D /* ImportOldDB.swift */; };
-		033FFFAB22F1F60E00969E6D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 033FFFAA22F1F60E00969E6D /* libsqlite3.tbd */; };
+		033FFFA922F1D47A00969E6D /* ImportDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FFFA822F1D47A00969E6D /* ImportDBService.swift */; };
 		03427DC42339178700B2F4E6 /* UISegmentControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03427DC32339178700B2F4E6 /* UISegmentControl+Extension.swift */; };
 		036D71952277445300CC62CE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 036D71932277445300CC62CE /* Localizable.strings */; };
 		036D71982277529400CC62CE /* PaymentFrequencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036D71972277529400CC62CE /* PaymentFrequencyTableViewCell.swift */; };
@@ -177,6 +180,7 @@
 		032920D622C103C9003E4732 /* DropDownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownView.xib; sourceTree = "<group>"; };
 		0329260E2289CB7D00DB69AD /* SummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTableViewCell.swift; sourceTree = "<group>"; };
 		032926102289F2AD00DB69AD /* HourlyPaymentTimeLog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HourlyPaymentTimeLog+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0329BFF1237341F7006AB18A /* ImportDBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDBViewController.swift; sourceTree = "<group>"; };
 		0329EBD3226780CF0001EDE7 /* MinimumWageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimumWageViewController.swift; sourceTree = "<group>"; };
 		0329EBD522678ED90001EDE7 /* SetupBaseEmploymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupBaseEmploymentViewController.swift; sourceTree = "<group>"; };
 		0329EBD72267A2720001EDE7 /* WebInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebInfoViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 		032C9F1E2265000D00FB1468 /* LabelInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelInfoView.swift; sourceTree = "<group>"; };
 		032D3CCF231EBC930095AAA8 /* TimeCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCardViewController.swift; sourceTree = "<group>"; };
 		032D3CD1231EF9BA0095AAA8 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
+		032DBDCE2375BAED00A8A7ED /* ImportDBSucessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDBSucessViewController.swift; sourceTree = "<group>"; };
+		032DBDD02375BDAD00A8A7ED /* ImportDBFailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDBFailedViewController.swift; sourceTree = "<group>"; };
 		032DFD26228B2D8B001A1C3B /* EarningsTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsTableViewHeaderView.swift; sourceTree = "<group>"; };
 		032DFD28228B2E00001A1C3B /* EarningsTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarningsTableViewHeaderView.xib; sourceTree = "<group>"; };
 		032DFD2A228B5774001A1C3B /* EarningsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EarningsTableViewCell.xib; sourceTree = "<group>"; };
@@ -200,7 +206,7 @@
 		03347447228C826900A67E97 /* WorkWeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkWeekViewModel.swift; sourceTree = "<group>"; };
 		03347449228C9DEF00A67E97 /* TimesheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetViewModel.swift; sourceTree = "<group>"; };
 		033FB84D2296E658006BA459 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		033FFFA822F1D47A00969E6D /* ImportOldDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportOldDB.swift; sourceTree = "<group>"; };
+		033FFFA822F1D47A00969E6D /* ImportDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDBService.swift; sourceTree = "<group>"; };
 		033FFFAA22F1F60E00969E6D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		03427DC32339178700B2F4E6 /* UISegmentControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentControl+Extension.swift"; sourceTree = "<group>"; };
 		036D71942277445300CC62CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "DOL-Timesheet/en.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -242,7 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				033FFFAB22F1F60E00969E6D /* libsqlite3.tbd in Frameworks */,
+				0329BFEF237306D0006AB18A /* libsqlite3.tbd in Frameworks */,
 				03226D5522DF9B70003864A4 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,7 +498,10 @@
 		033FFFA722F1D44100969E6D /* ImportPreviousTimesheet */ = {
 			isa = PBXGroup;
 			children = (
-				033FFFA822F1D47A00969E6D /* ImportOldDB.swift */,
+				033FFFA822F1D47A00969E6D /* ImportDBService.swift */,
+				0329BFF1237341F7006AB18A /* ImportDBViewController.swift */,
+				032DBDCE2375BAED00A8A7ED /* ImportDBSucessViewController.swift */,
+				032DBDD02375BDAD00A8A7ED /* ImportDBFailedViewController.swift */,
 			);
 			path = ImportPreviousTimesheet;
 			sourceTree = "<group>";
@@ -709,10 +718,11 @@
 				0324C4152260EBBA00712576 /* EmploymentInfo+CoreDataClass.swift in Sources */,
 				0324C4122260EAB800712576 /* Data.swift in Sources */,
 				0323427C2322F398000450CB /* PunchBreakTime+CoreDataClass.swift in Sources */,
+				032DBDCF2375BAED00A8A7ED /* ImportDBSucessViewController.swift in Sources */,
 				0374ECCA228602B500D1C503 /* TimeLog+CoreDataClass.swift in Sources */,
 				0324C3DD2260E47100712576 /* AppDelegate.swift in Sources */,
 				032D3CD0231EBC930095AAA8 /* TimeCardViewController.swift in Sources */,
-				033FFFA922F1D47A00969E6D /* ImportOldDB.swift in Sources */,
+				033FFFA922F1D47A00969E6D /* ImportDBService.swift in Sources */,
 				03E6818422665E90002F2345 /* PaymentTypeTableViewCell.swift in Sources */,
 				0328F169232808B9005204D4 /* TimeLogBreak+CoreDataClass.swift in Sources */,
 				03E68182226644B9002F2345 /* SetupPaymentTypeViewController.swift in Sources */,
@@ -745,6 +755,7 @@
 				0324C40F2260E8B000712576 /* CoreDataManager.swift in Sources */,
 				036D71982277529400CC62CE /* PaymentFrequencyTableViewCell.swift in Sources */,
 				59AD9E6322A1ADB500075193 /* SummaryTableViewHeaderView.swift in Sources */,
+				0329BFF2237341F7006AB18A /* ImportDBViewController.swift in Sources */,
 				032C9F152264E83A00FB1468 /* IntroductionViewController.swift in Sources */,
 				0326DB622326C46500EDA2F7 /* ShadowView.swift in Sources */,
 				0324C41D2260FCF600712576 /* InfoViewController.swift in Sources */,
@@ -762,6 +773,7 @@
 				03F2F5D32281C081007B1B68 /* OptionsListViewController.swift in Sources */,
 				032C9F1F2265000D00FB1468 /* LabelInfoView.swift in Sources */,
 				0328BCB7227244D7006B695A /* SetupSalaryPaymentViewController.swift in Sources */,
+				032DBDD12375BDAD00A8A7ED /* ImportDBFailedViewController.swift in Sources */,
 				0374ECCE228617DA00D1C503 /* HourlyRate+CoreDataClass.swift in Sources */,
 				0328BCB3227235DC006B695A /* SetupWorkWeekViewController.swift in Sources */,
 				032C9F0E2264DF0000FB1468 /* HourlyTimeTableViewCell.swift in Sources */,

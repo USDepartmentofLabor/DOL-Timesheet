@@ -80,8 +80,8 @@ class CoreDataManager {
     }
     
     func saveContext (context: NSManagedObjectContext) {
-        if context.hasChanges {
-            context.performAndWait {
+        context.performAndWait {
+            if context.hasChanges {
                 do {
                     try context.save()
                     if let parentContext = context.parent {
@@ -96,6 +96,13 @@ class CoreDataManager {
             }
         }
     }
+
+    lazy var backgroundManagedContext: NSManagedObjectContext = {
+//        return persistentContainer.newBackgroundContext()
+        let backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        backgroundContext.parent = viewManagedContext
+        return backgroundContext
+    }()
 }
 
 extension NSManagedObjectContext {
@@ -106,3 +113,4 @@ extension NSManagedObjectContext {
         return managedObjectContext
     }
 }
+

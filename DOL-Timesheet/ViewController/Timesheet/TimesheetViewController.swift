@@ -108,12 +108,11 @@ class TimesheetViewController: UIViewController, TimeViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-
-        guard let viewModel = viewModel, viewModel.userProfileExists else {
-            performSegue(withIdentifier: "setupProfile", sender: nil)
-            return
-        }
-
+//        guard let viewModel = viewModel, viewModel.userProfileExists else {
+//            performSegue(withIdentifier: "setupProfile", sender: nil)
+//            return
+//        }
+//
 //        timeTableviewHeightConstraint.constant = timeTableView.contentSize.height
     }
     

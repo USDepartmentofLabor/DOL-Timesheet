@@ -16,7 +16,7 @@ struct OldEmployer {
     var startOfWorkWeek: Int
 }
 
-struct TimeEntry {
+struct OldTimeEntry {
     var timeEntryId: Int
     var startTime: Date?
     var endTime: Date?
@@ -24,7 +24,7 @@ struct TimeEntry {
     var comments: String?
 }
 
-struct BreakTime {
+struct OldBreakTime {
     var duration: Double
     var comments: String?
     var type: Int?
@@ -37,11 +37,16 @@ struct OldClock {
     var type: Int?
 }
 
-class ImportOldDB {
-    
-    let managedContext = CoreDataManager.shared().viewManagedContext
+protocol ImportDBLogProtocol: class {
+    func appendLog(logStr: String)
+}
 
-    var dbPath: URL {
+class ImportDBService {
+    
+    let managedContext = CoreDataManager.shared().backgroundManagedContext
+    var profileEmployee: Employee?
+    
+    static var dbPath: URL {
         get {
             //Search for standard documents using NSSearchPathForDirectoriesInDomains
             //First Param = Searching the documents directory
@@ -56,20 +61,22 @@ class ImportOldDB {
         }
     }
     
-    var exists: Bool {
+    static var dbExists: Bool {
         get {
             let fileExists = FileManager().fileExists(atPath: dbPath.path)
             return fileExists
         }
     }
     
+    weak var logDelegate:ImportDBLogProtocol?
+    
     func importDB() {
-        
-        let oldDb = dbPath
+        let oldDb = ImportDBService.dbPath
         guard FileManager().fileExists(atPath: oldDb.path) else { return }
         
         let db: SQLiteDatabase
         do {
+            logDelegate?.appendLog(logStr: "Opening SQL DB")
             db = try SQLiteDatabase.open(path: oldDb.path)
 
             let employers = db.getAllEmployers()
@@ -86,12 +93,14 @@ class ImportOldDB {
     }
     
     func load(db: SQLiteDatabase, employers: [OldEmployer]?) {
-        guard let employers = employers, employers.count > 0 else {
+        managedContext.performAndWait {
+        guard let employee = User.getCurrentUser(context: managedContext) as? Employee else {
             return
         }
         
-        let employee = Employee(context: managedContext)
-        employee.currentUser = true
+        guard let employers = employers, employers.count > 0 else {
+            return
+        }
         
         employers.forEach {
             // Add Employer
@@ -99,9 +108,13 @@ class ImportOldDB {
         }
         
         CoreDataManager.shared().saveContext(context: managedContext)
+        }
     }
     
     func addEmployer(db: SQLiteDatabase, for employee: Employee, oldEmployer: OldEmployer) {
+        var logStr = "Importing Employer \(oldEmployer.name)"
+        logDelegate?.appendLog(logStr: logStr)
+
         let employer = Employer(context: managedContext)
         employer.name = oldEmployer.name
         employer.userId = Int32(oldEmployer.employerId)
@@ -128,11 +141,11 @@ class ImportOldDB {
     
     func addTimeLogs(db: SQLiteDatabase, employmentInfo: EmploymentInfo, oldEmployer: OldEmployer) {
 
+        var logStr = "Importing TimeLog"
+        logDelegate?.appendLog(logStr: logStr)
+
         guard let timeEntriesStartDate = db.getStartDate(for: oldEmployer),
             let timeEntriesEndDate = db.getEndDate(for: oldEmployer) else { return }
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
 
         var startDate = timeEntriesStartDate.startOfDay()
         while startDate.compare(timeEntriesEndDate) != .orderedDescending {
@@ -145,6 +158,12 @@ class ImportOldDB {
     
     func addTimeLogs(db: SQLiteDatabase, employmentInfo: EmploymentInfo, oldEmployer: OldEmployer, startDate: Date, endDate: Date) {
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+
+        let logStr = "Importing TimeLog for dates \(dateFormatter.string(from: startDate)) - \(dateFormatter.string(from: endDate))"
+        logDelegate?.appendLog(logStr: logStr)
+
         guard let timeEntries =  db.getTimeEntries(for: oldEmployer, startDate: startDate, endDate: endDate), timeEntries.count > 0 else { return }
         
         timeEntries.forEach {
@@ -349,7 +368,7 @@ extension SQLiteDatabase {
         return endDate
     }
 
-    func getTimeEntries(for employer: OldEmployer, startDate: Date, endDate: Date) -> [TimeEntry]? {
+    func getTimeEntries(for employer: OldEmployer, startDate: Date, endDate: Date) -> [OldTimeEntry]? {
         
         let querySql = "SELECT TimeEntryId, EmployerId, StartTime, EndTime, HourlyRate, Comments FROM TimeEntries WHERE EmployerId = ? AND StartTime BETWEEN ? AND ?;"
 
@@ -378,7 +397,7 @@ extension SQLiteDatabase {
             return nil
         }
 
-        var timeEntries = [TimeEntry]()
+        var timeEntries = [OldTimeEntry]()
         while(sqlite3_step(queryStatement) == SQLITE_ROW),
             let sqlStartTime = sqlite3_column_text(queryStatement, 2),
             let sqlEndTime = sqlite3_column_text(queryStatement, 3) {
@@ -394,7 +413,7 @@ extension SQLiteDatabase {
                 comments = String(cString: sqlComments)
             }
             
-            let timeEntry = TimeEntry(timeEntryId: Int(entryId), startTime: dateFormatter.date(from: startTime), endTime: dateFormatter.date(from: endTime), hourlyRate: hourlyRate, comments: comments)
+            let timeEntry = OldTimeEntry(timeEntryId: Int(entryId), startTime: dateFormatter.date(from: startTime), endTime: dateFormatter.date(from: endTime), hourlyRate: hourlyRate, comments: comments)
             
             timeEntries.append(timeEntry)
         }
@@ -402,7 +421,7 @@ extension SQLiteDatabase {
         return timeEntries
     }
 
-    func getBreakTime(for timeEntry: TimeEntry) -> [BreakTime]? {
+    func getBreakTime(for timeEntry: OldTimeEntry) -> [OldBreakTime]? {
         
         let querySql = "SELECT OtherBreakId, TimeEntryId, BreakTime, BreakComments, BreakType FROM OtherBreaks WHERE TimeEntryId = ?;"
         
@@ -418,7 +437,7 @@ extension SQLiteDatabase {
             return nil
         }
         
-        var breakTimes = [BreakTime]()
+        var breakTimes = [OldBreakTime]()
         while(sqlite3_step(queryStatement) == SQLITE_ROW) {
             _ = sqlite3_column_int(queryStatement, 0) // OtherBreakID
             _ = sqlite3_column_int(queryStatement, 1) // TimeEntry ID
@@ -430,7 +449,7 @@ extension SQLiteDatabase {
             }
             let breakType = sqlite3_column_int(queryStatement, 4)
 
-            let breakTime = BreakTime(duration: breakDuration, comments: comments, type: Int(breakType))
+            let breakTime = OldBreakTime(duration: breakDuration, comments: comments, type: Int(breakType))
             breakTimes.append(breakTime)
         }
         
@@ -486,7 +505,5 @@ extension SQLiteDatabase {
         }
         
         return clocks
-
-        
     }
 }

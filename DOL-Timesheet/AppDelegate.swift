@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        importOldDB()
         setupApprearance()
         return true
     }
@@ -57,17 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSAttributedString.Key.font : Style.scaledFont(forDataType: .barButtonTitle),
             NSAttributedString.Key.foregroundColor: UIColor.white],
                                                             for: .normal)
-    }
-    
-    func importOldDB() {
-        let updatedDBVersion = "UpdatedDBVersion"
-
-        let versionUpdated = UserDefaults.standard.bool(forKey: updatedDBVersion)
-        if versionUpdated == false {
-            let importDB = ImportOldDB()
-            importDB.importDB()
-            UserDefaults.standard.set(true, forKey: updatedDBVersion)
-        }
     }
 }
 

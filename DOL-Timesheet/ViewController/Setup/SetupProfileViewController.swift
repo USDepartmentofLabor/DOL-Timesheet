@@ -8,9 +8,11 @@
 
 import UIKit
 import AVKit
+import MessageUI
 
 class SetupProfileViewController: UIViewController {
-    
+    let updatedDBVersion = "UpdatedDBVersion"
+
     var isWizard: Bool = false
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -64,6 +66,8 @@ class SetupProfileViewController: UIViewController {
     weak var delegate: TimeViewControllerDelegate?
     
     weak var manageVC: ManageUsersViewController?
+    
+    weak var importDBViewController: UIViewController?
     
     lazy var viewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
     
@@ -280,12 +284,14 @@ class SetupProfileViewController: UIViewController {
             employmentVC.delegate = delegate
         }
         else if let destVC = segue.destination as? ManageUsersViewController {
-//            destVC.viewModel = ProfileViewModel(context: viewModel.managedObjectContext.childManagedObjectContext())
             destVC.viewModel = ProfileViewModel(context: viewModel.managedObjectContext)
             destVC.view.translatesAutoresizingMaskIntoConstraints = false
             destVC.isEmbeded = true
             destVC.delegate = delegate
             manageVC = destVC
+        }
+        else if let destVC = segue.destination as? ImportDBViewController {
+            destVC.importDelegate = self
         }
     }
     
@@ -394,10 +400,11 @@ class SetupProfileViewController: UIViewController {
         let userName = nameTextField.text ?? ""
         let userType = UserType(rawValue: employeeBtn.isSelected ? 0 : 1) ?? UserType.employee
 
-        _ = viewModel.profileModel.newProfile(type: userType, name: userName)
+        let profileUser = viewModel.profileModel.newProfile(type: userType, name: userName)
 
         saveProfile()
-        performSegue(withIdentifier: "addEmploymentInfo", sender: self)
+        
+        handleNext(profileUser: profileUser)
     }
     
     @objc func cancelClicked(_ sender: Any) {
@@ -675,5 +682,113 @@ extension SetupProfileViewController: UITextFieldDelegate {
         }
         
         return true
+    }
+}
+
+
+extension  SetupProfileViewController {
+    func handleNext(profileUser: User) {
+
+        // If Old DB Exists and it hasn't been importted
+        let versionUpdated = UserDefaults.standard.bool(forKey: updatedDBVersion)
+        if versionUpdated == false, ImportDBService.dbExists {
+            let controller = ImportDBViewController.instantiateFromStoryboard("Profile")
+            controller.importDelegate = self
+            addDBImportView(controller: controller)
+        }
+        else {
+            performSegue(withIdentifier: "addEmploymentInfo", sender: self)
+        }
+    }
+}
+
+extension SetupProfileViewController {
+    private func addDBImportView(controller: UIViewController) {
+        importDBViewController = controller
+        addChild(controller)
+        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(controller.view)
+        
+        NSLayoutConstraint.activate([
+            controller.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            controller.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            controller.view.topAnchor.constraint(equalTo: self.view.topAnchor),
+            controller.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            ])
+        
+        controller.didMove(toParent: self)
+    }
+    
+    func hideContentController(controller: UIViewController) {
+        controller.willMove(toParent: nil)
+        controller.view.removeFromSuperview()
+        controller.removeFromParent()
+    }
+}
+
+extension SetupProfileViewController: ImportDBProtocol {
+    func importDBSuccessful() {
+        if let viewController = importDBViewController {
+            hideContentController(controller: viewController)
+        }
+        
+        UserDefaults.standard.set(true, forKey: updatedDBVersion)
+        let controller = ImportDBSucessViewController.instantiateFromStoryboard("Profile")
+        controller.importDelegate = self
+        addDBImportView(controller: controller)
+    }
+    
+    func importDBTimedOut() {
+        if let viewController = importDBViewController {
+            hideContentController(controller: viewController)
+        }
+        
+        let controller = ImportDBFailedViewController.instantiateFromStoryboard("Profile")
+        controller.importDelegate = self
+        addDBImportView(controller: controller)
+    }
+    
+    func importDBFinish() {
+        delegate?.didUpdateUser()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func emailOldDB() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["chawla.nidhi@dol.gov"])
+            mail.setSubject("Logs")
+            mail.setMessageBody("<p>Database Logs</p>", isHTML: true)
+
+            let dbPathURL = ImportDBService.dbPath
+            do {
+                let attachmentData = try Data(contentsOf: dbPathURL)
+                mail.addAttachmentData(attachmentData, mimeType: "application/x-sqlite3", fileName: "whd.sqlite")
+                
+            } catch let error {
+                
+            }
+            present(mail, animated: true)
+        } else {
+            // show failure alert
+            let alertController = UIAlertController(title: "Email",
+                                                    message: "Email Not setup",
+                                                    preferredStyle: .alert)
+            
+            alertController.addAction(
+                UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default))
+            present(alertController, animated: true)
+        }
+    }
+}
+
+extension SetupProfileViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ didFinishWithcontroller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult, error: Error?) {
+        didFinishWithcontroller.dismiss(animated: false) { [weak self] in
+            self?.dismiss(animated: false, completion: nil)
+        }
     }
 }
