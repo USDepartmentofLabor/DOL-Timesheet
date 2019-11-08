@@ -100,6 +100,7 @@ extension ImportDBViewController: ImportDBLogProtocol {
             logs.append("\n")
             logs.append(logStr)
             self?.logsTextView.text = logs
+            self?.logsTextView.scrollToBottom()
         }
     }
 }

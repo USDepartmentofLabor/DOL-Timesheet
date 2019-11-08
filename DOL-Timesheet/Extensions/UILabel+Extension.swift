@@ -29,3 +29,13 @@ extension UITextField {
         adjustsFontForContentSizeCategory = true
     }
 }
+
+extension UITextView {
+    func scrollToBottom() {
+        if text.count > 0 {
+            let location = text.count - 1
+            let bottom = NSMakeRange(location, 1)
+            scrollRangeToVisible(bottom)
+        }
+    }
+}
