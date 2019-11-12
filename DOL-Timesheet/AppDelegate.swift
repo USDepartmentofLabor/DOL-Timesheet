@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        copyWHD()
         setupApprearance()
         return true
     }
@@ -57,5 +58,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSAttributedString.Key.foregroundColor: UIColor.white],
                                                             for: .normal)
     }
+    
 }
 
+extension AppDelegate {
+    func copyWHD() {
+        guard let sqlitePath = Bundle.main.path(forResource: "whd", ofType: "sqlite") else {return}
+        
+        
+        let URL1 = URL(fileURLWithPath: sqlitePath)
+        let URL2 = ImportDBService.dbPath
+        do {
+            try FileManager.default.copyItem(at: URL1, to: URL2)
+        } catch {
+        }
+    }
+}

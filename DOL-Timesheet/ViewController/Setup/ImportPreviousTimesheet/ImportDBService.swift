@@ -39,13 +39,14 @@ struct OldClock {
 
 protocol ImportDBLogProtocol: class {
     func appendLog(logStr: String)
+    func addDetailLogs(logStr: String)
 }
 
 class ImportDBService {
     
     let managedContext = CoreDataManager.shared().backgroundManagedContext
     var profileEmployee: Employee?
-    
+
     static var dbPath: URL {
         get {
             //Search for standard documents using NSSearchPathForDirectoriesInDomains
@@ -60,7 +61,6 @@ class ImportDBService {
             return whdURL
         }
     }
-    
     static var dbExists: Bool {
         get {
             let fileExists = FileManager().fileExists(atPath: dbPath.path)
@@ -68,53 +68,79 @@ class ImportDBService {
         }
     }
     
+    static var importLogPath: URL {
+        get {
+            let documentsURL = try! FileManager().url(for: .documentDirectory,
+                                                      in: .userDomainMask,
+                                                      appropriateFor: nil,
+                                                      create: false)
+            let logsPath = documentsURL.appendingPathComponent("Logs")
+            do {
+                try FileManager.default.createDirectory(atPath: logsPath.path, withIntermediateDirectories: true, attributes: nil)
+            } catch let error as NSError {
+                NSLog("Unable to create directory \(error.debugDescription)")
+            }
+
+            let logsURL = logsPath.appendingPathComponent("importDB.txt")
+            return logsURL
+        }
+    }
+    
     weak var logDelegate:ImportDBLogProtocol?
     
     func importDB() {
         let oldDb = ImportDBService.dbPath
-        guard FileManager().fileExists(atPath: oldDb.path) else { return }
+        guard FileManager().fileExists(atPath: oldDb.path) else {
+            logDelegate?.addDetailLogs(logStr: "\nOld DB file does not exist: \(oldDb.path)")
+            return
+        }
         
         let db: SQLiteDatabase
         do {
-            logDelegate?.appendLog(logStr: "Opening SQL DB")
+            logDelegate?.appendLog(logStr: "Import Started")
+            logDelegate?.addDetailLogs(logStr: "\nImport Started")
             db = try SQLiteDatabase.open(path: oldDb.path)
 
             let employers = db.getAllEmployers()
             load(db: db, employers: employers)
             
-        } catch SQLiteError.OpenDatabase( _) {
+            logDelegate?.appendLog(logStr: "\nImport Completed")
+            
+        } catch SQLiteError.OpenDatabase(let message) {
             ()
-//            print("Unable to open database. Verify that you created the directory described in the Getting Started section.")
-//            print(message)
+            logDelegate?.addDetailLogs(logStr: "\nUnable to open database SQL Error: \(message)")
         }
-        catch( _) {
-//            print(error)
+        catch(let error) {
+            logDelegate?.addDetailLogs(logStr: "\nUnable to open database Error: \(error)")
         }
     }
     
     func load(db: SQLiteDatabase, employers: [OldEmployer]?) {
         managedContext.performAndWait {
-        guard let employee = User.getCurrentUser(context: managedContext) as? Employee else {
-            return
-        }
-        
-        guard let employers = employers, employers.count > 0 else {
-            return
-        }
-        
-        employers.forEach {
-            // Add Employer
-            addEmployer(db: db, for: employee, oldEmployer: $0)
-        }
-        
-        CoreDataManager.shared().saveContext(context: managedContext)
+            guard let employee = User.getCurrentUser(context: managedContext) as? Employee else {
+                logDelegate?.addDetailLogs(logStr: "\nCurrent User does not exist")
+                return
+            }
+            
+            guard let employers = employers, employers.count > 0 else {
+                logDelegate?.addDetailLogs(logStr: "\nNo employers exists in Old Database")
+                return
+            }
+            
+            employers.forEach {
+                // Add Employer
+                addEmployer(db: db, for: employee, oldEmployer: $0)
+            }
+            
+            CoreDataManager.shared().saveContext(context: managedContext)
         }
     }
     
     func addEmployer(db: SQLiteDatabase, for employee: Employee, oldEmployer: OldEmployer) {
-        var logStr = "Importing Employer \(oldEmployer.name)"
+        let logStr = "\nImporting Employer \(oldEmployer.name)"
         logDelegate?.appendLog(logStr: logStr)
 
+        logDelegate?.addDetailLogs(logStr: logStr)
         let employer = Employer(context: managedContext)
         employer.name = oldEmployer.name
         employer.userId = Int32(oldEmployer.employerId)
@@ -141,12 +167,14 @@ class ImportDBService {
     
     func addTimeLogs(db: SQLiteDatabase, employmentInfo: EmploymentInfo, oldEmployer: OldEmployer) {
 
-        var logStr = "Importing TimeLog"
-        logDelegate?.appendLog(logStr: logStr)
-
         guard let timeEntriesStartDate = db.getStartDate(for: oldEmployer),
             let timeEntriesEndDate = db.getEndDate(for: oldEmployer) else { return }
 
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        logDelegate?.addDetailLogs(logStr: "StartDate : \(dateFormatter.string(from: timeEntriesStartDate))")
+        logDelegate?.addDetailLogs(logStr: "EndDate : \(dateFormatter.string(from: timeEntriesEndDate))")
+        
         var startDate = timeEntriesStartDate.startOfDay()
         while startDate.compare(timeEntriesEndDate) != .orderedDescending {
             let endDate = startDate.addDays(days: 30)
@@ -161,9 +189,11 @@ class ImportDBService {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
 
-        let logStr = "Importing TimeLog for dates \(dateFormatter.string(from: startDate)) - \(dateFormatter.string(from: endDate))"
+        let logStr = "Importing TimeLog for date range \(dateFormatter.string(from: startDate)) - \(dateFormatter.string(from: endDate))"
         logDelegate?.appendLog(logStr: logStr)
-
+        logDelegate?.addDetailLogs(logStr: logStr)
+        
+        
         guard let timeEntries =  db.getTimeEntries(for: oldEmployer, startDate: startDate, endDate: endDate), timeEntries.count > 0 else { return }
         
         timeEntries.forEach {
@@ -203,6 +233,9 @@ class ImportDBService {
     func addClock(db: SQLiteDatabase, employmentInfo: EmploymentInfo, oldEmployer: OldEmployer) {
         guard let clocks = db.getClock(for: oldEmployer),
             clocks.count > 0 else { return }
+        
+        logDelegate?.appendLog(logStr: "Importing ClockTime")
+        logDelegate?.addDetailLogs(logStr: "Importing ClockTime")
         
         let startWork = clocks.filter{$0.type == 0}.first
         if let startWork = startWork, let startTime = startWork.startTime {

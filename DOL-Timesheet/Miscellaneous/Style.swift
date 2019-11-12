@@ -94,7 +94,7 @@ struct Style {
          .aboutText: ("AvenirNext-Regular", 15, .caption2),
          .resourcesTitleText: ("AvenirNext-Medium", 15, .subheadline),
          .resourcesText: ("AvenirNext-Regular", 15, .subheadline),
-         .resourcesFooterText: ("AvenirNext-DemiBold", 15, .headline),
+         .resourcesFooterText: ("AvenirNext-AvenirNext", 15, .headline),
          .introductionText: ("AvenirNext-Regular", 15, .body),
         .introductionBoldText: ("AvenirNext-DemiBold", 15, .body),
         .timeCounterText:  ("AvenirNext-Medium", 50, .largeTitle),

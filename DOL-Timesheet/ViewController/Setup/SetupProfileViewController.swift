@@ -689,6 +689,7 @@ extension SetupProfileViewController: UITextFieldDelegate {
 extension  SetupProfileViewController {
     func handleNext(profileUser: User) {
 
+        view.endEditing(true)
         // If Old DB Exists and it hasn't been importted
         let versionUpdated = UserDefaults.standard.bool(forKey: updatedDBVersion)
         if versionUpdated == false, ImportDBService.dbExists {
@@ -762,10 +763,14 @@ extension SetupProfileViewController: ImportDBProtocol {
             mail.setMessageBody("<p>Database Logs</p>", isHTML: true)
 
             let dbPathURL = ImportDBService.dbPath
+            let dbLogPathURL = ImportDBService.importLogPath
             do {
                 let attachmentData = try Data(contentsOf: dbPathURL)
                 mail.addAttachmentData(attachmentData, mimeType: "application/x-sqlite3", fileName: "whd.sqlite")
-                
+
+                let logAttachmentData = try Data(contentsOf: dbLogPathURL)
+                mail.addAttachmentData(logAttachmentData, mimeType: "text/plain", fileName: "ImportLogs.txt")
+
             } catch let error {
                 
             }
