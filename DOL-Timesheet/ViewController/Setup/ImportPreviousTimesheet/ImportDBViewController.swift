@@ -17,17 +17,27 @@ protocol ImportDBProtocol: class {
 
 class ImportDBViewController: UIViewController {
     
-    @IBOutlet weak var importView: ShadowView!
+    @IBOutlet weak var importView: UIView!
+    @IBOutlet weak var shadowView: UIView!
+    
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var cancelBtn: NavigationButton!
-    @IBOutlet weak var logsTextView: UITextView!
-
+    @IBOutlet weak var logsTitleLabel: UILabel!
+    @IBOutlet weak var logsStackView: UIStackView!
+    @IBOutlet weak var logsScrollView: UIScrollView!
+    
     var detailLogs = ""
     private var timer: Timer?
     private var workItem: DispatchWorkItem?
     let queue = DispatchQueue(label: "Import DB queue")
 
     weak var importDelegate: ImportDBProtocol?
+    lazy var logDateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy hh:mm:ss"
+        return dateFormatter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +50,19 @@ class ImportDBViewController: UIViewController {
         importDB()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        shadowView.layer.shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: 8.0).cgPath
+        shadowView.layer.shadowRadius = 8.0
+        shadowView.layer.shadowOffset = .zero
+        shadowView.layer.shadowOpacity = 1
+    }
+
     func setupView() {
-        importView.addBorder(borderColor: .borderColor, borderWidth: 1.0, cornerRadius: 12.0)
-        logsTextView.scaleFont(forDataType: .aboutText)
+        titleLabel.scaleFont(forDataType: .headingTitle)
+        logsTitleLabel.scaleFont(forDataType: .columnHeader)
+        importView.addBorder(borderColor: .borderColor, borderWidth: 1.0, cornerRadius: 8.0)
         cancelBtn.backgroundColor = .systemRed
     }
     
@@ -50,8 +70,12 @@ class ImportDBViewController: UIViewController {
         // Set a flag to indicate DB Import has started
         let startedDBImport = "StartedDBImport"
         UserDefaults.standard.set(true, forKey: startedDBImport)
+        
+        let announcementMsg = NSLocalizedString("import started", comment: "Import Started")
+        logsTitleLabel.text = announcementMsg
+        UIAccessibility.post(notification: .announcement, argument: announcementMsg)
         activityIndicator.startAnimating()
-
+        
         workItem = DispatchWorkItem { [weak self] in
             let importDB = ImportDBService()
             importDB.logDelegate = self
@@ -72,63 +96,72 @@ class ImportDBViewController: UIViewController {
     }
 
     func importSucecessful() {
-        activityIndicator.startAnimating()
+        activityIndicator.stopAnimating()
+        
+        let announcementMsg = NSLocalizedString("import finished", comment: "Import Finished")
+        logsTitleLabel.text = announcementMsg
+        UIAccessibility.post(notification: .announcement, argument: announcementMsg)
+        
         timer?.invalidate()
         importDelegate?.importDBSuccessful()
     }
 
-    func importTimedOut() {
-        activityIndicator.startAnimating()
-        importDelegate?.importDBTimedOut()
+    @objc func importTimedOut() {
+        activityIndicator.stopAnimating()
+        print("Updated Timer")
+        workItem?.cancel()
         writeDetailLogs()
+        importDelegate?.importDBTimedOut()
     }
     
     private func createTimer() {
       if timer == nil {
-        timer = Timer.scheduledTimer(timeInterval: 40.0,
+        timer = Timer.scheduledTimer(timeInterval: 60.0,
                                      target: self,
-                                     selector: #selector(updateTimer),
+                                     selector: #selector(importTimedOut),
                                      userInfo: nil,
                                      repeats: false)
         }
     }
     
-    @objc func updateTimer() {
-        print("Updated Timer")
-        workItem?.cancel()
-        importTimedOut()
-    }
-
     deinit {
         print("viewController deinit")
     }
     
     @IBAction func cancelClick(_ sender: Any) {
-        activityIndicator.startAnimating()
         timer?.invalidate()
-        updateTimer()
+        importTimedOut()
     }
-    
 }
 
 extension ImportDBViewController: ImportDBLogProtocol {
     func appendLog(logStr: String) {
         DispatchQueue.main.async { [weak self] in
-            var logs = self?.logsTextView.text ?? ""
-            logs.append("\n\(logStr)")
-            self?.logsTextView.text = logs
-            self?.logsTextView.scrollToBottom()
+            let label = UILabel()
+            label.numberOfLines = 0
+            label.scaleFont(forDataType: .aboutText)
+            label.text = logStr
+            self?.logsStackView.addArrangedSubview(label)
+            
+            if !Util.isVoiceOverRunning {
+                self?.logsScrollView.scrollToBottom()
+            }
         }
     }
     
     func addDetailLogs(logStr: String) {
-        detailLogs.append("\n\(logStr)")
+        let strDate = logDateFormatter.string(from: Date())
+        detailLogs.append("\n\(strDate): \(logStr)")
     }
     
     func writeDetailLogs() {
         guard !detailLogs.isEmpty else { return }
         
         let importLogFile = ImportDBService.importLogPath
+        
+        let systemVersion = "System Version: \(UIDevice.current.systemVersion)"
+        let deviceType = "\nDevice Type: \(UIDevice.modelName)\n"
+        detailLogs = systemVersion + deviceType + detailLogs
         
         do {
             try detailLogs.write(to: importLogFile, atomically: false, encoding: String.Encoding.utf8)

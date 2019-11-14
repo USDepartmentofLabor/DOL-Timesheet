@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		031DF065237DB89000E6D299 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031DF064237DB89000E6D299 /* UIDevice+Extension.swift */; };
 		03226D5522DF9B70003864A4 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03226D5422DF9B70003864A4 /* WebKit.framework */; };
 		0323427C2322F398000450CB /* PunchBreakTime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323427A2322F398000450CB /* PunchBreakTime+CoreDataClass.swift */; };
 		032430DE2285D81800E86E3E /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032430DD2285D81800E86E3E /* TimePickerViewController.swift */; };
@@ -73,6 +74,7 @@
 		032DFD2C228B5774001A1C3B /* EarningsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032DFD2A228B5774001A1C3B /* EarningsTableViewCell.xib */; };
 		032DFD2D228B5774001A1C3B /* EarningsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032DFD2B228B5774001A1C3B /* EarningsTableViewCell.swift */; };
 		032E5F2C22A99EE400F6EC26 /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032E5F2B22A99EE400F6EC26 /* BorderedView.swift */; };
+		032EB05F237DA88500B8D92A /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032EB05E237DA88500B8D92A /* UIScrollView+Extension.swift */; };
 		0330004A237B1E8D00AD9E31 /* whd.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 03300049237B1E6A00AD9E31 /* whd.sqlite */; };
 		033225702295AA3400479578 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332256F2295AA3400479578 /* ProfileViewModel.swift */; };
 		03347448228C826900A67E97 /* WorkWeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03347447228C826900A67E97 /* WorkWeekViewModel.swift */; };
@@ -132,6 +134,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		031DF064237DB89000E6D299 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		03226D5422DF9B70003864A4 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		0323427A2322F398000450CB /* PunchBreakTime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PunchBreakTime+CoreDataClass.swift"; sourceTree = "<group>"; };
 		032430DD2285D81800E86E3E /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +206,7 @@
 		032DFD2A228B5774001A1C3B /* EarningsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EarningsTableViewCell.xib; sourceTree = "<group>"; };
 		032DFD2B228B5774001A1C3B /* EarningsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarningsTableViewCell.swift; sourceTree = "<group>"; };
 		032E5F2B22A99EE400F6EC26 /* BorderedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
+		032EB05E237DA88500B8D92A /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		03300049237B1E6A00AD9E31 /* whd.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = whd.sqlite; sourceTree = "<group>"; };
 		0332256F2295AA3400479578 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		03347447228C826900A67E97 /* WorkWeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkWeekViewModel.swift; sourceTree = "<group>"; };
@@ -399,6 +403,8 @@
 				59AD9E5C22A16B7F00075193 /* UIFont+Extension.swift */,
 				59AD9E5E22A1806900075193 /* UILabel+Extension.swift */,
 				03427DC32339178700B2F4E6 /* UISegmentControl+Extension.swift */,
+				032EB05E237DA88500B8D92A /* UIScrollView+Extension.swift */,
+				031DF064237DB89000E6D299 /* UIDevice+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -730,6 +736,7 @@
 				03E6818422665E90002F2345 /* PaymentTypeTableViewCell.swift in Sources */,
 				0328F169232808B9005204D4 /* TimeLogBreak+CoreDataClass.swift in Sources */,
 				03E68182226644B9002F2345 /* SetupPaymentTypeViewController.swift in Sources */,
+				032EB05F237DA88500B8D92A /* UIScrollView+Extension.swift in Sources */,
 				03E6817922663604002F2345 /* EmploymentInfoViewController.swift in Sources */,
 				03F2F5D722821157007B1B68 /* ManageUsersViewController.swift in Sources */,
 				0324C4192260F7E100712576 /* Salary+CoreDataClass.swift in Sources */,
@@ -737,6 +744,7 @@
 				59AD9E5F22A1806900075193 /* UILabel+Extension.swift in Sources */,
 				03A354C322806768002536B8 /* EditEmploymentInfoViewController.swift in Sources */,
 				03264F7422835E4200FF6010 /* EnterHourlyTimeTableViewCell.swift in Sources */,
+				031DF065237DB89000E6D299 /* UIDevice+Extension.swift in Sources */,
 				0328AEDA2279D7D70097DC76 /* Address+CoreDataClass.swift in Sources */,
 				0324C4272261010E00712576 /* GlossaryViewController.swift in Sources */,
 				03F2F5D922822CF8007B1B68 /* Date+Extension.swift in Sources */,
@@ -991,13 +999,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = gov.dol.whdtimesheet;
 				PRODUCT_NAME = Timesheet;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1012,13 +1021,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = gov.dol.whdtimesheet;
 				PRODUCT_NAME = Timesheet;
 				PROVISIONING_PROFILE_SPECIFIER = "";

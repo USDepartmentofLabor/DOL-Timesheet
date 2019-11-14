@@ -709,7 +709,7 @@ extension SetupProfileViewController {
         addChild(controller)
         controller.view.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(controller.view)
-        
+
         NSLayoutConstraint.activate([
             controller.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             controller.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
@@ -718,6 +718,8 @@ extension SetupProfileViewController {
             ])
         
         controller.didMove(toParent: self)
+        self.view.accessibilityElements = [controller.view as Any]
+        UIAccessibility.post(notification: .layoutChanged, argument: controller.view)
     }
     
     func hideContentController(controller: UIViewController) {
@@ -758,9 +760,9 @@ extension SetupProfileViewController: ImportDBProtocol {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setToRecipients(["chawla.nidhi@dol.gov"])
-            mail.setSubject("Logs")
-            mail.setMessageBody("<p>Database Logs</p>", isHTML: true)
+            mail.setToRecipients(["webmaster@dol.gov"])
+            mail.setSubject("Timesheet Import Data")
+            mail.setMessageBody("<p>Hi DOL Timesheet Support, Attached are the Timesheet import logs and the old timesheet database related to the error I had importing my data.</p>", isHTML: true)
 
             let dbPathURL = ImportDBService.dbPath
             let dbLogPathURL = ImportDBService.importLogPath
@@ -772,13 +774,12 @@ extension SetupProfileViewController: ImportDBProtocol {
                 mail.addAttachmentData(logAttachmentData, mimeType: "text/plain", fileName: "ImportLogs.txt")
 
             } catch let error {
-                
             }
             present(mail, animated: true)
         } else {
             // show failure alert
             let alertController = UIAlertController(title: "Email",
-                                                    message: "Email Not setup",
+                                                    message: NSLocalizedString("email not setup", comment: "Email Not setup"),
                                                     preferredStyle: .alert)
             
             alertController.addAction(

@@ -93,13 +93,20 @@ class OptionsListViewController<T : OptionsProtocol>: UITableViewController {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         let height = tableView.contentSize.height
         let size =  CGSize(width: super.preferredContentSize.width, height: height)
         preferredContentSize = size
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//        let height = tableView.contentSize.height
+//        let size =  CGSize(width: super.preferredContentSize.width, height: height)
+//        preferredContentSize = size
+//    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

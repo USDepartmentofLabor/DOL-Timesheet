@@ -11,7 +11,8 @@ import UIKit
 class ImportDBFailedViewController: UIViewController {
 
     
-    @IBOutlet weak var dataView: ShadowView!
+    @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var dataView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var details1Label: UILabel!
     @IBOutlet weak var details2Label: UILabel!
@@ -28,12 +29,27 @@ class ImportDBFailedViewController: UIViewController {
     }
     
     func setupView() {
-        dataView.addBorder(borderColor: .borderColor, borderWidth: 1.0, cornerRadius: 12.0)
+        dataView.addBorder(borderColor: .borderColor, borderWidth: 1.0, cornerRadius: 8.0)
         titleLabel.scaleFont(forDataType: .sectionTitle)
         details1Label.scaleFont(forDataType: .glossaryText)
         details2Label.scaleFont(forDataType: .glossaryText)
         footerLabel.scaleFont(forDataType: .glossaryTitle)
         yesBtn.isSelected = true
+        setupAccessibility()
+    }
+    
+    func setupAccessibility() {
+        yesBtn.accessibilityHint = NSLocalizedString("click yes to share", comment: "Click Yes to share")
+        noBtn.accessibilityHint = NSLocalizedString("click no to not share", comment: "Click No to not share")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        shadowView.layer.shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: 8.0).cgPath
+        shadowView.layer.shadowRadius = 8.0
+        shadowView.layer.shadowOffset = .zero
+        shadowView.layer.shadowOpacity = 1
     }
     
     @IBAction func yesClick(_ sender: Any) {

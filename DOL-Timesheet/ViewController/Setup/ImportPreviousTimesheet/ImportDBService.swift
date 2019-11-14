@@ -97,21 +97,20 @@ class ImportDBService {
         
         let db: SQLiteDatabase
         do {
-            logDelegate?.appendLog(logStr: "Import Started")
             logDelegate?.addDetailLogs(logStr: "\nImport Started")
             db = try SQLiteDatabase.open(path: oldDb.path)
 
-            let employers = db.getAllEmployers()
+            let employers = try db.getAllEmployers()
             load(db: db, employers: employers)
             
-            logDelegate?.appendLog(logStr: "\nImport Completed")
+            logDelegate?.appendLog(logStr: "\nImport Finished")
             
         } catch SQLiteError.OpenDatabase(let message) {
-            ()
             logDelegate?.addDetailLogs(logStr: "\nUnable to open database SQL Error: \(message)")
-        }
-        catch(let error) {
-            logDelegate?.addDetailLogs(logStr: "\nUnable to open database Error: \(error)")
+        } catch SQLiteError.Prepare(let message) {
+            logDelegate?.addDetailLogs(logStr: "\nUnable to prepare stmt SQL Error: \(message)")
+        } catch(let error) {
+            logDelegate?.addDetailLogs(logStr: "\nUnable to open database Error: \(error.localizedDescription)")
         }
     }
     
@@ -127,20 +126,20 @@ class ImportDBService {
                 return
             }
             
+            logDelegate?.addDetailLogs(logStr: "\nFound \(employers.count) emoloyers")
             employers.forEach {
                 // Add Employer
                 addEmployer(db: db, for: employee, oldEmployer: $0)
+                CoreDataManager.shared().saveContext(context: managedContext)
             }
-            
-            CoreDataManager.shared().saveContext(context: managedContext)
         }
     }
     
     func addEmployer(db: SQLiteDatabase, for employee: Employee, oldEmployer: OldEmployer) {
         let logStr = "\nImporting Employer \(oldEmployer.name)"
         logDelegate?.appendLog(logStr: logStr)
-
         logDelegate?.addDetailLogs(logStr: logStr)
+        
         let employer = Employer(context: managedContext)
         employer.name = oldEmployer.name
         employer.userId = Int32(oldEmployer.employerId)
@@ -162,25 +161,35 @@ class ImportDBService {
         employmentInfo.employee = employee
         
         addTimeLogs(db: db, employmentInfo: employmentInfo, oldEmployer: oldEmployer)
-        addClock(db: db, employmentInfo: employmentInfo, oldEmployer: oldEmployer)
+//        addClock(db: db, employmentInfo: employmentInfo, oldEmployer: oldEmployer)
     }
     
     func addTimeLogs(db: SQLiteDatabase, employmentInfo: EmploymentInfo, oldEmployer: OldEmployer) {
 
-        guard let timeEntriesStartDate = db.getStartDate(for: oldEmployer),
-            let timeEntriesEndDate = db.getEndDate(for: oldEmployer) else { return }
+        do {
+            guard let timeEntriesStartDate = try db.getStartDate(for: oldEmployer),
+            let timeEntriesEndDate = try db.getEndDate(for: oldEmployer) else { return }
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        logDelegate?.addDetailLogs(logStr: "StartDate : \(dateFormatter.string(from: timeEntriesStartDate))")
-        logDelegate?.addDetailLogs(logStr: "EndDate : \(dateFormatter.string(from: timeEntriesEndDate))")
+            employmentInfo.startDate = timeEntriesStartDate.startOfDay()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            logDelegate?.addDetailLogs(logStr: "StartDate : \(dateFormatter.string(from: timeEntriesStartDate))")
+            logDelegate?.addDetailLogs(logStr: "EndDate : \(dateFormatter.string(from: timeEntriesEndDate))")
         
-        var startDate = timeEntriesStartDate.startOfDay()
-        while startDate.compare(timeEntriesEndDate) != .orderedDescending {
-            let endDate = startDate.addDays(days: 30)
-            addTimeLogs(db: db, employmentInfo: employmentInfo, oldEmployer: oldEmployer, startDate: startDate, endDate: endDate.endOfDay())
+            var startDate = timeEntriesStartDate.startOfDay()
+            while startDate.compare(timeEntriesEndDate) != .orderedDescending {
+                let endDate = startDate.addDays(days: 30)
             
-            startDate = endDate.addDays(days: 1).startOfDay()
+                addTimeLogs(db: db, employmentInfo: employmentInfo, oldEmployer: oldEmployer, startDate: startDate, endDate: endDate.endOfDay())
+            
+                startDate = endDate.addDays(days: 1).startOfDay()
+            }
+        } catch SQLiteError.Prepare(let message) {
+            logDelegate?.addDetailLogs(logStr: "Unable to prepare stmt getStartDate, getEndDate, SQLError: \(message)")
+        } catch SQLiteError.Bind(let message) {
+            logDelegate?.addDetailLogs(logStr: "Unable to bind in getStartDate, getEndDate, SQLError: \(message)")
+        } catch (let error) {
+            logDelegate?.addDetailLogs(logStr: "Error in getStartDate, getEndDate, Error: \(error.localizedDescription)")
         }
     }
     
@@ -188,78 +197,97 @@ class ImportDBService {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-
         let logStr = "Importing TimeLog for date range \(dateFormatter.string(from: startDate)) - \(dateFormatter.string(from: endDate))"
         logDelegate?.appendLog(logStr: logStr)
         logDelegate?.addDetailLogs(logStr: logStr)
         
-        
-        guard let timeEntries =  db.getTimeEntries(for: oldEmployer, startDate: startDate, endDate: endDate), timeEntries.count > 0 else { return }
-        
-        timeEntries.forEach {
-            guard let startTime = $0.startTime else {return}
-        
-            let dateLog = employmentInfo.log(forDate: startTime) ??
-            employmentInfo.createLog(forDate: startTime)
-            let timeLog = dateLog.createTimeLog()
-            timeLog?.startTime = startTime
-            timeLog?.endTime = $0.endTime
-            let breakTimes = db.getBreakTime(for: $0)
-            let breakDuration = breakTimes?.reduce(0) {$0 + $1.duration} ?? 0
-            timeLog?.addBreak(duration: breakDuration)
-            
-            if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
-                hourlyTimeLog.value = $0.hourlyRate.doubleValue
+
+        do {
+            guard let timeEntries =  try db.getTimeEntries(for: oldEmployer, startDate: startDate, endDate: endDate), timeEntries.count > 0 else {
+                logDelegate?.addDetailLogs(logStr: "No time entries found")
+                return
             }
-            let breakComments = breakTimes?.reduce("") {
-                var allComments = $0 ?? ""
-                if let comments = $1.comments {
-                    if !allComments.isEmpty {
-                        allComments.append("\n")
-                    }
-                    allComments.append(comments)
+        
+            try timeEntries.forEach {
+                guard let startTime = $0.startTime else {return}
+            
+                let dateLog = employmentInfo.log(forDate: startTime) ??
+                employmentInfo.createLog(forDate: startTime)
+                let timeLog = dateLog.createTimeLog()
+                timeLog?.startTime = startTime
+                timeLog?.endTime = $0.endTime
+                let breakTimes = try db.getBreakTime(for: $0)
+                let breakDuration = breakTimes?.reduce(0) {$0 + $1.duration} ?? 0
+                timeLog?.addBreak(duration: breakDuration)
+                
+                if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
+                    hourlyTimeLog.value = $0.hourlyRate.doubleValue
                 }
-                return allComments
+                let breakComments = breakTimes?.reduce("") {
+                    var allComments = $0 ?? ""
+                    if let comments = $1.comments {
+                        if !allComments.isEmpty {
+                            allComments.append("\n")
+                        }
+                        allComments.append(comments)
+                    }
+                    return allComments
+                }
+                
+                var allComments = $0.comments ?? ""
+                if !allComments.isEmpty {
+                    allComments.append("\n")
+                }
+                timeLog?.comment = allComments + (breakComments ?? "")
             }
-            
-            var allComments = $0.comments ?? ""
-            if !allComments.isEmpty {
-                allComments.append("\n")
-            }
-            timeLog?.comment = allComments + (breakComments ?? "")
+        } catch SQLiteError.Prepare(let message) {
+            logDelegate?.addDetailLogs(logStr: "Unable to prepare stmt addTimeLogs, SQLError: \(message)")
+        } catch SQLiteError.Bind(let message) {
+            logDelegate?.addDetailLogs(logStr: "Unable to bind in addTimeLogs, SQLError: \(message)")
+        } catch (let error) {
+            logDelegate?.addDetailLogs(logStr: "addTimeLogs, Error: \(error.localizedDescription)")
         }
     }
     
     func addClock(db: SQLiteDatabase, employmentInfo: EmploymentInfo, oldEmployer: OldEmployer) {
-        guard let clocks = db.getClock(for: oldEmployer),
-            clocks.count > 0 else { return }
         
-        logDelegate?.appendLog(logStr: "Importing ClockTime")
-        logDelegate?.addDetailLogs(logStr: "Importing ClockTime")
-        
-        let startWork = clocks.filter{$0.type == 0}.first
-        if let startWork = startWork, let startTime = startWork.startTime {
-            var hourlyRate: HourlyRate? = nil
-            if let hourlyRates = employmentInfo.hourlyRate as? Set<HourlyRate> {
-                hourlyRate = hourlyRates.first
-            }
-            employmentInfo.startWork(hourlyRate: hourlyRate, at: startTime)
+        do {
+            let dbClocks = try db.getClock(for: oldEmployer)
             
-            var allComments = ""
-            let breaks = clocks.filter{$0.type != 0}
-            breaks.forEach {
-                if let comments = $0.comments {
-                    allComments.append(" \(comments)")
+            guard let clocks = dbClocks, clocks.count > 0 else { return }
+        
+            logDelegate?.appendLog(logStr: "Importing ClockTime")
+            logDelegate?.addDetailLogs(logStr: "Importing ClockTime")
+
+            let startWork = clocks.filter{$0.type == 0}.first
+            if let startWork = startWork, let startTime = startWork.startTime {
+                var hourlyRate: HourlyRate? = nil
+                if let hourlyRates = employmentInfo.hourlyRate as? Set<HourlyRate> {
+                        hourlyRate = hourlyRates.first
                 }
-                if let breakStart = $0.startTime {
-                    employmentInfo.startBreak(comments: allComments, at: breakStart)
-                }
-                if let endBreak = $0.endTime {
-                    employmentInfo.endBreak(comments: allComments, at: endBreak)
+                employmentInfo.startWork(hourlyRate: hourlyRate, at: startTime)
+            
+                var allComments = ""
+                let breaks = clocks.filter{$0.type != 0}
+                breaks.forEach {
+                    if let comments = $0.comments {
+                        allComments.append(" \(comments)")
+                    }
+                    if let breakStart = $0.startTime {
+                        employmentInfo.startBreak(comments: allComments, at: breakStart)
+                    }
+                    if let endBreak = $0.endTime {
+                        employmentInfo.endBreak(comments: allComments, at: endBreak)
+                    }
                 }
             }
+        } catch SQLiteError.Prepare(let message) {
+            logDelegate?.addDetailLogs(logStr: "Unable to prepare stmt addClock, SQLError: \(message)")
+        } catch SQLiteError.Bind(let message) {
+            logDelegate?.addDetailLogs(logStr: "Unable to bind in addClock, SQLError: \(message)")
+        } catch (let error) {
+            logDelegate?.addDetailLogs(logStr: "addClock, Error: \(error.localizedDescription)")
         }
-        
     }
 }
 
@@ -328,10 +356,10 @@ extension SQLiteDatabase {
 }
 
 extension SQLiteDatabase {
-    func getAllEmployers() -> [OldEmployer]? {
-        let querySql = "SELECT EmployerId, EmployerName, StartOfWorkWeek, HourlyRate FROM Employers"
+    func getAllEmployers() throws -> [OldEmployer]? {
+        let querySql = "SELECT EmployerId, EmployerName, StartOfWorkWeek, HourlyRate FROM Employers ORDER BY EmployerId DESC"
         
-        guard let queryStatement = try? prepareStatement(sql: querySql) else {
+        guard let queryStatement = try prepareStatement(sql: querySql) else {
             return nil
         }
         
@@ -354,11 +382,11 @@ extension SQLiteDatabase {
         return employers
     }
     
-    func getStartDate(for employer: OldEmployer) -> Date? {
-        let querySql = "SELECT MIN(StartTime) from TimeEntries";
+    func getStartDate(for employer: OldEmployer) throws -> Date? {
+        let querySql = "SELECT MIN(StartTime) from TimeEntries WHERE EmployerId = ?";
         var startDate: Date?
         
-        guard let queryStatement = try? prepareStatement(sql: querySql) else {
+        guard let queryStatement = try prepareStatement(sql: querySql) else {
             return nil
         }
         
@@ -366,22 +394,29 @@ extension SQLiteDatabase {
             sqlite3_finalize(queryStatement)
         }
         
-        while(sqlite3_step(queryStatement) == SQLITE_ROW),
+        guard sqlite3_bind_int(queryStatement, 1, Int32(employer.employerId)) == SQLITE_OK else {
+            throw SQLiteError.Bind(message: errorMessage)
+        }
+
+        if sqlite3_step(queryStatement) == SQLITE_ROW,
             let sqlStartTime = sqlite3_column_text(queryStatement, 0) {
             let startTime = String(cString: sqlStartTime)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
             
             startDate = dateFormatter.date(from: startTime)
+            return startDate
         }
-        
-        return startDate
+        else {
+           throw SQLiteError.Step(message: errorMessage)
+        }
     }
-    func getEndDate(for employer: OldEmployer) -> Date? {
-        let querySql = "SELECT MAX(StartTime) from TimeEntries";
+    
+    func getEndDate(for employer: OldEmployer) throws -> Date? {
+        let querySql = "SELECT MAX(EndTime) from TimeEntries WHERE EmployerId = ?";
         var endDate: Date?
         
-        guard let queryStatement = try? prepareStatement(sql: querySql) else {
+        guard let queryStatement = try prepareStatement(sql: querySql) else {
             return nil
         }
         
@@ -389,23 +424,29 @@ extension SQLiteDatabase {
             sqlite3_finalize(queryStatement)
         }
         
-        while(sqlite3_step(queryStatement) == SQLITE_ROW),
+        guard sqlite3_bind_int(queryStatement, 1, Int32(employer.employerId)) == SQLITE_OK else {
+            throw SQLiteError.Bind(message: errorMessage)
+        }
+        
+        if sqlite3_step(queryStatement) == SQLITE_ROW,
             let sqlEndTime = sqlite3_column_text(queryStatement, 0) {
             let endTime = String(cString: sqlEndTime)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
             
             endDate = dateFormatter.date(from: endTime)
+            return endDate
         }
-        
-        return endDate
+        else {
+            throw SQLiteError.Step(message: errorMessage)
+        }
     }
 
-    func getTimeEntries(for employer: OldEmployer, startDate: Date, endDate: Date) -> [OldTimeEntry]? {
+    func getTimeEntries(for employer: OldEmployer, startDate: Date, endDate: Date) throws -> [OldTimeEntry]? {
         
         let querySql = "SELECT TimeEntryId, EmployerId, StartTime, EndTime, HourlyRate, Comments FROM TimeEntries WHERE EmployerId = ? AND StartTime BETWEEN ? AND ?;"
 
-        guard let queryStatement = try? prepareStatement(sql: querySql) else {
+        guard let queryStatement = try prepareStatement(sql: querySql) else {
             return nil
         }
 
@@ -420,14 +461,14 @@ extension SQLiteDatabase {
         let endDateStr = dateFormatter.string(from: endDate) as NSString
         
         guard sqlite3_bind_int(queryStatement, 1, Int32(employer.employerId)) == SQLITE_OK else {
-            return nil
+            throw SQLiteError.Bind(message: errorMessage)
         }
         
         guard sqlite3_bind_text(queryStatement, 2, startDateStr.utf8String, -1, nil) == SQLITE_OK else {
-            return nil
+            throw SQLiteError.Bind(message: errorMessage)
         }
         guard sqlite3_bind_text(queryStatement, 3, endDateStr.utf8String, -1, nil) == SQLITE_OK else {
-            return nil
+            throw SQLiteError.Bind(message: errorMessage)
         }
 
         var timeEntries = [OldTimeEntry]()
@@ -454,11 +495,11 @@ extension SQLiteDatabase {
         return timeEntries
     }
 
-    func getBreakTime(for timeEntry: OldTimeEntry) -> [OldBreakTime]? {
+    func getBreakTime(for timeEntry: OldTimeEntry) throws -> [OldBreakTime]? {
         
         let querySql = "SELECT OtherBreakId, TimeEntryId, BreakTime, BreakComments, BreakType FROM OtherBreaks WHERE TimeEntryId = ?;"
         
-        guard let queryStatement = try? prepareStatement(sql: querySql) else {
+        guard let queryStatement = try prepareStatement(sql: querySql) else {
             return nil
         }
         
@@ -467,7 +508,7 @@ extension SQLiteDatabase {
         }
         
         guard sqlite3_bind_int(queryStatement, 1, Int32(timeEntry.timeEntryId)) == SQLITE_OK else {
-            return nil
+            throw SQLiteError.Bind(message: errorMessage)
         }
         
         var breakTimes = [OldBreakTime]()
@@ -489,19 +530,17 @@ extension SQLiteDatabase {
         return breakTimes
     }
 
-    func getClock(for employer: OldEmployer) -> [OldClock]? {
+    func getClock(for employer: OldEmployer) throws -> [OldClock]? {
         let querySql = "SELECT StartTime, EndTime, Comments, Type FROM Clock WHERE EmployerId = ?;"
         
-        guard let queryStatement = try? prepareStatement(sql: querySql) else {
-            return nil
-        }
+        let queryStatement = try prepareStatement(sql: querySql)
         
         defer {
             sqlite3_finalize(queryStatement)
         }
         
         guard sqlite3_bind_int(queryStatement, 1, Int32(employer.employerId)) == SQLITE_OK else {
-            return nil
+            throw SQLiteError.Bind(message: errorMessage)
         }
 
         var clocks = [OldClock]()
@@ -509,7 +548,7 @@ extension SQLiteDatabase {
             let sqlStartTime = sqlite3_column_text(queryStatement, 0) {
                 
             let startTime = String(cString: sqlStartTime)
-                
+
             var endTime: String? = nil
             if let sqlEndTime = sqlite3_column_text(queryStatement, 1) {
                 endTime = String(cString: sqlEndTime)

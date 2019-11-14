@@ -108,10 +108,16 @@ class InfoPopupViewController: UIViewController {
         setupView()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        preferredContentSize =  CGSize(width: contentView.bounds.size.width,
+                                       height: contentView.bounds.size.height + 37)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         preferredContentSize =  CGSize(width: contentView.bounds.size.width,
-                                       height: contentView.bounds.size.height + 30)
+                                       height: contentView.bounds.size.height + 37)
     }
     
     func setupView() {
