@@ -211,6 +211,15 @@ class SetupProfileViewController: UIViewController {
             
             profileType = .employee
             isWizard = true
+            
+            // if OldDB exists and hasn't been imported
+            let versionUpdated = UserDefaults.standard.bool(forKey: updatedDBVersion)
+            if versionUpdated == false, ImportDBService.dbExists {
+                employerBtn.setTitleColor(.lightGray, for: .disabled)
+                employerBtn.isEnabled = false
+                employerBtn.isAccessibilityElement = false
+            }
+
             return
         }
         
@@ -669,7 +678,7 @@ extension SetupProfileViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if textField == phoneTextField {
+        if textField == phoneTextField, string != " " {
             var fullString = textField.text ?? ""
             fullString.append(string)
             if range.length == 1 {
@@ -693,9 +702,12 @@ extension  SetupProfileViewController {
         // If Old DB Exists and it hasn't been importted
         let versionUpdated = UserDefaults.standard.bool(forKey: updatedDBVersion)
         if versionUpdated == false, ImportDBService.dbExists {
-            let controller = ImportDBViewController.instantiateFromStoryboard("Profile")
-            controller.importDelegate = self
-            addDBImportView(controller: controller)
+            
+            if profileUser is Employee {
+                let controller = ImportDBViewController.instantiateFromStoryboard("Profile")
+                controller.importDelegate = self
+                addDBImportView(controller: controller)
+            }
         }
         else {
             performSegue(withIdentifier: "addEmploymentInfo", sender: self)
@@ -760,9 +772,9 @@ extension SetupProfileViewController: ImportDBProtocol {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setToRecipients(["webmaster@dol.gov"])
+            mail.setToRecipients(["chawla.nidhi@dol.gov"])
             mail.setSubject("Timesheet Import Data")
-            mail.setMessageBody("<p>Hi DOL Timesheet Support, Attached are the Timesheet import logs and the old timesheet database related to the error I had importing my data.</p>", isHTML: true)
+            mail.setMessageBody("<p>Hi DOL Timesheet Support,</p> <p>Attached are the Timesheet import logs and the old timesheet database related to the error I had importing my data.</p>", isHTML: true)
 
             let dbPathURL = ImportDBService.dbPath
             let dbLogPathURL = ImportDBService.importLogPath

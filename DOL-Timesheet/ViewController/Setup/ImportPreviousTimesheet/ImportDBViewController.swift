@@ -60,6 +60,10 @@ class ImportDBViewController: UIViewController {
     }
 
     func setupView() {
+        if #available(iOS 13.0, *) {
+            activityIndicator.style = .large
+        }
+        
         titleLabel.scaleFont(forDataType: .headingTitle)
         logsTitleLabel.scaleFont(forDataType: .columnHeader)
         importView.addBorder(borderColor: .borderColor, borderWidth: 1.0, cornerRadius: 8.0)

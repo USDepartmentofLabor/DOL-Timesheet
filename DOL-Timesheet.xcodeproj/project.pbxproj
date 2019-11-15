@@ -75,7 +75,6 @@
 		032DFD2D228B5774001A1C3B /* EarningsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032DFD2B228B5774001A1C3B /* EarningsTableViewCell.swift */; };
 		032E5F2C22A99EE400F6EC26 /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032E5F2B22A99EE400F6EC26 /* BorderedView.swift */; };
 		032EB05F237DA88500B8D92A /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032EB05E237DA88500B8D92A /* UIScrollView+Extension.swift */; };
-		0330004A237B1E8D00AD9E31 /* whd.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 03300049237B1E6A00AD9E31 /* whd.sqlite */; };
 		033225702295AA3400479578 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332256F2295AA3400479578 /* ProfileViewModel.swift */; };
 		03347448228C826900A67E97 /* WorkWeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03347447228C826900A67E97 /* WorkWeekViewModel.swift */; };
 		0334744A228C9DEF00A67E97 /* TimesheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03347449228C9DEF00A67E97 /* TimesheetViewModel.swift */; };
@@ -207,7 +206,6 @@
 		032DFD2B228B5774001A1C3B /* EarningsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarningsTableViewCell.swift; sourceTree = "<group>"; };
 		032E5F2B22A99EE400F6EC26 /* BorderedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
 		032EB05E237DA88500B8D92A /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
-		03300049237B1E6A00AD9E31 /* whd.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = whd.sqlite; sourceTree = "<group>"; };
 		0332256F2295AA3400479578 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		03347447228C826900A67E97 /* WorkWeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkWeekViewModel.swift; sourceTree = "<group>"; };
 		03347449228C9DEF00A67E97 /* TimesheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetViewModel.swift; sourceTree = "<group>"; };
@@ -322,7 +320,6 @@
 				0324C3E82260E47200712576 /* LaunchScreen.storyboard */,
 				0324C3EB2260E47200712576 /* Info.plist */,
 				0324C3E32260E47100712576 /* DOL_Timesheet.xcdatamodeld */,
-				03300049237B1E6A00AD9E31 /* whd.sqlite */,
 			);
 			path = "DOL-Timesheet";
 			sourceTree = "<group>";
@@ -680,7 +677,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0330004A237B1E8D00AD9E31 /* whd.sqlite in Resources */,
 				032DFD29228B2E00001A1C3B /* EarningsTableViewHeaderView.xib in Resources */,
 				037C226A2278B6400021A309 /* Profile.storyboard in Resources */,
 				036D71952277445300CC62CE /* Localizable.strings in Resources */,
@@ -999,7 +995,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1021,7 +1017,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

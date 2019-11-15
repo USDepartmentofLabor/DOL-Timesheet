@@ -154,8 +154,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csU-F1-tJe" userLabel="TimeView">
                                 <rect key="frame" x="0.0" y="108.5" width="414" height="787.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Log" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbI-Iw-n84" userLabel="EnterTimeTileLabel">
-                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="26.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Entries" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbI-Iw-n84" userLabel="EnterTimeTileLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="118" height="26.5"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" staticText="YES" header="YES"/>
                                         </accessibility>
@@ -2091,7 +2091,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3GV-mi-63D"/>
-        <segue reference="raw-Tx-Vfv"/>
+        <segue reference="3iC-tx-nCj"/>
+        <segue reference="KJz-zA-nJd"/>
     </inferredMetricsTieBreakers>
 </document>
