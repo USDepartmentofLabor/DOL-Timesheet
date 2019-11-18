@@ -125,13 +125,16 @@ class ManageUsersViewController: UIViewController {
             noUsersLabel.isHidden = true
         }
         
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
         UIView.animate(withDuration: 0, animations: {
             self.tableView.layoutIfNeeded()
         }) { (complete) in
             self.employmentTableViewHeightConstraint.constant = self.tableView.contentSize.height > 0 ? self.tableView.contentSize.height : 100
         }
     }
-    
     
     @objc func cancelClick(sender: Any?) {
         dismiss(animated: true, completion: nil)

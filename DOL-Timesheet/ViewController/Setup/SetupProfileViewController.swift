@@ -218,11 +218,13 @@ class SetupProfileViewController: UIViewController {
                 employerBtn.setTitleColor(.lightGray, for: .disabled)
                 employerBtn.isEnabled = false
                 employerBtn.isAccessibilityElement = false
+                employeeEmployerInfoView.infoType = .importDBEmployee
             }
 
             return
         }
         
+        employeeEmployerInfoView.infoType = .employee_Employer
         headerView.removeFromSuperview()
         footerView.removeFromSuperview()
         let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelClicked(_:)))
@@ -678,7 +680,7 @@ extension SetupProfileViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if textField == phoneTextField, string != " " {
+        if textField == phoneTextField {
             var fullString = textField.text ?? ""
             fullString.append(string)
             if range.length == 1 {

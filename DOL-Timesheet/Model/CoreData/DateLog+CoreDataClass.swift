@@ -34,7 +34,7 @@ public class DateLog: NSManagedObject {
             
             if let rateOptions = employmentInfo?.sortedRates(), rateOptions.count == 1 {
                 newTimeLog.hourlyRate = rateOptions[0]
-//                newTimeLog.value = rateOptions[0].value
+                newTimeLog.value = rateOptions[0].value
             }
             
             addToTimeLogs(newTimeLog)

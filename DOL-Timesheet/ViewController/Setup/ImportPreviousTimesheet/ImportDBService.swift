@@ -159,6 +159,7 @@ class ImportDBService {
         
         employmentInfo.employer = employer
         employmentInfo.employee = employee
+        employmentInfo.startDate = Date().startOfDay()
         
         addTimeLogs(db: db, employmentInfo: employmentInfo, oldEmployer: oldEmployer)
 //        addClock(db: db, employmentInfo: employmentInfo, oldEmployer: oldEmployer)
@@ -168,7 +169,10 @@ class ImportDBService {
 
         do {
             guard let timeEntriesStartDate = try db.getStartDate(for: oldEmployer),
-            let timeEntriesEndDate = try db.getEndDate(for: oldEmployer) else { return }
+            let timeEntriesEndDate = try db.getEndDate(for: oldEmployer) else {
+                employmentInfo.startDate = Date()
+                return
+           }
 
             employmentInfo.startDate = timeEntriesStartDate.startOfDay()
             let dateFormatter = DateFormatter()
@@ -188,6 +192,8 @@ class ImportDBService {
             logDelegate?.addDetailLogs(logStr: "Unable to prepare stmt getStartDate, getEndDate, SQLError: \(message)")
         } catch SQLiteError.Bind(let message) {
             logDelegate?.addDetailLogs(logStr: "Unable to bind in getStartDate, getEndDate, SQLError: \(message)")
+        } catch SQLiteError.Step(let message) {
+            logDelegate?.addDetailLogs(logStr: "Unable to step in getStartDate, getEndDate, SQLError: \(message)")
         } catch (let error) {
             logDelegate?.addDetailLogs(logStr: "Error in getStartDate, getEndDate, Error: \(error.localizedDescription)")
         }
@@ -214,6 +220,7 @@ class ImportDBService {
                 let dateLog = employmentInfo.log(forDate: startTime) ??
                 employmentInfo.createLog(forDate: startTime)
                 let timeLog = dateLog.createTimeLog()
+                
                 timeLog?.startTime = startTime
                 timeLog?.endTime = $0.endTime
                 let breakTimes = try db.getBreakTime(for: $0)
@@ -244,6 +251,8 @@ class ImportDBService {
             logDelegate?.addDetailLogs(logStr: "Unable to prepare stmt addTimeLogs, SQLError: \(message)")
         } catch SQLiteError.Bind(let message) {
             logDelegate?.addDetailLogs(logStr: "Unable to bind in addTimeLogs, SQLError: \(message)")
+        } catch SQLiteError.Step(let message) {
+                    logDelegate?.addDetailLogs(logStr: "Unable to step in addTimeLogs SQLError: \(message)")
         } catch (let error) {
             logDelegate?.addDetailLogs(logStr: "addTimeLogs, Error: \(error.localizedDescription)")
         }
@@ -285,6 +294,8 @@ class ImportDBService {
             logDelegate?.addDetailLogs(logStr: "Unable to prepare stmt addClock, SQLError: \(message)")
         } catch SQLiteError.Bind(let message) {
             logDelegate?.addDetailLogs(logStr: "Unable to bind in addClock, SQLError: \(message)")
+        } catch SQLiteError.Step(let message) {
+            logDelegate?.addDetailLogs(logStr: "Unable to step in addClock SQLError: \(message)")
         } catch (let error) {
             logDelegate?.addDetailLogs(logStr: "addClock, Error: \(error.localizedDescription)")
         }

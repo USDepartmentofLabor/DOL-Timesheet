@@ -342,6 +342,7 @@ extension TimesheetViewModel {
                 let hourlyRate = hourlyRate,
                 let childHourlyRate = childContext.object(with: hourlyRate.objectID) as? HourlyRate {
                 hourlyTimeLog.hourlyRate = childHourlyRate
+                hourlyTimeLog.value = childHourlyRate.value
             }
             
             timeLog?.startTime = $0.startTime

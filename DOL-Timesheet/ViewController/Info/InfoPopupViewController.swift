@@ -34,6 +34,7 @@ enum Info: String {
     case overtimePay
     case endTime
     case breakTime
+    case importDBEmployee
     case unknown
     
     var title: String {
@@ -81,6 +82,8 @@ enum Info: String {
             title = NSLocalizedString("info_end_time", comment: "End Time")
         case .breakTime:
             title = NSLocalizedString("info_break_time", comment: "Break Time")
+        case .importDBEmployee:
+            title = NSLocalizedString("info_import_employee", comment: "Import old employee database")
         case .unknown:
             title = ""
         }

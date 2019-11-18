@@ -86,12 +86,12 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
 
         workedHoursCounterLabel.scaleFont(forDataType: .timeCounterText)
         hoursWorkedTitleLabel.scaleFont(forDataType: .nameValueTitle)
-        timeInfoLabel.scaleFont(forDataType: .enterTimeValue)
+        timeInfoLabel.scaleFont(forDataType: .timecardInfoText)
         timeInfoLabel.textColor = UIColor(named: "appSecondaryColor")
 
         breakHoursCounterLabel.scaleFont(forDataType: .breakTimeCounterText)
         breakHoursTitleLabel.scaleFont(forDataType: .nameValueText)
-        breakTimeInfoLabel.scaleFont(forDataType: .enterTimeValue)
+        breakTimeInfoLabel.scaleFont(forDataType: .timecardInfoText)
         breakTimeInfoLabel.textColor = UIColor(named: "appSecondaryColor")
         
         commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
@@ -397,9 +397,7 @@ extension TimeCardViewController {
 
 extension TimeCardViewController: EnterTimeViewControllerDelegate {
     func didEnterTime(enterTimeModel: EnterTimeViewModel?) {
-        if (viewModel?.currentEmploymentModel?.employmentInfo.clock) != nil {
-            discardEntry()
-        }
+        displayClock()
     }
     
     func didCancelEnterTime() {

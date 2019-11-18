@@ -74,15 +74,15 @@ public class TimeLog: NSManagedObject {
         return errorStr
     }
     
-    public override func didChangeValue(forKey key: String) {
-        super.didChangeValue(forKey: key)
-        if key == "hourlyRate" {
-            if let hourlyTimeLog = self as? HourlyPaymentTimeLog,
-                let hourlyRate = hourlyTimeLog.hourlyRate {
-                hourlyTimeLog.value = hourlyRate.value
-            }
-        }
-    }
+//    public override func didChangeValue(forKey key: String) {
+//        super.didChangeValue(forKey: key)
+//        if key == "hourlyRate" {
+//            if let hourlyTimeLog = self as? HourlyPaymentTimeLog,
+//                let hourlyRate = hourlyTimeLog.hourlyRate {
+//                hourlyTimeLog.value = hourlyRate.value
+//            }
+//        }
+//    }
 }
 
 extension TimeLog {

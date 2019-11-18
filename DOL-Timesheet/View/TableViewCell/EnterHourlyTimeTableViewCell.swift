@@ -176,7 +176,7 @@ class EnterHourlyTimeTableViewCell: UITableViewCell {
                 strongSelf.hourlyRateView.title = hourlyRate.title
                 strongSelf.delegate?.contentDidChange(cell: strongSelf)
                 hourlyTimeLog.hourlyRate = hourlyRate
-//                hourlyTimeLog.value = hourlyRate.value
+                hourlyTimeLog.value = hourlyRate.value
             }
             popVC.dismiss(animated: true, completion: nil)
         }

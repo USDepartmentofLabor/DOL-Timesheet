@@ -140,7 +140,7 @@ extension EnterTimeViewModel {
             if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog,
                 let nextHourlyTimeLog = nextTimeLog as? HourlyPaymentTimeLog {
                 nextHourlyTimeLog.hourlyRate = hourlyTimeLog.hourlyRate
-//                nextHourlyTimeLog.value = hourlyTimeLog.value
+                nextHourlyTimeLog.value = hourlyTimeLog.value
             }
         }
     }

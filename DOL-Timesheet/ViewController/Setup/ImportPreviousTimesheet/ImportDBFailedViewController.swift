@@ -21,7 +21,8 @@ class ImportDBFailedViewController: UIViewController {
     @IBOutlet weak var noBtn: SelectableButton!
 
     weak var importDelegate: ImportDBProtocol?
-
+    @IBOutlet weak var contentTopConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,7 +34,7 @@ class ImportDBFailedViewController: UIViewController {
         titleLabel.scaleFont(forDataType: .sectionTitle)
         details1Label.scaleFont(forDataType: .glossaryText)
         details2Label.scaleFont(forDataType: .glossaryText)
-        footerLabel.scaleFont(forDataType: .glossaryTitle)
+        footerLabel.scaleFont(forDataType: .summaryTotalTitle)
         yesBtn.isSelected = true
         setupAccessibility()
     }
@@ -46,6 +47,10 @@ class ImportDBFailedViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        if shadowView.frame.maxY > view.frame.height {
+            contentTopConstraint.constant = 0
+        }
+
         shadowView.layer.shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: 8.0).cgPath
         shadowView.layer.shadowRadius = 8.0
         shadowView.layer.shadowOffset = .zero

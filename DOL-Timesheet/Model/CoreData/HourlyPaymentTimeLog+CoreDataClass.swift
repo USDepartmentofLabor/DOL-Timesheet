@@ -28,7 +28,7 @@ public class HourlyPaymentTimeLog: TimeLog {
             let hoursWorkedStr: String = Date.secondsToHoursMinutes(seconds: Double(hoursWorked))
             let rateStr = NumberFormatter.localisedRateStr(from: hourlyRate.value) 
             desc = "\(hoursWorkedStr) x \(rateStr)"
-        }
+       }
         
         return desc
     }
