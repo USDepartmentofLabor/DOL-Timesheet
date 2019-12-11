@@ -360,7 +360,6 @@ extension Period {
                     else if paymentFrequency == .daily {
                         totalAmount = salaryAmount / 7
                     }
-                    totalAmount = salaryAmount
                 }
             }
             return totalAmount

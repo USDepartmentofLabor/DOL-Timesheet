@@ -42,7 +42,7 @@ extension AboutViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "aboutCell")
         
-        if indexPath.row == 1 {
+        if indexPath.row == 0 {
             cell.textLabel?.scaleFont(forDataType: .introductionBoldText)
         }
         else {

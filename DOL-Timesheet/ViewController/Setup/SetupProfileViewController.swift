@@ -546,8 +546,10 @@ extension SetupProfileViewController {
             takeCameraPermission()
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video) { success in
-                if success {
-                    self.takeCameraPicture()
+                DispatchQueue.main.sync {
+                    if success {
+                        self.takeCameraPicture()
+                    }
                 }
             }
         case .restricted:
@@ -774,9 +776,9 @@ extension SetupProfileViewController: ImportDBProtocol {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setToRecipients(["chawla.nidhi@dol.gov"])
+            mail.setToRecipients(["webmaster@dol.gov"])
             mail.setSubject("Timesheet Import Data")
-            mail.setMessageBody("<p>Hi DOL Timesheet Support,</p> <p>Attached are the Timesheet import logs and the old timesheet database related to the error I had importing my data.</p>", isHTML: true)
+            mail.setMessageBody("<p>DOL Timesheet Support,</p> <p>Attached are the Timesheet import logs and the old timesheet database related to the error I had importing my data.</p>", isHTML: true)
 
             let dbPathURL = ImportDBService.dbPath
             let dbLogPathURL = ImportDBService.importLogPath

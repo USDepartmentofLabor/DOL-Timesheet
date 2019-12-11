@@ -24,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="494"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2Q-TD-sWk" userLabel="ContentView">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="375"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="465"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHf-j3-JCO" userLabel="PaymentTypeView">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -43,10 +43,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJf-Sm-tZB" userLabel="PaymentFrequencyView" customClass="BorderedView" customModule="Timesheet" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="45" width="374" height="86"/>
+                                                        <rect key="frame" x="0.0" y="45" width="374" height="119.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYK-TW-Dis" customClass="LabelInfoView" customModule="Timesheet" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="15" width="344" height="0.0"/>
+                                                                <rect key="frame" x="15" y="15" width="344" height="33.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" header="YES"/>
@@ -57,7 +57,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g4j-Qx-VHH" userLabel="PaymentFrequencyDropDownView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="27" width="150" height="44"/>
+                                                                <rect key="frame" x="15" y="60.5" width="150" height="44"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Wv5-sN-oaw"/>
@@ -77,10 +77,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGB-3J-ycG" userLabel="WorkWeekView" customClass="BorderedView" customModule="Timesheet" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="146" width="374" height="86"/>
+                                                        <rect key="frame" x="0.0" y="179.5" width="374" height="142.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9o7-bU-9m4" customClass="LabelInfoView" customModule="Timesheet" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="15" width="344" height="0.0"/>
+                                                                <rect key="frame" x="15" y="15" width="344" height="56.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" header="YES"/>
@@ -91,7 +91,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u7m-ix-sKo" userLabel="SelectWorkWeekView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="27" width="150" height="44"/>
+                                                                <rect key="frame" x="15" y="83.5" width="150" height="44"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="khw-sA-sJU"/>
@@ -111,7 +111,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8OF-yg-P2e" userLabel="OvertimeEligibilityView">
-                                                        <rect key="frame" x="0.0" y="247" width="374" height="128"/>
+                                                        <rect key="frame" x="0.0" y="337" width="374" height="128"/>
                                                         <subviews>
                                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9f5-ns-8xD">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
@@ -193,14 +193,14 @@
         <scene sceneID="Hft-La-YcJ">
             <objects>
                 <viewController id="2Hh-eo-DQx" customClass="SetupSalaryPaymentViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="Ie6-X1-efn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                    <view key="view" contentMode="scaleToFill" id="Ie6-X1-efn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sXi-Fj-Xdz">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sXi-Fj-Xdz">
                                 <rect key="frame" x="15" y="15" width="345" height="632"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3G6-f6-rzo">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3G6-f6-rzo">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="632"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIc-a7-g0O" userLabel="ContentView">
@@ -330,93 +330,120 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Owe-Z1-ill">
-                                <rect key="frame" x="30" y="80" width="315" height="450.5"/>
+                                <rect key="frame" x="30" y="80" width="315" height="500"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yl7-oh-y22">
-                                        <rect key="frame" x="4" y="0.0" width="307" height="450.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="500"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Data Import Was Unsuccessful" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jA1-G8-2H8">
-                                                <rect key="frame" x="10" y="12" width="287" height="41"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4k-bF-Dp8">
-                                                <rect key="frame" x="10" y="63" width="287" height="142.5"/>
-                                                <string key="text">In order to troubleshoot the issues with the data import, we need the logs and your old timesheet data. Your data will only be used for troubleshooting purposes; it will not be shared with anyone outside of the app development team.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pyr-a7-jgH">
-                                                <rect key="frame" x="10" y="215.5" width="287" height="81.5"/>
-                                                <string key="text">Please select Yes below if you agree to share your information with us for troubleshooting purposes or No to continue using the app.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*PLEASE NOTE THAT YOU CAN CONTINUE TO USE THE APP BUT WILL NOT HAVE ACCESS TO YOUR OLDER TIMESHEETS DATA." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14d-5k-BFn">
-                                                <rect key="frame" x="10" y="307" width="287" height="81.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-7J-Bjy">
-                                                <rect key="frame" x="10" y="402.5" width="287" height="34"/>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rd-Np-GPf">
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="500"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pi7-49-rJ1" customClass="SelectableButton" customModule="Timesheet" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="138.5" height="34"/>
-                                                        <color key="tintColor" name="appPrimaryColor"/>
-                                                        <state key="normal" title="Yes">
-                                                            <color key="titleColor" name="appPrimaryColor"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="yesClick:" destination="xs3-RJ-4jn" eventType="touchUpInside" id="HcJ-ik-iVw"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcU-Ev-As6" customClass="SelectableButton" customModule="Timesheet" customModuleProvider="target">
-                                                        <rect key="frame" x="148.5" y="0.0" width="138.5" height="34"/>
-                                                        <state key="normal" title="No"/>
-                                                        <connections>
-                                                            <action selector="noClick:" destination="xs3-RJ-4jn" eventType="touchUpInside" id="CD8-yl-ntU"/>
-                                                        </connections>
-                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NvB-W1-VGO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="315" height="440"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Data Import Was Unsuccessful" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jA1-G8-2H8">
+                                                                <rect key="frame" x="10" y="16" width="295" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4k-bF-Dp8">
+                                                                <rect key="frame" x="10" y="50.5" width="295" height="142.5"/>
+                                                                <string key="text">In order to troubleshoot the issues with the data import, we need the logs and your old timesheet data. Your data will only be used for troubleshooting purposes; it will not be shared with anyone outside of the app development team.</string>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pyr-a7-jgH">
+                                                                <rect key="frame" x="10" y="203" width="295" height="81.5"/>
+                                                                <string key="text">Please select Yes below if you agree to share your information with us for troubleshooting purposes or No to continue using the app.</string>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*PLEASE NOTE THAT YOU CAN CONTINUE TO USE THE APP BUT WILL NOT HAVE ACCESS TO YOUR OLDER TIMESHEETS DATA." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14d-5k-BFn">
+                                                                <rect key="frame" x="10" y="294.5" width="295" height="81.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-7J-Bjy">
+                                                                <rect key="frame" x="10" y="390" width="295" height="34"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pi7-49-rJ1" customClass="SelectableButton" customModule="Timesheet" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="142.5" height="34"/>
+                                                                        <color key="tintColor" name="appPrimaryColor"/>
+                                                                        <state key="normal" title="Yes">
+                                                                            <color key="titleColor" name="appPrimaryColor"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="yesClick:" destination="xs3-RJ-4jn" eventType="touchUpInside" id="HcJ-ik-iVw"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcU-Ev-As6" customClass="SelectableButton" customModule="Timesheet" customModuleProvider="target">
+                                                                        <rect key="frame" x="152.5" y="0.0" width="142.5" height="34"/>
+                                                                        <state key="normal" title="No"/>
+                                                                        <connections>
+                                                                            <action selector="noClick:" destination="xs3-RJ-4jn" eventType="touchUpInside" id="CD8-yl-ntU"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="m4k-bF-Dp8" firstAttribute="trailing" secondItem="jA1-G8-2H8" secondAttribute="trailing" id="2Zf-d6-PzX"/>
+                                                            <constraint firstItem="jA1-G8-2H8" firstAttribute="leading" secondItem="NvB-W1-VGO" secondAttribute="leading" constant="10" id="2kT-13-Fva"/>
+                                                            <constraint firstItem="ZFw-7J-Bjy" firstAttribute="trailing" secondItem="jA1-G8-2H8" secondAttribute="trailing" id="7NW-bM-GWE"/>
+                                                            <constraint firstItem="Pyr-a7-jgH" firstAttribute="top" secondItem="m4k-bF-Dp8" secondAttribute="bottom" constant="10" id="C3v-z4-zSN"/>
+                                                            <constraint firstItem="ZFw-7J-Bjy" firstAttribute="top" secondItem="14d-5k-BFn" secondAttribute="bottom" constant="14" id="FLf-sB-gpl"/>
+                                                            <constraint firstAttribute="bottom" secondItem="ZFw-7J-Bjy" secondAttribute="bottom" constant="16" id="HWj-TE-E2u"/>
+                                                            <constraint firstItem="Pyr-a7-jgH" firstAttribute="leading" secondItem="jA1-G8-2H8" secondAttribute="leading" id="Mpp-jv-0Mb"/>
+                                                            <constraint firstItem="jA1-G8-2H8" firstAttribute="top" secondItem="NvB-W1-VGO" secondAttribute="top" constant="16" id="RsL-Lp-MJP"/>
+                                                            <constraint firstItem="14d-5k-BFn" firstAttribute="trailing" secondItem="jA1-G8-2H8" secondAttribute="trailing" id="Tln-DY-W77"/>
+                                                            <constraint firstAttribute="trailing" secondItem="jA1-G8-2H8" secondAttribute="trailing" constant="10" id="YdG-w2-zV5"/>
+                                                            <constraint firstItem="Pyr-a7-jgH" firstAttribute="trailing" secondItem="jA1-G8-2H8" secondAttribute="trailing" id="cl5-kg-7aI"/>
+                                                            <constraint firstItem="m4k-bF-Dp8" firstAttribute="leading" secondItem="jA1-G8-2H8" secondAttribute="leading" id="dhq-Kk-xDE"/>
+                                                            <constraint firstItem="14d-5k-BFn" firstAttribute="leading" secondItem="jA1-G8-2H8" secondAttribute="leading" id="iLm-SB-xxW"/>
+                                                            <constraint firstItem="ZFw-7J-Bjy" firstAttribute="leading" secondItem="jA1-G8-2H8" secondAttribute="leading" id="lLH-d1-3bL"/>
+                                                            <constraint firstItem="14d-5k-BFn" firstAttribute="top" secondItem="Pyr-a7-jgH" secondAttribute="bottom" constant="10" id="m5n-TA-wGZ"/>
+                                                            <constraint firstItem="m4k-bF-Dp8" firstAttribute="top" secondItem="jA1-G8-2H8" secondAttribute="bottom" constant="14" id="uvn-P4-KFU"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
-                                            </stackView>
+                                                <constraints>
+                                                    <constraint firstItem="NvB-W1-VGO" firstAttribute="top" secondItem="9Rd-Np-GPf" secondAttribute="top" id="Qux-WY-8xi"/>
+                                                    <constraint firstAttribute="bottom" secondItem="NvB-W1-VGO" secondAttribute="bottom" id="VMQ-Fa-mTN"/>
+                                                    <constraint firstAttribute="trailing" secondItem="NvB-W1-VGO" secondAttribute="trailing" id="uvZ-fH-1Ci"/>
+                                                    <constraint firstItem="NvB-W1-VGO" firstAttribute="leading" secondItem="9Rd-Np-GPf" secondAttribute="leading" id="xuA-6H-3nj"/>
+                                                </constraints>
+                                                <viewLayoutGuide key="contentLayoutGuide" id="YfK-Gp-fd4"/>
+                                                <viewLayoutGuide key="frameLayoutGuide" id="pAI-bu-KK1"/>
+                                            </scrollView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="Pyr-a7-jgH" firstAttribute="top" secondItem="m4k-bF-Dp8" secondAttribute="bottom" constant="10" id="1LG-JG-yrW"/>
-                                            <constraint firstItem="14d-5k-BFn" firstAttribute="leading" secondItem="jA1-G8-2H8" secondAttribute="leading" id="Fqc-zM-t1E"/>
-                                            <constraint firstItem="Pyr-a7-jgH" firstAttribute="leading" secondItem="jA1-G8-2H8" secondAttribute="leading" id="KBE-f6-hrF"/>
-                                            <constraint firstItem="ZFw-7J-Bjy" firstAttribute="trailing" secondItem="jA1-G8-2H8" secondAttribute="trailing" id="Oob-QC-8Te"/>
-                                            <constraint firstItem="m4k-bF-Dp8" firstAttribute="top" secondItem="jA1-G8-2H8" secondAttribute="bottom" constant="10" id="RPv-fW-fyD"/>
-                                            <constraint firstItem="14d-5k-BFn" firstAttribute="trailing" secondItem="jA1-G8-2H8" secondAttribute="trailing" id="b4H-vf-aqQ"/>
-                                            <constraint firstItem="m4k-bF-Dp8" firstAttribute="leading" secondItem="jA1-G8-2H8" secondAttribute="leading" id="cj7-Uf-lsf"/>
-                                            <constraint firstItem="jA1-G8-2H8" firstAttribute="top" secondItem="yl7-oh-y22" secondAttribute="top" constant="12" id="oZr-ZQ-lLO"/>
-                                            <constraint firstItem="jA1-G8-2H8" firstAttribute="leading" secondItem="yl7-oh-y22" secondAttribute="leading" constant="10" id="pm3-Vg-yeu"/>
-                                            <constraint firstAttribute="bottom" secondItem="ZFw-7J-Bjy" secondAttribute="bottom" constant="14" id="pqY-va-J6I"/>
-                                            <constraint firstAttribute="trailing" secondItem="jA1-G8-2H8" secondAttribute="trailing" constant="10" id="qiJ-fO-MHE"/>
-                                            <constraint firstItem="ZFw-7J-Bjy" firstAttribute="top" secondItem="14d-5k-BFn" secondAttribute="bottom" constant="14" id="ryn-zD-0mQ"/>
-                                            <constraint firstItem="ZFw-7J-Bjy" firstAttribute="leading" secondItem="jA1-G8-2H8" secondAttribute="leading" id="sWn-EV-enR"/>
-                                            <constraint firstItem="Pyr-a7-jgH" firstAttribute="trailing" secondItem="jA1-G8-2H8" secondAttribute="trailing" id="sq1-Mo-ADT"/>
-                                            <constraint firstItem="14d-5k-BFn" firstAttribute="top" secondItem="Pyr-a7-jgH" secondAttribute="bottom" constant="10" id="tOp-75-ShG"/>
-                                            <constraint firstItem="m4k-bF-Dp8" firstAttribute="trailing" secondItem="jA1-G8-2H8" secondAttribute="trailing" id="wf1-bk-i7A"/>
+                                            <constraint firstItem="9Rd-Np-GPf" firstAttribute="leading" secondItem="yl7-oh-y22" secondAttribute="leading" id="5Ym-xY-Nvg"/>
+                                            <constraint firstAttribute="trailing" secondItem="9Rd-Np-GPf" secondAttribute="trailing" id="FC3-fq-y8P"/>
+                                            <constraint firstAttribute="bottom" secondItem="9Rd-Np-GPf" secondAttribute="bottom" id="VGi-Pc-BeE"/>
+                                            <constraint firstItem="9Rd-Np-GPf" firstAttribute="top" secondItem="yl7-oh-y22" secondAttribute="top" id="XQz-vH-XEw"/>
+                                            <constraint firstItem="NvB-W1-VGO" firstAttribute="width" secondItem="yl7-oh-y22" secondAttribute="width" id="or3-EI-MTK"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="yl7-oh-y22" firstAttribute="leading" secondItem="Owe-Z1-ill" secondAttribute="leading" constant="4" id="P5J-Fv-kho"/>
-                                    <constraint firstAttribute="bottom" secondItem="yl7-oh-y22" secondAttribute="bottom" id="YTx-qx-K1Q"/>
-                                    <constraint firstItem="yl7-oh-y22" firstAttribute="centerX" secondItem="Owe-Z1-ill" secondAttribute="centerX" id="cpT-Ch-bRu"/>
-                                    <constraint firstItem="yl7-oh-y22" firstAttribute="top" secondItem="Owe-Z1-ill" secondAttribute="top" id="fCR-7F-vMG"/>
+                                    <constraint firstItem="yl7-oh-y22" firstAttribute="top" secondItem="Owe-Z1-ill" secondAttribute="top" id="4k3-Pu-VHl"/>
+                                    <constraint firstAttribute="bottom" secondItem="yl7-oh-y22" secondAttribute="bottom" id="791-Yp-ICD"/>
+                                    <constraint firstAttribute="trailing" secondItem="yl7-oh-y22" secondAttribute="trailing" id="GtK-65-lDX"/>
+                                    <constraint firstAttribute="height" constant="500" id="SB9-qb-Mzg"/>
+                                    <constraint firstItem="yl7-oh-y22" firstAttribute="leading" secondItem="Owe-Z1-ill" secondAttribute="leading" id="uQg-dM-jG3"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Owe-Z1-ill" firstAttribute="top" secondItem="D90-Qg-kxr" secondAttribute="top" priority="750" constant="80" id="6yq-kd-eF6"/>
+                            <constraint firstItem="Owe-Z1-ill" firstAttribute="top" secondItem="D90-Qg-kxr" secondAttribute="top" constant="80" id="5yd-cq-YV1"/>
                             <constraint firstItem="TbJ-C4-HX6" firstAttribute="top" secondItem="FbS-jV-XdD" secondAttribute="top" id="96A-uK-hun"/>
                             <constraint firstItem="Owe-Z1-ill" firstAttribute="leading" secondItem="D90-Qg-kxr" secondAttribute="leading" constant="30" id="KkW-TW-bPe"/>
                             <constraint firstItem="TbJ-C4-HX6" firstAttribute="trailing" secondItem="D90-Qg-kxr" secondAttribute="trailing" id="T05-jW-hsz"/>
@@ -428,12 +455,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="vmZ-qL-H6B"/>
                     <connections>
-                        <outlet property="contentTopConstraint" destination="6yq-kd-eF6" id="Eu2-gz-t4B"/>
+                        <outlet property="contentViewHeightConstraint" destination="SB9-qb-Mzg" id="UKQ-Yp-tdl"/>
                         <outlet property="dataView" destination="yl7-oh-y22" id="oAK-Ko-Jqc"/>
                         <outlet property="details1Label" destination="m4k-bF-Dp8" id="c6h-xo-JtJ"/>
                         <outlet property="details2Label" destination="Pyr-a7-jgH" id="e8y-kt-bzn"/>
                         <outlet property="footerLabel" destination="14d-5k-BFn" id="jc6-5r-oW0"/>
                         <outlet property="noBtn" destination="NcU-Ev-As6" id="MHK-fd-AFw"/>
+                        <outlet property="scrollView" destination="9Rd-Np-GPf" id="yDF-2N-HNT"/>
                         <outlet property="shadowView" destination="Owe-Z1-ill" id="Tul-TF-nAG"/>
                         <outlet property="titleLabel" destination="jA1-G8-2H8" id="v7z-3U-dgm"/>
                         <outlet property="yesBtn" destination="Pi7-49-rJ1" id="SPE-iW-LeH"/>
@@ -577,10 +605,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9W-X3-Fkp">
-                                                        <rect key="frame" x="12" y="32.5" width="291" height="264"/>
+                                                        <rect key="frame" x="12" y="32.5" width="291" height="294"/>
                                                         <subviews>
                                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zik-zW-F9k">
-                                                                <rect key="frame" x="0.0" y="0.0" width="291" height="264"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="291" height="294"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bht-VN-Ztg">
                                                                         <rect key="frame" x="0.0" y="0.0" width="291" height="0.0"/>
@@ -614,23 +642,13 @@
                                                             <constraint firstItem="bht-VN-Ztg" firstAttribute="width" secondItem="e9W-X3-Fkp" secondAttribute="width" id="vwT-vI-gfJ"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4Q-le-Ze4" customClass="NavigationButton" customModule="Timesheet" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="308.5" width="315" height="30"/>
-                                                        <state key="normal" title="Cancel"/>
-                                                        <connections>
-                                                            <action selector="cancelClick:" destination="c9c-h1-uva" eventType="touchUpInside" id="Gp3-Dr-1y4"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="x4Q-le-Ze4" secondAttribute="trailing" id="80E-Xo-gEN"/>
                                                     <constraint firstItem="e9W-X3-Fkp" firstAttribute="top" secondItem="Ijx-ex-Exh" secondAttribute="bottom" constant="12" id="EgY-bh-UTX"/>
-                                                    <constraint firstItem="x4Q-le-Ze4" firstAttribute="leading" secondItem="Sqg-KM-4av" secondAttribute="leading" id="OyX-AK-QFX"/>
                                                     <constraint firstItem="e9W-X3-Fkp" firstAttribute="trailing" secondItem="Ijx-ex-Exh" secondAttribute="trailing" id="TCF-OB-Dth"/>
                                                     <constraint firstItem="e9W-X3-Fkp" firstAttribute="leading" secondItem="Ijx-ex-Exh" secondAttribute="leading" id="VxX-EZ-bWt"/>
-                                                    <constraint firstItem="x4Q-le-Ze4" firstAttribute="top" secondItem="e9W-X3-Fkp" secondAttribute="bottom" constant="12" id="Xml-78-vLr"/>
-                                                    <constraint firstAttribute="bottom" secondItem="x4Q-le-Ze4" secondAttribute="bottom" id="YY4-bT-vb7"/>
+                                                    <constraint firstAttribute="bottom" secondItem="e9W-X3-Fkp" secondAttribute="bottom" constant="12" id="agK-UT-6Rk"/>
                                                     <constraint firstItem="Ijx-ex-Exh" firstAttribute="leading" secondItem="Sqg-KM-4av" secondAttribute="leading" constant="12" id="q9d-k4-oZB"/>
                                                     <constraint firstItem="Ijx-ex-Exh" firstAttribute="top" secondItem="Sqg-KM-4av" secondAttribute="top" id="t4a-L7-TqT"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ijx-ex-Exh" secondAttribute="trailing" constant="12" id="uH2-1U-tOa"/>
@@ -678,7 +696,6 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="eks-bj-ZCk" id="3cT-MV-frR"/>
-                        <outlet property="cancelBtn" destination="x4Q-le-Ze4" id="UmY-PV-2TS"/>
                         <outlet property="importView" destination="b9Q-9N-0Yj" id="9q6-TI-5W0"/>
                         <outlet property="logsScrollView" destination="Zik-zW-F9k" id="8sS-N1-njq"/>
                         <outlet property="logsStackView" destination="bht-VN-Ztg" id="u3C-0A-siN"/>
@@ -971,7 +988,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hourly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lw2-m8-Fve" userLabel="HourlyPaymentLabel">
-                                        <rect key="frame" x="363.5" y="0.0" width="50.5" height="20.5"/>
+                                        <rect key="frame" x="363.5" y="0.0" width="50.5" height="201.5"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" staticText="YES" header="YES"/>
                                         </accessibility>
@@ -980,10 +997,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oNA-9I-GOd" userLabel="HourlyContentView">
-                                        <rect key="frame" x="0.0" y="35.5" width="414" height="364.5"/>
+                                        <rect key="frame" x="0.0" y="216.5" width="414" height="183.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOF-wt-OIb" customClass="LabelInfoView" customModule="Timesheet" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="15" width="384" height="214.5"/>
+                                                <rect key="frame" x="15" y="15" width="384" height="33.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" header="YES"/>
@@ -997,7 +1014,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P2k-r9-LyH">
-                                                <rect key="frame" x="15" y="241.5" width="384" height="60"/>
+                                                <rect key="frame" x="15" y="60.5" width="384" height="60"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="KMN-uk-e3e"/>
@@ -1011,16 +1028,16 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="weF-MV-lfY">
-                                                                    <rect key="frame" x="0.0" y="10" width="286.5" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="10" width="266.5" height="50"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Rate Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmt-x3-MCl" userLabel="RateTitleLabel">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="50"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="85.5" height="50"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" name="appPrimaryColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pw8-I4-md5">
-                                                                            <rect key="frame" x="97" y="0.0" width="92.5" height="50"/>
+                                                                            <rect key="frame" x="90.5" y="0.0" width="85.5" height="50"/>
                                                                             <subviews>
                                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Rate 1" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Rnf-l2-x4X" userLabel="RateNameTextField" customClass="UnderlinedTextField" customModule="Timesheet" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="15.5" width="66.5" height="19"/>
@@ -1039,10 +1056,10 @@
                                                                             </constraints>
                                                                         </view>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNU-X9-S2y">
-                                                                            <rect key="frame" x="194.5" y="0.0" width="92" height="50"/>
+                                                                            <rect key="frame" x="181" y="0.0" width="85.5" height="50"/>
                                                                             <subviews>
                                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Iy-9R-53G" customClass="UnderlinedTextField" customModule="Timesheet" customModuleProvider="target">
-                                                                                    <rect key="frame" x="54" y="16.5" width="38" height="17"/>
+                                                                                    <rect key="frame" x="47.5" y="16.5" width="38" height="17"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="30" id="Rs8-Aa-iFC"/>
                                                                                     </constraints>
@@ -1063,13 +1080,13 @@
                                                                     </constraints>
                                                                 </stackView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Per Hour" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiS-1f-68s">
-                                                                    <rect key="frame" x="291.5" y="25" width="67.5" height="20.5"/>
+                                                                    <rect key="frame" x="271.5" y="25" width="67.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleAspectFit" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="251" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="V9Q-IZ-lKQ">
-                                                                    <rect key="frame" x="364" y="0.0" width="20" height="70"/>
+                                                                    <rect key="frame" x="344" y="0.0" width="40" height="70"/>
                                                                     <accessibility key="accessibilityConfiguration" label="Delete"/>
                                                                     <color key="tintColor" name="appPrimaryColor"/>
                                                                     <state key="normal" image="garbage"/>
@@ -1104,7 +1121,7 @@
                                                 </connections>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btr-OV-xzv" userLabel="FooterView">
-                                                <rect key="frame" x="15" y="305.5" width="384" height="44"/>
+                                                <rect key="frame" x="15" y="124.5" width="384" height="44"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="500" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SxY-3M-ftC" customClass="SubActionButton" customModule="Timesheet" customModuleProvider="target">
                                                         <rect key="frame" x="262" y="0.0" width="122" height="44"/>
@@ -1300,14 +1317,14 @@
             <objects>
                 <viewController storyboardIdentifier="EmploymentInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BA7-xr-TI5" customClass="EmploymentInfoViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hVd-pc-w4o">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMd-lA-74L">
-                                <rect key="frame" x="20" y="0.0" width="335" height="0.0"/>
+                                <rect key="frame" x="20" y="0.0" width="335" height="647"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBK-aa-Y7G">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="647"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gmd-UK-Xlo" userLabel="ContentView">
                                                 <rect key="frame" x="0.0" y="28" width="335" height="1057.5"/>
@@ -1932,11 +1949,11 @@
         <scene sceneID="HS7-s7-7a3">
             <objects>
                 <viewController id="6nT-5c-q59" customClass="SetupPaymentFrequencyViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="244-Wo-sys">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                    <view key="view" contentMode="scaleToFill" id="244-Wo-sys">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pHw-m8-hzz">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pHw-m8-hzz">
                                 <rect key="frame" x="20" y="28" width="335" height="599"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kIg-w3-ulj" customClass="LabelInfoView" customModule="Timesheet" customModuleProvider="target">
@@ -1953,7 +1970,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="infoTypeValue" value="paymentFrequency"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dsf-mh-PbC">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dsf-mh-PbC">
                                         <rect key="frame" x="0.0" y="49.5" width="335" height="549.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -2540,15 +2557,15 @@
         <scene sceneID="272-0R-Cro">
             <objects>
                 <viewController id="AyA-Y9-Kqb" customClass="SetupWorkWeekViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="Etj-ed-cql">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                    <view key="view" contentMode="scaleToFill" id="Etj-ed-cql">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Tc-e8-sAD">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Tc-e8-sAD">
                                 <rect key="frame" x="20" y="28" width="335" height="599"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lPq-91-rSG" customClass="LabelInfoView" customModule="Timesheet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="33.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="56.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" header="YES"/>
@@ -2561,8 +2578,8 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="infoTypeValue" value="workWeek"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cnh-6u-sLR">
-                                        <rect key="frame" x="0.0" y="49.5" width="335" height="549.5"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cnh-6u-sLR">
+                                        <rect key="frame" x="0.0" y="72.5" width="335" height="526.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="scrollIndicatorInsets" minX="1" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
@@ -2867,17 +2884,17 @@
         <scene sceneID="aPb-As-unu">
             <objects>
                 <viewController id="TkY-bJ-aan" customClass="SetupHourlyPaymentViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="FIp-qk-EFW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                    <view key="view" contentMode="scaleToFill" id="FIp-qk-EFW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sf2-f5-aEg">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sf2-f5-aEg">
                                 <rect key="frame" x="15" y="15" width="345" height="632"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osP-qd-IMn">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osP-qd-IMn">
                                         <rect key="frame" x="0.0" y="0.0" width="345" height="632"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZYY-nh-GGI" userLabel="ContentView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYY-nh-GGI" userLabel="ContentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="632"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ta2-OJ-BI7" userLabel="HourlyRateView">
@@ -2899,13 +2916,13 @@
                                                             <constraint firstItem="yyO-5c-rRk" firstAttribute="top" secondItem="Ta2-OJ-BI7" secondAttribute="top" id="w7e-hp-u8y"/>
                                                         </constraints>
                                                     </view>
-                                                    <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RG2-Fv-Vxy" userLabel="MinimumWageContainer View">
+                                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RG2-Fv-Vxy" userLabel="MinimumWageContainer View">
                                                         <rect key="frame" x="0.0" y="143" width="345" height="444"/>
                                                         <connections>
                                                             <segue destination="wbd-iv-hHr" kind="embed" identifier="minimumWage" id="6U5-hO-Hj7"/>
                                                         </connections>
                                                     </containerView>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fRI-9w-tJY" userLabel="FooterView">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRI-9w-tJY" userLabel="FooterView">
                                                         <rect key="frame" x="0.0" y="602" width="345" height="30"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sd1-r8-uXL" userLabel="SaveButton" customClass="NavigationButton" customModule="Timesheet" customModuleProvider="target">
@@ -2997,17 +3014,17 @@
                                                 </accessibility>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8gx-wx-lrE">
-                                                <rect key="frame" x="0.0" y="140" width="327" height="448"/>
+                                                <rect key="frame" x="0.0" y="140" width="327" height="385"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNm-Ka-g6b" userLabel="label1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="376.5"/>
-                                                        <string key="text">The Department of Labor is providing this app as a public service. This is a service that is continually under development. The user should be aware that, while we try to keep the information timely and accurate, there will often be a delay between official publication of the materials and their appearance in or modification of this system. Further, the conclusions reached by this system rely on the accuracy of the data provided by the user. Therefore, we make no express or implied guarantees. The Federal Register and the Code of Federal Regulations remain the official sources for regulatory information published by the Department of Labor. We will make every effort to correct errors brought to our attention.</string>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The information input via this app is never shared with the U.S. Department of Labor." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNm-Ka-g6b" userLabel="label1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="40.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please note that information input via this app is never shared with the Department of Labor for any purposes." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqw-4x-Xaw" userLabel="label2">
-                                                        <rect key="frame" x="0.0" y="386.5" width="327" height="61.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqw-4x-Xaw" userLabel="label2">
+                                                        <rect key="frame" x="0.0" y="50.5" width="327" height="334.5"/>
+                                                        <mutableString key="text">The Department of Labor is providing this app as a public service. This service is continually under development. We will make every effort to correct errors brought to our attention. Users should be aware that, while we try to keep the information timely and accurate, there will often be a delay between official publication of materials and their appearance in or modification of this app. Further, the conclusions reached by this app rely on the accuracy of the data provided by the user. Therefore, we make no express or implied guarantees. The Federal Register and the Code of Federal Regulations are the official sources for regulatory information published by the Department of Labor.</mutableString>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -3015,7 +3032,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ph8-da-mxe" userLabel="FooterView">
-                                                <rect key="frame" x="0.0" y="616" width="327" height="30"/>
+                                                <rect key="frame" x="0.0" y="553" width="327" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Llv-24-LBQ" userLabel="NextButton" customClass="NavigationButton" customModule="Timesheet" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
@@ -3034,7 +3051,7 @@
                                                 </constraints>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DOLLogo" translatesAutoresizingMaskIntoConstraints="NO" id="BIc-FO-uoU">
-                                                <rect key="frame" x="0.0" y="666" width="327" height="60"/>
+                                                <rect key="frame" x="0.0" y="603" width="327" height="60"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -3088,11 +3105,11 @@
         <scene sceneID="bMy-sk-3de">
             <objects>
                 <viewController id="GHG-ee-ADP" customClass="SetupPaymentTypeViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="axr-2v-yjB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                    <view key="view" contentMode="scaleToFill" id="axr-2v-yjB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e2s-2r-3hJ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2s-2r-3hJ">
                                 <rect key="frame" x="20" y="28" width="335" height="599"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5w-Ai-i5y" customClass="LabelInfoView" customModule="Timesheet" customModuleProvider="target">
@@ -3108,19 +3125,19 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="How is your pay determined?"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m0K-iR-5Bi">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m0K-iR-5Bi">
                                         <rect key="frame" x="0.0" y="49.5" width="335" height="549.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PaymentTypeTableViewCell" id="F6O-bT-mP4" customClass="PaymentTypeTableViewCell" customModule="Timesheet" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="335" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="335" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F6O-bT-mP4" id="2Od-hB-99B">
-                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODF-7F-5sz">
-                                                            <rect key="frame" x="0.0" y="0.0" width="335" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="r52-77-xgv" userLabel="PaymentButton" customClass="ActionButton" customModule="Timesheet" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="111.5" height="30"/>
@@ -3221,6 +3238,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="GvG-um-s8D"/>
-        <segue reference="del-U2-NF4"/>
+        <segue reference="jna-rX-JMR"/>
     </inferredMetricsTieBreakers>
 </document>

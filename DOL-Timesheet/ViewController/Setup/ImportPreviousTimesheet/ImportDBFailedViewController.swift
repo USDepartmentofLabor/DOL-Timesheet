@@ -12,6 +12,8 @@ class ImportDBFailedViewController: UIViewController {
 
     
     @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var dataView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var details1Label: UILabel!
@@ -21,7 +23,8 @@ class ImportDBFailedViewController: UIViewController {
     @IBOutlet weak var noBtn: SelectableButton!
 
     weak var importDelegate: ImportDBProtocol?
-    @IBOutlet weak var contentTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +37,7 @@ class ImportDBFailedViewController: UIViewController {
         titleLabel.scaleFont(forDataType: .sectionTitle)
         details1Label.scaleFont(forDataType: .glossaryText)
         details2Label.scaleFont(forDataType: .glossaryText)
-        footerLabel.scaleFont(forDataType: .summaryTotalTitle)
+        footerLabel.scaleFont(forDataType: .resourcesTitleText)
         yesBtn.isSelected = true
         setupAccessibility()
     }
@@ -46,9 +49,12 @@ class ImportDBFailedViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        if shadowView.frame.maxY > view.frame.height {
-            contentTopConstraint.constant = 0
+
+        if shadowView.frame.minY + scrollView.contentSize.height < view.frame.maxY {
+            contentViewHeightConstraint.constant = scrollView.contentSize.height
+        }
+        else {
+            contentViewHeightConstraint.constant = view.frame.height - 10 - shadowView.frame.minY
         }
 
         shadowView.layer.shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: 8.0).cgPath

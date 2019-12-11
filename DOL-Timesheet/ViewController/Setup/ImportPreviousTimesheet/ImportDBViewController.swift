@@ -22,7 +22,6 @@ class ImportDBViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var cancelBtn: NavigationButton!
     @IBOutlet weak var logsTitleLabel: UILabel!
     @IBOutlet weak var logsStackView: UIStackView!
     @IBOutlet weak var logsScrollView: UIScrollView!
@@ -67,7 +66,6 @@ class ImportDBViewController: UIViewController {
         titleLabel.scaleFont(forDataType: .headingTitle)
         logsTitleLabel.scaleFont(forDataType: .columnHeader)
         importView.addBorder(borderColor: .borderColor, borderWidth: 1.0, cornerRadius: 8.0)
-        cancelBtn.backgroundColor = .systemRed
     }
     
     func importDB() {
@@ -84,13 +82,9 @@ class ImportDBViewController: UIViewController {
             let importDB = ImportDBService()
             importDB.logDelegate = self
             importDB.importDB()
-            self?.appendLog(logStr: "Sleeping for 30 Seconds")
-            sleep(30)
             if self?.workItem!.isCancelled ?? true {
-                print("Work Item Cancelled")
             }
             else {
-                print("Finished import")
                 DispatchQueue.main.async {
                     self?.importSucecessful()
                 }
@@ -112,8 +106,8 @@ class ImportDBViewController: UIViewController {
 
     @objc func importTimedOut() {
         activityIndicator.stopAnimating()
-        print("Updated Timer")
         workItem?.cancel()
+        addDetailLogs(logStr: "Import Timed Out")
         writeDetailLogs()
         importDelegate?.importDBTimedOut()
     }
@@ -126,16 +120,7 @@ class ImportDBViewController: UIViewController {
                                      userInfo: nil,
                                      repeats: false)
         }
-    }
-    
-    deinit {
-        print("viewController deinit")
-    }
-    
-    @IBAction func cancelClick(_ sender: Any) {
-        timer?.invalidate()
-        importTimedOut()
-    }
+    }        
 }
 
 extension ImportDBViewController: ImportDBLogProtocol {
@@ -169,8 +154,8 @@ extension ImportDBViewController: ImportDBLogProtocol {
         
         do {
             try detailLogs.write(to: importLogFile, atomically: false, encoding: String.Encoding.utf8)
-        } catch let error as NSError {
-            print("Unable to write to Log File: \(error)")
+        } catch let _ as NSError {
+//            print("Unable to write to Log File: \(error)")
         }
     }
 }
