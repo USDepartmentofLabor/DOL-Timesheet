@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "arrow-right.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "arrow-right_dark.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

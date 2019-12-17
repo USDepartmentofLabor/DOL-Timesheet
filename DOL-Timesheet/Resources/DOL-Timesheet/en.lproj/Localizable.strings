@@ -221,6 +221,7 @@
 "info_break_time" = "Rest periods of short duration, usually 20 minutes or less, are common in industry and are customarily paid for as working time. These short periods must be counted as hours worked. Bona fide meal periods (typically 30 minutes or more) generally need not be compensated as work time. The employee must be completely relieved from duty for the purpose of eating regular meals in order for that time not to count as work time. For purposes of this DOL-Timesheet, all break time in excess of 20 minutes will be deducted from your total hours of work. For questions regarding proper deductions for break time, <a href=\"http://www.dol.gov/whd/contact_us.htm\">contact the Wage and Hour Division.</a>";
 "info_end_time" = "If you work an overnight shift, hours after midnight will populate your timesheet on the next day";
 "info_import_employee" = "We have detected an existing WHD Timesheet database. In this case we need you to specify an Employee to associate with these database records. Later you will have the oppurtunity to update your profile and add an Employer or multiple Employees";
+"info_regular_rate" = "Regular Rate";
 
 "info_pay_title" = "Pay";
 "info_overtime_title" = "Overtime";
@@ -245,3 +246,20 @@
 "click yes to share" = "Tap to share your data";
 "click no to not share" = "Tap to not share your data";
 "old_employee_exists" = "old_employee_exists";
+"fsla_info" = "Please see the elaws FLSA Overtime Security Advisor for more information.";
+"fsla_linked_text" = "elaws FLSA Overtime Security Advisor";
+
+"regular_rate_exclude1" = "Expense reimbursement";
+"regular_rate_exclude2" = "Premium payments for overtime work";
+"regular_rate_exclude3" = "Premiums paid for work on Saturdays, Sundays, and holidays";
+"regular_rate_exclude4" = "Discretionary bonuses and gifts (holiday bonuses, etc.)";
+"regular_rate_exclude5" = "Vacation, holiday, or sick pay";
+"regular_rate_exclude6" = "Profit sharing, thrift, and savings plans";
+"regular_rate_exclude7" = "Talent fees";
+"regular_rate_exclude8" = "Contributions made to benefit plans (retirement, life insurance, health insurance, etc.)";
+
+"regular_rate_include1" = "Shift differentials";
+"regular_rate_include2" = "Production bonuses";
+"regular_rate_include3" = "Attendance bonuses";
+"regular_rate_include4" = "Longevity bonuses";
+"regular_rate_include5" = "Value of employer-provided housing";

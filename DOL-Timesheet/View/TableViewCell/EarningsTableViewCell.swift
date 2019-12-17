@@ -27,6 +27,7 @@ class EarningsTableViewCell: UITableViewCell {
     @IBOutlet weak var regularRateLabel: UILabel!
     @IBOutlet weak var regularRateCalculationTitleLabel: UILabel!
     @IBOutlet weak var regularRateCalculationsLabel: UILabel!
+    @IBOutlet weak var regularRateInfoBtn: InfoButton!
     
     @IBOutlet weak var minimumWageTitleLabel: UILabel!
     @IBOutlet weak var minimuWageAmountLabel: UILabel!
@@ -70,6 +71,7 @@ class EarningsTableViewCell: UITableViewCell {
         regularRateLabel.scaleFont(forDataType: .earningsTitle)
         regularRateCalculationTitleLabel.scaleFont(forDataType: .earningsValue)
         regularRateCalculationsLabel.scaleFont(forDataType: .earningsValue)
+        regularRateInfoBtn.infoType = .regularRate
         
         overtimeTitleLabel.scaleFont(forDataType: .earningsTitle)
         overtimeAmountLabel.scaleFont(forDataType: .earningsTitle)
@@ -86,7 +88,7 @@ class EarningsTableViewCell: UITableViewCell {
         accessibilityElements = [straightTimeStackView as Any, regularRateStackView as Any, overtimeStackView as Any]
         
         straightTimeStackView.accessibilityElements = [straightTimeTitleLabel as Any, straightTimeEarningsAmountLabel as Any, straightTimeSubTitleLabel as Any, straightTimeCalculationsLabel as Any]
-        regularRateStackView.accessibilityElements = [regularRateTitleLabel as Any, regularRateLabel as Any, minimumWageTitleLabel as Any, minimuWageAmountLabel as Any, regularRateCalculationTitleLabel as Any, regularRateCalculationsLabel as Any]
+        regularRateStackView.accessibilityElements = [regularRateTitleLabel as Any, regularRateInfoBtn as Any, regularRateLabel as Any, minimumWageTitleLabel as Any, minimuWageAmountLabel as Any, regularRateCalculationTitleLabel as Any, regularRateCalculationsLabel as Any]
         overtimeStackView.accessibilityElements = [overtimeTitleLabel as Any, overtimeInfoBtn as Any, overtimeAmountLabel as Any, overtimeCalculationTitleLabel as Any, overtimeCalculationLabel as Any]
     }
     

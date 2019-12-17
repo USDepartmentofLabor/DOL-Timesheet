@@ -82,6 +82,7 @@ class SetupSalaryPaymentViewController: SetupBaseEmploymentViewController {
         else if segue.identifier == "salaryPayment", let destVC = segue.destination as? SalaryPaymentViewController {
             destVC.viewModel = viewModel
             destVC.view.translatesAutoresizingMaskIntoConstraints = false
+            destVC.paymentViewDelegate = self
             salaryPaymentVC = destVC
         }
         
@@ -147,3 +148,23 @@ extension SetupSalaryPaymentViewController {
     }
 }
 
+
+extension SetupSalaryPaymentViewController: SetupPaymentViewDelegate {
+    func displayFSLARule() {
+        let controller = FSLAInfoViewController.instantiateFromStoryboard()
+        addChild(controller)
+        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(controller.view)
+
+        NSLayoutConstraint.activate([
+            controller.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            controller.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            controller.view.topAnchor.constraint(equalTo: self.view.topAnchor),
+            controller.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            ])
+        
+        controller.didMove(toParent: self)
+        self.view.accessibilityElements = [controller.view as Any]
+        UIAccessibility.post(notification: .layoutChanged, argument: controller.view)
+    }
+}

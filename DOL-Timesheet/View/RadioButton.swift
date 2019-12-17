@@ -21,7 +21,11 @@ class RadioButton: UIButton {
         let selectedImage = #imageLiteral(resourceName: "radioSelect")
         setImage(selectedImage, for: .selected)
         setImage(unselectedImage, for: .normal)
-        setTitleColor(.darkText, for: .normal)
+        if #available(iOS 13.0, *) {
+            setTitleColor(.label, for: .normal)
+        } else {
+            setTitleColor(.darkText, for: .normal)
+        }
         tintColor = .clear
         
         titleLabel?.scaleFont(forDataType: .radioButton)

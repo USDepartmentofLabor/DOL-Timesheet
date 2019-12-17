@@ -31,6 +31,7 @@ enum Info: String {
     case employee_salary
     case employer_salary
     case overtime
+    case regularRate
     case overtimePay
     case endTime
     case breakTime
@@ -76,6 +77,8 @@ enum Info: String {
             title = NSLocalizedString("info_employer_salary", comment: "Salary")
         case .overtime:
             title = NSLocalizedString("info_overtime", comment: "Overtime")
+        case .regularRate:
+            title = NSLocalizedString("info_regular_rate", comment: "Regular Rate")
         case .overtimePay:
             title = NSLocalizedString("info_overtime_pay", comment: "Overtime Pay")
         case .endTime:
@@ -132,6 +135,9 @@ class InfoPopupViewController: UIViewController {
             let htmlAttributedStr = NSMutableAttributedString(withLocalizedHTMLString: title)
             htmlAttributedStr?.addAttribute(NSMutableAttributedString.Key.font, value: Style.scaledFont(forDataType: .aboutText), range: NSRange(location: 0, length: htmlAttributedStr?.string.count ?? 0))
 
+            if #available(iOS 13.0, *) {
+                htmlAttributedStr?.addAttribute(NSMutableAttributedString.Key.foregroundColor, value: UIColor.label, range: NSRange(location: 0, length: htmlAttributedStr?.string.count ?? 0))
+            } 
             infoTextView.attributedText = htmlAttributedStr
         }
         else {

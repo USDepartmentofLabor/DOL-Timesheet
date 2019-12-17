@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SetupPaymentViewDelegate {
+    func displayFSLARule()
+}
+
 class SalaryPaymentViewController: UIViewController {
     
     var viewModel: EmploymentModel!
@@ -20,6 +24,9 @@ class SalaryPaymentViewController: UIViewController {
     @IBOutlet weak var salaryTextField: UITextField!
     
     @IBOutlet weak var salaryTypeView: DropDownView!
+    @IBOutlet weak var fslaTextView: UITextView!
+    var paymentViewDelegate: SetupPaymentViewDelegate?
+
     
     var salaryAmount: NSNumber = 0.0 {
         didSet {
@@ -73,6 +80,21 @@ class SalaryPaymentViewController: UIViewController {
         salaryTypeView.addGestureRecognizer(salaryTypeTapGesture)
 
         titleLabelInfo.delegate = self
+        
+        let attributedString = NSMutableAttributedString(string:fslaTextView.text)
+        if #available(iOS 13.0, *) {
+            attributedString.addAttributes(
+                [NSAttributedString.Key.font: Style.scaledFont(forDataType: .aboutText),
+                 NSAttributedString.Key.foregroundColor: UIColor.label],
+                range: NSRange(location: 0, length: attributedString.length))
+        } else {
+            attributedString.addAttribute(.font, value: Style.scaledFont(forDataType: .aboutText), range: NSRange(location: 0, length: attributedString.length))
+        }
+        attributedString.addAttribute(.link, value: "fsla", range: NSRange(location: 0, length: attributedString.length))
+        fslaTextView.attributedText = attributedString
+        fslaTextView.textAlignment = .right
+        fslaTextView.delegate = self
+
         setupAccessibility()
     }
     
@@ -134,5 +156,13 @@ extension SalaryPaymentViewController: UITextFieldDelegate {
             UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: salaryTypeView)
         }
         return true
+    }
+}
+
+extension SalaryPaymentViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        
+        paymentViewDelegate?.displayFSLARule()
+        return false
     }
 }

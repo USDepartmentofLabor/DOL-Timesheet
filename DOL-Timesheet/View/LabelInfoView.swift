@@ -59,6 +59,7 @@ class LabelInfoView: UIView {
         ]
         addSubview(view)
         label.scaleFont(forDataType: .questionTitle)
+        
         label.textColor = UIColor(named: "darkTextColor")
         self.view = view
     }

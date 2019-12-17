@@ -38,7 +38,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
         didSet {
             let (hours, minutes) = Date.secondsToHoursMinutes(seconds: workedHoursCounter)
             workedHoursCounterLabel.text = String(format: "%d:%02d", hours, minutes)
-            workedHoursCounterLabel.accessibilityLabel = "\(hours) hours, \(minutes) minutes"
+            workedHoursCounterLabel.accessibilityLabel = (hoursWorkedTitleLabel.text ?? "")
+            workedHoursCounterLabel.accessibilityValue =  "\(hours) hours, \(minutes) minutes"
         }
     }
     
@@ -46,7 +47,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
         didSet {
             let (hours, minutes) = Date.secondsToHoursMinutes(seconds: breakHoursCounter)
             breakHoursCounterLabel.text = String(format: "%d:%02d", hours, minutes)
-            breakHoursCounterLabel.accessibilityLabel = "\(hours) hours, \(minutes) minutes"
+            breakHoursCounterLabel.accessibilityLabel = (breakHoursTitleLabel.text ?? "")
+            breakHoursCounterLabel.accessibilityValue =  "\(hours) hours, \(minutes) minutes"
         }
     }
     

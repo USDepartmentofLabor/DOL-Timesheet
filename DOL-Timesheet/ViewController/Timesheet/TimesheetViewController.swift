@@ -438,6 +438,7 @@ extension TimesheetViewController: UITableViewDataSource {
         }
         
         cell.viewModel = workWeekViewModel
+        cell.regularRateInfoBtn.delegate = self
         cell.overtimeInfoBtn.delegate = self
     }
 }
