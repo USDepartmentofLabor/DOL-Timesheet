@@ -93,12 +93,12 @@ class OptionsListViewController<T : OptionsProtocol>: UITableViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        let height = tableView.contentSize.height
-        let size =  CGSize(width: super.preferredContentSize.width, height: height)
-        preferredContentSize = size
-    }
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        let height = tableView.contentSize.height
+//        let size =  CGSize(width: super.preferredContentSize.width, height: height)
+//        preferredContentSize = size
+//    }
     
 //    override func viewDidAppear(_ animated: Bool) {
 //        super.viewDidAppear(animated)
@@ -107,6 +107,17 @@ class OptionsListViewController<T : OptionsProtocol>: UITableViewController {
 //        let size =  CGSize(width: super.preferredContentSize.width, height: height)
 //        preferredContentSize = size
 //    }
+
+    //Updated PreferredContentSize from ViewWillLayoutSubviews to variable since causes crash on few devices.
+    override var preferredContentSize: CGSize {
+        get {
+            let height = tableView.contentSize.height
+            return CGSize(width: super.preferredContentSize.width, height: height)
+        }
+        set { super.preferredContentSize = newValue }
+    }
+    
+
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
