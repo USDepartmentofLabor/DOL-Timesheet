@@ -87,11 +87,25 @@ public class TimeLog: NSManagedObject {
 
 extension TimeLog {
     func addBreak(duration: TimeInterval) {
+        guard let breakLogs = breakTimeLogs as? Set<TimeLogBreak> else {
+            addBreakTimeLogs(duration: duration)
+            return
+        }
+        let manualBreak = breakLogs.filter { $0.manualEntry == true }.first
+        if let manualBreak = manualBreak  {
+            manualBreak.duration = duration
+        }
+        else {
+            addBreakTimeLogs(duration: duration)
+        }
+    }
+    
+    func addBreakTimeLogs(duration: TimeInterval) {
         guard let context = managedObjectContext else { return }
-        
         let breakLog = TimeLogBreak(context: context)
         breakLog.duration = duration
         addToBreakTimeLogs(breakLog)
+        return
     }
     
     func addBreak(startTime: Date, endTime: Date) {
