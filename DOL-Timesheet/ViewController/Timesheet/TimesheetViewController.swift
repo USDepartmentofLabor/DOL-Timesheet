@@ -93,7 +93,7 @@ class TimesheetViewController: UIViewController, TimeViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupNavigationBarSettings()
         setupView()
         displayInfo()
     }
@@ -438,6 +438,7 @@ extension TimesheetViewController: UITableViewDataSource {
         }
         
         cell.viewModel = workWeekViewModel
+        cell.regularRateInfoBtn.delegate = self
         cell.overtimeInfoBtn.delegate = self
     }
 }

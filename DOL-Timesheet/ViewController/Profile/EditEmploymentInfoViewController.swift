@@ -129,10 +129,12 @@ class EditEmploymentInfoViewController: UIViewController {
         case .hourly:
             let hourlyController = HourlyPaymentViewController.instantiateFromStoryboard("Profile")
             hourlyController.viewModel = viewModel
+            hourlyController.paymentViewDelegate = self
             controller = hourlyController
         case .salary:
             let salaryController = SalaryPaymentViewController.instantiateFromStoryboard("Profile")
             salaryController.viewModel = viewModel
+            salaryController.paymentViewDelegate = self
             controller = salaryController
         }
         
@@ -227,3 +229,22 @@ class EditEmploymentInfoViewController: UIViewController {
     }
 }
 
+extension EditEmploymentInfoViewController: SetupPaymentViewDelegate {
+    func displayFSLARule() {
+        let controller = FSLAInfoViewController.instantiateFromStoryboard()
+        addChild(controller)
+        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(controller.view)
+
+        NSLayoutConstraint.activate([
+            controller.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            controller.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            controller.view.topAnchor.constraint(equalTo: self.view.topAnchor),
+            controller.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            ])
+        
+        controller.didMove(toParent: self)
+        self.view.accessibilityElements = [controller.view as Any]
+        UIAccessibility.post(notification: .layoutChanged, argument: controller.view)
+    }
+}

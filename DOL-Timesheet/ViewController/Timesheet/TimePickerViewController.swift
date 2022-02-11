@@ -25,7 +25,7 @@ class TimePickerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupNavigationBarSettings()
         setupView()
     }
     
@@ -39,6 +39,7 @@ class TimePickerViewController: UIViewController {
     
     func setupView() {
         datePicker.datePickerMode = pickerMode
+        datePicker.preferredDatePickerStyle = .wheels
         if pickerMode == .countDownTimer {
             let duration: Int = countdownDuration > 0 ? Int(countdownDuration) : TimePickerViewController.DEFAULT_BREAK_TIME
             let calendar = Calendar(identifier: .gregorian)

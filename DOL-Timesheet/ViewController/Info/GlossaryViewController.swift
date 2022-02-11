@@ -63,6 +63,11 @@ class GlossaryViewController: UIViewController {
 
             let htmlAttributedStr = NSMutableAttributedString(withLocalizedHTMLString: desc)
             htmlAttributedStr?.addAttribute(NSMutableAttributedString.Key.font, value: Style.scaledFont(forDataType: .glossaryText), range: NSRange(location: 0, length: htmlAttributedStr?.string.count ?? 0))
+
+            if #available(iOS 13.0, *) {
+                htmlAttributedStr?.addAttribute(NSMutableAttributedString.Key.foregroundColor, value: UIColor.label, range: NSRange(location: 0, length: htmlAttributedStr?.string.count ?? 0))
+            }
+            
             return htmlAttributedStr
         }
     }

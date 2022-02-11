@@ -25,18 +25,45 @@ extension UIViewController {
 
 extension UIViewController: InfoViewDelegate {
     func displayInfoPopup(_ sender: Any, info: Info) {
-        let popoverViewController = InfoPopupViewController.instantiateFromStoryboard()
+        let popoverViewController: UIViewController
+        
+        if info == .regularRate {
+            popoverViewController = RegularRateInfoViewController.instantiateFromStoryboard()
+        }
+        else {
+            let infoViewController = InfoPopupViewController.instantiateFromStoryboard()
+            infoViewController.infoValue = info
+            infoViewController.delegate = self
+            infoViewController.completionHandler = {
+                UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: sender)
+            }
+            
+            popoverViewController = infoViewController
+        }
 
-        popoverViewController.infoValue = info
-        popoverViewController.delegate = self
         popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
         popoverViewController.popoverPresentationController!.delegate = self
         popoverViewController.popoverPresentationController?.sourceView = (sender as! UIView)
         popoverViewController.popoverPresentationController?.sourceRect = (sender as! UIView).bounds
-        popoverViewController.completionHandler = {
-            UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: sender)
-        }
         present(popoverViewController, animated: true, completion: nil)
+    }
+    
+    func displayRegularRateInfo() {
+        let controller = RegularRateInfoViewController.instantiateFromStoryboard()
+        addChild(controller)
+        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(controller.view)
+
+        NSLayoutConstraint.activate([
+            controller.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            controller.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            controller.view.topAnchor.constraint(equalTo: self.view.topAnchor),
+            controller.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            ])
+        
+        controller.didMove(toParent: self)
+        self.view.accessibilityElements = [controller.view as Any]
+        UIAccessibility.post(notification: .layoutChanged, argument: controller.view)
     }
 }
 
@@ -79,6 +106,25 @@ extension UIViewController {
     }
 }
 
+
+extension UIViewController {
+    func setupNavigationBarSettings() {
+        let appearance = UINavigationBarAppearance()
+        
+        appearance.configureWithOpaqueBackground()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.backgroundColor = UIColor(named: "appPrimaryColor")
+        navigationController?.navigationBar.standardAppearance = appearance;
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
+                                                            NSAttributedString.Key.font: Style.scaledFont(forDataType: .appTitle)]
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes([
+            NSAttributedString.Key.font : Style.scaledFont(forDataType: .barButtonTitle),
+            NSAttributedString.Key.foregroundColor: UIColor.white],
+                                                            for: .normal)
+    }
+}
 
 
 extension UIViewController: InfoPopupDelegate {

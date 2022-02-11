@@ -24,7 +24,7 @@ class CoreDataManager {
     }
 
     private init() {
-//        os_log("Documents Directory: %@", FileManager.default.urls(for: .documentationDirectory, in: .userDomainMask).description)
+        os_log("Documents Directory: %@", FileManager.default.urls(for: .documentationDirectory, in: .userDomainMask).description)
     }
     
     lazy var model: NSManagedObjectModel = {

@@ -30,7 +30,7 @@
                     <rect key="frame" x="378" y="90" width="28" height="16"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="uLI-8h-HN9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="8yV-Zf-1rA"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="c9L-DX-sQ4" secondAttribute="trailing" constant="8" id="IFW-yJ-SRD"/>

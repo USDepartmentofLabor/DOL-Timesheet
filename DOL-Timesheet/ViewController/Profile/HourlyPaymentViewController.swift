@@ -19,6 +19,8 @@ class HourlyPaymentViewController: UIViewController {
     @IBOutlet weak var hourlyRateTableView: UITableView!
     @IBOutlet weak var hourlyRateTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var addRateBtn: SubActionButton!
+    @IBOutlet weak var fslaTextView: UITextView!
+    var paymentViewDelegate: SetupPaymentViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +57,19 @@ class HourlyPaymentViewController: UIViewController {
         else {
             addRate()
         }
+        
+        let attributedString = NSMutableAttributedString(string:fslaTextView.text)
+        if #available(iOS 13.0, *) {
+            attributedString.addAttributes(
+                [NSAttributedString.Key.font: Style.scaledFont(forDataType: .aboutText),
+                 NSAttributedString.Key.foregroundColor: UIColor.label],
+                range: NSRange(location: 0, length: attributedString.length))
+        } else {
+            attributedString.addAttribute(.font, value: Style.scaledFont(forDataType: .aboutText), range: NSRange(location: 0, length: attributedString.length))
+        }
+        attributedString.addAttribute(.link, value: "fsla", range: NSRange(location: 0, length: attributedString.length))
+        fslaTextView.attributedText = attributedString
+        fslaTextView.delegate = self
     }
 
     @IBAction func addMoreRateClick(_ sender: Any) {
@@ -185,7 +200,8 @@ extension HourlyPaymentViewController {
 extension HourlyPaymentViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         
-        return true
+        paymentViewDelegate?.displayFSLARule()
+        return false
     }
 }
 
@@ -213,3 +229,5 @@ extension HourlyPaymentViewController: UITextFieldDelegate {
         return true
     }
 }
+
+

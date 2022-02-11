@@ -90,6 +90,9 @@
 		037C226022789AA60021A309 /* EmploymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037C225F22789AA60021A309 /* EmploymentModel.swift */; };
 		037C226A2278B6400021A309 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 037C22682278B6400021A309 /* Profile.storyboard */; };
 		037C226C2278C8730021A309 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037C226B2278C8730021A309 /* ProfileTableViewCell.swift */; };
+		037DD81423A2D07E00EB728E /* FSLAInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037DD81323A2D07E00EB728E /* FSLAInfoViewController.swift */; };
+		037F637E23A7E3BB00375AFB /* NSAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F637D23A7E3BA00375AFB /* NSAttributedString+Extension.swift */; };
+		037F638023A816CA00375AFB /* RegularRateInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F637F23A816CA00375AFB /* RegularRateInfoViewController.swift */; };
 		03A354C322806768002536B8 /* EditEmploymentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A354C222806768002536B8 /* EditEmploymentInfoViewController.swift */; };
 		03A354C52280A871002536B8 /* HourlyPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A354C42280A871002536B8 /* HourlyPaymentViewController.swift */; };
 		03A354C72280AC1C002536B8 /* SalaryPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A354C62280AC1C002536B8 /* SalaryPaymentViewController.swift */; };
@@ -222,6 +225,9 @@
 		037C225F22789AA60021A309 /* EmploymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentModel.swift; sourceTree = "<group>"; };
 		037C22692278B6400021A309 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "DOL-Timesheet/Base.lproj/Profile.storyboard"; sourceTree = "<group>"; };
 		037C226B2278C8730021A309 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		037DD81323A2D07E00EB728E /* FSLAInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSLAInfoViewController.swift; sourceTree = "<group>"; };
+		037F637D23A7E3BA00375AFB /* NSAttributedString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extension.swift"; sourceTree = "<group>"; };
+		037F637F23A816CA00375AFB /* RegularRateInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularRateInfoViewController.swift; sourceTree = "<group>"; };
 		03A354C222806768002536B8 /* EditEmploymentInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmploymentInfoViewController.swift; sourceTree = "<group>"; };
 		03A354C42280A871002536B8 /* HourlyPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourlyPaymentViewController.swift; sourceTree = "<group>"; };
 		03A354C62280AC1C002536B8 /* SalaryPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryPaymentViewController.swift; sourceTree = "<group>"; };
@@ -388,6 +394,7 @@
 		0324C41E2260FE2E00712576 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				037F637D23A7E3BA00375AFB /* NSAttributedString+Extension.swift */,
 				032665C122A5645F00F45288 /* Bundle+Extension.swift */,
 				03F2F5D42282090A007B1B68 /* NumberFormatter+Extension.swift */,
 				0324C41F2260FE3D00712576 /* UIBarButtonItem+Extension.swift */,
@@ -415,6 +422,8 @@
 				0324C4262261010E00712576 /* GlossaryViewController.swift */,
 				0328A18322661DDB00957F53 /* InfoPopupViewController.swift */,
 				0329EBD72267A2720001EDE7 /* WebInfoViewController.swift */,
+				037DD81323A2D07E00EB728E /* FSLAInfoViewController.swift */,
+				037F637F23A816CA00375AFB /* RegularRateInfoViewController.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -714,6 +723,7 @@
 				0324C4252261010100712576 /* ResourcesViewController.swift in Sources */,
 				032665C222A5645F00F45288 /* Bundle+Extension.swift in Sources */,
 				0328A18422661DDB00957F53 /* InfoPopupViewController.swift in Sources */,
+				037DD81423A2D07E00EB728E /* FSLAInfoViewController.swift in Sources */,
 				0324C3DF2260E47100712576 /* TimesheetViewController.swift in Sources */,
 				032430DE2285D81800E86E3E /* TimePickerViewController.swift in Sources */,
 				03264F6F22834ED100FF6010 /* EnterTimeViewController.swift in Sources */,
@@ -724,6 +734,7 @@
 				0324C4152260EBBA00712576 /* EmploymentInfo+CoreDataClass.swift in Sources */,
 				0324C4122260EAB800712576 /* Data.swift in Sources */,
 				0323427C2322F398000450CB /* PunchBreakTime+CoreDataClass.swift in Sources */,
+				037F638023A816CA00375AFB /* RegularRateInfoViewController.swift in Sources */,
 				032DBDCF2375BAED00A8A7ED /* ImportDBSucessViewController.swift in Sources */,
 				0374ECCA228602B500D1C503 /* TimeLog+CoreDataClass.swift in Sources */,
 				0324C3DD2260E47100712576 /* AppDelegate.swift in Sources */,
@@ -773,6 +784,7 @@
 				037C226C2278C8730021A309 /* ProfileTableViewCell.swift in Sources */,
 				032560112268BE8D00BF64C5 /* SetupHourlyPaymentViewController.swift in Sources */,
 				0324C4202260FE3D00712576 /* UIBarButtonItem+Extension.swift in Sources */,
+				037F637E23A7E3BB00375AFB /* NSAttributedString+Extension.swift in Sources */,
 				0328A18622661EB900957F53 /* UIViewController+Extension.swift in Sources */,
 				59821CC122AABC1300436B03 /* PhoneFormatter.swift in Sources */,
 				032C9F192264F05700FB1468 /* UIView+Extension.swift in Sources */,
@@ -995,14 +1007,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = gov.dol.whdtimesheet;
 				PRODUCT_NAME = Timesheet;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1017,14 +1030,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = gov.dol.whdtimesheet;
 				PRODUCT_NAME = Timesheet;
 				PROVISIONING_PROFILE_SPECIFIER = "";

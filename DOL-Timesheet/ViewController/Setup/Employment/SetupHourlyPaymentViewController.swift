@@ -73,6 +73,7 @@ class SetupHourlyPaymentViewController: SetupBaseEmploymentViewController {
         else if segue.identifier == "hourlyPayment", let destVC = segue.destination as? HourlyPaymentViewController {
             destVC.viewModel = viewModel
             destVC.view.translatesAutoresizingMaskIntoConstraints = false
+            destVC.paymentViewDelegate = self
             hourlyPaymentVC = destVC
         }
     }
@@ -116,3 +117,22 @@ extension SetupHourlyPaymentViewController {
     }
 }
 
+extension SetupHourlyPaymentViewController: SetupPaymentViewDelegate {
+    func displayFSLARule() {
+        let controller = FSLAInfoViewController.instantiateFromStoryboard()
+        addChild(controller)
+        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(controller.view)
+
+        NSLayoutConstraint.activate([
+            controller.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            controller.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            controller.view.topAnchor.constraint(equalTo: self.view.topAnchor),
+            controller.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            ])
+        
+        controller.didMove(toParent: self)
+        self.view.accessibilityElements = [controller.view as Any]
+        UIAccessibility.post(notification: .layoutChanged, argument: controller.view)
+    }
+}
