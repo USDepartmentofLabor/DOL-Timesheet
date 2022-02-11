@@ -129,7 +129,7 @@ class SetupProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupNavigationBarSettings()
         setupView()
     }
     

@@ -93,7 +93,7 @@ class TimesheetViewController: UIViewController, TimeViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupNavigationBarSettings()
         setupView()
         displayInfo()
     }

@@ -107,6 +107,25 @@ extension UIViewController {
 }
 
 
+extension UIViewController {
+    func setupNavigationBarSettings() {
+        let appearance = UINavigationBarAppearance()
+        
+        appearance.configureWithOpaqueBackground()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.backgroundColor = UIColor(named: "appPrimaryColor")
+        navigationController?.navigationBar.standardAppearance = appearance;
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
+                                                            NSAttributedString.Key.font: Style.scaledFont(forDataType: .appTitle)]
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes([
+            NSAttributedString.Key.font : Style.scaledFont(forDataType: .barButtonTitle),
+            NSAttributedString.Key.foregroundColor: UIColor.white],
+                                                            for: .normal)
+    }
+}
+
 
 extension UIViewController: InfoPopupDelegate {
     func handle(url: URL, popupController: InfoPopupViewController?) {

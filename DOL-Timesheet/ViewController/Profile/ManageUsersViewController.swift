@@ -50,7 +50,7 @@ class ManageUsersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupNavigationBarSettings()
         setupView()
         displayInfo()
     }

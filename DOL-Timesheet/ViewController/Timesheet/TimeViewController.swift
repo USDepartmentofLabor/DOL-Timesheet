@@ -35,7 +35,7 @@ class TimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupNavigationBarSettings()
         viewModel = TimesheetViewModel()
         setupView()
         displayInfo()

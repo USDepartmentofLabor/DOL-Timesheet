@@ -62,7 +62,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupNavigationBarSettings()
         setupView()
     }
     
@@ -83,6 +83,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
 //    }
 //
     func setupView() {
+        
         rateDropDownView.titleLabel.scaleFont(forDataType: .timesheetSelectedUser)
         rateDropDownView.titleLabel.textColor = UIColor(named: "darkTextColor")
 
