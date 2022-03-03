@@ -16,7 +16,7 @@ enum WebInfo {
         let url:URL?
         switch self {
         case .minimumWage:
-            url = URL(string: "https://www.dol.gov/whd/minwage/mw-consolidated.htm")
+            url = URL(string: "https://www.dol.gov/agencies/whd/mw-consolidated")
         }
         
         return url

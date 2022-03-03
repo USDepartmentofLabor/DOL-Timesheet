@@ -178,6 +178,8 @@
 "err_enter_name" = "Please enter name.";
 "err_more_than_24_hours" = " Total hours for day can not be more that 24 hours.";
 "err_startTime_before_endtime" = "End time should be after start time.";
+"err_time_too_early" = "The time you entered is too early. The time must be after any time entries above.";
+"err_time_too_late" = "The time you entered is too late. The time must be before any time entries below.";
 "err_time_between_start_endtime" = "%@ lies in between time %@ and %@.";
 "err_break_more_than_hours_worked" = "Break time can not be more that hours worked.";
 "err_select_hourly_rate" = "Please select hourly rate.";

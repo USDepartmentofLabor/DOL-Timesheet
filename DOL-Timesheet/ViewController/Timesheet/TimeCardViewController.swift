@@ -170,24 +170,36 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
     }
     
     @IBAction func endWorkClick(_ sender: Any) {
-        viewModel?.clock(action: .endWork, comments: commentsTextView.text)
         
-        if let clock = viewModel?.currentEmploymentModel?.employmentInfo.clock {
+        if ( viewModel?.currentEmploymentModel?.employmentInfo.clock?.totalHoursWorked() ?? 0 >= 0) {
+            viewModel?.clock(action: .endWork, comments: commentsTextView.text)
             
-            if !(clock.startTime?.isEqualOnlyDate(date: Date()) ?? true) {
-                let message = NSLocalizedString("warning_split_time", comment: "Time will be entered for next day")
-                let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: NSLocalizedString("yes", comment: "Yes"), style: .default, handler: { [weak self] (action) in
-                    guard let strongSelf = self else { return }
-                        strongSelf.performSegue(withIdentifier: "enterTime", sender: clock)
-                }))
-                    
-                alertController.addAction(UIAlertAction(title: NSLocalizedString("no", comment: "No"), style: .cancel, handler: nil))
-                present(alertController, animated: false)
+            if let clock = viewModel?.currentEmploymentModel?.employmentInfo.clock {
+                
+                if !(clock.startTime?.isEqualOnlyDate(date: Date()) ?? true) {
+                    let message = NSLocalizedString("warning_split_time", comment: "Time will be entered for next day")
+                    let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: NSLocalizedString("yes", comment: "Yes"), style: .default, handler: { [weak self] (action) in
+                        guard let strongSelf = self else { return }
+                            strongSelf.performSegue(withIdentifier: "enterTime", sender: clock)
+                    }))
+                        
+                    alertController.addAction(UIAlertAction(title: NSLocalizedString("no", comment: "No"), style: .cancel, handler: nil))
+                    present(alertController, animated: false)
+                }
+                else {
+                    performSegue(withIdentifier: "enterTime", sender: clock)
+                }
             }
-            else {
-                performSegue(withIdentifier: "enterTime", sender: clock)
-            }
+        } else {
+            let alertController = UIAlertController(title: "Error", message: "The time appears to be negative, maybe your clock was set backward.", preferredStyle: .alert)
+            alertController.addAction(
+                UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+            alertController.addAction(
+                UIAlertAction(title: NSLocalizedString("discard", comment: "Discard"), style: .destructive) { _ in
+                    self.discardEntry()
+            })
+            present(alertController, animated: false)
         }
     }
     
@@ -196,8 +208,19 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
         displayClock()
     }
     @IBAction func endBreakClick(_ sender: Any) {
-        viewModel?.clock(action: .endBreak, comments: commentsTextView.text)
-        displayClock()
+        if ( viewModel?.currentEmploymentModel?.employmentInfo.clock?.totalBreakTime() ?? 0 >= 0) {
+            viewModel?.clock(action: .endBreak, comments: commentsTextView.text)
+            displayClock()
+        } else {
+            let alertController = UIAlertController(title: "Error", message: "The time appears to be negative, maybe your clock was set backward.", preferredStyle: .alert)
+            alertController.addAction(
+                UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+            alertController.addAction(
+                UIAlertAction(title: NSLocalizedString("discard", comment: "Discard"), style: .destructive) { _ in
+                    self.discardEntry()
+            })
+            present(alertController, animated: false)
+        }
     }
 
     @IBAction func manualEntryClick(_ sender: Any) {
