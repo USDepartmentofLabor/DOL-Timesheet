@@ -9,6 +9,12 @@
 import Foundation
 import CoreData
 
+enum OrderingCheck {
+    case ok
+    case tooEarly
+    case tooLate
+}
+
 struct EnterTimeViewModel {
     var dateLog: DateLog
     var managedObjectContext: NSManagedObjectContext?
@@ -74,28 +80,44 @@ struct EnterTimeViewModel {
             return errStr
         }
         
+        switch timeIsInOrder(time: time, for: currentTimeLog) {
+        case .ok:
+            errStr = ""
+        case .tooEarly:
+            errStr = NSLocalizedString("err_time_too_early", comment: "The time you entered is too early. The time must be after any time entries above.")
+            return errStr
+        case .tooLate:
+            errStr = NSLocalizedString("err_time_too_late", comment: "The time you entered is too late. The time must be before any time entries below.")
+        }
+    
+        return errStr
+    }
+    
+    func timeIsInOrder(time: Date, for currentTimeLog: TimeLog?) -> OrderingCheck {
+        var ordering: OrderingCheck = .ok
+        var foundCurrent = false
         timeLogs?.forEach {
-            if currentTimeLog != $0, let startTime = $0.startTime,
-                let endTime = $0.endTime, time.isBetween(startDate: startTime, endDate: endTime) {
-                
-                // If this is startTime, it can be equal to endTime
-                if isStartTime, time.compare(endTime) == .orderedSame {
-                    return
+            if currentTimeLog == $0 {
+                foundCurrent = true
+                return
+            }
+            if !foundCurrent  {
+                if let startTime = $0.startTime, time < startTime {
+                    ordering = .tooEarly
                 }
-                
-                if !isStartTime, time.compare(startTime) == .orderedSame {
-                    return
+                if let endTime = $0.endTime,time < endTime  {
+                    ordering = .tooEarly
                 }
- 
-                let errorMsg = NSLocalizedString("err_time_between_start_endtime", comment: "Time between range")
-                if !errStr.isEmpty {
-                    errStr.append("\n")
+            } else {
+                if let startTime = $0.startTime, time > startTime {
+                    ordering = .tooLate
                 }
-                errStr.append(String(format: errorMsg, time.formattedTime, startTime.formattedTime, endTime.formattedTime))
+                if let endTime = $0.endTime,time > endTime  {
+                    ordering = .tooLate
+                }
             }
         }
-        
-        return errStr
+        return ordering
     }
     
     var comment: String? {
