@@ -17,6 +17,7 @@ protocol EnterTimeTableCellProtocol: class {
     func showAlert(cell: UITableViewCell, sender: Any?, alertController: UIAlertController)
 
     func contentDidChange(cell: EnterHourlyTimeTableViewCell)
+    func dismissPicker()
 }
 
 class EnterHourlyTimeTableViewCell: UITableViewCell {
@@ -41,6 +42,8 @@ class EnterHourlyTimeTableViewCell: UITableViewCell {
     
     weak var delegate: EnterTimeTableCellProtocol?
     weak var textViewDelegate: UITextViewDelegate?
+    
+    var timePickerVC: TimePickerViewController?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -159,7 +162,7 @@ class EnterHourlyTimeTableViewCell: UITableViewCell {
                 timePickerVC.currentDate = Calendar.current.date(from: dateComponent)
             }
         }
-        
+        self.timePickerVC = timePickerVC
         delegate?.showPicker(cell: self, sender: sender, pickerVC: timePickerVC)
     }
     
@@ -207,6 +210,12 @@ extension EnterHourlyTimeTableViewCell: UITextViewDelegate {
 }
 
 extension EnterHourlyTimeTableViewCell: TimePickerProtocol {
+    func donePressed() {
+        guard let pickerVC = self.timePickerVC else { return }
+        timeChanged(sourceView: pickerVC.sourceView, datePicker: pickerVC.datePicker)
+        delegate?.dismissPicker()
+    }
+    
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
         if sourceView == startTimeView {
             let time = datePicker.date.removeSeconds()

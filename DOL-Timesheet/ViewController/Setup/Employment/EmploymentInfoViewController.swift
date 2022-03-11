@@ -61,6 +61,8 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
     @IBOutlet weak var paymentTypeTextField: UnderlinedTextField!
     
     @IBOutlet weak var nextBtn: NavigationButton!
+    var timePickerVC: TimePickerViewController?
+
     
     var activeField: UIView?
     var startDate: Date = Date() {
@@ -460,6 +462,7 @@ extension EmploymentInfoViewController: UITextFieldDelegate {
             timePickerVC.sourceView = startDateTextField
             timePickerVC.pickerMode = .date
             
+            self.timePickerVC = timePickerVC
             showPopup(popupController: timePickerVC, sender: startDateTextField)
         }
         else {
@@ -490,6 +493,12 @@ extension EmploymentInfoViewController: UITextFieldDelegate {
 }
 
 extension EmploymentInfoViewController: TimePickerProtocol {
+    func donePressed() {
+        guard let pickerVC = self.timePickerVC else { return }
+        timeChanged(sourceView: pickerVC.sourceView, datePicker: pickerVC.datePicker)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
         startDate = datePicker.date
         

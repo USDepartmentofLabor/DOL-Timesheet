@@ -544,17 +544,17 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OzL-EE-HsG" userLabel="PeriodOvertimeEarningsStack View">
                                                                 <rect key="frame" x="0.0" y="42.5" width="374" height="78.5"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X6g-uK-6r1">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6g-uK-6r1">
                                                                         <rect key="frame" x="0.0" y="0.0" width="343.5" height="78.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Overtime" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3l8-26-fiC" userLabel="InPeriodOvertimeTitle">
-                                                                                <rect key="frame" x="0.0" y="32.5" width="52" height="13.5"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overtime" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3l8-26-fiC" userLabel="InPeriodOvertimeTitle">
+                                                                                <rect key="frame" x="0.0" y="32.5" width="48" height="13.5"/>
                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                                 <color key="textColor" name="appPrimaryColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbh-GE-xdm" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
-                                                                                <rect key="frame" x="54" y="57.5" width="133" height="21"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbh-GE-xdm" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
+                                                                                <rect key="frame" x="50" y="57.5" width="293.5" height="21"/>
                                                                             </button>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -569,7 +569,7 @@
                                                                             <constraint firstItem="3l8-26-fiC" firstAttribute="centerY" secondItem="X6g-uK-6r1" secondAttribute="centerY" id="xEM-cJ-dI6"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-AW-UdP" userLabel="InPeriodOvertimeAmount">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-AW-UdP" userLabel="InPeriodOvertimeAmount">
                                                                         <rect key="frame" x="343.5" y="0.0" width="30.5" height="78.5"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                         <color key="textColor" name="appPrimaryColor"/>
@@ -2080,19 +2080,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="QZb-jm-qP9">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="102" width="414" height="760"/>
                                 <connections>
                                     <action selector="timeChanged:" destination="HFe-jS-T9L" eventType="valueChanged" id="Gu4-Ed-HLt"/>
                                 </connections>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5A-8k-hv6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Qps-U7-pkT"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                <connections>
+                                    <action selector="donePressed:" destination="HFe-jS-T9L" eventType="touchUpInside" id="mav-yc-Hus"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iax-TX-wkj"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="iax-TX-wkj" firstAttribute="bottom" secondItem="QZb-jm-qP9" secondAttribute="bottom" id="6yb-kX-6WM"/>
-                            <constraint firstItem="QZb-jm-qP9" firstAttribute="leading" secondItem="iax-TX-wkj" secondAttribute="leading" id="Iyg-kO-lUa"/>
-                            <constraint firstItem="QZb-jm-qP9" firstAttribute="trailing" secondItem="iax-TX-wkj" secondAttribute="trailing" id="jZi-zu-Eto"/>
-                            <constraint firstItem="QZb-jm-qP9" firstAttribute="top" secondItem="iax-TX-wkj" secondAttribute="top" id="vwJ-uw-c8G"/>
+                            <constraint firstItem="QZb-jm-qP9" firstAttribute="trailing" secondItem="iax-TX-wkj" secondAttribute="trailing" id="0WW-3r-h1E"/>
+                            <constraint firstItem="V5A-8k-hv6" firstAttribute="leading" secondItem="TCL-BN-2N4" secondAttribute="leading" id="N5g-DR-RNr"/>
+                            <constraint firstItem="QZb-jm-qP9" firstAttribute="top" secondItem="V5A-8k-hv6" secondAttribute="bottom" constant="8" symbolic="YES" id="RxV-gR-D3r"/>
+                            <constraint firstItem="QZb-jm-qP9" firstAttribute="leading" secondItem="iax-TX-wkj" secondAttribute="leading" id="SWb-rl-8Ap"/>
+                            <constraint firstItem="QZb-jm-qP9" firstAttribute="top" secondItem="V5A-8k-hv6" secondAttribute="bottom" constant="8" id="XMw-JH-sl5"/>
+                            <constraint firstAttribute="trailing" secondItem="V5A-8k-hv6" secondAttribute="trailing" id="XkM-BN-4gG"/>
+                            <constraint firstItem="iax-TX-wkj" firstAttribute="bottom" secondItem="QZb-jm-qP9" secondAttribute="bottom" id="aFy-O0-Hpb"/>
+                            <constraint firstItem="V5A-8k-hv6" firstAttribute="top" secondItem="iax-TX-wkj" secondAttribute="top" id="vIi-r0-Bc7"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2356,6 +2372,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="viewFlipsideBackgroundColor">
             <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
