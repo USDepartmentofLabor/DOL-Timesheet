@@ -10,6 +10,7 @@ import UIKit
 
 protocol TimePickerProtocol: class {
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker)
+    func donePressed()
 }
 
 class TimePickerViewController: UIViewController {
@@ -29,9 +30,12 @@ class TimePickerViewController: UIViewController {
         setupView()
     }
     
+    @IBAction func donePressed(_ sender: Any) {
+        delegate?.donePressed()
+    }
     override var preferredContentSize: CGSize {
         get {
-            let height: CGFloat = 200
+            let height: CGFloat = 240
             return CGSize(width: super.preferredContentSize.width, height: height)
         }
         set { super.preferredContentSize = newValue }

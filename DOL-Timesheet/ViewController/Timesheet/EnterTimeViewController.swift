@@ -40,7 +40,8 @@ class EnterTimeViewController: UIViewController {
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
     weak var delegate: EnterTimeViewControllerDelegate?
-    
+    var timePickerVC: TimePickerViewController?
+
     var keyboardHeight: CGFloat = 0
     
     override func viewDidLoad() {
@@ -122,6 +123,7 @@ class EnterTimeViewController: UIViewController {
         datePickerVC.pickerMode = .date
 
         showPopup(popupController: datePickerVC, sender: dateDropDownView)
+        self.timePickerVC = datePickerVC
     }
     
     func setupSalaryView() {
@@ -299,6 +301,10 @@ extension EnterTimeViewController: UITableViewDataSource {
 }
 
 extension EnterTimeViewController: EnterTimeTableCellProtocol {
+    func dismissPicker() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func remove(cell: UITableViewCell, timeLog: TimeLog) {
         viewModel?.removeTimeLog(timeLog: timeLog)
         displayTime()
@@ -403,6 +409,12 @@ extension EnterTimeViewController: UITextViewDelegate {
 
 
 extension EnterTimeViewController: TimePickerProtocol {
+    func donePressed() {
+        guard let pickerVC = self.timePickerVC else { return }
+        timeChanged(sourceView: pickerVC.sourceView, datePicker: pickerVC.datePicker)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
         viewModel = timeSheetModel?.createEnterTimeViewModel(for: datePicker.date)
         displayInfo()
