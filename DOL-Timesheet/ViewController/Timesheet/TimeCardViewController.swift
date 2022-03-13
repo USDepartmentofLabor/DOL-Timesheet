@@ -163,13 +163,50 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
     @objc func saveClick(sender: Any?) {
         dismiss(animated: true, completion: nil)
     }
+    
+    func isValidHourlyRate() -> Bool {
+        if let hourlyRate = viewModel?.currentEmploymentModel?.employmentInfo.clock?.hourlyRate {
+            if hourlyRate.value < 0.1 {
+                let alertController = UIAlertController(title: "Error",
+                                                        message: NSLocalizedString("We detected a error in the hourly rate, this entry has been discarded.", comment: "We detected a error in the hourly rate, this entry has been discarded."),
+                                                        preferredStyle: .alert)
+                
+                alertController.addAction(
+                    UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default))
+                present(alertController, animated: true)
+                
+                return false
+            } else {
+                return true
+            }
+        } else {
+            return true
+        }
+    }
 
     @IBAction func startWorkClick(_ sender: Any) {
-        viewModel?.clock(action: .startWork, hourlyRate: currentHourlyRate, comments: nil)
-        displayClock()
+        
+        if currentHourlyRate!.value > 0.1 {
+            viewModel?.clock(action: .startWork, hourlyRate: currentHourlyRate, comments: nil)
+            displayClock()
+        } else {
+            let alertController = UIAlertController(title: "Error",
+                                                    message: NSLocalizedString("We detected a error in the hourly rate, please set a different hourly rate.", comment: "We detected a error in the hourly rate, please set a different hourly rate."),
+                                                    preferredStyle: .alert)
+            
+            alertController.addAction(
+                UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default))
+            present(alertController, animated: true)
+        }
     }
     
     @IBAction func endWorkClick(_ sender: Any) {
+        
+        
+        if !isValidHourlyRate(){
+            self.discardEntry()
+            return
+        }
         
         if ( viewModel?.currentEmploymentModel?.employmentInfo.clock?.totalHoursWorked() ?? 0 >= 0) {
             viewModel?.clock(action: .endWork, comments: commentsTextView.text)
@@ -204,10 +241,18 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
     }
     
     @IBAction func startBreakClick(_ sender: Any) {
-        viewModel?.clock(action: .startBreak, comments: commentsTextView.text)
-        displayClock()
+        if isValidHourlyRate() {
+            viewModel?.clock(action: .startBreak, comments: commentsTextView.text)
+            displayClock()
+        } else {
+            self.discardEntry()
+        }
     }
     @IBAction func endBreakClick(_ sender: Any) {
+        if !isValidHourlyRate() {
+            self.discardEntry()
+            return
+        }
         if ( viewModel?.currentEmploymentModel?.employmentInfo.clock?.totalBreakTime() ?? 0 >= 0) {
             viewModel?.clock(action: .endBreak, comments: commentsTextView.text)
             displayClock()
