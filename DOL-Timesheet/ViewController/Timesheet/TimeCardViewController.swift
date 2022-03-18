@@ -168,7 +168,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
         if let hourlyRate = viewModel?.currentEmploymentModel?.employmentInfo.clock?.hourlyRate {
             if hourlyRate.value < 0.1 {
                 let alertController = UIAlertController(title: "Error",
-                                                        message: NSLocalizedString("We detected a error in the hourly rate, this entry has been discarded.", comment: "We detected a error in the hourly rate, this entry has been discarded."),
+                                                        message: NSLocalizedString("An error was detected in the hourly rate, this entry has been discarded.", comment: "An error was detected in the hourly rate, this entry has been discarded."),
                                                         preferredStyle: .alert)
                 
                 alertController.addAction(
@@ -191,7 +191,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
             displayClock()
         } else {
             let alertController = UIAlertController(title: "Error",
-                                                    message: NSLocalizedString("We detected a error in the hourly rate, please set a different hourly rate.", comment: "We detected a error in the hourly rate, please set a different hourly rate."),
+                                                    message: NSLocalizedString("An error was detected in the hourly rate, please set a different hourly rate.", comment: "An error was detected in the hourly rate, please set an different hourly rate."),
                                                     preferredStyle: .alert)
             
             alertController.addAction(

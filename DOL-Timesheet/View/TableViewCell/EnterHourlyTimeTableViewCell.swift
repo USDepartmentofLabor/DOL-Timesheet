@@ -212,8 +212,10 @@ extension EnterHourlyTimeTableViewCell: UITextViewDelegate {
 extension EnterHourlyTimeTableViewCell: TimePickerProtocol {
     func donePressed() {
         guard let pickerVC = self.timePickerVC else { return }
-        timeChanged(sourceView: pickerVC.sourceView, datePicker: pickerVC.datePicker)
         delegate?.dismissPicker()
+        DispatchQueue.main.async { [weak self] in
+            self?.timeChanged(sourceView: pickerVC.sourceView, datePicker: pickerVC.datePicker)
+        }
     }
     
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {

@@ -333,6 +333,14 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
         guard let viewModel = viewModel, let timeLog = timeLog else {
             return false
         }
+        
+        if timeLog.startTime == nil {
+            let message = NSLocalizedString("Please set a start time before end time.", comment: "Please set a start time before end time.")
+            let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .cancel, handler: nil))
+            present(alertController, animated: false)
+            return false
+        }
 
         // If endTime is before StartTime
         // Warn if this spans over next day?
