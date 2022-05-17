@@ -20,7 +20,7 @@ protocol EnterTimeViewControllerDelegate: class {
     func didCancelEnterTime()
 }
 
-class TimesheetViewController: UIViewController, TimeViewDelegate {
+class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerProtocol {
 
     @IBOutlet weak var periodView: UIView!
     @IBOutlet weak var periodLabel: UILabel!
@@ -68,6 +68,8 @@ class TimesheetViewController: UIViewController, TimeViewDelegate {
     @IBOutlet weak var earningsTableView: UITableView!
     @IBOutlet weak var earningsTableViewHeightConstraint: NSLayoutConstraint!
     
+    var timePickerVC = TimePickerViewController.instantiateFromStoryboard()
+    
     var earningsCollapsed: Bool = true {
         didSet {
             let img: UIImage
@@ -96,6 +98,7 @@ class TimesheetViewController: UIViewController, TimeViewDelegate {
         setupNavigationBarSettings()
         setupView()
         displayInfo()
+        self.setupLabelTap()
     }
     
     override func viewDidLayoutSubviews() {
@@ -285,6 +288,30 @@ class TimesheetViewController: UIViewController, TimeViewDelegate {
         }
     }
     
+    func setupLabelTap() {
+        let labelTap = UITapGestureRecognizer(target: self, action: #selector(self.labelTapped(_:)))
+        self.periodLabel.isUserInteractionEnabled = true
+        self.periodLabel.addGestureRecognizer(labelTap)
+    }
+    
+    @objc func labelTapped(_ sender: UITapGestureRecognizer) {
+        self.timePickerVC.sourceView = (periodLabel)
+        self.timePickerVC.delegate = self
+        self.timePickerVC.pickerMode = .date
+        showPopup(popupController: self.timePickerVC, sender: periodLabel)
+    }
+    
+    func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
+        return
+    }
+    
+    func donePressed() {
+        timeChanged(sourceView: self.timePickerVC.sourceView, datePicker: self.timePickerVC.datePicker)
+        viewModel?.updatePeriod(currentDate: (timePickerVC.datePicker.date))
+        displayPeriodInfo()
+        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: periodLabel)
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func prevNextClick(_ sender: Any) {
         viewModel?.nextPeriod(direction: .backward)

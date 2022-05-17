@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+import CoreData
 
 class ResourcesViewController: UIViewController {
 
@@ -15,6 +17,7 @@ class ResourcesViewController: UIViewController {
     private static let whdWebsiteLink = "http://www.dol.gov/whd"
     private static let webadminEmail = "webmaster@dol.gov"
     
+    @IBOutlet weak var copyDatabase: UIButton!
     @IBOutlet weak var contactTitleLabel: UILabel!
     @IBOutlet weak var phoneTextView1: UITextView!
     @IBOutlet weak var phoneTextView2: UITextView!
@@ -86,5 +89,77 @@ class ResourcesViewController: UIViewController {
             NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
             NSAttributedString.Key.underlineStyle: 1])
         whdWebsiteTextView.attributedText = websiteText        
+    }
+    
+    @IBAction func copyDatabase(_ sender: Any) {
+//        let fileName1 = "DOL_Timesheet.sqlite"
+//        let fileName2 = "DOL_Timesheet.sqlite-shm"
+//        let fileName3 = "DOL_Timesheet.sqlite-wal"
+        
+        CoreDataManager.populateDBData()
+        
+        let dialogMessage = UIAlertController(title: "Info", message: "After changing the database you will need to restart the app for it to take effect", preferredStyle: .alert)
+        
+        let confirm = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            exit(0)
+          })
+        
+        dialogMessage.addAction(confirm)
+        
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
+    
+}
+
+extension CoreDataManager {
+    class func populateDBData() {
+        // If SQL file version file and loadData has been run and the DB has been updated, increase the seedVersionValue
+        let seedVersionKey = "SeedVersion"
+        let seedVersionValue = 1
+        let seedVersion = UserDefaults.standard.integer(forKey: seedVersionKey)
+        if seedVersion != seedVersionValue {
+            copySeedDB()
+            UserDefaults.standard.set(seedVersionValue, forKey: seedVersionKey)
+        }
+    }
+    
+    static var storeDirectory = NSPersistentContainer.defaultDirectoryURL().relativePath
+    
+    static var storeName = "DOL_Timesheet"
+    
+    class func copySeedDB() {
+        let storeURL = "\(storeDirectory)/\(storeName).sqlite"
+        if FileManager.default.fileExists(atPath: storeURL) {
+            let enumerator = FileManager.default.enumerator(atPath: storeDirectory)
+            while let file = enumerator?.nextObject() as? String {
+                if !file.hasPrefix(storeName) { continue }
+                do {
+                    try FileManager.default.removeItem(atPath: "\(storeDirectory)/\(file)")
+                } catch  {
+                    NSLog("Error deleting file %s", file)
+                }
+            }
+        }
+        
+        guard let sqlitePath = Bundle.main.path(forResource: "DOL_Timesheet", ofType: "sqlite") else { return }
+        let sqlitePath_shm = Bundle.main.path(forResource: "DOL_Timesheet", ofType: "sqlite-shm")
+        let sqlitePath_wal = Bundle.main.path(forResource: "DOL_Timesheet", ofType: "sqlite-wal")
+        
+        let URL1 = URL(fileURLWithPath: sqlitePath)
+        let URL2 = URL(fileURLWithPath: sqlitePath_shm!)
+        let URL3 = URL(fileURLWithPath: sqlitePath_wal!)
+        let URL4 = URL(fileURLWithPath: "\(storeDirectory)/\(storeName).sqlite")
+        let URL5 = URL(fileURLWithPath: "\(storeDirectory)/\(storeName).sqlite-shm")
+        let URL6 = URL(fileURLWithPath: "\(storeDirectory)/\(storeName).sqlite-wal")
+        
+        // Copy 3 files
+        do {
+            try FileManager.default.copyItem(at: URL1, to: URL4)
+            try FileManager.default.copyItem(at: URL2, to: URL5)
+            try FileManager.default.copyItem(at: URL3, to: URL6)
+            
+        } catch {
+            print("Error copying seed files")
+        }
     }
 }
