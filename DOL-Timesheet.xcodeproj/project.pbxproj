@@ -116,6 +116,9 @@
 		59AD9E6422A1ADB500075193 /* SummaryTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59AD9E6222A1ADB500075193 /* SummaryTableViewHeaderView.xib */; };
 		59B1BEA22294588D00F0D37A /* TitleValueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B1BEA12294588D00F0D37A /* TitleValueLabel.swift */; };
 		59EB62F2229EE3EE00470AA4 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EB62F1229EE3EE00470AA4 /* ProfileModel.swift */; };
+		696D20DC28318CC9007E041F /* DOL_Timesheet.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */; };
+		696D20DD28318CC9007E041F /* DOL_Timesheet.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */; };
+		696D20DE28318CC9007E041F /* DOL_Timesheet.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -251,6 +254,9 @@
 		59AD9E6222A1ADB500075193 /* SummaryTableViewHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SummaryTableViewHeaderView.xib; path = "DOL-Timesheet/View/TableViewCell/SummaryTableViewHeaderView.xib"; sourceTree = SOURCE_ROOT; };
 		59B1BEA12294588D00F0D37A /* TitleValueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueLabel.swift; sourceTree = "<group>"; };
 		59EB62F1229EE3EE00470AA4 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = DOL_Timesheet.sqlite; sourceTree = "<group>"; };
+		696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-shm"; sourceTree = "<group>"; };
+		696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-wal"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -524,6 +530,7 @@
 		036D7196227744A200CC62CE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				691D8B6C2831D3C70050292C /* Datafiles */,
 				036D71932277445300CC62CE /* Localizable.strings */,
 			);
 			path = Resources;
@@ -575,6 +582,16 @@
 				032DFD28228B2E00001A1C3B /* EarningsTableViewHeaderView.xib */,
 			);
 			path = TableViewHeader;
+			sourceTree = "<group>";
+		};
+		691D8B6C2831D3C70050292C /* Datafiles */ = {
+			isa = PBXGroup;
+			children = (
+				696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */,
+				696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */,
+				696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */,
+			);
+			path = Datafiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -690,8 +707,11 @@
 				037C226A2278B6400021A309 /* Profile.storyboard in Resources */,
 				036D71952277445300CC62CE /* Localizable.strings in Resources */,
 				0324C3EA2260E47200712576 /* LaunchScreen.storyboard in Resources */,
+				696D20DE28318CC9007E041F /* DOL_Timesheet.sqlite-wal in Resources */,
 				032DFD2C228B5774001A1C3B /* EarningsTableViewCell.xib in Resources */,
 				032920D822C103C9003E4732 /* DropDownView.xib in Resources */,
+				696D20DC28318CC9007E041F /* DOL_Timesheet.sqlite in Resources */,
+				696D20DD28318CC9007E041F /* DOL_Timesheet.sqlite-shm in Resources */,
 				59AD9E6422A1ADB500075193 /* SummaryTableViewHeaderView.xib in Resources */,
 				0324C3E72260E47200712576 /* Assets.xcassets in Resources */,
 				032C9F1D2264FFFC00FB1468 /* LabelInfoView.xib in Resources */,
@@ -1007,7 +1027,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 49;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1015,7 +1035,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 3.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = gov.dol.whdtimesheet;
 				PRODUCT_NAME = Timesheet;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1030,7 +1050,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 49;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1038,7 +1058,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 3.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = gov.dol.whdtimesheet;
 				PRODUCT_NAME = Timesheet;
 				PROVISIONING_PROFILE_SPECIFIER = "";

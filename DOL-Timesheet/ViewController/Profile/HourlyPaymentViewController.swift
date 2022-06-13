@@ -33,13 +33,10 @@ class HourlyPaymentViewController: UIViewController {
     }
     
     func setupView() {
-        title = NSLocalizedString("hourly_payment_title", comment: "Hourly Payment Title")
         
         hourlyContentView.addBorder()
         hourlyRateTableView.estimatedRowHeight = 44
         hourlyRateTableView.rowHeight = UITableView.automaticDimension
-
-        hourlyTitleLabel.scaleFont(forDataType: .headingTitle)
         
         if viewModel.isProfileEmployer {
             titleLabelInfo.title = NSLocalizedString("hourly_rate_employer", comment: "Hourly Rate")
