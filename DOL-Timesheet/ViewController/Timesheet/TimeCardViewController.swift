@@ -186,18 +186,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
 
     @IBAction func startWorkClick(_ sender: Any) {
         
-        if currentHourlyRate!.value > 0.1 {
-            viewModel?.clock(action: .startWork, hourlyRate: currentHourlyRate, comments: nil)
-            displayClock()
-        } else {
-            let alertController = UIAlertController(title: "Error",
-                                                    message: NSLocalizedString("An error was detected in the hourly rate, please set a different hourly rate.", comment: "An error was detected in the hourly rate, please set an different hourly rate."),
-                                                    preferredStyle: .alert)
-            
-            alertController.addAction(
-                UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default))
-            present(alertController, animated: true)
-        }
+        viewModel?.clock(action: .startWork, hourlyRate: currentHourlyRate, comments: nil)
+        displayClock()
     }
     
     @IBAction func endWorkClick(_ sender: Any) {
