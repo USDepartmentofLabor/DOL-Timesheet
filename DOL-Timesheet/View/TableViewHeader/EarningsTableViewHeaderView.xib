@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -68,6 +68,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Vgf-zi-IIZ" secondAttribute="bottom" id="AtG-FS-VCc"/>
                 <constraint firstItem="Vgf-zi-IIZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="IbV-f5-0Kg"/>
@@ -75,7 +76,6 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Vgf-zi-IIZ" secondAttribute="trailing" id="jm1-ZN-kQD"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="amountLabel" destination="n9K-yO-EoV" id="3nw-Wa-mHr"/>
                 <outlet property="expandCollapseImageView" destination="inZ-cI-qvf" id="7mJ-YU-5wA"/>

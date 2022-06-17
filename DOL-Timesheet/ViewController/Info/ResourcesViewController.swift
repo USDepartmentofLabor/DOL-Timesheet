@@ -22,9 +22,9 @@ class ResourcesViewController: UIViewController {
     @IBOutlet weak var phoneTextView1: UITextView!
     @IBOutlet weak var phoneTextView2: UITextView!
     @IBOutlet weak var phoneHoursLabel: UILabel!
-    @IBOutlet weak var emailTextView: UITextView!
+//    @IBOutlet weak var emailTextView: UITextView!
     @IBOutlet weak var contactTextView: UITextView!
-    @IBOutlet weak var whdWebsiteTextView: UITextView!
+//    @IBOutlet weak var whdWebsiteTextView: UITextView!
     
     @IBOutlet weak var submitIssuesTitleLabel: UILabel!
     @IBOutlet weak var webadminTextView: UITextView!
@@ -44,9 +44,9 @@ class ResourcesViewController: UIViewController {
         phoneTextView1.scaleFont(forDataType: .resourcesText)
         phoneTextView2.scaleFont(forDataType: .resourcesText)
         phoneHoursLabel.scaleFont(forDataType: .resourcesText)
-        emailTextView.scaleFont(forDataType: .resourcesTitleText)
+//        emailTextView.scaleFont(forDataType: .resourcesTitleText)
         contactTextView.scaleFont(forDataType: .resourcesTitleText)
-        whdWebsiteTextView.scaleFont(forDataType: .resourcesTitleText)
+//        whdWebsiteTextView.scaleFont(forDataType: .resourcesTitleText)
         
         submitIssuesTitleLabel.scaleFont(forDataType: .resourcesTitleText)
         webadminTextView.scaleFont(forDataType: .resourcesText)
@@ -57,16 +57,16 @@ class ResourcesViewController: UIViewController {
         phoneTextView1.textContainer.lineFragmentPadding = 0
         phoneTextView2.textContainerInset = UIEdgeInsets.zero
         phoneTextView2.textContainer.lineFragmentPadding = 0
-        emailTextView.textContainerInset = UIEdgeInsets.zero
-        emailTextView.textContainer.lineFragmentPadding = 0
+//        emailTextView.textContainerInset = UIEdgeInsets.zero
+//        emailTextView.textContainer.lineFragmentPadding = 0
         contactTextView.textContainerInset = UIEdgeInsets.zero
         contactTextView.textContainer.lineFragmentPadding = 0
         webadminTextView.textContainerInset = UIEdgeInsets.zero
         webadminTextView.textContainer.lineFragmentPadding = 0
         gitHubTextView.textContainerInset = UIEdgeInsets.zero
         gitHubTextView.textContainer.lineFragmentPadding = 0
-        whdWebsiteTextView.textContainerInset = UIEdgeInsets.zero
-        whdWebsiteTextView.textContainer.lineFragmentPadding = 0
+//        whdWebsiteTextView.textContainerInset = UIEdgeInsets.zero
+//        whdWebsiteTextView.textContainer.lineFragmentPadding = 0
         
         phoneTextView1.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 1, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
         phoneTextView2.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 1, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
@@ -76,19 +76,19 @@ class ResourcesViewController: UIViewController {
     }
     
     func displayInfo() {
-        let emailText = NSAttributedString(string: "Send an email to the Wage and Hour Division", attributes: [NSAttributedString.Key.link: ResourcesViewController.emailLink, NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
-            NSAttributedString.Key.underlineStyle: 1])
-        emailTextView.attributedText = emailText
+//        let emailText = NSAttributedString(string: "Send an email to the Wage and Hour Division", attributes: [NSAttributedString.Key.link: ResourcesViewController.emailLink, NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
+//            NSAttributedString.Key.underlineStyle: 1])
+//        emailTextView.attributedText = emailText
         
         let contactText = NSAttributedString(string: "Contact the office nearest you", attributes: [NSAttributedString.Key.link: ResourcesViewController.contactOfficeLink,
             NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
             NSAttributedString.Key.underlineStyle: 1])
         contactTextView.attributedText = contactText
 
-        let websiteText = NSAttributedString(string: "Wage and Hour Division website", attributes: [NSAttributedString.Key.link: ResourcesViewController.whdWebsiteLink,
-            NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
-            NSAttributedString.Key.underlineStyle: 1])
-        whdWebsiteTextView.attributedText = websiteText        
+//        let websiteText = NSAttributedString(string: "Wage and Hour Division website", attributes: [NSAttributedString.Key.link: ResourcesViewController.whdWebsiteLink,
+//            NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
+//            NSAttributedString.Key.underlineStyle: 1])
+//        whdWebsiteTextView.attributedText = websiteText        
     }
     
     @IBAction func copyDatabase(_ sender: Any) {

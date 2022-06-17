@@ -1499,74 +1499,73 @@
                                 <rect key="frame" x="0.0" y="44" width="374" height="663"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQE-5W-1Bn">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="622"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="BYv-NH-48X">
-                                                <rect key="frame" x="15" y="20" width="344" height="393.5"/>
+                                                <rect key="frame" x="15" y="20" width="344" height="476"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Lip-0y-VYX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="344" height="133.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="344" height="113"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call the Wage and Hour Division's toll-free help line:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJk-if-yD1" userLabel="ContactTitleLabel">
-                                                                <rect key="frame" x="0.0" y="0.0" width="344" height="41"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call us (toll-free)" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJk-if-yD1" userLabel="ContactTitleLabel">
+                                                                <rect key="frame" x="0.0" y="0.0" width="344" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text=" • 1-866-4-USWAGE (1-866-487-9243)" translatesAutoresizingMaskIntoConstraints="NO" id="m3k-sp-idq" userLabel="PhoneText View1">
-                                                                <rect key="frame" x="0.0" y="43" width="344" height="33"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help is available M-F, 8 AM - 8PM Eastern" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYd-UW-6E7" userLabel="PhoneHoursLabel">
+                                                                <rect key="frame" x="0.0" y="22.5" width="344" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="1-866-4-USWAGE (1-866-487-9243)" translatesAutoresizingMaskIntoConstraints="NO" id="m3k-sp-idq" userLabel="PhoneText View1">
+                                                                <rect key="frame" x="0.0" y="45" width="344" height="33"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                                                             </textView>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text=" • TTY: 1-877-889-5627" translatesAutoresizingMaskIntoConstraints="NO" id="Wew-0x-fNo" userLabel="PhoneText View2">
-                                                                <rect key="frame" x="0.0" y="78" width="344" height="33"/>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="1-877-889-5627 (TTY)" translatesAutoresizingMaskIntoConstraints="NO" id="Wew-0x-fNo" userLabel="PhoneText View2">
+                                                                <rect key="frame" x="0.0" y="80" width="344" height="33"/>
                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                                                             </textView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday-Friday 8 a.m. to 8 p.m. Eastern Time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYd-UW-6E7" userLabel="PhoneHoursLabel">
-                                                                <rect key="frame" x="0.0" y="113" width="344" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="• Send an email to the Wage and Hour Division" translatesAutoresizingMaskIntoConstraints="NO" id="5VL-uv-6D0" userLabel="EmailText View">
-                                                        <rect key="frame" x="0.0" y="145.5" width="344" height="33"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIY-Mo-aNO" userLabel="FooterTitleLabel">
+                                                        <rect key="frame" x="0.0" y="125" width="344" height="101.5"/>
+                                                        <string key="text">All services are free and confidential, whether you are documented or not. Please remember that your employer cannot terminate you or in any other manner discriminate against you for filing a complaint with Wage and Hour Division.</string>
+                                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask us a specific question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkb-fl-g3w">
+                                                        <rect key="frame" x="0.0" y="238.5" width="344" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Wage and Hour Division Contact Online Form" translatesAutoresizingMaskIntoConstraints="NO" id="B9x-sM-RPr" userLabel="ContactText View">
+                                                        <rect key="frame" x="0.0" y="271" width="344" height="33"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
-                                                    </textView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="• Contact the office nearest you" translatesAutoresizingMaskIntoConstraints="NO" id="B9x-sM-RPr" userLabel="ContactText View">
-                                                        <rect key="frame" x="0.0" y="190.5" width="344" height="33"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
-                                                    </textView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="•Wage &amp; Hour website" translatesAutoresizingMaskIntoConstraints="NO" id="T6A-Y7-ym6" userLabel="WHDWebsiteText View">
-                                                        <rect key="frame" x="0.0" y="235.5" width="344" height="33"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                                     </textView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DDk-HO-7v4">
-                                                        <rect key="frame" x="0.0" y="280.5" width="344" height="113"/>
+                                                        <rect key="frame" x="0.0" y="316" width="344" height="160"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Submit issues you experience to either:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWa-d1-wSm">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about issues with the app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWa-d1-wSm">
                                                                 <rect key="frame" x="0.0" y="0.0" width="344" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text=" • webmaster@dol.gov" translatesAutoresizingMaskIntoConstraints="NO" id="28q-aj-mZA" userLabel="webAdminTextView">
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Email" translatesAutoresizingMaskIntoConstraints="NO" id="28q-aj-mZA" userLabel="webAdminTextView">
                                                                 <rect key="frame" x="0.0" y="25.5" width="344" height="33"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <color key="textColor" systemColor="labelColor"/>
@@ -1574,8 +1573,22 @@
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
                                                             </textView>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text=" • https://github.com/USDepartmentofLabor/DOL-Timesheet/issues" translatesAutoresizingMaskIntoConstraints="NO" id="90P-iv-diL" userLabel="gitHubTextView">
-                                                                <rect key="frame" x="0.0" y="63.5" width="344" height="49.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vist us online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUK-te-aLx">
+                                                                <rect key="frame" x="0.0" y="63.5" width="344" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Wage and Hour Division" translatesAutoresizingMaskIntoConstraints="NO" id="90P-iv-diL" userLabel="gitHubTextView">
+                                                                <rect key="frame" x="0.0" y="89" width="344" height="33"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="textColor" systemColor="labelColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
+                                                            </textView>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Wage and Hour Division Local Offices" translatesAutoresizingMaskIntoConstraints="NO" id="sP9-yW-InQ" userLabel="gitHubTextView">
+                                                                <rect key="frame" x="0.0" y="127" width="344" height="33"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1592,17 +1605,11 @@
                                             <constraint firstItem="BYv-NH-48X" firstAttribute="top" secondItem="CQE-5W-1Bn" secondAttribute="top" constant="20" id="LgZ-WA-KON"/>
                                             <constraint firstAttribute="trailing" secondItem="BYv-NH-48X" secondAttribute="trailing" constant="15" id="Zhq-1Q-WiM"/>
                                             <constraint firstItem="BYv-NH-48X" firstAttribute="leading" secondItem="CQE-5W-1Bn" secondAttribute="leading" constant="15" id="bTH-nK-rua"/>
+                                            <constraint firstAttribute="height" constant="622" id="bbH-pZ-xiX"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIY-Mo-aNO" userLabel="FooterTitleLabel">
-                                        <rect key="frame" x="15" y="433.5" width="344" height="122"/>
-                                        <string key="text">All services are free and confidential, whether you are documented or not. Please remember that your employer cannot terminate you or in any other manner discriminate against you for filing a complaint with Wage and Hour Division.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwD-g4-XQQ">
-                                        <rect key="frame" x="0.0" y="624" width="374" height="39"/>
+                                        <rect key="frame" x="0.0" y="583" width="374" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="GeZ-dA-bxa"/>
                                         </constraints>
@@ -1617,15 +1624,11 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="CQE-5W-1Bn" firstAttribute="leading" secondItem="TwD-g4-XQQ" secondAttribute="leading" id="FBI-p0-Gpt"/>
-                                    <constraint firstItem="zIY-Mo-aNO" firstAttribute="leading" secondItem="BYv-NH-48X" secondAttribute="leading" id="LVL-Fa-KsY"/>
-                                    <constraint firstItem="zIY-Mo-aNO" firstAttribute="top" secondItem="BYv-NH-48X" secondAttribute="bottom" constant="20" id="Lwd-Wp-mM3"/>
                                     <constraint firstItem="CQE-5W-1Bn" firstAttribute="leading" secondItem="Rg9-xc-zIs" secondAttribute="leading" id="T4Y-JJ-RrG"/>
                                     <constraint firstItem="CQE-5W-1Bn" firstAttribute="top" secondItem="Rg9-xc-zIs" secondAttribute="top" id="ZrH-qg-9gb"/>
-                                    <constraint firstItem="TwD-g4-XQQ" firstAttribute="top" secondItem="zIY-Mo-aNO" secondAttribute="bottom" constant="68.5" id="aFY-ug-HGA"/>
                                     <constraint firstItem="CQE-5W-1Bn" firstAttribute="trailing" secondItem="TwD-g4-XQQ" secondAttribute="trailing" id="gg0-oa-KHh"/>
                                     <constraint firstAttribute="bottom" secondItem="TwD-g4-XQQ" secondAttribute="bottom" id="hDp-nV-1Od"/>
                                     <constraint firstAttribute="trailing" secondItem="CQE-5W-1Bn" secondAttribute="trailing" id="job-pu-Zxv"/>
-                                    <constraint firstItem="zIY-Mo-aNO" firstAttribute="trailing" secondItem="BYv-NH-48X" secondAttribute="trailing" id="lpg-Nz-qS7"/>
                                     <constraint firstAttribute="bottom" secondItem="CQE-5W-1Bn" secondAttribute="bottom" id="tqx-d7-tlH"/>
                                 </constraints>
                             </scrollView>
@@ -1644,7 +1647,6 @@
                         <outlet property="contactTextView" destination="B9x-sM-RPr" id="XLv-jM-YGy"/>
                         <outlet property="contactTitleLabel" destination="rJk-if-yD1" id="smO-Au-eX2"/>
                         <outlet property="copyDatabase" destination="TwD-g4-XQQ" id="KbB-0N-PrF"/>
-                        <outlet property="emailTextView" destination="5VL-uv-6D0" id="uYx-IW-O6Z"/>
                         <outlet property="footerTitleLabel" destination="zIY-Mo-aNO" id="ljc-sa-P4A"/>
                         <outlet property="gitHubTextView" destination="90P-iv-diL" id="03A-Aa-wck"/>
                         <outlet property="phoneHoursLabel" destination="eYd-UW-6E7" id="FxE-eg-66m"/>
@@ -1652,7 +1654,6 @@
                         <outlet property="phoneTextView2" destination="Wew-0x-fNo" id="rFy-nD-eO4"/>
                         <outlet property="submitIssuesTitleLabel" destination="UWa-d1-wSm" id="jii-dQ-Q9G"/>
                         <outlet property="webadminTextView" destination="28q-aj-mZA" id="YCJ-mK-bQp"/>
-                        <outlet property="whdWebsiteTextView" destination="T6A-Y7-ym6" id="6fU-JA-ReS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lie-fi-TcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
