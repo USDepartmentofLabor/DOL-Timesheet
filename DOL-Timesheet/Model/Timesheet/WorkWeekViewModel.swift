@@ -17,7 +17,7 @@ class WorkWeekViewModel {
     
     var isBelowMinimumWage: Bool {
         if totalHoursWorked > 0 {
-            return regularRate < employmentInfo.minimumWage ? true : false
+            return regularRate < Util.FEDERAL_MINIMUM_WAGE ? true : false
         }
         
         return false

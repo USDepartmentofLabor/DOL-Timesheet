@@ -238,7 +238,7 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
         
         totalEarningsAmountLabel.text = viewModel.totalEarningsStr
         if viewModel.isBelowMinimumWage() {
-            totalEarningsWarningLabel.text = NSLocalizedString("err_title_minimum_wage", comment: "Below MinimumWage").capitalized
+            totalEarningsWarningLabel.text = NSLocalizedString("err_title_minimum_wage", comment: "Below MinimumWage")
         }
         else {
             totalEarningsWarningLabel.text = ""
