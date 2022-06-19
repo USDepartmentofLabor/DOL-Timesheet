@@ -67,7 +67,9 @@ class EarningsTableViewHeaderView: UITableViewHeaderFooterView {
         if viewModel.isWorkWeekClosed && viewModel.isBelowMinimumWage {
             warningLabel.text = NSLocalizedString("err_title_minimum_wage", comment: "Below Minimum Wage")
         }
-        else {
+        else if viewModel.isWorkWeekClosed && viewModel.isBelowSalaryWeeklyWage {
+            warningLabel.text = NSLocalizedString("err_title_minimum_weekly_wage", comment: "Below Minimum Weekly Wage")
+        } else {
             warningLabel.text = ""
         }
     }

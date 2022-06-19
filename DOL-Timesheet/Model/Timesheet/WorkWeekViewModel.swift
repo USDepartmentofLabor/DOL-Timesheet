@@ -19,7 +19,15 @@ class WorkWeekViewModel {
         if totalHoursWorked > 0 {
             return regularRate < Util.FEDERAL_MINIMUM_WAGE ? true : false
         }
-        
+        return false
+    }
+    
+    var isBelowSalaryWeeklyWage: Bool {
+        if totalHoursWorked > 0 {
+            if !employmentInfo.covered && employmentInfo.paymentType == .salary{
+                return totalEarnings < Util.FEDERAL_MINIMUM_EXEMPT_WEEKLY_WAGE
+            }
+        }
         return false
     }
     

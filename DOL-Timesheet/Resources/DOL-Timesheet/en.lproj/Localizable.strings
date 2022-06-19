@@ -197,6 +197,7 @@
 "err_camera_denied_title" = "Timesheet does not have access to your camera.";
 "err_camera_denied" = "To enable access, click on Settings to allow access to camera.";
 "err_title_minimum_wage" = "Your pay appears to be below the Federal minimum wage";
+"err_title_minimum_weekly_wage" = "Your salary appears to be below the Federal requirement";
 "err_invalid_supervisor_emailaddress" = "Please provide valid supervisor email address.";
 "warning" = "Warning";
 "warning_split_time" = "Hours after midnight will populate your timesheet on the next day. Do you want to continue?";
