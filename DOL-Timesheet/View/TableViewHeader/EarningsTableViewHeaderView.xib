@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,6 +22,10 @@
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="collape" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="inZ-cI-qvf">
                                     <rect key="frame" x="0.0" y="2.6666666666666661" width="21" height="15.999999999999998"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="16" id="0Ce-Db-98J"/>
+                                        <constraint firstAttribute="width" constant="21" id="83I-ac-WWG"/>
+                                    </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6NE-F6-Cjv" userLabel="titleLabel">
                                     <rect key="frame" x="23" y="4.0000000000000009" width="213" height="13.333333333333336"/>
@@ -49,7 +53,7 @@
                                 <constraint firstItem="6NE-F6-Cjv" firstAttribute="top" secondItem="dqq-hd-3Pc" secondAttribute="top" constant="4" id="y4z-B7-tKO"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BELOW MINIMUM WAGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOx-Lv-bN6" userLabel="WarningsLabel">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOx-Lv-bN6" userLabel="WarningsLabel">
                             <rect key="frame" x="31" y="27.333333333333332" width="313" height="14.666666666666668"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,7 +84,6 @@
                 <outlet property="amountLabel" destination="n9K-yO-EoV" id="3nw-Wa-mHr"/>
                 <outlet property="expandCollapseImageView" destination="inZ-cI-qvf" id="7mJ-YU-5wA"/>
                 <outlet property="titleLabel" destination="6NE-F6-Cjv" id="tfm-vX-pM7"/>
-                <outlet property="warningLabel" destination="mOx-Lv-bN6" id="ckM-wh-sSb"/>
             </connections>
             <point key="canvasLocation" x="32.8125" y="89.788732394366193"/>
         </view>

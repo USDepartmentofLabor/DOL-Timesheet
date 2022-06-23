@@ -29,6 +29,7 @@ class EarningsTableViewCell: UITableViewCell {
     @IBOutlet weak var regularRateCalculationsLabel: UILabel!
     @IBOutlet weak var regularRateInfoBtn: InfoButton!
     
+    @IBOutlet weak var minimumWageWarning: UILabel!
     @IBOutlet weak var minimumWageTitleLabel: UILabel!
     @IBOutlet weak var minimuWageAmountLabel: UILabel!
     @IBOutlet weak var overtimeView: UIView!
@@ -103,8 +104,14 @@ class EarningsTableViewCell: UITableViewCell {
         else {
             straightTimeSubTitleLabel.text = NSLocalizedString("straight_time_calculation", comment: "Straight Time calculation")
         }
-
-        minimuWageAmountLabel.text = viewModel.minimumWageStr
+        if viewModel.isBelowMinimumWage {
+            minimumWageWarning.text = NSLocalizedString("err_title_minimum_wage", comment: "Below Minimum Wage")
+        }
+        else if viewModel.isBelowSalaryWeeklyWage {
+            minimumWageWarning.text = NSLocalizedString("err_title_minimum_weekly_wage", comment: "Below Minimum Weekly Wage")
+        } else {
+            minimumWageWarning.text = ""
+        }
         regularRateLabel.text = viewModel.regularRateStr
         regularRateCalculationsLabel.text = viewModel.regularRateCalculationStr
 

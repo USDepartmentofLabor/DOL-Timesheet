@@ -19,7 +19,6 @@ class EarningsTableViewHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var expandCollapseImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var warningLabel: UILabel!
     
     var section: Int = 0
     
@@ -44,7 +43,6 @@ class EarningsTableViewHeaderView: UITableViewHeaderFooterView {
         
         titleLabel.scaleFont(forDataType: .timesheetWorkweekTitle)
         amountLabel.scaleFont(forDataType: .timesheetWorkweekTitle)
-        warningLabel.scaleFont(forDataType: .earningsTitle)
     }
     
     @objc private func toggleOpen(_ sender: UITapGestureRecognizer) {
@@ -64,14 +62,7 @@ class EarningsTableViewHeaderView: UITableViewHeaderFooterView {
         }
         
         collapseSection(collapse: viewModel.isCollapsed)
-        if viewModel.isWorkWeekClosed && viewModel.isBelowMinimumWage {
-            warningLabel.text = NSLocalizedString("err_title_minimum_wage", comment: "Below Minimum Wage")
-        }
-        else if viewModel.isWorkWeekClosed && viewModel.isBelowSalaryWeeklyWage {
-            warningLabel.text = NSLocalizedString("err_title_minimum_weekly_wage", comment: "Below Minimum Weekly Wage")
-        } else {
-            warningLabel.text = ""
-        }
+
     }
     
     func toggleExpand(withUserAction userAction: Bool) {
