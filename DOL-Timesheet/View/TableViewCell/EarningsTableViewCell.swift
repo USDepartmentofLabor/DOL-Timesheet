@@ -107,9 +107,7 @@ class EarningsTableViewCell: UITableViewCell {
         if viewModel.isBelowMinimumWage {
             minimumWageWarning.text = NSLocalizedString("err_title_minimum_wage", comment: "Below Minimum Wage")
         }
-        else if viewModel.isBelowSalaryWeeklyWage {
-            minimumWageWarning.text = NSLocalizedString("err_title_minimum_weekly_wage", comment: "Below Minimum Weekly Wage")
-        } else {
+        else {
             minimumWageWarning.text = ""
         }
         regularRateLabel.text = viewModel.regularRateStr
