@@ -78,6 +78,8 @@ class ResourcesViewController: UIViewController {
         webadminTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
         gitHubTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
         secondGitHubTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
+        
+        copyDatabase.isHidden = true
     }
     
     func displayInfo() {
