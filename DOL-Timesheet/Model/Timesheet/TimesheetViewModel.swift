@@ -383,7 +383,17 @@ extension TimesheetViewModel {
     func isBelowMinimumWage() -> Bool {
         var belowMinWage = false
         workWeekViewModels?.forEach {
-            if $0.isBelowMinimumWage && $0.isWorkWeekClosed {
+            if $0.isBelowMinimumWage {
+                belowMinWage = true
+                return
+            }
+        }
+        return belowMinWage
+    }
+    func isBelowSalaryWeeklyWage() -> Bool {
+        var belowMinWage = false
+        workWeekViewModels?.forEach {
+            if $0.isBelowSalaryWeeklyWage {
                 belowMinWage = true
                 return
             }

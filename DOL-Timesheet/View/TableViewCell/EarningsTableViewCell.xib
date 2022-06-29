@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -60,7 +60,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="rzr-Gp-QT6" userLabel="RegularRateStack View">
-                                <rect key="frame" x="0.0" y="58.5" width="285" height="66"/>
+                                <rect key="frame" x="0.0" y="58.5" width="285" height="67"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dvh-d5-wR1">
                                         <rect key="frame" x="0.0" y="0.0" width="285" height="13.5"/>
@@ -95,31 +95,20 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vyn-Kh-jk1">
-                                        <rect key="frame" x="0.0" y="17.5" width="285" height="13.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum Wage" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HT2-w9-R85" userLabel="MinimumWageTitle">
-                                                <rect key="frame" x="0.0" y="0.0" width="137.5" height="13.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$7.25/hr" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDT-lM-VPH" userLabel="MinimumWageAmount">
-                                                <rect key="frame" x="147.5" y="0.0" width="137.5" height="13.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BELOW MINIMUM WAGE" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHI-9Z-jvg" userLabel="WarningsLabel">
+                                        <rect key="frame" x="0.0" y="17.5" width="285" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Straight Time Earnings / Hours Worked" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRM-kS-NAK" userLabel="RegularTimeSubTitle">
-                                        <rect key="frame" x="0.0" y="35" width="285" height="13.5"/>
+                                        <rect key="frame" x="0.0" y="36" width="285" height="13.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fi5-3U-xyu" userLabel="RegularRateCalculations">
-                                        <rect key="frame" x="0.0" y="52.5" width="285" height="13.5"/>
+                                        <rect key="frame" x="0.0" y="53.5" width="285" height="13.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -127,30 +116,28 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="pRM-kS-NAK" secondAttribute="trailing" id="1bp-Np-UrM"/>
-                                    <constraint firstAttribute="trailing" secondItem="Vyn-Kh-jk1" secondAttribute="trailing" id="DLI-IM-vll"/>
                                     <constraint firstAttribute="trailing" secondItem="Dvh-d5-wR1" secondAttribute="trailing" id="iD8-tf-ff9"/>
                                     <constraint firstItem="Dvh-d5-wR1" firstAttribute="leading" secondItem="rzr-Gp-QT6" secondAttribute="leading" id="mk2-gf-rOZ"/>
                                     <constraint firstItem="pRM-kS-NAK" firstAttribute="leading" secondItem="rzr-Gp-QT6" secondAttribute="leading" id="t9J-bF-hGE"/>
-                                    <constraint firstItem="Vyn-Kh-jk1" firstAttribute="leading" secondItem="rzr-Gp-QT6" secondAttribute="leading" id="vlz-Wc-WIe"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="d9T-Gt-oHG" userLabel="OvertimeStack View">
-                                <rect key="frame" x="0.0" y="134.5" width="285" height="80.5"/>
+                                <rect key="frame" x="0.0" y="135.5" width="285" height="79.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Oeq-7y-6cZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="285" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="285" height="27"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9sb-C9-deO">
-                                                <rect key="frame" x="0.0" y="0.0" width="137.5" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="137.5" height="27"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overtime Pay" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7st-2Y-9Ak" userLabel="OvertimeTitle">
-                                                        <rect key="frame" x="0.0" y="7.5" width="70" height="13.5"/>
+                                                        <rect key="frame" x="0.0" y="7" width="70" height="13.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                         <color key="textColor" name="appPrimaryColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sk1-Mq-qST" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
-                                                        <rect key="frame" x="72" y="3.5" width="21" height="21"/>
+                                                        <rect key="frame" x="72" y="3" width="21" height="21"/>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -164,7 +151,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XK8-fi-JfC" userLabel="OvertimeAmount">
-                                                <rect key="frame" x="147.5" y="0.0" width="137.5" height="28"/>
+                                                <rect key="frame" x="147.5" y="0.0" width="137.5" height="27"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                 <color key="textColor" name="appPrimaryColor"/>
                                                 <nil key="highlightedColor"/>
@@ -172,19 +159,19 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlQ-ys-Ik6" userLabel="OvertimeInfoLabel">
-                                        <rect key="frame" x="0.0" y="32" width="285" height="13.5"/>
+                                        <rect key="frame" x="0.0" y="31" width="285" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regular Rate of Pay x 0.5 x Overtime Hours" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCS-nf-CEc" userLabel="OvertimeSubTitle">
-                                        <rect key="frame" x="0.0" y="49.5" width="285" height="13.5"/>
+                                        <rect key="frame" x="0.0" y="48.5" width="285" height="13.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3a-60-8W7" userLabel="OvertimeimeCalculations">
-                                        <rect key="frame" x="0.0" y="67" width="285" height="13.5"/>
+                                        <rect key="frame" x="0.0" y="66" width="285" height="13.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -209,8 +196,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="minimuWageAmountLabel" destination="kDT-lM-VPH" id="T1R-aD-n3W"/>
-                <outlet property="minimumWageTitleLabel" destination="HT2-w9-R85" id="ekC-zS-Jq4"/>
+                <outlet property="minimumWageWarning" destination="hHI-9Z-jvg" id="Ozq-pV-heI"/>
                 <outlet property="overtimeAmountLabel" destination="XK8-fi-JfC" id="v3h-oh-Cuw"/>
                 <outlet property="overtimeCalculationLabel" destination="q3a-60-8W7" id="aw5-z4-nOc"/>
                 <outlet property="overtimeCalculationTitleLabel" destination="jCS-nf-CEc" id="anm-78-uzl"/>

@@ -11,6 +11,7 @@ import UIKit
 
 class Util {
     static let FEDERAL_MINIMUM_WAGE = 7.25
+    static let FEDERAL_MINIMUM_EXEMPT_WEEKLY_WAGE = 684.0
     
     static func isValidPostalCode(postalCode: String) -> Bool {
         let postalcodeRegex = "^[0-9]{5}(?:-[0-9]{4})?$"

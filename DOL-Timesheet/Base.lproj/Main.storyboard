@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NNC-uZ-gvN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NNC-uZ-gvN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -188,14 +188,15 @@
                                                                 <rect key="frame" x="266" y="0.0" width="128" height="114.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Break (Hours)" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5J-wR-eQC" userLabel="BreakHoursLabel">
-                                                                        <rect key="frame" x="29" y="0.0" width="76" height="114.5"/>
+                                                                        <rect key="frame" x="30" y="0.0" width="76" height="114.5"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZe-Qy-nvd" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
-                                                                        <rect key="frame" x="107" y="47" width="21" height="21"/>
+                                                                    <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZe-Qy-nvd" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
+                                                                        <rect key="frame" x="108" y="46.5" width="20" height="22"/>
                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <state key="normal" image="questionmark.circle" catalog="system"/>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -512,9 +513,9 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7S-0k-R3f" userLabel="TotalEarningsWarningLabel">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7S-0k-R3f" userLabel="TotalEarningsWarningLabel">
                                                         <rect key="frame" x="26" y="32" width="378" height="0.0"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -544,17 +545,18 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OzL-EE-HsG" userLabel="PeriodOvertimeEarningsStack View">
                                                                 <rect key="frame" x="0.0" y="42.5" width="374" height="78.5"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X6g-uK-6r1">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6g-uK-6r1">
                                                                         <rect key="frame" x="0.0" y="0.0" width="343.5" height="78.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Overtime" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3l8-26-fiC" userLabel="InPeriodOvertimeTitle">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overtime" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3l8-26-fiC" userLabel="InPeriodOvertimeTitle">
                                                                                 <rect key="frame" x="0.0" y="32.5" width="48" height="13.5"/>
                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                                 <color key="textColor" name="appPrimaryColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbh-GE-xdm" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
-                                                                                <rect key="frame" x="50" y="57.5" width="293.5" height="21"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbh-GE-xdm" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
+                                                                                <rect key="frame" x="50" y="56.5" width="293.5" height="22"/>
+                                                                                <state key="normal" image="questionmark.circle" catalog="system"/>
                                                                             </button>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -569,7 +571,7 @@
                                                                             <constraint firstItem="3l8-26-fiC" firstAttribute="centerY" secondItem="X6g-uK-6r1" secondAttribute="centerY" id="xEM-cJ-dI6"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-AW-UdP" userLabel="InPeriodOvertimeAmount">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-AW-UdP" userLabel="InPeriodOvertimeAmount">
                                                                         <rect key="frame" x="343.5" y="0.0" width="30.5" height="78.5"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                         <color key="textColor" name="appPrimaryColor"/>
@@ -741,8 +743,9 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kss-xC-1KB" userLabel="InfoButton">
-                                                        <rect key="frame" x="128.5" y="4" width="21" height="21"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kss-xC-1KB" userLabel="InfoButton">
+                                                        <rect key="frame" x="128.5" y="3.5" width="20" height="22"/>
+                                                        <state key="normal" image="questionmark.circle" catalog="system"/>
                                                         <connections>
                                                             <action selector="endWorkInfoClicked:" destination="rCf-pn-GQ9" eventType="touchUpInside" id="YPY-l9-zY4"/>
                                                         </connections>
@@ -785,8 +788,9 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xck-2b-Cqf" userLabel="InfoButton">
-                                                        <rect key="frame" x="114" y="4" width="21" height="21"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xck-2b-Cqf" userLabel="InfoButton">
+                                                        <rect key="frame" x="114" y="3.5" width="20" height="22"/>
+                                                        <state key="normal" image="questionmark.circle" catalog="system"/>
                                                         <connections>
                                                             <action selector="breakInfoClicked:" destination="rCf-pn-GQ9" eventType="touchUpInside" id="xul-DI-vpo"/>
                                                         </connections>
@@ -1495,92 +1499,130 @@
                                 <rect key="frame" x="0.0" y="44" width="374" height="663"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQE-5W-1Bn">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="622"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="BYv-NH-48X">
-                                                <rect key="frame" x="15" y="20" width="344" height="393.5"/>
+                                                <rect key="frame" x="15" y="20" width="344" height="496.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Lip-0y-VYX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="344" height="133.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="344" height="113"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call the Wage and Hour Division's toll-free help line:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJk-if-yD1" userLabel="ContactTitleLabel">
-                                                                <rect key="frame" x="0.0" y="0.0" width="344" height="41"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call us (toll-free)" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJk-if-yD1" userLabel="ContactTitleLabel">
+                                                                <rect key="frame" x="0.0" y="0.0" width="344" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text=" • 1-866-4-USWAGE (1-866-487-9243)" translatesAutoresizingMaskIntoConstraints="NO" id="m3k-sp-idq" userLabel="PhoneText View1">
-                                                                <rect key="frame" x="0.0" y="43" width="344" height="33"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help is available M-F, 8 AM - 8PM Eastern" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYd-UW-6E7" userLabel="PhoneHoursLabel">
+                                                                <rect key="frame" x="0.0" y="22.5" width="344" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="1-866-4-USWAGE (1-866-487-9243)" translatesAutoresizingMaskIntoConstraints="NO" id="Wew-0x-fNo" userLabel="PhoneTextView1">
+                                                                <rect key="frame" x="0.0" y="45" width="344" height="33"/>
+                                                                <gestureRecognizers/>
                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="6s8-mQ-dHi" appends="YES" id="Gzn-B3-eaL"/>
+                                                                </connections>
                                                             </textView>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text=" • TTY: 1-877-889-5627" translatesAutoresizingMaskIntoConstraints="NO" id="Wew-0x-fNo" userLabel="PhoneText View2">
-                                                                <rect key="frame" x="0.0" y="78" width="344" height="33"/>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="1-877-889-5627 (TTY)" translatesAutoresizingMaskIntoConstraints="NO" id="AdR-h4-8Q4" userLabel="PhoneTextView2">
+                                                                <rect key="frame" x="0.0" y="80" width="344" height="33"/>
+                                                                <gestureRecognizers/>
                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="TtW-1H-FON" appends="YES" id="dqg-oy-F5Q"/>
+                                                                </connections>
                                                             </textView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday-Friday 8 a.m. to 8 p.m. Eastern Time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYd-UW-6E7" userLabel="PhoneHoursLabel">
-                                                                <rect key="frame" x="0.0" y="113" width="344" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="• Send an email to the Wage and Hour Division" translatesAutoresizingMaskIntoConstraints="NO" id="5VL-uv-6D0" userLabel="EmailText View">
-                                                        <rect key="frame" x="0.0" y="145.5" width="344" height="33"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIY-Mo-aNO" userLabel="ServicesLabel">
+                                                        <rect key="frame" x="0.0" y="125" width="344" height="122"/>
+                                                        <string key="text">All services are free and confidential, whether you are documented or not. Please remember that your employer cannot terminate you or in any other manner discriminate against you for filing a complaint with Wage and Hour Division.</string>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask us a specific question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkb-fl-g3w">
+                                                        <rect key="frame" x="0.0" y="259" width="344" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Wage and Hour Division Contact Online Form" translatesAutoresizingMaskIntoConstraints="NO" id="B9x-sM-RPr" userLabel="ContactText View">
+                                                        <rect key="frame" x="0.0" y="291.5" width="344" height="33"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <gestureRecognizers/>
+                                                        <color key="textColor" systemColor="linkColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
-                                                    </textView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="• Contact the office nearest you" translatesAutoresizingMaskIntoConstraints="NO" id="B9x-sM-RPr" userLabel="ContactText View">
-                                                        <rect key="frame" x="0.0" y="190.5" width="344" height="33"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
-                                                    </textView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="•Wage &amp; Hour website" translatesAutoresizingMaskIntoConstraints="NO" id="T6A-Y7-ym6" userLabel="WHDWebsiteText View">
-                                                        <rect key="frame" x="0.0" y="235.5" width="344" height="33"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="QFC-1e-9RO" appends="YES" id="N74-Jz-aZp"/>
+                                                        </connections>
                                                     </textView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DDk-HO-7v4">
-                                                        <rect key="frame" x="0.0" y="280.5" width="344" height="113"/>
+                                                        <rect key="frame" x="0.0" y="336.5" width="344" height="160"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Submit issues you experience to either:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWa-d1-wSm">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about issues with the app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWa-d1-wSm">
                                                                 <rect key="frame" x="0.0" y="0.0" width="344" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text=" • webmaster@dol.gov" translatesAutoresizingMaskIntoConstraints="NO" id="28q-aj-mZA" userLabel="webAdminTextView">
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Email" translatesAutoresizingMaskIntoConstraints="NO" id="28q-aj-mZA" userLabel="emailTextView">
                                                                 <rect key="frame" x="0.0" y="25.5" width="344" height="33"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <color key="textColor" systemColor="labelColor"/>
+                                                                <gestureRecognizers/>
+                                                                <color key="textColor" systemColor="linkColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="hUi-NI-dRg" appends="YES" id="oMy-if-oo0"/>
+                                                                </connections>
                                                             </textView>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text=" • https://github.com/USDepartmentofLabor/DOL-Timesheet/issues" translatesAutoresizingMaskIntoConstraints="NO" id="90P-iv-diL" userLabel="gitHubTextView">
-                                                                <rect key="frame" x="0.0" y="63.5" width="344" height="49.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vist us online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUK-te-aLx">
+                                                                <rect key="frame" x="0.0" y="63.5" width="344" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Wage and Hour Division" translatesAutoresizingMaskIntoConstraints="NO" id="90P-iv-diL" userLabel="gitHubTextView">
+                                                                <rect key="frame" x="0.0" y="89" width="344" height="33"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <color key="textColor" systemColor="labelColor"/>
+                                                                <gestureRecognizers/>
+                                                                <color key="textColor" systemColor="linkColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="g8e-js-7cB" appends="YES" id="6f1-iu-Hbk"/>
+                                                                </connections>
+                                                            </textView>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Wage and Hour Division Local Offices" translatesAutoresizingMaskIntoConstraints="NO" id="sP9-yW-InQ" userLabel="secondGitHubTextView">
+                                                                <rect key="frame" x="0.0" y="127" width="344" height="33"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <gestureRecognizers/>
+                                                                <color key="textColor" systemColor="linkColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="d2c-d0-HkO" appends="YES" id="EDc-hb-p8t"/>
+                                                                </connections>
                                                             </textView>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
+                                                <gestureRecognizers/>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1588,17 +1630,11 @@
                                             <constraint firstItem="BYv-NH-48X" firstAttribute="top" secondItem="CQE-5W-1Bn" secondAttribute="top" constant="20" id="LgZ-WA-KON"/>
                                             <constraint firstAttribute="trailing" secondItem="BYv-NH-48X" secondAttribute="trailing" constant="15" id="Zhq-1Q-WiM"/>
                                             <constraint firstItem="BYv-NH-48X" firstAttribute="leading" secondItem="CQE-5W-1Bn" secondAttribute="leading" constant="15" id="bTH-nK-rua"/>
+                                            <constraint firstAttribute="height" constant="622" id="bbH-pZ-xiX"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIY-Mo-aNO" userLabel="FooterTitleLabel">
-                                        <rect key="frame" x="15" y="433.5" width="344" height="122"/>
-                                        <string key="text">All services are free and confidential, whether you are documented or not. Please remember that your employer cannot terminate you or in any other manner discriminate against you for filing a complaint with Wage and Hour Division.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwD-g4-XQQ">
-                                        <rect key="frame" x="0.0" y="624" width="374" height="39"/>
+                                        <rect key="frame" x="0.0" y="583" width="374" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="GeZ-dA-bxa"/>
                                         </constraints>
@@ -1613,15 +1649,11 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="CQE-5W-1Bn" firstAttribute="leading" secondItem="TwD-g4-XQQ" secondAttribute="leading" id="FBI-p0-Gpt"/>
-                                    <constraint firstItem="zIY-Mo-aNO" firstAttribute="leading" secondItem="BYv-NH-48X" secondAttribute="leading" id="LVL-Fa-KsY"/>
-                                    <constraint firstItem="zIY-Mo-aNO" firstAttribute="top" secondItem="BYv-NH-48X" secondAttribute="bottom" constant="20" id="Lwd-Wp-mM3"/>
                                     <constraint firstItem="CQE-5W-1Bn" firstAttribute="leading" secondItem="Rg9-xc-zIs" secondAttribute="leading" id="T4Y-JJ-RrG"/>
                                     <constraint firstItem="CQE-5W-1Bn" firstAttribute="top" secondItem="Rg9-xc-zIs" secondAttribute="top" id="ZrH-qg-9gb"/>
-                                    <constraint firstItem="TwD-g4-XQQ" firstAttribute="top" secondItem="zIY-Mo-aNO" secondAttribute="bottom" constant="68.5" id="aFY-ug-HGA"/>
                                     <constraint firstItem="CQE-5W-1Bn" firstAttribute="trailing" secondItem="TwD-g4-XQQ" secondAttribute="trailing" id="gg0-oa-KHh"/>
                                     <constraint firstAttribute="bottom" secondItem="TwD-g4-XQQ" secondAttribute="bottom" id="hDp-nV-1Od"/>
                                     <constraint firstAttribute="trailing" secondItem="CQE-5W-1Bn" secondAttribute="trailing" id="job-pu-Zxv"/>
-                                    <constraint firstItem="zIY-Mo-aNO" firstAttribute="trailing" secondItem="BYv-NH-48X" secondAttribute="trailing" id="lpg-Nz-qS7"/>
                                     <constraint firstAttribute="bottom" secondItem="CQE-5W-1Bn" secondAttribute="bottom" id="tqx-d7-tlH"/>
                                 </constraints>
                             </scrollView>
@@ -1638,20 +1670,47 @@
                     </view>
                     <connections>
                         <outlet property="contactTextView" destination="B9x-sM-RPr" id="XLv-jM-YGy"/>
-                        <outlet property="contactTitleLabel" destination="rJk-if-yD1" id="smO-Au-eX2"/>
                         <outlet property="copyDatabase" destination="TwD-g4-XQQ" id="KbB-0N-PrF"/>
-                        <outlet property="emailTextView" destination="5VL-uv-6D0" id="uYx-IW-O6Z"/>
-                        <outlet property="footerTitleLabel" destination="zIY-Mo-aNO" id="ljc-sa-P4A"/>
                         <outlet property="gitHubTextView" destination="90P-iv-diL" id="03A-Aa-wck"/>
                         <outlet property="phoneHoursLabel" destination="eYd-UW-6E7" id="FxE-eg-66m"/>
-                        <outlet property="phoneTextView1" destination="m3k-sp-idq" id="LXn-P2-5TL"/>
-                        <outlet property="phoneTextView2" destination="Wew-0x-fNo" id="rFy-nD-eO4"/>
-                        <outlet property="submitIssuesTitleLabel" destination="UWa-d1-wSm" id="jii-dQ-Q9G"/>
+                        <outlet property="phoneTextView1" destination="Wew-0x-fNo" id="esZ-5g-Joq"/>
+                        <outlet property="phoneTextView2" destination="AdR-h4-8Q4" id="qCF-P1-l7a"/>
+                        <outlet property="secondGitHubTextView" destination="sP9-yW-InQ" id="Z1o-r8-hLM"/>
+                        <outlet property="servicesLabel" destination="zIY-Mo-aNO" id="tTu-QE-M2Z"/>
                         <outlet property="webadminTextView" destination="28q-aj-mZA" id="YCJ-mK-bQp"/>
-                        <outlet property="whdWebsiteTextView" destination="T6A-Y7-ym6" id="6fU-JA-ReS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lie-fi-TcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6s8-mQ-dHi">
+                    <connections>
+                        <action selector="phone1Pressed:" destination="FeP-NS-JCI" id="YeZ-mv-7Cw"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="TtW-1H-FON">
+                    <connections>
+                        <action selector="phone2Pressed:" destination="FeP-NS-JCI" id="6KQ-Uw-6dE"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="QFC-1e-9RO">
+                    <connections>
+                        <action selector="onlineFormPressed:" destination="FeP-NS-JCI" id="Yd6-Qn-T1q"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="hUi-NI-dRg">
+                    <connections>
+                        <action selector="emailPressed:" destination="FeP-NS-JCI" id="9LT-4M-ce4"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="g8e-js-7cB">
+                    <connections>
+                        <action selector="web1Pressed:" destination="FeP-NS-JCI" id="HWa-dd-9M6"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="d2c-d0-HkO">
+                    <connections>
+                        <action selector="web2Pressed:" destination="FeP-NS-JCI" id="Sov-zN-2HU"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1534.7826086956522" y="1172.8794642857142"/>
         </scene>
@@ -2355,8 +2414,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3iC-tx-nCj"/>
-        <segue reference="KJz-zA-nJd"/>
+        <segue reference="3GV-mi-63D"/>
+        <segue reference="raw-Tx-Vfv"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DOLLogo" width="60" height="60"/>
@@ -2365,6 +2424,7 @@
         <image name="contact us" width="25" height="25"/>
         <image name="displayLogo" width="120" height="120"/>
         <image name="leftArrow" width="20" height="20"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <image name="rightArrow" width="20" height="20"/>
         <namedColor name="appPrimaryColor">
             <color red="0.12549019607843137" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2383,6 +2443,9 @@
         </systemColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

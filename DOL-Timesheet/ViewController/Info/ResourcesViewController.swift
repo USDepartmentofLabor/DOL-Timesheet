@@ -12,24 +12,25 @@ import CoreData
 
 class ResourcesViewController: UIViewController {
 
-    private static let emailLink = "https://webapps.dol.gov/contactwhd/"
-    private static let contactOfficeLink = "https://www.dol.gov/whd/local/"
-    private static let whdWebsiteLink = "http://www.dol.gov/whd"
-    private static let webadminEmail = "webmaster@dol.gov"
+    let emailLink = "https://webapps.dol.gov/contactwhd/"
+    let contactOfficeLink = "https://www.dol.gov/whd/local/"
+    let whdWebsiteLink = "http://www.dol.gov/whd"
+    let webadminEmail = "webmaster@dol.gov"
     
     @IBOutlet weak var copyDatabase: UIButton!
     @IBOutlet weak var contactTitleLabel: UILabel!
     @IBOutlet weak var phoneTextView1: UITextView!
     @IBOutlet weak var phoneTextView2: UITextView!
     @IBOutlet weak var phoneHoursLabel: UILabel!
-    @IBOutlet weak var emailTextView: UITextView!
+//    @IBOutlet weak var emailTextView: UITextView!
     @IBOutlet weak var contactTextView: UITextView!
-    @IBOutlet weak var whdWebsiteTextView: UITextView!
+//    @IBOutlet weak var whdWebsiteTextView: UITextView!
     
     @IBOutlet weak var submitIssuesTitleLabel: UILabel!
     @IBOutlet weak var webadminTextView: UITextView!
     @IBOutlet weak var gitHubTextView: UITextView!
-    @IBOutlet weak var footerTitleLabel: UILabel!
+    @IBOutlet weak var secondGitHubTextView: UITextView!
+    @IBOutlet weak var servicesLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,55 +41,102 @@ class ResourcesViewController: UIViewController {
 
     func setupView() {
         title = NSLocalizedString("contact_us", comment: "Contact Us")
-        contactTitleLabel.scaleFont(forDataType: .resourcesTitleText)
+//        contactTitleLabel.scaleFont(forDataType: .resourcesTitleText)
         phoneTextView1.scaleFont(forDataType: .resourcesText)
         phoneTextView2.scaleFont(forDataType: .resourcesText)
-        phoneHoursLabel.scaleFont(forDataType: .resourcesText)
-        emailTextView.scaleFont(forDataType: .resourcesTitleText)
+        phoneHoursLabel.scaleFont(forDataType: .contactUsLabel)
+//        emailTextView.scaleFont(forDataType: .resourcesTitleText)
         contactTextView.scaleFont(forDataType: .resourcesTitleText)
-        whdWebsiteTextView.scaleFont(forDataType: .resourcesTitleText)
+//        whdWebsiteTextView.scaleFont(forDataType: .resourcesTitleText)
         
-        submitIssuesTitleLabel.scaleFont(forDataType: .resourcesTitleText)
+//        submitIssuesTitleLabel.scaleFont(forDataType: .resourcesTitleText)
         webadminTextView.scaleFont(forDataType: .resourcesText)
         gitHubTextView.scaleFont(forDataType: .resourcesText)
-        footerTitleLabel.scaleFont(forDataType: .resourcesFooterText)
+        secondGitHubTextView.scaleFont(forDataType: .resourcesText)
+        servicesLabel.scaleFont(forDataType: .contactUsLabel)
         
         phoneTextView1.textContainerInset = UIEdgeInsets.zero
         phoneTextView1.textContainer.lineFragmentPadding = 0
         phoneTextView2.textContainerInset = UIEdgeInsets.zero
         phoneTextView2.textContainer.lineFragmentPadding = 0
-        emailTextView.textContainerInset = UIEdgeInsets.zero
-        emailTextView.textContainer.lineFragmentPadding = 0
+//        emailTextView.textContainerInset = UIEdgeInsets.zero
+//        emailTextView.textContainer.lineFragmentPadding = 0
         contactTextView.textContainerInset = UIEdgeInsets.zero
         contactTextView.textContainer.lineFragmentPadding = 0
         webadminTextView.textContainerInset = UIEdgeInsets.zero
         webadminTextView.textContainer.lineFragmentPadding = 0
         gitHubTextView.textContainerInset = UIEdgeInsets.zero
         gitHubTextView.textContainer.lineFragmentPadding = 0
-        whdWebsiteTextView.textContainerInset = UIEdgeInsets.zero
-        whdWebsiteTextView.textContainer.lineFragmentPadding = 0
+        secondGitHubTextView.textContainerInset = UIEdgeInsets.zero
+        secondGitHubTextView.textContainer.lineFragmentPadding = 0
+//        whdWebsiteTextView.textContainerInset = UIEdgeInsets.zero
+//        whdWebsiteTextView.textContainer.lineFragmentPadding = 0
         
-        phoneTextView1.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 1, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
-        phoneTextView2.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 1, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
+        phoneTextView1.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
+        phoneTextView2.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
         
-        webadminTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 1, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
-        gitHubTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 1, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
+        webadminTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
+        gitHubTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
+        secondGitHubTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
+        
+        copyDatabase.isHidden = true
     }
     
     func displayInfo() {
-        let emailText = NSAttributedString(string: "Send an email to the Wage and Hour Division", attributes: [NSAttributedString.Key.link: ResourcesViewController.emailLink, NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
-            NSAttributedString.Key.underlineStyle: 1])
-        emailTextView.attributedText = emailText
+//        let emailText = NSAttributedString(string: "Send an email to the Wage and Hour Division", attributes: [NSAttributedString.Key.link: ResourcesViewController.emailLink, NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
+//            NSAttributedString.Key.underlineStyle: 1])
+//        emailTextView.attributedText = emailText
         
-        let contactText = NSAttributedString(string: "Contact the office nearest you", attributes: [NSAttributedString.Key.link: ResourcesViewController.contactOfficeLink,
-            NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
-            NSAttributedString.Key.underlineStyle: 1])
-        contactTextView.attributedText = contactText
+        //let contactText = NSAttributedString(string: "Contact the office nearest you", attributes: [NSAttributedString.Key.link: ResourcesViewController.contactOfficeLink,
+            //NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
+            //NSAttributedString.Key.underlineStyle: 0])
+        //contactTextView.attributedText = contactText
 
-        let websiteText = NSAttributedString(string: "Wage and Hour Division website", attributes: [NSAttributedString.Key.link: ResourcesViewController.whdWebsiteLink,
-            NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
-            NSAttributedString.Key.underlineStyle: 1])
-        whdWebsiteTextView.attributedText = websiteText        
+//        let websiteText = NSAttributedString(string: "Wage and Hour Division website", attributes: [NSAttributedString.Key.link: ResourcesViewController.whdWebsiteLink,
+//            NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
+//            NSAttributedString.Key.underlineStyle: 1])
+//        whdWebsiteTextView.attributedText = websiteText        
+    }
+    
+    @IBAction func phone1Pressed(_ sender: Any) {
+        let number = "1-886-487-9243"
+        guard let phoneNumber = URL(string: "tel://" + number) else { return }
+        UIApplication.shared.open(phoneNumber)
+    }
+    
+    @IBAction func phone2Pressed(_ sender: Any) {
+        let number = "1-877-889-5627"
+        guard let phoneNumber = URL(string: "tel://" + number) else { return }
+        UIApplication.shared.open(phoneNumber)
+    }
+  
+    @IBAction func onlineFormPressed(_ sender: Any) {
+        //emailLink
+        guard let url = URL(string: emailLink) else { return }
+        UIApplication.shared.open(url)
+    }
+    
+    @IBAction func emailPressed(_ sender: Any) {
+        //WHDappFeedback@dol.gov
+        if let url = URL(string: "mailto:\("WHDappFeedback@dol.gov")") {
+          if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url)
+          } else {
+            UIApplication.shared.openURL(url)
+          }
+        }
+    }
+    
+    @IBAction func web1Pressed(_ sender: Any) {
+        //websiteText
+        guard let url = URL(string: whdWebsiteLink) else { return }
+        UIApplication.shared.open(url)
+    }
+    
+    @IBAction func web2Pressed(_ sender: Any) {
+        //contactText
+        guard let url = URL(string: contactOfficeLink) else { return }
+        UIApplication.shared.open(url)
     }
     
     @IBAction func copyDatabase(_ sender: Any) {
