@@ -34,7 +34,8 @@ class SummaryTableViewHeaderView: UITableViewHeaderFooterView {
     }
     
     func displayInfo() {
-        let title = "- Work Week \(section+1): \(viewModel.title)"
+        let workWeekStr = NSLocalizedString("dash_work_week", comment: "- Work Week")
+        let title = "\(workWeekStr) \(section+1): \(viewModel.title)" // GGG String
         titleLabel.text = title
     }    
 }

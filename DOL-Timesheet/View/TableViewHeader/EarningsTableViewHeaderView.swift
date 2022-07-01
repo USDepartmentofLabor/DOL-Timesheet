@@ -50,7 +50,8 @@ class EarningsTableViewHeaderView: UITableViewHeaderFooterView {
     }
     
     func displayInfo() {
-        let title = "Work Week\(section+1): \(viewModel.title)"
+        let workWeekStr = NSLocalizedString("work_week", comment: "Work Week")
+        let title = "\(workWeekStr)\(section+1): \(viewModel.title)"
         titleLabel.text = title
         
         let paymentFrequency = viewModel.employmentInfo.payFrequency
