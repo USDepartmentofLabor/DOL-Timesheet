@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   DOL-Timesheet
 
@@ -266,4 +266,4 @@
 "regular_rate_include4" = "Longevity bonuses";
 "regular_rate_include5" = "Value of employer-provided housing";
 "dash_work_week" = "- Work Week";
-"work_week" = "Work Week"
+"work_week" = "Work Week";
