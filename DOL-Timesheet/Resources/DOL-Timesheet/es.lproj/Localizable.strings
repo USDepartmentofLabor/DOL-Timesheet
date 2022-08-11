@@ -1,0 +1,270 @@
+/* 
+  Localizable.strings
+  DOL-Timesheet
+
+  Created by Nidhi Chawla on 4/29/19.
+  Copyright © 2019 Department of Labor. All rights reserved.
+*/
+
+
+//
+"timesheet" = "Hoja de Asistencia";
+"timecard" = "Tarjeta de Tiempo";
+"whd_logo" = "WHD Logo";
+"employee" = "Empleado";
+"employees" = "Empleados";
+"add_employee" = "Añadir Empleado";
+"employee_information" = "Información del Empleado";
+"who_works_for_you" = "¿Quién trabaja para usted?";
+"manage_employees" = "Administrar Empleados";
+"edit_employee" = "Editar Empleado";
+"add_employee" = "Añadir Empleado";
+"full_name" = "Nombre Completo";
+"payment_frequency_employee" = "¿Con qué frecuencia le pagan?";
+"work_week_employee" = "¿Qué día comienza su semana laboral?";
+"payment_type_employee" = "¿Cómo se determina su pago?";
+"hourly_rate_employee" = "¿Cuál es su tarifa de pago por hora?";
+"salary_employee" = "¿Cuál es su salario?";
+"overtime_eligible_employee" = "¿Es usted elegible para el pago de sobretiempo (no exento)?";
+"confirm_delete_employers" = "Cambiar de empleado a empleador eliminará todos los empleadores existentes. ¿Está seguro de que desea eliminar todos los empleadores?";
+"home_address" = "Dirección de Hogar";
+"work_address" = "Dirección de Trabajo";
+"street1" = "Dirección Línea 1";
+"street2" = "Dirección Línea 2";
+
+"employer" = "Empleador";
+"employers" = "Empleadores";
+"add_employer" = "Añadir Empleador";
+"employer_information" = "Información del Empleador";
+"who_do_you_work_for" = "¿Para quién trabaja?";
+"manage_employers" = "Administrar Empleadores";
+"edit_employer" = "Editar Empleador";
+"add_employer" = "Añadir Empleador";
+"company_name" = "Nombre de la Compañía";
+"payment_frequency_employer" = "¿Con qué frecuencia le paga a su empleado?";
+"work_week_employer" = "¿Qué día comienza la semana laboral de su empleado?";
+"payment_type_employer" = "¿Cómo se determina el pago de su empleado?";
+"hourly_rate_employer" = "¿Cuál es la tarifa de pago por hora del empleado?";
+"salary_employer" = "¿Cuál es el salario de su empleado?";
+"overtime_eligible_employer" = "¿Es su empleado elegible para el pago de sobretiempo (no exento)?";
+"confirm_delete_employees" = "Cambiar de empleador a empleado eliminará todos los empleados existentes. ¿Está seguro de que desea eliminar todos los empleados?";
+"rate_amount" = "Cantidad de Tarifa";
+"minimum_wage_amount" = "Cantidad de Salario Mínimo";
+"resources" = "Recursos";
+"contact_us" = "Contáctenos";
+"no_employees" = "Sin Empleados";
+"no_employers" = "Sin Empleadores";
+
+// Salary Type
+"salary_annually" = "Cada Año";
+"salary_monthly" = "Cada Mes";
+"salary_weekly" = "Cada Semana";
+
+// Payment Types
+"payment_type" = "Tipo de Pago";
+"payment_type_hourly" = "Por Hora";
+"payment_type_salary" = "Salario";
+"payment_type_tips" = "Propinas";
+"payment_type_paid_per_unit" = "Pago Por Unidad";
+"hourly_payment_title" = "Pago por Hora";
+
+// Payment Types Description
+"payment_type_hourly_desc" = "La Ley de Normas Justas de Trabajo (FLSA, por sus siglas en inglés) requiere que los empleados cubiertos, no exentos, en los Estados Unidos se les pague al menos el salario mínimo federal por cada hora trabajada, y reciban pago de sobretiempo a tiempo y medio la tarifa regular de pago del empleado por todas las horas trabajadas por encima de 40 horas en una semana laboral.";
+"payment_type_salary_desc" = "Un salario es una cantida predeterminada de pago y generalmente se expresa como una cantidad pago cada semana, cada dos semanas, cada quince días, cada mes o cada año.";
+
+// Work Week
+"work_week_sunday" = "Domingo";
+"work_week_monday" = "Lunes";
+"work_week_tuesday" = "Martes";
+"work_week_wednesday" = "Miércoles";
+"work_week_thursday" = "Jueves";
+"work_week_friday" = "Viernes";
+"work_week_saturday" = "Sábado";
+"work_week_dont_know" = "No sé";
+
+
+// Payment Frequncy
+"payment_frequency_daily" = "Cada Día";
+"payment_frequency_weekly" = "Cada Semana";
+"payment_frequency_biweekly" = "Cada Dos Semanas";
+"payment_frequency_monthly" = "Cada Mes";
+"payment_frequency_semimonthly" = "Cada Quince Días";
+
+// TimeSheet
+"add_new_employer" = "Añadir Nuevo Empleador";
+"add_new_employee" = "Añadir Nuevo Empleado";
+"profile_hint" = "Presione Para Actualizar Perfil";
+"employee_user_hint" = "Presione Para Seleccionar Empleado";
+"employer_user_hint" = "Presione Para Seleccionar Empleador";
+"state_hint" = "Presione para seleccionar estado";
+"salary_type_hint" = "Presione Para Seleccionar Tipo de Salario";
+"work_week_hint" = "Presione Para Seleccionar Día de Comienzo de la Semana de Trabajo";
+"payment_frequency_hint" = "Presione Para Seleccionar la Frecuencia de Pago";
+"total_Earnings_expand_hint" = "Presione para ver Detalles";
+"total_Earnings_collapse_hint" = "Presione para ocultar Detalles";
+"overtime_next_pay_period" = "El sobretiempo se pagará en el próximo período de pago.";
+"overtime_on_date" = "El sobretiempo se pagará el %@.";
+"period_total" = "Total del Período";
+"period_total_hours_worked" = "Total tiempo trabajado en el período actual";
+"period_total_hours_break" = "Total tiempo de descanso en el período actual";
+"display_details" = "Presione para mostrar los detalles";
+"start_date_hint" = "Presione para seleccionar la fecha de comienzo";
+"payment_type_hint" = "Presione para seleccionar el tipo de pago";
+"skip_employee_hint" = "Omitir Añair Empleado";
+"skip_employer_hint" = "Omitir Añadir Empleador";
+"profile_image_new_hint" = "Presione para seleccionar foto de perfil";
+"profile_image_hint" = "Presione para actualizar foto de perfil";
+"required" = "Requerido";
+"select_state" = "Seleccionar Estado";
+"select_payment_type" = "Seleccionar Tipo de Pago";
+"select_start_date" = "Seleccionar Fecha de Comienzo";
+"total_worked" = "Total Trabajado";
+"total_break" = "Total de Descanso";
+"select_employee" = "Empleado %@ seleccionado";
+"select_employer" = "Empleador %@ seleccionado";
+"delete_time_log" = "Eliminar Registro de Tiempo";
+"delete_confirm_time_log_with_startdate" = "¿Está seguro que quiere eliminar el registro de tiempo con la Hora de Entrada %@?";
+"delete_confirm_time_log" = "¿Está seguro de que quiere eliminar el registro de tiempo?";
+"delete_hourly_rate" = "Eliminar Tarifa por Hora";
+"delete_confirm_hourly_rate_log" = "¿Está seguro que quiere eliminar %@?";
+"delete_rate_hint" = "Presione para eliminar %@";
+
+"prev_period" = "Período Anterior";
+"next_period" = "Período Siguiente";
+"straight_earnings" = "Ganancias de Tiempo Regular";
+"straight_time_calculation" = "Horas Trabajadas x Tarifa por Hora";
+"overtime" = "Pago de Sobretiempo";
+"details" = "Detalles";
+"click_enter_time" = "Presione para Ingresar Tiempo";
+"yes" = "Sí";
+"no" = "No";
+"close" = "Cerrar";
+"save_time_entry" = "Guardar el registro de tiempo para %@";
+
+// Enter Time
+"start_time_hint" = "Presione Para Seleccionar la Hora de Entrada";
+"end_time_hint" = "Presione Para Seleccionar la Hora de Salida";
+"break_time_hint" = "Presione para Seleccionar el Tiempo de Descanso";
+"hourly_rate_hint" = "Presione para Seleccionar Tarifa por Hora";
+"enter_comments" = "Ingresar Comentarios";
+"enter_daily_comments" = "Ingresar Comentarios Diarios.";
+"break_time_warning" = "Rest periods of short duration, usually 20 minutes or less, are common in industry and are customarily paid for as working time. These short periods will be counted as hours worked.";
+
+"edit" = "Editar";
+"done" = "Listo";
+"delete" = "Eliminar";
+
+"delete_employer" = "Eliminar Empleador";
+"delete_employee" = "Eliminar Empleado";
+"delete_confirm_employer_info" = "Eliminar el empleador eliminará todos los tiempos registrados para el empleador. ¿Está seguro de que desea eliminar el empleador?";
+"delete_confirm_employee_info" = "Eliminar el empleado eliminará todos los tiempos registrados para el empleado. ¿Está seguro de que desea eliminar el empleado?";
+"hourly_rate_deleted" = "Tarifa por Hora Eliminada";
+
+// Clock
+"start_work" = "Comenzar a trabajar";
+"end_work" = "Terminar de trabajar";
+"start_break" = "Comenzar el descanso";
+"end_break" = "Terminar el descanso";
+"discard_entry" = "Descartar Entrada";
+"manual_time_entry" = "Entrada de Tiempo Manual ";
+"discard_entry_confirm" = "¿Está seguro de que quiere descartar la entrada?";
+"discard" = "Descartar";
+
+// Error Strings
+"err_title" = "Error";
+"confirm_title" = "Confirmar";
+"cancel" = "Cancelar";
+"settings" = "Configuración";
+"err_enter_name" = "Por favor, ingrese su nombre.";
+"err_more_than_24_hours" = " El total de horas por día no puede ser más de 24 horas.";
+"err_startTime_before_endtime" = "La hora de salida debe ser después de la hora de entrada.";
+"err_time_too_early" = "La hora que ha ingresado es demasiado temprano. La hora debe ser después de cualquier entrada de tiempo anterior.";
+"err_time_too_late" = "La hora que ha ingresado es demasiado tarde. La hora debe ser antes de cualquier entrada de tiempo a continuación.";
+"err_time_between_start_endtime" = "%@ se encuentra entre el tiempo %@ y %@.";
+"err_break_more_than_hours_worked" = "Break time can not be more that hours worked.";
+"err_select_hourly_rate" = "Please select hourly rate.";
+"err_invalid_zipcode" = "Please provide valid zip code with format 99999 or 99999-9999.";
+"err_invalid_phonenumber" = "Please provide valid phone number.";
+"err_invalid_employee_emailaddress" = "Please provide valid employee email address.";
+"err_invalid_employer_emailaddress" = "Please provide your valid email address.";
+"err_enter_valid_minimum_wage" = "Please enter minimum wage.";
+"err_enter_valid_salary" = "Please enter salary amount.";
+"err_add_employer" = "Please add employer to enter time.";
+"err_add_employee" = "Please add employee to enter time.";
+"err_add_hourly_rate" = "Please add hourly rate.";
+"err_add_hourly_rate_name" = "Please specify name for hourly rate.";
+"err_add_hourly_rate_value" = "Please specify hourly rate amount.";
+"err_camera_denied_title" = "Timesheet does not have access to your camera.";
+"err_camera_denied" = "To enable access, click on Settings to allow access to camera.";
+"err_title_minimum_wage" = "Your pay appears to be below the Federal minimum wage";
+"err_title_minimum_weekly_wage" = "Your salary appears to be below the Federal requirement";
+"err_invalid_supervisor_emailaddress" = "Please provide valid supervisor email address.";
+"warning" = "Warning";
+"warning_split_time" = "Hours after midnight will populate your timesheet on the next day. Do you want to continue?";
+//Are you sure you want to enter in hours for the next day?";
+
+
+"info_employee_employer" = "Select whether you want to use this app as an employer, or as an employee. Keep in mind that not all people who work are necessarily employees under the FLSA. There is no single rule or test for determining whether an individual is an employee for purposes of the FLSA or an independent contractor. Determination of employee status does not depend on isolated factors, but on the economic realities of the situation and the circumstances of the total activity.";
+"info_employee" = "Enter the information requested in the fields below to identify your employee. This information is not shared with anyone.";
+"info_employer" = "Enter the information requested in the fields below to identify your employer. This information is not shared with anyone. Because many employees work for more than one employer at the same time, this helps users identify the employer for which they are recording their work time.";
+"info_employee_payment_type" = "Your employer may pay you in a variety of ways: a certain amount of money per hour, a pre-determined salary, or by some other method. Please select the method that your employer uses to pay you.";
+"info_employer_payment_type" = "As an employer you may pay your employees in a variety of ways: a certain amount of money per hour, or by some other method. Please select the method that you use to pay your employees.";
+"info_employee_hourly_pay_rate" = "If you are paid by the hour, enter the amount per hour here. Keep in mind that your hourly rate must be at least the federal minimum wage of $7.25 per hour. If you are paid less than that amount, please <a href=\"http://www.dol.gov/whd/contact_us.htm\">contact the Wage and Hour Division.</a>";
+"info_employer_hourly_pay_rate" = "If your employee is paid by the hour, enter the amount per hour here. Keep in mind that their hourly rate must be at least the federal minimum wage of $7.25 per hour. If employees are paid less than that amount, please contact the Wage and Hour Division.";
+"info_overtime_eligible" = "More than 143 million American workers in more than 9.8 million workplaces are protected (or \"covered\") by the Fair Labor Standards Act (FLSA).  Unless a specific exemption applies, covered employees are due the federal minimum wage, currently $7.25 per hour, for every hour that they work, and overtime at time and one-half their regular rates of pay for any hours they work beyond 40 in a workweek. The law includes specific exemptions from these requirements under a variety of circumstances. For example, salaried “white-collar” employees may be exempt from the FLSA’s minimum wage and overtime pay requirements. If an employee meets all of the criteria for an exemption from minimum wage and/or overtime pay requirements, then those requirements do not apply to that employee. “Exempt” employees are not legally required to be paid minimum wage and/or overtime, depending upon the specific exemption that applies. “Non-exempt” employees are entitled by law to minimum wage and overtime pay.  For additional information visit https://www.dol.gov/whd.";
+"info_minimum_wage" = "The federal minimum wage is $7.25 per hour. Many states also have their own minimum wage laws. These state laws may provide greater employee protections than federal law; employers must comply with both. Where state law requires a higher minimum wage, that higher standard applies. For more information, or to find the minimum wage required by your state, click the “Minimum Wage Table” button.";
+"info_employee_workweek" = "An employee's workweek is a fixed and regularly recurring period of seven consecutive 24-hour periods. It does not have to coincide with the calendar week, nor does it necessarily align with when employees actually receive their pay. The employer determines when the workweek begins and ends for the purpose of keeping track of employees’ work time each week. For example, the workweek may begin Monday at 12:00am and end Sunday night at 11:59pm.  Workers may be paid for time they worked during a workweek several days after the workweek ends. Enter the day that your workweek begins.\nIf you do not know what day your workweek begins, the app will default the workweek start day to Sunday.";
+"info_employer_workweek" = "An employee's workweek is a fixed and regularly recurring period of seven consecutive 24-hour periods. It does not have to coincide with the calendar week, nor does it necessarily align with when employees actually receive their pay. The employer determines when the workweek begins and ends for the purpose of keeping track of employees’ work time each week. For example, the workweek may begin Monday at 12:00am and end Sunday night at 11:59pm.  Workers may be paid for time they worked during a workweek several days after the workweek ends. Enter the day that your employee’s workweek begins.\nIf you do not know what day employee's workweek begins, the app will default the workweek start day to Sunday";
+"info_employee_payment_frequency" = "The employer determines how frequently you are paid. Select the option that shows how often you are paid.\n\nBi-weekly means being paid once every two weeks on the same day (for example, being paid every other Friday).\n\nSemi-monthly means being paid twice a month (for example, being paid on the 5th and 20th of each month).";
+"info_employer_payment_frequency" = "As the employer you determine how frequently your employees are paid. Select the option that shows how often your employees are paid.";
+"info_employee_salary" = "Enter the amount of the salary your employer pays you, and how frequently.";
+"info_employer_salary" = "Enter the amount of the salary you pay your employee, and how frequently.";
+"info_overtime" = "Overtime generally is due for any hours an employee works beyond 40 in a workweek, and must be paid at one-and-one-half times the employee’s regular rate of pay.";
+"info_overtime_pay" = "Overtime generally is due for any hours an employee works beyond 40 in a workweek, and must be paid at one-and-one-half times the employee’s regular rate of pay.";
+"info_break_time" = "Rest periods of short duration, usually 20 minutes or less, are common in industry and are customarily paid for as working time. These short periods must be counted as hours worked. Bona fide meal periods (typically 30 minutes or more) generally need not be compensated as work time. The employee must be completely relieved from duty for the purpose of eating regular meals in order for that time not to count as work time. For purposes of this DOL-Timesheet, all break time in excess of 20 minutes will be deducted from your total hours of work. For questions regarding proper deductions for break time, contact the Wage and Hour Division.";
+"info_end_time" = "If you work an overnight shift, hours after midnight will populate your timesheet on the next day";
+"info_import_employee" = "We have detected an existing WHD Timesheet database. In this case we need you to specify an Employee to associate with these database records. Later you will have the oppurtunity to update your profile and add an Employer or multiple Employees";
+"info_regular_rate" = "Regular Rate";
+
+"info_pay_title" = "Pay";
+"info_overtime_title" = "Overtime";
+"info_minimum_wage_title" = "Minimum Wage";
+"info_non_exempt_title" = "Non-Exempt";
+"info_work_week_title" = "Workweek";
+"info_break_time_title" = "Break Time";
+
+"info_employee" = "Federal labor laws, like those requiring minimum wage and overtime, apply only to employees. Not all people who work are necessarily employees under the FLSA. There is no single rule or test for determining whether an individual is an employee for purposes of the FLSA or an independent contractor. Determination of employee status does not depend on isolated factors, but on the economic realities of the situation and the circumstances of the total activity.";
+
+"info_glossary_overtime" = "The federal overtime provisions are contained in the Fair Labor Standards Act (FLSA). Unless exempt, employees covered by this law must receive overtime pay for hours they work over 40 in a workweek at a rate not less than time and one-half their regular rates of pay. There is no limit on the number of hours employees aged 16 and older may work in any workweek. The law does not require overtime pay for work on Saturdays, Sundays, holidays, or regular days of rest, unless overtime is worked on such days.\n\nThe FLSA applies on a workweek basis. An employee's workweek is a fixed and regularly recurring period of 168 hours — seven consecutive 24-hour periods. It need not coincide with the calendar week, but may begin on any day and at any hour of the day. Different workweeks may be established for different employees or groups of employees. Averaging of hours over two or more weeks is not permitted. Normally, overtime pay earned in a particular workweek must be paid on the regular pay day for the pay period in which the wages were earned.";
+"info_glossary_minimum_wage" = "The federal minimum wage is $7.25 per hour. Many states also have their own minimum wage laws. These state laws may provide greater employee protections than federal law; employers must comply with both. Where state law requires a higher minimum wage, that higher standard applies. For more information, or to find the minimum wage required by your state, visit the Wage and Hour Division’s <a href=\"https://www.dol.gov/whd/minwage/america.htm\">Minimum Wage Laws in the State page.</a>";
+"info_glossary_work_week" = "An employee's workweek is a fixed and regularly recurring period of seven consecutive 24-hour periods. It does not have to coincide with the calendar week, nor does it necessarily align with when employees actually receive their pay. The employer determines when the workweek begins and ends for the purpose of keeping track of employees’ work time each week. For example, the workweek may begin Monday at 12:00am and end Sunday night at 11:59pm.  Workers may be paid for time they worked during a workweek several days after the workweek ends.";
+
+"introduction_text1" = "The information input via this app is never shared with the U.S. Department of Labor.";
+
+"introduction_text2" = "The Department of Labor is providing this app as a public service. This service is continually under development. We will make every effort to correct errors brought to our attention. Users should be aware that, while we try to keep the information timely and accurate, there will often be a delay between official publication of materials and their appearance in or modification of this app. Further, the conclusions reached by this app rely on the accuracy of the data provided by the user. Therefore, we make no express or implied guarantees. The Federal Register and the Code of Federal Regulations are the official sources for regulatory information published by the Department of Labor.";
+
+"import started" = "Import Started";
+"import finished" = "Import Finished";
+"email not setup" = "Email Not setup. Please setup email to send timesheet import logs.";
+"click yes to share" = "Tap to share your data";
+"click no to not share" = "Tap to not share your data";
+"old_employee_exists" = "old_employee_exists";
+"fsla_info" = "Please see the elaws FLSA Overtime Security Advisor for more information.";
+"fsla_linked_text" = "elaws FLSA Overtime Security Advisor";
+
+"regular_rate_exclude1" = "Expense reimbursement";
+"regular_rate_exclude2" = "Premium payments for overtime work";
+"regular_rate_exclude3" = "Premiums paid for work on Saturdays, Sundays, and holidays";
+"regular_rate_exclude4" = "Discretionary bonuses and gifts (holiday bonuses, etc.)";
+"regular_rate_exclude5" = "Vacation, holiday, or sick pay";
+"regular_rate_exclude6" = "Profit sharing, thrift, and savings plans";
+"regular_rate_exclude7" = "Talent fees";
+"regular_rate_exclude8" = "Contributions made to benefit plans (retirement, life insurance, health insurance, etc.)";
+
+"regular_rate_include1" = "Shift differentials";
+"regular_rate_include2" = "Production bonuses";
+"regular_rate_include3" = "Attendance bonuses";
+"regular_rate_include4" = "Longevity bonuses";
+"regular_rate_include5" = "Value of employer-provided housing";
+"dash_work_week" = "- Work Week";
+"work_week" = "Work Week"

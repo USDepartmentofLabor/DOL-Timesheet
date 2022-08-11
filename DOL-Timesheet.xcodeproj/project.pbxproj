@@ -254,6 +254,7 @@
 		59AD9E6222A1ADB500075193 /* SummaryTableViewHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SummaryTableViewHeaderView.xib; path = "DOL-Timesheet/View/TableViewCell/SummaryTableViewHeaderView.xib"; sourceTree = SOURCE_ROOT; };
 		59B1BEA12294588D00F0D37A /* TitleValueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueLabel.swift; sourceTree = "<group>"; };
 		59EB62F1229EE3EE00470AA4 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		69602727289840EB0033D6E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "DOL-Timesheet/es.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = DOL_Timesheet.sqlite; sourceTree = "<group>"; };
 		696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-shm"; sourceTree = "<group>"; };
 		696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-wal"; sourceTree = "<group>"; };
@@ -685,6 +686,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 0324C3D02260E47100712576;
 			productRefGroup = 0324C3DA2260E47100712576 /* Products */;
@@ -890,6 +892,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				036D71942277445300CC62CE /* en */,
+				69602727289840EB0033D6E3 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -909,6 +912,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -970,6 +974,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
