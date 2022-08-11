@@ -248,7 +248,6 @@
 "email not setup" = "Email Not setup. Please setup email to send timesheet import logs.";
 "click yes to share" = "Tap to share your data";
 "click no to not share" = "Tap to not share your data";
-"old_employee_exists" = "old_employee_exists";
 "fsla_info" = "Please see the elaws FLSA Overtime Security Advisor for more information.";
 "fsla_linked_text" = "elaws FLSA Overtime Security Advisor";
 

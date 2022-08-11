@@ -181,57 +181,57 @@
 "err_time_too_early" = "La hora que ha ingresado es demasiado temprano. La hora debe ser después de cualquier entrada de tiempo anterior.";
 "err_time_too_late" = "La hora que ha ingresado es demasiado tarde. La hora debe ser antes de cualquier entrada de tiempo a continuación.";
 "err_time_between_start_endtime" = "%@ se encuentra entre el tiempo %@ y %@.";
-"err_break_more_than_hours_worked" = "Break time can not be more that hours worked.";
-"err_select_hourly_rate" = "Please select hourly rate.";
-"err_invalid_zipcode" = "Please provide valid zip code with format 99999 or 99999-9999.";
-"err_invalid_phonenumber" = "Please provide valid phone number.";
-"err_invalid_employee_emailaddress" = "Please provide valid employee email address.";
-"err_invalid_employer_emailaddress" = "Please provide your valid email address.";
-"err_enter_valid_minimum_wage" = "Please enter minimum wage.";
-"err_enter_valid_salary" = "Please enter salary amount.";
-"err_add_employer" = "Please add employer to enter time.";
-"err_add_employee" = "Please add employee to enter time.";
-"err_add_hourly_rate" = "Please add hourly rate.";
-"err_add_hourly_rate_name" = "Please specify name for hourly rate.";
-"err_add_hourly_rate_value" = "Please specify hourly rate amount.";
-"err_camera_denied_title" = "Timesheet does not have access to your camera.";
-"err_camera_denied" = "To enable access, click on Settings to allow access to camera.";
-"err_title_minimum_wage" = "Your pay appears to be below the Federal minimum wage";
-"err_title_minimum_weekly_wage" = "Your salary appears to be below the Federal requirement";
-"err_invalid_supervisor_emailaddress" = "Please provide valid supervisor email address.";
-"warning" = "Warning";
-"warning_split_time" = "Hours after midnight will populate your timesheet on the next day. Do you want to continue?";
+"err_break_more_than_hours_worked" = "El tiempo de descanso no puede ser mayor que las horas trabajadas.";
+"err_select_hourly_rate" = "Por favor, seleccione la tarifa por hora.";
+"err_invalid_zipcode" = "Por favor, ingrese un código postal válido con el formato 99999 o 99999-9999.";
+"err_invalid_phonenumber" = "Por favor, ingrese un número de teléfono válido.";
+"err_invalid_employee_emailaddress" = "Por favor, ingrese dirección de correo electrónico de empleado válida.";
+"err_invalid_employer_emailaddress" = "Por favor, ingrese su dirección de correo electrónico válida.";
+"err_enter_valid_minimum_wage" = "Por favor, ingrese salario mínimo.";
+"err_enter_valid_salary" = "Por favor, ingrese cantidad de salario.";
+"err_add_employer" = "Por favor, añada un empleador para ingresar tiempo.";
+"err_add_employee" = "Por favor, añada un empleado para ingresar tiempo.";
+"err_add_hourly_rate" = "Por favor, añada la tarifa por hora.";
+"err_add_hourly_rate_name" = "Por favor, especifique el nombre para la tarifa por hora.";
+"err_add_hourly_rate_value" = "Por favor, especifique la cantidad de la tarifa por hora.";
+"err_camera_denied_title" = "La hoja de asitencia no tiene acceso a su cámara. ";
+"err_camera_denied" = "Para permitir acceso";
+"err_title_minimum_wage" = "Su pago parece estar por debajo del salario mínimo federal";
+"err_title_minimum_weekly_wage" = "Su salario parece estar por debajo del requisito federal";
+"err_invalid_supervisor_emailaddress" = "Por favor, ingrese dirección de correo electrónico de supervisor válida.";
+"warning" = "Advertencia";
+"warning_split_time" = "Las horas después de la medianoche se ingresarán en su hoja de asistencia del día siguiente. ¿Desea continuar?";
 //Are you sure you want to enter in hours for the next day?";
 
 
 "info_employee_employer" = "Select whether you want to use this app as an employer, or as an employee. Keep in mind that not all people who work are necessarily employees under the FLSA. There is no single rule or test for determining whether an individual is an employee for purposes of the FLSA or an independent contractor. Determination of employee status does not depend on isolated factors, but on the economic realities of the situation and the circumstances of the total activity.";
-"info_employee" = "Enter the information requested in the fields below to identify your employee. This information is not shared with anyone.";
-"info_employer" = "Enter the information requested in the fields below to identify your employer. This information is not shared with anyone. Because many employees work for more than one employer at the same time, this helps users identify the employer for which they are recording their work time.";
-"info_employee_payment_type" = "Your employer may pay you in a variety of ways: a certain amount of money per hour, a pre-determined salary, or by some other method. Please select the method that your employer uses to pay you.";
-"info_employer_payment_type" = "As an employer you may pay your employees in a variety of ways: a certain amount of money per hour, or by some other method. Please select the method that you use to pay your employees.";
+"info_employee" = "Ingrese la información solicitada en los campos a continuación para identificar a su empleado. Esta información no se comparte con nadie.";
+"info_employer" = "Ingrese la información solicitada en los campos a continuación para identificar a su empleador. Esta información no se comparte con nadie. Debido a que muchos empleados trabajan para más de un empleador al mismo tiempo, esto ayuda a los usuarios a identificar al empleador para el cual están registrando sus horas de trabajo.";
+"info_employee_payment_type" = "Su empleador puede pagarle de varias maneras: una cierta cantidad de dinero por hora, un salario predeterminado u otro método. Por favor, seleccione el método que su empleador utiliza para pagarle.";
+"info_employer_payment_type" = "Como empleador, usted puede pagarles a sus empleados de varias maneras: una cierta cantidad de dinero por hora, un salario predeterminado u otro método. Por favor, seleccione el método que utiliza para pagarle a sus empleados.";
 "info_employee_hourly_pay_rate" = "If you are paid by the hour, enter the amount per hour here. Keep in mind that your hourly rate must be at least the federal minimum wage of $7.25 per hour. If you are paid less than that amount, please <a href=\"http://www.dol.gov/whd/contact_us.htm\">contact the Wage and Hour Division.</a>";
 "info_employer_hourly_pay_rate" = "If your employee is paid by the hour, enter the amount per hour here. Keep in mind that their hourly rate must be at least the federal minimum wage of $7.25 per hour. If employees are paid less than that amount, please contact the Wage and Hour Division.";
-"info_overtime_eligible" = "More than 143 million American workers in more than 9.8 million workplaces are protected (or \"covered\") by the Fair Labor Standards Act (FLSA).  Unless a specific exemption applies, covered employees are due the federal minimum wage, currently $7.25 per hour, for every hour that they work, and overtime at time and one-half their regular rates of pay for any hours they work beyond 40 in a workweek. The law includes specific exemptions from these requirements under a variety of circumstances. For example, salaried “white-collar” employees may be exempt from the FLSA’s minimum wage and overtime pay requirements. If an employee meets all of the criteria for an exemption from minimum wage and/or overtime pay requirements, then those requirements do not apply to that employee. “Exempt” employees are not legally required to be paid minimum wage and/or overtime, depending upon the specific exemption that applies. “Non-exempt” employees are entitled by law to minimum wage and overtime pay.  For additional information visit https://www.dol.gov/whd.";
-"info_minimum_wage" = "The federal minimum wage is $7.25 per hour. Many states also have their own minimum wage laws. These state laws may provide greater employee protections than federal law; employers must comply with both. Where state law requires a higher minimum wage, that higher standard applies. For more information, or to find the minimum wage required by your state, click the “Minimum Wage Table” button.";
+"info_overtime_eligible" = "Más de 143 millones de trabajadores estadounidenses en más de 9.8 millones de lugares de trabajo están protegidos (o "cubiertos") por la Ley de Normas Justas de Trabajo (FLSA, por sus siglas en inglés). A menos que aplique una exención específica, los empleados cubiertos deben recibir el salario mínimo federal, actualmente $7.25 por hora, por cada hora que trabaja, y sobretiempo a tiempo y medio sus tarifas regulares de pago por todas las horas que trabajen por encima de 40 horas en una semana de laboral. La ley incluye exenciones específicas de estos requisitos bajo una variedad de circunstancias. Por ejemplo, los empleados administrativos asalariados pueden estar exentos de los requisitos de pago de salario mínimo y de sobretiempo de la FLSA. Si un empleado cumple con todos los criterios para una exención de los requisitos de pago de salario mínimo y/o sobretiempo, entonces esos requisitos no se aplican a ese empleado. Los empleados exentos no están requeridos por ley a recibir un pago de salario mínimo y/o sobretiempo, dependiendo de la exención específica que aplique. Los empleados no exentos tienen derecho por ley al pago de salario mínimo y pago de sobretiempo. Para obtener información adicional visite: https://www.dol.gov/whd.";
+"info_minimum_wage" = "El salario mínimo federal es $7.25 por hora. Muchos estados también tienen sus propias leyes de salario mínimo. Estas leyes estatales pueden brindar mayor protección a los empleados que la ley federal; los empleadores deben cumplir con ambas. Cuando la ley estatal requiere un salario mínimo más alto, ese estándard más alto se aplica. Para obtener más información, o para encontrar el salario mínimo requerido en su estado, visite las Leyes de Salario Mínimo en el Estado en la página de la División de Horas y Salarios en: https://www.dol.gov/agencies/whd/minimum-wage/state";
 "info_employee_workweek" = "An employee's workweek is a fixed and regularly recurring period of seven consecutive 24-hour periods. It does not have to coincide with the calendar week, nor does it necessarily align with when employees actually receive their pay. The employer determines when the workweek begins and ends for the purpose of keeping track of employees’ work time each week. For example, the workweek may begin Monday at 12:00am and end Sunday night at 11:59pm.  Workers may be paid for time they worked during a workweek several days after the workweek ends. Enter the day that your workweek begins.\nIf you do not know what day your workweek begins, the app will default the workweek start day to Sunday.";
 "info_employer_workweek" = "An employee's workweek is a fixed and regularly recurring period of seven consecutive 24-hour periods. It does not have to coincide with the calendar week, nor does it necessarily align with when employees actually receive their pay. The employer determines when the workweek begins and ends for the purpose of keeping track of employees’ work time each week. For example, the workweek may begin Monday at 12:00am and end Sunday night at 11:59pm.  Workers may be paid for time they worked during a workweek several days after the workweek ends. Enter the day that your employee’s workweek begins.\nIf you do not know what day employee's workweek begins, the app will default the workweek start day to Sunday";
-"info_employee_payment_frequency" = "The employer determines how frequently you are paid. Select the option that shows how often you are paid.\n\nBi-weekly means being paid once every two weeks on the same day (for example, being paid every other Friday).\n\nSemi-monthly means being paid twice a month (for example, being paid on the 5th and 20th of each month).";
-"info_employer_payment_frequency" = "As the employer you determine how frequently your employees are paid. Select the option that shows how often your employees are paid.";
+"info_employee_payment_frequency" = "El empleador determina con qué frecuencia le paga. Seleccione la opción que muestra la frecuencia con la que se le paga. Cada dos semanas significa que le pagan una vez cada dos semanas el mismo día (por ejemplo, le pagan un viernes sí y un viernes no). Cada quince días significa que le pagan dos veces al mes (por ejemplo, le pagan el día 5 y el día 20 de cada mes). ";
+"info_employer_payment_frequency" = "Como empleador, usted determina con qué frecuencia le paga a sus empleados. Seleccione la opción que muestra la frecuencia con la que le paga a sus empleados. ";
 "info_employee_salary" = "Enter the amount of the salary your employer pays you, and how frequently.";
 "info_employer_salary" = "Enter the amount of the salary you pay your employee, and how frequently.";
 "info_overtime" = "Overtime generally is due for any hours an employee works beyond 40 in a workweek, and must be paid at one-and-one-half times the employee’s regular rate of pay.";
 "info_overtime_pay" = "Overtime generally is due for any hours an employee works beyond 40 in a workweek, and must be paid at one-and-one-half times the employee’s regular rate of pay.";
 "info_break_time" = "Rest periods of short duration, usually 20 minutes or less, are common in industry and are customarily paid for as working time. These short periods must be counted as hours worked. Bona fide meal periods (typically 30 minutes or more) generally need not be compensated as work time. The employee must be completely relieved from duty for the purpose of eating regular meals in order for that time not to count as work time. For purposes of this DOL-Timesheet, all break time in excess of 20 minutes will be deducted from your total hours of work. For questions regarding proper deductions for break time, contact the Wage and Hour Division.";
 "info_end_time" = "If you work an overnight shift, hours after midnight will populate your timesheet on the next day";
-"info_import_employee" = "We have detected an existing WHD Timesheet database. In this case we need you to specify an Employee to associate with these database records. Later you will have the oppurtunity to update your profile and add an Employer or multiple Employees";
-"info_regular_rate" = "Regular Rate";
+"info_import_employee" = "Hemos detectado una base de datos de WHD Hoja de Asistencia existente. En este caso, necesitamos que especifique un Empleado para asociarlo con estos registros de la base de datos. Más adelante tendrá la oportunidad de actualizar su perfil y añadir un Empleador o varios Empleados. ";
+"info_regular_rate" = "Tarifa Regular";
 
-"info_pay_title" = "Pay";
-"info_overtime_title" = "Overtime";
-"info_minimum_wage_title" = "Minimum Wage";
-"info_non_exempt_title" = "Non-Exempt";
-"info_work_week_title" = "Workweek";
-"info_break_time_title" = "Break Time";
+"info_pay_title" = "Pago";
+"info_overtime_title" = "Sobretiempo";
+"info_minimum_wage_title" = "Salario Mínimo";
+"info_non_exempt_title" = "No Exento";
+"info_work_week_title" = "Semana Laboral";
+"info_break_time_title" = "Tiempo de Descanso";
 
 "info_employee" = "Federal labor laws, like those requiring minimum wage and overtime, apply only to employees. Not all people who work are necessarily employees under the FLSA. There is no single rule or test for determining whether an individual is an employee for purposes of the FLSA or an independent contractor. Determination of employee status does not depend on isolated factors, but on the economic realities of the situation and the circumstances of the total activity.";
 
@@ -239,32 +239,31 @@
 "info_glossary_minimum_wage" = "The federal minimum wage is $7.25 per hour. Many states also have their own minimum wage laws. These state laws may provide greater employee protections than federal law; employers must comply with both. Where state law requires a higher minimum wage, that higher standard applies. For more information, or to find the minimum wage required by your state, visit the Wage and Hour Division’s <a href=\"https://www.dol.gov/whd/minwage/america.htm\">Minimum Wage Laws in the State page.</a>";
 "info_glossary_work_week" = "An employee's workweek is a fixed and regularly recurring period of seven consecutive 24-hour periods. It does not have to coincide with the calendar week, nor does it necessarily align with when employees actually receive their pay. The employer determines when the workweek begins and ends for the purpose of keeping track of employees’ work time each week. For example, the workweek may begin Monday at 12:00am and end Sunday night at 11:59pm.  Workers may be paid for time they worked during a workweek several days after the workweek ends.";
 
-"introduction_text1" = "The information input via this app is never shared with the U.S. Department of Labor.";
+"introduction_text1" = "La información ingresada por medio de esta aplicación nunca se comparte con el Departamento de Trabajo de los EE. UU.";
 
 "introduction_text2" = "The Department of Labor is providing this app as a public service. This service is continually under development. We will make every effort to correct errors brought to our attention. Users should be aware that, while we try to keep the information timely and accurate, there will often be a delay between official publication of materials and their appearance in or modification of this app. Further, the conclusions reached by this app rely on the accuracy of the data provided by the user. Therefore, we make no express or implied guarantees. The Federal Register and the Code of Federal Regulations are the official sources for regulatory information published by the Department of Labor.";
 
-"import started" = "Import Started";
-"import finished" = "Import Finished";
-"email not setup" = "Email Not setup. Please setup email to send timesheet import logs.";
-"click yes to share" = "Tap to share your data";
-"click no to not share" = "Tap to not share your data";
-"old_employee_exists" = "old_employee_exists";
-"fsla_info" = "Please see the elaws FLSA Overtime Security Advisor for more information.";
-"fsla_linked_text" = "elaws FLSA Overtime Security Advisor";
+"import started" = "Importación Iniciada";
+"import finished" = "Importación Finalizada";
+"email not setup" = "Correo electrónico No configurado. Por favor configure su correo electrónico para enviar los registros de importación de la hoja de asistencia.";
+"click yes to share" = "Presione para compartir su información";
+"click no to not share" = "Presione para no compartir su información";
+"fsla_info" = "Por favor, vea el Asesor de Seguridad de Sobretiempo de la FLSA de elaws para obtener más información.";
+"fsla_linked_text" = "Asesor de Seguridad de Sobretiempo de la FLSA de elaws";
 
-"regular_rate_exclude1" = "Expense reimbursement";
-"regular_rate_exclude2" = "Premium payments for overtime work";
-"regular_rate_exclude3" = "Premiums paid for work on Saturdays, Sundays, and holidays";
-"regular_rate_exclude4" = "Discretionary bonuses and gifts (holiday bonuses, etc.)";
+"regular_rate_exclude1" = "Reembolso de gastos";
+"regular_rate_exclude2" = "Pagos de primas por trabajo en sobretiempo";
+"regular_rate_exclude3" = "Primas pagadas por trabajar los sábados";
+"regular_rate_exclude4" = "Bonos discrecionales y regalos (bonos por día festivo)";
 "regular_rate_exclude5" = "Vacation, holiday, or sick pay";
 "regular_rate_exclude6" = "Profit sharing, thrift, and savings plans";
-"regular_rate_exclude7" = "Talent fees";
+"regular_rate_exclude7" = "Tarifas de talento";
 "regular_rate_exclude8" = "Contributions made to benefit plans (retirement, life insurance, health insurance, etc.)";
 
-"regular_rate_include1" = "Shift differentials";
-"regular_rate_include2" = "Production bonuses";
-"regular_rate_include3" = "Attendance bonuses";
-"regular_rate_include4" = "Longevity bonuses";
-"regular_rate_include5" = "Value of employer-provided housing";
-"dash_work_week" = "- Work Week";
-"work_week" = "Work Week"
+"regular_rate_include1" = "Diferenciales por turnos";
+"regular_rate_include2" = "Bonos de producción";
+"regular_rate_include3" = "Bonos de asistencia";
+"regular_rate_include4" = "Bonos de tiempo de servicio";
+"regular_rate_include5" = "Valor de la vivienda provista por el empleador";
+"dash_work_week" = "- Semana Laboral";
+"work_week" = "Semana Laboral"
