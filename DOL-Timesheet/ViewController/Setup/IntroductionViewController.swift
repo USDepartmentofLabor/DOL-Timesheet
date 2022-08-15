@@ -13,6 +13,7 @@ class IntroductionViewController: UIViewController {
     @IBOutlet weak var displayLogo: UIImageView!
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
+    @IBOutlet weak var nextButton: NavigationButton!
     weak var delegate: TimeViewControllerDelegate?
     
     override func viewDidLoad() {
@@ -23,7 +24,7 @@ class IntroductionViewController: UIViewController {
     }
     
     func setupView() {
-        title = "Introduction"
+        title = NSLocalizedString("introduction", comment: "Introduction")
         label1.scaleFont(forDataType: .introductionBoldText)
         label2.scaleFont(forDataType: .introductionText)
         
@@ -37,6 +38,7 @@ class IntroductionViewController: UIViewController {
     func displayInfo() {
         label1.text = NSLocalizedString("introduction_text1", comment: "Introduction Text1")
         label2.text = NSLocalizedString("introduction_text2", comment: "Introduction Text2")
+        nextButton.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

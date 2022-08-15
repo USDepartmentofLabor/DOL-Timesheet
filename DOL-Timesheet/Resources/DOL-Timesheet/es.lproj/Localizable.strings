@@ -241,7 +241,7 @@
 
 "introduction_text1" = "La información ingresada por medio de esta aplicación nunca se comparte con el Departamento de Trabajo de los EE. UU.";
 
-"introduction_text2" = "The Department of Labor is providing this app as a public service. This service is continually under development. We will make every effort to correct errors brought to our attention. Users should be aware that, while we try to keep the information timely and accurate, there will often be a delay between official publication of materials and their appearance in or modification of this app. Further, the conclusions reached by this app rely on the accuracy of the data provided by the user. Therefore, we make no express or implied guarantees. The Federal Register and the Code of Federal Regulations are the official sources for regulatory information published by the Department of Labor.";
+"introduction_text2" = "El Departamento de Trabajo provee esta aplicación como un servicio público. Este es un servicio que está en continuo desarrollo. El usuario debe saber que, aunque intentamos mantener la información actualizada y precisa, a menudo habrá retrasos entre la publicación oficial de los materiales y su aparición o modificación en este sistema. Además, las conclusiones a las que llega este sistema dependen de la precisión de los datos proporcionados por el usuario. Por lo tanto, no ofrecemos garantías explícitas ni implícitas. El Registro Federal y el Código de Reglamentos Federales continúan siendo las fuentes oficiales de información regulatoria publicada por el Departamento de Trabajo. Haremos todos los esfuerzos por corregir los errores que se nos informen.";
 
 "import started" = "Importación Iniciada";
 "import finished" = "Importación Finalizada";
@@ -267,3 +267,9 @@
 "regular_rate_include5" = "Valor de la vivienda provista por el empleador";
 "dash_work_week" = "- Semana Laboral";
 "work_week" = "Semana Laboral";
+"next" = "Siguiente";
+"introduction" = "Introducción";
+"my_profile" = "Mi Perfil";
+"profile_setup" = "Configuración de Perfil";
+"please_setup_your_profile" = "Por favor, configure su perfil";
+"indicates_a_required_field" = "* Indica un campo requerido";

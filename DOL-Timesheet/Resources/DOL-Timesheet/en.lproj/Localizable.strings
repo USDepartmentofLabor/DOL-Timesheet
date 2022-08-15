@@ -267,3 +267,8 @@
 "regular_rate_include5" = "Value of employer-provided housing";
 "dash_work_week" = "- Work Week";
 "work_week" = "Work Week";
+"next" = "Next";
+"introduction" = "Introduction";
+"my_profile" = "My Profile";
+"profile_setup" = "Profile Setup";
+"indicates_a_required_field" = "* Indicates a required field";

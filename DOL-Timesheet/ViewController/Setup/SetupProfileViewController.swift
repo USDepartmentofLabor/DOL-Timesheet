@@ -145,7 +145,7 @@ class SetupProfileViewController: UIViewController {
     
     func setupView() {
         navigationItem.hidesBackButton = true
-        title = "My Profile"
+        title = NSLocalizedString("my_profile", comment: "My Profile")
         
         myProfileView.addBorder()
         employeeEmployerInfoView.delegate = self
@@ -254,6 +254,10 @@ class SetupProfileViewController: UIViewController {
             [NSAttributedString.Key.foregroundColor:  UIColor.borderColor,
              NSAttributedString.Key.font: Style.scaledFont(forDataType: .nameValueText)])
         profileType = viewModel.profileModel.isEmployer ? .employer : .employee
+        profileTitleLabel.text = NSLocalizedString("profile_setup", comment: "Profile Setup")
+        profileSubTitleLabel.text = NSLocalizedString("please_setup_your_profile", comment: "Please setup your profile")
+        myProfileTitleLabel.text = NSLocalizedString("my_profile", comment: "My Profile")
+        requiredFooterLabel.text = NSLocalizedString("indicates_a_required_field", comment: "* Indicates a required field")
     }
 
     func registerKeyboardNotifications() {
