@@ -188,6 +188,19 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
     }
     
     func displayInfo() {
+        enterTimeTitleLabel.text = NSLocalizedString("time_entries", comment: "Time Entries")
+        headingDayLabel.text = NSLocalizedString("day", comment: "Day")
+        headingTotalHoursLabel.text = NSLocalizedString("total_worked_hours", comment: "Total Worked (Hours)")
+        headingTotalBreakLabel.text = NSLocalizedString("total_break_hours", comment: "Total Break (Hours)")
+        totalTitleLabel.text = NSLocalizedString("total", comment: "Total")
+        
+        summaryTitleLabel.text = NSLocalizedString("summary", comment: "Summary")
+        totalTitleLabel.text = NSLocalizedString("total", comment: "Total")
+        totalBreakLabel.text = NSLocalizedString("overtime_summary", comment: "Overtime")
+        
+        earningsTitleLabel.text = NSLocalizedString("earnings", comment: "Earnings")
+        totalEarningsBtn.setTitle(NSLocalizedString("total_earning", comment: "Total Earnings"), for: .normal)
+        
         viewModel?.updatePeriod()
         displayPeriodInfo()
     }

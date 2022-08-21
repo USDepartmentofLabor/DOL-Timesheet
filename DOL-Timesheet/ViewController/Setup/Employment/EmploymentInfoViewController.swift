@@ -131,6 +131,23 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         
         setupEmploymentType(isProfileEmployer: viewModel?.isProfileEmployer ?? false)
         
+        requiredFooterLabel.text = NSLocalizedString("indicates_a_required_field", comment: "Indicates a required field")
+        
+        cityTitleLabel.text = NSLocalizedString("city", comment: "City")
+        stateTitleLabel.text = NSLocalizedString("state", comment: "State")
+        zipCodeTitleLabel.text = NSLocalizedString("zip_code", comment: "Zip Code")
+        zipcodeTextField.placeholder = NSLocalizedString("zipcode_hint", comment: "Indicates a required field")
+        phoneTitleLabel.text = NSLocalizedString("phone", comment: "Phone")
+        emailTitleLabel.text = NSLocalizedString("email", comment: "Email")
+        
+        employmentTitleLabel.text = NSLocalizedString("employment", comment: "Employment")
+        supervisorNameTitleLabel.text = NSLocalizedString("supervisor_name", comment: "Supervisor Name")
+        supervisorEmailTitleLabel.text = NSLocalizedString("supervisor_email", comment: "Supervisor Email")
+        employeeNumberTitleLabel.text = NSLocalizedString("employee_number", comment: "Employee Number")
+        startDateTitleLabel.text = NSLocalizedString("start_date", comment: "Start Date")
+        
+        nextBtn.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
+        
         // remove Skip button from navbar
         if viewModel?.employmentUser != nil {
             isNewUser = false
@@ -263,6 +280,8 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         supervisorEmailTextField.text = viewModel.supervisorEmail
         paymentTypeTextField.text = viewModel.paymentType.title
         startDate = viewModel.employmentStartDate
+        nameTextField.placeholder = NSLocalizedString("required", comment: "Required")
+        paymentTypeTitleLabel.text = NSLocalizedString("payment_type", comment: "Payment Type")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

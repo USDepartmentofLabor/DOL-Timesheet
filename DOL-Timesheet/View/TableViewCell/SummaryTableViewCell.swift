@@ -31,6 +31,7 @@ class SummaryTableViewCell: UITableViewCell {
     func setupView() {
         totalTitleLabel.scaleFont(forDataType: .summaryTotalTitle)
         totalValueLabel.scaleFont(forDataType: .summaryTotalValue)
+        totalOvertimeTitleLabel.text = NSLocalizedString("overtime_summary", comment: "Overtime")
         totalOvertimeTitleLabel.scaleFont(forDataType: .summaryTotalTitle)
         totalOvertimeLabel.scaleFont(forDataType: .summaryTotalValue)
         

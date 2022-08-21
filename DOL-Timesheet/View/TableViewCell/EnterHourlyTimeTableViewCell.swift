@@ -101,6 +101,7 @@ class EnterHourlyTimeTableViewCell: UITableViewCell {
     }
     
     func displayInfo() {
+        commentsTitleLabel.text = NSLocalizedString("comments", comment: "Comments")
         displayTimeLog()
     }
     

@@ -65,6 +65,9 @@ class SetupProfileViewController: UIViewController {
     @IBOutlet weak var footerView: UIView!
     weak var delegate: TimeViewControllerDelegate?
     
+    @IBOutlet weak var nextBtn: NavigationButton!
+    
+    
     weak var manageVC: ManageUsersViewController?
     
     weak var importDBViewController: UIViewController?
@@ -206,6 +209,30 @@ class SetupProfileViewController: UIViewController {
     }
     
     func displayInfo() {
+        profileTitleLabel.text = NSLocalizedString("profile_setup", comment: "Profile Setup")
+        profileSubTitleLabel.text = NSLocalizedString("please_setup_your_profile", comment: "Please setup your profile")
+        myProfileTitleLabel.text = NSLocalizedString("my_profile", comment: "My Profile")
+        requiredFooterLabel.text = NSLocalizedString("indicates_a_required_field", comment: "* Indicates a required field")
+        nameTitleLabel.text = NSLocalizedString("full_name_intro", comment: "Full Name")
+        nameTextField.placeholder = NSLocalizedString("required", comment: "Required")
+        cityTitleLabel.text = NSLocalizedString("city", comment: "Full Name")
+        stateTitleLabel.text = NSLocalizedString("state", comment: "Full Name")
+        zipCodeTitleLabel.text = NSLocalizedString("zip_code", comment: "Full Name")
+        zipcodeTextField.placeholder = NSLocalizedString("required", comment: "Required")
+        phoneTitleLabel.text = NSLocalizedString("phone", comment: "Phone")
+        emailTitleLabel.text = NSLocalizedString("email", comment: "Email")
+        
+        zipcodeTextField.attributedPlaceholder = NSAttributedString(string: "99999 or 99999-9999", attributes:
+            [NSAttributedString.Key.foregroundColor:  UIColor.borderColor,
+             NSAttributedString.Key.font: Style.scaledFont(forDataType: .nameValueText)])
+        
+        employeeEmployerInfoView.title = NSLocalizedString("employee_employer_profile", comment: "Are you an employee or employer?")
+        
+        employeeBtn.setTitle(NSLocalizedString("employee", comment: "Employee"), for: .normal)
+        employerBtn.setTitle(NSLocalizedString("employer", comment: "Employer"), for: .normal)
+        
+        nextBtn.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
+        
         guard let profileUser = viewModel.profileModel.currentUser else {
             manageEmploymentContentView.removeFromSuperview()
             
@@ -249,15 +276,8 @@ class SetupProfileViewController: UIViewController {
         profileImageView.accessibilityHint = (profileUser.image == nil) ?
             NSLocalizedString("profile_image_new_hint", comment: "Tap to select profile photo") :
             NSLocalizedString("profile_image_hint", comment: "Tap to update profile photo")
-        
-        zipcodeTextField.attributedPlaceholder = NSAttributedString(string: "99999 or 99999-9999", attributes:
-            [NSAttributedString.Key.foregroundColor:  UIColor.borderColor,
-             NSAttributedString.Key.font: Style.scaledFont(forDataType: .nameValueText)])
         profileType = viewModel.profileModel.isEmployer ? .employer : .employee
-        profileTitleLabel.text = NSLocalizedString("profile_setup", comment: "Profile Setup")
-        profileSubTitleLabel.text = NSLocalizedString("please_setup_your_profile", comment: "Please setup your profile")
-        myProfileTitleLabel.text = NSLocalizedString("my_profile", comment: "My Profile")
-        requiredFooterLabel.text = NSLocalizedString("indicates_a_required_field", comment: "* Indicates a required field")
+        
     }
 
     func registerKeyboardNotifications() {

@@ -135,6 +135,14 @@ class EnterTimeViewController: UIViewController {
     }
     
     func displayInfo() {
+        titleLabel.text = NSLocalizedString("enter_time", comment: "Enter Time")
+        startTitleLabel.text = NSLocalizedString("start", comment: "Start")
+        endTitleLabel.text = NSLocalizedString("end", comment: "End")
+        breakTimeTitleLabel.text = NSLocalizedString("break", comment: "Break")
+        hourlyRateTitleLabel.text = NSLocalizedString("rate", comment: "Rate")
+        commentsTitleLabel.text = NSLocalizedString("daily_comments", comment: "Enter Daily Comments")
+        editBtn.setTitle(NSLocalizedString("edit", comment: "Edit"), for: .normal)
+        
         dateDropDownView.title = viewModel?.title ?? ""
         paymentTypeLabel.text = viewModel?.paymentType?.title
         commentTextView.text = viewModel?.comment

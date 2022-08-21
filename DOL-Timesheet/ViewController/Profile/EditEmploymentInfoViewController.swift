@@ -41,7 +41,7 @@ class EditEmploymentInfoViewController: UIViewController {
     }
     
     func setupView() {
-        title = "Edit Employment"
+        title = NSLocalizedString("edit_employment", comment:"Edit Employment")
         let saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveClicked(_:)))
         navigationItem.rightBarButtonItem = saveBtn
         

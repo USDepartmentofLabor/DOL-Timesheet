@@ -20,7 +20,7 @@ class SetupWorkWeekViewController: SetupBaseEmploymentViewController {
     override func setupView() {
         super.setupView()
         
-        title = "Work Week"
+        title = NSLocalizedString("work_week", comment: "Work Week")
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableView.automaticDimension
         

@@ -54,6 +54,8 @@ class HourlyPaymentViewController: UIViewController {
         else {
             addRate()
         }
+        fslaTextView.text = NSLocalizedString("fsla_requirements", comment: "Hourly Rate")
+        addRateBtn.setTitle(NSLocalizedString("add_another_rate", comment: "Add Another Rate"), for: .normal)
         
         let attributedString = NSMutableAttributedString(string:fslaTextView.text)
         if #available(iOS 13.0, *) {

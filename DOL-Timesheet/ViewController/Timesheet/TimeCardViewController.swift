@@ -106,6 +106,10 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
     
     func displayInfo() {
         // Remove Rate if salaried employee
+        
+        hoursWorkedTitleLabel.text = NSLocalizedString("hours_worked", comment: "Hours Worked")
+        breakHoursTitleLabel.text = NSLocalizedString("break_hours", comment: "Break Hours")
+        
         if let paymentType = viewModel?.currentEmploymentModel?.paymentType,
             paymentType == .salary {
             rateDropDownView.isHidden = true
@@ -302,7 +306,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
             dateFormatter.timeStyle = .short
             
             let startTimeStr = dateFormatter.string(from: startTime)
-            timeInfoLabel.text = "- Started work on \(startTimeStr)"
+            let workString = NSLocalizedString("started_work", comment: "Started work on")
+            timeInfoLabel.text = workString + startTimeStr
             
             var breakTimeStr: String = ""
             clock.breaksSorted?.forEach {
@@ -316,7 +321,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
                 }
                 else if let startTime = $0.startTime {
                     let breakStartStr = dateFormatter.string(from: startTime)
-                    breakTimeStr.append("\n- Started Break at \(breakStartStr)")
+                    let breakString = NSLocalizedString("started_break", comment: "Started break at")
+                    breakTimeStr.append(breakString + breakStartStr)
                 }
             }
             
@@ -326,7 +332,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
         else {
             timeInfoLabel.text = ""
         }
-        
+        commentsTitleLabel.text = NSLocalizedString("comments", comment: "Comments")
         updateTimeCounter()
     }
     

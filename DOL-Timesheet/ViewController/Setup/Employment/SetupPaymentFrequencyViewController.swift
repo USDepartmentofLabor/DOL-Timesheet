@@ -21,7 +21,7 @@ class SetupPaymentFrequencyViewController: SetupBaseEmploymentViewController {
     override func setupView() {
         super.setupView()
         
-        title = "Payment Frequency"
+        title = NSLocalizedString("payment_frequency", comment: "Payment Frequency")
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableView.automaticDimension
         

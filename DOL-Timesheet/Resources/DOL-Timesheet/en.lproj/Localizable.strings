@@ -272,3 +272,85 @@
 "my_profile" = "My Profile";
 "profile_setup" = "Profile Setup";
 "indicates_a_required_field" = "* Indicates a required field";
+
+"introduction_title_text" = "Introduction";
+"full_name_intro" = "Nombre Completo*";
+"phone" = "Phone";
+"email" = "Email";
+"employee_employer_profile" = "Are you an employee or employer?";
+
+"city" = "City";
+"state" = "State";
+"zip_code" = "Zip Code";
+"phone" = "Phone";
+"email" = "Email";
+"zipcode_hint" = "99999 or 99999-9999";
+
+"employment" = "Employment";
+"supervisor_name" = "Supervisor Name";
+"supervisor_email" = "Supervisor Email";
+"employee_number" = "Employee Number";
+"start_date" = "Start Date";
+"skip" = "Skip";
+"payment_frequency" = "Payment Frequency";
+"fsla_requirements" = "The Fair Labor Standards Act (FLSA) requirements";
+"rate_name" = "Rate Name";
+"per_hour" = "Per Hour";
+"what_is_minimum_wage_title" = "What is the minimum wage in your state?";
+"federal_wage_label" = "Federal Minimum Wage is $7.25";
+"minimum_wage_table" = "Minimum Wage Table";
+"add_another_rate" = "Add Another Rate";
+
+"hours_worked" = "Hours Worked";
+"break_hours" = "Break Hours";
+"started_work" = "- Started work on ";
+"started_break" = "- Started break at ";
+"comments" = "Comments";
+
+"info_title" = "Info";
+"glossary" = "glossary";
+"contact_us" = "Contact Us";
+"about" = "About";
+
+"contact_whd_title" = "Call us (toll-free)";
+"contact_whd_operation_hours" = "Help is available M-F, 8 AM - 8PM Eastern";
+"contact_whd_phonetic_phone" = "1\-866\-4\-USWAGE (1\-866\-487\-9243)";
+"contact_whd_tty_title" = "1\-877\-889\-5627(TTY)";
+"contact_statement" = "All services are free and confidential, whether you are documented or not. Please remember that your employer cannot terminate you or in any other manner discriminate against you for filing a complaint with Wage and Hour Division.";
+"ask_us_a_specific_question" = "Ask us a specific question";
+"send_email_whd" = "Wage and Hour Division Contact Online Form";
+"tell_us_about_issues_with_the_app" = "Tell us about issues with the app";
+"contact_webmaster" = "Email";
+"visit_us_online" = "Visit us online";
+"contact_whd_website" = "Wage and Hour Division";
+"contact_whd_contact_us" = "Wage and Hour Division Local Offices";
+
+"enter_time" = "Enter Time";
+"start" = "Start";
+"end" = "End";
+"break" = "Break";
+"rate" = "Rate";
+"daily_comments" = "Daily Comments";
+
+"time_entries" = "Time Entries";
+"day" = "Day";
+"total_worked_hours" = "Total Worked (Hours)";
+"total_break_hours" = "Total Break (Hours)";
+"total" = "Total";
+
+"summary" = "Summary";
+"overtime_summary" = "Overtime";
+
+"earnings" = "Earnings";
+"total_earning" = "Total Earning";
+"straight_time_earnings" = "Straight Time Earnings";
+"regular_rate_of_pay" = "Regular Rate Of Pay";
+"regular_rate_of_pay_equation" = "Straight Time Earnings / Hours Worked";
+"overtime_pay" = "Overtime Pay";
+"overtime_pay_equation" = "Regular Rate of Pay x 0.5 x Overtime Hours";
+"version_number" = "Version Number:";
+"address" = "Address";
+"payment_type" = "Payment Type";
+
+"date" = "Date";
+"edit_employment" = "Edit Employment";

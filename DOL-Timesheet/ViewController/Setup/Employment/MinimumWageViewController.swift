@@ -26,6 +26,7 @@ class MinimumWageViewController: UIViewController {
     
     @IBOutlet weak var perhourLabel: UILabel!
     @IBOutlet weak var minimumWageFooterLabel: UILabel!
+    @IBOutlet weak var minimumWageBtn: SubActionButton!
     
     var isProfileEmployer: Bool = false {
         didSet {
@@ -75,6 +76,15 @@ class MinimumWageViewController: UIViewController {
         federalWageLabel.scaleFont(forDataType: .nameValueText)
         perhourLabel.scaleFont(forDataType: .nameValueText)
         minimumWageTextField.addTarget(self, action: #selector(minimumWageDidChange(_:)), for: .editingChanged)
+        
+        yesBtn.setTitle(NSLocalizedString("yes", comment: "Yes"), for: .normal)
+        noBtn.setTitle(NSLocalizedString("no", comment: "No"), for: .normal)
+        
+        minimuWageLabelInfoView.title = NSLocalizedString("what_is_minimum_wage_title", comment: "What is the minimum wage in your state?")
+        federalWageLabel.text = NSLocalizedString("federal_wage_label", comment: "Federal Minimum Wage is $7.25")
+        perhourLabel.text = NSLocalizedString("per_hour", comment: "Per Hour")
+        minimumWageBtn.setTitle(NSLocalizedString("minimum_wage_table", comment: "Minimum Wage Table"), for: .normal)
+        
         
         eligibilityContentView.addBorder()
         minimumWageContentView.addBorder()

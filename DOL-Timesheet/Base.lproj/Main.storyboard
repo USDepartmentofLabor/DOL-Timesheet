@@ -1670,6 +1670,8 @@
                     </view>
                     <connections>
                         <outlet property="contactTextView" destination="B9x-sM-RPr" id="XLv-jM-YGy"/>
+                        <outlet property="contactTitleLabel" destination="rJk-if-yD1" id="psC-Qf-Gau"/>
+                        <outlet property="contactTitleLabel2" destination="wkb-fl-g3w" id="05f-dz-Fdo"/>
                         <outlet property="copyDatabase" destination="TwD-g4-XQQ" id="KbB-0N-PrF"/>
                         <outlet property="gitHubTextView" destination="90P-iv-diL" id="03A-Aa-wck"/>
                         <outlet property="phoneHoursLabel" destination="eYd-UW-6E7" id="FxE-eg-66m"/>
@@ -1677,6 +1679,8 @@
                         <outlet property="phoneTextView2" destination="AdR-h4-8Q4" id="qCF-P1-l7a"/>
                         <outlet property="secondGitHubTextView" destination="sP9-yW-InQ" id="Z1o-r8-hLM"/>
                         <outlet property="servicesLabel" destination="zIY-Mo-aNO" id="tTu-QE-M2Z"/>
+                        <outlet property="submitIssuesTitleLabel" destination="UWa-d1-wSm" id="Xma-CY-LkX"/>
+                        <outlet property="vistUsLabel" destination="HUK-te-aLx" id="GgO-Si-cSI"/>
                         <outlet property="webadminTextView" destination="28q-aj-mZA" id="YCJ-mK-bQp"/>
                     </connections>
                 </viewController>
@@ -2013,7 +2017,7 @@
                                                                         <connections>
                                                                             <outlet property="breakTimeView" destination="GZH-yY-hid" id="WvD-YV-QpM"/>
                                                                             <outlet property="commentsTextView" destination="HpK-23-3ev" id="GV0-N6-yby"/>
-                                                                            <outlet property="commentsTitleLabel" destination="7Sd-Ux-oyN" id="Rap-gS-btp"/>
+                                                                            <outlet property="commentsTitleLabel" destination="7Sd-Ux-oyN" id="QOC-p7-lXi"/>
                                                                             <outlet property="endTimeView" destination="lWC-5m-GkU" id="xhL-3r-pJO"/>
                                                                             <outlet property="enterTimeStackView" destination="OZm-yy-VNj" id="MIr-sB-g65"/>
                                                                             <outlet property="hourlyRateView" destination="sTv-D7-9Xe" id="1Y8-k9-ygw"/>
@@ -2126,7 +2130,7 @@
                         <outlet property="breakTimeInfoButton" destination="ZTh-Mv-Luo" id="lMI-pf-FPH"/>
                         <outlet property="breakTimeTitleLabel" destination="ui4-DA-Exb" id="Hzs-mY-cMs"/>
                         <outlet property="commentTextView" destination="MHd-cw-JjA" id="Xcq-6l-UxN"/>
-                        <outlet property="commentsTitleLabel" destination="0K2-pz-MO9" id="0ce-vS-B5y"/>
+                        <outlet property="commentsTitleLabel" destination="0K2-pz-MO9" id="WAz-U1-boj"/>
                         <outlet property="contentView" destination="skK-8U-FUa" id="fnH-N6-kVA"/>
                         <outlet property="dateDropDownView" destination="gDI-WD-bJg" id="KIj-5j-4Do"/>
                         <outlet property="dateTitleLabel" destination="HRd-rS-lRm" id="ylT-Xh-zBw"/>
@@ -2414,8 +2418,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3GV-mi-63D"/>
-        <segue reference="raw-Tx-Vfv"/>
+        <segue reference="3iC-tx-nCj"/>
+        <segue reference="KJz-zA-nJd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DOLLogo" width="60" height="60"/>

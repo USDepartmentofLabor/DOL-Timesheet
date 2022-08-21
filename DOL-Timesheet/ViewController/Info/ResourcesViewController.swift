@@ -19,6 +19,7 @@ class ResourcesViewController: UIViewController {
     
     @IBOutlet weak var copyDatabase: UIButton!
     @IBOutlet weak var contactTitleLabel: UILabel!
+    @IBOutlet weak var contactTitleLabel2: UILabel!
     @IBOutlet weak var phoneTextView1: UITextView!
     @IBOutlet weak var phoneTextView2: UITextView!
     @IBOutlet weak var phoneHoursLabel: UILabel!
@@ -31,6 +32,7 @@ class ResourcesViewController: UIViewController {
     @IBOutlet weak var gitHubTextView: UITextView!
     @IBOutlet weak var secondGitHubTextView: UITextView!
     @IBOutlet weak var servicesLabel: UILabel!
+    @IBOutlet weak var vistUsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +85,21 @@ class ResourcesViewController: UIViewController {
     }
     
     func displayInfo() {
+        
+        contactTitleLabel.text = NSLocalizedString("contact_whd_title", comment: "About")
+        phoneHoursLabel.text = NSLocalizedString("contact_whd_operation_hours", comment: "About")
+        phoneTextView1.text = NSLocalizedString("contact_whd_phonetic_phone", comment: "About")
+        phoneTextView2.text = NSLocalizedString("contact_whd_tty_title", comment: "About")
+        servicesLabel.text = NSLocalizedString("contact_statement", comment: "About")
+        contactTitleLabel2.text = NSLocalizedString("ask_us_a_specific_question", comment: "About")
+        contactTextView.text = NSLocalizedString("send_email_whd", comment: "About")
+        
+        submitIssuesTitleLabel.text = NSLocalizedString("tell_us_about_issues_with_the_app", comment: "About")
+        webadminTextView.text = NSLocalizedString("contact_webmaster", comment: "About")
+        vistUsLabel.text = NSLocalizedString("visit_us_online", comment: "About")
+        gitHubTextView.text = NSLocalizedString("contact_whd_website", comment: "About")
+        secondGitHubTextView.text = NSLocalizedString("contact_whd_contact_us", comment: "About")
+        
 //        let emailText = NSAttributedString(string: "Send an email to the Wage and Hour Division", attributes: [NSAttributedString.Key.link: ResourcesViewController.emailLink, NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
 //            NSAttributedString.Key.underlineStyle: 1])
 //        emailTextView.attributedText = emailText

@@ -96,6 +96,8 @@ class TimeViewController: UIViewController {
         profileBtn.addTarget(self, action: #selector(profileClicked(sender:)), for: UIControl.Event.touchDown)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileBtn)
         
+        editBtn.setTitle(NSLocalizedString("edit", comment: "Edit"), for: .normal)
+        
         if viewModel?.userProfileModel.isProfileEmployer ?? false {
             employeeEmployerTitleLabel.text = NSLocalizedString("employee", comment: "Employee")
             selectUserDropDownView.accessibilityHint = NSLocalizedString("employee_user_hint", comment: "Tap To Select Employee")

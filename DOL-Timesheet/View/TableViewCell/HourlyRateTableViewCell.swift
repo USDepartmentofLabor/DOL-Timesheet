@@ -44,6 +44,9 @@ class HourlyRateTableViewCell: UITableViewCell {
         rateValueTextField.scaleFont(forDataType: .nameValueText)
         perHourLabel.scaleFont(forDataType: .nameValueText)
         
+        rateTitleLabel.text = NSLocalizedString("rate_name", comment: "Rate Name")
+        perHourLabel.text = NSLocalizedString("per_hour", comment: "Per Hour")
+        
         rateNameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         rateValueTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         setupAccessibility()

@@ -79,12 +79,17 @@ class ManageUsersViewController: UIViewController {
         titleLabel.scaleFont(forDataType: .sectionTitle)
         
         userHeaderTitleLabel.scaleFont(forDataType: .columnHeader)
+        
+        addressHeaderTitleLabel.text = NSLocalizedString("address", comment: "Address")
         addressHeaderTitleLabel.scaleFont(forDataType: .columnHeader)
+        
+        paymentTypeHeaderTitleLabel.text = NSLocalizedString("payment_type", comment: "Payment Type")
         paymentTypeHeaderTitleLabel.scaleFont(forDataType: .columnHeader)
         
         tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableView.automaticDimension
         
+        editBtn.setTitle(NSLocalizedString("edit", comment: "Edit"), for: .normal)
         editBtn.titleLabel?.scaleFont(forDataType: .actionButton)
         setupAccessibility()
     }

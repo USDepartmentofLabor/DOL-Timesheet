@@ -14,7 +14,7 @@ class AboutViewController: UIViewController {
     
     let items = [NSLocalizedString("introduction_text1", comment: "Introduction text1"),
        NSLocalizedString("introduction_text2", comment: "Introduction text2"),
-       "Version Number: \(Bundle.main.versionNumber).\(Bundle.main.buildNumber)"]
+       "\(NSLocalizedString("version_number", comment: "Version Number"))  \(Bundle.main.versionNumber).\(Bundle.main.buildNumber)"]
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()

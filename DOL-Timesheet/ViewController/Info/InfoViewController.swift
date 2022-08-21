@@ -29,13 +29,17 @@ class InfoViewController: UIViewController {
     }
     
     func setupView() {
-        title = "Info"
+        title = NSLocalizedString("info_title", comment: "Info")
         displaySection(section: InfoSection.glossary)
 
         let font = Style.scaledFont(forDataType: .infoSection)
         infoSection.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         
         infoSection.setios12Style()
+        
+        infoSection.setTitle(NSLocalizedString("glossary", comment: "Glossary"), forSegmentAt: 0)
+        infoSection.setTitle(NSLocalizedString("contact_us", comment: "Info"), forSegmentAt: 1)
+        infoSection.setTitle(NSLocalizedString("about", comment: "About"), forSegmentAt: 2)
     }
     
     
