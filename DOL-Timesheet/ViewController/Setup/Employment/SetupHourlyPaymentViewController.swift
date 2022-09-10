@@ -12,6 +12,7 @@ class SetupHourlyPaymentViewController: SetupBaseEmploymentViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var saveButton: NavigationButton!
     weak var hourlyPaymentVC: HourlyPaymentViewController?
     weak var minimumWageVC: MinimumWageViewController?
 
@@ -33,6 +34,7 @@ class SetupHourlyPaymentViewController: SetupBaseEmploymentViewController {
         super.setupView()
         
         title = NSLocalizedString("hourly_payment_title", comment: "Hourly Payment Title")
+        saveButton.setTitle(NSLocalizedString("save", comment: "Save"), for: .normal)
         scrollView.keyboardDismissMode = .onDrag
     }
 

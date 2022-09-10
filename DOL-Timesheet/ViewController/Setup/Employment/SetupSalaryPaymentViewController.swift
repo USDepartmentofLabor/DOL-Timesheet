@@ -12,6 +12,7 @@ class SetupSalaryPaymentViewController: SetupBaseEmploymentViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
 
+    @IBOutlet weak var saveButton: NavigationButton!
     @IBOutlet weak var paymentTypeView: UIView!
     weak var salaryPaymentVC: SalaryPaymentViewController?
     
@@ -36,6 +37,7 @@ class SetupSalaryPaymentViewController: SetupBaseEmploymentViewController {
         super.setupView()
         
         title = "Salary Payment"
+        saveButton.setTitle(NSLocalizedString("save", comment:"Save"), for: .normal)
         scrollView.keyboardDismissMode = .onDrag
         
         setupAccessibility()

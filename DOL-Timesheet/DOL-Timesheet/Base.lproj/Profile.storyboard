@@ -311,6 +311,7 @@
                         <outlet property="footerView" destination="kjU-ND-4qM" id="Q13-Sz-gJ9"/>
                         <outlet property="overtimeView" destination="30m-td-BIP" id="ROL-87-z4Z"/>
                         <outlet property="paymentTypeView" destination="hEL-E6-5yu" id="DqQ-Tp-NlS"/>
+                        <outlet property="saveButton" destination="dDF-P4-pQf" id="aXy-2H-ojk"/>
                         <outlet property="scrollView" destination="3G6-f6-rzo" id="dua-XH-bLP"/>
                     </connections>
                 </viewController>
@@ -1917,11 +1918,11 @@
             <objects>
                 <viewController id="zte-c7-vLc" customClass="WebInfoViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="epI-Qj-8bO">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
+                        <rect key="frame" x="0.0" y="0.0" width="345" height="444"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hC-dp-y26">
-                                <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
+                                <rect key="frame" x="0.0" y="0.0" width="345" height="444"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -2879,7 +2880,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8s-RO-civ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8075" y="-1483"/>
+            <point key="canvasLocation" x="8073.6000000000004" y="-1483.8080959520241"/>
         </scene>
         <!--Setup Hourly Payment View Controller-->
         <scene sceneID="aPb-As-unu">
@@ -2987,6 +2988,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="saveButton" destination="Sd1-r8-uXL" id="GMR-qa-ZvS"/>
                         <outlet property="scrollView" destination="osP-qd-IMn" id="zQ9-Ie-QrJ"/>
                     </connections>
                 </viewController>
@@ -3222,7 +3224,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GvG-um-s8D"/>
+        <segue reference="6U5-hO-Hj7"/>
         <segue reference="jna-rX-JMR"/>
     </inferredMetricsTieBreakers>
     <resources>

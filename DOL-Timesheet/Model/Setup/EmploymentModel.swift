@@ -164,7 +164,7 @@ class EmploymentModel {
         if let context = employmentInfo.managedObjectContext {
             let hourlyRate = HourlyRate(context: context)
             let existingCount = employmentInfo.hourlyRate?.count ?? 0
-            hourlyRate.name = "Rate \(existingCount + 1)"
+            hourlyRate.name = NSLocalizedString("rate", comment: "Rate") + " \(existingCount + 1)"
             employmentInfo.addToHourlyRate(hourlyRate)
         }
     }

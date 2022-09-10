@@ -64,6 +64,7 @@ class RegularRateInfoViewController: UIViewController {
 
     func setupView() {
         infoLabel.scaleFont(forDataType: .aboutText)
+        infoLabel.text = NSLocalizedString("info_regular_rate_pay", comment: "The regular rate of pay, upon which an employer calculates an employee’s overtime rate, cannot be less than the minimum wage. The regular rate includes all payment for employment except certain payments that the law allows employers to exclude.")
         
         infoTextView.textContainerInset = UIEdgeInsets.zero
         

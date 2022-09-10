@@ -252,10 +252,10 @@
 "regular_rate_exclude2" = "Pagos de primas por trabajo en sobretiempo";
 "regular_rate_exclude3" = "Primas pagadas por trabajar los sábados";
 "regular_rate_exclude4" = "Bonos discrecionales y regalos (bonos por día festivo)";
-"regular_rate_exclude5" = "Vacation, holiday, or sick pay";
-"regular_rate_exclude6" = "Profit sharing, thrift, and savings plans";
+"regular_rate_exclude5" = "Vacaciones, día festivo, o pago por enfermedad";
+"regular_rate_exclude6" = "Reparto de beneficios, ahorro y planes de ahorro";
 "regular_rate_exclude7" = "Tarifas de talento";
-"regular_rate_exclude8" = "Contributions made to benefit plans (retirement, life insurance, health insurance, etc.)";
+"regular_rate_exclude8" = "Las contribuciones realizadas a planes de beneficios (jubilación, seguro de vida, seguro médico, etc.)";
 
 "regular_rate_include1" = "Diferenciales por turnos";
 "regular_rate_include2" = "Bonos de producción";
@@ -305,14 +305,14 @@
 
 "hours_worked" = "Horas Trabajadas";
 "break_hours" = "Horas de Descanso";
-"started_work" = "- Started work on ";
-"started_break" = "- Started break at ";
+"started_work" = "- Inicio de trabajo ";
+"started_break" = "- Inicio de descanso ";
 "comments" = "Comentarios";
 
 "info_title" = "Información";
-"glossary" = "Glossary";
+"glossary" = "Glosario";
 "contact_us" = "Contáctenos";
-"about" = "About";
+"about" = "Sobre";
 
 "contact_whd_title" = "Llámanos (sin costo)";
 "contact_whd_operation_hours" = "Hay ayuda disponible de lunes a viernes, 8AM \- 8PM horario del este";
@@ -320,12 +320,12 @@
 "contact_whd_tty_title" = "1\-877\-889\-5627(TTY)";
 "contact_statement" = "Todos los servicios son gratuitos y confidenciales, ya sea que sea que tenga documentos o no. Por favor, recuerde que su empleador no puede despedirlo ni discriminarlo de ninguna forma por presentar una queja ante la División de Horas y Salarios.";
 "ask_us_a_specific_question" = "Háganos una pregunta específica";
-"send_email_whd" = "Wage and Hour Division Contact Online Form";
+"send_email_whd" = "Formulario de contacto electrónico de la división de horas y salarios";
 "tell_us_about_issues_with_the_app" = "Cuéntenos sobre los problemas con la aplicación";
 "contact_webmaster" = "Correo Electrónico";
 "visit_us_online" = "Visítenos en línea";
-"contact_whd_website" = "Wage and Hour Division";
-"contact_whd_contact_us" = "Wage and Hour Division Local Offices";
+"contact_whd_website" = "División de Horas y Salarios";
+"contact_whd_contact_us" = "Oficinas locales de la división de horas y salarios";
 
 "enter_time" = "Ingresar Hora";
 "start" = "Comenzar";
@@ -354,3 +354,6 @@
 "address" = "Dirección";
 "payment_type" = "Tipo de Pago";
 "edit_employment" = "Editar Empleo";
+"save" = "Guardar";
+"salary_payment" = "Pago de Salario";
+"info_regular_rate_pay" = "La tarifa de pago regular, sobre la cual un empleador calcula la tarifa de sobretiempo de un empleado, no puede ser menos del salario mínimo.La tarifa de pago regular incluye todos los pagos por empleo, excepto ciertos pagos que la ley permite que los empleadores excluyan.";
