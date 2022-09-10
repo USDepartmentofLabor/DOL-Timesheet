@@ -119,6 +119,7 @@
 		696D20DC28318CC9007E041F /* DOL_Timesheet.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */; };
 		696D20DD28318CC9007E041F /* DOL_Timesheet.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */; };
 		696D20DE28318CC9007E041F /* DOL_Timesheet.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */; };
+		698AE54728C7ACBA0038945B /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 698AE54628C7ACBA0038945B /* Onboarding.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,6 +259,7 @@
 		696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = DOL_Timesheet.sqlite; sourceTree = "<group>"; };
 		696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-shm"; sourceTree = "<group>"; };
 		696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-wal"; sourceTree = "<group>"; };
+		698AE54628C7ACBA0038945B /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +330,7 @@
 				0324C40D2260E8A600712576 /* Model */,
 				0324C3DC2260E47100712576 /* AppDelegate.swift */,
 				037C22682278B6400021A309 /* Profile.storyboard */,
+				698AE54628C7ACBA0038945B /* Onboarding.storyboard */,
 				0324C3E02260E47100712576 /* Main.storyboard */,
 				0324C3E62260E47200712576 /* Assets.xcassets */,
 				0324C3E82260E47200712576 /* LaunchScreen.storyboard */,
@@ -716,6 +719,7 @@
 				696D20DD28318CC9007E041F /* DOL_Timesheet.sqlite-shm in Resources */,
 				59AD9E6422A1ADB500075193 /* SummaryTableViewHeaderView.xib in Resources */,
 				0324C3E72260E47200712576 /* Assets.xcassets in Resources */,
+				698AE54728C7ACBA0038945B /* Onboarding.storyboard in Resources */,
 				032C9F1D2264FFFC00FB1468 /* LabelInfoView.xib in Resources */,
 				0324C3E22260E47100712576 /* Main.storyboard in Resources */,
 			);
@@ -1032,7 +1036,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 55;
+				CURRENT_PROJECT_VERSION = 56;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1055,7 +1059,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 55;
+				CURRENT_PROJECT_VERSION = 56;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
