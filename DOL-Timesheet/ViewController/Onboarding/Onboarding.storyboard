@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Welcome View Controller-->
+        <!--Onboard Welcome View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController title="Welcome View Controller" id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardWelcomeViewController" title="Onboard Welcome View Controller" id="Y6W-OH-hqX" customClass="OnboardWelcomeViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="-4" y="53"/>
         </scene>
-        <!--Introduction View Controller-->
+        <!--Onboard Introduction View Controller-->
         <scene sceneID="NlP-aQ-JAs">
             <objects>
-                <viewController title="Introduction View Controller" id="82n-d9-UGs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardIntroductionViewController" title="Onboard Introduction View Controller" id="82n-d9-UGs" customClass="OnboardIntroductionViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WEE-AW-WPH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -197,10 +197,10 @@
             </objects>
             <point key="canvasLocation" x="734.78260869565224" y="52.901785714285715"/>
         </scene>
-        <!--Employee Name View Controller-->
+        <!--Onboard Name View Controller-->
         <scene sceneID="Fi2-ii-2Ju">
             <objects>
-                <viewController id="pRs-jS-dBb" userLabel="Employee Name View Controller" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardNameViewController" title="Onboard Name View Controller" id="pRs-jS-dBb" userLabel="Onboard Name View Controller" customClass="OnboardNameViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tkr-Va-N7e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -492,10 +492,10 @@
             </objects>
             <point key="canvasLocation" x="1613.0434782608697" y="375.66964285714283"/>
         </scene>
-        <!--Employee Name View Controller-->
+        <!--Onboard Details View Controller-->
         <scene sceneID="XHZ-ne-bxI">
             <objects>
-                <viewController storyboardIdentifier="Employee Pay View Controller" id="1cG-DH-Gtj" userLabel="Employee Name View Controller" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardDetailsViewController" title="Onboard Details View Controller" id="1cG-DH-Gtj" userLabel="Onboard Details View Controller" customClass="OnboardDetailsViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u0o-0W-ZRV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -894,10 +894,10 @@
             </objects>
             <point key="canvasLocation" x="2447.826086956522" y="375.66964285714283"/>
         </scene>
-        <!--Employee Onboard-->
+        <!--Onboard Review View Controller-->
         <scene sceneID="NhC-n1-LUg">
             <objects>
-                <viewController title="Introduction View Controller" id="bDV-Vb-TeD" userLabel="Employee Onboard" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardReviewViewController" title="Onboard Review View Controller" id="bDV-Vb-TeD" userLabel="Onboard Review View Controller" customClass="OnboardReviewViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ikf-h3-ZPV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

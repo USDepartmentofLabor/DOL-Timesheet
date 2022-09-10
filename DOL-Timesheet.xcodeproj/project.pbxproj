@@ -120,6 +120,11 @@
 		696D20DD28318CC9007E041F /* DOL_Timesheet.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */; };
 		696D20DE28318CC9007E041F /* DOL_Timesheet.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */; };
 		698AE54728C7ACBA0038945B /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 698AE54628C7ACBA0038945B /* Onboarding.storyboard */; };
+		69ADCF7E28CCDB46001AC363 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF7D28CCDB46001AC363 /* OnboardWelcomeViewController.swift */; };
+		69ADCF8028CCDB5C001AC363 /* OnboardIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */; };
+		69ADCF8228CCDB70001AC363 /* OnboardNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8128CCDB70001AC363 /* OnboardNameViewController.swift */; };
+		69ADCF8428CCDB91001AC363 /* OnboardDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8328CCDB91001AC363 /* OnboardDetailsViewController.swift */; };
+		69ADCF8628CCDBB0001AC363 /* OnboardReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8528CCDBB0001AC363 /* OnboardReviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -260,6 +265,11 @@
 		696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-shm"; sourceTree = "<group>"; };
 		696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-wal"; sourceTree = "<group>"; };
 		698AE54628C7ACBA0038945B /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		69ADCF7D28CCDB46001AC363 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
+		69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardIntroductionViewController.swift; sourceTree = "<group>"; };
+		69ADCF8128CCDB70001AC363 /* OnboardNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardNameViewController.swift; sourceTree = "<group>"; };
+		69ADCF8328CCDB91001AC363 /* OnboardDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardDetailsViewController.swift; sourceTree = "<group>"; };
+		69ADCF8528CCDBB0001AC363 /* OnboardReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardReviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,7 +340,6 @@
 				0324C40D2260E8A600712576 /* Model */,
 				0324C3DC2260E47100712576 /* AppDelegate.swift */,
 				037C22682278B6400021A309 /* Profile.storyboard */,
-				698AE54628C7ACBA0038945B /* Onboarding.storyboard */,
 				0324C3E02260E47100712576 /* Main.storyboard */,
 				0324C3E62260E47200712576 /* Assets.xcassets */,
 				0324C3E82260E47200712576 /* LaunchScreen.storyboard */,
@@ -393,6 +402,7 @@
 		0324C41B2260FCDF00712576 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				69ADCF7C28CCD7C8001AC363 /* Onboarding */,
 				037C22612278B3890021A309 /* Profile */,
 				032C9F132264E80300FB1468 /* Setup */,
 				0324C421226100DD00712576 /* Info */,
@@ -598,6 +608,19 @@
 			path = Datafiles;
 			sourceTree = "<group>";
 		};
+		69ADCF7C28CCD7C8001AC363 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				698AE54628C7ACBA0038945B /* Onboarding.storyboard */,
+				69ADCF7D28CCDB46001AC363 /* OnboardWelcomeViewController.swift */,
+				69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */,
+				69ADCF8128CCDB70001AC363 /* OnboardNameViewController.swift */,
+				69ADCF8328CCDB91001AC363 /* OnboardDetailsViewController.swift */,
+				69ADCF8528CCDBB0001AC363 /* OnboardReviewViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -768,6 +791,7 @@
 				033FFFA922F1D47A00969E6D /* ImportDBService.swift in Sources */,
 				03E6818422665E90002F2345 /* PaymentTypeTableViewCell.swift in Sources */,
 				0328F169232808B9005204D4 /* TimeLogBreak+CoreDataClass.swift in Sources */,
+				69ADCF8028CCDB5C001AC363 /* OnboardIntroductionViewController.swift in Sources */,
 				03E68182226644B9002F2345 /* SetupPaymentTypeViewController.swift in Sources */,
 				032EB05F237DA88500B8D92A /* UIScrollView+Extension.swift in Sources */,
 				03E6817922663604002F2345 /* EmploymentInfoViewController.swift in Sources */,
@@ -783,9 +807,11 @@
 				03F2F5D922822CF8007B1B68 /* Date+Extension.swift in Sources */,
 				03A354C52280A871002536B8 /* HourlyPaymentViewController.swift in Sources */,
 				0327532D229334160019BA10 /* Util.swift in Sources */,
+				69ADCF8428CCDB91001AC363 /* OnboardDetailsViewController.swift in Sources */,
 				0329260F2289CB7D00DB69AD /* SummaryTableViewCell.swift in Sources */,
 				033225702295AA3400479578 /* ProfileViewModel.swift in Sources */,
 				0328C44322BC0DC700B3C911 /* GlossaryTableViewCell.swift in Sources */,
+				69ADCF8628CCDBB0001AC363 /* OnboardReviewViewController.swift in Sources */,
 				037C2259227896DB0021A309 /* Employee+CoreDataClass.swift in Sources */,
 				032719D02284846F00EE8881 /* DateLog+CoreDataClass.swift in Sources */,
 				032920D722C103C9003E4732 /* DropDownView.swift in Sources */,
@@ -810,7 +836,9 @@
 				037C226C2278C8730021A309 /* ProfileTableViewCell.swift in Sources */,
 				032560112268BE8D00BF64C5 /* SetupHourlyPaymentViewController.swift in Sources */,
 				0324C4202260FE3D00712576 /* UIBarButtonItem+Extension.swift in Sources */,
+				69ADCF8228CCDB70001AC363 /* OnboardNameViewController.swift in Sources */,
 				037F637E23A7E3BB00375AFB /* NSAttributedString+Extension.swift in Sources */,
+				69ADCF7E28CCDB46001AC363 /* OnboardWelcomeViewController.swift in Sources */,
 				0328A18622661EB900957F53 /* UIViewController+Extension.swift in Sources */,
 				59821CC122AABC1300436B03 /* PhoneFormatter.swift in Sources */,
 				032C9F192264F05700FB1468 /* UIView+Extension.swift in Sources */,
