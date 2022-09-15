@@ -116,6 +116,7 @@
 		59AD9E6422A1ADB500075193 /* SummaryTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59AD9E6222A1ADB500075193 /* SummaryTableViewHeaderView.xib */; };
 		59B1BEA22294588D00F0D37A /* TitleValueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B1BEA12294588D00F0D37A /* TitleValueLabel.swift */; };
 		59EB62F2229EE3EE00470AA4 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EB62F1229EE3EE00470AA4 /* ProfileModel.swift */; };
+		6927AB6628D28BF0003AF1B0 /* OnboardBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6927AB6528D28BF0003AF1B0 /* OnboardBaseViewController.swift */; };
 		696D20DC28318CC9007E041F /* DOL_Timesheet.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */; };
 		696D20DD28318CC9007E041F /* DOL_Timesheet.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */; };
 		696D20DE28318CC9007E041F /* DOL_Timesheet.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */; };
@@ -125,6 +126,8 @@
 		69ADCF8228CCDB70001AC363 /* OnboardNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8128CCDB70001AC363 /* OnboardNameViewController.swift */; };
 		69ADCF8428CCDB91001AC363 /* OnboardDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8328CCDB91001AC363 /* OnboardDetailsViewController.swift */; };
 		69ADCF8628CCDBB0001AC363 /* OnboardReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8528CCDBB0001AC363 /* OnboardReviewViewController.swift */; };
+		69ADCF8828CCE31C001AC363 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8728CCE31C001AC363 /* OnboardViewController.swift */; };
+		69ADCF8A28CCE32F001AC363 /* OnboardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8928CCE32F001AC363 /* OnboardPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -260,6 +263,7 @@
 		59AD9E6222A1ADB500075193 /* SummaryTableViewHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SummaryTableViewHeaderView.xib; path = "DOL-Timesheet/View/TableViewCell/SummaryTableViewHeaderView.xib"; sourceTree = SOURCE_ROOT; };
 		59B1BEA12294588D00F0D37A /* TitleValueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueLabel.swift; sourceTree = "<group>"; };
 		59EB62F1229EE3EE00470AA4 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		6927AB6528D28BF0003AF1B0 /* OnboardBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardBaseViewController.swift; sourceTree = "<group>"; };
 		69602727289840EB0033D6E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "DOL-Timesheet/es.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = DOL_Timesheet.sqlite; sourceTree = "<group>"; };
 		696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-shm"; sourceTree = "<group>"; };
@@ -270,6 +274,8 @@
 		69ADCF8128CCDB70001AC363 /* OnboardNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardNameViewController.swift; sourceTree = "<group>"; };
 		69ADCF8328CCDB91001AC363 /* OnboardDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardDetailsViewController.swift; sourceTree = "<group>"; };
 		69ADCF8528CCDBB0001AC363 /* OnboardReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardReviewViewController.swift; sourceTree = "<group>"; };
+		69ADCF8728CCE31C001AC363 /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
+		69ADCF8928CCE32F001AC363 /* OnboardPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -612,6 +618,9 @@
 			isa = PBXGroup;
 			children = (
 				698AE54628C7ACBA0038945B /* Onboarding.storyboard */,
+				69ADCF8728CCE31C001AC363 /* OnboardViewController.swift */,
+				69ADCF8928CCE32F001AC363 /* OnboardPageViewController.swift */,
+				6927AB6528D28BF0003AF1B0 /* OnboardBaseViewController.swift */,
 				69ADCF7D28CCDB46001AC363 /* OnboardWelcomeViewController.swift */,
 				69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */,
 				69ADCF8128CCDB70001AC363 /* OnboardNameViewController.swift */,
@@ -818,9 +827,11 @@
 				03F2F5D52282090A007B1B68 /* NumberFormatter+Extension.swift in Sources */,
 				032E5F2C22A99EE400F6EC26 /* BorderedView.swift in Sources */,
 				03A354C72280AC1C002536B8 /* SalaryPaymentViewController.swift in Sources */,
+				69ADCF8A28CCE32F001AC363 /* OnboardPageViewController.swift in Sources */,
 				032C9F172264EB3700FB1468 /* SetupProfileViewController.swift in Sources */,
 				59AD9E5B22A1645800075193 /* Style.swift in Sources */,
 				59B1BEA22294588D00F0D37A /* TitleValueLabel.swift in Sources */,
+				6927AB6628D28BF0003AF1B0 /* OnboardBaseViewController.swift in Sources */,
 				032C9F1B2264FD1900FB1468 /* ButonWithInfo.swift in Sources */,
 				033FB84E2296E658006BA459 /* String+Extension.swift in Sources */,
 				0324C40F2260E8B000712576 /* CoreDataManager.swift in Sources */,
@@ -844,6 +855,7 @@
 				032C9F192264F05700FB1468 /* UIView+Extension.swift in Sources */,
 				037C226022789AA60021A309 /* EmploymentModel.swift in Sources */,
 				03CEDF84226E33DE0041C3ED /* ActionButton.swift in Sources */,
+				69ADCF8828CCE31C001AC363 /* OnboardViewController.swift in Sources */,
 				03F2F5D32281C081007B1B68 /* OptionsListViewController.swift in Sources */,
 				032C9F1F2265000D00FB1468 /* LabelInfoView.swift in Sources */,
 				0328BCB7227244D7006B695A /* SetupSalaryPaymentViewController.swift in Sources */,

@@ -44,7 +44,8 @@ class TimeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         guard let viewModel = viewModel, viewModel.userProfileExists else {
-            performSegue(withIdentifier: "setupProfile", sender: nil)
+            //performSegue(withIdentifier: "setupProfile", sender: nil)
+            performSegue(withIdentifier: "showOnboard", sender: nil)
             return
         }
     }
@@ -133,7 +134,11 @@ class TimeViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "setupProfile",
+        if segue.identifier == "showOnboard",
+            let introVC = segue.destination as? OnboardViewController {
+           // introVC.delegate = self
+        }
+        else if segue.identifier == "setupProfile",
             let navVC = segue.destination as? UINavigationController,
             let introVC = navVC.topViewController as? IntroductionViewController {
             introVC.delegate = self
