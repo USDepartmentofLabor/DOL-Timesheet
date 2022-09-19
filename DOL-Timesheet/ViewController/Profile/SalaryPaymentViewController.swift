@@ -74,7 +74,9 @@ class SalaryPaymentViewController: UIViewController {
         salaryTextField.scaleFont(forDataType: .nameValueText)
         salaryContentView.addBorder()
         salaryTextField.addTarget(self, action: #selector(salaryAmountDidChange(_:)), for: .editingChanged)
-        
+        salaryLabel.text = NSLocalizedString("payment_type_salary", comment: "Salary")
+        fslaTextView.text = NSLocalizedString("fsla_requirements", comment: "fsla requirements")
+
         let salaryTypeTapGesture = UITapGestureRecognizer(target: self, action: #selector(salaryTypeClick(_:)))
         salaryTypeTapGesture.cancelsTouchesInView = false
         salaryTypeView.addGestureRecognizer(salaryTypeTapGesture)

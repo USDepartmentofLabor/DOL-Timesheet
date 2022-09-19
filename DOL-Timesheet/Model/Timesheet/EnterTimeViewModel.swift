@@ -84,7 +84,7 @@ struct EnterTimeViewModel {
         case .ok:
             errStr = ""
         case .tooEarly:
-            errStr = NSLocalizedString("err_time_too_early", comment: "The time you entered is too early. The time must be after any time entries above.")
+            errStr = NSLocalizedString("err_time_too_early", comment: "The time you entered is too early. The time must be after any other time entries.")
             return errStr
         case .tooLate:
             errStr = NSLocalizedString("err_time_too_late", comment: "The time you entered is too late. The time must be before any time entries below.")

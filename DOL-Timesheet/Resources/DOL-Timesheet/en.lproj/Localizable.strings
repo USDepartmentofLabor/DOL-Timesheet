@@ -357,3 +357,5 @@
 "save" = "Save";
 "salary_payment" = "Salary Payment";
 "info_regular_rate_pay" = "The regular rate of pay, upon which an employer calculates an employee’s overtime rate, cannot be less than the minimum wage. The regular rate includes all payment for employment except certain payments that the law allows employers to exclude.";
+"period_of" = "Period of";
+"set_start_time_before_end_time" = "End Time can\'t be set until Start Time has been set";

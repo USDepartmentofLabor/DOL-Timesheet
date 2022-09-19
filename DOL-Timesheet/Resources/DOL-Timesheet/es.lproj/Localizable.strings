@@ -148,8 +148,7 @@
 "hourly_rate_hint" = "Presione para Seleccionar Tarifa por Hora";
 "enter_comments" = "Ingresar Comentarios";
 "enter_daily_comments" = "Ingresar Comentarios Diarios.";
-"break_time_warning" = "Rest periods of short duration, usually 20 minutes or less, are common in industry and are customarily paid for as working time. These short periods will be counted as hours worked.";
-
+"break_time_warning" = "Los tiempos de descanso de corta duración, usualmente 20 minutos o menos, son comunes en la industria y por lo general se pagan como tiempo trabajado. Estos períodos cortos deben contarse como horas trabajadas. Los períodos realmente para comer (típicamente 30 minutos o más) generalmente no necesitan ser compensados como tiempo de trabajo. El empleado debe estar completamente libre de sus tareas con el propósito de comer sus alimentos regulares para que ese tiempo no cuente como horas trabajadas. Para propósitos de esta Hoja de Asistencia-DOL, todos los tiempos de descanso que excedan los 20 minutos se descontarán de su total de horas trabajadas. Para preguntas relacionadas a las deducciones adecuadas para el tiempo de descanso, comuníquese con la División de Horas y Salarios.";
 "edit" = "Editar";
 "done" = "Listo";
 "delete" = "Eliminar";
@@ -200,7 +199,7 @@
 "err_title_minimum_weekly_wage" = "Su salario parece estar por debajo del requisito federal";
 "err_invalid_supervisor_emailaddress" = "Por favor, ingrese dirección de correo electrónico de supervisor válida.";
 "warning" = "Advertencia";
-"warning_split_time" = "Las horas después de la medianoche se ingresarán en su hoja de asistencia del día siguiente. ¿Desea continuar?";
+"warning_split_time" = "Las horas después de la medianoche se refejarán en su hoja de asistencia del día siguiente. ¿Desea continuar?";
 //Are you sure you want to enter in hours for the next day?";
 
 
@@ -318,7 +317,7 @@
 "contact_whd_operation_hours" = "Hay ayuda disponible de lunes a viernes, 8AM \- 8PM horario del este";
 "contact_whd_phonetic_phone" = "1\-866\-4\-USWAGE (1\-866\-487\-9243)";
 "contact_whd_tty_title" = "1\-877\-889\-5627(TTY)";
-"contact_statement" = "Todos los servicios son gratuitos y confidenciales, ya sea que sea que tenga documentos o no. Por favor, recuerde que su empleador no puede despedirlo ni discriminarlo de ninguna forma por presentar una queja ante la División de Horas y Salarios.";
+"contact_statement" = "Todos los servicios son gratuitos y confidenciales, ya sea que tenga documentos o no. Por favor, recuerde que su empleador no puede despedirlo ni discriminarlo de ninguna forma por presentar una queja ante la División de Horas y Salarios.";
 "ask_us_a_specific_question" = "Háganos una pregunta específica";
 "send_email_whd" = "Formulario de contacto electrónico de la división de horas y salarios";
 "tell_us_about_issues_with_the_app" = "Cuéntenos sobre los problemas con la aplicación";
@@ -357,3 +356,5 @@
 "save" = "Guardar";
 "salary_payment" = "Pago de Salario";
 "info_regular_rate_pay" = "La tarifa de pago regular, sobre la cual un empleador calcula la tarifa de sobretiempo de un empleado, no puede ser menos del salario mínimo.La tarifa de pago regular incluye todos los pagos por empleo, excepto ciertos pagos que la ley permite que los empleadores excluyan.";
+"period_of" = "Periodo de";
+"set_start_time_before_end_time" = "La Hora de Salida no se puede ingresar hasta que se ingrese una Hora de Entrada";
