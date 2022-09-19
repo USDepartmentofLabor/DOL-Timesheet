@@ -19,6 +19,7 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
     @IBOutlet weak var employerLabel: UILabel!
     @IBOutlet weak var employerButton: UIButton!
     
+//    lazy var viewModel
     
     @IBOutlet weak var nextButton: NavigationButton!
 //    weak var delegate: TimeViewControllerDelegate?
@@ -68,12 +69,73 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
     @IBAction func employeeSelected(_ sender: Any) {
         employerButton.tintColor = UIColor.white
         employeeButton.tintColor = UIColor.systemBlue
-        viewModel?.isWizard
+        
+        if let employee = viewModel.profileModel.currentUser as? Employee {
+            changeToEmployer(employee: employee)
+        }
     }
     
     @IBAction func employerSelected(_ sender: Any) {
         employerButton.tintColor = UIColor.systemBlue
         employeeButton.tintColor = UIColor.white
         
+        if let employer = viewModel.profileModel.currentUser as? Employer {
+            changeToEmployee(employer: employer)
+        }
     }
+    
+    fileprivate func changeToEmployee(employer: Employer) {
+        if (employer.employees?.count ?? 0) > 0 {
+            let alertController =
+                UIAlertController(title: NSLocalizedString("confirm_title", comment: "Confirm"),
+                                  message: NSLocalizedString("confirm_delete_employees",
+                                                             comment: "Delete Employees?"),
+                                  preferredStyle: .alert)
+            
+            alertController.addAction(
+                UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+            alertController.addAction(
+                UIAlertAction(title: NSLocalizedString("delete", comment: "Delete"), style: .destructive) { _ in
+                    self.toggleUserType()
+                }
+            )
+            present(alertController, animated: true)
+        }
+        else {
+            toggleUserType()
+        }
+    }
+    
+    fileprivate func changeToEmployer(employee: Employee) {
+        if (employee.employers?.count ?? 0) > 0 {
+            let alertController =
+                UIAlertController(title: NSLocalizedString("confirm_title", comment: "Confirm"),
+                                  message: NSLocalizedString("confirm_delete_employers",
+                                                             comment: "Confirm Delete Employers"),
+                                  preferredStyle: .alert)
+            
+            alertController.addAction(
+                UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+            alertController.addAction(
+                UIAlertAction(title: NSLocalizedString("delete", comment: "Delete"), style: .destructive) { _ in
+                    self.toggleUserType()
+                }
+            )
+            present(alertController, animated: true)
+        }
+        else {
+            toggleUserType()
+        }
+    }
+    
+    func toggleUserType() {
+        if let employer = viewModel.profileModel.currentUser as? Employer {
+            viewModel.changeToEmployee(employer: employer)
+        }
+        else if let employee = viewModel.profileModel.currentUser as? Employee {
+            viewModel.changeToEmployer(employee: employee)
+        }
+        manageVC?.viewModel = ProfileViewModel(context: viewModel.managedObjectContext.childManagedObjectContext())
+    }
+    
 }

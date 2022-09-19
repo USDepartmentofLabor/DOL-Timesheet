@@ -9,7 +9,12 @@
 import UIKit
 
 class OnboardBaseViewController: UIViewController {
-    var viewModel: EmploymentModel?
+    let updatedDBVersion = "UpdatedDBVersion"
+    var isWizard: Bool = false
+    var userType: UserType = .employee
+    
+    weak var manageVC: ManageUsersViewController?
+    var viewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
     
     weak var delegate: TimeViewControllerDelegate?
     
@@ -24,16 +29,33 @@ class OnboardBaseViewController: UIViewController {
     }
     
     func configureView() {
-        if viewModel?.isWizard ?? false {
-            let skipBtn = UIBarButtonItem(title: NSLocalizedString("skip", comment: "Skip"), style: .plain, target: self, action: #selector(skipClicked(_:)))
-
-            if let viewModel = viewModel, viewModel.isProfileEmployer {            skipBtn.accessibilityHint = NSLocalizedString("skip_employee_hint", comment: "Skip Adding Employee")
-            }
-            else {
-                skipBtn.accessibilityHint = NSLocalizedString("skip_employer_hint", comment: "Skip Adding Employer")
+        guard let profileUser = viewModel.profileModel.currentUser else {
+            manageEmploymentContentView.removeFromSuperview()
+            
+            profileType = .employee
+            isWizard = true
+            
+            // if OldDB exists and hasn't been imported
+            let versionUpdated = UserDefaults.standard.bool(forKey: updatedDBVersion)
+            if versionUpdated == false, ImportDBService.dbExists {
+//                employerBtn.setTitleColor(.lightGray, for: .disabled)
+//                employerBtn.isEnabled = false
+//                employerBtn.isAccessibilityElement = false
+//                employeeEmployerInfoView.infoType = .importDBEmployee
             }
             
-            navigationItem.rightBarButtonItem = skipBtn
+            
+//        if viewModel?.isWizard ?? false {
+//            let skipBtn = UIBarButtonItem(title: NSLocalizedString("skip", comment: "Skip"), style: .plain, target: self, action: #selector(skipClicked(_:)))
+//
+//            if let viewModel = viewModel, viewModel.isProfileEmployer {            skipBtn.accessibilityHint = NSLocalizedString("skip_employee_hint", comment: "Skip Adding Employee")
+//            }
+//            else {
+//                skipBtn.accessibilityHint = NSLocalizedString("skip_employer_hint", comment: "Skip Adding Employer")
+//            }
+//            
+//            navigationItem.rightBarButtonItem = skipBtn
+//        }
         }
     }
     

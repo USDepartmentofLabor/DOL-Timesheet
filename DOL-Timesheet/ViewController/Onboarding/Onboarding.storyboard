@@ -285,7 +285,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="652"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VAO-KD-N4A">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="413.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="418.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="displayLogo" translatesAutoresizingMaskIntoConstraints="NO" id="QJY-5a-h61">
                                                 <rect key="frame" x="87" y="0.0" width="240" height="128"/>
@@ -312,6 +312,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="nameSet:" destination="pRs-jS-dBb" eventType="editingDidEnd" id="nZj-18-HyH"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your employer's name or nickname?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bW0-1v-KJZ">
                                                 <rect key="frame" x="8" y="238.5" width="398" height="20.5"/>
@@ -331,6 +334,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="otherNameSet:" destination="pRs-jS-dBb" eventType="editingDidEnd" id="Pwb-hz-w8t"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When does the workweek begin?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qi4-o4-Ezl">
                                                 <rect key="frame" x="59" y="341" width="296" height="20.5"/>
@@ -351,18 +357,20 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="questionmark.circle" catalog="system" title=" "/>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BQA-Wp-AN8" userLabel="WorkweekStart">
-                                                <rect key="frame" x="8" y="369.5" width="398" height="34"/>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UH-gz-RTy" userLabel="Pay Frequency">
+                                                <rect key="frame" x="8" y="369.5" width="398" height="39"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="R7X-qs-r9t"/>
-                                                    <constraint firstAttribute="width" constant="398" id="ebO-Ds-qWb"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="39" id="66b-fh-kBV"/>
+                                                    <constraint firstAttribute="width" constant="398" id="C3r-PU-4Af"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="398" id="TgT-g5-KNf"/>
+                                                    <constraint firstAttribute="height" constant="39" id="aSA-WS-bFW"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            </pickerView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="5UH-gz-RTy" secondAttribute="trailing" constant="8" id="08d-Ni-fC5"/>
+                                            <constraint firstItem="5UH-gz-RTy" firstAttribute="leading" secondItem="VAO-KD-N4A" secondAttribute="leading" constant="8" id="1eg-Kk-6dI"/>
                                             <constraint firstItem="QJY-5a-h61" firstAttribute="leading" secondItem="VAO-KD-N4A" secondAttribute="leading" constant="87" id="2tP-I3-x1F"/>
                                             <constraint firstAttribute="trailing" secondItem="QJY-5a-h61" secondAttribute="trailing" constant="87" id="3cT-Qv-cuZ"/>
                                             <constraint firstItem="zv8-2x-5wC" firstAttribute="centerY" secondItem="qi4-o4-Ezl" secondAttribute="centerY" id="6jy-gm-eVE"/>
@@ -371,10 +379,9 @@
                                             <constraint firstItem="RB8-rY-LB4" firstAttribute="leading" secondItem="VAO-KD-N4A" secondAttribute="leading" constant="8" id="8ub-qE-RWF"/>
                                             <constraint firstAttribute="trailing" secondItem="RB8-rY-LB4" secondAttribute="trailing" constant="8" id="C1G-u3-6L8"/>
                                             <constraint firstItem="bW0-1v-KJZ" firstAttribute="leading" secondItem="VAO-KD-N4A" secondAttribute="leading" constant="8" id="D8p-WZ-xgf"/>
-                                            <constraint firstItem="BQA-Wp-AN8" firstAttribute="leading" secondItem="VAO-KD-N4A" secondAttribute="leading" constant="8" id="DIz-7F-Bv7"/>
+                                            <constraint firstAttribute="bottom" secondItem="5UH-gz-RTy" secondAttribute="bottom" constant="10" id="DUk-pH-7ee"/>
                                             <constraint firstItem="Ysb-PE-k93" firstAttribute="top" secondItem="QJY-5a-h61" secondAttribute="bottom" constant="8" symbolic="YES" id="GjQ-sM-8IA"/>
                                             <constraint firstItem="qi4-o4-Ezl" firstAttribute="top" secondItem="RB8-rY-LB4" secondAttribute="bottom" constant="40" id="JwL-aG-PLa"/>
-                                            <constraint firstItem="BQA-Wp-AN8" firstAttribute="top" secondItem="qi4-o4-Ezl" secondAttribute="bottom" constant="8" id="KsL-CK-J13"/>
                                             <constraint firstAttribute="trailing" secondItem="bW0-1v-KJZ" secondAttribute="trailing" constant="8" id="QJr-VT-RFq"/>
                                             <constraint firstAttribute="trailing" secondItem="ndb-XR-AJa" secondAttribute="trailing" constant="8" id="RPa-Qd-Hrw"/>
                                             <constraint firstItem="zv8-2x-5wC" firstAttribute="leading" secondItem="qi4-o4-Ezl" secondAttribute="trailing" constant="8" id="STe-s2-d8v"/>
@@ -382,11 +389,10 @@
                                             <constraint firstItem="QJY-5a-h61" firstAttribute="top" secondItem="VAO-KD-N4A" secondAttribute="top" id="Wgg-QS-eSk"/>
                                             <constraint firstItem="ndb-XR-AJa" firstAttribute="top" secondItem="Ysb-PE-k93" secondAttribute="bottom" constant="8" id="aK4-zx-kmw"/>
                                             <constraint firstItem="bW0-1v-KJZ" firstAttribute="top" secondItem="ndb-XR-AJa" secondAttribute="bottom" constant="40" id="ear-Nu-3sX"/>
-                                            <constraint firstAttribute="bottom" secondItem="BQA-Wp-AN8" secondAttribute="bottom" constant="10" id="fWW-7f-hDH"/>
+                                            <constraint firstItem="5UH-gz-RTy" firstAttribute="top" secondItem="qi4-o4-Ezl" secondAttribute="bottom" constant="8" id="iaY-Gt-1O6"/>
                                             <constraint firstItem="RB8-rY-LB4" firstAttribute="top" secondItem="bW0-1v-KJZ" secondAttribute="bottom" constant="8" id="jlH-QW-gLR"/>
                                             <constraint firstAttribute="trailing" secondItem="zv8-2x-5wC" secondAttribute="trailing" constant="6" id="l7A-mw-MXU"/>
                                             <constraint firstItem="Ysb-PE-k93" firstAttribute="leading" secondItem="VAO-KD-N4A" secondAttribute="leading" constant="8" id="lD3-gu-V5h"/>
-                                            <constraint firstAttribute="trailing" secondItem="BQA-Wp-AN8" secondAttribute="trailing" constant="8" id="syr-xk-PPy"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -431,7 +437,6 @@
                         <outlet property="nameNoteLabel" destination="vp2-eB-ugB" id="PD9-dn-2sA"/>
                         <outlet property="otherNameField" destination="RB8-rY-LB4" id="Duw-1M-mbP"/>
                         <outlet property="otherNameLabel" destination="bW0-1v-KJZ" id="6Ut-l2-Ucy"/>
-                        <outlet property="workweekField" destination="BQA-Wp-AN8" id="mgk-Ww-AL2"/>
                         <outlet property="workweekLabel" destination="qi4-o4-Ezl" id="ehL-J1-tYi"/>
                     </connections>
                 </viewController>

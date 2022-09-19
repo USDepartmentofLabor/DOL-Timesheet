@@ -56,4 +56,19 @@ class OnboardNameViewController: OnboardBaseViewController {
 //            setupVC.delegate = delegate
 //        }
 //    }
+    
+    @IBAction func nameSet(_ sender: Any) {
+        
+        let userName = nameField.text ?? ""
+//        let userType = UserType(rawValue: employeeBtn.isSelected ? 0 : 1) ?? UserType.employee
+        
+        let profileUser = viewModel.profileModel.newProfile(type: userType, name: userName)
+        saveProfile()
+    }
+    
+    @IBAction func otherNameSet(_ sender: Any) {
+        
+        let otherName = otherNameField.text ?? ""
+    }
+    
 }
