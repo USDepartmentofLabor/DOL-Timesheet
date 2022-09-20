@@ -8,10 +8,18 @@
 
 import UIKit
 
+protocol OnboardingProtocol: AnyObject {
+    func canMoveForward(vcIndex: Int)
+}
+
 class OnboardBaseViewController: UIViewController {
     let updatedDBVersion = "UpdatedDBVersion"
     var isWizard: Bool = false
     var userType: UserType = .employee
+    
+    var onboardingDelegate: OnboardingProtocol?
+    var canMoveForward: Bool = false
+    var vcIndex: Int = 0
     
     weak var manageVC: ManageUsersViewController?
     var viewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
@@ -81,3 +89,4 @@ class OnboardBaseViewController: UIViewController {
 //    }
 }
 }
+

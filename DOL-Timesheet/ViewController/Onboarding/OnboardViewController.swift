@@ -30,6 +30,13 @@ class OnboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         pageControl.addTarget(self, action: Selector(("didChangePageControlValue")), for: .valueChanged)
+        
+        if let vcs = onboardPageViewController?.orderedViewControllers {
+            for (index, element) in vcs.enumerated() {
+                element.onboardingDelegate = self
+                element.vcIndex = index
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -66,4 +73,10 @@ extension OnboardViewController: OnboardPageViewControllerDelegate {
         pageControl.currentPage = index
     }
     
+}
+
+extension OnboardViewController: OnboardingProtocol {
+    func canMoveForward(vcIndex: Int) {
+        print("Can Move Forward at Index \(vcIndex)")
+    }
 }

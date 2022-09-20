@@ -71,6 +71,8 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
 //    }
     
     @IBAction func employeeSelected(_ sender: Any) {
+        onboardingDelegate?.canMoveForward(vcIndex: vcIndex)
+        
         employerButton.tintColor = UIColor.white
         employeeButton.tintColor = UIColor.systemBlue
         
@@ -80,6 +82,9 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
     }
     
     @IBAction func employerSelected(_ sender: Any) {
+        
+        onboardingDelegate?.canMoveForward(vcIndex: vcIndex)
+        
         employerButton.tintColor = UIColor.systemBlue
         employeeButton.tintColor = UIColor.white
         
