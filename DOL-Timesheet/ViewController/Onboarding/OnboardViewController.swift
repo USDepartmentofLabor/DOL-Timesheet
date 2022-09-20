@@ -4,6 +4,15 @@
 //  Created by Greg Gruse on 9/10/22.
 //  Copyright © 2022 Department of Labor. All rights reserved.
 //
+//  This controls the forward / back / progress indicators
+//
+//  Interfaces with the pager to control movement
+//
+//  It has to know if we can move forward from the current STATE
+//
+//  When we can move forward let the lower VCs know to SAVE
+//      The lower VCs tell this one you can move forward
+//
 
 import UIKit
 
@@ -30,6 +39,7 @@ class OnboardViewController: UIViewController {
     }
 
     @IBAction func didTapNextButton(_ sender: Any) {
+        onboardPageViewController?.currentVC?.saveData()
         onboardPageViewController?.scrollToNextViewController()
     }
     

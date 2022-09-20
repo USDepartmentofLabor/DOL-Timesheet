@@ -49,6 +49,10 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         setupAccessibility()
     }
     
+    override func saveData() {
+        print("OnboardWelcomeViewController SAVE DATA")
+    }
+    
     func setupAccessibility() {
        // displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
     }

@@ -36,6 +36,10 @@ class OnboardReviewViewController: OnboardBaseViewController {
         displayInfo()
     }
     
+    override func saveData() {
+        print("OnboardReviewViewController SAVE DATA")
+    }
+    
     override func setupView() {
 //        title = NSLocalizedString("introduction", comment: "Introduction")
 //        label1.scaleFont(forDataType: .introductionBoldText)

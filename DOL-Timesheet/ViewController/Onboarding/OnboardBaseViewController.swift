@@ -24,15 +24,19 @@ class OnboardBaseViewController: UIViewController {
         setupView()
     }
     
+    func saveData() {
+        print("OnboardBaseViewController SAVE DATA")
+    }
+    
     func setupView() {
         configureView()
     }
     
     func configureView() {
-        guard let profileUser = viewModel.profileModel.currentUser else {
-            manageEmploymentContentView.removeFromSuperview()
-            
-            profileType = .employee
+    //    guard let profileUser = viewModel.profileModel.currentUser else {
+//            manageEmploymentContentView.removeFromSuperview()
+//            
+//            profileType = .employee
             isWizard = true
             
             // if OldDB exists and hasn't been imported
@@ -56,23 +60,24 @@ class OnboardBaseViewController: UIViewController {
 //            
 //            navigationItem.rightBarButtonItem = skipBtn
 //        }
-        }
-    }
+     //   }
+//    }
     
-    @IBAction func skipClicked(_ sender: Any) {
-        delegate?.didUpdateUser()
-        dismiss(animated: true, completion: nil)
-    }
-
-    @IBAction func cancelClicked(_ sender: Any) {
-        delegate?.didUpdateUser()
-        dismiss(animated: true, completion: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destVC = segue.destination as? OnboardBaseViewController {
-            destVC.viewModel = viewModel
-            destVC.delegate = delegate
-        }
-    }
+//    @IBAction func skipClicked(_ sender: Any) {
+//        delegate?.didUpdateUser()
+//        dismiss(animated: true, completion: nil)
+//    }
+//
+//    @IBAction func cancelClicked(_ sender: Any) {
+//        delegate?.didUpdateUser()
+//        dismiss(animated: true, completion: nil)
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destVC = segue.destination as? OnboardBaseViewController {
+//            destVC.viewModel = viewModel
+//            destVC.delegate = delegate
+//        }
+//    }
+}
 }

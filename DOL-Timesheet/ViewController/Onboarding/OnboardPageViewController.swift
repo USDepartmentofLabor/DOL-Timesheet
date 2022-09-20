@@ -11,7 +11,7 @@ class OnboardPageViewController: UIPageViewController {
     
     weak var onboardDelegate: OnboardPageViewControllerDelegate?
     
-    private(set) lazy var orderedViewControllers: [UIViewController] = {
+    public lazy var orderedViewControllers: [OnboardBaseViewController] = {
         // The view controllers will be shown in this order
         return [
             self.newOnboardViewController("OnboardWelcomeViewController"),
@@ -22,6 +22,8 @@ class OnboardPageViewController: UIPageViewController {
         ]
     }()
     
+    public var currentVC: OnboardBaseViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +31,7 @@ class OnboardPageViewController: UIPageViewController {
         delegate = self
         
         if let initialViewController = orderedViewControllers.first {
+            currentVC = initialViewController
             scrollToViewController(viewController: initialViewController)
         }
         
@@ -39,9 +42,10 @@ class OnboardPageViewController: UIPageViewController {
      Scrolls to the next view controller.
      */
     func scrollToNextViewController() {
-        if let visibleViewController = viewControllers?.first,
+        if let visibleViewController = viewControllers?.first as? OnboardBaseViewController,
             let nextViewController = pageViewController(self, viewControllerAfter: visibleViewController) {
-                    scrollToViewController(viewController: nextViewController)
+                currentVC = nextViewController as? OnboardBaseViewController
+                scrollToViewController(viewController: nextViewController)
         }
     }
     
@@ -49,9 +53,10 @@ class OnboardPageViewController: UIPageViewController {
      Scrolls to the previous view controller.
      */
     func scrollToPreviousViewController() {
-        if let visibleViewController = viewControllers?.first,
+        if let visibleViewController: OnboardBaseViewController = viewControllers?.first as? OnboardBaseViewController,
             let nextViewController = pageViewController(self, viewControllerBefore: visibleViewController) {
-                    scrollToViewController(viewController: nextViewController)
+                currentVC = nextViewController as? OnboardBaseViewController
+                scrollToViewController(viewController: nextViewController)
         }
     }
     
@@ -62,17 +67,18 @@ class OnboardPageViewController: UIPageViewController {
      - parameter newIndex: the new index to scroll to
      */
     func scrollToViewController(index newIndex: Int) {
-        if let firstViewController = viewControllers?.first,
+        if let firstViewController = viewControllers?.first as? OnboardBaseViewController,
             let currentIndex = orderedViewControllers.firstIndex(of: firstViewController) {
             let direction: UIPageViewController.NavigationDirection = newIndex >= currentIndex ? .forward : .reverse
                 let nextViewController = orderedViewControllers[newIndex]
+                currentVC = nextViewController as OnboardBaseViewController
                 scrollToViewController(viewController: nextViewController, direction: direction)
         }
     }
     
-    func newOnboardViewController(_ vcid: String) -> UIViewController {
+    func newOnboardViewController(_ vcid: String) -> OnboardBaseViewController {
         return UIStoryboard(name: "Onboarding", bundle: nil) .
-            instantiateViewController(withIdentifier: vcid)
+            instantiateViewController(withIdentifier: vcid) as! OnboardBaseViewController
     }
     
     /**
@@ -97,7 +103,7 @@ class OnboardPageViewController: UIPageViewController {
      Notifies '_tutorialDelegate' that the current page index was updated.
      */
     private func notifyTutorialDelegateOfNewIndex() {
-        if let firstViewController = viewControllers?.first,
+        if let firstViewController = viewControllers?.first as? OnboardBaseViewController,
             let index = orderedViewControllers.firstIndex(of: firstViewController) {
             onboardDelegate?.onboardPageViewController(onboardPageViewController: self, didUpdatePageIndex: index)
         }
@@ -111,7 +117,7 @@ extension OnboardPageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-            guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController) else {
+            guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController as! OnboardBaseViewController) else {
                 return nil
             }
             
@@ -132,7 +138,7 @@ extension OnboardPageViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-            guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController) else {
+        guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController as! OnboardBaseViewController) else {
                 return nil
             }
             

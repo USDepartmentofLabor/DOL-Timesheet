@@ -29,6 +29,10 @@ class OnboardIntroductionViewController: OnboardBaseViewController {
         displayInfo()
     }
     
+    override func saveData() {
+        print("OnboardIntroductionViewController SAVE DATA")
+    }
+    
     override func setupView() {
         title = NSLocalizedString("introduction", comment: "Introduction")
 //        label1.scaleFont(forDataType: .introductionBoldText)
