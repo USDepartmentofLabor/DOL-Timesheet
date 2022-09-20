@@ -21,6 +21,7 @@ class OnboardNameViewController: OnboardBaseViewController {
     @IBOutlet weak var workweekField: UITextField!
     @IBOutlet weak var nameNoteLabel: UILabel!
     
+    @IBOutlet weak var payFrequencyPickerHeight: NSLayoutConstraint!
     
     @IBOutlet weak var nextButton: NavigationButton!
 //    weak var delegate: TimeViewControllerDelegate?
@@ -63,7 +64,7 @@ class OnboardNameViewController: OnboardBaseViewController {
 //        let userType = UserType(rawValue: employeeBtn.isSelected ? 0 : 1) ?? UserType.employee
         
         let profileUser = viewModel.profileModel.newProfile(type: userType, name: userName)
-        saveProfile()
+     //   saveProfile()
     }
     
     @IBAction func otherNameSet(_ sender: Any) {
