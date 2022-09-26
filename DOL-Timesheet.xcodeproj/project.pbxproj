@@ -116,10 +116,18 @@
 		59AD9E6422A1ADB500075193 /* SummaryTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59AD9E6222A1ADB500075193 /* SummaryTableViewHeaderView.xib */; };
 		59B1BEA22294588D00F0D37A /* TitleValueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B1BEA12294588D00F0D37A /* TitleValueLabel.swift */; };
 		59EB62F2229EE3EE00470AA4 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EB62F1229EE3EE00470AA4 /* ProfileModel.swift */; };
+		6927AB6628D28BF0003AF1B0 /* OnboardBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6927AB6528D28BF0003AF1B0 /* OnboardBaseViewController.swift */; };
 		696D20DC28318CC9007E041F /* DOL_Timesheet.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */; };
 		696D20DD28318CC9007E041F /* DOL_Timesheet.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */; };
 		696D20DE28318CC9007E041F /* DOL_Timesheet.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */; };
 		698AE54728C7ACBA0038945B /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 698AE54628C7ACBA0038945B /* Onboarding.storyboard */; };
+		69ADCF7E28CCDB46001AC363 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF7D28CCDB46001AC363 /* OnboardWelcomeViewController.swift */; };
+		69ADCF8028CCDB5C001AC363 /* OnboardIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */; };
+		69ADCF8228CCDB70001AC363 /* OnboardNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8128CCDB70001AC363 /* OnboardNameViewController.swift */; };
+		69ADCF8428CCDB91001AC363 /* OnboardDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8328CCDB91001AC363 /* OnboardDetailsViewController.swift */; };
+		69ADCF8628CCDBB0001AC363 /* OnboardReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8528CCDBB0001AC363 /* OnboardReviewViewController.swift */; };
+		69ADCF8828CCE31C001AC363 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8728CCE31C001AC363 /* OnboardViewController.swift */; };
+		69ADCF8A28CCE32F001AC363 /* OnboardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8928CCE32F001AC363 /* OnboardPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,11 +263,19 @@
 		59AD9E6222A1ADB500075193 /* SummaryTableViewHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SummaryTableViewHeaderView.xib; path = "DOL-Timesheet/View/TableViewCell/SummaryTableViewHeaderView.xib"; sourceTree = SOURCE_ROOT; };
 		59B1BEA12294588D00F0D37A /* TitleValueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueLabel.swift; sourceTree = "<group>"; };
 		59EB62F1229EE3EE00470AA4 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		6927AB6528D28BF0003AF1B0 /* OnboardBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardBaseViewController.swift; sourceTree = "<group>"; };
 		69602727289840EB0033D6E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "DOL-Timesheet/es.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = DOL_Timesheet.sqlite; sourceTree = "<group>"; };
 		696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-shm"; sourceTree = "<group>"; };
 		696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-wal"; sourceTree = "<group>"; };
 		698AE54628C7ACBA0038945B /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		69ADCF7D28CCDB46001AC363 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
+		69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardIntroductionViewController.swift; sourceTree = "<group>"; };
+		69ADCF8128CCDB70001AC363 /* OnboardNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardNameViewController.swift; sourceTree = "<group>"; };
+		69ADCF8328CCDB91001AC363 /* OnboardDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardDetailsViewController.swift; sourceTree = "<group>"; };
+		69ADCF8528CCDBB0001AC363 /* OnboardReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardReviewViewController.swift; sourceTree = "<group>"; };
+		69ADCF8728CCE31C001AC363 /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
+		69ADCF8928CCE32F001AC363 /* OnboardPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,7 +346,6 @@
 				0324C40D2260E8A600712576 /* Model */,
 				0324C3DC2260E47100712576 /* AppDelegate.swift */,
 				037C22682278B6400021A309 /* Profile.storyboard */,
-				698AE54628C7ACBA0038945B /* Onboarding.storyboard */,
 				0324C3E02260E47100712576 /* Main.storyboard */,
 				0324C3E62260E47200712576 /* Assets.xcassets */,
 				0324C3E82260E47200712576 /* LaunchScreen.storyboard */,
@@ -393,6 +408,7 @@
 		0324C41B2260FCDF00712576 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				69ADCF7C28CCD7C8001AC363 /* Onboarding */,
 				037C22612278B3890021A309 /* Profile */,
 				032C9F132264E80300FB1468 /* Setup */,
 				0324C421226100DD00712576 /* Info */,
@@ -598,6 +614,22 @@
 			path = Datafiles;
 			sourceTree = "<group>";
 		};
+		69ADCF7C28CCD7C8001AC363 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				698AE54628C7ACBA0038945B /* Onboarding.storyboard */,
+				69ADCF8728CCE31C001AC363 /* OnboardViewController.swift */,
+				6927AB6528D28BF0003AF1B0 /* OnboardBaseViewController.swift */,
+				69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */,
+				69ADCF7D28CCDB46001AC363 /* OnboardWelcomeViewController.swift */,
+				69ADCF8128CCDB70001AC363 /* OnboardNameViewController.swift */,
+				69ADCF8928CCE32F001AC363 /* OnboardPageViewController.swift */,
+				69ADCF8328CCDB91001AC363 /* OnboardDetailsViewController.swift */,
+				69ADCF8528CCDBB0001AC363 /* OnboardReviewViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -768,6 +800,7 @@
 				033FFFA922F1D47A00969E6D /* ImportDBService.swift in Sources */,
 				03E6818422665E90002F2345 /* PaymentTypeTableViewCell.swift in Sources */,
 				0328F169232808B9005204D4 /* TimeLogBreak+CoreDataClass.swift in Sources */,
+				69ADCF8028CCDB5C001AC363 /* OnboardIntroductionViewController.swift in Sources */,
 				03E68182226644B9002F2345 /* SetupPaymentTypeViewController.swift in Sources */,
 				032EB05F237DA88500B8D92A /* UIScrollView+Extension.swift in Sources */,
 				03E6817922663604002F2345 /* EmploymentInfoViewController.swift in Sources */,
@@ -783,18 +816,22 @@
 				03F2F5D922822CF8007B1B68 /* Date+Extension.swift in Sources */,
 				03A354C52280A871002536B8 /* HourlyPaymentViewController.swift in Sources */,
 				0327532D229334160019BA10 /* Util.swift in Sources */,
+				69ADCF8428CCDB91001AC363 /* OnboardDetailsViewController.swift in Sources */,
 				0329260F2289CB7D00DB69AD /* SummaryTableViewCell.swift in Sources */,
 				033225702295AA3400479578 /* ProfileViewModel.swift in Sources */,
 				0328C44322BC0DC700B3C911 /* GlossaryTableViewCell.swift in Sources */,
+				69ADCF8628CCDBB0001AC363 /* OnboardReviewViewController.swift in Sources */,
 				037C2259227896DB0021A309 /* Employee+CoreDataClass.swift in Sources */,
 				032719D02284846F00EE8881 /* DateLog+CoreDataClass.swift in Sources */,
 				032920D722C103C9003E4732 /* DropDownView.swift in Sources */,
 				03F2F5D52282090A007B1B68 /* NumberFormatter+Extension.swift in Sources */,
 				032E5F2C22A99EE400F6EC26 /* BorderedView.swift in Sources */,
 				03A354C72280AC1C002536B8 /* SalaryPaymentViewController.swift in Sources */,
+				69ADCF8A28CCE32F001AC363 /* OnboardPageViewController.swift in Sources */,
 				032C9F172264EB3700FB1468 /* SetupProfileViewController.swift in Sources */,
 				59AD9E5B22A1645800075193 /* Style.swift in Sources */,
 				59B1BEA22294588D00F0D37A /* TitleValueLabel.swift in Sources */,
+				6927AB6628D28BF0003AF1B0 /* OnboardBaseViewController.swift in Sources */,
 				032C9F1B2264FD1900FB1468 /* ButonWithInfo.swift in Sources */,
 				033FB84E2296E658006BA459 /* String+Extension.swift in Sources */,
 				0324C40F2260E8B000712576 /* CoreDataManager.swift in Sources */,
@@ -810,12 +847,15 @@
 				037C226C2278C8730021A309 /* ProfileTableViewCell.swift in Sources */,
 				032560112268BE8D00BF64C5 /* SetupHourlyPaymentViewController.swift in Sources */,
 				0324C4202260FE3D00712576 /* UIBarButtonItem+Extension.swift in Sources */,
+				69ADCF8228CCDB70001AC363 /* OnboardNameViewController.swift in Sources */,
 				037F637E23A7E3BB00375AFB /* NSAttributedString+Extension.swift in Sources */,
+				69ADCF7E28CCDB46001AC363 /* OnboardWelcomeViewController.swift in Sources */,
 				0328A18622661EB900957F53 /* UIViewController+Extension.swift in Sources */,
 				59821CC122AABC1300436B03 /* PhoneFormatter.swift in Sources */,
 				032C9F192264F05700FB1468 /* UIView+Extension.swift in Sources */,
 				037C226022789AA60021A309 /* EmploymentModel.swift in Sources */,
 				03CEDF84226E33DE0041C3ED /* ActionButton.swift in Sources */,
+				69ADCF8828CCE31C001AC363 /* OnboardViewController.swift in Sources */,
 				03F2F5D32281C081007B1B68 /* OptionsListViewController.swift in Sources */,
 				032C9F1F2265000D00FB1468 /* LabelInfoView.swift in Sources */,
 				0328BCB7227244D7006B695A /* SetupSalaryPaymentViewController.swift in Sources */,
@@ -1036,7 +1076,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 57;
+				CURRENT_PROJECT_VERSION = 56;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1059,7 +1099,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 57;
+				CURRENT_PROJECT_VERSION = 56;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;

@@ -17,6 +17,7 @@ class TimePickerViewController: UIViewController {
 
     static let DEFAULT_BREAK_TIME = 20 * 60  // Default to 20 min
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var doneButton: UIButton!
     var sourceView: UIView!
     
     weak var delegate: TimePickerProtocol?
@@ -44,6 +45,7 @@ class TimePickerViewController: UIViewController {
     func setupView() {
         datePicker.datePickerMode = pickerMode
         datePicker.preferredDatePickerStyle = .wheels
+        doneButton.setTitle(NSLocalizedString("done", comment: "Done"), for: .normal)
         if pickerMode == .countDownTimer {
             let duration: Int = countdownDuration > 0 ? Int(countdownDuration) : TimePickerViewController.DEFAULT_BREAK_TIME
             let calendar = Calendar(identifier: .gregorian)

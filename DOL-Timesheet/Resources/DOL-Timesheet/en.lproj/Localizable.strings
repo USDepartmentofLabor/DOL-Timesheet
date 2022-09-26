@@ -357,5 +357,9 @@
 "save" = "Save";
 "salary_payment" = "Salary Payment";
 "info_regular_rate_pay" = "The regular rate of pay, upon which an employer calculates an employee’s overtime rate, cannot be less than the minimum wage. The regular rate includes all payment for employment except certain payments that the law allows employers to exclude.";
+
+"flsa_info1" = "The Fair Labor Standards Act (FLSA) requires that most employees receive the minimum wage for all the hours that they work, and overtime, at time and one-half their regular rates of pay, for hours they work beyond 40 in a workweek.";
+"flsa_info2" = "The law includes some exemptions from these requirements. Some executive, administrative, professional, and outside sales workers, as well as some workers in the computer field, for example, are among those who, by law, are not required to receive minimum wage and overtime pay from their employers.";
+
 "period_of" = "Period of";
 "set_start_time_before_end_time" = "End Time can\'t be set until Start Time has been set";

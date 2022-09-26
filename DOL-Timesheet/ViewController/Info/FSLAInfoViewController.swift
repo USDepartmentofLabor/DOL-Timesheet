@@ -42,9 +42,13 @@ class FSLAInfoViewController: UIViewController {
 
     func setupView() {
         titleLabel.scaleFont(forDataType: .sectionTitle)
+        titleLabel.text = NSLocalizedString("fsla_requirements", comment: "FSLA Requirements")
         
         infoLabel1.scaleFont(forDataType: .aboutText)
+        infoLabel1.text = NSLocalizedString("fsla_info1", comment: "FSLA Info 1")
+
         infoLabel2.scaleFont(forDataType: .aboutText)
+        infoLabel2.text = NSLocalizedString("fsla_info2", comment: "FSLA Info 2")
         
         infoTextView.textContainerInset = UIEdgeInsets.zero
         

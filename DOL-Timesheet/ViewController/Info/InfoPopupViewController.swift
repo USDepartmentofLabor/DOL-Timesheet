@@ -48,7 +48,7 @@ enum Info: String {
         case .employee:
             title = NSLocalizedString("info_employee", comment: "Who is employee")
         case .workWeek:
-            title = "Work Week"
+            title = NSLocalizedString("work_week", comment: "Work Week")
         case .employee_paymentType:
             title = NSLocalizedString("info_employee_payment_type", comment: "What is your payment type")
         case .employer_paymentType:
@@ -58,7 +58,7 @@ enum Info: String {
         case .employer_hourlyPayRate:
             title = NSLocalizedString("info_employer_hourly_pay_rate", comment: "What is your hourly rate")
         case .salary:
-            title = "Salary"
+            title = NSLocalizedString("payment_type_salary", comment: "Salary")
         case .overtimeEligible:
             title = NSLocalizedString("info_overtime_eligible", comment: "Are you overtime eligible")
         case .minimumWage:

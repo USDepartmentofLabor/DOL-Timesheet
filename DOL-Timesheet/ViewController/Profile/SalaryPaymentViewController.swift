@@ -74,8 +74,6 @@ class SalaryPaymentViewController: UIViewController {
         salaryTextField.scaleFont(forDataType: .nameValueText)
         salaryContentView.addBorder()
         salaryTextField.addTarget(self, action: #selector(salaryAmountDidChange(_:)), for: .editingChanged)
-        salaryLabel.text = NSLocalizedString("payment_type_salary", comment: "Salary")
-        fslaTextView.text = NSLocalizedString("fsla_requirements", comment: "fsla requirements")
 
         let salaryTypeTapGesture = UITapGestureRecognizer(target: self, action: #selector(salaryTypeClick(_:)))
         salaryTypeTapGesture.cancelsTouchesInView = false
@@ -96,6 +94,9 @@ class SalaryPaymentViewController: UIViewController {
         fslaTextView.attributedText = attributedString
         fslaTextView.textAlignment = .right
         fslaTextView.delegate = self
+        fslaTextView.text = NSLocalizedString("fsla_requirements", comment:  "The Fair Labor Standards Act (FLSA) requirements")
+        salaryTitleLabel.text = NSLocalizedString("payment_type_salary", comment:  "Salary")
+        salaryLabel.text = NSLocalizedString("payment_type_salary", comment:  "Salary")
 
         setupAccessibility()
     }

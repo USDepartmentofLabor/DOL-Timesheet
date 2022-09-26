@@ -199,7 +199,7 @@
 "err_title_minimum_weekly_wage" = "Su salario parece estar por debajo del requisito federal";
 "err_invalid_supervisor_emailaddress" = "Por favor, ingrese dirección de correo electrónico de supervisor válida.";
 "warning" = "Advertencia";
-"warning_split_time" = "Las horas después de la medianoche se refejarán en su hoja de asistencia del día siguiente. ¿Desea continuar?";
+"warning_split_time" = "Las horas después de la medianoche se ingresarán en su hoja de asistencia del día siguiente. ¿Desea continuar?";
 //Are you sure you want to enter in hours for the next day?";
 
 
@@ -356,5 +356,10 @@
 "save" = "Guardar";
 "salary_payment" = "Pago de Salario";
 "info_regular_rate_pay" = "La tarifa de pago regular, sobre la cual un empleador calcula la tarifa de sobretiempo de un empleado, no puede ser menos del salario mínimo.La tarifa de pago regular incluye todos los pagos por empleo, excepto ciertos pagos que la ley permite que los empleadores excluyan.";
+
+"date" = "Fecha";
+"flsa_info1" = "La Ley de Normas Justas de Trabajo (FLSA, por sus siglas en inglés) requiere que la mayoría de los empleados reciban el salario mínimo por todas las horas que trabajen, y sobretiempo, a tiempo y medio de su tarifa regular de pago, por las horas que trabajen por encima de 40 horas en una semana laboral.";
+"flsa_info2" = "La ley incluye algunas excepciones a estos requisitos. Algunos trabajadores ejecutivos, administrativos, profesionales y de ventas externas, así como algunos trabajadores en el campo de las computadoras, por ejemplo, están entre aquellos que, por ley, no están requeridos a recibir el pago de salario mínimo y sobretiempo de sus empleadores.";
+
 "period_of" = "Periodo de";
 "set_start_time_before_end_time" = "La Hora de Salida no se puede ingresar hasta que se ingrese una Hora de Entrada";

@@ -1835,6 +1835,7 @@
                                                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJj-ji-jWf" userLabel="EndTimeInfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
                                                                                                 <rect key="frame" x="31.5" y="0.0" width="21" height="50"/>
                                                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                                <state key="normal" image="questionmark.circle" catalog="system"/>
                                                                                             </button>
                                                                                         </subviews>
                                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1873,6 +1874,7 @@
                                                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTh-Mv-Luo" userLabel="BreakTimeInfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
                                                                                                 <rect key="frame" x="46" y="0.0" width="21" height="50"/>
                                                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                                <state key="normal" image="questionmark.circle" catalog="system"/>
                                                                                             </button>
                                                                                         </subviews>
                                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2193,6 +2195,7 @@
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="QZb-jm-qP9" id="K7j-NL-hAr"/>
+                        <outlet property="doneButton" destination="V5A-8k-hv6" id="3G4-Qm-38U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efq-7l-yf3" userLabel="First Responder" sceneMemberID="firstResponder"/>

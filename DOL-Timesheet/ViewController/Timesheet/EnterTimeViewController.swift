@@ -81,6 +81,7 @@ class EnterTimeViewController: UIViewController {
         commentTextView.addBorder()
         paymentTypeLabel.scaleFont(forDataType: .enterTimePaymentType)
         dateTitleLabel.scaleFont(forDataType: .enterTimeTitle)
+        dateTitleLabel.text = NSLocalizedString("date", comment: "Date")
         titleLabel.scaleFont(forDataType: .enterTimeTitle)
         commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
         editBtn.titleLabel?.scaleFont(forDataType: .actionButton)
