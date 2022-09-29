@@ -363,3 +363,6 @@
 
 "period_of" = "Period of";
 "set_start_time_before_end_time" = "End Time can\'t be set until Start Time has been set";
+"csv_header" = "\n,Start Date,End Date,Employer,Employer Address,Employee,Employee Number,Employee Address,Payment Type,Payment Frequency,Total Earnings,Straight Time Earnings,Overtime\n";
+"csv_header2" = ",Date,StartTime,EndTime,Break,Comments,Rate,Daily Comment\n";
+"csv_header3" = ",Work Week,Total Hours Worked,Total Break Hours,Overtime Hours,Straight Time Earnings,Regular Rate, Overtime Pay\n";
