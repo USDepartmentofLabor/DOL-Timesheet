@@ -481,7 +481,7 @@ extension TimesheetViewModel {
         // Each Days Time Log
         csvStr.append("\n\n")
         csvStr.append(NSLocalizedString("csv_header2", comment: "2nd header for the csv report"))
-        for index in 0...period.numberOfDays() {
+        for index in 0...(period.numberOfDays() - 1) {
             let date = period.date(at: index)
             let timeModel = createEnterTimeViewModel(for: date)
             csvStr.append("\(timeModel?.csv() ?? "")")
