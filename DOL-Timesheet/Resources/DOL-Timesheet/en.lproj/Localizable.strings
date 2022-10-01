@@ -267,6 +267,7 @@
 "regular_rate_include5" = "Value of employer-provided housing";
 "dash_work_week" = "- Work Week";
 "work_week" = "Work Week";
+"please_setup_your_profile" = "Please setup your profile";
 "next" = "Next";
 "introduction" = "Introduction";
 "my_profile" = "My Profile";
@@ -274,7 +275,7 @@
 "indicates_a_required_field" = "* Indicates a required field";
 
 "introduction_title_text" = "Introduction";
-"full_name_intro" = "Nombre Completo*";
+"full_name_intro" = "Full Name*";
 "phone" = "Phone";
 "email" = "Email";
 "employee_employer_profile" = "Are you an employee or employer?";
