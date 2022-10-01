@@ -26,7 +26,7 @@ enum WebInfo {
         let title:String
         switch self {
         case .minimumWage:
-            title = "Minimum Wage Table"
+            title = NSLocalizedString("minimum_wage_table", comment: "Minimum Wage Table")
         }
         
         return title

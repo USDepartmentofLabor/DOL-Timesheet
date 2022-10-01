@@ -81,6 +81,7 @@ class EnterTimeViewController: UIViewController {
         commentTextView.addBorder()
         paymentTypeLabel.scaleFont(forDataType: .enterTimePaymentType)
         dateTitleLabel.scaleFont(forDataType: .enterTimeTitle)
+        dateTitleLabel.text = NSLocalizedString("date", comment: "Date")
         titleLabel.scaleFont(forDataType: .enterTimeTitle)
         commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
         editBtn.titleLabel?.scaleFont(forDataType: .actionButton)
@@ -343,7 +344,7 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
         }
         
         if timeLog.startTime == nil {
-            let message = NSLocalizedString("Please set a start time before end time.", comment: "Please set a start time before end time.")
+            let message = NSLocalizedString("set_start_time_before_end_time", comment: "Please set a start time before end time.")
             let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .cancel, handler: nil))
             present(alertController, animated: false)

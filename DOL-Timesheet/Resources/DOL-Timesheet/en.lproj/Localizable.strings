@@ -267,6 +267,7 @@
 "regular_rate_include5" = "Value of employer-provided housing";
 "dash_work_week" = "- Work Week";
 "work_week" = "Work Week";
+"please_setup_your_profile" = "Please setup your profile";
 "next" = "Next";
 "introduction" = "Introduction";
 "my_profile" = "My Profile";
@@ -274,7 +275,7 @@
 "indicates_a_required_field" = "* Indicates a required field";
 
 "introduction_title_text" = "Introduction";
-"full_name_intro" = "Nombre Completo*";
+"full_name_intro" = "Full Name*";
 "phone" = "Phone";
 "email" = "Email";
 "employee_employer_profile" = "Are you an employee or employer?";
@@ -357,3 +358,12 @@
 "save" = "Save";
 "salary_payment" = "Salary Payment";
 "info_regular_rate_pay" = "The regular rate of pay, upon which an employer calculates an employee’s overtime rate, cannot be less than the minimum wage. The regular rate includes all payment for employment except certain payments that the law allows employers to exclude.";
+
+"flsa_info1" = "The Fair Labor Standards Act (FLSA) requires that most employees receive the minimum wage for all the hours that they work, and overtime, at time and one-half their regular rates of pay, for hours they work beyond 40 in a workweek.";
+"flsa_info2" = "The law includes some exemptions from these requirements. Some executive, administrative, professional, and outside sales workers, as well as some workers in the computer field, for example, are among those who, by law, are not required to receive minimum wage and overtime pay from their employers.";
+
+"period_of" = "Period of";
+"set_start_time_before_end_time" = "End Time can\'t be set until Start Time has been set";
+"csv_header" = "\n,Start Date,End Date,Employer,Employer Address,Employee,Employee Number,Employee Address,Payment Type,Payment Frequency,Total Earnings,Straight Time Earnings,Overtime\n";
+"csv_header2" = ",Date,StartTime,EndTime,Break,Comments,Rate,Daily Comment\n";
+"csv_header3" = ",Work Week,Total Hours Worked,Total Break Hours,Overtime Hours,Straight Time Earnings,Regular Rate, Overtime Pay\n";

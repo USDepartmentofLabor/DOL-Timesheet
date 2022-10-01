@@ -413,8 +413,8 @@
                                                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="0o4-eu-oAj">
                                                                                             <rect key="frame" x="199" y="0.0" width="195" height="22"/>
                                                                                             <subviews>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overtime" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2g-Mb-6fQ" userLabel="OvertimeTitleLabel">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="75.5" height="22"/>
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sobretiempo" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2g-Mb-6fQ" userLabel="OvertimeTitleLabel">
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="105.5" height="22"/>
                                                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                                                     <nil key="textColor"/>
                                                                                                     <nil key="highlightedColor"/>
@@ -1582,7 +1582,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DDk-HO-7v4">
                                                         <rect key="frame" x="0.0" y="336.5" width="344" height="160"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about issues with the app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWa-d1-wSm">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about issues with the app" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWa-d1-wSm">
                                                                 <rect key="frame" x="0.0" y="0.0" width="344" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -2206,6 +2206,7 @@
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="QZb-jm-qP9" id="K7j-NL-hAr"/>
+                        <outlet property="doneButton" destination="V5A-8k-hv6" id="3G4-Qm-38U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efq-7l-yf3" userLabel="First Responder" sceneMemberID="firstResponder"/>

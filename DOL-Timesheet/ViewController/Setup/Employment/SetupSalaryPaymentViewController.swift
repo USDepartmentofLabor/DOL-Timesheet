@@ -36,7 +36,7 @@ class SetupSalaryPaymentViewController: SetupBaseEmploymentViewController {
     override func setupView() {
         super.setupView()
         
-        title = "Salary Payment"
+        title = NSLocalizedString("salary_payment", comment:"Salary Payment")
         saveButton.setTitle(NSLocalizedString("save", comment:"Save"), for: .normal)
         scrollView.keyboardDismissMode = .onDrag
         

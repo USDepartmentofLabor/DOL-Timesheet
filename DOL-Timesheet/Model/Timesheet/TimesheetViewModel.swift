@@ -467,7 +467,7 @@ extension TimesheetViewModel {
         
         // Employee/Employer Information
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)!
-        var csvStr = "\n,Start Date,End Date,Employer,Employer Address,Employee,Employee Number,Employee Address,Payment Type,Payment Frequency,Total Earnings,Straight Time Earnings,Overtime\n"
+        var csvStr = NSLocalizedString("csv_header", comment: "header for the csv report")
         csvStr.append(",\(period.startDate.formattedDate),\(period.endDate.formattedDate),")
         csvStr.append("\(employmentModel.employer?.name ?? ""),\(employmentModel.employer?.address?.csv ?? ""),")
         csvStr.append("\(employmentModel.employee?.name ?? ""),\(employmentModel.employmentNumber ?? ""),\(employmentModel.employee?.address?.csv ?? ""),")
@@ -480,8 +480,8 @@ extension TimesheetViewModel {
 
         // Each Days Time Log
         csvStr.append("\n\n")
-        csvStr.append(",Date,StartTime,EndTime,Break,Comments,Rate,Daily Comment\n")
-        for index in 0...period.numberOfDays() {
+        csvStr.append(NSLocalizedString("csv_header2", comment: "2nd header for the csv report"))
+        for index in 0...(period.numberOfDays() - 1) {
             let date = period.date(at: index)
             let timeModel = createEnterTimeViewModel(for: date)
             csvStr.append("\(timeModel?.csv() ?? "")")
@@ -490,7 +490,7 @@ extension TimesheetViewModel {
 
         // Totals
         csvStr.append("\n\n")
-        csvStr.append(",Work Week,Total Hours Worked,Total Break Hours,Overtime Hours,Straight Time Earnings,Regular Rate, Overtime Pay\n")
+        csvStr.append(NSLocalizedString("csv_header3", comment: "3rd header for the csv report"))
         workWeekViewModels?.forEach {
             csvStr.append(",\($0.csv())\n")
         }

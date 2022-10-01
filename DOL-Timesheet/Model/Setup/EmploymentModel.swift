@@ -253,7 +253,7 @@ class Period {
     }
     
     var title: String {
-        get { return "Period of \(startDate.formattedDate) - \(endDate.formattedDate)"}
+        get { return "\(NSLocalizedString("period_of", comment: "Period_of")) \(startDate.formattedDate) - \(endDate.formattedDate)"}
     }
     
     func numberOfDays() -> Int {
