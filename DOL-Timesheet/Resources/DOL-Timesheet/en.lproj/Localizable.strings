@@ -309,7 +309,7 @@
 "comments" = "Comments";
 
 "info_title" = "Info";
-"glossary" = "glossary";
+"glossary" = "Glossary";
 "contact_us" = "Contact Us";
 "about" = "About";
 
@@ -367,3 +367,9 @@
 "csv_header" = "\n,Start Date,End Date,Employer,Employer Address,Employee,Employee Number,Employee Address,Payment Type,Payment Frequency,Total Earnings,Straight Time Earnings,Overtime\n";
 "csv_header2" = ",Date,StartTime,EndTime,Break,Comments,Rate,Daily Comment\n";
 "csv_header3" = ",Work Week,Total Hours Worked,Total Break Hours,Overtime Hours,Straight Time Earnings,Regular Rate, Overtime Pay\n";
+
+"fsla_info1" = "The Fair Labor Standards Act (FLSA) requires that most employees receive the minimum wage for all the hours that they work, and overtime, at time and one-half their regular rates of pay, for hours they work beyond 40 in a workweek.";
+"fsla_info2" = "The law includes some exemptions from these requirements. Some executive, administrative,
+        professional, and outside sales workers, as well as some workers in the computer field,
+        for example, are among those who, by law, are not required to receive minimum wage and
+        overtime pay from their employers.";
