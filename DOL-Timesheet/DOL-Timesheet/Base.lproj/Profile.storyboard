@@ -188,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YR9-Ck-hOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5760.8695652173919" y="-798.21428571428567"/>
+            <point key="canvasLocation" x="5685" y="-721"/>
         </scene>
         <!--Setup Salary Payment View Controller-->
         <scene sceneID="Hft-La-YcJ">
@@ -1918,11 +1918,11 @@
             <objects>
                 <viewController id="zte-c7-vLc" customClass="WebInfoViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFit" id="epI-Qj-8bO">
-                        <rect key="frame" x="0.0" y="0.0" width="345" height="444"/>
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hC-dp-y26">
-                                <rect key="frame" x="0.0" y="0.0" width="345" height="444"/>
+                                <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -2383,10 +2383,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dfT-aj-dnn" userLabel="EmployeeEmployerView">
-                                                        <rect key="frame" x="20" y="613" width="335" height="123"/>
+                                                        <rect key="frame" x="20" y="613" width="335" height="102.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AEm-2x-63F" customClass="LabelInfoView" customModule="Timesheet" customModuleProvider="target">
-                                                                <rect key="frame" x="10" y="10" width="315" height="51"/>
+                                                                <rect key="frame" x="10" y="10" width="315" height="30.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" header="YES"/>
@@ -2397,7 +2397,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IAT-B1-RHg">
-                                                                <rect key="frame" x="10" y="77" width="315" height="34"/>
+                                                                <rect key="frame" x="10" y="56.5" width="315" height="34"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="W5C-es-UNm" userLabel="EmployeeBtn" customClass="RadioButton" customModule="Timesheet" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="152.5" height="34"/>
@@ -2433,7 +2433,7 @@
                                                         </constraints>
                                                     </view>
                                                     <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xtB-iO-HI6">
-                                                        <rect key="frame" x="0.0" y="736" width="375" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="715.5" width="375" height="0.0"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="250" id="UhT-bC-EOX"/>
                                                         </constraints>
@@ -2442,7 +2442,7 @@
                                                         </connections>
                                                     </containerView>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9TY-hI-9Fq" userLabel="FooterView">
-                                                        <rect key="frame" x="20" y="756" width="335" height="30"/>
+                                                        <rect key="frame" x="20" y="735.5" width="335" height="30"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="a4e-KM-fAM" userLabel="NextButton" customClass="NavigationButton" customModule="Timesheet" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
@@ -3224,7 +3224,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6U5-hO-Hj7"/>
+        <segue reference="GvG-um-s8D"/>
         <segue reference="jna-rX-JMR"/>
     </inferredMetricsTieBreakers>
     <resources>

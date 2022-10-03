@@ -516,6 +516,48 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="questionmark.circle" catalog="system" title=" "/>
                                             </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDq-w7-mW4">
+                                                <rect key="frame" x="0.0" y="295" width="414" height="38"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$00.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ljq-zU-d0o" userLabel="Pay Rate Field">
+                                                        <rect key="frame" x="72.5" y="2" width="109" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="109" id="WTU-du-qFp"/>
+                                                            <constraint firstAttribute="height" constant="34" id="bMf-3Y-Q1V"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73M-6t-sOz">
+                                                        <rect key="frame" x="189.5" y="2" width="35" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="35" id="3qD-Lr-DG0"/>
+                                                            <constraint firstAttribute="height" constant="34" id="FjD-mA-QD7"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Maq-Ts-Zbu" userLabel="Pay Rate Picker">
+                                                        <rect key="frame" x="232.5" y="2" width="109" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="aBq-uF-j76"/>
+                                                            <constraint firstAttribute="width" constant="109" id="nmp-rQ-8U7"/>
+                                                        </constraints>
+                                                    </datePicker>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="PEX-s1-hU6"/>
+                                                    <constraint firstItem="73M-6t-sOz" firstAttribute="centerY" secondItem="XDq-w7-mW4" secondAttribute="centerY" id="PIW-q2-40s"/>
+                                                    <constraint firstItem="73M-6t-sOz" firstAttribute="centerX" secondItem="XDq-w7-mW4" secondAttribute="centerX" id="X3t-ag-oQP"/>
+                                                    <constraint firstItem="Maq-Ts-Zbu" firstAttribute="leading" secondItem="73M-6t-sOz" secondAttribute="trailing" constant="8" id="aM3-ca-o25"/>
+                                                    <constraint firstItem="Maq-Ts-Zbu" firstAttribute="centerY" secondItem="73M-6t-sOz" secondAttribute="centerY" id="u43-Cc-MCQ"/>
+                                                    <constraint firstItem="73M-6t-sOz" firstAttribute="leading" secondItem="Ljq-zU-d0o" secondAttribute="trailing" constant="8" id="vFf-sa-4lc"/>
+                                                    <constraint firstItem="Ljq-zU-d0o" firstAttribute="centerY" secondItem="73M-6t-sOz" secondAttribute="centerY" id="w2H-49-kMH"/>
+                                                    <constraint firstAttribute="width" constant="414" id="wVC-GA-HMF"/>
+                                                </constraints>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is your employee eligible for overtime?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBm-Ad-MS5">
                                                 <rect key="frame" x="59" y="373" width="296" height="44"/>
                                                 <constraints>
@@ -589,48 +631,6 @@
                                                     <constraint firstAttribute="height" constant="39" id="N7J-Jb-Db2"/>
                                                 </constraints>
                                             </pickerView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDq-w7-mW4">
-                                                <rect key="frame" x="0.0" y="295" width="414" height="38"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73M-6t-sOz">
-                                                        <rect key="frame" x="189.5" y="2" width="35" height="34"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="35" id="3qD-Lr-DG0"/>
-                                                            <constraint firstAttribute="height" constant="34" id="FjD-mA-QD7"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Maq-Ts-Zbu" userLabel="Pay Rate Picker">
-                                                        <rect key="frame" x="232.5" y="2" width="109" height="34"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="34" id="aBq-uF-j76"/>
-                                                            <constraint firstAttribute="width" constant="109" id="nmp-rQ-8U7"/>
-                                                        </constraints>
-                                                    </datePicker>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$00.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ljq-zU-d0o" userLabel="Pay Rate Field">
-                                                        <rect key="frame" x="72.5" y="2" width="109" height="34"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="109" id="WTU-du-qFp"/>
-                                                            <constraint firstAttribute="height" constant="34" id="bMf-3Y-Q1V"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="38" id="PEX-s1-hU6"/>
-                                                    <constraint firstItem="73M-6t-sOz" firstAttribute="centerY" secondItem="XDq-w7-mW4" secondAttribute="centerY" id="PIW-q2-40s"/>
-                                                    <constraint firstItem="73M-6t-sOz" firstAttribute="centerX" secondItem="XDq-w7-mW4" secondAttribute="centerX" id="X3t-ag-oQP"/>
-                                                    <constraint firstItem="Maq-Ts-Zbu" firstAttribute="leading" secondItem="73M-6t-sOz" secondAttribute="trailing" constant="8" id="aM3-ca-o25"/>
-                                                    <constraint firstItem="Maq-Ts-Zbu" firstAttribute="centerY" secondItem="73M-6t-sOz" secondAttribute="centerY" id="u43-Cc-MCQ"/>
-                                                    <constraint firstItem="73M-6t-sOz" firstAttribute="leading" secondItem="Ljq-zU-d0o" secondAttribute="trailing" constant="8" id="vFf-sa-4lc"/>
-                                                    <constraint firstItem="Ljq-zU-d0o" firstAttribute="centerY" secondItem="73M-6t-sOz" secondAttribute="centerY" id="w2H-49-kMH"/>
-                                                    <constraint firstAttribute="width" constant="414" id="wVC-GA-HMF"/>
-                                                </constraints>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -705,6 +705,21 @@
                             <constraint firstItem="J0e-De-aQP" firstAttribute="trailing" secondItem="r3S-9o-Op5" secondAttribute="trailing" id="vHh-Ir-wNR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="displayLogo" destination="TdS-aU-xow" id="dhN-Cx-guP"/>
+                        <outlet property="infoFrequencyButton" destination="kat-HQ-EDG" id="WXL-pC-D17"/>
+                        <outlet property="infoOvertimeButton" destination="ZvX-AR-3py" id="cAv-2Y-X03"/>
+                        <outlet property="infoPayRateButton" destination="JLv-Y7-xXs" id="c9h-tL-WJ3"/>
+                        <outlet property="noOvertimeButton" destination="cFK-18-rjh" id="lYT-mK-u7g"/>
+                        <outlet property="noteTitle" destination="aLI-2V-XQ8" id="4Nq-iM-9Ot"/>
+                        <outlet property="overtimeTitle" destination="QBm-Ad-MS5" id="dNK-pR-vEq"/>
+                        <outlet property="payFrequencyTitle" destination="g2v-cG-yvL" id="Vz4-wh-iKv"/>
+                        <outlet property="payRateField" destination="Ljq-zU-d0o" id="MYF-jG-dOa"/>
+                        <outlet property="payRateStart" destination="Maq-Ts-Zbu" id="ux0-dr-jlj"/>
+                        <outlet property="payRateTitle" destination="Jf4-EH-05W" id="Uxb-mU-Gmg"/>
+                        <outlet property="stateTitle" destination="al3-t6-dZ3" id="C6p-xb-xZq"/>
+                        <outlet property="yesOvertimeButton" destination="LmE-Cv-YRR" id="27a-ff-CbF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a6e-eW-kZB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

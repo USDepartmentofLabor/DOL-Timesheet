@@ -618,12 +618,12 @@
 			isa = PBXGroup;
 			children = (
 				698AE54628C7ACBA0038945B /* Onboarding.storyboard */,
+				69ADCF8928CCE32F001AC363 /* OnboardPageViewController.swift */,
 				69ADCF8728CCE31C001AC363 /* OnboardViewController.swift */,
 				6927AB6528D28BF0003AF1B0 /* OnboardBaseViewController.swift */,
-				69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */,
 				69ADCF7D28CCDB46001AC363 /* OnboardWelcomeViewController.swift */,
+				69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */,
 				69ADCF8128CCDB70001AC363 /* OnboardNameViewController.swift */,
-				69ADCF8928CCE32F001AC363 /* OnboardPageViewController.swift */,
 				69ADCF8328CCDB91001AC363 /* OnboardDetailsViewController.swift */,
 				69ADCF8528CCDBB0001AC363 /* OnboardReviewViewController.swift */,
 			);

@@ -29,6 +29,7 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         setupNavigationBarSettings()
         setupView()
         displayInfo()
+        canMoveForward = true
     }
     
     override func setupView() {
@@ -54,7 +55,7 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
     }
     
     func setupAccessibility() {
-       // displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
+        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
     }
 
     func displayInfo() {

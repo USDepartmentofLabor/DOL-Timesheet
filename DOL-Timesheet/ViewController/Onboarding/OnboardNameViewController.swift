@@ -26,15 +26,35 @@ class OnboardNameViewController: OnboardBaseViewController {
     @IBOutlet weak var nextButton: NavigationButton!
 //    weak var delegate: TimeViewControllerDelegate?
     
+    var otherName: String?
+    var nameValid: Bool = false
+    var otherNameValid: Bool = false
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
         setupView()
         displayInfo()
+        canMoveForward = false
     }
     
     override func saveData() {
         print("OnboardNameViewController SAVE DATA")
+        
+        let userName = nameField.text ?? ""
+//        let userType = UserType(rawValue: employeeBtn.isSelected ? 0 : 1) ?? UserType.employee
+        
+        userProfile = viewModel.profileModel.newProfile(type: userType, name: userName)
+        
+        employmentModel = viewModel.newTempEmploymentModel()
+        guard let employmentModel = employmentModel else { return }
+        var user = employmentModel.employmentUser
+        if user == nil {
+            user = employmentModel.newEmploymentUser()
+        }
+//        user?.name = otherNameField.text?.trimmingCharacters(in: .whitespaces)
+        employmentModel.supervisorName = otherNameField.text?.trimmingCharacters(in: .whitespaces)
+        
     }
     
     override func setupView() {
@@ -63,17 +83,40 @@ class OnboardNameViewController: OnboardBaseViewController {
 //    }
     
     @IBAction func nameSet(_ sender: Any) {
+        var errorStr: String? = nil
         
-        let userName = nameField.text ?? ""
-//        let userType = UserType(rawValue: employeeBtn.isSelected ? 0 : 1) ?? UserType.employee
+        let name = nameField.text
+        if name == nil || name!.isEmpty {
+            errorStr = NSLocalizedString("err_enter_name", comment: "Please provide User Name")
+        }
         
-        let profileUser = viewModel.profileModel.newProfile(type: userType, name: userName)
-     //   saveProfile()
+        if let errorStr = errorStr {
+            displayError(message: errorStr)
+            return
+        }
+        check()
     }
     
     @IBAction func otherNameSet(_ sender: Any) {
+        var errorStr: String? = nil
         
-        let otherName = otherNameField.text ?? ""
+        let otherName = otherNameField.text
+        if otherName == nil || otherName!.isEmpty {
+            errorStr = NSLocalizedString("err_enter_name", comment: "Please provide Employer/Employee Name")
+        }
+
+        if let errorStr = errorStr {
+            displayError(message: errorStr)
+            return
+        }
+        check()
     }
     
+    func check() {
+        if (nameValid && otherNameValid) {
+            canMoveForward = true
+        } else {
+            canMoveForward = false
+        }
+    }
 }

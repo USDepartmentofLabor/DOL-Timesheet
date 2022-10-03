@@ -21,15 +21,18 @@ class OnboardBaseViewController: UIViewController {
     var canMoveForward: Bool = false
     var vcIndex: Int = 0
     
+    var userProfile: User?
+    
     weak var manageVC: ManageUsersViewController?
     var viewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
     
     weak var delegate: TimeViewControllerDelegate?
     
+    var employmentModel: EmploymentModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupView()
     }
     
     func saveData() {
@@ -41,15 +44,15 @@ class OnboardBaseViewController: UIViewController {
     }
     
     func configureView() {
-    //    guard let profileUser = viewModel.profileModel.currentUser else {
+//      guard let profileUser = viewModel.profileModel.currentUser else {
 //            manageEmploymentContentView.removeFromSuperview()
 //            
-//            profileType = .employee
-            isWizard = true
-            
-            // if OldDB exists and hasn't been imported
-            let versionUpdated = UserDefaults.standard.bool(forKey: updatedDBVersion)
-            if versionUpdated == false, ImportDBService.dbExists {
+//      profileType = .employee
+        isWizard = true
+        employmentModel = viewModel.newTempEmploymentModel()
+        // if OldDB exists and hasn't been imported
+        let versionUpdated = UserDefaults.standard.bool(forKey: updatedDBVersion)
+        if versionUpdated == false, ImportDBService.dbExists {
 //                employerBtn.setTitleColor(.lightGray, for: .disabled)
 //                employerBtn.isEnabled = false
 //                employerBtn.isAccessibilityElement = false

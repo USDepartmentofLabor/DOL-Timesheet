@@ -27,6 +27,7 @@ class OnboardIntroductionViewController: OnboardBaseViewController {
         setupNavigationBarSettings()
         setupView()
         displayInfo()
+        canMoveForward = true
     }
     
     override func saveData() {
@@ -42,7 +43,7 @@ class OnboardIntroductionViewController: OnboardBaseViewController {
     }
     
     func setupAccessibility() {
-//        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
+        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
     }
 
     func displayInfo() {
@@ -51,10 +52,10 @@ class OnboardIntroductionViewController: OnboardBaseViewController {
 //        nextButton.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
     }
 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "setupProfile",
-//            let setupVC = segue.destination as? SetupProfileViewController {
-//            setupVC.delegate = delegate
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "setupProfile",
+            let setupVC = segue.destination as? SetupProfileViewController {
+            setupVC.delegate = delegate
+        }
+    }
 }

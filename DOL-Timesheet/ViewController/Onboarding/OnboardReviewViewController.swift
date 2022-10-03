@@ -53,8 +53,15 @@ class OnboardReviewViewController: OnboardBaseViewController {
     }
 
     func displayInfo() {
-//        label1.text = NSLocalizedString("introduction_text1", comment: "Introduction Text1")
-//        label2.text = NSLocalizedString("introduction_text2", comment: "Introduction Text2")
+        if (userType == .employee) {
+            reviewNameLabel.text = "You are " + (viewModel.profileModel.currentUser!.name ?? "John Doe") + ", an employee"
+        reviewOtherNameLabel.text = "You work for " + 
+        reviewWorkweekLabel.text = "Your employer's workweek starts on Monday"
+        reviewPayTypeLabel.text = "You are paid bi-weekly"
+        reviewPayRateLabel.text = "Your pay rate is $10.00/hour"
+        reviewOvertimeLabel.text = "You are eligible for overtime (non-exempt)"
+        reviewStateLabel.text = "You work in West Virginia"
+        }
 //        nextButton.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
     }
 

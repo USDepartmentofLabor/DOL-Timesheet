@@ -11,7 +11,24 @@ import UIKit
 class OnboardDetailsViewController: OnboardBaseViewController {
 
     @IBOutlet weak var displayLogo: UIImageView!
-
+    @IBOutlet weak var payFrequencyTitle: UILabel!
+    @IBOutlet weak var infoFrequencyButton: UIButton!
+    
+    @IBOutlet weak var payRateTitle: UILabel!
+    @IBOutlet weak var infoPayRateButton: UIButton!
+    @IBOutlet weak var payRateField: UITextField!
+    @IBOutlet weak var payRateStart: UIDatePicker!
+    
+    @IBOutlet weak var overtimeTitle: UILabel!
+    @IBOutlet weak var infoOvertimeButton: UIButton!
+    @IBOutlet weak var yesOvertimeButton: UIButton!
+    @IBOutlet weak var noOvertimeButton: UIButton!
+    
+    @IBOutlet weak var stateTitle: UILabel!
+    
+    
+    @IBOutlet weak var noteTitle: UILabel!
+    
     @IBOutlet weak var nextButton: NavigationButton!
 //    weak var delegate: TimeViewControllerDelegate?
     
