@@ -20,7 +20,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     
     @IBOutlet weak var payRateTitle: UILabel!
     @IBOutlet weak var infoPayRateButton: UIButton!
-    @IBOutlet weak var payRateField: UITextField!
+    @IBOutlet weak var payRateField: UnderlinedTextField!
     
     @IBOutlet weak var payPeriodField: UITextField!
     @IBOutlet weak var payPeriodPicker: UIPickerView!
@@ -105,6 +105,9 @@ class OnboardDetailsViewController: OnboardBaseViewController {
             self.noOvertimeButtonPressed(noOvertimeButton!)
         }
         
+        payRateField.scaleFont(forDataType: .nameValueText)
+        payRateField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+
         payFrequencyPickerHeight.constant = 0
         statePickerHeight.constant = 0
         payPeriodPickerHeight.constant = 0
@@ -120,6 +123,12 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     
     func setupAccessibility() {
 //        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
+        
+        payRateField.accessibilityLabel = NSLocalizedString("rate_amount", comment: "Rate Amount")
+        
+        if Util.isVoiceOverRunning {
+            payRateField.keyboardType = .numbersAndPunctuation
+        }
     }
 
     func displayInfo() {
@@ -208,13 +217,6 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
             return true
         }
     }
-    func textFieldDidChange(_ textField: UITextField) {
-        if textField == payRateField {
-            let rate = textField.text?.currencyAmount() ?? NSNumber(0)
-            textField.text = NumberFormatter.localisedCurrencyStr(from: rate)
-            hourlyRate?.value = rate.doubleValue
-        }
-    }
     func textFieldDidBeginEditing(_ textField: UITextField) {
 //        if textField == stateTextField {
 //
@@ -282,6 +284,16 @@ extension OnboardDetailsViewController: UIPickerViewDataSource {
             return State.states.count
         } else{
             return payPeriodArray.count
+        }
+    }
+}
+
+extension OnboardDetailsViewController {
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if textField == payRateField {
+            let rate = textField.text?.currencyAmount() ?? NSNumber(0)
+            textField.text = NumberFormatter.localisedCurrencyStr(from: rate)
+            hourlyRate?.value = rate.doubleValue
         }
     }
 }

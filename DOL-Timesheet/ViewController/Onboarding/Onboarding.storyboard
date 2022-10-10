@@ -547,7 +547,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDq-w7-mW4">
                                                 <rect key="frame" x="0.0" y="319.5" width="414" height="73"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ljq-zU-d0o" userLabel="Pay Rate Field">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ljq-zU-d0o" userLabel="Pay Rate Field" customClass="UnderlinedTextField" customModule="Timesheet" customModuleProvider="target">
                                                         <rect key="frame" x="72.5" y="0.0" width="109" height="34"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="109" id="WTU-du-qFp"/>
@@ -803,7 +803,7 @@
                         <outlet property="payPeriodField" destination="OZU-mP-Z5c" id="5hb-pN-mfV"/>
                         <outlet property="payPeriodPicker" destination="vmr-vX-Swb" id="x2n-0p-IyE"/>
                         <outlet property="payPeriodPickerHeight" destination="p79-8o-pFc" id="ZYG-E9-gYe"/>
-                        <outlet property="payRateField" destination="Ljq-zU-d0o" id="MYF-jG-dOa"/>
+                        <outlet property="payRateField" destination="Ljq-zU-d0o" id="18j-XO-OwS"/>
                         <outlet property="payRateTitle" destination="Jf4-EH-05W" id="Uxb-mU-Gmg"/>
                         <outlet property="scrollView" destination="r3S-9o-Op5" id="0eR-3F-ngo"/>
                         <outlet property="stateField" destination="SvJ-gW-9Yg" id="e89-g1-jdA"/>
