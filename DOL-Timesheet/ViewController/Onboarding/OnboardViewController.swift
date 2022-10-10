@@ -21,6 +21,9 @@ class OnboardViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var containerView: UIView!
     
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var previousButton: UIButton!
+    
     var onboardPageViewController: OnboardPageViewController? {
         didSet {
             onboardPageViewController?.onboardDelegate = self
@@ -31,10 +34,12 @@ class OnboardViewController: UIViewController {
         super.viewDidLoad()
         pageControl.addTarget(self, action: Selector(("didChangePageControlValue")), for: .valueChanged)
         
+        let profileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
         if let vcs = onboardPageViewController?.orderedViewControllers {
             for (index, element) in vcs.enumerated() {
                 element.onboardingDelegate = self
                 element.vcIndex = index
+                element.profileViewModel = profileViewModel
             }
         }
     }
@@ -71,12 +76,36 @@ extension OnboardViewController: OnboardPageViewControllerDelegate {
     func onboardPageViewController(onboardPageViewController: OnboardPageViewController,
         didUpdatePageIndex index: Int) {
         pageControl.currentPage = index
+        if onboardPageViewController.currentVC?.canMoveForward == true {
+            nextButton.isHidden = false
+        } else {
+            nextButton.isHidden = true
+        }
+        
     }
     
 }
 
 extension OnboardViewController: OnboardingProtocol {
-    func canMoveForward(vcIndex: Int) {
-        print("Can Move Forward at Index \(vcIndex)")
+    func updateViewModels(profileViewModel: ProfileViewModel,
+                          employmentModel: EmploymentModel) {
+        if let vcs = onboardPageViewController?.orderedViewControllers {
+            for (_, element) in vcs.enumerated() {
+                element.employmentModel = employmentModel
+                element.profileViewModel = profileViewModel
+            }
+        }
+    }
+    
+    func updateCanMoveForward(value: Bool) {
+        nextButton.isHidden = !value
+    }
+    
+    func updateUserType(newUserType: UserType) {
+        if let vcs = onboardPageViewController?.orderedViewControllers {
+            for (_, element) in vcs.enumerated() {
+                element.userType = newUserType
+            }
+        }
     }
 }

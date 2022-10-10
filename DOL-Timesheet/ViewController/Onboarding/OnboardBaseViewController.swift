@@ -9,7 +9,9 @@
 import UIKit
 
 protocol OnboardingProtocol: AnyObject {
-    func canMoveForward(vcIndex: Int)
+    func updateCanMoveForward(value: Bool)
+    func updateViewModels(profileViewModel: ProfileViewModel, employmentModel: EmploymentModel)
+    func updateUserType(newUserType: UserType)
 }
 
 class OnboardBaseViewController: UIViewController {
@@ -21,14 +23,13 @@ class OnboardBaseViewController: UIViewController {
     var canMoveForward: Bool = false
     var vcIndex: Int = 0
     
-    var userProfile: User?
-    
     weak var manageVC: ManageUsersViewController?
-    var viewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
+    
+    var userProfile: User?
+    var employmentModel: EmploymentModel?
+    var profileViewModel: ProfileViewModel?
     
     weak var delegate: TimeViewControllerDelegate?
-    
-    var employmentModel: EmploymentModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,6 @@ class OnboardBaseViewController: UIViewController {
 //            
 //      profileType = .employee
         isWizard = true
-        employmentModel = viewModel.newTempEmploymentModel()
         // if OldDB exists and hasn't been imported
         let versionUpdated = UserDefaults.standard.bool(forKey: updatedDBVersion)
         if versionUpdated == false, ImportDBService.dbExists {

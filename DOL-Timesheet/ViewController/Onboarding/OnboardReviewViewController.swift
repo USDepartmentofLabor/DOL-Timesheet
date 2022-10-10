@@ -33,6 +33,11 @@ class OnboardReviewViewController: OnboardBaseViewController {
         super.viewDidLoad()
         setupNavigationBarSettings()
         setupView()
+        canMoveForward = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         displayInfo()
     }
     
@@ -54,13 +59,29 @@ class OnboardReviewViewController: OnboardBaseViewController {
 
     func displayInfo() {
         if (userType == .employee) {
-            reviewNameLabel.text = "You are " + (viewModel.profileModel.currentUser!.name ?? "John Doe") + ", an employee"
-        reviewOtherNameLabel.text = "You work for " + 
-        reviewWorkweekLabel.text = "Your employer's workweek starts on Monday"
-        reviewPayTypeLabel.text = "You are paid bi-weekly"
-        reviewPayRateLabel.text = "Your pay rate is $10.00/hour"
-        reviewOvertimeLabel.text = "You are eligible for overtime (non-exempt)"
-        reviewStateLabel.text = "You work in West Virginia"
+            reviewNameLabel.text = "You are " + (profileViewModel!.profileModel.currentUser!.name ?? "John Doe") + ", an employee"
+            reviewOtherNameLabel.text = "You work for " + (employmentModel?.employmentUser?.name ?? "John Smith")
+            reviewWorkweekLabel.text = "Your employer's workweek starts on " + (employmentModel?.workWeekStartDay.title ?? "Monday")
+            reviewPayTypeLabel.text = "You are paid " + (employmentModel?.paymentFrequency.title ?? "Unknown")
+            reviewPayRateLabel.text = "Your pay rate is $10.00/hour"
+            if (employmentModel?.overtimeEligible == true) {
+                reviewOvertimeLabel.text = "You are eligible for overtime (non-exempt)"
+            } else {
+                reviewOvertimeLabel.text = "You are not eligible for overtime (exempt)"
+            }
+            reviewStateLabel.text = "You work in " + (employmentModel?.employmentUser?.address?.state ?? "West Virginia")
+        } else {
+            reviewNameLabel.text = "You are " + (profileViewModel!.profileModel.currentUser!.name ?? "John Doe") + ", an employee"
+            reviewOtherNameLabel.text = "Your employee's name is " + (employmentModel?.employmentUser?.name ?? "John Smith")
+            reviewWorkweekLabel.text = "Your employee's workweek starts on " + (employmentModel?.workWeekStartDay.title ?? "Monday")
+            reviewPayTypeLabel.text = "Your employee is paid " + (employmentModel?.paymentFrequency.title ?? "Unknown")
+            reviewPayRateLabel.text = "Your employee's pay rate is $10.00/hour"
+            if (employmentModel?.overtimeEligible == true) {
+                reviewOvertimeLabel.text = "Your employee is eligible for overtime (non-exempt)"
+            } else {
+                reviewOvertimeLabel.text = "Your employee is not eligible for overtime (non-exempt)"
+            }
+            reviewStateLabel.text = "Your employee works in " + (employmentModel?.employmentUser?.address?.state ?? "West Virginia")
         }
 //        nextButton.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
     }

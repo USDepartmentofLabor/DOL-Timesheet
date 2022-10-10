@@ -29,6 +29,7 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         setupNavigationBarSettings()
         setupView()
         displayInfo()
+      //  canMoveForward = true
         canMoveForward = true
     }
     
@@ -72,26 +73,33 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
 //    }
     
     @IBAction func employeeSelected(_ sender: Any) {
-        onboardingDelegate?.canMoveForward(vcIndex: vcIndex)
+        onboardingDelegate?.updateCanMoveForward(value:true)
         
         employerButton.tintColor = UIColor.white
         employeeButton.tintColor = UIColor.systemBlue
         
-        if let employee = viewModel.profileModel.currentUser as? Employee {
+        if let employee = profileViewModel!.profileModel.currentUser as? Employee {
             changeToEmployer(employee: employee)
         }
+        
+        onboardingDelegate?.updateUserType(newUserType: .employee)
+        
+        canMoveForward = true
     }
     
     @IBAction func employerSelected(_ sender: Any) {
-        
-        onboardingDelegate?.canMoveForward(vcIndex: vcIndex)
+        onboardingDelegate?.updateCanMoveForward(value: true)
         
         employerButton.tintColor = UIColor.systemBlue
         employeeButton.tintColor = UIColor.white
         
-        if let employer = viewModel.profileModel.currentUser as? Employer {
+        if let employer = profileViewModel!.profileModel.currentUser as? Employer {
             changeToEmployee(employer: employer)
         }
+        
+        onboardingDelegate?.updateUserType(newUserType: .employer)
+
+        canMoveForward = true
     }
     
     fileprivate func changeToEmployee(employer: Employer) {
@@ -139,13 +147,13 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
     }
     
     func toggleUserType() {
-        if let employer = viewModel.profileModel.currentUser as? Employer {
-            viewModel.changeToEmployee(employer: employer)
+        if let employer = profileViewModel!.profileModel.currentUser as? Employer {
+            profileViewModel!.changeToEmployee(employer: employer)
         }
-        else if let employee = viewModel.profileModel.currentUser as? Employee {
-            viewModel.changeToEmployer(employee: employee)
+        else if let employee = profileViewModel!.profileModel.currentUser as? Employee {
+            profileViewModel!.changeToEmployer(employee: employee)
         }
-        manageVC?.viewModel = ProfileViewModel(context: viewModel.managedObjectContext.childManagedObjectContext())
+        manageVC?.viewModel = ProfileViewModel(context: profileViewModel!.managedObjectContext.childManagedObjectContext())
     }
     
 }
