@@ -81,7 +81,6 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="Few-13-q0K" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="NTd-AN-QVq" secondAttribute="trailing" constant="20" symbolic="YES" id="CFm-fd-dBL"/>
                                                     <constraint firstItem="nX1-xS-Dv6" firstAttribute="leading" secondItem="NTd-AN-QVq" secondAttribute="leading" id="DbY-aF-86r"/>
                                                     <constraint firstItem="Few-13-q0K" firstAttribute="centerY" secondItem="NTd-AN-QVq" secondAttribute="centerY" id="gvF-rc-ETc"/>
                                                     <constraint firstItem="Few-13-q0K" firstAttribute="leading" secondItem="nX1-xS-Dv6" secondAttribute="trailing" constant="2" id="hJf-as-lhf"/>

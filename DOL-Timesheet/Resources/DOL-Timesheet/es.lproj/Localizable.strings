@@ -366,3 +366,6 @@
 "csv_header" = "\n,Fecha de Comienzo,Fecha de Salida,Empleador,Direccion del Empleador,Empleado,Numero de Empleado,Direccion del Empleado,Tipo de pago,Frecuencia de Pago,Total de Ganancias,Ganancias de Tiempo Regular,Sobretiempo\n";
 "csv_header2" = ",Fecha,Hora de Entrada,Hora de Salida, Descanso,Comentarios,Tarifa,Comentario Diario\n";
 "csv_header3" = ",Semana Laboral,Total de Horas Trabajadas,Total de Horas de Descanso,Horas de Sobretiempo,Ganancias de Tiempo Regular,Tarifa Regular,Pago de Sobretiempo\n";
+
+"fsla_info1" = "La Ley de Normas Justas de Trabajo (FLSA, por sus siglas en inglés) requiere que la mayoría de los empleados reciban el salario mínimo por todas las horas que trabajen, y sobretiempo, a tiempo y medio de su tarifa regular de pago, por las horas que trabajen por encima de 40 horas en una semana laboral.";
+"fsla_info2" = "La ley incluye algunas excepciones a estos requisitos. Algunos trabajadores ejecutivos, administrativos, profesionales y de ventas externas, así como algunos trabajadores en el campo de las computadoras, por ejemplo, están entre aquellos que, por ley, no están requeridos a recibir el pago de salario mínimo y sobretiempo de sus empleadores.";
