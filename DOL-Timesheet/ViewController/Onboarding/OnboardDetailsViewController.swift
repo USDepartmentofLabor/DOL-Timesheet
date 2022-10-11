@@ -44,16 +44,18 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     
     @IBOutlet weak var nextButton: NavigationButton!
     
-    var payPeriodArray: [String] = []
-    var frequencyValid: Bool = false
     var overtimeEligible: Bool = true
-    var stateValid: Bool = false
-    var payPeriodValid: Bool = false
-    var payRateValid: Bool = false
+    var payPeriodArray: [String] = []
     
-    var selectedPayFrequency: PaymentFrequency?
+    //Checks for canMoveForward
+    var stateValid: Bool = false
+    var payRateValid: Bool = false
+    //var frequencyValid: Bool = false
+    //var payPeriodValid: Bool = false
+    
+    var selectedPayFrequency: PaymentFrequency? = .daily
     var selectedState: State?
-    var selectedPayPeriod: String?
+    var selectedPayPeriod: String? = NSLocalizedString("payment_type_hourly", comment: "")
     var selectedPayRate: Double = 0.0
 //    weak var delegate: TimeViewControllerDelegate?
     
@@ -68,7 +70,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         setupNavigationBarSettings()
         setupView()
         displayInfo()
-        canMoveForward = true
+        canMoveForward = false
     }
     
     override func saveData() {
@@ -79,25 +81,43 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         employmentModel?.paymentType = .salary
         if selectedPayPeriod! == NSLocalizedString("payment_type_hourly", comment: "") {
             employmentModel?.paymentType = .hourly
-            employmentModel?.newHourlyRate()
+            if employmentModel?.hourlyRates?.count == 0 {
+                employmentModel?.newHourlyRate()
+            }
             employmentModel?.hourlyRates?[0].value = selectedPayRate
+//            employmentModel?.hourlyRates?[0].createdAt = Date()
             
         } else if selectedPayPeriod! == NSLocalizedString("salary_weekly", comment: "") {
-            employmentModel?.salary.salaryType = .weekly
+            deleteHourlyRate()
+            employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .weekly)
         } else if selectedPayPeriod! == NSLocalizedString("salary_monthly", comment: "") {
-            employmentModel?.salary.salaryType = .monthly
+            deleteHourlyRate()
+            employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .monthly)
         } else if selectedPayPeriod! == NSLocalizedString("salary_annually", comment: "") {
-            employmentModel?.salary.salaryType = .annually
+            deleteHourlyRate()
+            employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .annually)
         }
         
         let user = employmentModel?.employmentUser
         user?.setAddress(street1: " ", street2: " ", city: " ", state: selectedState!.title, zipCode: " ")
     }
     
+    func deleteHourlyRate() {
+        if employmentModel?.hourlyRates?.count != 0 {
+            employmentModel?.deleteHourlyRate(hourlyRate: (employmentModel?.hourlyRates![0])!)
+        }
+    }
+    
     override func setupView() {
 //        title = NSLocalizedString("introduction", comment: "Introduction")
 //        label1.scaleFont(forDataType: .introductionBoldText)
 //        label2.scaleFont(forDataType: .introductionText)
+        
+        let rate = payRateField.text?.currencyAmount() ?? NSNumber(0)
+        payRateField.text = NumberFormatter.localisedCurrencyStr(from: rate)
+        
+        payFrequencyField.text = NSLocalizedString("payment_frequency_daily", comment: "")
+        payPeriodField.text = NSLocalizedString("payment_type_hourly", comment: "")
         
         if (employmentModel?.overtimeEligible == true) {
             self.yesOvertimeButtonPressed(yesOvertimeButton!)
@@ -145,11 +165,11 @@ class OnboardDetailsViewController: OnboardBaseViewController {
 //    }
     
     func check() {
-//        if (nameValid && otherNameValid && workWeekStartValid) {
+        if (stateValid && payRateValid) {
             canMoveForward = true
-//        } else {
-//            canMoveForward = false
-//        }
+        } else {
+            canMoveForward = false
+        }
         onboardingDelegate?.updateCanMoveForward(value: canMoveForward)
     }
     
@@ -181,10 +201,10 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
-        if ((textField.text?.isEmpty) != nil) { return false }
+        if ((textField.text?.isEmpty) == nil) { return false }
         
         selectedPayRate = Double(textField.text ?? "0.0") ?? 0.00
-        payRateValid = true
+        
         return true
     }
     
@@ -249,7 +269,7 @@ extension OnboardDetailsViewController: UIPickerViewDelegate {
         if pickerView == payFrequencyPicker {
             payFrequencyField.text = PaymentFrequency.allCases[row].title
             selectedPayFrequency = PaymentFrequency.allCases[row]
-            frequencyValid = true
+//            frequencyValid = true
         } else if pickerView == statePicker {
             stateField.text = State.states[row].title
             selectedState = State.states[row]
@@ -257,7 +277,7 @@ extension OnboardDetailsViewController: UIPickerViewDelegate {
         } else {
             payPeriodField.text = payPeriodArray[row]
             selectedPayPeriod = payPeriodArray[row]
-            payPeriodValid = true
+//            payPeriodValid = true
         }
         check()
     }
@@ -294,6 +314,9 @@ extension OnboardDetailsViewController {
             let rate = textField.text?.currencyAmount() ?? NSNumber(0)
             textField.text = NumberFormatter.localisedCurrencyStr(from: rate)
             hourlyRate?.value = rate.doubleValue
+            selectedPayRate = rate.doubleValue
+            payRateValid = true
+            check()
         }
     }
 }

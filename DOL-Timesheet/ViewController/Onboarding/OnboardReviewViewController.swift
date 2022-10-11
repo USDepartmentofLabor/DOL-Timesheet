@@ -63,7 +63,24 @@ class OnboardReviewViewController: OnboardBaseViewController {
             reviewOtherNameLabel.text = "You work for " + (employmentModel?.employmentUser?.name ?? "John Smith")
             reviewWorkweekLabel.text = "Your employer's workweek starts on " + (employmentModel?.workWeekStartDay.title ?? "Monday")
             reviewPayTypeLabel.text = "You are paid " + (employmentModel?.paymentFrequency.title ?? "Unknown")
-            reviewPayRateLabel.text = "Your pay rate is $10.00/hour"
+            
+            if employmentModel?.employmentInfo.paymentType == .hourly {
+                reviewPayRateLabel.text = "Your pay rate is $" + (String((employmentModel?.hourlyRates![0].value)!)) + "/hour"
+            }else {
+                let SalaryType = employmentModel?.employmentInfo.salary?.salaryType
+                let salary = employmentModel?.employmentInfo.salary
+                let amount = salary?.value ?? 10.00
+                
+                
+                if SalaryType == .annually {
+                    reviewPayRateLabel.text = "Your pay rate is $" + String(amount) + "/annual"
+                } else if SalaryType == .monthly {
+                    reviewPayRateLabel.text = "Your pay rate is $" + String(amount) + "/month"
+                } else if SalaryType == .weekly {
+                    reviewPayRateLabel.text = "Your pay rate is $" + String(amount) + "/week"
+                }
+            }
+            
             if (employmentModel?.overtimeEligible == true) {
                 reviewOvertimeLabel.text = "You are eligible for overtime (non-exempt)"
             } else {
