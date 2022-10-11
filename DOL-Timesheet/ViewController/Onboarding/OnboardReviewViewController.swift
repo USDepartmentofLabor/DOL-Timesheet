@@ -94,11 +94,28 @@ class OnboardReviewViewController: OnboardBaseViewController {
             }
             reviewStateLabel.text = "You work in " + (employmentModel?.employmentUser?.address?.state ?? "West Virginia")
         } else {
-            reviewNameLabel.text = "You are " + (profileViewModel!.profileModel.currentUser!.name ?? "John Doe") + ", an employee"
+            reviewNameLabel.text = "You are " + (profileViewModel!.profileModel.currentUser!.name ?? "John Doe") + ", an employer"
             reviewOtherNameLabel.text = "Your employee's name is " + (employmentModel?.employmentUser?.name ?? "John Smith")
-            reviewWorkweekLabel.text = "Your employee's workweek starts on " + (employmentModel?.workWeekStartDay.title ?? "Monday")
+            reviewWorkweekLabel.text = "Your workweek starts on " + (employmentModel?.workWeekStartDay.title ?? "Monday")
             reviewPayTypeLabel.text = "Your employee is paid " + (employmentModel?.paymentFrequency.title ?? "Unknown")
-            reviewPayRateLabel.text = "Your employee's pay rate is $10.00/hour"
+            
+            if employmentModel?.employmentInfo.paymentType == .hourly {
+                reviewPayRateLabel.text = "Your employee's pay rate is $" + (String((employmentModel?.hourlyRates![0].value)!)) + "/hour"
+            }else {
+                let SalaryType = employmentModel?.employmentInfo.salary?.salaryType
+                let salary = employmentModel?.employmentInfo.salary
+                let amount = salary?.value ?? 10.00
+                
+                
+                if SalaryType == .annually {
+                    reviewPayRateLabel.text = "Your employee's pay rate is $" + String(amount) + "/annual"
+                } else if SalaryType == .monthly {
+                    reviewPayRateLabel.text = "Your employee's pay rate is $" + String(amount) + "/month"
+                } else if SalaryType == .weekly {
+                    reviewPayRateLabel.text = "Your employee's pay rate is $" + String(amount) + "/week"
+                }
+            }
+            
             if (employmentModel?.overtimeEligible == true) {
                 reviewOvertimeLabel.text = "Your employee is eligible for overtime (non-exempt)"
             } else {

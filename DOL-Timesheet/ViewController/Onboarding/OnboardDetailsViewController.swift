@@ -73,6 +73,21 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         canMoveForward = false
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if userType == .employee {
+            payFrequencyTitle.text = "How often do you get paid?"
+            payRateTitle.text = "What is your pay rate?"
+            overtimeTitle.text = "Are you eligible for paid overtime?"
+            stateTitle.text = "What state do you work in?"
+
+        } else {
+            payFrequencyTitle.text = "How often do your employee get paid?"
+            payRateTitle.text = "What is your employee's pay rate?"
+            overtimeTitle.text = "Is your employee eligible for paid overtime?"
+            stateTitle.text = "What state does your employee work in?"
+        }
+    }
+    
     override func saveData() {
         print("OnboardDetailsViewController SAVE DATA")
         employmentModel?.paymentFrequency = selectedPayFrequency!
