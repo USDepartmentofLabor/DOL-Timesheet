@@ -933,6 +933,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" image="hand.thumbsup" catalog="system" title="Looks good, let's go!"/>
+                                                <connections>
+                                                    <action selector="letsGoPressed:" destination="bDV-Vb-TeD" eventType="touchUpInside" id="P6Q-eX-J0b"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

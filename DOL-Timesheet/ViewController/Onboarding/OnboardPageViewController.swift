@@ -56,7 +56,7 @@ class OnboardPageViewController: UIPageViewController {
         if let visibleViewController: OnboardBaseViewController = viewControllers?.first as? OnboardBaseViewController,
             let nextViewController = pageViewController(self, viewControllerBefore: visibleViewController) {
                 currentVC = nextViewController as? OnboardBaseViewController
-                scrollToViewController(viewController: nextViewController)
+            scrollToViewController(viewController: nextViewController, direction: .reverse)
         }
     }
     

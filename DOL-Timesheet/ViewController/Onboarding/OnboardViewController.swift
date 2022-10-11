@@ -90,10 +90,15 @@ extension OnboardViewController: OnboardPageViewControllerDelegate {
         }
         updateDots()
         
-        if onboardPageViewController.currentVC?.canMoveForward == true {
+        if onboardPageViewController.currentVC?.canMoveForward == true && index != 4 {
             nextButton.isHidden = false
         } else {
             nextButton.isHidden = true
+        }
+        if index == 0 {
+            previousButton.isHidden = true
+        } else {
+            previousButton.isHidden = false
         }
         
     }

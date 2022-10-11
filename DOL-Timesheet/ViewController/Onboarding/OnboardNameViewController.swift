@@ -152,6 +152,7 @@ extension OnboardNameViewController: UITextFieldDelegate {
         if textField == otherNameField {
             textField.resignFirstResponder()
             workWeekStartPickerHeight.constant = 216
+            otherNameSet(textField)
 //            UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: employeeEmployerView)
         }
         else {
@@ -166,6 +167,7 @@ extension OnboardNameViewController: UITextFieldDelegate {
                 workWeekStartPickerHeight.constant = 0
             } else {
                 workWeekStartPickerHeight.constant = 216
+                otherNameSet(textField)
             }
             return false
         } else {

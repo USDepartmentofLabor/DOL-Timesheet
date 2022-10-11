@@ -57,6 +57,12 @@ class OnboardReviewViewController: OnboardBaseViewController {
 //        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
     }
 
+    @IBAction func letsGoPressed(_ sender: Any) {
+        employmentModel?.save()
+       // delegate?.didUpdateUser()
+        dismiss(animated: true, completion: nil)
+    }
+    
     func displayInfo() {
         if (userType == .employee) {
             reviewNameLabel.text = "You are " + (profileViewModel!.profileModel.currentUser!.name ?? "John Doe") + ", an employee"
