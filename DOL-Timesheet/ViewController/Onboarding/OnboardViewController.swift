@@ -18,8 +18,17 @@ import UIKit
 
 class OnboardViewController: UIViewController {
 
-    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var containerView: UIView!
+    
+    @IBOutlet weak var progress1: UIImageView!
+    @IBOutlet weak var progress2: UIImageView!
+    @IBOutlet weak var progress3: UIImageView!
+    @IBOutlet weak var progress4: UIImageView!
+    @IBOutlet weak var progress5: UIImageView!
+    var progressImages: [UIImageView] = []
+    
+    var currentPage = 0
+    var maxPageVisited = 0
     
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
@@ -32,7 +41,6 @@ class OnboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pageControl.addTarget(self, action: Selector(("didChangePageControlValue")), for: .valueChanged)
         
         let profileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
         if let vcs = onboardPageViewController?.orderedViewControllers {
@@ -42,6 +50,7 @@ class OnboardViewController: UIViewController {
                 element.profileViewModel = profileViewModel
             }
         }
+        progressImages = [progress1, progress2, progress3, progress4, progress5]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,7 +71,7 @@ class OnboardViewController: UIViewController {
      Fired when the user taps on the pageControl to change its current page.
      */
     func didChangePageControlValue() {
-        onboardPageViewController?.scrollToViewController(index: pageControl.currentPage)
+//        onboardPageViewController?.scrollToViewController(index: pageControl.currentPage)
     }
 }
 
@@ -70,18 +79,37 @@ extension OnboardViewController: OnboardPageViewControllerDelegate {
     
     func onboardPageViewController(onboardPageViewController: OnboardPageViewController,
         didUpdatePageCount count: Int) {
-        pageControl.numberOfPages = count
     }
     
     func onboardPageViewController(onboardPageViewController: OnboardPageViewController,
         didUpdatePageIndex index: Int) {
-        pageControl.currentPage = index
+        currentPage = index
+        
+        if index > maxPageVisited {
+            maxPageVisited = index - 1
+        }
+        updateDots()
+        
         if onboardPageViewController.currentVC?.canMoveForward == true {
             nextButton.isHidden = false
         } else {
             nextButton.isHidden = true
         }
         
+    }
+    
+    func updateDots() {
+        for (index, element) in progressImages.enumerated() {
+            element.tintColor = UIColor.darkGray
+            if index == currentPage {
+                element.image = UIImage(systemName: "circle.fill")
+                element.tintColor = UIColor.black
+            } else if index <= maxPageVisited {
+                element.image = UIImage(systemName: "checkmark.circle")
+            } else {
+                element.image = UIImage(systemName: "circle")
+            }
+        }
     }
     
 }
