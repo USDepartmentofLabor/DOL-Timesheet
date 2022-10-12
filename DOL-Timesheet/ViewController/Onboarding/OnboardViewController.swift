@@ -33,6 +33,8 @@ class OnboardViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     
+    weak var delegate: TimeViewControllerDelegate?
+    
     var onboardPageViewController: OnboardPageViewController? {
         didSet {
             onboardPageViewController?.onboardDelegate = self
@@ -48,6 +50,7 @@ class OnboardViewController: UIViewController {
                 element.onboardingDelegate = self
                 element.vcIndex = index
                 element.profileViewModel = profileViewModel
+                element.timeSheetDelegate = delegate
             }
         }
         progressImages = [progress1, progress2, progress3, progress4, progress5]
@@ -105,10 +108,10 @@ extension OnboardViewController: OnboardPageViewControllerDelegate {
     
     func updateDots() {
         for (index, element) in progressImages.enumerated() {
-            element.tintColor = UIColor.darkGray
+            element.tintColor = UIColor.gray
             if index == currentPage {
                 element.image = UIImage(systemName: "circle.fill")
-                element.tintColor = UIColor.black
+                element.tintColor = UIColor(named: "appBackgroundColor")
             } else if index <= maxPageVisited {
                 element.image = UIImage(systemName: "checkmark.circle")
             } else {

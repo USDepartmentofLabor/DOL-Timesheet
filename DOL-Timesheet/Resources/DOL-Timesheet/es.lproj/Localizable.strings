@@ -369,3 +369,63 @@
 
 "fsla_info1" = "La Ley de Normas Justas de Trabajo (FLSA, por sus siglas en inglés) requiere que la mayoría de los empleados reciban el salario mínimo por todas las horas que trabajen, y sobretiempo, a tiempo y medio de su tarifa regular de pago, por las horas que trabajen por encima de 40 horas en una semana laboral.";
 "fsla_info2" = "La ley incluye algunas excepciones a estos requisitos. Algunos trabajadores ejecutivos, administrativos, profesionales y de ventas externas, así como algunos trabajadores en el campo de las computadoras, por ejemplo, están entre aquellos que, por ley, no están requeridos a recibir el pago de salario mínimo y sobretiempo de sus empleadores.";
+
+"welcome_intro" = "Welcome to WHD's Timesheet App";
+"onboard_welcome_employee" = "I want to use this app to help me keep track of other people's time.";
+"onboard_welcome_employee_button" = "Set me up as an employee";
+"or" = "OR";
+"onboard_welcome_employer" = "I want to use this app to help me keep track of other people's time.";
+"onboard_welcome_employer_button" = "Set me up as an employer";
+
+"onboard_intro_1" = "This app is for your personal use and we don't share your information with anyone.";
+"onboard_intro_2" = "We will guide you through the setup by asking you a few questions that will help you get started.";
+"onboard_intro_3" = "Please answer all of the questions and don't worry, you'll be able to change things later in the app's Settings.";
+"onboard_intro_note" = "Tap the right arrow below to continue.";
+
+"onboard_name" = "What is you name or nickname?";
+"onboard_name_employer" = "What is your employer's name or nickname?";
+"onboard_name_employee" = "What is your employee's name or nickname?";
+"onboard_workweek_start" = "When does the workweek begin?";
+"onboard_employer_note" = "Note: you can add more employers later in Settings";
+"onboard_employee_note" = "Note: You can add more employees later in Settings";
+
+"onboard_pay_frequency_employer" = "How often do you get paid?";
+"onboard_pay_frequency_employee" = "How often does your employee get paid?";
+"onboard_pay_rate_employer" = "What is your pay rate?";
+"onboard_pay_rate_employee" = "What is your employee's pay rate?";
+"onboard_overtime_employer" = "Are you eligible for paid overtime?";
+"onboard_overtime_employee" = "What is your employee paid time?";
+"onboard_overtime_yes" = "Yes (non-exempt)";
+"onboard_overtime_no" = "No (exempt)";
+"onboard_state_employer" = "What state do you work in?";
+"onboard_state_employee" = "What state does your employee work in?";
+"onboard_pay_note" = "Note: You can add more pay rates and states later in Settings";
+
+"onboard_review_title" = "You're almost done!";
+"onboard_review_intro" = "Let's review your setup:";
+
+"onboard_review_name" = "You are ";
+
+"onboard_review_employee" = ", an employee";
+"onboard_review_employee_employer" = "You work for ";
+"onboard_review_employee_workweek" = "Your employer's workweek starts on ";
+"onboard_review_employee_frequency" = "You are paid ";
+"onboard_review_employee_rate" = "Your pay rate is $";
+"onboard_review_employee_overtime_yes" = "You are eligible for overtime (non-exempt)";
+"onboard_review_employee_overtime_no" = "You are not eligible for overtime (exempt)";
+"onboard_review_employee_state" = "Your employee works in ";
+
+"onboard_review_employer" = ", an employer";
+"onboard_review_employer_employee" = "Your employee's name is ";
+"onboard_review_employer_workweek" = "Your workweek starts on ";
+"onboard_review_employer_frequency" = "Your employee is paid ";
+"onboard_review_employer_rate" = "Your employee's pay rate is $";
+"onboard_review_employer_overtime_yes" = "Your employee is eligible for overtime (non-exempt)";
+"onboard_review_employer_overtime_no" = "Your employee is not eligible for overtime (exempt)";
+"onboard_review_employer_state" = "Your employee works in ";
+
+"onboard_review_button" = "Looks good, let's go!";
+"onboard_review_note" = "Note: if something doesn't look right, go back to previous steps to make your changes";
+
+"info_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid for 8 hours of work get their pay rounded up/down to the nearest 15 minutes.";
+"info_dont_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid exactly for 7 hours and 55 minutes of work DO NOT get their pay rounded up/down to the nearest 15 minutes.";

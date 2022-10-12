@@ -32,6 +32,9 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     @IBOutlet weak var yesOvertimeButton: UIButton!
     @IBOutlet weak var noOvertimeButton: UIButton!
     
+    @IBOutlet weak var dontRoundUpDownButton: UIButton!
+    @IBOutlet weak var roundUpDownButton: UIButton!
+    
     @IBOutlet weak var stateTitle: UILabel!
     @IBOutlet weak var stateField: UITextField!
     @IBOutlet weak var statePicker: UIPickerView!
@@ -45,6 +48,8 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     @IBOutlet weak var nextButton: NavigationButton!
     
     var overtimeEligible: Bool = true
+    var roundTimeUp: Bool = true
+    
     var payPeriodArray: [String] = []
     
     //Checks for canMoveForward
@@ -88,35 +93,6 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         }
     }
     
-    override func saveData() {
-        print("OnboardDetailsViewController SAVE DATA")
-        employmentModel?.paymentFrequency = selectedPayFrequency!
-        employmentModel?.overtimeEligible = overtimeEligible
-        
-        employmentModel?.paymentType = .salary
-        if selectedPayPeriod! == NSLocalizedString("payment_type_hourly", comment: "") {
-            employmentModel?.paymentType = .hourly
-            if employmentModel?.hourlyRates?.count == 0 {
-                employmentModel?.newHourlyRate()
-            }
-            employmentModel?.hourlyRates?[0].value = selectedPayRate
-//            employmentModel?.hourlyRates?[0].createdAt = Date()
-            
-        } else if selectedPayPeriod! == NSLocalizedString("salary_weekly", comment: "") {
-            deleteHourlyRate()
-            employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .weekly)
-        } else if selectedPayPeriod! == NSLocalizedString("salary_monthly", comment: "") {
-            deleteHourlyRate()
-            employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .monthly)
-        } else if selectedPayPeriod! == NSLocalizedString("salary_annually", comment: "") {
-            deleteHourlyRate()
-            employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .annually)
-        }
-        
-        let user = employmentModel?.employmentUser
-        user?.setAddress(street1: " ", street2: " ", city: " ", state: selectedState!.title, zipCode: " ")
-    }
-    
     func deleteHourlyRate() {
         if employmentModel?.hourlyRates?.count != 0 {
             employmentModel?.deleteHourlyRate(hourlyRate: (employmentModel?.hourlyRates![0])!)
@@ -152,6 +128,22 @@ class OnboardDetailsViewController: OnboardBaseViewController {
                           NSLocalizedString("salary_monthly", comment: ""),
                           NSLocalizedString("salary_annually", comment: "")]
         
+        if userType == .employee {
+            payFrequencyTitle.text = NSLocalizedString("onboard_pay_frequency_employer", comment: "How often do you get paid?")
+            payRateTitle.text = NSLocalizedString("onboard_pay_rate_employer", comment: "What is your pay rate?")
+            overtimeTitle.text = NSLocalizedString("onboard_overtime_employer", comment: "Are you eligible for paid overtime?")
+            stateTitle.text = NSLocalizedString("onboard_state_employer", comment: "What state do you work in?")
+        } else {
+            payFrequencyTitle.text = NSLocalizedString("onboard_pay_frequency_employee", comment: "How often does your employee get paid?")
+            payRateTitle.text = NSLocalizedString("onboard_pay_rate_employee", comment: "What is your employee's pay rate?")
+            overtimeTitle.text = NSLocalizedString("onboard_overtime_employee", comment: "What is your employee paid time?")
+            stateTitle.text = NSLocalizedString("onboard_state_employee", comment: "What state does your employee work in?")
+        }
+        
+        yesOvertimeButton.setTitle(NSLocalizedString("onboard_overtime_yes", comment: "Yes (non-exempt)"), for: .normal)
+        noOvertimeButton.setTitle(NSLocalizedString("onboard_overtime_no", comment: "No (exempt)"), for: .normal)
+        noteTitle.text = NSLocalizedString("onboard_pay_note", comment: "")
+        
         setupAccessibility()
         scrollView.keyboardDismissMode = .onDrag
     }
@@ -179,6 +171,35 @@ class OnboardDetailsViewController: OnboardBaseViewController {
 //        }
 //    }
     
+    override func saveData() {
+        print("OnboardDetailsViewController SAVE DATA")
+        employmentModel?.paymentFrequency = selectedPayFrequency!
+        employmentModel?.overtimeEligible = overtimeEligible
+        
+        employmentModel?.paymentType = .salary
+        if selectedPayPeriod! == NSLocalizedString("payment_type_hourly", comment: "") {
+            employmentModel?.paymentType = .hourly
+            if employmentModel?.hourlyRates?.count == 0 {
+                employmentModel?.newHourlyRate()
+            }
+            employmentModel?.hourlyRates?[0].value = selectedPayRate
+//            employmentModel?.hourlyRates?[0].createdAt = Date()
+            
+        } else if selectedPayPeriod! == NSLocalizedString("salary_weekly", comment: "") {
+            deleteHourlyRate()
+            employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .weekly)
+        } else if selectedPayPeriod! == NSLocalizedString("salary_monthly", comment: "") {
+            deleteHourlyRate()
+            employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .monthly)
+        } else if selectedPayPeriod! == NSLocalizedString("salary_annually", comment: "") {
+            deleteHourlyRate()
+            employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .annually)
+        }
+        
+        let user = employmentModel?.employmentUser
+        user?.setAddress(street1: " ", street2: " ", city: " ", state: selectedState!.title, zipCode: " ")
+    }
+    
     func check() {
         if (stateValid && payRateValid) {
             canMoveForward = true
@@ -195,19 +216,58 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         payRateField.text = NumberFormatter.localisedCurrencyStr(from: rate.value)
         
     }
+    @IBAction func infoFrequencyPressed(_ sender: Any) {
+        if userType == .employee {
+            displayInfoPopup(sender, info: .employee_paymentFrequency)
+        } else {
+            displayInfoPopup(sender, info: .employer_paymentFrequency)
+        }
+    }
+    @IBAction func infoPayRatePressed(_ sender: Any) {
+        if userType == .employee {
+            displayInfoPopup(sender, info: .employee_hourlyPayRate)
+        } else {
+            displayInfoPopup(sender, info: .employer_hourlyPayRate)
+        }
+    }
+    
+    @IBAction func roundUpDownPressed(_ sender: Any) {
+        if roundTimeUp {
+            displayInfoPopup(sender, info: .round_updown)
+        } else {
+            displayInfoPopup(sender, info: .dont_round_updown)
+        }
+    }
+    @IBAction func infoOvertimePressed(_ sender: Any) {
+        displayInfoPopup(sender, info: .overtimeEligible)
+    }
     
     @IBAction func yesOvertimeButtonPressed(_ sender: Any) {
         noOvertimeButton.tintColor = UIColor.white
-        yesOvertimeButton.tintColor = UIColor.systemBlue
+        yesOvertimeButton.tintColor = UIColor(named: "appPrimaryColor")
         self.containerView.bringSubviewToFront(yesOvertimeButton)
         overtimeEligible = true
     }
     
     @IBAction func noOvertimeButtonPressed(_ sender: Any) {
-        noOvertimeButton.tintColor = UIColor.systemBlue
+        noOvertimeButton.tintColor = UIColor(named: "appPrimaryColor")
         yesOvertimeButton.tintColor = UIColor.white
         self.containerView.bringSubviewToFront(noOvertimeButton)
         overtimeEligible = false
+    }
+    
+    @IBAction func roundTimeUpDown(_ sender: Any) {
+        dontRoundUpDownButton.tintColor = UIColor.white
+        roundUpDownButton.tintColor = UIColor(named: "appPrimaryColor")
+        self.containerView.bringSubviewToFront(roundUpDownButton)
+        roundTimeUp = true
+    }
+    
+    @IBAction func dontRoundUpDown(_ sender: Any) {
+        dontRoundUpDownButton.tintColor = UIColor(named: "appPrimaryColor")
+        roundUpDownButton.tintColor = UIColor.white
+        self.containerView.bringSubviewToFront(dontRoundUpDownButton)
+        roundTimeUp = false
     }
 }
 
@@ -229,6 +289,8 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
                 payFrequencyPickerHeight.constant = 0
             } else {
                 payFrequencyPickerHeight.constant = 216
+                statePickerHeight.constant = 0
+                payPeriodPickerHeight.constant = 0
             }
             return false
         } else if textField == stateField {
@@ -236,6 +298,8 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
                 statePickerHeight.constant = 0
             } else {
                 statePickerHeight.constant = 216
+                payFrequencyPickerHeight.constant = 0
+                payPeriodPickerHeight.constant = 0
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     self.scrollView.scrollToBottom()
                 }
@@ -246,6 +310,8 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
                 payPeriodPickerHeight.constant = 0
             } else {
                 payPeriodPickerHeight.constant = 216
+                payFrequencyPickerHeight.constant = 0
+                statePickerHeight.constant = 0
             }
             return false
         } else {

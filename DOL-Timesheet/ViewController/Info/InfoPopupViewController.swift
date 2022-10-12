@@ -36,6 +36,8 @@ enum Info: String {
     case endTime
     case breakTime
     case importDBEmployee
+    case round_updown
+    case dont_round_updown
     case unknown
     
     var title: String {
@@ -87,6 +89,10 @@ enum Info: String {
             title = NSLocalizedString("info_break_time", comment: "Break Time")
         case .importDBEmployee:
             title = NSLocalizedString("info_import_employee", comment: "Import old employee database")
+        case .round_updown:
+            title = NSLocalizedString("info_round_up_down_text", comment: "Round UpDown Time")
+        case .dont_round_updown:
+            title = NSLocalizedString("info_dont_round_up_down_text", comment: "Dont Round UpDown Time")
         case .unknown:
             title = ""
         }

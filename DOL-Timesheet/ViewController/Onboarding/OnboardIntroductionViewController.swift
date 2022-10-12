@@ -39,6 +39,13 @@ class OnboardIntroductionViewController: OnboardBaseViewController {
 //        label1.scaleFont(forDataType: .introductionBoldText)
 //        label2.scaleFont(forDataType: .introductionText)
         
+        introductionLabel.text = NSLocalizedString("introduction", comment: "Introduction")
+        introLabel1.text = NSLocalizedString("onboard_intro_1", comment: "This app is for your personal use and we don't share your information with anyone.")
+        introLabel2.text = NSLocalizedString("onboard_intro_2", comment: "We will guide you through the setup by asking you a few questions that will help you get started.")
+        introLabel3.text = NSLocalizedString("onboard_intro_3", comment: "Please answer all of the questions and don't worry, you'll be able to change things later in the app's Settings.")
+        introNoteLabel.text = NSLocalizedString("onboard_intro_note", comment: "Tap the right arrow below to continue.")
+
+        
         setupAccessibility()
     }
     

@@ -52,6 +52,44 @@ class OnboardNameViewController: OnboardBaseViewController {
         }
     }
     
+    override func setupView() {
+//        title = NSLocalizedString("introduction", comment: "Introduction")
+//        label1.scaleFont(forDataType: .introductionBoldText)
+//        label2.scaleFont(forDataType: .introductionText)
+        
+        self.workWeekStartPickerHeight.constant = 0
+        
+        nameLabel.text = NSLocalizedString("onboard_name", comment: "What is you name or nickname?")
+        if userType == .employee {
+            otherNameLabel.text = NSLocalizedString("onboard_name_employer", comment: "What is your employer's name or nickname?")
+            nameNoteLabel.text = NSLocalizedString("onboard_employer_note", comment: "Note: you can add more employers later in Settings")
+        } else {
+            otherNameLabel.text = NSLocalizedString("onboard_name_employee", comment: "What is your employee's name or nickname?")
+            nameNoteLabel.text = NSLocalizedString("onboard_employee_note", comment: "Note: You can add more employees later in Settings")
+        }
+        workweekLabel.text = NSLocalizedString("onboard_workweek_start", comment: "When does the workweek begin?")
+        
+        setupAccessibility()
+        scrollView.keyboardDismissMode = .onDrag
+    }
+    
+    func setupAccessibility() {
+//        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
+    }
+
+    func displayInfo() {
+//        label1.text = NSLocalizedString("introduction_text1", comment: "Introduction Text1")
+//        label2.text = NSLocalizedString("introduction_text2", comment: "Introduction Text2")
+//        nextButton.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
+    }
+
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "setupProfile",
+//            let setupVC = segue.destination as? SetupProfileViewController {
+//            setupVC.delegate = delegate
+//        }
+//    }
+    
     override func saveData() {
         print("OnboardNameViewController SAVE DATA")
         
@@ -80,36 +118,7 @@ class OnboardNameViewController: OnboardBaseViewController {
             profileViewModel: profileViewModel!,
             employmentModel: employmentModel!
         )
-
     }
-    
-    override func setupView() {
-//        title = NSLocalizedString("introduction", comment: "Introduction")
-//        label1.scaleFont(forDataType: .introductionBoldText)
-//        label2.scaleFont(forDataType: .introductionText)
-        
-        self.workWeekStartPickerHeight.constant = 0
-        
-        setupAccessibility()
-        scrollView.keyboardDismissMode = .onDrag
-    }
-    
-    func setupAccessibility() {
-//        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
-    }
-
-    func displayInfo() {
-//        label1.text = NSLocalizedString("introduction_text1", comment: "Introduction Text1")
-//        label2.text = NSLocalizedString("introduction_text2", comment: "Introduction Text2")
-//        nextButton.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
-    }
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "setupProfile",
-//            let setupVC = segue.destination as? SetupProfileViewController {
-//            setupVC.delegate = delegate
-//        }
-//    }
     
     @IBAction func nameSet(_ sender: Any) {
         var errorStr: String? = nil
@@ -143,6 +152,13 @@ class OnboardNameViewController: OnboardBaseViewController {
         }
         otherNameValid = true
         check()
+    }
+    @IBAction func infoWorkweekPressed(_ sender: Any) {
+        if userType == .employee {
+            displayInfoPopup(sender, info: .employee_workweek)
+        } else {
+            displayInfoPopup(sender, info: .employer_workweek)
+        }
     }
     
     func check() {

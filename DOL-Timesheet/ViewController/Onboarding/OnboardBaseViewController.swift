@@ -20,6 +20,7 @@ class OnboardBaseViewController: UIViewController {
     var userType: UserType = .employee
     
     var onboardingDelegate: OnboardingProtocol?
+    weak var timeSheetDelegate: TimeViewControllerDelegate?
     var canMoveForward: Bool = false
     var vcIndex: Int = 0
     

@@ -135,8 +135,9 @@ class TimeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "showOnboard",
-            let introVC = segue.destination as? OnboardViewController {
-           // introVC.delegate = self
+            let navVC = segue.destination as? UINavigationController,
+            let introVC = navVC.topViewController as? OnboardViewController {
+            introVC.delegate = self
         }
         else if segue.identifier == "setupProfile",
             let navVC = segue.destination as? UINavigationController,
