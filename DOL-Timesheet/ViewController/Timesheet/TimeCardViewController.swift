@@ -64,7 +64,30 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
         super.viewDidLoad()
         setupNavigationBarSettings()
         setupView()
+        offerSpanish()
     }
+    
+    func offerSpanish() {
+         
+         guard let langStr = Locale.current.languageCode else { return }
+         if !langStr.contains("es") {
+             let alertController =
+                 UIAlertController(title: "Hola!",
+                                   message: "This app now has spanish support, click Yes below to update your settings for Spanish.",
+                                   preferredStyle: .alert)
+             
+             alertController.addAction(
+                 UIAlertAction(title: "No", style: .cancel))
+             alertController.addAction(
+                 UIAlertAction(title: "Yes", style: .destructive) { _ in
+                     if let url = URL(string: UIApplication.openSettingsURLString) {
+                         UIApplication.shared.open(url, completionHandler: .none)
+                     }
+                 }
+             )
+             present(alertController, animated: true)
+         }
+     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
