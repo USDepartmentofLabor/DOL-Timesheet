@@ -71,6 +71,10 @@ class OnboardNameViewController: OnboardBaseViewController {
         
         setupAccessibility()
         scrollView.keyboardDismissMode = .onDrag
+        
+        nameField.setBorderColor()
+        otherNameField.setBorderColor()
+        workweekField.setBorderColor()
     }
     
     func setupAccessibility() {
@@ -243,5 +247,18 @@ extension OnboardNameViewController: UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return Weekday.allCases.count
+    }
+}
+
+extension UITextField {
+    func setBorderColor() {
+        self.layer.cornerRadius = 8.0
+        self.layer.masksToBounds = true
+        if self.traitCollection.userInterfaceStyle == .dark {
+            self.layer.borderColor = UIColor.white.cgColor
+        } else {
+            self.layer.borderColor = UIColor.lightGray.cgColor
+        }
+        self.layer.borderWidth = 1.0
     }
 }

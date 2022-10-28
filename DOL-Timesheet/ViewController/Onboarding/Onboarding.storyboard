@@ -297,7 +297,7 @@
         <!--Onboard Name View Controller-->
         <scene sceneID="Fi2-ii-2Ju">
             <objects>
-                <viewController storyboardIdentifier="OnboardNameViewController" title="Onboard Name View Controller" id="pRs-jS-dBb" userLabel="Onboard Name View Controller" customClass="OnboardNameViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardNameViewController" title="Onboard Name View Controller" interfaceStyle="dark" id="pRs-jS-dBb" userLabel="Onboard Name View Controller" customClass="OnboardNameViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tkr-Va-N7e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -331,7 +331,7 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="AI8-Zk-fi9"/>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="398" id="b4L-Dt-y3q"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
                                                     <action selector="nameSet:" destination="pRs-jS-dBb" eventType="editingDidEnd" id="nZj-18-HyH"/>
@@ -354,7 +354,7 @@
                                                     <constraint firstAttribute="height" constant="34" id="Lj5-yw-O5Q"/>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="398" id="P1z-yr-vBf"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
                                                     <action selector="otherNameSet:" destination="pRs-jS-dBb" eventType="editingDidEnd" id="Pwb-hz-w8t"/>
@@ -390,7 +390,7 @@
                                                     <constraint firstAttribute="height" constant="34" id="9kK-qK-oMV"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ayI-Z1-DMK"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="pRs-jS-dBb" id="7AR-qs-4tf"/>
@@ -496,7 +496,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="644"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vky-34-Bti">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="716.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="650.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="displayLogo" translatesAutoresizingMaskIntoConstraints="NO" id="TdS-aU-xow">
                                                 <rect key="frame" x="127" y="8" width="160" height="60"/>
@@ -534,7 +534,7 @@
                                                     <constraint firstAttribute="height" constant="34" id="Hh1-i4-sIx"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="bSO-xc-Gc0"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="1cG-DH-Gtj" id="90o-nb-0uj"/>
@@ -551,9 +551,8 @@
                                                 </connections>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your pay rate?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jf4-EH-05W">
-                                                <rect key="frame" x="59" y="226.5" width="296" height="32"/>
+                                                <rect key="frame" x="59" y="226.5" width="296" height="21.5"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="P98-2O-G6Y"/>
                                                     <constraint firstAttribute="width" constant="296" id="pN6-lf-IgR"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -561,7 +560,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLv-Y7-xXs" userLabel="Info Pay Rate">
-                                                <rect key="frame" x="363" y="224" width="37" height="37"/>
+                                                <rect key="frame" x="363" y="218.5" width="37" height="37"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="37" id="7lV-xe-pEF"/>
                                                     <constraint firstAttribute="height" constant="37" id="Vef-ue-ke6"/>
@@ -573,7 +572,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDq-w7-mW4">
-                                                <rect key="frame" x="0.0" y="266.5" width="414" height="73"/>
+                                                <rect key="frame" x="0.0" y="256" width="414" height="73"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ljq-zU-d0o" userLabel="Pay Rate Field" customClass="UnderlinedTextField" customModule="Timesheet" customModuleProvider="target">
                                                         <rect key="frame" x="72.5" y="0.0" width="109" height="34"/>
@@ -581,7 +580,7 @@
                                                             <constraint firstAttribute="width" constant="109" id="WTU-du-qFp"/>
                                                             <constraint firstAttribute="height" constant="34" id="bMf-3Y-Q1V"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="1cG-DH-Gtj" id="bNq-WG-oOI"/>
@@ -604,7 +603,7 @@
                                                             <constraint firstAttribute="width" constant="109" id="1io-fb-Jyt"/>
                                                             <constraint firstAttribute="height" constant="34" id="YtA-OR-G7i"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="1cG-DH-Gtj" id="odJ-AQ-AL7"/>
@@ -638,16 +637,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is your employee eligible for overtime?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBm-Ad-MS5">
-                                                <rect key="frame" x="20" y="472.5" width="335" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="F2B-5i-jRD"/>
-                                                </constraints>
+                                                <rect key="frame" x="20" y="439.5" width="335" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZvX-AR-3py" userLabel="Info Overtime">
-                                                <rect key="frame" x="363" y="476" width="37" height="37"/>
+                                                <rect key="frame" x="363" y="431.5" width="37" height="37"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="37" id="25n-mu-c28"/>
                                                     <constraint firstAttribute="height" constant="37" id="AvA-NQ-KXE"/>
@@ -659,16 +655,18 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmE-Cv-YRR">
-                                                <rect key="frame" x="45" y="524.5" width="170" height="31"/>
+                                                <rect key="frame" x="45" y="469" width="170" height="31"/>
+                                                <color key="backgroundColor" name="appPrimaryColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="170" id="8ct-TS-hME"/>
                                                     <constraint firstAttribute="height" constant="31" id="krT-HE-Fri"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="tintColor" name="appPrimaryColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Yes (non-exempt)" cornerStyle="fixed">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="0.0"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Yes (non-exempt)">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="10"/>
@@ -683,16 +681,18 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFK-18-rjh">
-                                                <rect key="frame" x="199" y="524.5" width="170" height="31"/>
+                                                <rect key="frame" x="199" y="469" width="170" height="31"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="NBA-Rv-NbU"/>
                                                     <constraint firstAttribute="width" constant="170" id="ai1-Xb-b0P"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="No (exempt)" cornerStyle="fixed">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="0.0"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="No (exempt)">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="10"/>
@@ -707,25 +707,24 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is your paid time rounded up/down?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6g9-kw-JbZ">
-                                                <rect key="frame" x="30" y="365" width="354" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="yQd-Bn-NuK"/>
-                                                </constraints>
+                                                <rect key="frame" x="30" y="354.5" width="354" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKi-mP-8Jc">
-                                                <rect key="frame" x="42" y="417" width="270" height="31"/>
+                                                <rect key="frame" x="42" y="384" width="270" height="31"/>
+                                                <color key="backgroundColor" name="appPrimaryColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="RMF-GG-AdK"/>
                                                     <constraint firstAttribute="width" constant="270" id="pAY-oS-MJM"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="tintColor" name="appPrimaryColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Yes (to the nearest 15 minutes)" cornerStyle="fixed">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="0.0"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Yes (to the nearest 15 minutes)">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="10"/>
@@ -740,16 +739,18 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gT1-ry-NMT">
-                                                <rect key="frame" x="297" y="417" width="60" height="31"/>
+                                                <rect key="frame" x="297" y="384" width="60" height="31"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="KM9-Jn-Dkc"/>
                                                     <constraint firstAttribute="height" constant="31" id="LE0-rh-z7x"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="No" cornerStyle="fixed">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="0.0"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="No">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="10"/>
@@ -764,9 +765,8 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What state do you work in?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="al3-t6-dZ3">
-                                                <rect key="frame" x="59" y="585.5" width="296" height="32"/>
+                                                <rect key="frame" x="59" y="530" width="296" height="21.5"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="S0a-5E-Tsn"/>
                                                     <constraint firstAttribute="width" constant="296" id="rTE-6G-Oh1"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -774,21 +774,21 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SvJ-gW-9Yg" userLabel="StateField">
-                                                <rect key="frame" x="57" y="625.5" width="300" height="34"/>
+                                                <rect key="frame" x="57" y="559.5" width="300" height="34"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="398" id="1dO-Sq-M2x"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ZPZ-kX-5T9"/>
                                                     <constraint firstAttribute="height" constant="34" id="nf2-wO-GZq"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="1cG-DH-Gtj" id="SPc-rD-y8m"/>
                                                 </connections>
                                             </textField>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKo-do-okp" userLabel="State Picker">
-                                                <rect key="frame" x="8" y="667.5" width="398" height="39"/>
+                                                <rect key="frame" x="8" y="601.5" width="398" height="39"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="398" id="GQR-8K-OzA"/>
                                                     <constraint firstAttribute="height" constant="39" id="N7J-Jb-Db2"/>
@@ -799,7 +799,7 @@
                                                 </connections>
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKy-4K-kvH" userLabel="Info Overtime">
-                                                <rect key="frame" x="363" y="368.5" width="37" height="37"/>
+                                                <rect key="frame" x="363" y="346.5" width="37" height="37"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="37" id="Q4l-ft-jTn"/>
                                                     <constraint firstAttribute="width" constant="37" id="lR9-tj-T1Q"/>

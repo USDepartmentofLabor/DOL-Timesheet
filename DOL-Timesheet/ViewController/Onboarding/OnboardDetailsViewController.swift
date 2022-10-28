@@ -92,6 +92,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
             stateTitle.text = "What state does your employee work in?"
         }
     }
+
     
     func deleteHourlyRate() {
         if employmentModel?.hourlyRates?.count != 0 {
@@ -145,6 +146,15 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         noteTitle.text = NSLocalizedString("onboard_pay_note", comment: "")
         
         setupAccessibility()
+        
+        payRateField.setBorderColor()
+        payFrequencyField.setBorderColor()
+        payPeriodField.setBorderColor()
+        stateField.setBorderColor()
+        
+      //  roundUpDownButton.titleLabel?.font = .systemFont(ofSize: 10)
+       // roundUpDownButton.titleLabel?.font = UIFont(name: "System", size: 10)
+        
         scrollView.keyboardDismissMode = .onDrag
     }
     
