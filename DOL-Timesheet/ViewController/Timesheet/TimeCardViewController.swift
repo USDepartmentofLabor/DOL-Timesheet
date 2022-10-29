@@ -64,17 +64,32 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
         super.viewDidLoad()
         setupNavigationBarSettings()
         setupView()
-        offerSpanish()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let defaults = UserDefaults.standard
+        let hasSeen = defaults.bool(forKey: "Seen")
+        if !(viewModel?.currentEmploymentModel?.isWizard ?? true) && !hasSeen {
+            offerSpanish()
+        }
     }
     
     func offerSpanish() {
          
          guard let langStr = Locale.current.languageCode else { return }
+        
          if !langStr.contains("es") {
              let alertController =
-                 UIAlertController(title: "Hola!",
+                 UIAlertController(title: " ",
                                    message: "This app now has spanish support, click Yes below to update your settings for Spanish.",
                                    preferredStyle: .alert)
+             //alertController.view.center.x
+             let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-15, y: 0, width: 30, height: 30))
+             imgViewTitle.image = UIImage(named:"holaHello")
+             
+//             imgViewTitle.setTranslatesAutoresizingMaskIntoConstraints(false)
+             alertController.view.addSubview(imgViewTitle)
              
              alertController.addAction(
                  UIAlertAction(title: "No", style: .cancel))
@@ -86,6 +101,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
                  }
              )
              present(alertController, animated: true)
+             let defaults = UserDefaults.standard
+             defaults.set(true, forKey: "Seen")
          }
      }
     

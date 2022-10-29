@@ -21,6 +21,7 @@ class IntroductionViewController: UIViewController {
         setupNavigationBarSettings()
         setupView()
         displayInfo()
+        offerSpanish()
     }
     
     func setupView() {
@@ -47,5 +48,35 @@ class IntroductionViewController: UIViewController {
             setupVC.delegate = delegate
         }
     }
+    
+    func offerSpanish() {
+         
+         guard let langStr = Locale.current.languageCode else { return }
+         if !langStr.contains("es") {
+             let alertController =
+                 UIAlertController(title: " ",
+                                   message: "This app now has spanish support, click Yes below to update your settings for Spanish.",
+                                   preferredStyle: .alert)
+             //alertController.view.center.x
+             let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-15, y: 0, width: 30, height: 30))
+             imgViewTitle.image = UIImage(named:"holaHello")
+             
+//             imgViewTitle.setTranslatesAutoresizingMaskIntoConstraints(false)
+             alertController.view.addSubview(imgViewTitle)
+             
+             alertController.addAction(
+                 UIAlertAction(title: "No", style: .cancel))
+             alertController.addAction(
+                 UIAlertAction(title: "Yes", style: .destructive) { _ in
+                     if let url = URL(string: UIApplication.openSettingsURLString) {
+                         UIApplication.shared.open(url, completionHandler: .none)
+                     }
+                 }
+             )
+             present(alertController, animated: true)
+             let defaults = UserDefaults.standard
+             defaults.set(true, forKey: "Seen")
+         }
+     }
 }
 

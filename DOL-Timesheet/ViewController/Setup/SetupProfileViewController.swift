@@ -67,6 +67,7 @@ class SetupProfileViewController: UIViewController {
     
     @IBOutlet weak var nextBtn: NavigationButton!
     
+    @IBOutlet weak var holaHelloButton: UIButton!
     
     weak var manageVC: ManageUsersViewController?
     

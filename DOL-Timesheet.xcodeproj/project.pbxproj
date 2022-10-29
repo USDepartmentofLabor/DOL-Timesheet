@@ -121,6 +121,7 @@
 		696D20DD28318CC9007E041F /* DOL_Timesheet.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */; };
 		696D20DE28318CC9007E041F /* DOL_Timesheet.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */; };
 		698AE54728C7ACBA0038945B /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 698AE54628C7ACBA0038945B /* Onboarding.storyboard */; };
+		6999703E290C942E00DCDE7C /* SwitchLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */; };
 		69ADCF7E28CCDB46001AC363 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF7D28CCDB46001AC363 /* OnboardWelcomeViewController.swift */; };
 		69ADCF8028CCDB5C001AC363 /* OnboardIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */; };
 		69ADCF8228CCDB70001AC363 /* OnboardNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8128CCDB70001AC363 /* OnboardNameViewController.swift */; };
@@ -269,6 +270,7 @@
 		696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-shm"; sourceTree = "<group>"; };
 		696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-wal"; sourceTree = "<group>"; };
 		698AE54628C7ACBA0038945B /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchLanguageViewController.swift; sourceTree = "<group>"; };
 		69ADCF7D28CCDB46001AC363 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
 		69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardIntroductionViewController.swift; sourceTree = "<group>"; };
 		69ADCF8128CCDB70001AC363 /* OnboardNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardNameViewController.swift; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 				03E68177226635CC002F2345 /* Employment */,
 				032C9F142264E83A00FB1468 /* IntroductionViewController.swift */,
 				032C9F162264EB3700FB1468 /* SetupProfileViewController.swift */,
+				6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -852,6 +855,7 @@
 				69ADCF7E28CCDB46001AC363 /* OnboardWelcomeViewController.swift in Sources */,
 				0328A18622661EB900957F53 /* UIViewController+Extension.swift in Sources */,
 				59821CC122AABC1300436B03 /* PhoneFormatter.swift in Sources */,
+				6999703E290C942E00DCDE7C /* SwitchLanguageViewController.swift in Sources */,
 				032C9F192264F05700FB1468 /* UIView+Extension.swift in Sources */,
 				037C226022789AA60021A309 /* EmploymentModel.swift in Sources */,
 				03CEDF84226E33DE0041C3ED /* ActionButton.swift in Sources */,

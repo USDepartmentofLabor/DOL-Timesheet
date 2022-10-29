@@ -2354,6 +2354,14 @@
                                                                             <constraint firstItem="khs-uY-kt1" firstAttribute="top" secondItem="4jK-Bv-fPX" secondAttribute="bottom" constant="8" id="hYH-00-2AG"/>
                                                                         </constraints>
                                                                     </view>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iM3-ee-s3Z">
+                                                                        <rect key="frame" x="8" y="105" width="67" height="57"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="holaHello" title=" "/>
+                                                                        <connections>
+                                                                            <segue destination="PW9-8p-opW" kind="show" id="oWG-Kq-thR"/>
+                                                                        </connections>
+                                                                    </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                                 <constraints>
@@ -2363,10 +2371,13 @@
                                                                     <constraint firstAttribute="bottom" secondItem="zpG-zR-wdB" secondAttribute="bottom" constant="12" id="GJp-Ig-G6V"/>
                                                                     <constraint firstItem="zpG-zR-wdB" firstAttribute="leading" secondItem="8z9-zc-eYz" secondAttribute="trailing" constant="16" id="T6P-fI-sHb"/>
                                                                     <constraint firstItem="H8H-A4-9XB" firstAttribute="leading" secondItem="3FM-S5-qQK" secondAttribute="leading" id="ZY1-gY-nR4"/>
+                                                                    <constraint firstItem="iM3-ee-s3Z" firstAttribute="top" secondItem="8z9-zc-eYz" secondAttribute="bottom" constant="7.5" id="dbh-CZ-dx7"/>
                                                                     <constraint firstItem="zpG-zR-wdB" firstAttribute="top" secondItem="H8H-A4-9XB" secondAttribute="bottom" constant="8" id="kyP-Zr-dQW"/>
                                                                     <constraint firstAttribute="trailing" secondItem="H8H-A4-9XB" secondAttribute="trailing" id="mPY-9d-QlG"/>
+                                                                    <constraint firstItem="iM3-ee-s3Z" firstAttribute="leading" secondItem="3FM-S5-qQK" secondAttribute="leading" constant="8" id="o2k-lb-eg6"/>
                                                                     <constraint firstItem="zpG-zR-wdB" firstAttribute="trailing" secondItem="H8H-A4-9XB" secondAttribute="trailing" id="o6X-eJ-jmB"/>
                                                                     <constraint firstItem="8z9-zc-eYz" firstAttribute="top" secondItem="H8H-A4-9XB" secondAttribute="bottom" constant="8" id="uy7-WP-Iu6"/>
+                                                                    <constraint firstItem="iM3-ee-s3Z" firstAttribute="centerX" secondItem="8z9-zc-eYz" secondAttribute="centerX" id="wXj-UU-ohc"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
@@ -2524,6 +2535,7 @@
                         <outlet property="employerBtn" destination="GJR-6H-hYw" id="zxG-wN-lqJ"/>
                         <outlet property="footerView" destination="9TY-hI-9Fq" id="anv-v7-2w6"/>
                         <outlet property="headerView" destination="pkT-cZ-lvn" id="ava-AJ-D8L"/>
+                        <outlet property="holaHelloButton" destination="iM3-ee-s3Z" id="WVj-n8-OI3"/>
                         <outlet property="manageEmploymentContentView" destination="xtB-iO-HI6" id="o9Q-zR-A1O"/>
                         <outlet property="myProfileTitleLabel" destination="54R-9e-WXd" id="Uo4-pV-FDb"/>
                         <outlet property="myProfileView" destination="3FM-S5-qQK" id="fYa-EP-hyP"/>
@@ -2552,7 +2564,97 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w48-NH-IBC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3390" y="-1375"/>
+            <point key="canvasLocation" x="3389.5999999999999" y="-1375.8620689655174"/>
+        </scene>
+        <!--Switch Language View Controller-->
+        <scene sceneID="qrH-wa-kR3">
+            <objects>
+                <viewController id="PW9-8p-opW" customClass="SwitchLanguageViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qIj-4b-7fQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To use this button and switch this app from Spanish to English, follow the instructions bellow." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ij-QC-0oF">
+                                <rect key="frame" x="16" y="20" width="343" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(To use this button and switch this app from English to Spanish, follow th instructions bellow.)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEB-Xf-mTG">
+                                <rect key="frame" x="16" y="89" width="343" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Go to Settings &gt; General &gt; Language &amp; Region on your device." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RG3-Lx-sVH">
+                                <rect key="frame" x="16" y="200" width="343" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. Select a language and, when prompted, tap Keep English" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AL3-vc-vY5">
+                                <rect key="frame" x="16" y="278" width="343" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4. Return to Timesheet and tap the buttton agia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E09-Hc-8qt">
+                                <rect key="frame" x="16" y="327" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5B-F6-RPu">
+                                <rect key="frame" x="126" y="366" width="123" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Get Me Started"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Tap Other Languages." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVY-eU-qOI">
+                                <rect key="frame" x="16" y="249" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="R9i-w8-ClO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="R9i-w8-ClO" firstAttribute="trailing" secondItem="GEB-Xf-mTG" secondAttribute="trailing" constant="16" id="6xa-EP-dGO"/>
+                            <constraint firstItem="C5B-F6-RPu" firstAttribute="centerX" secondItem="E09-Hc-8qt" secondAttribute="centerX" id="C5n-V2-fUb"/>
+                            <constraint firstItem="E09-Hc-8qt" firstAttribute="leading" secondItem="R9i-w8-ClO" secondAttribute="leading" constant="16" id="F8c-ec-nem"/>
+                            <constraint firstItem="dVY-eU-qOI" firstAttribute="top" secondItem="RG3-Lx-sVH" secondAttribute="bottom" constant="8" symbolic="YES" id="KM4-Kl-foG"/>
+                            <constraint firstItem="RG3-Lx-sVH" firstAttribute="leading" secondItem="R9i-w8-ClO" secondAttribute="leading" constant="16" id="M1q-Ez-hYx"/>
+                            <constraint firstItem="9ij-QC-0oF" firstAttribute="top" secondItem="R9i-w8-ClO" secondAttribute="top" constant="20" id="MvN-sC-6Hc"/>
+                            <constraint firstItem="C5B-F6-RPu" firstAttribute="top" secondItem="E09-Hc-8qt" secondAttribute="bottom" constant="18" id="PF1-IL-ceS"/>
+                            <constraint firstItem="dVY-eU-qOI" firstAttribute="leading" secondItem="R9i-w8-ClO" secondAttribute="leading" constant="16" id="PsW-47-UZk"/>
+                            <constraint firstItem="AL3-vc-vY5" firstAttribute="leading" secondItem="R9i-w8-ClO" secondAttribute="leading" constant="16" id="QYH-uF-SGa"/>
+                            <constraint firstItem="GEB-Xf-mTG" firstAttribute="leading" secondItem="R9i-w8-ClO" secondAttribute="leading" constant="16" id="SiJ-nZ-fFG"/>
+                            <constraint firstItem="RG3-Lx-sVH" firstAttribute="top" secondItem="GEB-Xf-mTG" secondAttribute="bottom" constant="50" id="TDN-uH-v54"/>
+                            <constraint firstAttribute="trailing" secondItem="RG3-Lx-sVH" secondAttribute="trailing" constant="16" id="Ybq-j4-eh4"/>
+                            <constraint firstItem="GEB-Xf-mTG" firstAttribute="top" secondItem="9ij-QC-0oF" secondAttribute="bottom" constant="8" id="doT-DZ-we2"/>
+                            <constraint firstItem="R9i-w8-ClO" firstAttribute="trailing" secondItem="9ij-QC-0oF" secondAttribute="trailing" constant="16" id="doi-bX-ejb"/>
+                            <constraint firstItem="AL3-vc-vY5" firstAttribute="top" secondItem="dVY-eU-qOI" secondAttribute="bottom" constant="8" symbolic="YES" id="erE-Cc-nPm"/>
+                            <constraint firstItem="R9i-w8-ClO" firstAttribute="trailing" secondItem="dVY-eU-qOI" secondAttribute="trailing" constant="16" id="euW-ib-cnH"/>
+                            <constraint firstItem="9ij-QC-0oF" firstAttribute="leading" secondItem="R9i-w8-ClO" secondAttribute="leading" constant="16" id="hK0-Pt-sjh"/>
+                            <constraint firstItem="R9i-w8-ClO" firstAttribute="trailing" secondItem="E09-Hc-8qt" secondAttribute="trailing" constant="16" id="nJg-Zk-8tT"/>
+                            <constraint firstItem="E09-Hc-8qt" firstAttribute="top" secondItem="AL3-vc-vY5" secondAttribute="bottom" constant="8" symbolic="YES" id="tX6-zS-SLt"/>
+                            <constraint firstItem="R9i-w8-ClO" firstAttribute="trailing" secondItem="AL3-vc-vY5" secondAttribute="trailing" constant="16" id="yYh-4H-ujm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="I9A-RB-jlu"/>
+                    <connections>
+                        <outlet property="firstInstructionLabel" destination="RG3-Lx-sVH" id="y5J-4Q-YsR"/>
+                        <outlet property="fourthInstructionLabel" destination="E09-Hc-8qt" id="Ifz-j3-fJw"/>
+                        <outlet property="getStartedButton" destination="C5B-F6-RPu" id="Gyu-Xm-CEO"/>
+                        <outlet property="primaryLabel" destination="9ij-QC-0oF" id="Ll9-1B-sFJ"/>
+                        <outlet property="secondInstructionLabel" destination="dVY-eU-qOI" id="oTt-N1-ikw"/>
+                        <outlet property="secondaryLabel" destination="GEB-Xf-mTG" id="qRc-Ir-8tZ"/>
+                        <outlet property="thirdInstructionLabel" destination="AL3-vc-vY5" id="Xu7-VT-O5J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5AO-DM-mWh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4069.5999999999999" y="-647.22638680659679"/>
         </scene>
         <!--Setup Work Week View Controller-->
         <scene sceneID="272-0R-Cro">
@@ -3011,13 +3113,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="614"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="displayLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Cse-Cn-drC">
-                                                <rect key="frame" x="103.5" y="10" width="120" height="120"/>
+                                                <rect key="frame" x="133.5" y="10" width="60" height="55.5"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <bool key="isElement" value="YES"/>
                                                 </accessibility>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8gx-wx-lrE">
-                                                <rect key="frame" x="0.0" y="140" width="327" height="294"/>
+                                                <rect key="frame" x="0.0" y="75.5" width="327" height="294"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The information input via this app is never shared with the U.S. Department of Labor." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNm-Ka-g6b" userLabel="label1">
                                                         <rect key="frame" x="0.0" y="0.0" width="327" height="34"/>
@@ -3035,7 +3137,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ph8-da-mxe" userLabel="FooterView">
-                                                <rect key="frame" x="0.0" y="462" width="327" height="30"/>
+                                                <rect key="frame" x="0.0" y="397.5" width="327" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Llv-24-LBQ" userLabel="NextButton" customClass="NavigationButton" customModule="Timesheet" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
@@ -3054,7 +3156,7 @@
                                                 </constraints>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DOLLogo" translatesAutoresizingMaskIntoConstraints="NO" id="BIc-FO-uoU">
-                                                <rect key="frame" x="0.0" y="512" width="327" height="60"/>
+                                                <rect key="frame" x="0.0" y="447.5" width="327" height="60"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -3231,8 +3333,9 @@
         <image name="DOLLogo" width="60" height="60"/>
         <image name="Default Profile Photo" width="34" height="34"/>
         <image name="add" width="21" height="16"/>
-        <image name="displayLogo" width="120" height="120"/>
+        <image name="displayLogo" width="60" height="55.5"/>
         <image name="garbage" width="20" height="20"/>
+        <image name="holaHello" width="43" height="43"/>
         <image name="rightChevron" width="327" height="327"/>
         <namedColor name="appPrimaryColor">
             <color red="0.12549019607843137" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
