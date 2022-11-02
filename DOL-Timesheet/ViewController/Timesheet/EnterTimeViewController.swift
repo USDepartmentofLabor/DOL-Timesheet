@@ -66,13 +66,13 @@ class EnterTimeViewController: UIViewController {
     }
     
     func setupView() {
-        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel(_:)))
+        let cancelBtn = UIBarButtonItem(title: "cancel".localized, style: .plain, target: self, action: #selector(cancel(_:)))
         navigationItem.leftBarButtonItem = cancelBtn
 
-        let saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save(_:)))
+        let saveBtn = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(save(_:)))
         navigationItem.rightBarButtonItem = saveBtn
 //        title = viewModel?.title
-        title = NSLocalizedString("manual_time_entry", comment: "Time Entry")
+        title = "manual_time_entry".localized
         
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableView.automaticDimension
@@ -81,7 +81,7 @@ class EnterTimeViewController: UIViewController {
         commentTextView.addBorder()
         paymentTypeLabel.scaleFont(forDataType: .enterTimePaymentType)
         dateTitleLabel.scaleFont(forDataType: .enterTimeTitle)
-        dateTitleLabel.text = NSLocalizedString("date", comment: "Date")
+        dateTitleLabel.text = "date".localized
         titleLabel.scaleFont(forDataType: .enterTimeTitle)
         commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
         editBtn.titleLabel?.scaleFont(forDataType: .actionButton)
@@ -132,17 +132,17 @@ class EnterTimeViewController: UIViewController {
     }
     
     func setupAccessibility() {
-        commentTextView.accessibilityHint = NSLocalizedString("enter_daily_comments", comment: "Enter Daily Comments")
+        commentTextView.accessibilityHint = "enter_daily_comments".localized
     }
     
     func displayInfo() {
-        titleLabel.text = NSLocalizedString("enter_time", comment: "Enter Time")
-        startTitleLabel.text = NSLocalizedString("start", comment: "Start")
-        endTitleLabel.text = NSLocalizedString("end", comment: "End")
-        breakTimeTitleLabel.text = NSLocalizedString("break", comment: "Break")
-        hourlyRateTitleLabel.text = NSLocalizedString("rate", comment: "Rate")
-        commentsTitleLabel.text = NSLocalizedString("daily_comments", comment: "Enter Daily Comments")
-        editBtn.setTitle(NSLocalizedString("edit", comment: "Edit"), for: .normal)
+        titleLabel.text = "enter_time".localized
+        startTitleLabel.text = "start".localized
+        endTitleLabel.text = "end".localized
+        breakTimeTitleLabel.text = "break".localized
+        hourlyRateTitleLabel.text = "rate".localized
+        commentsTitleLabel.text = "daily_comments".localized
+        editBtn.setTitle("edit".localized, for: .normal)
         
         dateDropDownView.title = viewModel?.title ?? ""
         paymentTypeLabel.text = viewModel?.paymentType?.title
@@ -174,7 +174,7 @@ class EnterTimeViewController: UIViewController {
         }
         
         viewModel?.save()
-        let annnouncementMsg = NSLocalizedString("save_time_entry", comment: "Saved time for")
+        let annnouncementMsg = "save_time_entry".localized
         let announcementStr = String(format: annnouncementMsg, viewModel?.title ?? "")
         UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementStr)
         
@@ -210,10 +210,10 @@ class EnterTimeViewController: UIViewController {
     
     func editTime(edit: Bool) {
         if edit {
-            editBtn.setTitle(NSLocalizedString("done", comment: "Done"), for: .normal)
+            editBtn.setTitle("done".localized, for: .normal)
         }
         else {
-            editBtn.setTitle(NSLocalizedString("edit", comment: "Edit"), for: .normal)
+            editBtn.setTitle("edit".localized, for: .normal)
         }
     }    
 }
@@ -282,15 +282,15 @@ extension EnterTimeViewController: UITableViewDataSource {
     }
     
     func deleteTimeLog(timeLog: TimeLog) {
-        let titleMsg = NSLocalizedString("delete_time_log", comment: "Delete Time Log")
+        let titleMsg = "delete_time_log".localized
         
         let errorStr: String
         if let startTimeStr = timeLog.startTime?.formattedTime {
-            let errorMsg = NSLocalizedString("delete_confirm_time_log_with_startdate", comment: "Are you sure you want to delete?")
+            let errorMsg = "delete_confirm_time_log_with_startdate".localized
             errorStr = String(format: errorMsg, startTimeStr)
         }
         else {
-            errorStr = NSLocalizedString("delete_confirm_time_log", comment: "Are you sure you want to delete?")
+            errorStr = "delete_confirm_time_log".localized
         }
         
         let alertController = UIAlertController(title: titleMsg,
@@ -298,9 +298,9 @@ extension EnterTimeViewController: UITableViewDataSource {
                                                 preferredStyle: .alert)
         
         alertController.addAction(
-            UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+            UIAlertAction(title: "cancel".localized, style: .cancel))
         alertController.addAction(
-            UIAlertAction(title: NSLocalizedString("delete", comment: "Delete"), style: .destructive) { _ in
+            UIAlertAction(title: "delete".localized, style: .destructive) { _ in
                 self.viewModel?.removeTimeLog(timeLog: timeLog)
                 self.displayTime()
         })
@@ -344,9 +344,9 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
         }
         
         if timeLog.startTime == nil {
-            let message = NSLocalizedString("set_start_time_before_end_time", comment: "Please set a start time before end time.")
+            let message = "set_start_time_before_end_time".localized
             let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .cancel, handler: nil))
+            alertController.addAction(UIAlertAction(title: "ok".localized, style: .cancel, handler: nil))
             present(alertController, animated: false)
             return false
         }
@@ -368,15 +368,15 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
     }
     
     func handleNightShift(endTime: Date, for timeLog: TimeLog) {
-        let message = NSLocalizedString("warning_split_time", comment: "Time will be entered for next day")
+        let message = "warning_split_time".localized
         let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("yes", comment: "Yes"), style: .default, handler: { [weak self] (action) in
+        alertController.addAction(UIAlertAction(title: "yes".localized, style: .default, handler: { [weak self] (action) in
             guard let strongSelf = self else { return }
             strongSelf.viewModel?.splitTime(endTime: endTime, for: timeLog)
             strongSelf.tableView.reloadData()
         }))
         
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("no", comment: "No"), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "no".localized, style: .cancel, handler: nil))
         present(alertController, animated: false)
     }
     

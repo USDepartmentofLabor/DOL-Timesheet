@@ -24,9 +24,9 @@ enum PaymentType: Int, OptionsProtocol, CaseIterable {
         
         switch self {
         case .hourly:
-            title = NSLocalizedString("payment_type_hourly", comment: "Payment Type Hourly")
+            title = "payment_type_hourly".localized
         case .salary:
-            title = NSLocalizedString("payment_type_salary", comment: "Payment Type Salary")
+            title = "payment_type_salary".localized
 //        case.tipped:
 //            title = NSLocalizedString("payment_type_tips", comment: "Payment Type Tips")
 //        case .paidPerUnit:
@@ -40,9 +40,9 @@ enum PaymentType: Int, OptionsProtocol, CaseIterable {
         
         switch self {
         case .hourly:
-            desc = NSLocalizedString("payment_type_hourly_desc", comment: "")
+            desc = "payment_type_hourly_desc".localized
         case .salary:
-            desc = NSLocalizedString("payment_type_salary_desc", comment: "")
+            desc = "payment_type_salary_desc".localized
 //        case .tipped:
 //            desc = ""
 //        case .paidPerUnit:
@@ -67,15 +67,15 @@ enum PaymentFrequency: Int, OptionsProtocol, CaseIterable {
         
         switch self {
         case .daily:
-            title = NSLocalizedString("payment_frequency_daily", comment: "")
+            title = "payment_frequency_daily".localized
         case .weekly:
-            title = NSLocalizedString("payment_frequency_weekly", comment: "")
+            title = "payment_frequency_weekly".localized
         case.biWeekly:
-            title = NSLocalizedString("payment_frequency_biweekly", comment: "")
+            title = "payment_frequency_biweekly".localized
         case .biMonthly:
-            title = NSLocalizedString("payment_frequency_semimonthly", comment: "")
+            title = "payment_frequency_semimonthly".localized
         case .monthly:
-            title = NSLocalizedString("payment_frequency_monthly", comment: "")
+            title = "payment_frequency_monthly".localized
         }
         return title
     }
@@ -92,11 +92,11 @@ enum SalaryType: Int, OptionsProtocol, CaseIterable {
         
         switch self {
         case .annually:
-            title = NSLocalizedString("salary_annually", comment: "")
+            title = "salary_annually".localized
         case .monthly:
-            title = NSLocalizedString("salary_monthly", comment: "")
+            title = "salary_monthly".localized
         case.weekly:
-            title = NSLocalizedString("salary_weekly", comment: "")
+            title = "salary_weekly".localized
         }
         return title
     }
@@ -116,19 +116,19 @@ enum Weekday: Int, OptionsProtocol, CaseIterable {
         
         switch self {
         case .sunday:
-            title = NSLocalizedString("work_week_sunday", comment: "")
+            title = "work_week_sunday".localized
         case .monday:
-            title = NSLocalizedString("work_week_monday", comment: "")
+            title = "work_week_monday".localized
         case.tuesday:
-            title = NSLocalizedString("work_week_tuesday", comment: "")
+            title = "work_week_tuesday".localized
         case .wednesday:
-            title = NSLocalizedString("work_week_wednesday", comment: "")
+            title = "work_week_wednesday".localized
         case .thurdsday:
-            title = NSLocalizedString("work_week_thursday", comment: "")
+            title = "work_week_thursday".localized
         case .friday:
-            title = NSLocalizedString("work_week_friday", comment: "")
+            title = "work_week_friday".localized
         case .saturday:
-            title = NSLocalizedString("work_week_saturday", comment: "")
+            title = "work_week_saturday".localized
         }
         return title
     }

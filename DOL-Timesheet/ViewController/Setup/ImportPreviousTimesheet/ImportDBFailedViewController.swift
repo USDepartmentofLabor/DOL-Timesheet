@@ -43,8 +43,8 @@ class ImportDBFailedViewController: UIViewController {
     }
     
     func setupAccessibility() {
-        yesBtn.accessibilityHint = NSLocalizedString("click yes to share", comment: "Click Yes to share")
-        noBtn.accessibilityHint = NSLocalizedString("click no to not share", comment: "Click No to not share")
+        yesBtn.accessibilityHint = "click_yes_to_share".localized
+        noBtn.accessibilityHint = "click_no_to_not_share".localized
     }
     
     override func viewDidLayoutSubviews() {

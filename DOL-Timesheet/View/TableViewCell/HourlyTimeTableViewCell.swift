@@ -20,14 +20,14 @@ class HourlyTimeTableViewCell: UITableViewCell {
     var breakHours: String = "" {
         didSet {
             breakHoursLabel.text = breakHours
-            breakHoursLabel.accessibilityLabel = NSLocalizedString("total_break", comment: "Total Break") + breakHours
+            breakHoursLabel.accessibilityLabel = "total_break".localized + breakHours
         }
     }
 
     var workedHours: String = "" {
         didSet {
             workedHoursLabel.text = workedHours
-            workedHoursLabel.accessibilityLabel = NSLocalizedString("total_worked", comment: "Total Worked") + workedHours
+            workedHoursLabel.accessibilityLabel = "total_worked".localized + workedHours
         }
     }
 
@@ -51,7 +51,7 @@ class HourlyTimeTableViewCell: UITableViewCell {
     func setupAccessibility() {
         isAccessibilityElement = false
         dayLabel.accessibilityTraits = .button
-        dayLabel.accessibilityHint = NSLocalizedString("click_enter_time", comment: "Tap to Enter time")
+        dayLabel.accessibilityHint = "click_enter_time".localized
         
         accessibilityElements = [dayLabel as Any, workedHoursLabel as Any, breakHoursLabel as Any]
     }

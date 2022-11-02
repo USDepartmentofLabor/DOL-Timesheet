@@ -33,8 +33,8 @@ class SetupHourlyPaymentViewController: SetupBaseEmploymentViewController {
     override func setupView() {
         super.setupView()
         
-        title = NSLocalizedString("hourly_payment_title", comment: "Hourly Payment Title")
-        saveButton.setTitle(NSLocalizedString("save", comment: "Save"), for: .normal)
+        title = "hourly_payment_title".localized
+        saveButton.setTitle("save".localized, for: .normal)
         scrollView.keyboardDismissMode = .onDrag
     }
 

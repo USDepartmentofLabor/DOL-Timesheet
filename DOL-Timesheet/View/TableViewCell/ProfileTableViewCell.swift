@@ -39,8 +39,8 @@ class ProfileTableViewCell: UITableViewCell {
     func setupAccessibility() {
         isAccessibilityElement = false
         detailsImage.isAccessibilityElement = true
-        detailsImage.accessibilityLabel = NSLocalizedString("details", comment: "Details")
-        detailsImage.accessibilityHint = NSLocalizedString("display_details", comment: "Tap to Display Details")
+        detailsImage.accessibilityLabel = "details".localized
+        detailsImage.accessibilityHint = "display_details".localized
         detailsImage.accessibilityTraits = [.button]
         accessibilityElements = [nameLabel as Any, addressLabel as Any, paymentLabel as Any, detailsImage as Any]
     }

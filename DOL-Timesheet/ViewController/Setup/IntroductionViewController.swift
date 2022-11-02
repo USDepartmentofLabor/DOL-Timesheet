@@ -18,6 +18,7 @@ class IntroductionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localizer.initialize()  
         setupNavigationBarSettings()
         setupView()
         displayInfo()
@@ -25,7 +26,7 @@ class IntroductionViewController: UIViewController {
     }
     
     func setupView() {
-        title = NSLocalizedString("introduction", comment: "Introduction")
+        title = "introduction".localized
         label1.scaleFont(forDataType: .introductionBoldText)
         label2.scaleFont(forDataType: .introductionText)
         
@@ -33,13 +34,13 @@ class IntroductionViewController: UIViewController {
     }
     
     func setupAccessibility() {
-        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
+        displayLogo.accessibilityLabel = "whd_logo".localized
     }
 
     func displayInfo() {
-        label1.text = NSLocalizedString("introduction_text1", comment: "Introduction Text1")
-        label2.text = NSLocalizedString("introduction_text2", comment: "Introduction Text2")
-        nextButton.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
+        label1.text = "introduction_text1".localized
+        label2.text = "introduction_text2".localized
+        nextButton.setTitle("next".localized, for: .normal)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,32 +52,36 @@ class IntroductionViewController: UIViewController {
     
     func offerSpanish() {
          
-         guard let langStr = Locale.current.languageCode else { return }
-         if !langStr.contains("es") {
-             let alertController =
-                 UIAlertController(title: " ",
-                                   message: "This app now has spanish support, click Yes below to update your settings for Spanish.",
-                                   preferredStyle: .alert)
-             //alertController.view.center.x
-             let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-15, y: 0, width: 30, height: 30))
-             imgViewTitle.image = UIImage(named:"holaHello")
-             
+        let langMessage = (Localizer.currentLanguage == Localizer.ENGLISH) ? "¿Te gustaría configurar esta aplicación en español?\n\n(Would you like to set this app to Spanish?)" :
+        "Would you like to set this app to English?\n\n(¿Te gustaría configurar esta aplicación en inglés?)"
+         
+        let langeYes = (Localizer.currentLanguage == Localizer.ENGLISH) ? "Si (Yes)" : "Yes (Si)"
+        
+        let langUpdate = (Localizer.currentLanguage == Localizer.ENGLISH) ? Localizer.SPANISH : Localizer.ENGLISH
+        
+         let alertController =
+             UIAlertController(title: " \n ",
+                               message: langMessage,
+                               preferredStyle: .alert)
+         //alertController.view.center.x
+         let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 73, height: 50))
+         imgViewTitle.image = UIImage(named:"holaHello")
+         
 //             imgViewTitle.setTranslatesAutoresizingMaskIntoConstraints(false)
-             alertController.view.addSubview(imgViewTitle)
-             
-             alertController.addAction(
-                 UIAlertAction(title: "No", style: .cancel))
-             alertController.addAction(
-                 UIAlertAction(title: "Yes", style: .destructive) { _ in
-                     if let url = URL(string: UIApplication.openSettingsURLString) {
-                         UIApplication.shared.open(url, completionHandler: .none)
-                     }
-                 }
-             )
-             present(alertController, animated: true)
-             let defaults = UserDefaults.standard
-             defaults.set(true, forKey: "Seen")
-         }
+         alertController.view.addSubview(imgViewTitle)
+         
+         alertController.addAction(
+             UIAlertAction(title: "No", style: .cancel))
+         alertController.addAction(
+            UIAlertAction(title: langeYes, style: .destructive) { _ in
+                Localizer.updateCurrentLanguage(lang: langUpdate)
+                self.setupView()
+                self.displayInfo()
+             }
+         )
+         present(alertController, animated: true)
+         let defaults = UserDefaults.standard
+         defaults.set(true, forKey: "Seen")
      }
 }
 

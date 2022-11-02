@@ -27,7 +27,7 @@ class SwitchLanguageViewController: UIViewController {
     }
     
     func setupView() {
-        title = NSLocalizedString("switchLanguage", comment: "Switch to English")
+        title = "switchLanguage".localized
 //        label1.scaleFont(forDataType: .introductionBoldText)
 //        label2.scaleFont(forDataType: .introductionText)
         
@@ -41,14 +41,17 @@ class SwitchLanguageViewController: UIViewController {
     func displayInfo() {
 //        label1.text = NSLocalizedString("introduction_text1", comment: "Introduction Text1")
 //        label2.text = NSLocalizedString("introduction_text2", comment: "Introduction Text2")
-        primaryLabel.text = NSLocalizedString("primaryLang", comment: "Primary Language the ")
-        secondaryLabel.text = NSLocalizedString("introduction_text2", comment: "Introduction Text2")
-        firstInstructionLabel.text = NSLocalizedString("introduction_text2", comment: "Introduction Text2")
-        secondInstructionLabel.text = NSLocalizedString("introduction_text2", comment: "Introduction Text2")
-        thirdInstructionLabel.text = NSLocalizedString("introduction_text2", comment: "Introduction Text2")
-        fourthInstructionLabel.text = NSLocalizedString("introduction_text2", comment: "Introduction Text2")
+        primaryLabel.text = "primary_lang".localized
+        secondaryLabel.text = "secondary_lang".localized
+        firstInstructionLabel.text = "first_introduction".localized
+        secondInstructionLabel.text = "second_introduction".localized
+        thirdInstructionLabel.text = "third_introduction".localized
+        fourthInstructionLabel.text = "fourth_introduction".localized
 //        nextButton.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
-        getStartedButton.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
+        //getStartedButton.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
+        
+        getStartedButton.setTitle("get_me_started".localized, for: .normal)
+        
     }
     
 }

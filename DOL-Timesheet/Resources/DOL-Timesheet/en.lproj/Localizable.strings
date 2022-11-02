@@ -246,8 +246,8 @@
 "import started" = "Import Started";
 "import finished" = "Import Finished";
 "email not setup" = "Email Not setup. Please setup email to send timesheet import logs.";
-"click yes to share" = "Tap to share your data";
-"click no to not share" = "Tap to not share your data";
+"click_yes_to_share" = "Tap to share your data";
+"click_no_to_not_share" = "Tap to not share your data";
 "fsla_info" = "Please see the elaws FLSA Overtime Security Advisor for more information.";
 "fsla_linked_text" = "elaws FLSA Overtime Security Advisor";
 
@@ -373,3 +373,14 @@
         professional, and outside sales workers, as well as some workers in the computer field,
         for example, are among those who, by law, are not required to receive minimum wage and
         overtime pay from their employers.";
+
+"spanish_support" = "Would you like to set this app to English?\n¿Te gustaría configurar esta aplicación en español?";
+"yes_si" = "Yes (Sí)";
+
+
+"primary_lang" = "To use this button and switch this app from Spanish to English, follow the instructions below.";
+"secondary_lang" = "(Para usar este botón y cambiar esta aplicación de español a inglés, siga las instrucciones a continuación.)";
+"first_introduction" = "Go to Settings > General > Language & Region on your device.";
+"second_introduction" = "Tap Other Languages.";
+"third_introduction" = "Select a language and, when prompted, tap Keep English.";
+"fourth_introduction" = "Return to Timesheet and tap the button again to set the app to Spanish.";

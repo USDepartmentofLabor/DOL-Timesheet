@@ -25,12 +25,12 @@ class SetupBaseEmploymentViewController: UIViewController {
     
     func configureView() {
         if viewModel?.isWizard ?? false {
-            let skipBtn = UIBarButtonItem(title: NSLocalizedString("skip", comment: "Skip"), style: .plain, target: self, action: #selector(skipClicked(_:)))
+            let skipBtn = UIBarButtonItem(title: "skip".localized, style: .plain, target: self, action: #selector(skipClicked(_:)))
 
-            if let viewModel = viewModel, viewModel.isProfileEmployer {            skipBtn.accessibilityHint = NSLocalizedString("skip_employee_hint", comment: "Skip Adding Employee")
+            if let viewModel = viewModel, viewModel.isProfileEmployer {            skipBtn.accessibilityHint = "skip_employee_hint".localized
             }
             else {
-                skipBtn.accessibilityHint = NSLocalizedString("skip_employer_hint", comment: "Skip Adding Employer")
+                skipBtn.accessibilityHint = "skip_employer_hint".localized
             }
             
             navigationItem.rightBarButtonItem = skipBtn

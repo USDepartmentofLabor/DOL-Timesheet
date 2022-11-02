@@ -41,8 +41,8 @@ class EditEmploymentInfoViewController: UIViewController {
     }
     
     func setupView() {
-        title = NSLocalizedString("edit_employment", comment:"Edit Employment")
-        let saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveClicked(_:)))
+        title = "edit_employment".localized
+        let saveBtn = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(saveClicked(_:)))
         navigationItem.rightBarButtonItem = saveBtn
         
         let workWeekTapGesture = UITapGestureRecognizer(target: self, action: #selector(workWeekClick(_:)))
@@ -58,15 +58,15 @@ class EditEmploymentInfoViewController: UIViewController {
         paymentFrequencyTitleLabelInfo.delegate = self
         workWeekTitleLabelInfo.delegate = self
         if viewModel.isProfileEmployer {
-            paymentFrequencyTitleLabelInfo.title = NSLocalizedString("payment_frequency_employer", comment: "How often are they paid?")
+            paymentFrequencyTitleLabelInfo.title = "payment_frequency_employer".localized
             paymentFrequencyTitleLabelInfo.infoType = .employer_paymentFrequency
-            workWeekTitleLabelInfo.title = NSLocalizedString("work_week_employer", comment: "Work Week Start Date")
+            workWeekTitleLabelInfo.title = "work_week_employer".localized
             workWeekTitleLabelInfo.infoType = .employer_workweek
         }
         else {
-            paymentFrequencyTitleLabelInfo.title = NSLocalizedString("payment_frequency_employee", comment: "How often are you paid?")
+            paymentFrequencyTitleLabelInfo.title = "payment_frequency_employee".localized
             paymentFrequencyTitleLabelInfo.infoType = .employee_paymentFrequency
-            workWeekTitleLabelInfo.title = NSLocalizedString("work_week_employee", comment: "Work Week Start Date")
+            workWeekTitleLabelInfo.title = "work_week_employee".localized
             workWeekTitleLabelInfo.infoType = .employee_workweek
         }
         
@@ -75,8 +75,8 @@ class EditEmploymentInfoViewController: UIViewController {
     }
 
     func setupAccessibility() {
-        selectWorkWeekView.accessibilityHint = NSLocalizedString("work_week_hint", comment: "Tap to select Work Week")
-        selectPaymentFrequency.accessibilityHint = NSLocalizedString("payment_frequency_hint", comment: "Tap to select Payment Frequency")
+        selectWorkWeekView.accessibilityHint = "work_week_hint".localized
+        selectPaymentFrequency.accessibilityHint = "payment_frequency_hint".localized
     }
     
     func displayInfo() {

@@ -20,16 +20,16 @@ class SetupWorkWeekViewController: SetupBaseEmploymentViewController {
     override func setupView() {
         super.setupView()
         
-        title = NSLocalizedString("work_week", comment: "Work Week")
+        title = "work_week".localized
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableView.automaticDimension
         
         if viewModel?.isProfileEmployer ?? false {
-            titleLabelInfo.title = NSLocalizedString("work_week_employer", comment: "Work Week Start Date")
+            titleLabelInfo.title = "work_week_employer".localized
             titleLabelInfo.infoType = .employer_workweek
         }
         else {
-            titleLabelInfo.title = NSLocalizedString("work_week_employee", comment: "Work Week Start Date")
+            titleLabelInfo.title = "work_week_employee".localized
             titleLabelInfo.infoType = .employee_workweek
         }
         titleLabelInfo.delegate = self

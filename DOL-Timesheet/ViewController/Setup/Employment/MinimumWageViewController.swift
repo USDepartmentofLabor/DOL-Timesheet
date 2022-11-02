@@ -31,10 +31,10 @@ class MinimumWageViewController: UIViewController {
     var isProfileEmployer: Bool = false {
         didSet {
             if isProfileEmployer {
-                eligibleTitleLabelInfo.title = NSLocalizedString("overtime_eligible_employer", comment: "Eligible for overtime")
+                eligibleTitleLabelInfo.title = "overtime_eligible_employer".localized
             }
             else {
-                eligibleTitleLabelInfo.title = NSLocalizedString("overtime_eligible_employee", comment: "Eligible for overtime")
+                eligibleTitleLabelInfo.title = "overtime_eligible_employee".localized
             }
         }
     }
@@ -77,13 +77,13 @@ class MinimumWageViewController: UIViewController {
         perhourLabel.scaleFont(forDataType: .nameValueText)
         minimumWageTextField.addTarget(self, action: #selector(minimumWageDidChange(_:)), for: .editingChanged)
         
-        yesBtn.setTitle(NSLocalizedString("yes", comment: "Yes"), for: .normal)
-        noBtn.setTitle(NSLocalizedString("no", comment: "No"), for: .normal)
+        yesBtn.setTitle("yes".localized, for: .normal)
+        noBtn.setTitle("no".localized, for: .normal)
         
-        minimuWageLabelInfoView.title = NSLocalizedString("what_is_minimum_wage_title", comment: "What is the minimum wage in your state?")
-        federalWageLabel.text = NSLocalizedString("federal_wage_label", comment: "Federal Minimum Wage is $7.25")
-        perhourLabel.text = NSLocalizedString("per_hour", comment: "Per Hour")
-        minimumWageBtn.setTitle(NSLocalizedString("minimum_wage_table", comment: "Minimum Wage Table"), for: .normal)
+        minimuWageLabelInfoView.title = "what_is_minimum_wage_title".localized
+        federalWageLabel.text = "federal_wage_label".localized
+        perhourLabel.text = "per_hour".localized
+        minimumWageBtn.setTitle("minimum_wage_table".localized, for: .normal)
         
         
         eligibilityContentView.addBorder()
@@ -104,7 +104,7 @@ class MinimumWageViewController: UIViewController {
             minimumWageTextField.keyboardType = .numbersAndPunctuation
         }
         
-        minimumWageTextField.accessibilityLabel = NSLocalizedString("minimum_wage_amount", comment: "Minimum Wage Amount")
+        minimumWageTextField.accessibilityLabel = "minimum_wage_amount".localized
     }
     
     func displayInfo() {
@@ -136,7 +136,7 @@ extension MinimumWageViewController {
         var errorStr: String? = nil
             // Minimum Wage should be greater than 0
         if minimumWage.compare(NSNumber(0)) != .orderedDescending {
-            errorStr = NSLocalizedString("err_enter_valid_minimum_wage", comment: "Enter valid Minimum Wage")
+            errorStr = "err_enter_valid_minimum_wage".localized
         }
         
         return errorStr

@@ -19,7 +19,7 @@ class WorkWeekTableViewCell: UITableViewCell {
     @IBOutlet weak var workWeekBtn: UIButton!
     var weekday: Weekday?  {
         didSet {
-            var title: String = NSLocalizedString("work_week_dont_know", comment: "")
+            var title: String = "work_week_dont_know".localized
             if let weekday = weekday {
                 title = weekday.title
             }

@@ -32,7 +32,7 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
     }
     
     override func setupView() {
-        title = NSLocalizedString("introduction", comment: "Introduction")
+        title = "introduction".localized
 //        label1.scaleFont(forDataType: .introductionBoldText)
 //        label2.scaleFont(forDataType: .introductionText)
         
@@ -87,15 +87,14 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
     fileprivate func changeToEmployee(employer: Employer) {
         if (employer.employees?.count ?? 0) > 0 {
             let alertController =
-                UIAlertController(title: NSLocalizedString("confirm_title", comment: "Confirm"),
-                                  message: NSLocalizedString("confirm_delete_employees",
-                                                             comment: "Delete Employees?"),
+                UIAlertController(title: "confirm_title".localized,
+                                  message: "confirm_delete_employees".localized,
                                   preferredStyle: .alert)
             
             alertController.addAction(
-                UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+                UIAlertAction(title: "cancel".localized, style: .cancel))
             alertController.addAction(
-                UIAlertAction(title: NSLocalizedString("delete", comment: "Delete"), style: .destructive) { _ in
+                UIAlertAction(title: "delete".localized, style: .destructive) { _ in
                     self.toggleUserType()
                 }
             )
@@ -109,15 +108,14 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
     fileprivate func changeToEmployer(employee: Employee) {
         if (employee.employers?.count ?? 0) > 0 {
             let alertController =
-                UIAlertController(title: NSLocalizedString("confirm_title", comment: "Confirm"),
-                                  message: NSLocalizedString("confirm_delete_employers",
-                                                             comment: "Confirm Delete Employers"),
+                UIAlertController(title: "confirm_title".localized,
+                                  message: "confirm_delete_employers".localized,
                                   preferredStyle: .alert)
             
             alertController.addAction(
-                UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+                UIAlertAction(title: "cancel".localized, style: .cancel))
             alertController.addAction(
-                UIAlertAction(title: NSLocalizedString("delete", comment: "Delete"), style: .destructive) { _ in
+                UIAlertAction(title: "delete".localized, style: .destructive) { _ in
                     self.toggleUserType()
                 }
             )

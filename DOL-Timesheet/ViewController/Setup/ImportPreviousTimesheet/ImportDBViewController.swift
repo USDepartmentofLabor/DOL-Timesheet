@@ -73,7 +73,7 @@ class ImportDBViewController: UIViewController {
         let startedDBImport = "StartedDBImport"
         UserDefaults.standard.set(true, forKey: startedDBImport)
         
-        let announcementMsg = NSLocalizedString("import started", comment: "Import Started")
+        let announcementMsg = "import started".localized
         logsTitleLabel.text = announcementMsg
         UIAccessibility.post(notification: .announcement, argument: announcementMsg)
         activityIndicator.startAnimating()
@@ -96,7 +96,7 @@ class ImportDBViewController: UIViewController {
     func importSucecessful() {
         activityIndicator.stopAnimating()
         
-        let announcementMsg = NSLocalizedString("import finished", comment: "Import Finished")
+        let announcementMsg = "import finished".localized
         logsTitleLabel.text = announcementMsg
         UIAccessibility.post(notification: .announcement, argument: announcementMsg)
         

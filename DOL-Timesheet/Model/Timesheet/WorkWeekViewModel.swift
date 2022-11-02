@@ -252,11 +252,11 @@ extension WorkWeekViewModel {
         var overtimeInfo = ""
         if overtimeAmount > 0, !isEndingInPeriod {
             if employmentInfo.payFrequency == .daily {
-                let msg = NSLocalizedString("overtime_on_date", comment: "Overtime on Date")
+                let msg = "overtime_on_date".localized
                 overtimeInfo = String(format: msg, currentWorkWeek.endDate.formattedDate)
             }
             else {
-                overtimeInfo = NSLocalizedString("overtime_next_pay_period", comment: "Overtime will be paid in next pay period")
+                overtimeInfo = "overtime_next_pay_period".localized
             }
         }
         return overtimeInfo

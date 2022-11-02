@@ -44,8 +44,17 @@ class TimePickerViewController: UIViewController {
     
     func setupView() {
         datePicker.datePickerMode = pickerMode
+        
+        if Localizer.currentLanguage == Localizer.ENGLISH {
+            let loc = Locale(identifier: "en")
+            datePicker.locale = loc
+        } else {
+            let loc = Locale(identifier: "es")
+            datePicker.locale = loc
+        }
+        
         datePicker.preferredDatePickerStyle = .wheels
-        doneButton.setTitle(NSLocalizedString("done", comment: "Done"), for: .normal)
+        doneButton.setTitle("done".localized, for: .normal)
         if pickerMode == .countDownTimer {
             let duration: Int = countdownDuration > 0 ? Int(countdownDuration) : TimePickerViewController.DEFAULT_BREAK_TIME
             let calendar = Calendar(identifier: .gregorian)

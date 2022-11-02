@@ -42,51 +42,51 @@ enum Info: String {
         let title: String
         switch self {
         case .employee_Employer:
-            title = NSLocalizedString("info_employee_employer", comment: "Select Employee or Employer")
+            title = "info_employee_employer".localized
         case .employer:
-            title = NSLocalizedString("info_employer", comment: "Who is employer")
+            title = "info_employer".localized
         case .employee:
-            title = NSLocalizedString("info_employee", comment: "Who is employee")
+            title = "info_employee".localized
         case .workWeek:
-            title = NSLocalizedString("work_week", comment: "Work Week")
+            title = "work_week".localized
         case .employee_paymentType:
-            title = NSLocalizedString("info_employee_payment_type", comment: "What is your payment type")
+            title = "info_employee_payment_type".localized
         case .employer_paymentType:
-            title = NSLocalizedString("info_employer_payment_type", comment: "What is your employees payment type")
+            title = "info_employer_payment_type".localized
         case .employee_hourlyPayRate:
-            title = NSLocalizedString("info_employee_hourly_pay_rate", comment: "What is your hourly rate")
+            title = "info_employee_hourly_pay_rate".localized
         case .employer_hourlyPayRate:
-            title = NSLocalizedString("info_employer_hourly_pay_rate", comment: "What is your hourly rate")
+            title = "info_employer_hourly_pay_rate".localized
         case .salary:
-            title = NSLocalizedString("payment_type_salary", comment: "Salary")
+            title = "payment_type_salary".localized
         case .overtimeEligible:
-            title = NSLocalizedString("info_overtime_eligible", comment: "Are you overtime eligible")
+            title = "info_overtime_eligible".localized
         case .minimumWage:
-            title = NSLocalizedString("info_minimum_wage", comment: "Minimum Wage")
+            title = "info_minimum_wage".localized
         case .employee_workweek:
-            title = NSLocalizedString("info_employee_workweek", comment: "Work Week")
+            title = "info_employee_workweek".localized
         case .employer_workweek:
-            title = NSLocalizedString("info_employer_workweek", comment: "Work Week")
+            title = "info_employer_workweek".localized
         case .employee_paymentFrequency:
-            title = NSLocalizedString("info_employee_payment_frequency", comment: "Payment Frequency")
+            title = "info_employee_payment_frequency".localized
         case .employer_paymentFrequency:
-            title = NSLocalizedString("info_employer_payment_frequency", comment: "Payment Frequency")
+            title = "info_employer_payment_frequency".localized
         case .employee_salary:
-            title = NSLocalizedString("info_employee_salary", comment: "Salary")
+            title = "info_employee_salary".localized
         case .employer_salary:
-            title = NSLocalizedString("info_employer_salary", comment: "Salary")
+            title = "info_employer_salary".localized
         case .overtime:
-            title = NSLocalizedString("info_overtime", comment: "Overtime")
+            title = "info_overtime".localized
         case .regularRate:
-            title = NSLocalizedString("info_regular_rate", comment: "Regular Rate")
+            title = "info_regular_rate".localized
         case .overtimePay:
-            title = NSLocalizedString("info_overtime_pay", comment: "Overtime Pay")
+            title = "info_overtime_pay".localized
         case .endTime:
-            title = NSLocalizedString("info_end_time", comment: "End Time")
+            title = "info_end_time".localized
         case .breakTime:
-            title = NSLocalizedString("info_break_time", comment: "Break Time")
+            title = "info_break_time".localized
         case .importDBEmployee:
-            title = NSLocalizedString("info_import_employee", comment: "Import old employee database")
+            title = "info_import_employee".localized
         case .unknown:
             title = ""
         }
@@ -151,7 +151,7 @@ class InfoPopupViewController: UIViewController {
     }
     
     func setupAccessibility() {
-        closeBtn.accessibilityLabel = NSLocalizedString("close", comment: "Close")
+        closeBtn.accessibilityLabel = "close".localized
     }
 }
 

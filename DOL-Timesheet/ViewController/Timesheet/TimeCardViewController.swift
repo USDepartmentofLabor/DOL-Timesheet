@@ -62,12 +62,14 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Localizer.initialize()  
         setupNavigationBarSettings()
         setupView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        Localizer.initialize()  
         let defaults = UserDefaults.standard
         let hasSeen = defaults.bool(forKey: "Seen")
         if !(viewModel?.currentEmploymentModel?.isWizard ?? true) && !hasSeen {
@@ -76,34 +78,35 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
     }
     
     func offerSpanish() {
+        let langMessage = (Localizer.currentLanguage == Localizer.ENGLISH) ? "¿Te gustaría configurar esta aplicación en español?\n\n(Would you like to set this app to Spanish?)" :
+        "Would you like to set this app to English?\n\n(¿Te gustaría configurar esta aplicación en inglés?)"
          
-         guard let langStr = Locale.current.languageCode else { return }
+        let langeYes = (Localizer.currentLanguage == Localizer.ENGLISH) ? "Si (Yes)" : "Yes (Si)"
         
-         if !langStr.contains("es") {
-             let alertController =
-                 UIAlertController(title: " ",
-                                   message: "This app now has spanish support, click Yes below to update your settings for Spanish.",
-                                   preferredStyle: .alert)
-             //alertController.view.center.x
-             let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-15, y: 0, width: 30, height: 30))
-             imgViewTitle.image = UIImage(named:"holaHello")
-             
+        let langUpdate = (Localizer.currentLanguage == Localizer.ENGLISH) ? Localizer.SPANISH : Localizer.ENGLISH
+        
+         let alertController =
+             UIAlertController(title: " \n ",
+                               message: langMessage,
+                               preferredStyle: .alert)
+         //alertController.view.center.x
+         let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 73, height: 50))
+         imgViewTitle.image = UIImage(named:"holaHello")
+         
 //             imgViewTitle.setTranslatesAutoresizingMaskIntoConstraints(false)
-             alertController.view.addSubview(imgViewTitle)
-             
-             alertController.addAction(
-                 UIAlertAction(title: "No", style: .cancel))
-             alertController.addAction(
-                 UIAlertAction(title: "Yes", style: .destructive) { _ in
-                     if let url = URL(string: UIApplication.openSettingsURLString) {
-                         UIApplication.shared.open(url, completionHandler: .none)
-                     }
-                 }
-             )
-             present(alertController, animated: true)
-             let defaults = UserDefaults.standard
-             defaults.set(true, forKey: "Seen")
-         }
+         alertController.view.addSubview(imgViewTitle)
+         
+         alertController.addAction(
+             UIAlertAction(title: "No", style: .cancel))
+         alertController.addAction(
+            UIAlertAction(title: langeYes, style: .destructive) { _ in
+                 Localizer.updateCurrentLanguage(lang: langUpdate)
+             }
+         )
+         present(alertController, animated: true)
+         let defaults = UserDefaults.standard
+         defaults.set(true, forKey: "Seen")
+ 
      }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -147,8 +150,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
     func displayInfo() {
         // Remove Rate if salaried employee
         
-        hoursWorkedTitleLabel.text = NSLocalizedString("hours_worked", comment: "Hours Worked")
-        breakHoursTitleLabel.text = NSLocalizedString("break_hours", comment: "Break Hours")
+        hoursWorkedTitleLabel.text = "hours_worked".localized
+        breakHoursTitleLabel.text = "break_hours".localized
         
         if let paymentType = viewModel?.currentEmploymentModel?.paymentType,
             paymentType == .salary {
@@ -212,11 +215,11 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
         if let hourlyRate = viewModel?.currentEmploymentModel?.employmentInfo.clock?.hourlyRate {
             if hourlyRate.value < 0.1 {
                 let alertController = UIAlertController(title: "Error",
-                                                        message: NSLocalizedString("An error was detected in the hourly rate, this entry has been discarded.", comment: "An error was detected in the hourly rate, this entry has been discarded."),
+                                                        message: "An error was detected in the hourly rate, this entry has been discarded.".localized,
                                                         preferredStyle: .alert)
                 
                 alertController.addAction(
-                    UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default))
+                    UIAlertAction(title: "ok".localized, style: .default))
                 present(alertController, animated: true)
                 
                 return false
@@ -248,14 +251,14 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
             if let clock = viewModel?.currentEmploymentModel?.employmentInfo.clock {
                 
                 if !(clock.startTime?.isEqualOnlyDate(date: Date()) ?? true) {
-                    let message = NSLocalizedString("warning_split_time", comment: "Time will be entered for next day")
+                    let message = "warning_split_time".localized
                     let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: NSLocalizedString("yes", comment: "Yes"), style: .default, handler: { [weak self] (action) in
+                    alertController.addAction(UIAlertAction(title: "yes".localized, style: .default, handler: { [weak self] (action) in
                         guard let strongSelf = self else { return }
                             strongSelf.performSegue(withIdentifier: "enterTime", sender: clock)
                     }))
                         
-                    alertController.addAction(UIAlertAction(title: NSLocalizedString("no", comment: "No"), style: .cancel, handler: nil))
+                    alertController.addAction(UIAlertAction(title: "no".localized, style: .cancel, handler: nil))
                     present(alertController, animated: false)
                 }
                 else {
@@ -265,9 +268,9 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
         } else {
             let alertController = UIAlertController(title: "Error", message: "The time appears to be negative, maybe your clock was set backward.", preferredStyle: .alert)
             alertController.addAction(
-                UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+                UIAlertAction(title: "cancel".localized, style: .cancel))
             alertController.addAction(
-                UIAlertAction(title: NSLocalizedString("discard", comment: "Discard"), style: .destructive) { _ in
+                UIAlertAction(title: "discard".localized, style: .destructive) { _ in
                     self.discardEntry()
             })
             present(alertController, animated: false)
@@ -293,9 +296,9 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
         } else {
             let alertController = UIAlertController(title: "Error", message: "The time appears to be negative, maybe your clock was set backward.", preferredStyle: .alert)
             alertController.addAction(
-                UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+                UIAlertAction(title: "cancel".localized, style: .cancel))
             alertController.addAction(
-                UIAlertAction(title: NSLocalizedString("discard", comment: "Discard"), style: .destructive) { _ in
+                UIAlertAction(title: "discard".localized, style: .destructive) { _ in
                     self.discardEntry()
             })
             present(alertController, animated: false)
@@ -307,17 +310,17 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
     }
     
     @IBAction func discardEntryClick(_ sender: Any) {
-        let titleMsg = NSLocalizedString("discard_entry", comment: "Discard Entry")
-        let errorMsg = NSLocalizedString("discard_entry_confirm", comment: "Are you sure you want to discard entry?")
+        let titleMsg = "discard_entry".localized
+        let errorMsg = "discard_entry_confirm".localized
         
         let alertController = UIAlertController(title: titleMsg,
                                                 message: errorMsg,
                                                 preferredStyle: .alert)
         
         alertController.addAction(
-            UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+            UIAlertAction(title: "cancel".localized, style: .cancel))
         alertController.addAction(
-            UIAlertAction(title: NSLocalizedString("discard", comment: "Discard"), style: .destructive) { _ in
+            UIAlertAction(title: "discard".localized, style: .destructive) { _ in
                 self.discardEntry()
         })
         present(alertController, animated: true)
@@ -346,7 +349,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
             dateFormatter.timeStyle = .short
             
             let startTimeStr = dateFormatter.string(from: startTime)
-            let workString = NSLocalizedString("started_work", comment: "Started work on")
+            let workString = "started_work".localized
             timeInfoLabel.text = workString + startTimeStr
             
             var breakTimeStr: String = ""
@@ -361,7 +364,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
                 }
                 else if let startTime = $0.startTime {
                     let breakStartStr = dateFormatter.string(from: startTime)
-                    let breakString = NSLocalizedString("started_break", comment: "Started break at")
+                    let breakString = "started_break".localized
                     breakTimeStr.append(breakString + breakStartStr)
                 }
             }
@@ -372,7 +375,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
         else {
             timeInfoLabel.text = ""
         }
-        commentsTitleLabel.text = NSLocalizedString("comments", comment: "Comments")
+        commentsTitleLabel.text = "comments".localized
         updateTimeCounter()
     }
     
@@ -426,7 +429,7 @@ extension TimeCardViewController {
             $0.removeFromSuperview()
         }
         if actions.count == 0 {
-            let manualTimeEntryTitle = NSLocalizedString("manual_time_entry", comment: "Manual Time Entry")
+            let manualTimeEntryTitle = "manual_time_entry".localized
             let manualTimeBtn = clockAction(title: manualTimeEntryTitle, action: #selector(manualEntryClick(_:)))
             actionStackView.addArrangedSubview(manualTimeBtn)
         }
@@ -436,7 +439,7 @@ extension TimeCardViewController {
                                             action: #selector(startWorkClick(_:)))
             actionStackView.addArrangedSubview(startWorkBtn)
 
-            let manualTimeEntryTitle = NSLocalizedString("manual_time_entry", comment: "Manual Time Entry")
+            let manualTimeEntryTitle = "manual_time_entry".localized
             let manualTimeBtn = clockAction(title: manualTimeEntryTitle, action: #selector(manualEntryClick(_:)))
             actionStackView.addArrangedSubview(manualTimeBtn)
         }

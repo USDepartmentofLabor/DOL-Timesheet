@@ -39,7 +39,7 @@ public class HourlyPaymentTimeLog: TimeLog {
         }
         
         if hourlyRate == nil {
-            return NSLocalizedString("err_select_hourly_rate", comment: "")
+            return "err_select_hourly_rate".localized
         }
         
         return nil

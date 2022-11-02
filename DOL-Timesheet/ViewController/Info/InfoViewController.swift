@@ -29,7 +29,7 @@ class InfoViewController: UIViewController {
     }
     
     func setupView() {
-        title = NSLocalizedString("info_title", comment: "Info")
+        title = "info_title".localized
         displaySection(section: InfoSection.glossary)
 
         let font = Style.scaledFont(forDataType: .infoSection)
@@ -37,9 +37,9 @@ class InfoViewController: UIViewController {
         
         infoSection.setios12Style()
         
-        infoSection.setTitle(NSLocalizedString("glossary", comment: "Glossary"), forSegmentAt: 0)
-        infoSection.setTitle(NSLocalizedString("contact_us", comment: "Info"), forSegmentAt: 1)
-        infoSection.setTitle(NSLocalizedString("about", comment: "About"), forSegmentAt: 2)
+        infoSection.setTitle("glossary".localized, forSegmentAt: 0)
+        infoSection.setTitle("contact_us".localized, forSegmentAt: 1)
+        infoSection.setTitle("about".localized, forSegmentAt: 2)
     }
     
     

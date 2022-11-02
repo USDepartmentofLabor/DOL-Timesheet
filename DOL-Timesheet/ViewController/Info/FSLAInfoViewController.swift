@@ -42,18 +42,18 @@ class FSLAInfoViewController: UIViewController {
 
     func setupView() {
         titleLabel.scaleFont(forDataType: .sectionTitle)
-        titleLabel.text = NSLocalizedString("fsla_requirements", comment: "FSLA Requirements")
+        titleLabel.text = "fsla_requirements".localized
         
         infoLabel1.scaleFont(forDataType: .aboutText)
-        infoLabel1.text = NSLocalizedString("fsla_info1", comment: "FSLA Info 1")
+        infoLabel1.text = "fsla_info1".localized
 
         infoLabel2.scaleFont(forDataType: .aboutText)
-        infoLabel2.text = NSLocalizedString("fsla_info2", comment: "FSLA Info 2")
+        infoLabel2.text = "fsla_info2".localized
         
         infoTextView.textContainerInset = UIEdgeInsets.zero
         
-        let fslaInfoStr = NSMutableAttributedString(string: NSLocalizedString("fsla_info", comment: "fsla_info"))
-        let linkedText = NSLocalizedString("fsla_linked_text", comment: "fsla_linked_text")
+        let fslaInfoStr = NSMutableAttributedString(string: "fsla_info".localized)
+        let linkedText = "fsla_linked_text".localized
         _ = fslaInfoStr.setAsLink(textToFind: linkedText, linkURL: FSLAInfoViewController.fslaURL)
         
         fslaInfoStr.addAttribute(.font, value: Style.scaledFont(forDataType: .aboutText), range: NSRange(location: 0, length: fslaInfoStr.length))

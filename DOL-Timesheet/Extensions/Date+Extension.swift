@@ -70,6 +70,11 @@ extension Date {
         get {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE"
+            if Localizer.currentLanguage == Localizer.ENGLISH {
+                dateFormatter.locale = Locale(identifier: "en_US")
+            } else {
+                dateFormatter.locale = Locale(identifier: "es_US")
+            }
             
             return dateFormatter.string(from: self)
         }

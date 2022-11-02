@@ -42,7 +42,7 @@ class ResourcesViewController: UIViewController {
     }
 
     func setupView() {
-        title = NSLocalizedString("contact_us", comment: "Contact Us")
+        title = "contact_us".localized
 //        contactTitleLabel.scaleFont(forDataType: .resourcesTitleText)
         phoneTextView1.scaleFont(forDataType: .resourcesText)
         phoneTextView2.scaleFont(forDataType: .resourcesText)
@@ -86,19 +86,19 @@ class ResourcesViewController: UIViewController {
     
     func displayInfo() {
         
-        contactTitleLabel.text = NSLocalizedString("contact_whd_title", comment: "About")
-        phoneHoursLabel.text = NSLocalizedString("contact_whd_operation_hours", comment: "About")
-        phoneTextView1.text = NSLocalizedString("contact_whd_phonetic_phone", comment: "About")
-        phoneTextView2.text = NSLocalizedString("contact_whd_tty_title", comment: "About")
-        servicesLabel.text = NSLocalizedString("contact_statement", comment: "About")
-        contactTitleLabel2.text = NSLocalizedString("ask_us_a_specific_question", comment: "About")
-        contactTextView.text = NSLocalizedString("send_email_whd", comment: "About")
+        contactTitleLabel.text = "contact_whd_title".localized
+        phoneHoursLabel.text = "contact_whd_operation_hours".localized
+        phoneTextView1.text = "contact_whd_phonetic_phone".localized
+        phoneTextView2.text = "contact_whd_tty_title".localized
+        servicesLabel.text = "contact_statement".localized
+        contactTitleLabel2.text = "ask_us_a_specific_question".localized
+        contactTextView.text = "send_email_whd".localized
         
-        submitIssuesTitleLabel.text = NSLocalizedString("tell_us_about_issues_with_the_app", comment: "About")
-        webadminTextView.text = NSLocalizedString("contact_webmaster", comment: "About")
-        vistUsLabel.text = NSLocalizedString("visit_us_online", comment: "About")
-        gitHubTextView.text = NSLocalizedString("contact_whd_website", comment: "About")
-        secondGitHubTextView.text = NSLocalizedString("contact_whd_contact_us", comment: "About")
+        submitIssuesTitleLabel.text = "tell_us_about_issues_with_the_app".localized
+        webadminTextView.text = "contact_webmaster".localized
+        vistUsLabel.text = "visit_us_online".localized
+        gitHubTextView.text = "contact_whd_website".localized
+        secondGitHubTextView.text = "contact_whd_contact_us".localized
         
 //        let emailText = NSAttributedString(string: "Send an email to the Wage and Hour Division", attributes: [NSAttributedString.Key.link: ResourcesViewController.emailLink, NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
 //            NSAttributedString.Key.underlineStyle: 1])

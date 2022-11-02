@@ -67,7 +67,7 @@ public class TimeLog: NSManagedObject {
         
         if let startTime = startTime, let endTime = endTime {
             if startTime >= endTime {
-                errorStr = NSLocalizedString("err_startTime_before_endtime", comment: "")
+                errorStr = "err_startTime_before_endtime".localized
             }
         }
         

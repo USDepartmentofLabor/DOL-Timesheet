@@ -154,7 +154,7 @@ class ImportDBService {
         // Add Hourly Rate
         let hourlyRate = HourlyRate(context: managedContext)
         hourlyRate.value = oldEmployer.hourlyRate.doubleValue
-        hourlyRate.name = NSLocalizedString("rate_name", comment: "Rate Name") + " 1"
+        hourlyRate.name = "rate_name".localized + " 1"
         employmentInfo.addToHourlyRate(hourlyRate)
         
         employmentInfo.employer = employer

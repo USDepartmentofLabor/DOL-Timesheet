@@ -51,11 +51,11 @@ class SalaryPaymentViewController: UIViewController {
             }
             
             if isProfileEmployer {
-                titleLabelInfo.title = NSLocalizedString("salary_employer", comment: "Salary")
+                titleLabelInfo.title = "salary_employer".localized
                 titleLabelInfo.infoType = .employer_salary
             }
             else {
-                titleLabelInfo.title = NSLocalizedString("salary_employee", comment: "Salary")
+                titleLabelInfo.title = "salary_employee".localized
                 titleLabelInfo.infoType = .employee_salary
             }
         }
@@ -94,15 +94,15 @@ class SalaryPaymentViewController: UIViewController {
         fslaTextView.attributedText = attributedString
         fslaTextView.textAlignment = .right
         fslaTextView.delegate = self
-        fslaTextView.text = NSLocalizedString("fsla_requirements", comment:  "The Fair Labor Standards Act (FLSA) requirements")
-        salaryTitleLabel.text = NSLocalizedString("payment_type_salary", comment:  "Salary")
-        salaryLabel.text = NSLocalizedString("payment_type_salary", comment:  "Salary")
+        fslaTextView.text = "fsla_requirements".localized
+        salaryTitleLabel.text = "payment_type_salary".localized
+        salaryLabel.text = "payment_type_salary".localized
 
         setupAccessibility()
     }
     
     func setupAccessibility() {
-        salaryTypeView.accessibilityHint = NSLocalizedString("salary_type_hint", comment:  "Tap to select Salary type")
+        salaryTypeView.accessibilityHint = "salary_type_hint".localized
 
         salaryContentView.accessibilityElements = [titleLabelInfo as Any, salaryLabel as Any, salaryTextField as Any, salaryTypeView as Any]
         
@@ -146,7 +146,7 @@ extension SalaryPaymentViewController {
         
         // Salary Amount should be greater than 0
         if salaryAmount.compare(NSNumber(0)) != .orderedDescending {
-            errorStr = NSLocalizedString("err_enter_valid_salary", comment: "Enter valid Salary amount")
+            errorStr = "err_enter_valid_salary".localized
         }
         return errorStr
     }

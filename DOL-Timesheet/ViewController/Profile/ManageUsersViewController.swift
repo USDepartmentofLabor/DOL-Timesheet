@@ -55,6 +55,10 @@ class ManageUsersViewController: UIViewController {
         displayInfo()
     }
     
+    func didUpdateLanguageChoice() {
+        displayInfo()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if viewModel?.numberOfEmploymentInfo ?? 0 <= 0 {
@@ -67,10 +71,10 @@ class ManageUsersViewController: UIViewController {
     
     func setupView() {
         title = viewModel?.manageUsersTitle
-        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelClick(sender:)))
+        let cancelBtn = UIBarButtonItem(title: "cancel".localized, style: .plain, target: self, action:  #selector(cancelClick(sender:)))
         navigationItem.leftBarButtonItem = cancelBtn
 
-        let saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveClick(sender:)))
+        let saveBtn = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(saveClick(sender:)))
         navigationItem.rightBarButtonItem = saveBtn
 
         employmentView.addBorder()
@@ -80,16 +84,13 @@ class ManageUsersViewController: UIViewController {
         
         userHeaderTitleLabel.scaleFont(forDataType: .columnHeader)
         
-        addressHeaderTitleLabel.text = NSLocalizedString("address", comment: "Address")
         addressHeaderTitleLabel.scaleFont(forDataType: .columnHeader)
         
-        paymentTypeHeaderTitleLabel.text = NSLocalizedString("payment_type", comment: "Payment Type")
         paymentTypeHeaderTitleLabel.scaleFont(forDataType: .columnHeader)
         
         tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableView.automaticDimension
         
-        editBtn.setTitle(NSLocalizedString("edit", comment: "Edit"), for: .normal)
         editBtn.titleLabel?.scaleFont(forDataType: .actionButton)
         setupAccessibility()
     }
@@ -99,16 +100,19 @@ class ManageUsersViewController: UIViewController {
     }
     
     func displayInfo() {
+        addressHeaderTitleLabel.text = "address".localized
+        paymentTypeHeaderTitleLabel.text = "payment_type".localized
+        editBtn.setTitle("edit".localized, for: .normal)
         if viewModel?.isProfileEmployer ?? false {
-            titleLabel.text = NSLocalizedString("employees", comment: "Employees")
-            userHeaderTitleLabel.text = NSLocalizedString("employee", comment: "Employee")
-            addBtn.accessibilityLabel = NSLocalizedString("add_employee", comment: "Add Employee")
+            titleLabel.text = "employees".localized
+            userHeaderTitleLabel.text = "employee".localized
+            addBtn.accessibilityLabel = "add_employee".localized
             addressHeaderTitleLabel.isHidden = true
         }
         else {
-            titleLabel.text = NSLocalizedString("employers", comment: "Employers")
-            userHeaderTitleLabel.text = NSLocalizedString("employer", comment: "Employer")
-            addBtn.accessibilityLabel = NSLocalizedString("add_employer", comment: "Add Employer")
+            titleLabel.text = "employers".localized
+            userHeaderTitleLabel.text = "employer".localized
+            addBtn.accessibilityLabel = "add_employer".localized
             addressHeaderTitleLabel.isHidden = false
         }
         
@@ -122,8 +126,8 @@ class ManageUsersViewController: UIViewController {
             noView.isHidden = false
             noUsersLabel.isHidden = false
             noUsersLabel.text = viewModel.isProfileEmployer ?
-                NSLocalizedString("no_employees", comment: "No Employees") :
-            NSLocalizedString("no_employers", comment: "No Employees")
+            "no_employees".localized :
+            "no_employers".localized
         }
         else {
             noView.isHidden = true
@@ -160,10 +164,10 @@ class ManageUsersViewController: UIViewController {
     
     func editUsers(edit: Bool) {
         if edit {
-           editBtn.setTitle(NSLocalizedString("done", comment: "Done"), for: .normal)
+            editBtn.setTitle("done".localized, for: .normal)
         }
         else {
-            editBtn.setTitle(NSLocalizedString("edit", comment: "Edit"), for: .normal)
+            editBtn.setTitle("edit".localized, for: .normal)
         }
     }
     
@@ -244,12 +248,12 @@ extension ManageUsersViewController: UITableViewDataSource {
         let titleMsg: String
         let errorMsg: String
         if employmentModel.isProfileEmployer {
-            titleMsg = NSLocalizedString("delete_employee", comment: "Delete Employee")
-            errorMsg = NSLocalizedString("delete_confirm_employee_info", comment: "Are you sure you want to delete Employee")
+            titleMsg = "delete_employee".localized
+            errorMsg = "delete_confirm_employee_info".localized
         }
         else {
-            titleMsg = NSLocalizedString("delete_employer", comment: "Delete Employer")
-            errorMsg = NSLocalizedString("delete_confirm_employer_info", comment: "Are you sure you want to delete Employer")
+            titleMsg = "delete_employer".localized
+            errorMsg = "delete_confirm_employer_info".localized
         }
         
         let alertController = UIAlertController(title: titleMsg,
@@ -257,9 +261,9 @@ extension ManageUsersViewController: UITableViewDataSource {
                                                 preferredStyle: .alert)
         
         alertController.addAction(
-            UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+            UIAlertAction(title: "cancel".localized, style: .cancel))
         alertController.addAction(
-            UIAlertAction(title: NSLocalizedString("delete", comment: "Delete"), style: .destructive) { _ in
+            UIAlertAction(title: "delete".localized, style: .destructive) { _ in
                 self.viewModel?.deleteEmploymentModel(employmentModel: employmentModel)
                 self.tableView.beginUpdates()
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)

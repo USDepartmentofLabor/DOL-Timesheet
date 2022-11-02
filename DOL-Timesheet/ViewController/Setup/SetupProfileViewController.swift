@@ -67,7 +67,7 @@ class SetupProfileViewController: UIViewController {
     
     @IBOutlet weak var nextBtn: NavigationButton!
     
-    @IBOutlet weak var holaHelloButton: UIButton!
+    @IBOutlet weak var holaHelloButton: UIImageView!
     
     weak var manageVC: ManageUsersViewController?
     
@@ -92,7 +92,7 @@ class SetupProfileViewController: UIViewController {
             if profileType == .employee {
                 employeeBtn.isSelected = true
                 employerBtn.isSelected = false
-                addressTitleLabel.text = NSLocalizedString("home_address", comment: "Work Address")
+                addressTitleLabel.text = "home_address".localized
                 
                 addressLine1View.isHidden = true
                 addressLine2View.isHidden = true
@@ -110,7 +110,7 @@ class SetupProfileViewController: UIViewController {
             else {
                 employeeBtn.isSelected = false
                 employerBtn.isSelected = true
-                addressTitleLabel.text = NSLocalizedString("work_address", comment: "Work Address")
+                addressTitleLabel.text = "work_address".localized
                 
                 addressLine1View.isHidden = false
                 addressLine2View.isHidden = false
@@ -149,7 +149,6 @@ class SetupProfileViewController: UIViewController {
     
     func setupView() {
         navigationItem.hidesBackButton = true
-        title = NSLocalizedString("my_profile", comment: "My Profile")
         
         myProfileView.addBorder()
         employeeEmployerInfoView.delegate = self
@@ -182,14 +181,14 @@ class SetupProfileViewController: UIViewController {
     }
     
     func setupAccessibility() {
-        var titleLabel = NSLocalizedString("full_name", comment: "")
+        var titleLabel = "full_name".localized
         nameTextField.accessibilityLabel = titleLabel
 
         titleLabel.append(" ")
-        titleLabel.append(NSLocalizedString("required", comment: "Required"))
+        titleLabel.append("required".localized)
         nameTitleLabel.accessibilityLabel =  titleLabel
-        street1TextField.accessibilityLabel = NSLocalizedString("street1", comment: "Stree1")
-        street2TextField.accessibilityLabel = NSLocalizedString("street2", comment: "Stree2")
+        street1TextField.accessibilityLabel = "street1".localized
+        street2TextField.accessibilityLabel = "street2".localized
         cityTextField.accessibilityLabel = cityTitleLabel.text
         stateTextField.accessibilityLabel = stateTitleLabel.text
         zipcodeTextField.accessibilityLabel = zipCodeTitleLabel.text
@@ -197,7 +196,7 @@ class SetupProfileViewController: UIViewController {
         emailTextField.accessibilityLabel = emailTitleLabel.text
         
         stateTextField.accessibilityTraits = [.button, .staticText]
-        stateTextField.accessibilityHint = NSLocalizedString("state_hint", comment: "Tap to Select State")
+        stateTextField.accessibilityHint = "state_hint".localized
         
         if Util.isVoiceOverRunning {
             requiredFooterLabel.isHidden = true
@@ -206,33 +205,11 @@ class SetupProfileViewController: UIViewController {
             requiredFooterLabel.isHidden = false
         }
         
-        profileImageView.accessibilityHint = NSLocalizedString("profile_image_new_hint", comment: "Tap to select profile photo")
+        profileImageView.accessibilityHint = "profile_image_new_hint".localized
     }
     
     func displayInfo() {
-        profileTitleLabel.text = NSLocalizedString("profile_setup", comment: "Profile Setup")
-        profileSubTitleLabel.text = NSLocalizedString("please_setup_your_profile", comment: "Please setup your profile")
-        myProfileTitleLabel.text = NSLocalizedString("my_profile", comment: "My Profile")
-        requiredFooterLabel.text = NSLocalizedString("indicates_a_required_field", comment: "* Indicates a required field")
-        nameTitleLabel.text = NSLocalizedString("full_name_intro", comment: "Full Name")
-        nameTextField.placeholder = NSLocalizedString("required", comment: "Required")
-        cityTitleLabel.text = NSLocalizedString("city", comment: "Full Name")
-        stateTitleLabel.text = NSLocalizedString("state", comment: "Full Name")
-        zipCodeTitleLabel.text = NSLocalizedString("zip_code", comment: "Full Name")
-        zipcodeTextField.placeholder = NSLocalizedString("required", comment: "Required")
-        phoneTitleLabel.text = NSLocalizedString("phone", comment: "Phone")
-        emailTitleLabel.text = NSLocalizedString("email", comment: "Email")
-        
-        zipcodeTextField.attributedPlaceholder = NSAttributedString(string: "99999 or 99999-9999", attributes:
-            [NSAttributedString.Key.foregroundColor:  UIColor.borderColor,
-             NSAttributedString.Key.font: Style.scaledFont(forDataType: .nameValueText)])
-        
-        employeeEmployerInfoView.title = NSLocalizedString("employee_employer_profile", comment: "Are you an employee or employer?")
-        
-        employeeBtn.setTitle(NSLocalizedString("employee", comment: "Employee"), for: .normal)
-        employerBtn.setTitle(NSLocalizedString("employer", comment: "Employer"), for: .normal)
-        
-        nextBtn.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
+        setupLabels()
         
         guard let profileUser = viewModel.profileModel.currentUser else {
             manageEmploymentContentView.removeFromSuperview()
@@ -255,11 +232,12 @@ class SetupProfileViewController: UIViewController {
         employeeEmployerInfoView.infoType = .employee_Employer
         headerView.removeFromSuperview()
         footerView.removeFromSuperview()
-        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelClicked(_:)))
-        navigationItem.leftBarButtonItem = cancelBtn
         
-        let saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveClicked(_:)))
-        navigationItem.rightBarButtonItem = saveBtn
+//        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelClicked(_:)))
+//        navigationItem.leftBarButtonItem = cancelBtn
+//
+//        let saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveClicked(_:)))
+//        navigationItem.rightBarButtonItem = saveBtn
         
         nameTextField.text = profileUser.name
         
@@ -275,9 +253,44 @@ class SetupProfileViewController: UIViewController {
         emailTextField.text = profileUser.email
         profileImageView.maskCircle(anyImage: profileUser.image?.normalizedImage() ?? #imageLiteral(resourceName: "Default Profile Photo"))
         profileImageView.accessibilityHint = (profileUser.image == nil) ?
-            NSLocalizedString("profile_image_new_hint", comment: "Tap to select profile photo") :
-            NSLocalizedString("profile_image_hint", comment: "Tap to update profile photo")
+        "profile_image_new_hint".localized :
+        "profile_image_hint".localized
         profileType = viewModel.profileModel.isEmployer ? .employer : .employee
+        
+    }
+    
+    func setupLabels() {
+        if isWizard {
+            profileTitleLabel.text = "profile_setup".localized
+            profileSubTitleLabel.text = "please_setup_your_profile".localized
+            nextBtn.setTitle("next".localized, for: .normal)
+        }
+        title = "my_profile".localized
+        myProfileTitleLabel.text = "my_profile".localized
+        requiredFooterLabel.text = "indicates_a_required_field".localized
+        nameTitleLabel.text = "full_name_intro".localized
+        nameTextField.placeholder = "required".localized
+        cityTitleLabel.text = "city".localized
+        stateTitleLabel.text = "state".localized
+        zipCodeTitleLabel.text = "zip_code".localized
+        zipcodeTextField.placeholder = "required".localized
+        phoneTitleLabel.text = "phone".localized
+        emailTitleLabel.text = "email".localized
+        
+        zipcodeTextField.attributedPlaceholder = NSAttributedString(string: "99999 or 99999-9999", attributes:
+            [NSAttributedString.Key.foregroundColor:  UIColor.borderColor,
+             NSAttributedString.Key.font: Style.scaledFont(forDataType: .nameValueText)])
+        
+        employeeEmployerInfoView.title = "employee_employer_profile".localized
+        
+        employeeBtn.setTitle("employee".localized, for: .normal)
+        employerBtn.setTitle("employer".localized, for: .normal)
+        
+        let cancelBtn = UIBarButtonItem(title: "cancel".localized, style: .plain, target: self, action: #selector(cancelClicked(_:)))
+        navigationItem.leftBarButtonItem = cancelBtn
+        
+        let saveBtn = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(saveClicked(_:)))
+        navigationItem.rightBarButtonItem = saveBtn
         
     }
 
@@ -363,15 +376,14 @@ class SetupProfileViewController: UIViewController {
     fileprivate func changeToEmployee(employer: Employer) {
         if (employer.employees?.count ?? 0) > 0 {
             let alertController =
-                UIAlertController(title: NSLocalizedString("confirm_title", comment: "Confirm"),
-                                  message: NSLocalizedString("confirm_delete_employees",
-                                                             comment: "Delete Employees?"),
-                                  preferredStyle: .alert)
+            UIAlertController(title: "confirm_title".localized,
+                              message: "confirm_delete_employees".localized,
+                              preferredStyle: .alert)
             
             alertController.addAction(
-                UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+                UIAlertAction(title: "cancel".localized, style: .cancel))
             alertController.addAction(
-                UIAlertAction(title: NSLocalizedString("delete", comment: "Delete"), style: .destructive) { _ in
+                UIAlertAction(title: "delete".localized, style: .destructive) { _ in
                     self.toggleUserType()
                 }
             )
@@ -408,15 +420,14 @@ class SetupProfileViewController: UIViewController {
     fileprivate func changeToEmployer(employee: Employee) {
         if (employee.employers?.count ?? 0) > 0 {
             let alertController =
-                UIAlertController(title: NSLocalizedString("confirm_title", comment: "Confirm"),
-                                  message: NSLocalizedString("confirm_delete_employers",
-                                                             comment: "Confirm Delete Employers"),
-                                  preferredStyle: .alert)
+            UIAlertController(title: "confirm_title".localized,
+                              message: "confirm_delete_employers".localized,
+                              preferredStyle: .alert)
             
             alertController.addAction(
-                UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+                UIAlertAction(title: "cancel".localized, style: .cancel))
             alertController.addAction(
-                UIAlertAction(title: NSLocalizedString("delete", comment: "Delete"), style: .destructive) { _ in
+                UIAlertAction(title: "delete".localized, style: .destructive) { _ in
                     self.toggleUserType()
                 }
             )
@@ -427,6 +438,40 @@ class SetupProfileViewController: UIViewController {
         }
     }
 
+    @IBAction func holaHelloPressed(_ sender: Any) {
+        let langMessage = (Localizer.currentLanguage == Localizer.ENGLISH) ? "¿Te gustaría configurar esta aplicación en español?\n\n(Would you like to set this app to Spanish?)" :
+        "Would you like to set this app to English?\n\n(¿Te gustaría configurar esta aplicación en inglés?)"
+         
+        let langeYes = (Localizer.currentLanguage == Localizer.ENGLISH) ? "Si (Yes)" : "Yes (Si)"
+        
+        let langUpdate = (Localizer.currentLanguage == Localizer.ENGLISH) ? Localizer.SPANISH : Localizer.ENGLISH
+        
+         let alertController =
+             UIAlertController(title: " \n ",
+                               message: langMessage,
+                               preferredStyle: .alert)
+         //alertController.view.center.x
+         let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 50, height: 50))
+         imgViewTitle.image = UIImage(named:"holaHello")
+         
+//             imgViewTitle.setTranslatesAutoresizingMaskIntoConstraints(false)
+         alertController.view.addSubview(imgViewTitle)
+         
+         alertController.addAction(
+             UIAlertAction(title: "No", style: .cancel))
+         alertController.addAction(
+            UIAlertAction(title: langeYes, style: .destructive) { _ in
+                Localizer.updateCurrentLanguage(lang: langUpdate)
+                self.setupAccessibility()
+                self.setupLabels()
+                self.delegate?.didUpdateLanguageChoice()
+                self.manageVC?.didUpdateLanguageChoice()
+             }
+         )
+         present(alertController, animated: true)
+         let defaults = UserDefaults.standard
+         defaults.set(true, forKey: "Seen")
+    }
     
     @IBAction func nextClick(_ sender: Any) {
         guard validateInput() == true else {
@@ -508,20 +553,20 @@ class SetupProfileViewController: UIViewController {
         
         var errorStr: String? = nil
         if name == nil || name!.isEmpty {
-            errorStr = NSLocalizedString("err_enter_name", comment: "Please provide name")
+            errorStr = "err_enter_name".localized
         }
         else if viewModel.isProfileEmployer,
             let zipcode = zipcodeTextField.text?.trimmingCharacters(in: .whitespaces),
             !zipcode.isEmpty, !Util.isValidPostalCode(postalCode: zipcode) {
-            errorStr = NSLocalizedString("err_invalid_zipcode", comment: "Please provide valid zipcode")
+            errorStr = "err_invalid_zipcode".localized
         }
         else if let phoneNumber = phoneTextField.text?.trimmingCharacters(in: .whitespaces),
             !phoneNumber.isEmpty, !Util.isValidPhoneNumber(phoneNumber: phoneNumber) {
-            errorStr = NSLocalizedString("err_invalid_phonenumber", comment: "Please provide valid phoneNumber")
+            errorStr = "err_invalid_phonenumber".localized
         }
         else if let emailAddress = emailTextField.text?.trimmingCharacters(in: .whitespaces),
             !emailAddress.isEmpty, !Util.isValidEmailAddress(emailAddress: emailAddress) {
-            errorStr = NSLocalizedString("err_invalid_emailaddress", comment: "Please provide valid email")
+            errorStr = "err_invalid_emailaddress".localized
         }
         
         if let errorStr = errorStr {
@@ -587,15 +632,15 @@ extension SetupProfileViewController {
     }
     
     func takeCameraPermission() {
-        let title = NSLocalizedString("err_camera_denied_title", comment: "Camera access is denied")
+        let title = "err_camera_denied_title".localized
         let alertController = UIAlertController(title: title,
-                                                message: NSLocalizedString("err_camera_denied", comment: "Camera access is denied"),
+                                                message: "err_camera_denied".localized,
                                                 preferredStyle: .alert)
         
         alertController.addAction(
-            UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+            UIAlertAction(title: "cancel".localized, style: .cancel))
         alertController.addAction(
-            UIAlertAction(title: NSLocalizedString("settings", comment: "Settings"), style: .default) { _ in
+            UIAlertAction(title: "settings".localized, style: .default) { _ in
                 if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url, options: [:], completionHandler: { _ in
                     // Handle
@@ -683,7 +728,7 @@ extension SetupProfileViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == stateTextField {
             
-            let announcementMsg = NSLocalizedString("select_state", comment: "Select State")
+            let announcementMsg = "select_state".localized
             UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementMsg)
 
             DispatchQueue.main.async { [weak self] in
@@ -820,11 +865,11 @@ extension SetupProfileViewController: ImportDBProtocol {
         } else {
             // show failure alert
             let alertController = UIAlertController(title: "Email",
-                                                    message: NSLocalizedString("email not setup", comment: "Email Not setup"),
+                                                    message: "email not setup".localized,
                                                     preferredStyle: .alert)
             
             alertController.addAction(
-                UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default))
+                UIAlertAction(title: "Ok".localized, style: .default))
             present(alertController, animated: true)
         }
     }

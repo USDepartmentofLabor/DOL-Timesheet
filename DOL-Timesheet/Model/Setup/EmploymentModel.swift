@@ -164,7 +164,7 @@ class EmploymentModel {
         if let context = employmentInfo.managedObjectContext {
             let hourlyRate = HourlyRate(context: context)
             let existingCount = employmentInfo.hourlyRate?.count ?? 0
-            hourlyRate.name = NSLocalizedString("rate", comment: "Rate") + " \(existingCount + 1)"
+            hourlyRate.name = "rate".localized + " \(existingCount + 1)"
             employmentInfo.addToHourlyRate(hourlyRate)
         }
     }
@@ -253,7 +253,7 @@ class Period {
     }
     
     var title: String {
-        get { return "\(NSLocalizedString("period_of", comment: "Period_of")) \(startDate.formattedDate) - \(endDate.formattedDate)"}
+        get { return "\("period_of".localized) \(startDate.formattedDate) - \(endDate.formattedDate)"}
     }
     
     func numberOfDays() -> Int {

@@ -13,6 +13,7 @@ import MessageUI
 protocol TimeViewControllerDelegate: class {
     func didUpdateUser()
     func didUpdateEmploymentInfo()
+    func didUpdateLanguageChoice()
 }
 
 protocol EnterTimeViewControllerDelegate: class {
@@ -76,11 +77,11 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
             let accessibilityHint: String
             if earningsCollapsed {
                 img = #imageLiteral(resourceName: "collape")
-                accessibilityHint = NSLocalizedString("total_Earnings_expand_hint", comment: "Tap to Expand Total")
+                accessibilityHint = "total_Earnings_expand_hint".localized
             }
             else {
                 img = #imageLiteral(resourceName: "expand")
-                accessibilityHint = NSLocalizedString("total_Earnings_collapse_hint", comment: "Tap to collapse Total")
+                accessibilityHint = "total_Earnings_collapse_hint".localized
             }
             totalEarningsBtn.setImage(img, for: .normal)
             totalEarningsBtn.accessibilityHint = accessibilityHint
@@ -120,8 +121,6 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
     }
     
     func setupView() {
-        title = NSLocalizedString("timesheet", comment: "Timesheet")
-        
         timeView.addBorder()
         periodView.addBorder()
         
@@ -179,27 +178,29 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
     func setupAccessibility() {
         periodView.isAccessibilityElement = false
         periodView.accessibilityElements = [periodLabel as Any, prevPeriodBtn as Any, nextPeriodBtn as Any]
-        prevPeriodBtn.accessibilityLabel = NSLocalizedString("prev_period", comment: "Previuos Period")
-        nextPeriodBtn.accessibilityLabel = NSLocalizedString("next_period", comment: "Next Period")
+        prevPeriodBtn.accessibilityLabel = "prev_period".localized
+        nextPeriodBtn.accessibilityLabel = "next_period".localized
         
-        totalEarningsBtn.accessibilityHint = NSLocalizedString("total_Earnings_expand_hint", comment: "Tap to view Details")
+        totalEarningsBtn.accessibilityHint = "total_Earnings_expand_hint".localized
         
-        totalTitleLabel.accessibilityLabel = NSLocalizedString("period_total", comment: "Period Total")
+        totalTitleLabel.accessibilityLabel = "period_total".localized
     }
     
     func displayInfo() {
-        enterTimeTitleLabel.text = NSLocalizedString("time_entries", comment: "Time Entries")
-        headingDayLabel.text = NSLocalizedString("day", comment: "Day")
-        headingTotalHoursLabel.text = NSLocalizedString("total_worked_hours", comment: "Total Worked (Hours)")
-        headingTotalBreakLabel.text = NSLocalizedString("total_break_hours", comment: "Total Break (Hours)")
-        totalTitleLabel.text = NSLocalizedString("total", comment: "Total")
+        title = "timesheet".localized
         
-        summaryTitleLabel.text = NSLocalizedString("summary", comment: "Summary")
-        totalTitleLabel.text = NSLocalizedString("total", comment: "Total")
-        totalBreakLabel.text = NSLocalizedString("overtime_summary", comment: "Overtime")
+        enterTimeTitleLabel.text = "time_entries".localized
+        headingDayLabel.text = "day".localized
+        headingTotalHoursLabel.text = "total_worked_hours".localized
+        headingTotalBreakLabel.text = "total_break_hours".localized
+        totalTitleLabel.text = "total".localized
         
-        earningsTitleLabel.text = NSLocalizedString("earnings", comment: "Earnings")
-        totalEarningsBtn.setTitle(NSLocalizedString("total_earning", comment: "Total Earnings"), for: .normal)
+        summaryTitleLabel.text = "summary".localized
+        totalTitleLabel.text = "total".localized
+        totalBreakLabel.text = "overtime_summary".localized
+        
+        earningsTitleLabel.text = "earnings".localized
+        totalEarningsBtn.setTitle("total_earning".localized, for: .normal)
         
         viewModel?.updatePeriod()
         displayPeriodInfo()
@@ -228,10 +229,10 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
         totalHoursWorkedLabel.text = viewModel.totalHoursTime()
         totalBreakLabel.text = viewModel.totalBreakTime()
         
-        let hoursWorkedAccessibilityLabel = NSLocalizedString("period_total_hours_worked", comment: "Period Total Hours Worked") + (totalHoursWorkedLabel.text ?? "")
+        let hoursWorkedAccessibilityLabel = "period_total_hours_worked".localized + (totalHoursWorkedLabel.text ?? "")
         totalHoursWorkedLabel.accessibilityLabel = hoursWorkedAccessibilityLabel
 
-        let hoursBreakAccessibilityLabel = NSLocalizedString("period_total_hours_break", comment: "Period Total Hours Break") + (totalBreakLabel.text ?? "")
+        let hoursBreakAccessibilityLabel = "period_total_hours_break".localized + (totalBreakLabel.text ?? "")
         totalBreakLabel.accessibilityLabel = hoursBreakAccessibilityLabel
 
         
@@ -251,9 +252,9 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
         
         totalEarningsAmountLabel.text = viewModel.totalEarningsStr
         if viewModel.isBelowMinimumWage() {
-            totalEarningsWarningLabel.text = NSLocalizedString("err_title_minimum_wage", comment: "Below MinimumWage")
+            totalEarningsWarningLabel.text = "err_title_minimum_wage".localized
         } else if viewModel.isBelowSalaryWeeklyWage() {
-            totalEarningsWarningLabel.text = NSLocalizedString("err_title_minimum_weekly_wage", comment: "Below Minimum Weekly Wage")
+            totalEarningsWarningLabel.text = "err_title_minimum_weekly_wage".localized
         }
         else {
             totalEarningsWarningLabel.text = ""
@@ -274,12 +275,12 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
             periodOvertimeEarningsStackView.isHidden = false
             periodEarningsStackView.insertArrangedSubview(periodStraightTimeEarningsStackView, at: 0)
             periodEarningsStackView.isHidden = false
-            periodStraightTimeTitle.text = NSLocalizedString("straight_earnings", comment: "Straight Time Earnings")
+            periodStraightTimeTitle.text = "straight_earnings".localized
             periodStraightTimeAmount.text = viewModel?.currentPeriod?.straightTimeAmountStr
             
             if viewModel?.currentEmploymentModel?.overtimeEligible ?? false {
                 periodEarningsStackView.insertArrangedSubview(periodOvertimeEarningsStackView, at: 1)
-                periodOvertimeTitle.text = NSLocalizedString("overtime", comment: "Overtime")
+                periodOvertimeTitle.text = "overtime".localized
                 periodOvertimeAmount.text = viewModel?.periodOvertimeAmountStr
             }
             else {
@@ -495,10 +496,10 @@ extension TimesheetViewController: UITableViewDelegate {
         guard viewModel.currentEmploymentModel != nil else {
             let errMsg: String
             if viewModel.userProfileModel.isProfileEmployer {
-                errMsg = NSLocalizedString("err_add_employee", comment: "")
+                errMsg = "err_add_employee".localized
             }
             else {
-                errMsg = NSLocalizedString("err_add_employer", comment: "")
+                errMsg = "err_add_employer".localized
             }
             
             displayError(message: errMsg, title: "")

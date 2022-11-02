@@ -96,14 +96,14 @@ class EarningsTableViewCell: UITableViewCell {
     func displayEarnings() {
         straightTimeEarningsAmountLabel.text = viewModel.straightTimeAmountStr
         
-        straightTimeTitleLabel.text = NSLocalizedString("straight_time_earnings", comment: "Straight Time calculation")
-        straightTimeSubTitleLabel.text = NSLocalizedString("straight_time_calculation", comment: "Hours Worked x Hourly Rate")
+        straightTimeTitleLabel.text = "straight_time_earnings".localized
+        straightTimeSubTitleLabel.text = "straight_time_calculation".localized
         
-        regularRateTitleLabel.text = NSLocalizedString("regular_rate_of_pay", comment: "Regular Rate Of Pay")
-        regularRateCalculationTitleLabel.text = NSLocalizedString("regular_rate_of_pay_equation", comment: "Straight Time Earnings / Hours Worked")
+        regularRateTitleLabel.text = "regular_rate_of_pay".localized
+        regularRateCalculationTitleLabel.text = "regular_rate_of_pay_equation".localized
         
-        overtimeTitleLabel.text = NSLocalizedString("overtime_pay", comment: "Overtime Pay")
-        overtimeCalculationTitleLabel.text = NSLocalizedString("overtime_pay_equation", comment: "Regular Rate of Pay x 0.5 x Overtime Hours")
+        overtimeTitleLabel.text = "overtime_pay".localized
+        overtimeCalculationTitleLabel.text = "overtime_pay_equation".localized
         
         let straightTimeCalculationsStr = viewModel.straightTimeCalculationsStr
         straightTimeCalculationsLabel.text = straightTimeCalculationsStr
@@ -111,10 +111,10 @@ class EarningsTableViewCell: UITableViewCell {
             straightTimeSubTitleLabel.text = ""
         }
         else {
-            straightTimeSubTitleLabel.text = NSLocalizedString("straight_time_calculation", comment: "Straight Time calculation")
+            straightTimeSubTitleLabel.text = "straight_time_calculation".localized
         }
         if viewModel.isBelowMinimumWage {
-            minimumWageWarning.text = NSLocalizedString("err_title_minimum_wage", comment: "Below Minimum Wage")
+            minimumWageWarning.text = "err_title_minimum_wage".localized
         }
         else {
             minimumWageWarning.text = ""

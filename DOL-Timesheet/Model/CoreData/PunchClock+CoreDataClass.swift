@@ -22,15 +22,15 @@ enum ClockAction: OptionsProtocol {
         
         switch self {
         case .startWork:
-            title = NSLocalizedString("start_work", comment: "Start Work")
+            title = "start_work".localized
         case .endWork:
-            title = NSLocalizedString("end_work", comment: "End Clock")
+            title = "end_work".localized
         case .startBreak:
-            title = NSLocalizedString("start_break", comment: "Start Break")
+            title = "start_break".localized
         case .endBreak:
-            title = NSLocalizedString("end_break", comment: "End Break")
+            title = "end_break".localized
         case .discardEntry:
-            title = NSLocalizedString("discard_entry", comment: "Discard Entry")
+            title = "discard_entry".localized
         }
         
         return title

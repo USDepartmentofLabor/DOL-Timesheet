@@ -20,14 +20,14 @@ class SetupPaymentTypeViewController: SetupBaseEmploymentViewController {
     override func setupView() {
         super.setupView()
         
-        title = NSLocalizedString("payment_type", comment: "Payment Type")
+        title = "payment_type".localized
         
         if viewModel?.isProfileEmployer ?? false {
-            titleLabelInfo.title = NSLocalizedString("payment_type_employer", comment: "How is pay determined")
+            titleLabelInfo.title = "payment_type_employer".localized
             titleLabelInfo.infoType = .employer_paymentType
         }
         else {
-            titleLabelInfo.title = NSLocalizedString("payment_type_employee", comment: "How is pay determined")
+            titleLabelInfo.title = "payment_type_employee".localized
             titleLabelInfo.infoType = .employee_paymentType
         }
         titleLabelInfo.delegate = self

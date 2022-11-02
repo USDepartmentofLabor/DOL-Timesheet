@@ -89,9 +89,9 @@ extension UIViewController: UIPopoverPresentationControllerDelegate {
 
 // MARK: Error Handling
 extension UIViewController {
-    func displayError(message: String, title: String? = NSLocalizedString("err_title", comment: "Error")) {
+    func displayError(message: String, title: String? = "err_title".localized) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default))
+        alertController.addAction(UIAlertAction(title: "OK".localized, style: .default))
         present(alertController, animated: false)
     }
 }

@@ -91,17 +91,17 @@ class EnterHourlyTimeTableViewCell: UITableViewCell {
     
     func setupAccessibility() {
         isAccessibilityElement = false
-        startTimeView.accessibilityHint = NSLocalizedString("start_time_hint", comment: "Tap To Select Start Time")
-        endTimeView.accessibilityHint = NSLocalizedString("end_time_hint", comment: "Tap To Select End Time")
-        breakTimeView.accessibilityHint = NSLocalizedString("break_time_hint", comment: "Tap To Select Break Time")
-        hourlyRateView.accessibilityHint = NSLocalizedString("hourly_rate_hint", comment: "Tap To Select Houlry Rate")
+        startTimeView.accessibilityHint = "start_time_hint".localized
+        endTimeView.accessibilityHint = "end_time_hint".localized
+        breakTimeView.accessibilityHint = "break_time_hint".localized
+        hourlyRateView.accessibilityHint = "hourly_rate_hint".localized
         
-        commentsTextView.accessibilityHint = NSLocalizedString("enter_comments", comment: "Enter Comments")
+        commentsTextView.accessibilityHint = "enter_comments".localized
         accessibilityElements = [startTimeView as Any, endTimeView as Any, breakTimeView as Any, hourlyRateView as Any, commentsTitleLabel as Any, commentsTextView as Any]
     }
     
     func displayInfo() {
-        commentsTitleLabel.text = NSLocalizedString("comments", comment: "Comments")
+        commentsTitleLabel.text = "comments".localized
         displayTimeLog()
     }
     
@@ -248,10 +248,10 @@ extension EnterHourlyTimeTableViewCell: TimePickerProtocol {
 
     func updateBreakTime(duration: TimeInterval) {
         if duration <= EmploymentModel.ALLOWED_BREAK_SECONDS {
-            let title = NSLocalizedString("info_break_time_title", comment: "Break Time")
-            let message = NSLocalizedString("break_time_warning", comment: "Break Time is less that minutes")
+            let title = "info_break_time_title".localized
+            let message = "break_time_warning".localized
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { [weak self] (action) in
+            alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { [weak self] (action) in
                 guard let strongSelf = self else {return}
                 strongSelf.timeLog?.addBreak(duration: duration)
                 strongSelf.displayBreakTime(timeInSeconds: duration)

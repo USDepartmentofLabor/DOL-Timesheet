@@ -54,7 +54,7 @@ struct EnterTimeViewModel {
 
         // If Total Hours Worked + breaktime should be less that 24 hours
         if dateLog.totalHoursWorked + dateLog.totalBreak > (24 * 60 * 60) {
-            return NSLocalizedString("err_more_than_24_hours", comment: "")
+            return "err_more_than_24_hours".localized
         }
         
         return nil
@@ -65,7 +65,7 @@ struct EnterTimeViewModel {
         
         if currentTimeLog?.startTime != nil, currentTimeLog?.endTime != nil,
             breakTime > Double(currentTimeLog?.hoursLogged ?? 0) {
-                errStr = NSLocalizedString("err_break_more_than_hours_worked", comment: "Break time can not be more that Hours worked")
+                errStr = "err_break_more_than_hours_worked".localized
         }
         
         return errStr
@@ -76,7 +76,7 @@ struct EnterTimeViewModel {
         
         // If this is end Time, make sure it is less that StartTime
         if !isStartTime, currentTimeLog?.startTime?.compare(time) != .orderedAscending {
-            errStr = NSLocalizedString("err_startTime_before_endtime", comment: "EndTime Should be more than startTime")
+            errStr = "err_startTime_before_endtime".localized
             return errStr
         }
         
@@ -84,10 +84,10 @@ struct EnterTimeViewModel {
         case .ok:
             errStr = ""
         case .tooEarly:
-            errStr = NSLocalizedString("err_time_too_early", comment: "The time you entered is too early. The time must be after any other time entries.")
+            errStr = "err_time_too_early".localized
             return errStr
         case .tooLate:
-            errStr = NSLocalizedString("err_time_too_late", comment: "The time you entered is too late. The time must be before any time entries below.")
+            errStr = "err_time_too_late".localized
         }
     
         return errStr

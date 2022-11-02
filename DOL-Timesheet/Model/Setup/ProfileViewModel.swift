@@ -22,10 +22,10 @@ class ProfileViewModel {
     var setupTitle: String {
         get {
             if profileModel.currentUser is Employee {
-                return NSLocalizedString("add_employer", comment: "Add Employer Title")
+                return "add_employer".localized
             }
             
-            return NSLocalizedString("add_employee", comment: "Add Employee Title")
+            return "add_employee".localized
         }
     }
     
@@ -38,20 +38,20 @@ class ProfileViewModel {
     var manageUsersTitle: String {
         get {
             if profileModel.isEmployer {
-                return NSLocalizedString("manage_employees", comment: "Manage Employees")
+                return "manage_employees".localized
             }
             
-            return NSLocalizedString("manage_employers", comment: "Manage Employers")
+            return "manage_employers".localized
         }
     }
     
     var addNewUserTitle: String {
         get {
             if isProfileEmployer {
-                return NSLocalizedString("add_new_employee", comment: "")
+                return "add_new_employee".localized
             }
             
-            return NSLocalizedString("add_new_employer", comment: "")
+            return "add_new_employer".localized
         }
     }
     

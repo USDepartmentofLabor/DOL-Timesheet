@@ -28,19 +28,19 @@ class RegularRateInfoViewController: UIViewController {
     
     var completionHandler: (()->Void)?
 
-    let includedList = [NSLocalizedString("regular_rate_include1", comment: "regular_rate_include1"),
-    NSLocalizedString("regular_rate_include2", comment: "regular_rate_include2"),
-    NSLocalizedString("regular_rate_include3", comment: "regular_rate_include3"),
-    NSLocalizedString("regular_rate_include4", comment: "regular_rate_include4")]
+    let includedList = ["regular_rate_include1".localized,
+    "regular_rate_include2".localized,
+    "regular_rate_include3".localized,
+    "regular_rate_include4".localized]
 
-    let excludedList = [NSLocalizedString("regular_rate_exclude1", comment: "regular_rate_exclude1"),
-    NSLocalizedString("regular_rate_exclude2", comment: "regular_rate_exclude2"),
-    NSLocalizedString("regular_rate_exclude3", comment: "regular_rate_exclude3"),
-    NSLocalizedString("regular_rate_exclude4", comment: "regular_rate_exclude4"),
-    NSLocalizedString("regular_rate_exclude5", comment: "regular_rate_exclude5"),
-    NSLocalizedString("regular_rate_exclude6", comment: "regular_rate_exclude6"),
-    NSLocalizedString("regular_rate_exclude7", comment: "regular_rate_exclude7"),
-    NSLocalizedString("regular_rate_exclude8", comment: "regular_rate_exclude8")]
+    let excludedList = ["regular_rate_exclude1".localized,
+    "regular_rate_exclude2".localized,
+    "regular_rate_exclude3".localized,
+    "regular_rate_exclude4".localized,
+    "regular_rate_exclude5".localized,
+    "regular_rate_exclude6".localized,
+    "regular_rate_exclude7".localized,
+    "regular_rate_exclude8".localized]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,12 +64,12 @@ class RegularRateInfoViewController: UIViewController {
 
     func setupView() {
         infoLabel.scaleFont(forDataType: .aboutText)
-        infoLabel.text = NSLocalizedString("info_regular_rate_pay", comment: "The regular rate of pay, upon which an employer calculates an employee’s overtime rate, cannot be less than the minimum wage. The regular rate includes all payment for employment except certain payments that the law allows employers to exclude.")
+        infoLabel.text = "info_regular_rate_pay".localized
         
         infoTextView.textContainerInset = UIEdgeInsets.zero
         
-        let fslaInfoStr = NSMutableAttributedString(string: NSLocalizedString("fsla_info", comment: "fsla_info"))
-        let linkedText = NSLocalizedString("fsla_linked_text", comment: "fsla_linked_text")
+        let fslaInfoStr = NSMutableAttributedString(string: "fsla_info".localized)
+        let linkedText = "fsla_linked_text".localized
         _ = fslaInfoStr.setAsLink(textToFind: linkedText, linkURL: FSLAInfoViewController.fslaURL)
         
         fslaInfoStr.addAttribute(.font, value: Style.scaledFont(forDataType: .aboutText), range: NSRange(location: 0, length: fslaInfoStr.length))
@@ -99,7 +99,7 @@ class RegularRateInfoViewController: UIViewController {
     }
     
     func setupAccessibility() {
-        closeBtn.accessibilityLabel = NSLocalizedString("close", comment: "Close")
+        closeBtn.accessibilityLabel = "close".localized
     }
 
     @IBAction func paymentTypesClicked(_ sender: Any) {

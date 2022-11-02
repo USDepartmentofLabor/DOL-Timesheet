@@ -23,19 +23,19 @@ class GlossaryViewController: UIViewController {
             let title: String
             switch self {
             case .profileUser:
-                title = NSLocalizedString("employee", comment: "Employee")
+                title = "employee".localized
             case .pay:
-                title = NSLocalizedString("info_pay_title", comment: "Pay")
+                title = "info_pay_title".localized
             case .overtime:
-                title = NSLocalizedString("info_overtime_title", comment: "Overtime")
+                title = "info_overtime_title".localized
             case .minimumWage:
-                title = NSLocalizedString("info_minimum_wage_title", comment: "Minimum Wage")
+                title = "info_minimum_wage_title".localized
             case .nonExempt:
-                title = NSLocalizedString("info_non_exempt_title", comment: "Non-exempt")
+                title = "info_non_exempt_title".localized
             case .workWeek:
-                title = NSLocalizedString("info_work_week_title", comment: "Work Week")
+                title = "info_work_week_title".localized
             case .breakTime:
-                title = NSLocalizedString("info_break_time_title", comment: "Break Time")
+                title = "info_break_time_title".localized
             }
             
             return title
@@ -45,20 +45,20 @@ class GlossaryViewController: UIViewController {
             let desc: String
             switch self {
             case .profileUser:
-                desc = NSLocalizedString("info_employee", comment: "Employee Info")
+                desc = "info_employee".localized
             case .pay:
-                desc = profileModel.isEmployer ? NSLocalizedString("info_employer_payment_type", comment: "Pay") :
-                NSLocalizedString("info_employee_payment_type", comment: "Pay")
+                desc = profileModel.isEmployer ? "info_employer_payment_type".localized :
+                "info_employee_payment_type".localized
             case .overtime:
-                desc = NSLocalizedString("info_glossary_overtime", comment: "Overtime")
+                desc = "info_glossary_overtime".localized
             case .minimumWage:
-                desc = NSLocalizedString("info_glossary_minimum_wage", comment: "Minimum Wage")
+                desc = "info_glossary_minimum_wage".localized
             case .nonExempt:
-                desc = NSLocalizedString("info_overtime_eligible", comment: "Non-exempt")
+                desc = "info_overtime_eligible".localized
             case .workWeek:
-                desc = NSLocalizedString("info_glossary_work_week", comment: "Work Week")
+                desc = "info_glossary_work_week".localized
             case .breakTime:
-                desc = NSLocalizedString("info_break_time", comment: "Break Time")
+                desc = "info_break_time".localized
             }
 
             let htmlAttributedStr = NSMutableAttributedString(withLocalizedHTMLString: desc)

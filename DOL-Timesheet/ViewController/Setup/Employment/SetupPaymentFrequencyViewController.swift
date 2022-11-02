@@ -21,16 +21,16 @@ class SetupPaymentFrequencyViewController: SetupBaseEmploymentViewController {
     override func setupView() {
         super.setupView()
         
-        title = NSLocalizedString("payment_frequency", comment: "Payment Frequency")
+        title = "payment_frequency".localized
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableView.automaticDimension
         
         if viewModel?.isProfileEmployer ?? false {
-            titleLabelInfo.title = NSLocalizedString("payment_frequency_employer", comment: "How often are they paid?")
+            titleLabelInfo.title = "payment_frequency_employer".localized
             titleLabelInfo.infoType = .employer_paymentFrequency
         }
         else {
-            titleLabelInfo.title = NSLocalizedString("payment_frequency_employee", comment: "How often are you paid?")
+            titleLabelInfo.title = "payment_frequency_employee".localized
             titleLabelInfo.infoType = .employee_paymentFrequency
         }
         titleLabelInfo.delegate = self

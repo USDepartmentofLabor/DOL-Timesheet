@@ -78,6 +78,12 @@ class TimeViewController: UIViewController {
     }
     
     func displayInfo() {
+        if currentTimeViewController is TimesheetViewController {
+            title = "timesheet".localized
+        } else {
+            title = "timecard".localized
+        }
+        
         let profileUser = viewModel?.userProfileModel.profileModel.currentUser
         userNameLabel.text = profileUser?.name
         
@@ -92,19 +98,19 @@ class TimeViewController: UIViewController {
         profileBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
         profileBtn.addBorder(borderColor: .white, borderWidth: 0.5, cornerRadius: profileBtn.bounds.size.width / 2)
         
-        profileBtn.accessibilityHint = NSLocalizedString("profile_hint", comment: "Tap to update Prodile")
+        profileBtn.accessibilityHint = "profile_hint".localized
         profileBtn.addTarget(self, action: #selector(profileClicked(sender:)), for: UIControl.Event.touchDown)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileBtn)
         
-        editBtn.setTitle(NSLocalizedString("edit", comment: "Edit"), for: .normal)
+        editBtn.setTitle("edit".localized, for: .normal)
         
         if viewModel?.userProfileModel.isProfileEmployer ?? false {
-            employeeEmployerTitleLabel.text = NSLocalizedString("employee", comment: "Employee")
-            selectUserDropDownView.accessibilityHint = NSLocalizedString("employee_user_hint", comment: "Tap To Select Employee")
+            employeeEmployerTitleLabel.text = "employee".localized
+            selectUserDropDownView.accessibilityHint = "employee_user_hint".localized
         }
         else {
-            employeeEmployerTitleLabel.text = NSLocalizedString("employer", comment: "Employer")
-            selectUserDropDownView.accessibilityHint = NSLocalizedString("employer_user_hint", comment: "Tap To Select Employer")
+            employeeEmployerTitleLabel.text = "employer".localized
+            selectUserDropDownView.accessibilityHint = "employer_user_hint".localized
         }
         
         displayEmploymentInfo()
@@ -240,7 +246,7 @@ extension TimeViewController {
 extension TimeViewController {
     func contactWHD() {
         let resourcesVC = ResourcesViewController.instantiateFromStoryboard()
-        resourcesVC.title = NSLocalizedString("contact_us", comment: "Contact Us")
+        resourcesVC.title = "contact_us".localized
         navigationController?.pushViewController(resourcesVC, animated: true)
     }
 }
@@ -251,6 +257,11 @@ extension TimeViewController: TimeViewControllerDelegate {
     }
     
     func didUpdateEmploymentInfo() {
+        displayEmploymentInfo()
+    }
+    
+    func didUpdateLanguageChoice() {
+        displayInfo()
         displayEmploymentInfo()
     }
 }
@@ -284,9 +295,9 @@ extension TimeViewController {
             timecardVC.commentsTextView.delegate = self
         }
         
-        title = NSLocalizedString("timecard", comment: "Timecard")
+        title = "timecard".localized
         timesheetToggleBtn.image = #imageLiteral(resourceName: "timesheet")
-        timesheetToggleBtn.title = NSLocalizedString("timesheet", comment: "Timesheet")
+        timesheetToggleBtn.title = "timesheet".localized
         
         var items = toolbar.items
         
@@ -308,9 +319,9 @@ extension TimeViewController {
             addViewController(viewController: timesheetVC)
         }
         
-        title = NSLocalizedString("timesheet", comment: "Timesheet")
+        title = "timesheet".localized
         timesheetToggleBtn.image = #imageLiteral(resourceName: "timecard")
-        timesheetToggleBtn.title = NSLocalizedString("timecard", comment: "Timecard")
+        timesheetToggleBtn.title = "timecard".localized
 
         if exportBtn == nil {
             exportBtn = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(exportClicked(_:)))

@@ -12,9 +12,9 @@ class AboutViewController: UIViewController {
 
     @IBOutlet weak var displayLogo: UIImageView!
     
-    let items = [NSLocalizedString("introduction_text1", comment: "Introduction text1"),
-       NSLocalizedString("introduction_text2", comment: "Introduction text2"),
-       "\(NSLocalizedString("version_number", comment: "Version Number"))  \(Bundle.main.versionNumber).\(Bundle.main.buildNumber)"]
+    let items = ["introduction_text1".localized,
+       "introduction_text2".localized,
+       "\("version_number".localized)  \(Bundle.main.versionNumber).\(Bundle.main.buildNumber)"]
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -26,7 +26,7 @@ class AboutViewController: UIViewController {
     
     func setupAccessibility() {
         displayLogo.isAccessibilityElement = true
-        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
+        displayLogo.accessibilityLabel = "whd_logo".localized
     }
 }
 

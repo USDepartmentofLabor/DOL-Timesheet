@@ -98,7 +98,11 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         // If this is Root ViewController
         if let rootViewController = navigationController?.viewControllers.first,
             rootViewController == self {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelClicked(_:)))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(
+                title: "cancel".localized,
+                style: .plain,
+                target: self,
+                action: #selector(cancelClicked(_:)))
         }
         
         employmentView.addBorder()
@@ -131,32 +135,32 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         
         setupEmploymentType(isProfileEmployer: viewModel?.isProfileEmployer ?? false)
         
-        requiredFooterLabel.text = NSLocalizedString("indicates_a_required_field", comment: "Indicates a required field")
+        requiredFooterLabel.text = "indicates_a_required_field".localized
         
-        cityTitleLabel.text = NSLocalizedString("city", comment: "City")
-        stateTitleLabel.text = NSLocalizedString("state", comment: "State")
-        zipCodeTitleLabel.text = NSLocalizedString("zip_code", comment: "Zip Code")
-        zipcodeTextField.placeholder = NSLocalizedString("zipcode_hint", comment: "Indicates a required field")
-        phoneTitleLabel.text = NSLocalizedString("phone", comment: "Phone")
-        emailTitleLabel.text = NSLocalizedString("email", comment: "Email")
+        cityTitleLabel.text = "city".localized
+        stateTitleLabel.text = "state".localized
+        zipCodeTitleLabel.text = "zip_code".localized
+        zipcodeTextField.placeholder = "zipcode_hint".localized
+        phoneTitleLabel.text = "phone".localized
+        emailTitleLabel.text = "email".localized
         
-        employmentTitleLabel.text = NSLocalizedString("employment", comment: "Employment")
-        supervisorNameTitleLabel.text = NSLocalizedString("supervisor_name", comment: "Supervisor Name")
-        supervisorEmailTitleLabel.text = NSLocalizedString("supervisor_email", comment: "Supervisor Email")
-        employeeNumberTitleLabel.text = NSLocalizedString("employee_number", comment: "Employee Number")
-        startDateTitleLabel.text = NSLocalizedString("start_date", comment: "Start Date")
+        employmentTitleLabel.text = "employment".localized
+        supervisorNameTitleLabel.text = "supervisor_name".localized
+        supervisorEmailTitleLabel.text = "supervisor_email".localized
+        employeeNumberTitleLabel.text = "employee_number".localized
+        startDateTitleLabel.text = "start_date".localized
         
-        nextBtn.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
+        nextBtn.setTitle("next".localized, for: .normal)
         
         // remove Skip button from navbar
         if viewModel?.employmentUser != nil {
             isNewUser = false
             navigationItem.rightBarButtonItem = nil
             if let viewModel = viewModel, viewModel.isProfileEmployer {
-                title = NSLocalizedString("edit_employee", comment: "Edit Employee Title")
+                title = "edit_employee".localized
             }
             else {
-                title = NSLocalizedString("edit_employer", comment: "Edit Employee Title")
+                title = "edit_employer".localized
             }
         }
         else {
@@ -174,13 +178,13 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         var tag = nameTextField.tag
         // If Employer
         if isProfileEmployer {
-            title = NSLocalizedString("add_employee", comment: "Add Employee Title")
-            titleInfoView.title = NSLocalizedString("employee_information", comment: "Employee Information")
-            subTitleLabel.text = NSLocalizedString("who_works_for_you", comment: "Who works for you")
-            userTitleLabel.text = NSLocalizedString("employee", comment: "Employee")
-            nameTitle = NSLocalizedString("full_name", comment: "Full Name")
+            title = "add_employee".localized
+            titleInfoView.title = "employee_information".localized
+            subTitleLabel.text = "who_works_for_you".localized
+            userTitleLabel.text = "employee".localized
+            nameTitle = "full_name".localized
             titleInfoView.infoType = .employee
-            addressTitle = NSLocalizedString("home_address", comment: "Home Address")
+            addressTitle = "home_address".localized
             addressLine1View.isHidden = true
             addressLine2View.isHidden = true
             cityView.isHidden = true
@@ -195,13 +199,13 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
 
         }
         else {
-            title = NSLocalizedString("add_employer", comment: "Add Employee Title")
-            titleInfoView.title = NSLocalizedString("employer_information", comment: "Employer Information")
-            subTitleLabel.text = NSLocalizedString("who_do_you_work_for", comment: "Who do you work for")
-            userTitleLabel.text = NSLocalizedString("employer", comment: "Employer")
-            nameTitle = NSLocalizedString("company_name", comment: "Company Name")
+            title = "add_employer".localized
+            titleInfoView.title = "employer_information".localized
+            subTitleLabel.text = "who_do_you_work_for".localized
+            userTitleLabel.text = "employer".localized
+            nameTitle = "company_name".localized
             titleInfoView.infoType = .employer
-            addressTitle = NSLocalizedString("work_address", comment: "Work Address")
+            addressTitle = "work_address".localized
             
             street1TextField.tag = tag+1
             street2TextField.tag = tag+2
@@ -226,8 +230,8 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
     
     func setupAccessibility() {
         nameTextField.accessibilityLabel =  nameTitleLabel.accessibilityLabel
-        street1TextField.accessibilityLabel = NSLocalizedString("street1", comment: "Stree1")
-        street2TextField.accessibilityLabel = NSLocalizedString("street2", comment: "Stree2")
+        street1TextField.accessibilityLabel = "street1".localized
+        street2TextField.accessibilityLabel = "street2".localized
         cityTextField.accessibilityLabel = cityTitleLabel.text
         stateTextField.accessibilityLabel = stateTitleLabel.text
         zipcodeTextField.accessibilityLabel = zipCodeTitleLabel.text
@@ -235,7 +239,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         emailTextField.accessibilityLabel = emailTitleLabel.text
         
         stateTextField.accessibilityTraits = [.button, .staticText]
-        stateTextField.accessibilityHint = NSLocalizedString("state_hint", comment: "Tap to Select State")
+        stateTextField.accessibilityHint = "state_hint".localized
         
         supervisorNameTextField.accessibilityLabel = supervisorNameTitleLabel.text
         supervisorEmailTextField.accessibilityLabel = supervisorEmailTitleLabel.text
@@ -244,10 +248,10 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         employmentNumberTextField.accessibilityLabel = employeeNumberTitleLabel.text
         
         startDateTextField.accessibilityTraits = [.button, .staticText]
-        startDateTextField.accessibilityHint = NSLocalizedString("start_date_hint", comment: "Tap to Select Start Date")
+        startDateTextField.accessibilityHint = "start_date_hint".localized
 
         paymentTypeTextField.accessibilityTraits = [.button, .staticText]
-        paymentTypeTextField.accessibilityHint = NSLocalizedString("payment_type_hint", comment: "Tap to Select Payment Type")
+        paymentTypeTextField.accessibilityHint = "payment_type_hint".localized
 
         if Util.isVoiceOverRunning {
             requiredFooterLabel.isHidden = true
@@ -280,8 +284,8 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         supervisorEmailTextField.text = viewModel.supervisorEmail
         paymentTypeTextField.text = viewModel.paymentType.title
         startDate = viewModel.employmentStartDate
-        nameTextField.placeholder = NSLocalizedString("required", comment: "Required")
-        paymentTypeTitleLabel.text = NSLocalizedString("payment_type", comment: "Payment Type")
+        nameTextField.placeholder = "required".localized
+        paymentTypeTitleLabel.text = "payment_type".localized
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -336,29 +340,29 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         
         let name = nameTextField.text
         if name == nil || name!.isEmpty {
-            errorStr = NSLocalizedString("err_enter_name", comment: "Please provide name")
+            errorStr = "err_enter_name".localized
         }
         else if !viewModel.isProfileEmployer,
             let zipcode = zipcodeTextField.text?.trimmingCharacters(in: .whitespaces),
             !zipcode.isEmpty, !Util.isValidPostalCode(postalCode: zipcode) {
-            errorStr = NSLocalizedString("err_invalid_zipcode", comment: "Please provide valid zipcode")
+            errorStr = "err_invalid_zipcode".localized
         }
         else if let phoneNumber = phoneTextField.text?.trimmingCharacters(in: .whitespaces),
             !phoneNumber.isEmpty, !Util.isValidPhoneNumber(phoneNumber: phoneNumber) {
-            errorStr = NSLocalizedString("err_invalid_phonenumber", comment: "Please provide valid phoneNumber")
+            errorStr = "err_invalid_phonenumber".localized
         }
         else if let emailAddress = emailTextField.text?.trimmingCharacters(in: .whitespaces),
             !emailAddress.isEmpty, !Util.isValidEmailAddress(emailAddress: emailAddress) {
             if viewModel.isProfileEmployer {
-                errorStr = NSLocalizedString("err_invalid_employee_emailaddress", comment: "Please provide valid email")
+                errorStr = "err_invalid_employee_emailaddress".localized
             }
             else {
-                errorStr = NSLocalizedString("err_invalid_employer_emailaddress", comment: "Please provide valid email")
+                errorStr = "err_invalid_employer_emailaddress".localized
             }
         }
         else if let supervisorEmailAddress = supervisorEmailTextField.text?.trimmingCharacters(in: .whitespaces),
             !supervisorEmailAddress.isEmpty, !Util.isValidEmailAddress(emailAddress: supervisorEmailAddress) {
-            errorStr = NSLocalizedString("err_invalid_supervisor_emailaddress", comment: "Please provide valid supervisor email")
+            errorStr = "err_invalid_supervisor_emailaddress".localized
         }
 
         if let errorStr = errorStr {
@@ -427,7 +431,7 @@ extension EmploymentInfoViewController: UITextFieldDelegate {
 //        let aRect = textField.convert(textField.frame, to: scrollView)
 //        scrollView.scrollRectToVisible(aRect, animated: true)
         if textField == stateTextField {
-            let announcementMsg = NSLocalizedString("select_state", comment: "Select State")
+            let announcementMsg = "select_state".localized
             UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementMsg)
 
             DispatchQueue.main.async { [weak self] in
@@ -448,7 +452,7 @@ extension EmploymentInfoViewController: UITextFieldDelegate {
             showPopup(popupController: optionsVC, sender: textField)
         }
         else if textField == paymentTypeTextField {
-            let announcementMsg = NSLocalizedString("select_payment_type", comment: "Select Payment Type")
+            let announcementMsg = "select_payment_type".localized
             UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementMsg)
 
             DispatchQueue.main.async { [weak self] in
@@ -469,7 +473,7 @@ extension EmploymentInfoViewController: UITextFieldDelegate {
             showPopup(popupController: optionsVC, sender: textField)
         }
         else if textField == startDateTextField {
-            let announcementMsg = NSLocalizedString("select_start_date", comment: "Select Start Date")
+            let announcementMsg = "select_start_date".localized
             UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementMsg)
 
             DispatchQueue.main.async { [weak self] in

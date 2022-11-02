@@ -39,11 +39,11 @@ class HourlyPaymentViewController: UIViewController {
         hourlyRateTableView.rowHeight = UITableView.automaticDimension
         
         if viewModel.isProfileEmployer {
-            titleLabelInfo.title = NSLocalizedString("hourly_rate_employer", comment: "Hourly Rate")
+            titleLabelInfo.title = "hourly_rate_employer".localized
             titleLabelInfo.infoType = .employer_hourlyPayRate
         }
         else {
-            titleLabelInfo.title = NSLocalizedString("hourly_rate_employee", comment: "Hourly Rate")
+            titleLabelInfo.title = "hourly_rate_employee".localized
             titleLabelInfo.infoType = .employee_hourlyPayRate
         }
         titleLabelInfo.delegate = self
@@ -54,8 +54,8 @@ class HourlyPaymentViewController: UIViewController {
         else {
             addRate()
         }
-        fslaTextView.text = NSLocalizedString("fsla_requirements", comment: "Hourly Rate")
-        addRateBtn.setTitle(NSLocalizedString("add_another_rate", comment: "Add Another Rate"), for: .normal)
+        fslaTextView.text = "fsla_requirements".localized
+        addRateBtn.setTitle("add_another_rate".localized, for: .normal)
         
         let attributedString = NSMutableAttributedString(string:fslaTextView.text)
         if #available(iOS 13.0, *) {
@@ -148,8 +148,8 @@ extension HourlyPaymentViewController: HourlyRateCellDelegate {
         guard index < viewModel?.hourlyRates?.count ?? 0 else { return }
         guard let hourlyRate = viewModel.hourlyRates?[index] else {return}
         
-        let titleMsg = NSLocalizedString("delete_hourly_rate", comment: "Delete Hourly Rate")
-        let errorMsg = NSLocalizedString("delete_confirm_hourly_rate_log", comment: "Are you sure you want to delete?")
+        let titleMsg = "delete_hourly_rate".localized
+        let errorMsg = "delete_confirm_hourly_rate_log".localized
         let errorStr = String(format: errorMsg, hourlyRate.name ?? "")
     
         let alertController = UIAlertController(title: titleMsg,
@@ -157,12 +157,12 @@ extension HourlyPaymentViewController: HourlyRateCellDelegate {
                                             preferredStyle: .alert)
     
         alertController.addAction(
-        UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel"), style: .cancel))
+        UIAlertAction(title: "cancel".localized, style: .cancel))
         alertController.addAction(
-        UIAlertAction(title: NSLocalizedString("delete", comment: "Delete"), style: .destructive) { _ in
+        UIAlertAction(title: "delete".localized, style: .destructive) { _ in
             self.viewModel.deleteHourlyRate(hourlyRate: hourlyRate)
             
-            let deleteAnnouncement = NSLocalizedString("hourly_rate_deleted", comment: "Deleted HourlyRate")
+            let deleteAnnouncement = "hourly_rate_deleted".localized
             UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: deleteAnnouncement)
 
             self.loadHourlyRate()
@@ -177,16 +177,16 @@ extension HourlyPaymentViewController {
         var errorStr: String? = nil
         
         if (viewModel?.hourlyRates?.count ?? 0) < 1 {
-            errorStr = NSLocalizedString("err_add_hourly_rate", comment: "Add Hourly Rate")
+            errorStr = "err_add_hourly_rate".localized
         }
         else {
             viewModel?.hourlyRates?.forEach {
                 if ($0.name ?? "").isEmpty {
-                    errorStr = NSLocalizedString("err_add_hourly_rate_name", comment: "Add Hourly Rate name")
+                    errorStr = "err_add_hourly_rate_name".localized
                     return
                 }
                 else if $0.value <= 0 {
-                    errorStr = NSLocalizedString("err_add_hourly_rate_value", comment: "Add Hourly Rate value")
+                    errorStr = "err_add_hourly_rate_value".localized
                     return
                 }
             }

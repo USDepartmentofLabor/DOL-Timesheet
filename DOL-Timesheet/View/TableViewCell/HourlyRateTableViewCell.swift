@@ -44,8 +44,8 @@ class HourlyRateTableViewCell: UITableViewCell {
         rateValueTextField.scaleFont(forDataType: .nameValueText)
         perHourLabel.scaleFont(forDataType: .nameValueText)
         
-        rateTitleLabel.text = NSLocalizedString("rate_name", comment: "Rate Name")
-        perHourLabel.text = NSLocalizedString("per_hour", comment: "Per Hour")
+        rateTitleLabel.text = "rate_name".localized
+        perHourLabel.text = "per_hour".localized
         
         rateNameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         rateValueTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -57,7 +57,7 @@ class HourlyRateTableViewCell: UITableViewCell {
         accessibilityElements = [rateTitleLabel as Any, rateNameTextField as Any, rateValueTextField as Any, perHourLabel as Any, deleteBtn as Any]
         
         rateNameTextField.accessibilityLabel = rateTitleLabel.text
-        rateValueTextField.accessibilityLabel = NSLocalizedString("rate_amount", comment: "Rate Amount")
+        rateValueTextField.accessibilityLabel = "rate_amount".localized
         
         if Util.isVoiceOverRunning {
             rateValueTextField.keyboardType = .numbersAndPunctuation
@@ -81,7 +81,7 @@ class HourlyRateTableViewCell: UITableViewCell {
         rateNameTextField.text = rate.name
         rateValueTextField.text = NumberFormatter.localisedCurrencyStr(from: rate.value)
         
-        let deleteHint = NSLocalizedString("delete_rate_hint", comment: "Delete Rate?")
+        let deleteHint = "delete_rate_hint".localized
         let deleteMsg = String(format: deleteHint, rate.name ?? "")
         deleteBtn.accessibilityHint = deleteMsg
     }
@@ -97,7 +97,7 @@ extension HourlyRateTableViewCell {
         }
         else if textField == rateNameTextField {
             hourlyRate?.name = textField.text
-            let deleteHint = NSLocalizedString("delete_rate_hint", comment: "Delete Rate?")
+            let deleteHint = "delete_rate_hint".localized
             let deleteMsg = String(format: deleteHint, hourlyRate?.name ?? "")
             deleteBtn.accessibilityHint = deleteMsg
         }
