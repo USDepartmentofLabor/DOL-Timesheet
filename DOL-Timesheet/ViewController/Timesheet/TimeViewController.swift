@@ -47,17 +47,52 @@ class TimeViewController: UIViewController {
             performSegue(withIdentifier: "setupProfile", sender: nil)
             return
         }
+        offerSpanish()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerKeyboardNotifications()
+        displayInfo()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
+    
+    func offerSpanish() {
+        print("GGG: Offer Spanish?")
+        if Localizer.spanishOffered() == false {
+            print("GGG: Offering Spanish!")
+            let langUpdate = (Localizer.currentLanguage == Localizer.ENGLISH) ? Localizer.SPANISH : Localizer.ENGLISH
+            
+             let alertController =
+                 UIAlertController(title: " \n ",
+                                   message: "spanish_support".localized,
+                                   preferredStyle: .alert)
+             //alertController.view.center.x
+             let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 73, height: 50))
+             imgViewTitle.image = UIImage(named:"holaHello")
+             
+    //             imgViewTitle.setTranslatesAutoresizingMaskIntoConstraints(false)
+             alertController.view.addSubview(imgViewTitle)
+             
+             alertController.addAction(
+                 UIAlertAction(title: "No", style: .cancel))
+             alertController.addAction(
+                UIAlertAction(title: "yes_si".localized, style: .destructive) { _ in
+                    Localizer.updateCurrentLanguage(lang: langUpdate)
+                    self.setupNavigationBarSettings()
+                    self.setupView()
+                    self.displayInfo()
+                   // self.employeeEmployerTitleLabel.text = "employer".localized
+                    self.performSegue(withIdentifier: "showUserProfile", sender: self)
+                 }
+             )
+             present(alertController, animated: true)
+        }
+     }
 
 
     func setupView() {
@@ -181,6 +216,8 @@ class TimeViewController: UIViewController {
 extension TimeViewController {
     
     @objc fileprivate func infoClicked(sender: Any?) {
+        Localizer.clearUserLocale()
+        Localizer.clearSpanishOffered()
         performSegue(withIdentifier: "showInfo", sender: self)
     }
     

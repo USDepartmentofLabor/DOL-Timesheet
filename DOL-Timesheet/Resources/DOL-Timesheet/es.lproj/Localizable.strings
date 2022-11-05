@@ -370,8 +370,8 @@
 "fsla_info1" = "La Ley de Normas Justas de Trabajo (FLSA, por sus siglas en inglés) requiere que la mayoría de los empleados reciban el salario mínimo por todas las horas que trabajen, y sobretiempo, a tiempo y medio de su tarifa regular de pago, por las horas que trabajen por encima de 40 horas en una semana laboral.";
 "fsla_info2" = "La ley incluye algunas excepciones a estos requisitos. Algunos trabajadores ejecutivos, administrativos, profesionales y de ventas externas, así como algunos trabajadores en el campo de las computadoras, por ejemplo, están entre aquellos que, por ley, no están requeridos a recibir el pago de salario mínimo y sobretiempo de sus empleadores.";
 
-"spanish_support" = "¿Te gustaría configurar esta aplicación en español?\nWould you like to set this app to English?";
-"yes_si" = "Sí (Yes)";
+"spanish_support" = "Would you like to set this app to English?\n\n(¿Le gustaría configurar esta aplicación en inglés?)";
+"yes_si" = "Yes (Sí)";
 
 
 "primary_lang" = "Para usar este botón y cambiar esta aplicación de inglés a español, siga las instrucciones a continuación.";

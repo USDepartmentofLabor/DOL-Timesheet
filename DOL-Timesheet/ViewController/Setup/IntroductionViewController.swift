@@ -51,37 +51,29 @@ class IntroductionViewController: UIViewController {
     }
     
     func offerSpanish() {
-         
-        let langMessage = (Localizer.currentLanguage == Localizer.ENGLISH) ? "¿Te gustaría configurar esta aplicación en español?\n\n(Would you like to set this app to Spanish?)" :
-        "Would you like to set this app to English?\n\n(¿Te gustaría configurar esta aplicación en inglés?)"
-         
-        let langeYes = (Localizer.currentLanguage == Localizer.ENGLISH) ? "Si (Yes)" : "Yes (Si)"
         
-        let langUpdate = (Localizer.currentLanguage == Localizer.ENGLISH) ? Localizer.SPANISH : Localizer.ENGLISH
-        
-         let alertController =
-             UIAlertController(title: " \n ",
-                               message: langMessage,
-                               preferredStyle: .alert)
-         //alertController.view.center.x
-         let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 73, height: 50))
-         imgViewTitle.image = UIImage(named:"holaHello")
-         
-//             imgViewTitle.setTranslatesAutoresizingMaskIntoConstraints(false)
-         alertController.view.addSubview(imgViewTitle)
-         
-         alertController.addAction(
-             UIAlertAction(title: "No", style: .cancel))
-         alertController.addAction(
-            UIAlertAction(title: langeYes, style: .destructive) { _ in
-                Localizer.updateCurrentLanguage(lang: langUpdate)
-                self.setupView()
-                self.displayInfo()
-             }
-         )
-         present(alertController, animated: true)
-         let defaults = UserDefaults.standard
-         defaults.set(true, forKey: "Seen")
+        if Localizer.spanishOffered() == false {
+            let langUpdate = (Localizer.currentLanguage == Localizer.ENGLISH) ? Localizer.SPANISH : Localizer.ENGLISH
+            
+             let alertController =
+                 UIAlertController(title: " \n ",
+                                   message: "spanish_support".localized,
+                                   preferredStyle: .alert)
+             let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 73, height: 50))
+             imgViewTitle.image = UIImage(named:"holaHello")
+             alertController.view.addSubview(imgViewTitle)
+             
+             alertController.addAction(
+                 UIAlertAction(title: "No", style: .cancel))
+             alertController.addAction(
+                UIAlertAction(title: "yes_si".localized, style: .destructive) { _ in
+                    Localizer.updateCurrentLanguage(lang: langUpdate)
+                    self.setupView()
+                    self.displayInfo()
+                 }
+             )
+             present(alertController, animated: true)
+        }
      }
 }
 

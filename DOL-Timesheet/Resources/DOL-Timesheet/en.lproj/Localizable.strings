@@ -374,8 +374,8 @@
         for example, are among those who, by law, are not required to receive minimum wage and
         overtime pay from their employers.";
 
-"spanish_support" = "Would you like to set this app to English?\n¿Te gustaría configurar esta aplicación en español?";
-"yes_si" = "Yes (Sí)";
+"spanish_support" = "¿Le gustaría configurar esta aplicación en español?\n\n(Would you like to set this app to Spanish?)";
+"yes_si" = "Sí (Yes)";
 
 
 "primary_lang" = "To use this button and switch this app from Spanish to English, follow the instructions below.";

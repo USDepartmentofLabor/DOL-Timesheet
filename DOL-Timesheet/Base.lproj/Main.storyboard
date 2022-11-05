@@ -924,6 +924,7 @@
                         <outlet property="workedHoursCounterLabel" destination="lH3-5h-4v6" id="Lfi-3Q-nqr"/>
                         <outlet property="workedHoursView" destination="nM2-pb-L5c" id="88U-qL-rhU"/>
                         <segue destination="LpA-L8-8Q7" kind="presentation" identifier="enterTime" id="3GV-mi-63D"/>
+                        <segue destination="YdL-DH-HL3" kind="presentation" identifier="showUserProfile" id="7uc-bX-bfm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Z3-lP-jYE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2421,8 +2422,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3iC-tx-nCj"/>
-        <segue reference="KJz-zA-nJd"/>
+        <segue reference="3GV-mi-63D"/>
+        <segue reference="raw-Tx-Vfv"/>
+        <segue reference="2Fb-bA-ARb"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DOLLogo" width="60" height="60"/>

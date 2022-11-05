@@ -8,7 +8,21 @@
 
 import UIKit
 
-class TimeCardViewController: UIViewController, TimeViewDelegate {
+class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewControllerDelegate {
+    func didUpdateUser() {
+    
+    }
+    
+    func didUpdateEmploymentInfo() {
+    
+    }
+    
+    func didUpdateLanguageChoice() {
+        setupNavigationBarSettings()
+        setupView()
+        displayInfo()
+    }
+    
     
     @IBOutlet weak var rateDropDownView: DropDownView!
     
@@ -69,45 +83,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Localizer.initialize()  
-        let defaults = UserDefaults.standard
-        let hasSeen = defaults.bool(forKey: "Seen")
-        if !(viewModel?.currentEmploymentModel?.isWizard ?? true) && !hasSeen {
-            offerSpanish()
-        }
+        Localizer.initialize()
     }
-    
-    func offerSpanish() {
-        let langMessage = (Localizer.currentLanguage == Localizer.ENGLISH) ? "¿Te gustaría configurar esta aplicación en español?\n\n(Would you like to set this app to Spanish?)" :
-        "Would you like to set this app to English?\n\n(¿Te gustaría configurar esta aplicación en inglés?)"
-         
-        let langeYes = (Localizer.currentLanguage == Localizer.ENGLISH) ? "Si (Yes)" : "Yes (Si)"
-        
-        let langUpdate = (Localizer.currentLanguage == Localizer.ENGLISH) ? Localizer.SPANISH : Localizer.ENGLISH
-        
-         let alertController =
-             UIAlertController(title: " \n ",
-                               message: langMessage,
-                               preferredStyle: .alert)
-         //alertController.view.center.x
-         let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 73, height: 50))
-         imgViewTitle.image = UIImage(named:"holaHello")
-         
-//             imgViewTitle.setTranslatesAutoresizingMaskIntoConstraints(false)
-         alertController.view.addSubview(imgViewTitle)
-         
-         alertController.addAction(
-             UIAlertAction(title: "No", style: .cancel))
-         alertController.addAction(
-            UIAlertAction(title: langeYes, style: .destructive) { _ in
-                 Localizer.updateCurrentLanguage(lang: langUpdate)
-             }
-         )
-         present(alertController, animated: true)
-         let defaults = UserDefaults.standard
-         defaults.set(true, forKey: "Seen")
- 
-     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -396,6 +373,13 @@ class TimeCardViewController: UIViewController, TimeViewDelegate {
             enterTimeVC.timeSheetModel = viewModel
             enterTimeVC.delegate = self
         }
+        else if segue.identifier == "showUserProfile",
+             let navVC = segue.destination as? UINavigationController,
+             let profileVC = navVC.topViewController as? SetupProfileViewController,
+             let viewModel = viewModel {
+             profileVC.viewModel = ProfileViewModel(context: viewModel.managedObjectContext.childManagedObjectContext())
+             profileVC.delegate = self
+         }
     }
 }
 
