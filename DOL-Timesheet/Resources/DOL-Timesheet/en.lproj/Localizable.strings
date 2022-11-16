@@ -376,7 +376,8 @@
 
 "spanish_support" = "¿Le gustaría configurar esta aplicación en español?\n\n(Would you like to set this app to Spanish?)";
 "yes_si" = "Sí (Yes)";
-
+"switch_to_spanish" = "Switch to Spanish";
+"switch_to_english" = "Switch to English";
 
 "primary_lang" = "To use this button and switch this app from Spanish to English, follow the instructions below.";
 "secondary_lang" = "(Para usar este botón y cambiar esta aplicación de español a inglés, siga las instrucciones a continuación.)";

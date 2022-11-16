@@ -67,16 +67,13 @@ class TimeViewController: UIViewController {
             print("GGG: Offering Spanish!")
             let langUpdate = (Localizer.currentLanguage == Localizer.ENGLISH) ? Localizer.SPANISH : Localizer.ENGLISH
             
-             let alertController =
-                 UIAlertController(title: " \n ",
-                                   message: "spanish_support".localized,
-                                   preferredStyle: .alert)
-             //alertController.view.center.x
-             let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 73, height: 50))
-             imgViewTitle.image = UIImage(named:"holaHello")
-             
-    //             imgViewTitle.setTranslatesAutoresizingMaskIntoConstraints(false)
-             alertController.view.addSubview(imgViewTitle)
+            let alertController =
+                UIAlerintController(title: " \n\n \("spanish_support".localized)",
+                                  message: nil,
+                                  preferredStyle: .alert)
+            let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 73, height: 50))
+            imgViewTitle.image = UIImage(named:"holaHello")
+            alertController.view.addSubview(imgViewTitle)
              
              alertController.addAction(
                  UIAlertAction(title: "No", style: .cancel))
@@ -87,7 +84,7 @@ class TimeViewController: UIViewController {
                     self.setupView()
                     self.displayInfo()
                    // self.employeeEmployerTitleLabel.text = "employer".localized
-                    self.performSegue(withIdentifier: "showUserProfile", sender: self)
+                    self.performSegue(withIdentifier: "showProfile", sender: self)
                  }
              )
              present(alertController, animated: true)
@@ -216,8 +213,8 @@ class TimeViewController: UIViewController {
 extension TimeViewController {
     
     @objc fileprivate func infoClicked(sender: Any?) {
-        Localizer.clearUserLocale()
-        Localizer.clearSpanishOffered()
+//        Localizer.clearUserLocale()
+//        Localizer.clearSpanishOffered()
         performSegue(withIdentifier: "showInfo", sender: self)
     }
     

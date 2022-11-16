@@ -206,6 +206,15 @@ class SetupProfileViewController: UIViewController {
         }
         
         profileImageView.accessibilityHint = "profile_image_new_hint".localized
+        
+        holaHelloButton.isAccessibilityElement = true
+        holaHelloButton.accessibilityTraits = .button
+        
+        if Localizer.currentLanguage == Localizer.ENGLISH {
+            holaHelloButton.accessibilityHint = "switch_to_spanish".localized
+        } else {
+            holaHelloButton.accessibilityHint = "switch_to_english".localized
+        }
     }
     
     func displayInfo() {
@@ -447,8 +456,8 @@ class SetupProfileViewController: UIViewController {
         let langUpdate = (Localizer.currentLanguage == Localizer.ENGLISH) ? Localizer.SPANISH : Localizer.ENGLISH
         
          let alertController =
-             UIAlertController(title: " \n ",
-                               message: "spanish_support".localized,
+             UIAlertController(title: " \n\n \("spanish_support".localized)",
+                               message: nil,
                                preferredStyle: .alert)
          let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 73, height: 50))
          imgViewTitle.image = UIImage(named:"holaHello")

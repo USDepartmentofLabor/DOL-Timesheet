@@ -2059,19 +2059,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfW-Ne-8UM">
-                                <rect key="frame" x="0.0" y="28" width="375" height="619"/>
+                                <rect key="frame" x="0.0" y="28" width="1098" height="619"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nyc-Lc-LkS">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1098" height="619"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1BD-JO-JV2" userLabel="ContentView">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="785.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="1098" height="785.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7TW-xU-g1n" userLabel="ProfileView">
-                                                        <rect key="frame" x="20" y="0.0" width="335" height="613"/>
+                                                        <rect key="frame" x="20" y="0.0" width="1058" height="613"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkT-cZ-lvn" userLabel="HeaderView">
-                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="43"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="1058" height="43"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Setup" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vsi-XC-cy3" userLabel="ProfileTitleLabel">
                                                                         <rect key="frame" x="0.0" y="0.0" width="87.5" height="17"/>
@@ -2104,10 +2104,10 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3FM-S5-qQK" userLabel="MyProfileView">
-                                                                <rect key="frame" x="0.0" y="59" width="335" height="539"/>
+                                                                <rect key="frame" x="0.0" y="59" width="1058" height="539"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8H-A4-9XB" userLabel="TitleView">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="22.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="1058" height="22.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Profile" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54R-9e-WXd">
                                                                                 <rect key="frame" x="8" y="4" width="57" height="14.5"/>
@@ -2125,7 +2125,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default Profile Photo" translatesAutoresizingMaskIntoConstraints="NO" id="8z9-zc-eYz">
-                                                                        <rect key="frame" x="8" y="30.5" width="67" height="67"/>
+                                                                        <rect key="frame" x="8" y="30.5" width="211.5" height="211.5"/>
                                                                         <accessibility key="accessibilityConfiguration">
                                                                             <accessibilityTraits key="traits" button="YES" image="YES"/>
                                                                             <bool key="isElement" value="YES"/>
@@ -2135,28 +2135,28 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpG-zR-wdB" userLabel="InfoView">
-                                                                        <rect key="frame" x="91" y="30.5" width="244" height="496.5"/>
+                                                                        <rect key="frame" x="235.5" y="30.5" width="822.5" height="496.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* Indicates a required field" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jK-Bv-fPX">
-                                                                                <rect key="frame" x="0.0" y="2" width="236" height="14.5"/>
+                                                                                <rect key="frame" x="0.0" y="2" width="814.5" height="14.5"/>
                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                                 <color key="textColor" name="appPrimaryColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="khs-uY-kt1">
-                                                                                <rect key="frame" x="0.0" y="24.5" width="236" height="464"/>
+                                                                                <rect key="frame" x="0.0" y="24.5" width="814.5" height="464"/>
                                                                                 <subviews>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jny-G5-xMW" userLabel="NameView">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="236" height="51"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="814.5" height="51"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name*" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7r-5R-AhE" userLabel="FullNameLabel" customClass="TitleValueLabel" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="0.0" y="18.5" width="78.5" height="14.5"/>
+                                                                                                <rect key="frame" x="0.0" y="18.5" width="271.5" height="14.5"/>
                                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
                                                                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Required" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TOy-VI-vAe" userLabel="FullNameTextField" customClass="UnderlinedTextField" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="84.5" y="8" width="151.5" height="35"/>
+                                                                                                <rect key="frame" x="277.5" y="8" width="537" height="35"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="name"/>
                                                                                             </textField>
@@ -2174,16 +2174,16 @@
                                                                                         </constraints>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cW-Cv-d2i" userLabel="AddressView">
-                                                                                        <rect key="frame" x="0.0" y="59" width="236" height="51"/>
+                                                                                        <rect key="frame" x="0.0" y="59" width="814.5" height="51"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acm-v1-Gmh" userLabel="AddressLabel" customClass="TitleValueLabel" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="0.0" y="10.5" width="78.5" height="30.5"/>
+                                                                                                <rect key="frame" x="0.0" y="18.5" width="271.5" height="14.5"/>
                                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
                                                                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="law-Fz-Cl5" userLabel="AddressTextField" customClass="UnderlinedTextField" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="84.5" y="16.5" width="151.5" height="18.5"/>
+                                                                                                <rect key="frame" x="277.5" y="16.5" width="537" height="18.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="address-line1"/>
                                                                                             </textField>
@@ -2195,10 +2195,10 @@
                                                                                         </constraints>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvG-BJ-MEz" userLabel="Address2View">
-                                                                                        <rect key="frame" x="0.0" y="118" width="236" height="51"/>
+                                                                                        <rect key="frame" x="0.0" y="118" width="814.5" height="51"/>
                                                                                         <subviews>
                                                                                             <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="APl-YF-3ed" userLabel="AddressLine2TextField" customClass="UnderlinedTextField" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="84.5" y="16.5" width="151.5" height="18.5"/>
+                                                                                                <rect key="frame" x="277.5" y="16.5" width="537" height="18.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="address-line2"/>
                                                                                             </textField>
@@ -2209,16 +2209,16 @@
                                                                                         </constraints>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbS-Xq-P1W" userLabel="CityView">
-                                                                                        <rect key="frame" x="0.0" y="177" width="236" height="51"/>
+                                                                                        <rect key="frame" x="0.0" y="177" width="814.5" height="51"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLk-Dq-kAg" userLabel="CityNameLabel" customClass="TitleValueLabel" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="0.0" y="18.5" width="78.5" height="14.5"/>
+                                                                                                <rect key="frame" x="0.0" y="18.5" width="271.5" height="14.5"/>
                                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
                                                                                             <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j39-aw-bTl" userLabel="CityNameTextField" customClass="UnderlinedTextField" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="84.5" y="16.5" width="151.5" height="18.5"/>
+                                                                                                <rect key="frame" x="277.5" y="16.5" width="537" height="18.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="address-level2"/>
                                                                                             </textField>
@@ -2230,16 +2230,16 @@
                                                                                         </constraints>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jz6-ED-Jzt" userLabel="StateView">
-                                                                                        <rect key="frame" x="0.0" y="236" width="236" height="51"/>
+                                                                                        <rect key="frame" x="0.0" y="236" width="814.5" height="51"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEN-sf-6f1" userLabel="StateNameLabel" customClass="TitleValueLabel" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="0.0" y="18.5" width="78.5" height="14.5"/>
+                                                                                                <rect key="frame" x="0.0" y="18.5" width="271.5" height="14.5"/>
                                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
                                                                                             <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t8H-7B-1KK" userLabel="StateNameTextField" customClass="UnderlinedTextField" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="84.5" y="16.5" width="151.5" height="18.5"/>
+                                                                                                <rect key="frame" x="277.5" y="16.5" width="537" height="18.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="address-level1"/>
                                                                                             </textField>
@@ -2251,16 +2251,16 @@
                                                                                         </constraints>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSU-Rx-qDF" userLabel="ZipCodeView">
-                                                                                        <rect key="frame" x="0.0" y="295" width="236" height="51"/>
+                                                                                        <rect key="frame" x="0.0" y="295" width="814.5" height="51"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zip Code" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGE-m6-KeT" userLabel="ZipCodeLabel" customClass="TitleValueLabel" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="0.0" y="18.5" width="78.5" height="14.5"/>
+                                                                                                <rect key="frame" x="0.0" y="18.5" width="271.5" height="14.5"/>
                                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
                                                                                             <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="99999 or 99999-9999" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QbJ-fI-ETE" userLabel="ZipCodeTextField" customClass="UnderlinedTextField" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="84.5" y="16.5" width="151.5" height="18.5"/>
+                                                                                                <rect key="frame" x="277.5" y="16.5" width="537" height="18.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next" textContentType="postal-code"/>
                                                                                             </textField>
@@ -2272,16 +2272,16 @@
                                                                                         </constraints>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NGA-Im-L8k" userLabel="PhoneView">
-                                                                                        <rect key="frame" x="0.0" y="354" width="236" height="51"/>
+                                                                                        <rect key="frame" x="0.0" y="354" width="814.5" height="51"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccw-6g-tjY" userLabel="PhoneNumberLabel" customClass="TitleValueLabel" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="0.0" y="18.5" width="78.5" height="14.5"/>
+                                                                                                <rect key="frame" x="0.0" y="18.5" width="271.5" height="14.5"/>
                                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
                                                                                             <textField opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GLh-Fk-R3R" userLabel="PhoneNumberTextField" customClass="UnderlinedTextField" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="84.5" y="16.5" width="151.5" height="18.5"/>
+                                                                                                <rect key="frame" x="277.5" y="16.5" width="537" height="18.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="tel"/>
                                                                                             </textField>
@@ -2293,16 +2293,16 @@
                                                                                         </constraints>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Mp-zS-dQQ" userLabel="EmailView">
-                                                                                        <rect key="frame" x="0.0" y="413" width="236" height="51"/>
+                                                                                        <rect key="frame" x="0.0" y="413" width="814.5" height="51"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3M1-lr-NAB" userLabel="EmailIdLabel" customClass="TitleValueLabel" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="0.0" y="18.5" width="78.5" height="14.5"/>
+                                                                                                <rect key="frame" x="0.0" y="18.5" width="271.5" height="14.5"/>
                                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
                                                                                             <textField opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GkS-1f-Rjb" userLabel="EmailIdTextField" customClass="UnderlinedTextField" customModule="Timesheet" customModuleProvider="target">
-                                                                                                <rect key="frame" x="84.5" y="16.5" width="151.5" height="18.5"/>
+                                                                                                <rect key="frame" x="277.5" y="16.5" width="537" height="18.5"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                 <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                                                                                             </textField>
@@ -2355,7 +2355,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="holaHello" translatesAutoresizingMaskIntoConstraints="NO" id="aKS-l4-zx5">
-                                                                        <rect key="frame" x="8" y="117.5" width="63" height="60"/>
+                                                                        <rect key="frame" x="8" y="262" width="199" height="60"/>
                                                                         <accessibility key="accessibilityConfiguration">
                                                                             <accessibilityTraits key="traits" button="YES" image="YES"/>
                                                                         </accessibility>
@@ -2401,10 +2401,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dfT-aj-dnn" userLabel="EmployeeEmployerView">
-                                                        <rect key="frame" x="20" y="613" width="335" height="102.5"/>
+                                                        <rect key="frame" x="20" y="613" width="1058" height="102.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEm-2x-63F" customClass="LabelInfoView" customModule="Timesheet" customModuleProvider="target">
-                                                                <rect key="frame" x="10" y="10" width="315" height="30.5"/>
+                                                                <rect key="frame" x="10" y="10" width="1038" height="30.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" header="YES"/>
@@ -2415,10 +2415,10 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IAT-B1-RHg">
-                                                                <rect key="frame" x="10" y="56.5" width="315" height="34"/>
+                                                                <rect key="frame" x="10" y="56.5" width="1038" height="34"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="W5C-es-UNm" userLabel="EmployeeBtn" customClass="RadioButton" customModule="Timesheet" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="152.5" height="34"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="514" height="34"/>
                                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <state key="normal" title="Employee">
                                                                             <color key="titleColor" systemColor="labelColor"/>
@@ -2428,7 +2428,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="GJR-6H-hYw" userLabel="EmployerBtn" customClass="RadioButton" customModule="Timesheet" customModuleProvider="target">
-                                                                        <rect key="frame" x="162.5" y="0.0" width="152.5" height="34"/>
+                                                                        <rect key="frame" x="524" y="0.0" width="514" height="34"/>
                                                                         <state key="normal" title="Employer">
                                                                             <color key="titleColor" systemColor="labelColor"/>
                                                                         </state>
@@ -2451,7 +2451,7 @@
                                                         </constraints>
                                                     </view>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xtB-iO-HI6">
-                                                        <rect key="frame" x="0.0" y="715.5" width="375" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="715.5" width="1098" height="0.0"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="250" id="UhT-bC-EOX"/>
                                                         </constraints>
@@ -2460,10 +2460,10 @@
                                                         </connections>
                                                     </containerView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9TY-hI-9Fq" userLabel="FooterView">
-                                                        <rect key="frame" x="20" y="735.5" width="335" height="30"/>
+                                                        <rect key="frame" x="20" y="735.5" width="1058" height="30"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="a4e-KM-fAM" userLabel="NextButton" customClass="NavigationButton" customModule="Timesheet" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="1058" height="30"/>
                                                                 <state key="normal" title="Next"/>
                                                                 <connections>
                                                                     <action selector="nextClick:" destination="6hw-dQ-UiA" eventType="touchUpInside" id="X9h-XD-1CQ"/>

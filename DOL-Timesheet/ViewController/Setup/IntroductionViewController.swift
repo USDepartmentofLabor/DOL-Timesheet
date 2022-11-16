@@ -55,13 +55,13 @@ class IntroductionViewController: UIViewController {
         if Localizer.spanishOffered() == false {
             let langUpdate = (Localizer.currentLanguage == Localizer.ENGLISH) ? Localizer.SPANISH : Localizer.ENGLISH
             
-             let alertController =
-                 UIAlertController(title: " \n ",
-                                   message: "spanish_support".localized,
-                                   preferredStyle: .alert)
-             let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 73, height: 50))
-             imgViewTitle.image = UIImage(named:"holaHello")
-             alertController.view.addSubview(imgViewTitle)
+            let alertController =
+                UIAlertController(title: " \n\n \("spanish_support".localized)",
+                                  message: nil,
+                                  preferredStyle: .alert)
+            let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 73, height: 50))
+            imgViewTitle.image = UIImage(named:"holaHello")
+            alertController.view.addSubview(imgViewTitle)
              
              alertController.addAction(
                  UIAlertAction(title: "No", style: .cancel))
