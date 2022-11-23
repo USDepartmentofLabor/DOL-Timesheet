@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1010,7 +1011,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igW-vd-Mpo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1519" y="520"/>
+            <point key="canvasLocation" x="1599" y="463"/>
         </scene>
         <!--Time View Controller-->
         <scene sceneID="fdQ-8z-5Cs">
@@ -1183,7 +1184,9 @@
                             <constraint firstItem="dgx-7B-2z6" firstAttribute="top" secondItem="MMw-qx-vFl" secondAttribute="top" constant="15" id="yQx-S3-7X1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="eYr-It-5Q4"/>
+                    <navigationItem key="navigationItem" id="eYr-It-5Q4">
+                        <barButtonItem key="backBarButtonItem" title="Time Card" id="3x0-jv-JDJ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="contactUsBtn" destination="03r-xG-Ihk" id="xD6-L2-K2W"/>
                         <outlet property="editBtn" destination="aoO-nE-cpX" id="pk0-7k-C48"/>
@@ -1833,10 +1836,15 @@
                                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
-                                                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJj-ji-jWf" userLabel="EndTimeInfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
+                                                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJj-ji-jWf" userLabel="EndTimeInfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
                                                                                                 <rect key="frame" x="31.5" y="0.0" width="21" height="50"/>
+                                                                                                <constraints>
+                                                                                                    <constraint firstAttribute="width" constant="21" id="RS9-bT-Le1"/>
+                                                                                                </constraints>
                                                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                                <state key="normal" image="questionmark.circle" catalog="system"/>
+                                                                                                <state key="normal">
+                                                                                                    <imageReference key="image" image="questionmark.circle" catalog="system" symbolScale="small"/>
+                                                                                                </state>
                                                                                             </button>
                                                                                         </subviews>
                                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1872,10 +1880,15 @@
                                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
-                                                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTh-Mv-Luo" userLabel="BreakTimeInfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
+                                                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTh-Mv-Luo" userLabel="BreakTimeInfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
                                                                                                 <rect key="frame" x="46" y="0.0" width="21" height="50"/>
+                                                                                                <constraints>
+                                                                                                    <constraint firstAttribute="width" constant="21" id="XDd-UQ-7Uc"/>
+                                                                                                </constraints>
                                                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                                <state key="normal" image="questionmark.circle" catalog="system"/>
+                                                                                                <state key="normal">
+                                                                                                    <imageReference key="image" image="questionmark.circle" catalog="system" symbolScale="small"/>
+                                                                                                </state>
                                                                                             </button>
                                                                                         </subviews>
                                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2433,7 +2446,7 @@
         <image name="contact us" width="25" height="25"/>
         <image name="displayLogo" width="60" height="55.5"/>
         <image name="leftArrow" width="20" height="20"/>
-        <image name="questionmark.circle" catalog="system" width="32" height="32"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <image name="rightArrow" width="20" height="20"/>
         <namedColor name="appPrimaryColor">
             <color red="0.12549019607843137" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

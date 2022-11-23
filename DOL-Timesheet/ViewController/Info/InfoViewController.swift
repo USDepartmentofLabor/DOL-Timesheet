@@ -31,6 +31,10 @@ class InfoViewController: UIViewController {
     func setupView() {
         title = "info_title".localized
         displaySection(section: InfoSection.glossary)
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "timecard".localized
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backItem
 
         let font = Style.scaledFont(forDataType: .infoSection)
         infoSection.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)

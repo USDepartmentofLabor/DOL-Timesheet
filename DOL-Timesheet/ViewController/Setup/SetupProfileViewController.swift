@@ -218,8 +218,6 @@ class SetupProfileViewController: UIViewController {
     }
     
     func displayInfo() {
-        setupLabels()
-        
         guard let profileUser = viewModel.profileModel.currentUser else {
             manageEmploymentContentView.removeFromSuperview()
             
@@ -234,10 +232,11 @@ class SetupProfileViewController: UIViewController {
                 employerBtn.isAccessibilityElement = false
                 employeeEmployerInfoView.infoType = .importDBEmployee
             }
-
+            setupLabels()
             return
         }
-        
+        setupLabels()
+
         employeeEmployerInfoView.infoType = .employee_Employer
         headerView.removeFromSuperview()
         footerView.removeFromSuperview()
@@ -270,11 +269,15 @@ class SetupProfileViewController: UIViewController {
     
     func setupLabels() {
         if isWizard {
-            profileTitleLabel.text = "profile_setup".localized
-            profileSubTitleLabel.text = "please_setup_your_profile".localized
             nextBtn.setTitle("next".localized, for: .normal)
         }
         title = "my_profile".localized
+        if let profileTitle = profileTitleLabel{
+            profileTitle.text = "profile_setup".localized
+        }
+        if let profileSubTitle = profileSubTitleLabel{
+            profileSubTitle.text = "please_setup_your_profile".localized
+        }
         myProfileTitleLabel.text = "my_profile".localized
         requiredFooterLabel.text = "indicates_a_required_field".localized
         nameTitleLabel.text = "full_name_intro".localized
@@ -295,12 +298,13 @@ class SetupProfileViewController: UIViewController {
         employeeBtn.setTitle("employee".localized, for: .normal)
         employerBtn.setTitle("employer".localized, for: .normal)
         
-        let cancelBtn = UIBarButtonItem(title: "cancel".localized, style: .plain, target: self, action: #selector(cancelClicked(_:)))
-        navigationItem.leftBarButtonItem = cancelBtn
-        
-        let saveBtn = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(saveClicked(_:)))
-        navigationItem.rightBarButtonItem = saveBtn
-        
+        if isWizard == false {
+            let cancelBtn = UIBarButtonItem(title: "cancel".localized, style: .plain, target: self, action: #selector(cancelClicked(_:)))
+            navigationItem.leftBarButtonItem = cancelBtn
+            
+            let saveBtn = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(saveClicked(_:)))
+            navigationItem.rightBarButtonItem = saveBtn
+        }
     }
 
     func registerKeyboardNotifications() {

@@ -140,7 +140,9 @@ class EnterTimeViewController: UIViewController {
         startTitleLabel.text = "start".localized
         endTitleLabel.text = "end".localized
         breakTimeTitleLabel.text = "break".localized
-        hourlyRateTitleLabel.text = "rate".localized
+        if let hourlyLabel = hourlyRateTitleLabel {
+            hourlyLabel.text = "rate".localized
+        }
         commentsTitleLabel.text = "daily_comments".localized
         editBtn.setTitle("edit".localized, for: .normal)
         

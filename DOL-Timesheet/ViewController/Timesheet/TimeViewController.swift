@@ -68,7 +68,7 @@ class TimeViewController: UIViewController {
             let langUpdate = (Localizer.currentLanguage == Localizer.ENGLISH) ? Localizer.SPANISH : Localizer.ENGLISH
             
             let alertController =
-                UIAlerintController(title: " \n\n \("spanish_support".localized)",
+                UIAlertController(title: " \n\n \("spanish_support".localized)",
                                   message: nil,
                                   preferredStyle: .alert)
             let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 73, height: 50))

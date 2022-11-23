@@ -68,7 +68,7 @@ struct Style {
          .questionTitle: ("AvenirNext-Bold", 17, .headline),
          .subTitle: ("AvenirNext-Regular", 15, .subheadline),
         .sectionTitle: ("AvenirNext-DemiBold", 17, .headline),
-        .columnHeader: ("AvenirNext-Medium", 17, .headline),
+        .columnHeader: ("AvenirNext-Medium", 15, .subheadline),
         .nameValueTitle: ("AvenirNext-Medium", 15, .body),
          .nameValueText: ("AvenirNext-Regular", 15, .body),
          .profileCellTitle1: ("AvenirNext-Medium", 15, .body),
