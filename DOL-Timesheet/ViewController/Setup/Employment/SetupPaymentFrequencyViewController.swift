@@ -64,6 +64,10 @@ extension SetupPaymentFrequencyViewController: UITableViewDataSource {
 extension SetupPaymentFrequencyViewController: PaymentFrequencyCellDelegate {
     func select(paymentFrequency: PaymentFrequency?) {
 
+        let backItem = UIBarButtonItem()
+        backItem.title = "back".localized
+        navigationItem.backBarButtonItem = backItem
+        
         viewModel?.paymentFrequency = paymentFrequency ?? .weekly
         performSegue(withIdentifier: "showWorkWeek", sender: self)
     }

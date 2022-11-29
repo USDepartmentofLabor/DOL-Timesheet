@@ -131,7 +131,7 @@
 
 "prev_period" = "Período Anterior";
 "next_period" = "Período Siguiente";
-"straight_earnings" = "Ganancias de Tiempo Regular";
+"straight_earnings" = "Ingresos de Tiempo Regular";
 "straight_time_calculation" = "Horas Trabajadas x Tarifa por Hora";
 "overtime" = "Pago de Sobretiempo";
 "details" = "Detalles";
@@ -221,7 +221,7 @@
 "info_overtime" = "En general, el sobretiempo se paga por todas las horas que un empleado trabajó por encima de las 40 horas en una semana laboral, y se deben pagar a tiempo y medio con respecto a la tarifa de pago regular del empleado.";
 "info_overtime_pay" = "En general, el sobretiempo se paga por todas las horas que un empleado trabajó por encima de las 40 horas en una semana laboral, y se deben pagar a tiempo y medio con respecto a la tarifa de pago regular del empleado.";
 "info_break_time" = "Los tiempos de descanso de corta duración, usualmente 20 minutos o menos, son comunes en la industria y por lo general se pagan como tiempo trabajado. Estos períodos cortos deben contarse como horas trabajadas. Los períodos realmente para comer (típicamente 30 minutos o más) generalmente no necesitan ser compensados como tiempo de trabajo. El empleado debe estar completamente relevado de sus obligaciones con el propósito de comer sus alimentos regulares para que ese tiempo no cuente como horas trabajadas. Para propósitos de esta DOL-Hoja de tiempo, todos los tiempos de descanso que excedan los 20 minutos se descontarán de su total de horas trabajadas. Para preguntas relacionadas a las deducciones adecuadas para el tiempo de descanso, comuníquese con la División de Horas y Salarios.";
-"info_end_time" = "Si trabaja un turno nocturno, las horas después de la medianoche se ingresarán en su hoja de tiempo de asistencia del día siguiente";
+"info_end_time" = "Si trabaja un turno nocturno, las horas después de la medianoche se ingresarán en su hoja de tiempo del día siguiente";
 "info_import_employee" = "Hemos detectado una base de datos de WHD Hoja de Asistencia existente. En este caso, necesitamos que especifique un Empleado para asociarlo con estos registros de la base de datos. Más adelante tendrá la oportunidad de actualizar su perfil y añadir un Empleador o varios Empleados. ";
 "info_regular_rate" = "Tarifa Regular";
 
@@ -381,4 +381,4 @@
 "second_introduction" = "Toque Otros idiomas.";
 "third_introduction" = "Seleccione un idioma y, cuando se le solicite, toque Mantener inglés.";
 "fourth_introduction" = "Regrese a Timesheet y toque el botón nuevamente para configurar la aplicación en español.";
-
+"back" = "Atras";

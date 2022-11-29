@@ -370,6 +370,10 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
 extension TimesheetViewController {
     
     @objc fileprivate func infoClicked(sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = " "
+        navigationItem.backBarButtonItem = backItem
+        
         performSegue(withIdentifier: "showInfo", sender: self)
     }
     

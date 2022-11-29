@@ -401,6 +401,10 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         user?.phone = phoneTextField.text?.trimmingCharacters(in: .whitespaces)
         user?.email = emailTextField.text?.trimmingCharacters(in: .whitespaces)
         
+        let backItem = UIBarButtonItem()
+        backItem.title = "back".localized
+        navigationItem.backBarButtonItem = backItem
+        
         if isNewUser {
             performSegue(withIdentifier: "setupPaymentFrequency", sender: self)
         }

@@ -68,6 +68,10 @@ extension SetupWorkWeekViewController: UITableViewDataSource {
 extension SetupWorkWeekViewController: WorkWeekCellDelegate {
     func select(weekday: Weekday?) {
         
+        let backItem = UIBarButtonItem()
+        backItem.title = "back".localized
+        navigationItem.backBarButtonItem = backItem
+        
         viewModel?.workWeekStartDay = weekday ?? .sunday
         performSegue(withIdentifier: "setupPaymentInfo", sender: self)
     }

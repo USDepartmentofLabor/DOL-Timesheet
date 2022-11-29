@@ -185,6 +185,10 @@ class ManageUsersViewController: UIViewController {
             return
         }
         
+        let backItem = UIBarButtonItem()
+        backItem.title = "back".localized
+        navigationItem.backBarButtonItem = backItem
+        
         if segue.identifier == "addEmploymentInfo",
             let employmentVC = segue.destination as? EmploymentInfoViewController {
             employmentVC.viewModel = viewModel.newTempEmploymentModel()

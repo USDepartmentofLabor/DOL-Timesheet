@@ -70,6 +70,10 @@ extension SetupPaymentTypeViewController: UITableViewDataSource {
 extension SetupPaymentTypeViewController: PaymentTypeCellDelegate {
     func didSelect(paymentType: PaymentType) {
         
+        let backItem = UIBarButtonItem()
+        backItem.title = "back".localized
+        navigationItem.backBarButtonItem = backItem
+        
         viewModel?.paymentType = paymentType
         if paymentType == .hourly {
             performSegue(withIdentifier: "hourlyPaymentInfo", sender: self)

@@ -215,6 +215,10 @@ extension TimeViewController {
     @objc fileprivate func infoClicked(sender: Any?) {
 //        Localizer.clearUserLocale()
 //        Localizer.clearSpanishOffered()
+        let backItem = UIBarButtonItem()
+        backItem.title = " "
+        navigationItem.backBarButtonItem = backItem
+        
         performSegue(withIdentifier: "showInfo", sender: self)
     }
     
