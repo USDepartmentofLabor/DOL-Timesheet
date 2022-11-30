@@ -346,9 +346,9 @@
 "total_earning" = "Total de Ingresos";
 "straight_time_earnings" = "Ingresos de Tiempo Regular";
 "regular_rate_of_pay" = "Tarifa Regular de Pago";
-"regular_rate_of_pay_equation" = "Ganancias de Tiempo Regular/Horas Trabajadas";
+"regular_rate_of_pay_equation" = "Ingresos de Tiempo Regular/Horas Trabajadas";
 "overtime_pay" = "Pago de Sobretiempo";
-"overtime_pay_equation" = "Tarifa de Pago Reular x 0.5 x Horas de Sobretiempo";
+"overtime_pay_equation" = "Tarifa de Pago Regular x 0.5 x Horas de Sobretiempo";
 "version_number" = "Número de Versión:";
 "address" = "Dirección";
 "payment_type" = "Tipo de Pago";

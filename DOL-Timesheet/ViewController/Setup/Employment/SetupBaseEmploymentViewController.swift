@@ -24,18 +24,18 @@ class SetupBaseEmploymentViewController: UIViewController {
     }
     
     func configureView() {
-        if viewModel?.isWizard == false {
-            let skipBtn = UIBarButtonItem(title: "skip".localized, style: .plain, target: self, action: #selector(skipClicked(_:)))
-
-            if let viewModel = viewModel, viewModel.isProfileEmployer {
-                skipBtn.accessibilityHint = "skip_employee_hint".localized
-            }
-            else {
-                skipBtn.accessibilityHint = "skip_employer_hint".localized
-            }
-            
-            navigationItem.rightBarButtonItem = skipBtn
-        }
+//        if viewModel?.isWizard == false {
+//            let skipBtn = UIBarButtonItem(title: "skip".localized, style: .plain, target: self, action: #selector(skipClicked(_:)))
+//
+//            if let viewModel = viewModel, viewModel.isProfileEmployer {
+//                skipBtn.accessibilityHint = "skip_employee_hint".localized
+//            }
+//            else {
+//                skipBtn.accessibilityHint = "skip_employer_hint".localized
+//            }
+//
+//            navigationItem.rightBarButtonItem = skipBtn
+//        }
     }
     
     @IBAction func skipClicked(_ sender: Any) {
