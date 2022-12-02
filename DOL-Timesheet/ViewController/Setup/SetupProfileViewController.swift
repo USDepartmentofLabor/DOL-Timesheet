@@ -333,6 +333,11 @@ class SetupProfileViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "back".localized
+        navigationItem.backBarButtonItem = backItem
+        
         if segue.identifier == "addEmploymentInfo",
             let employmentVC = segue.destination as? EmploymentInfoViewController {
             employmentVC.viewModel = viewModel.newTempEmploymentModel()

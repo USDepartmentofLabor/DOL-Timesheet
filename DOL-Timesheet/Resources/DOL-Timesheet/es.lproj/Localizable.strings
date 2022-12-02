@@ -267,7 +267,7 @@
 "introduction" = "Introducción";
 "my_profile" = "Mi Perfil";
 "profile_setup" = "Configuración de Perfil";
-"please_setup_your_profile" = "Por favor, configure su perfil";
+"please_setup_your_profile" = "Por favor configure su perfil";
 "indicates_a_required_field" = "* Indica un campo requerido";
 
 "introduction_title_text" = "Introducción";
@@ -335,7 +335,7 @@
 
 "time_entries" = "Entradas de Tiempo";
 "day" = "Día";
-"total_worked_hours" = "Total de Horas Trabajado";
+"total_worked_hours" = "Total de Horas Trabajadas";
 "total_break_hours" = "Total de Horas de Descanso";
 "total" = "Total";
 
