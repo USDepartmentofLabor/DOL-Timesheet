@@ -40,6 +40,14 @@ enum Info: String {
     
     var title: String {
         let title: String
+        
+//        let titleString = NSMutableAttributedString(string: "fsla_info".localized)
+//        let linkedText = "wage_and_hour_division".localized
+//        _ = titleString.setAsLink(textToFind: linkedText, linkURL: "wage_and_hour_division_link".localized)
+//
+//        titleString.addAttribute(.font, value: Style.scaledFont(forDataType: .aboutText), range: NSRange(location: 0, length: fslaInfoStr.length))
+//        title = titleString
+        
         switch self {
         case .employee_Employer:
             title = "info_employee_employer".localized

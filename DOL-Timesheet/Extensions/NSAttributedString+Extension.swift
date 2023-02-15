@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension NSMutableAttributedString {
 
@@ -15,6 +16,7 @@ extension NSMutableAttributedString {
         let foundRange = self.mutableString.range(of: textToFind)
         if foundRange.location != NSNotFound {
             self.addAttribute(.link, value: linkURL, range: foundRange)
+            self.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: foundRange)
             return true
         }
         return false

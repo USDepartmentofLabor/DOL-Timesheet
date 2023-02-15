@@ -16,6 +16,7 @@ class RegularRateInfoViewController: UIViewController {
     }
     
     static let fslaURL = "https://webapps.dol.gov/elaws/whd/flsa/overtime/"
+    static let fsla56AURL = "https://www.dol.gov/agencies/whd/fact-sheets/56a-regular-rate"
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var viewTopConstraint: NSLayoutConstraint!
     
@@ -68,10 +69,13 @@ class RegularRateInfoViewController: UIViewController {
         
         infoTextView.textContainerInset = UIEdgeInsets.zero
         
-        let fslaInfoStr = NSMutableAttributedString(string: "fsla_info".localized)
+        let fslaInfoStr = NSMutableAttributedString(string: "fsla_info_regular_rate".localized)
         let linkedText = "fsla_linked_text".localized
         _ = fslaInfoStr.setAsLink(textToFind: linkedText, linkURL: FSLAInfoViewController.fslaURL)
         
+        let linked56AText = "fsla_56A_linked_text".localized
+        _ = fslaInfoStr.setAsLink(textToFind: linked56AText, linkURL: FSLAInfoViewController.fsla56AURL)
+
         fslaInfoStr.addAttribute(.font, value: Style.scaledFont(forDataType: .aboutText), range: NSRange(location: 0, length: fslaInfoStr.length))
         infoTextView.attributedText = fslaInfoStr
         

@@ -11,6 +11,7 @@ import UIKit
 class FSLAInfoViewController: UIViewController {
 
     static let fslaURL = "https://webapps.dol.gov/elaws/whd/flsa/overtime/"
+    static let fsla56AURL = "https://www.dol.gov/agencies/whd/fact-sheets/56a-regular-rate"
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var viewTopConstraint: NSLayoutConstraint!
     

@@ -89,7 +89,8 @@ class TimesheetViewModel {
                 let employmentStartDate = currentEmploymentModel?.employmentInfo.startDate ?? Date()
                 let employmentStartWeekDate = employmentStartDate.next(workweekStartDay, direction: .backward)
                 
-                let payPeriods = employmentStartWeekDate.diffInDays(toDate: currentDate) / 14
+                var payPeriods = employmentStartWeekDate.diffInDays(toDate: currentDate) / 14
+                if payPeriods < 0 { payPeriods -= 1 }
                 startDate = Calendar.current.date(byAdding: .day, value: payPeriods * 14, to: employmentStartWeekDate)!
                 endDate = Calendar.current.date(byAdding: .day, value: 13, to: startDate)!
             case .monthly:
