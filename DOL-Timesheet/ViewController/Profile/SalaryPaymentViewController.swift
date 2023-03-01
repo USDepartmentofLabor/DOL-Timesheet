@@ -80,7 +80,8 @@ class SalaryPaymentViewController: UIViewController {
         salaryTypeView.addGestureRecognizer(salaryTypeTapGesture)
 
         titleLabelInfo.delegate = self
-        
+        fslaTextView.text = "fsla_requirements".localized
+
         let attributedString = NSMutableAttributedString(string:fslaTextView.text)
         if #available(iOS 13.0, *) {
             attributedString.addAttributes(
@@ -94,9 +95,10 @@ class SalaryPaymentViewController: UIViewController {
         fslaTextView.attributedText = attributedString
         fslaTextView.textAlignment = .right
         fslaTextView.delegate = self
-        fslaTextView.text = "fsla_requirements".localized
         salaryTitleLabel.text = "payment_type_salary".localized
         salaryLabel.text = "payment_type_salary".localized
+        
+        
 
         setupAccessibility()
     }
