@@ -69,10 +69,10 @@ class TimesheetViewModel {
         }
 
         let nextStartDate = calendar.date(byAdding: components, to: currentPeriod.startDate)!
-        updatePeriod(currentDate: nextStartDate)
+        updatePeriod(currentDate: nextStartDate, fromNextPeriod: true)
     }
     
-    func updatePeriod(currentDate: Date = Date()) {
+    func updatePeriod(currentDate: Date = Date(), fromNextPeriod: Bool=false) {
         let paymentFrequency: PaymentFrequency = currentEmploymentModel?.paymentFrequency ?? .weekly
         let workweekStartDay: Weekday = currentEmploymentModel?.workWeekStartDay ?? .sunday
         let startDate: Date
@@ -86,12 +86,16 @@ class TimesheetViewModel {
                 startDate = currentDate.next(workweekStartDay, direction: .backward)
                 endDate = Calendar.current.date(byAdding: .day, value: 6, to: startDate)!
             case .biWeekly:
-                let employmentStartDate = currentEmploymentModel?.employmentInfo.startDate ?? Date()
-                let employmentStartWeekDate = employmentStartDate.next(workweekStartDay, direction: .backward)
-                
-                var payPeriods = employmentStartWeekDate.diffInDays(toDate: currentDate) / 14
-                if payPeriods < 0 { payPeriods -= 1 }
-                startDate = Calendar.current.date(byAdding: .day, value: payPeriods * 14, to: employmentStartWeekDate)!
+                if (fromNextPeriod){
+                    startDate = currentDate
+                } else {
+                    let employmentStartDate = currentEmploymentModel?.employmentInfo.startDate ?? Date()
+                    let employmentStartWeekDate = employmentStartDate.next(workweekStartDay, direction: .backward)
+                    
+                    var payPeriods = employmentStartWeekDate.diffInDays(toDate: currentDate) / 14
+                    if payPeriods < 0 { payPeriods -= 1 }
+                    startDate = Calendar.current.date(byAdding: .day, value: payPeriods * 14, to: employmentStartWeekDate)!
+                }
                 endDate = Calendar.current.date(byAdding: .day, value: 13, to: startDate)!
             case .monthly:
                 startDate = currentDate.startOfMonth()
@@ -99,6 +103,7 @@ class TimesheetViewModel {
             case .biMonthly:
                 startDate = currentDate.startOfSemiMonth()
                 endDate = currentDate.endOfSemiMonth()
+                
             }
             
         currentPeriod = Period(startDate: startDate, endDate: endDate, workWeekStartDay: workweekStartDay, employmentInfo: currentEmploymentModel?.employmentInfo)
