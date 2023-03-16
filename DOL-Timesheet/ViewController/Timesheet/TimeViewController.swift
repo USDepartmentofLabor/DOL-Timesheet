@@ -44,7 +44,8 @@ class TimeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         guard let viewModel = viewModel, viewModel.userProfileExists else {
-            performSegue(withIdentifier: "setupProfile", sender: nil)
+            //performSegue(withIdentifier: "setupProfile", sender: nil)
+            performSegue(withIdentifier: "showOnboard", sender: nil)
             return
         }
         offerSpanish()
@@ -171,7 +172,12 @@ class TimeViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "setupProfile",
+        if segue.identifier == "showOnboard",
+            let navVC = segue.destination as? UINavigationController,
+            let introVC = navVC.topViewController as? OnboardViewController {
+            introVC.delegate = self
+        }
+        else if segue.identifier == "setupProfile",
             let navVC = segue.destination as? UINavigationController,
             let introVC = navVC.topViewController as? IntroductionViewController {
             introVC.delegate = self
@@ -221,9 +227,11 @@ extension TimeViewController {
         
         performSegue(withIdentifier: "showInfo", sender: self)
     }
-    
+
     @objc fileprivate func profileClicked(sender: Any?) {
-        performSegue(withIdentifier: "showProfile", sender: self)
+        let viewController = SettingsTableViewController(nibName: SettingsTableViewController.nib, bundle: nil)
+        self.navigationController?.pushViewController(viewController, animated: true)
+//        performSegue(withIdentifier: "showProfile", sender: self)
     }
 
     @IBAction func userBtnClick(_ sender: Any) {

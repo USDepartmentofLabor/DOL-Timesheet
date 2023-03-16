@@ -29,12 +29,21 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         setupNavigationBarSettings()
         setupView()
         displayInfo()
+      //  canMoveForward = true
+        canMoveForward = true
     }
     
     override func setupView() {
         title = "introduction".localized
 //        label1.scaleFont(forDataType: .introductionBoldText)
 //        label2.scaleFont(forDataType: .introductionText)
+        
+        titleLabel.text = NSLocalizedString("welcome_intro", comment: "Welcome to WHD's Timesheet App")
+        employeeLabel.text = NSLocalizedString("onboard_welcome_employee", comment: "I want to use this app to help me keep track of other people's time.")
+        employeeButton.setTitle(NSLocalizedString("onboard_welcome_employee_button", comment: "Set me up as an employee"), for: .normal)
+        orLabel.text = NSLocalizedString("or", comment: "OR")
+        employerLabel.text = NSLocalizedString("onboard_welcome_employer", comment: "I want to use this app to help me keep track of other people's time.")
+        employerButton.setTitle(NSLocalizedString("onboard_welcome_employer_button", comment: "Set me up as an employer"), for: .normal)
         
         titleLabel.scaleFont(forDataType: .introductionBoldText)
         //employeeLabel.scaleFont(forDataType: .italic)
@@ -49,8 +58,12 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         setupAccessibility()
     }
     
+    override func saveData() {
+        print("OnboardWelcomeViewController SAVE DATA")
+    }
+    
     func setupAccessibility() {
-       // displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
+        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
     }
 
     func displayInfo() {
@@ -67,21 +80,33 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
 //    }
     
     @IBAction func employeeSelected(_ sender: Any) {
-        employerButton.tintColor = UIColor.white
-        employeeButton.tintColor = UIColor.systemBlue
+        onboardingDelegate?.updateCanMoveForward(value:true)
         
-        if let employee = viewModel.profileModel.currentUser as? Employee {
+        employerButton.tintColor = UIColor.white
+        employeeButton.tintColor = UIColor(named: "appPrimaryColor")
+        
+        if let employee = profileViewModel!.profileModel.currentUser as? Employee {
             changeToEmployer(employee: employee)
         }
+        
+        onboardingDelegate?.updateUserType(newUserType: .employee)
+        
+        canMoveForward = true
     }
     
     @IBAction func employerSelected(_ sender: Any) {
-        employerButton.tintColor = UIColor.systemBlue
+        onboardingDelegate?.updateCanMoveForward(value: true)
+        
+        employerButton.tintColor = UIColor(named: "appPrimaryColor")
         employeeButton.tintColor = UIColor.white
         
-        if let employer = viewModel.profileModel.currentUser as? Employer {
+        if let employer = profileViewModel!.profileModel.currentUser as? Employer {
             changeToEmployee(employer: employer)
         }
+        
+        onboardingDelegate?.updateUserType(newUserType: .employer)
+
+        canMoveForward = true
     }
     
     fileprivate func changeToEmployee(employer: Employer) {
@@ -127,13 +152,13 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
     }
     
     func toggleUserType() {
-        if let employer = viewModel.profileModel.currentUser as? Employer {
-            viewModel.changeToEmployee(employer: employer)
+        if let employer = profileViewModel!.profileModel.currentUser as? Employer {
+            profileViewModel!.changeToEmployee(employer: employer)
         }
-        else if let employee = viewModel.profileModel.currentUser as? Employee {
-            viewModel.changeToEmployer(employee: employee)
+        else if let employee = profileViewModel!.profileModel.currentUser as? Employee {
+            profileViewModel!.changeToEmployer(employee: employee)
         }
-        manageVC?.viewModel = ProfileViewModel(context: viewModel.managedObjectContext.childManagedObjectContext())
+        manageVC?.viewModel = ProfileViewModel(context: profileViewModel!.managedObjectContext.childManagedObjectContext())
     }
     
 }
