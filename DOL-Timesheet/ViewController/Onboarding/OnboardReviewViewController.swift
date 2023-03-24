@@ -57,8 +57,9 @@ class OnboardReviewViewController: OnboardBaseViewController {
 //        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
     }
 
-    override func saveData() {
+    override func saveData() -> Bool  {
         print("OnboardReviewViewController SAVE DATA")
+        return true
     }
     
     @IBAction func letsGoPressed(_ sender: Any) {
@@ -70,13 +71,18 @@ class OnboardReviewViewController: OnboardBaseViewController {
     
     func displayInfo() {
         if (userType == .employee) {
-            reviewNameLabel.text = NSLocalizedString("onboard_review_name", comment: "You are ") + (profileViewModel!.profileModel.currentUser!.name ?? "John Doe") + NSLocalizedString("onboard_review_employee", comment: ", an employee")
+            reviewNameLabel.text = NSLocalizedString("onboard_review_name", comment: "You are ") + (profileViewModel!.profileModel.currentUser?.name ?? "John Doe") + NSLocalizedString("onboard_review_employee", comment: ", an employee")
             reviewOtherNameLabel.text = NSLocalizedString("onboard_review_employee_employer", comment: "You work for ") + (employmentModel?.employmentUser?.name ?? "John Smith")
             reviewWorkweekLabel.text = NSLocalizedString("onboard_review_employee_workweek", comment: "Your employer's workweek starts on ") + (employmentModel?.workWeekStartDay.title ?? "Monday")
             reviewPayTypeLabel.text = NSLocalizedString("onboard_review_employee_frequency", comment: "You are paid ") + (employmentModel?.paymentFrequency.title ?? "Unknown")
             
+            var rate = 0.0
+            if (employmentModel?.hourlyRates?.count ?? 0 > 0) {
+                rate = (employmentModel?.hourlyRates![0].value)!
+            }
+            
             if employmentModel?.employmentInfo.paymentType == .hourly {
-                reviewPayRateLabel.text = NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $") + (String((employmentModel?.hourlyRates![0].value)!)) + "/" + NSLocalizedString("payment_type_hourly", comment: "Hourly")
+                reviewPayRateLabel.text = NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $") + (String(rate)) + "/" + NSLocalizedString("payment_type_hourly", comment: "Hourly")
             }else {
                 let SalaryType = employmentModel?.employmentInfo.salary?.salaryType
                 let salary = employmentModel?.employmentInfo.salary

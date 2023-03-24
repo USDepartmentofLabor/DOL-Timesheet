@@ -58,8 +58,9 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         setupAccessibility()
     }
     
-    override func saveData() {
+    override func saveData() -> Bool {
         print("OnboardWelcomeViewController SAVE DATA")
+        return true
     }
     
     func setupAccessibility() {

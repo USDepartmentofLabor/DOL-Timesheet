@@ -30,8 +30,9 @@ class OnboardIntroductionViewController: OnboardBaseViewController {
         canMoveForward = true
     }
     
-    override func saveData() {
+    override func saveData() -> Bool {
         print("OnboardIntroductionViewController SAVE DATA")
+        return true
     }
     
     override func setupView() {

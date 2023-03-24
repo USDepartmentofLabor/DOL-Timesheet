@@ -63,12 +63,32 @@ class OnboardViewController: UIViewController {
     }
 
     @IBAction func didTapNextButton(_ sender: Any) {
-        onboardPageViewController?.currentVC?.saveData()
-        onboardPageViewController?.scrollToNextViewController()
+        nextButton.isUserInteractionEnabled = false
+        defer {
+            nextButton.isUserInteractionEnabled = true
+        }
+        
+        guard let onboardVC = onboardPageViewController,
+              let onboardVCcurrentVC = onboardPageViewController?.currentVC else { return }
+        
+        if onboardVCcurrentVC.saveData() {
+            onboardVC.scrollToNextViewController()
+        }
+        
     }
     
     @IBAction func didTapPreviousButton(_ sender: Any) {
-        onboardPageViewController?.scrollToPreviousViewController()
+        previousButton.isUserInteractionEnabled = false
+        defer {
+            previousButton.isUserInteractionEnabled = true
+        }
+        
+     //   guard let onboardVCcurrentVC = onboardPageViewController?.currentVC else { return }
+      //  if onboardVCcurrentVC.saveData() {
+            onboardPageViewController?.scrollToPreviousViewController()
+      //  }
+        
+        
     }
     /**
      Fired when the user taps on the pageControl to change its current page.

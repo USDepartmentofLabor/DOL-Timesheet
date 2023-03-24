@@ -219,19 +219,26 @@ class TimeViewController: UIViewController {
 extension TimeViewController {
     
     @objc fileprivate func infoClicked(sender: Any?) {
-//        Localizer.clearUserLocale()
-//        Localizer.clearSpanishOffered()
-        let backItem = UIBarButtonItem()
-        backItem.title = " "
-        navigationItem.backBarButtonItem = backItem
         
-        performSegue(withIdentifier: "showInfo", sender: self)
+        
+        performSegue(withIdentifier: "showOnboard", sender: nil)
+        
+        
+////        Localizer.clearUserLocale()
+////        Localizer.clearSpanishOffered()
+//        let backItem = UIBarButtonItem()
+//        backItem.title = " "
+//        navigationItem.backBarButtonItem = backItem
+//
+//        performSegue(withIdentifier: "showInfo", sender: self)
     }
 
     @objc fileprivate func profileClicked(sender: Any?) {
-        let viewController = SettingsTableViewController(nibName: SettingsTableViewController.nib, bundle: nil)
-        self.navigationController?.pushViewController(viewController, animated: true)
-//        performSegue(withIdentifier: "showProfile", sender: self)
+        
+//        let viewController = SettingsTableViewController.instantiateFromStoryboard("Settings")
+//
+//        self.navigationController?.pushViewController(viewController, animated: true)
+        performSegue(withIdentifier: "showProfile", sender: self)
     }
 
     @IBAction func userBtnClick(_ sender: Any) {

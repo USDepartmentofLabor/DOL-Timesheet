@@ -37,8 +37,9 @@ class OnboardBaseViewController: UIViewController {
         
     }
     
-    func saveData() {
+    func saveData() -> Bool {
         print("OnboardBaseViewController SAVE DATA")
+        return true
     }
     
     func setupView() {

@@ -94,8 +94,13 @@ class OnboardNameViewController: OnboardBaseViewController {
 //        }
 //    }
     
-    override func saveData() {
+    override func saveData() -> Bool  {
         print("OnboardNameViewController SAVE DATA")
+        
+        check()
+        if !canMoveForward {
+            return false
+        }
         
         let userName = nameField.text ?? ""
 //        let userType = UserType(rawValue: employeeBtn.isSelected ? 0 : 1) ?? UserType.employee
@@ -104,7 +109,7 @@ class OnboardNameViewController: OnboardBaseViewController {
         currentUser.name = userName
         
         if (employmentModel == nil) {
-            guard let employmentModel = profileViewModel!.newTempEmploymentModel() else { return }
+            guard let employmentModel = profileViewModel!.newTempEmploymentModel() else { return false}
             self.employmentModel = employmentModel
         }
 
@@ -116,12 +121,13 @@ class OnboardNameViewController: OnboardBaseViewController {
         
         user?.name = otherNameField.text?.trimmingCharacters(in: .whitespaces)
         
-        employmentModel!.workWeekStartDay = selectedWeekday!
+        employmentModel!.workWeekStartDay = selectedWeekday ?? .sunday
         
         onboardingDelegate?.updateViewModels(
             profileViewModel: profileViewModel!,
             employmentModel: employmentModel!
         )
+        return true
     }
     
     @IBAction func nameSet(_ sender: Any) {

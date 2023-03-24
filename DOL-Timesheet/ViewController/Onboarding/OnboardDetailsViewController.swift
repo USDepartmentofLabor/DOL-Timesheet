@@ -181,8 +181,14 @@ class OnboardDetailsViewController: OnboardBaseViewController {
 //        }
 //    }
     
-    override func saveData() {
+    override func saveData() -> Bool  {
         print("OnboardDetailsViewController SAVE DATA")
+        
+        check()
+        if !canMoveForward {
+            return false
+        }
+        
         employmentModel?.paymentFrequency = selectedPayFrequency!
         employmentModel?.overtimeEligible = overtimeEligible
         
@@ -208,6 +214,8 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         
         let user = employmentModel?.employmentUser
         user?.setAddress(street1: " ", street2: " ", city: " ", state: selectedState!.title, zipCode: " ")
+        
+        return true
     }
     
     func check() {

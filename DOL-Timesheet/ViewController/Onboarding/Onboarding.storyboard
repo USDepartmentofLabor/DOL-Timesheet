@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -15,11 +15,11 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="OnboardWelcomeViewController" title="Onboard Welcome View Controller" id="Y6W-OH-hqX" customClass="OnboardWelcomeViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j66-Du-3zB">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j66-Du-3zB">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="displayLogo" translatesAutoresizingMaskIntoConstraints="NO" id="vNX-3j-hBO">
@@ -160,7 +160,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YWR-lI-F7h">
-                                <rect key="frame" x="0.0" y="44" width="414" height="727.5"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="723.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gal-pb-kDG">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="524.5"/>
@@ -287,7 +287,7 @@
                         <outlet property="introLabel2" destination="5gf-LA-2Bw" id="NWc-nH-Swv"/>
                         <outlet property="introLabel3" destination="0uq-1X-lw5" id="bTA-qV-Oyu"/>
                         <outlet property="introNoteLabel" destination="7mm-Zg-RS9" id="tLT-3l-rm6"/>
-                        <outlet property="introductionLabel" destination="TFD-e1-6cj" id="wwX-EY-Dx8"/>
+                        <outlet property="introductionLabel" destination="co9-zy-15l" id="qKr-Zr-NjF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tGi-az-pjW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -297,13 +297,13 @@
         <!--Onboard Name View Controller-->
         <scene sceneID="Fi2-ii-2Ju">
             <objects>
-                <viewController storyboardIdentifier="OnboardNameViewController" title="Onboard Name View Controller" interfaceStyle="dark" id="pRs-jS-dBb" userLabel="Onboard Name View Controller" customClass="OnboardNameViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardNameViewController" title="Onboard Name View Controller" id="pRs-jS-dBb" userLabel="Onboard Name View Controller" customClass="OnboardNameViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tkr-Va-N7e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZX-xi-e0Q">
-                                <rect key="frame" x="0.0" y="44" width="414" height="652"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="648"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VAO-KD-N4A">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="589.5"/>
@@ -316,7 +316,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your name or nickname?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysb-PE-k93">
-                                                <rect key="frame" x="68" y="88" width="278.5" height="20.5"/>
+                                                <rect key="frame" x="67.5" y="88" width="279" height="20.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.5" id="Eal-Nj-LUI"/>
                                                 </constraints>
@@ -339,7 +339,7 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your employer's name or nickname?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bW0-1v-KJZ">
-                                                <rect key="frame" x="18" y="190.5" width="378.5" height="20.5"/>
+                                                <rect key="frame" x="17.5" y="190.5" width="379" height="20.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.5" id="Bak-aO-YKH"/>
                                                 </constraints>
@@ -362,7 +362,7 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When does the workweek begin?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qi4-o4-Ezl">
-                                                <rect key="frame" x="66" y="293" width="282.5" height="20.5"/>
+                                                <rect key="frame" x="65.5" y="293" width="283" height="20.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.5" id="0Nf-Am-Vq2"/>
                                                 </constraints>
@@ -493,7 +493,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3S-9o-Op5">
-                                <rect key="frame" x="0.0" y="44" width="414" height="644"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="640"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vky-34-Bti">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="650.5"/>
@@ -1160,7 +1160,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEf-CA-jjw">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <connections>
                                     <segue destination="fBF-00-uQU" kind="embed" id="lmz-AW-PT1"/>
                                 </connections>
@@ -1278,13 +1278,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.backward" catalog="system" width="32" height="32"/>
-        <image name="chevron.forward" catalog="system" width="32" height="32"/>
-        <image name="circle" catalog="system" width="32" height="32"/>
-        <image name="circle.fill" catalog="system" width="32" height="32"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="chevron.forward" catalog="system" width="97" height="128"/>
+        <image name="circle" catalog="system" width="128" height="123"/>
+        <image name="circle.fill" catalog="system" width="128" height="123"/>
         <image name="displayLogo" width="60" height="55.5"/>
-        <image name="hand.thumbsup" catalog="system" width="32" height="32"/>
-        <image name="questionmark.circle" catalog="system" width="32" height="32"/>
+        <image name="hand.thumbsup" catalog="system" width="123" height="128"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="123"/>
         <namedColor name="appBackgroundColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
