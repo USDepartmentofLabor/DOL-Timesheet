@@ -39,7 +39,7 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
 //        label2.scaleFont(forDataType: .introductionText)
         
         titleLabel.text = NSLocalizedString("welcome_intro", comment: "Welcome to WHD's Timesheet App")
-        employeeLabel.text = NSLocalizedString("onboard_welcome_employee", comment: "I want to use this app to help me keep track of other people's time.")
+        employeeLabel.text = NSLocalizedString("onboard_welcome_employee", comment: "I want to use this app to help me keep track of my own time.")
         employeeButton.setTitle(NSLocalizedString("onboard_welcome_employee_button", comment: "Set me up as an employee"), for: .normal)
         orLabel.text = NSLocalizedString("or", comment: "OR")
         employerLabel.text = NSLocalizedString("onboard_welcome_employer", comment: "I want to use this app to help me keep track of other people's time.")

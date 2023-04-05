@@ -76,13 +76,13 @@ class OnboardReviewViewController: OnboardBaseViewController {
             reviewWorkweekLabel.text = NSLocalizedString("onboard_review_employee_workweek", comment: "Your employer's workweek starts on ") + (employmentModel?.workWeekStartDay.title ?? "Monday")
             reviewPayTypeLabel.text = NSLocalizedString("onboard_review_employee_frequency", comment: "You are paid ") + (employmentModel?.paymentFrequency.title ?? "Unknown")
             
-            var rate = 0.0
+            var rate = 0.00
             if (employmentModel?.hourlyRates?.count ?? 0 > 0) {
                 rate = (employmentModel?.hourlyRates![0].value)!
             }
             
             if employmentModel?.employmentInfo.paymentType == .hourly {
-                reviewPayRateLabel.text = NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $") + (String(rate)) + "/" + NSLocalizedString("payment_type_hourly", comment: "Hourly")
+                reviewPayRateLabel.text = NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $") + (String(format: "%.2f", rate)) + "/" + NSLocalizedString("payment_type_hourly", comment: "Hourly")
             }else {
                 let SalaryType = employmentModel?.employmentInfo.salary?.salaryType
                 let salary = employmentModel?.employmentInfo.salary
@@ -90,11 +90,11 @@ class OnboardReviewViewController: OnboardBaseViewController {
                 
                 
                 if SalaryType == .annually {
-                    reviewPayRateLabel.text = NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $") + String(amount) + "/" + NSLocalizedString("salary_annually", comment: "Annually")
+                    reviewPayRateLabel.text = NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $") + String(format: "%.2f", amount) + "/" + NSLocalizedString("salary_annually", comment: "Annually")
                 } else if SalaryType == .monthly {
-                    reviewPayRateLabel.text = NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $") + String(amount) + "/" + NSLocalizedString("salary_monthly", comment: "Monthly")
+                    reviewPayRateLabel.text = NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $") + String(format: "%.2f", amount) + "/" + NSLocalizedString("salary_monthly", comment: "Monthly")
                 } else if SalaryType == .weekly {
-                    reviewPayRateLabel.text = NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $") + String(amount) + "/" + NSLocalizedString("salary_weekly", comment: "Weekly")
+                    reviewPayRateLabel.text = NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $") + String(format: "%.2f", amount) + "/" + NSLocalizedString("salary_weekly", comment: "Weekly")
                 }
             }
             

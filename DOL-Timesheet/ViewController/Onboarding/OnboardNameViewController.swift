@@ -35,6 +35,7 @@ class OnboardNameViewController: OnboardBaseViewController {
     var otherNameValid: Bool = false
     var workWeekStartValid: Bool = false
     var selectedWeekday: Weekday?
+    var currentRow: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,7 @@ class OnboardNameViewController: OnboardBaseViewController {
 //        label2.scaleFont(forDataType: .introductionText)
         
         self.workWeekStartPickerHeight.constant = 0
+        workWeekStartPicker.selectRow(currentRow, inComponent: 0, animated: true)
         
         nameLabel.text = NSLocalizedString("onboard_name", comment: "What is you name or nickname?")
         if userType == .employee {
@@ -201,6 +203,10 @@ extension OnboardNameViewController: UITextFieldDelegate {
                 workWeekStartPickerHeight.constant = 0
             } else {
                 workWeekStartPickerHeight.constant = 216
+                workweekField.text = Weekday.allCases[currentRow].title
+                selectedWeekday = Weekday.allCases[currentRow]
+                workWeekStartValid = true
+                check()
                 otherNameSet(textField)
             }
             return false
@@ -236,6 +242,7 @@ extension OnboardNameViewController: UITextFieldDelegate {
 
 extension OnboardNameViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        currentRow = row
         workweekField.text = Weekday.allCases[row].title
         selectedWeekday = Weekday.allCases[row]
         workWeekStartValid = true
@@ -265,6 +272,12 @@ extension UITextField {
         } else {
             self.layer.borderColor = UIColor.lightGray.cgColor
         }
+        self.layer.borderWidth = 1.0
+    }
+    func setErrorBorderColor() {
+        self.layer.cornerRadius = 8.0
+        self.layer.masksToBounds = true
+        self.layer.borderColor = UIColor.red.cgColor
         self.layer.borderWidth = 1.0
     }
 }

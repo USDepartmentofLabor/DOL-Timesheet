@@ -123,6 +123,7 @@
 		698AE54728C7ACBA0038945B /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 698AE54628C7ACBA0038945B /* Onboarding.storyboard */; };
 		6999703E290C942E00DCDE7C /* SwitchLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */; };
 		69997040290DDB8C00DCDE7C /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6999703F290DDB8B00DCDE7C /* Localizer.swift */; };
+		69A71F3C29DC8C2A0017A1F6 /* StateMinimumWages.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A71F3B29DC8C2A0017A1F6 /* StateMinimumWages.json */; };
 		69ADCF7E28CCDB46001AC363 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF7D28CCDB46001AC363 /* OnboardWelcomeViewController.swift */; };
 		69ADCF8028CCDB5C001AC363 /* OnboardIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */; };
 		69ADCF8228CCDB70001AC363 /* OnboardNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8128CCDB70001AC363 /* OnboardNameViewController.swift */; };
@@ -281,6 +282,7 @@
 		698AE54628C7ACBA0038945B /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchLanguageViewController.swift; sourceTree = "<group>"; };
 		6999703F290DDB8B00DCDE7C /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
+		69A71F3B29DC8C2A0017A1F6 /* StateMinimumWages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StateMinimumWages.json; sourceTree = "<group>"; };
 		69ADCF7D28CCDB46001AC363 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
 		69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardIntroductionViewController.swift; sourceTree = "<group>"; };
 		69ADCF8128CCDB70001AC363 /* OnboardNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardNameViewController.swift; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 			isa = PBXGroup;
 			children = (
 				696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */,
+				69A71F3B29DC8C2A0017A1F6 /* StateMinimumWages.json */,
 				696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */,
 				696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */,
 			);
@@ -780,6 +783,7 @@
 			files = (
 				032DFD29228B2E00001A1C3B /* EarningsTableViewHeaderView.xib in Resources */,
 				037C226A2278B6400021A309 /* Profile.storyboard in Resources */,
+				69A71F3C29DC8C2A0017A1F6 /* StateMinimumWages.json in Resources */,
 				036D71952277445300CC62CE /* Localizable.strings in Resources */,
 				0324C3EA2260E47200712576 /* LaunchScreen.storyboard in Resources */,
 				696D20DE28318CC9007E041F /* DOL_Timesheet.sqlite-wal in Resources */,

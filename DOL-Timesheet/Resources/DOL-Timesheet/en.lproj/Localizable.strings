@@ -380,14 +380,14 @@
         overtime pay from their employers.";
 
 "welcome_intro" = "Welcome to WHD's Timesheet App";
-"onboard_welcome_employee" = "I want to use this app to help me keep track of other people's time.";
+"onboard_welcome_employee" = "I want to use this app to help me keep track of my own time.";
 "onboard_welcome_employee_button" = "Set me up as an employee";
 "or" = "OR";
 "onboard_welcome_employer" = "I want to use this app to help me keep track of other people's time.";
 "onboard_welcome_employer_button" = "Set me up as an employer";
 
 "onboard_intro_1" = "This app is for your personal use and we don't share your information with anyone.";
-"onboard_intro_2" = "We will guide you through the setup by asking you a few questions that will help you get started.";
+"onboard_intro_2" = "We will guide you through the setup by asking you a few questions that will help you get started using the app.";
 "onboard_intro_3" = "Please answer all of the questions and don't worry, you'll be able to change things later in the app's Settings.";
 "onboard_intro_note" = "Tap the right arrow below to continue.";
 
@@ -403,11 +403,11 @@
 "onboard_pay_rate_employer" = "What is your pay rate?";
 "onboard_pay_rate_employee" = "What is your employee's pay rate?";
 "onboard_overtime_employer" = "Are you eligible for paid overtime?";
-"onboard_overtime_employee" = "What is your employee paid time?";
+"onboard_overtime_employee" = "Is your employee eligible for paid time?";
 "onboard_overtime_yes" = "Yes (non-exempt)";
 "onboard_overtime_no" = "No (exempt)";
 "onboard_state_employer" = "What state do you work in?";
-"onboard_state_employee" = "What state does your employee work in?";
+"onboard_state_employee" = "The state your employee work in?";
 "onboard_pay_note" = "Note: You can add more pay rates and states later in Settings";
 
 "onboard_review_title" = "You're almost done!";
@@ -455,3 +455,7 @@
 
 "wage_and_hour_division" = "Wage and Hour Division";
 "wage_and_hour_division_link" = "http://www.dol.gov/whd/contact_us.htm";
+
+"info_state" = "We use the state you work in to help detect situations where your pay might be below teh federal minimum wage.";
+"state_minimum_wage" = "state minimum wage";
+"first_pay_period"= "First day of your pay period";

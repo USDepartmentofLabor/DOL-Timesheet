@@ -1,0 +1,231 @@
+{
+    "stateMinimumWages": [{
+            "state": "Alabama",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "Alaska",
+            "minimumWage": 10.85
+        },
+        {
+            "state": "Arizona",
+            "minimumWage": 13.85
+        },
+        {
+            "state": "Arkansas",
+            "minimumWage": 11.00
+        },
+        {
+            "state": "California",
+            "minimumWage": 15.50
+        },
+        {
+            "state": "Colorado",
+            "minimumWage": 13.65
+        },
+        {
+            "state": "Connecticut",
+            "minimumWage": 14.00
+        },
+        {
+            "state": "Delaware",
+            "minimumWage": 11.75
+        },
+        {
+            "state": "Florida",
+            "minimumWage": 11.00
+        },
+        {
+            "state": "Georgia",
+            "minimumWage": 5.15
+        },
+        {
+            "state": "Hawaii",
+            "minimumWage": 12.00
+        },
+        {
+            "state": "Idaho",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "Illinois",
+            "minimumWage": 13.00
+        },
+        {
+            "state": "Indiana",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "Iowa",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "Kansas",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "Kentucky",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "Louisiana",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "Maine",
+            "minimumWage": 13.80
+        },
+        {
+            "state": "Maryland",
+            "minimumWage": 13.25
+        },
+        {
+            "state": "Massachusetts",
+            "minimumWage": 15.00
+        },
+        {
+            "state": "Michigan",
+            "minimumWage": 10.10
+        },
+        {
+            "state": "Minnesota",
+            "minimumWage": 10.59,
+            "altMinimumWage": 8.63
+        },
+        {
+            "state": "Missouri",
+            "minimumWage": 12.00
+        },
+        {
+            "state": "Mississippi",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "Montana",
+            "minimumWage": 9.95,
+            "altMinimumWage": 4.00
+        },
+        {
+            "state": "North Carolina",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "North Dakota",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "Nebraska",
+            "minimumWage": 10.50
+        },
+        {
+            "state": "New Hampshire",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "New Jersey",
+            "minimumWage": 14.13
+        },
+        {
+            "state": "New Mexico",
+            "minimumWage": 12.00
+        },
+        {
+            "state": "Nevada",
+            "minimumWage": "10.50",
+            "altMinimumWage": 9.50
+        },
+        {
+            "state": "New York",
+            "minimumWage": "14.20",
+            "altMinimumWage": 15.00
+        },
+        {
+            "state": "Ohio",
+            "minimumWage": 10.10,
+            "altMinimumWage": 7.25
+        },
+        {
+            "state": "Oklahoma",
+            "minimumWage": 7.25,
+            "altMinimumWage": 2.00
+        },
+        {
+            "state": "Oregon",
+            "minimumWage": 13.50
+        },
+        {
+            "state": "Pennsylvania",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "Rhode Island",
+            "minimumWage": 13.00
+        },
+        {
+            "state": "South Carolina"
+        },
+        {
+            "state": "South Dakota",
+            "minimumWage": 10.80
+        },
+        {
+            "state": "Tennessee",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "Texas",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "Utah",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "Virginia",
+            "minimumWage": 12.00
+        },
+        {
+            "state": "Vermont",
+            "minimumWage": 13.18
+        },
+        {
+            "state": "Washington",
+            "minimumWage": 15.74
+        },
+        {
+            "state": "Wisconsin",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "West Virginia",
+            "minimumWage": 8.75
+        },
+        {
+            "state": "Wyoming",
+            "minimumWage": 5.15
+        },
+        {
+            "state": "District of Columbia",
+            "minimumWage": 16.10
+        },
+        {
+            "state": "Northern Mariana Islands",
+            "minimumWage": 7.25
+        },
+        {
+            "state": "Puerto Rico",
+            "minimumWage": 8.50
+        },
+        {
+            "state": "American Samoa"
+        },
+        {
+            "state": "Virgin Islands",
+            "minimumWage": 10.50
+        },
+        {
+            "state": "Guam",
+            "minimumWage": 9.25
+        }
+    ]
+}
