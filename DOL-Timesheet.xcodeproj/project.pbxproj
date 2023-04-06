@@ -108,6 +108,7 @@
 		03F2F5D52282090A007B1B68 /* NumberFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2F5D42282090A007B1B68 /* NumberFormatter+Extension.swift */; };
 		03F2F5D722821157007B1B68 /* ManageUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2F5D622821157007B1B68 /* ManageUsersViewController.swift */; };
 		03F2F5D922822CF8007B1B68 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2F5D822822CF8007B1B68 /* Date+Extension.swift */; };
+		1118714729DE569B00F087F3 /* StateMinWage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1118714629DE569B00F087F3 /* StateMinWage.swift */; };
 		59821CC122AABC1300436B03 /* PhoneFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59821CC022AABC1300436B03 /* PhoneFormatter.swift */; };
 		59AD9E5B22A1645800075193 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AD9E5A22A1645800075193 /* Style.swift */; };
 		59AD9E5D22A16B7F00075193 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AD9E5C22A16B7F00075193 /* UIFont+Extension.swift */; };
@@ -266,6 +267,7 @@
 		03F2F5D42282090A007B1B68 /* NumberFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extension.swift"; sourceTree = "<group>"; };
 		03F2F5D622821157007B1B68 /* ManageUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageUsersViewController.swift; sourceTree = "<group>"; };
 		03F2F5D822822CF8007B1B68 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		1118714629DE569B00F087F3 /* StateMinWage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMinWage.swift; sourceTree = "<group>"; };
 		59821CC022AABC1300436B03 /* PhoneFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFormatter.swift; sourceTree = "<group>"; };
 		59AD9E5A22A1645800075193 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		59AD9E5C22A16B7F00075193 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -614,6 +616,7 @@
 				037C225F22789AA60021A309 /* EmploymentModel.swift */,
 				0332256F2295AA3400479578 /* ProfileViewModel.swift */,
 				59EB62F1229EE3EE00470AA4 /* ProfileModel.swift */,
+				1118714629DE569B00F087F3 /* StateMinWage.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -878,6 +881,7 @@
 				59AD9E5B22A1645800075193 /* Style.swift in Sources */,
 				59B1BEA22294588D00F0D37A /* TitleValueLabel.swift in Sources */,
 				6927AB6628D28BF0003AF1B0 /* OnboardBaseViewController.swift in Sources */,
+				1118714729DE569B00F087F3 /* StateMinWage.swift in Sources */,
 				032C9F1B2264FD1900FB1468 /* ButonWithInfo.swift in Sources */,
 				69FBFCA528F89A0500FEED84 /* SettingsProfileViewController.swift in Sources */,
 				033FB84E2296E658006BA459 /* String+Extension.swift in Sources */,

@@ -133,36 +133,27 @@ class OnboardNameViewController: OnboardBaseViewController {
     }
     
     @IBAction func nameSet(_ sender: Any) {
-        var errorStr: String? = nil
         
         let name = nameField.text
         if name == nil || name!.isEmpty {
             nameValid = false
-            errorStr = NSLocalizedString("err_enter_name", comment: "Please provide User Name")
+//            displayError(message: NSLocalizedString("err_enter_name", comment: "Please provide User Name"))
+        } else {
+            nameValid = true
         }
         
-        if let errorStr = errorStr {
-            displayError(message: errorStr)
-            return
-        }
-        nameValid = true
         check()
     }
     
     @IBAction func otherNameSet(_ sender: Any) {
-        var errorStr: String? = nil
-        
+
         let otherName = otherNameField.text
         if otherName == nil || otherName!.isEmpty {
             otherNameValid = false
-            errorStr = NSLocalizedString("err_enter_name", comment: "Please provide Employer/Employee Name")
+//            displayError(message: NSLocalizedString("err_enter_name", comment: "Please provide Employer/Employee Name"))
+        } else {
+            otherNameValid = true
         }
-
-        if let errorStr = errorStr {
-            displayError(message: errorStr)
-            return
-        }
-        otherNameValid = true
         check()
     }
     @IBAction func infoWorkweekPressed(_ sender: Any) {
@@ -208,6 +199,9 @@ extension OnboardNameViewController: UITextFieldDelegate {
                 workWeekStartValid = true
                 check()
                 otherNameSet(textField)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                    self?.scrollView.scrollToBottom()
+                }
             }
             return false
         } else {

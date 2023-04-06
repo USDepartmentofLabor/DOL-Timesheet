@@ -45,9 +45,9 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         employerLabel.text = NSLocalizedString("onboard_welcome_employer", comment: "I want to use this app to help me keep track of other people's time.")
         employerButton.setTitle(NSLocalizedString("onboard_welcome_employer_button", comment: "Set me up as an employer"), for: .normal)
         
-        titleLabel.scaleFont(forDataType: .introductionBoldText)
+      //  titleLabel.scaleFont(forDataType: .introductionBoldText)
         //employeeLabel.scaleFont(forDataType: .italic)
-        orLabel.scaleFont(forDataType: .introductionBoldText)
+      //  orLabel.scaleFont(forDataType: .introductionBoldText)
         //employerLabel.scaleFont(forDataType: .italic)
         
         employeeButton.addBorder()

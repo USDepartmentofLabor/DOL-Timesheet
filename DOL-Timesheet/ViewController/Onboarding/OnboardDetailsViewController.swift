@@ -8,6 +8,14 @@
 
 import UIKit
 
+enum ShownPicker {
+    case payFrequencyPicker
+    case payPeriodPicker
+    case payRateStart
+    case statePicker
+    case none
+}
+
 class OnboardDetailsViewController: OnboardBaseViewController {
 
     @IBOutlet weak var displayLogo: UIImageView!
@@ -53,6 +61,8 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     
     @IBOutlet weak var nextButton: NavigationButton!
     
+    var pickerSelected = ShownPicker.none
+    
     var timePickerVC = TimePickerViewController.instantiateFromStoryboard()
     
     var overtimeEligible: Bool = true
@@ -71,6 +81,8 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     var selectedPayPeriod: String? = NSLocalizedString("payment_type_hourly", comment: "")
     var selectedPayRate: Double = 0.0
     var firstPayPeriod: Date?
+    
+    var stateMinWages: StateMinWage = StateMinWage.init()
 //    weak var delegate: TimeViewControllerDelegate?
     
     var hourlyRate: HourlyRate? {
@@ -94,6 +106,34 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         displayInfo()
         canMoveForward = false
         self.setupFieldTap()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleTap(sender: UITapGestureRecognizer) {
+        
+        payFrequencyPickerHeight.constant = 0
+        statePickerHeight.constant = 0
+        payPeriodPickerHeight.constant = 0
+        
+        switch pickerSelected {
+        case .payFrequencyPicker:
+            if payFrequencyPicker.frame.contains(sender.location(in: view)) {
+                payFrequencyPickerHeight.constant = 216
+            }
+        case .payPeriodPicker:
+            if payPeriodPicker.frame.contains(sender.location(in: view)) {
+                payPeriodPickerHeight.constant = 216
+            }
+        case .payRateStart:
+            break
+        case .statePicker:
+            if statePicker.frame.contains(sender.location(in: view)) {
+                statePickerHeight.constant = 216
+            }
+        case .none:
+            break
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -313,14 +353,22 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     
     @IBAction func yesOvertimeButtonPressed(_ sender: Any) {
         noOvertimeButton.tintColor = UIColor.white
+        noOvertimeButton.backgroundColor = UIColor.white
+        noOvertimeButton.setTitleColor(UIColor.black, for: .normal)
         yesOvertimeButton.tintColor = UIColor(named: "appPrimaryColor")
+        yesOvertimeButton.backgroundColor = UIColor(named: "appPrimaryColor")
+        yesOvertimeButton.setTitleColor(UIColor.white, for: .normal)
         self.containerView.bringSubviewToFront(yesOvertimeButton)
         overtimeEligible = true
     }
     
     @IBAction func noOvertimeButtonPressed(_ sender: Any) {
         noOvertimeButton.tintColor = UIColor(named: "appPrimaryColor")
+        noOvertimeButton.backgroundColor = UIColor(named: "appPrimaryColor")
+        noOvertimeButton.setTitleColor(UIColor.white, for: .normal)
         yesOvertimeButton.tintColor = UIColor.white
+        yesOvertimeButton.backgroundColor = UIColor.white
+        yesOvertimeButton.setTitleColor(UIColor.black, for: .normal)
         self.containerView.bringSubviewToFront(noOvertimeButton)
         overtimeEligible = false
     }
@@ -351,6 +399,7 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
                 payFrequencyPickerHeight.constant = 216
                 statePickerHeight.constant = 0
                 payPeriodPickerHeight.constant = 0
+                pickerSelected = .payFrequencyPicker
             }
             return false
         } else if textField == stateField {
@@ -360,6 +409,7 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
                 statePickerHeight.constant = 216
                 payFrequencyPickerHeight.constant = 0
                 payPeriodPickerHeight.constant = 0
+                pickerSelected = .statePicker
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     self.scrollView.scrollToBottom()
                 }
@@ -372,6 +422,7 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
                 payPeriodPickerHeight.constant = 216
                 payFrequencyPickerHeight.constant = 0
                 statePickerHeight.constant = 0
+                pickerSelected = .payPeriodPicker
             }
             return false
         } else {
@@ -424,6 +475,10 @@ extension OnboardDetailsViewController: UIPickerViewDelegate {
         } else if pickerView == statePicker {
             stateField.text = State.states[row].title
             selectedState = State.states[row]
+            if let state = stateMinWages.data.first(where: { $0.state == State.states[row].title }),
+               let minWage = state.minimumWage {
+                stateMinimumField.text = String(NumberFormatter.localisedCurrencyStr(from: minWage))
+            }
             stateValid = true
         } else {
             payPeriodField.text = payPeriodArray[row]
@@ -503,7 +558,7 @@ extension OnboardDetailsViewController {
 extension OnboardDetailsViewController: TimePickerProtocol {
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YY/MM/dd"
+        dateFormatter.dateFormat = "MMMM d, YYYY"
         firstPayPeriodField.text = dateFormatter.string(from: timePickerVC.datePicker.date)
         check()
     }
