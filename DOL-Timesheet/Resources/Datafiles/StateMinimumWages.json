@@ -89,8 +89,8 @@
         },
         {
             "state": "Minnesota",
-            "minimumWage": 10.59,
-            "altMinimumWage": 8.63
+            "minimumWage": 8.63,
+            "altMinimumWage": 10.59
         },
         {
             "state": "Missouri",
@@ -102,8 +102,8 @@
         },
         {
             "state": "Montana",
-            "minimumWage": 9.95,
-            "altMinimumWage": 4.00
+            "minimumWage": 4.00,
+            "altMinimumWage": 9.95
         },
         {
             "state": "North Carolina",
@@ -131,8 +131,8 @@
         },
         {
             "state": "Nevada",
-            "minimumWage": 10.50,
-            "altMinimumWage": 9.50
+            "minimumWage": 9.50,
+            "altMinimumWage": 10.50
         },
         {
             "state": "New York",
@@ -141,13 +141,13 @@
         },
         {
             "state": "Ohio",
-            "minimumWage": 10.10,
-            "altMinimumWage": 7.25
+            "minimumWage": 7.25,
+            "altMinimumWage": 10.10
         },
         {
             "state": "Oklahoma",
-            "minimumWage": 7.25,
-            "altMinimumWage": 2.00
+            "minimumWage": 2.00,
+            "altMinimumWage": 7.25
         },
         {
             "state": "Oregon",
