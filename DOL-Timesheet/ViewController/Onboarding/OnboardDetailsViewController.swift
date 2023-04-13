@@ -171,9 +171,6 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     }
     
     override func setupView() {
-//        title = NSLocalizedString("introduction", comment: "Introduction")
-//        label1.scaleFont(forDataType: .introductionBoldText)
-//        label2.scaleFont(forDataType: .introductionText)
         
         let rate = payRateField.text?.currencyAmount() ?? NSNumber(0)
         payRateField.text = NumberFormatter.localisedCurrencyStr(from: rate)
@@ -223,16 +220,11 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         firstPayPeriodField.setBorderColor()
         stateMinimumField.setBorderColor()
         
-      //  roundUpDownButton.titleLabel?.font = .systemFont(ofSize: 10)
-       // roundUpDownButton.titleLabel?.font = UIFont(name: "System", size: 10)
-        
         stateMinimumField.delegate = self
         scrollView.keyboardDismissMode = .onDrag
     }
     
     func setupAccessibility() {
-//        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
-        
         payRateField.accessibilityLabel = NSLocalizedString("rate_amount", comment: "Rate Amount")
         stateMinimumField.accessibilityLabel = "minimum_wage_amount".localized
 
@@ -244,18 +236,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
 
     func displayInfo() {
         stateMinimumField.text = NumberFormatter.localisedCurrencyStr(from: minimumWage)
-
-//        label1.text = NSLocalizedString("introduction_text1", comment: "Introduction Text1")
-//        label2.text = NSLocalizedString("introduction_text2", comment: "Introduction Text2")
-//        nextButton.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
     }
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "setupProfile",
-//            let setupVC = segue.destination as? SetupProfileViewController {
-//            setupVC.delegate = delegate
-//        }
-//    }
     
     override func saveData() -> Bool  {
         print("OnboardDetailsViewController SAVE DATA")
@@ -430,28 +411,6 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
         }
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
-//        if textField == stateTextField {
-//
-//            let announcementMsg = NSLocalizedString("select_state", comment: "Select State")
-//            UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementMsg)
-//
-//            DispatchQueue.main.async { [weak self] in
-//                self?.view.endEditing(true)
-//            }
-//
-//            let optionsVC = OptionsListViewController(options: State.states, title: "States")
-//            optionsVC.didSelect = { [weak self] (popVC: UIViewController, state: State?) in
-//                guard let strongSelf = self else { return }
-//                if let state = state {
-//                    strongSelf.stateTextField.text = state.title
-//                }
-//                optionsVC.dismiss(animated: true, completion: nil)
-//                UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: strongSelf.zipcodeTextField)
-//
-//            }
-//
-//            showPopup(popupController: optionsVC, sender: textField)
-//        }
     }
 }
 
