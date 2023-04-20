@@ -46,11 +46,6 @@ class OnboardNameViewController: OnboardBaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if userType == .employee {
-            otherNameLabel.text = "What is your employer's name or nickname?"
-        } else {
-            otherNameLabel.text = "What is your employee's name or nickname?"
-        }
     }
     
     override func setupView() {

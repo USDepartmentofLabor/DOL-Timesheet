@@ -147,7 +147,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
             payRateTitle.text = NSLocalizedString("onboard_pay_rate_employer", comment: "What is your pay rate?")
             overtimeTitle.text = NSLocalizedString("onboard_overtime_employer", comment: "Are you eligible for paid overtime?")
             stateTitle.text = NSLocalizedString("onboard_state_employer", comment: "What state do you work in?")
-            stateMinimumText.text = NSLocalizedString("State minimum wage", comment: "State minimum wage")
+            stateMinimumText.text = NSLocalizedString("state_minimum_wage", comment: "State minimum wage")
             
             stateMinimumText.isHidden = false
             stateMinimumField.isHidden = false

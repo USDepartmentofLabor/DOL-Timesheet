@@ -25,6 +25,13 @@ class OnboardViewController: UIViewController {
     @IBOutlet weak var progress3: UIImageView!
     @IBOutlet weak var progress4: UIImageView!
     @IBOutlet weak var progress5: UIImageView!
+    
+    @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var introLabel: UILabel!
+    @IBOutlet weak var workLabel: UILabel!
+    @IBOutlet weak var payLabel: UILabel!
+    @IBOutlet weak var summaryLabel: UILabel!
+    
     var progressImages: [UIImageView] = []
     
     var currentPage = 0
@@ -43,6 +50,12 @@ class OnboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        welcomeLabel.text = NSLocalizedString("welcome", comment: "Welcome")
+        introLabel.text = NSLocalizedString("intro", comment: "Intro")
+        workLabel.text = NSLocalizedString("work", comment: "Work")
+        payLabel.text = NSLocalizedString("pay", comment: "Pay")
+        summaryLabel.text =  NSLocalizedString("summary", comment: "Summary")
         
         let profileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
         if let vcs = onboardPageViewController?.orderedViewControllers {

@@ -52,9 +52,7 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         
         employeeButton.addBorder()
         employerButton.addBorder()
-        employeeButton.setTitle("Set me up as an employee", for: .normal)
-        employerButton.setTitle("Set me up as an employer", for: .normal)
-        
+
         setupAccessibility()
     }
     

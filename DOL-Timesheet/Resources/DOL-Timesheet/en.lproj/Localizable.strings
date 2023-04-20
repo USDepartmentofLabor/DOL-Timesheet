@@ -379,7 +379,7 @@
         for example, are among those who, by law, are not required to receive minimum wage and
         overtime pay from their employers.";
 
-"welcome_intro" = "Welcome to WHD's Timesheet App";
+"welcome_intro" = "Welcome to WHD's Timesheet App!";
 "onboard_welcome_employee" = "I want to use this app to help me keep track of my own time.";
 "onboard_welcome_employee_button" = "Set me up as an employee";
 "or" = "OR";
@@ -422,7 +422,8 @@
 "onboard_review_employee_rate" = "Your pay rate is $";
 "onboard_review_employee_overtime_yes" = "You are eligible for overtime (non-exempt)";
 "onboard_review_employee_overtime_no" = "You are not eligible for overtime (exempt)";
-"onboard_review_employee_state" = "Your employee works in ";
+"onboard_review_employee_state" = "You works in";
+"onboard_review_employee_minimum_wage" = "whose state minimum wage is $";
 
 "onboard_review_employer" = ", an employer";
 "onboard_review_employer_employee" = "Your employee's name is ";
@@ -459,3 +460,11 @@
 "info_state" = "We use the state you work in to help detect situations where your pay might be below teh federal minimum wage.";
 "state_minimum_wage" = "state minimum wage";
 "first_pay_period"= "First day of your pay period";
+"hour" = "hour";
+
+"welcome" = "Welcome";
+"intro" = "Intro";
+"work" = "Work";
+"pay" = "Pay";
+"summary" = "Summary";
+
