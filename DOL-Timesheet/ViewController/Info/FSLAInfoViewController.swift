@@ -58,7 +58,11 @@ class FSLAInfoViewController: UIViewController {
         _ = fslaInfoStr.setAsLink(textToFind: linkedText, linkURL: FSLAInfoViewController.fslaURL)
         
         fslaInfoStr.addAttribute(.font, value: Style.scaledFont(forDataType: .aboutText), range: NSRange(location: 0, length: fslaInfoStr.length))
+        
         infoTextView.attributedText = fslaInfoStr
+        infoTextView.linkTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.linkColor
+        ]
     }
     
     @IBAction func okClicked(_ sender: Any) {

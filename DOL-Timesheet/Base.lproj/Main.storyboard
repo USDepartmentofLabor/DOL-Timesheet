@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NNC-uZ-gvN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NNC-uZ-gvN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -557,6 +557,7 @@
                                                                             </label>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbh-GE-xdm" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
                                                                                 <rect key="frame" x="54" y="56.5" width="287" height="22"/>
+                                                                                <color key="tintColor" name="appPrimaryColor"/>
                                                                                 <state key="normal" image="questionmark.circle" catalog="system"/>
                                                                             </button>
                                                                         </subviews>
@@ -746,6 +747,7 @@
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kss-xC-1KB" userLabel="InfoButton">
                                                         <rect key="frame" x="128.5" y="3.5" width="20" height="22"/>
+                                                        <color key="tintColor" name="appPrimaryColor"/>
                                                         <state key="normal" image="questionmark.circle" catalog="system"/>
                                                         <connections>
                                                             <action selector="endWorkInfoClicked:" destination="rCf-pn-GQ9" eventType="touchUpInside" id="YPY-l9-zY4"/>
@@ -791,6 +793,7 @@
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xck-2b-Cqf" userLabel="InfoButton">
                                                         <rect key="frame" x="114" y="3.5" width="20" height="22"/>
+                                                        <color key="tintColor" name="appPrimaryColor"/>
                                                         <state key="normal" image="questionmark.circle" catalog="system"/>
                                                         <connections>
                                                             <action selector="breakInfoClicked:" destination="rCf-pn-GQ9" eventType="touchUpInside" id="xul-DI-vpo"/>
@@ -1078,7 +1081,9 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="Uza-xl-fWQ"/>
                                                                 </constraints>
-                                                                <state key="normal" title="Edit"/>
+                                                                <state key="normal" title="Edit">
+                                                                    <color key="titleColor" name="editColor"/>
+                                                                </state>
                                                                 <connections>
                                                                     <segue destination="feV-ld-dej" kind="presentation" identifier="manageUsers" id="WAs-Gu-1Y7"/>
                                                                 </connections>
@@ -1256,9 +1261,10 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="displayLogo" translatesAutoresizingMaskIntoConstraints="NO" id="454-se-Ks2">
                                 <rect key="frame" x="157" y="58" width="60" height="55.5"/>
+                                <color key="tintColor" name="appPrimaryColor"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j5j-dd-QG6">
-                                <rect key="frame" x="0.0" y="123.5" width="374" height="574.5"/>
+                                <rect key="frame" x="0.0" y="123.5" width="374" height="540.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <imageView key="tableFooterView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DOLLogo" id="io2-oT-WV8">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="75"/>
@@ -1416,7 +1422,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QTk-lu-S07">
-                                <rect key="frame" x="0.0" y="53" width="374" height="650"/>
+                                <rect key="frame" x="0.0" y="53" width="374" height="616"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GlossaryTableViewCell" rowHeight="500" id="qGr-d7-sj1" customClass="GlossaryTableViewCell" customModule="Timesheet" customModuleProvider="target">
@@ -1500,7 +1506,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rg9-xc-zIs">
-                                <rect key="frame" x="0.0" y="48" width="374" height="655"/>
+                                <rect key="frame" x="0.0" y="48" width="374" height="621"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQE-5W-1Bn">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="622"/>
@@ -1563,8 +1569,9 @@
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Wage and Hour Division Contact Online Form" translatesAutoresizingMaskIntoConstraints="NO" id="B9x-sM-RPr" userLabel="ContactText View">
                                                         <rect key="frame" x="0.0" y="291.5" width="344" height="33"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" name="linkColor"/>
                                                         <gestureRecognizers/>
-                                                        <color key="textColor" systemColor="linkColor"/>
+                                                        <color key="textColor" name="linkColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -1585,7 +1592,7 @@
                                                                 <rect key="frame" x="0.0" y="25.5" width="344" height="33"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <gestureRecognizers/>
-                                                                <color key="textColor" systemColor="linkColor"/>
+                                                                <color key="textColor" name="linkColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
@@ -1602,8 +1609,9 @@
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Wage and Hour Division" translatesAutoresizingMaskIntoConstraints="NO" id="90P-iv-diL" userLabel="gitHubTextView">
                                                                 <rect key="frame" x="0.0" y="89" width="344" height="33"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="tintColor" name="linkColor"/>
                                                                 <gestureRecognizers/>
-                                                                <color key="textColor" systemColor="linkColor"/>
+                                                                <color key="textColor" name="linkColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
@@ -1614,8 +1622,9 @@
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Wage and Hour Division Local Offices" translatesAutoresizingMaskIntoConstraints="NO" id="sP9-yW-InQ" userLabel="secondGitHubTextView">
                                                                 <rect key="frame" x="0.0" y="127" width="344" height="33"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="tintColor" name="linkColor"/>
                                                                 <gestureRecognizers/>
-                                                                <color key="textColor" systemColor="linkColor"/>
+                                                                <color key="textColor" name="linkColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
@@ -1737,14 +1746,14 @@
             <objects>
                 <viewController storyboardIdentifier="EnterTimeViewController" id="OlP-Ji-4yB" customClass="EnterTimeViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jZZ-Hr-5mH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="skK-8U-FUa">
-                                <rect key="frame" x="15" y="76" width="384" height="742"/>
+                                <rect key="frame" x="15" y="76" width="384" height="790"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="mef-x7-DWH">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="742"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="790"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGM-IZ-H7I">
                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="577"/>
@@ -1804,7 +1813,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqQ-jl-ALQ" userLabel="EditButton">
                                                         <rect key="frame" x="354" y="136" width="30" height="30"/>
                                                         <accessibility key="accessibilityConfiguration" label="Edit Time Log"/>
-                                                        <state key="normal" title="Edit"/>
+                                                        <state key="normal" title="Edit">
+                                                            <color key="titleColor" name="editColor"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="editClick:" destination="OlP-Ji-4yB" eventType="touchUpInside" id="gYZ-Pz-XDB"/>
                                                         </connections>
@@ -2240,7 +2251,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="M7a-ju-coD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="duA-3x-TGJ">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2435,9 +2446,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3GV-mi-63D"/>
-        <segue reference="raw-Tx-Vfv"/>
-        <segue reference="2Fb-bA-ARb"/>
+        <segue reference="3iC-tx-nCj"/>
+        <segue reference="KJz-zA-nJd"/>
+        <segue reference="7uc-bX-bfm"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DOLLogo" width="60" height="60"/>
@@ -2460,14 +2471,17 @@
         <namedColor name="darkTextColor">
             <color red="0.35686274509803922" green="0.38039215686274508" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="editColor">
+            <color red="0.0078431372549019607" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -74,13 +74,6 @@ class ResourcesViewController: UIViewController {
 //        whdWebsiteTextView.textContainerInset = UIEdgeInsets.zero
 //        whdWebsiteTextView.textContainer.lineFragmentPadding = 0
         
-        phoneTextView1.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
-        phoneTextView2.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
-        
-        webadminTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
-        gitHubTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
-        secondGitHubTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor(named: "linkColor")!]
-        
         copyDatabase.isHidden = true
     }
     
@@ -99,6 +92,13 @@ class ResourcesViewController: UIViewController {
         vistUsLabel.text = "visit_us_online".localized
         gitHubTextView.text = "contact_whd_website".localized
         secondGitHubTextView.text = "contact_whd_contact_us".localized
+        
+        phoneTextView1.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor.linkColor]
+        phoneTextView2.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor.linkColor]
+        
+        webadminTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor.linkColor]
+        gitHubTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor.linkColor]
+        secondGitHubTextView.linkTextAttributes = [NSAttributedString.Key.underlineStyle: 0, NSAttributedString.Key.foregroundColor:  UIColor.linkColor]
         
 //        let emailText = NSAttributedString(string: "Send an email to the Wage and Hour Division", attributes: [NSAttributedString.Key.link: ResourcesViewController.emailLink, NSAttributedString.Key.font: Style.scaledFont(forDataType: .resourcesText),
 //            NSAttributedString.Key.underlineStyle: 1])

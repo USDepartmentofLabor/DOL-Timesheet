@@ -17,11 +17,12 @@ class SelectableButton: UIButton {
     }
     
     func configure() {
-        let appPrimaryColor = UIColor.appPrimaryColor
+        let appNavBarColor = UIColor.appNavBarColor
         
-        setTitleColor(appPrimaryColor, for: .normal)
+        setTitleColor(appNavBarColor, for: .normal)
         setTitleColor(.white, for: .selected)
-        addBorder(borderColor: appPrimaryColor)
+        setTitleColor(.black, for: .normal)
+        addBorder(borderColor: appNavBarColor)
         titleLabel?.scaleFont(forDataType: .actionButton)
     }
     
@@ -29,7 +30,7 @@ class SelectableButton: UIButton {
         didSet {
             
             if isSelected {
-                backgroundColor = UIColor.appPrimaryColor
+                backgroundColor = UIColor.appNavBarColor
             }
             else {
                 backgroundColor = .white

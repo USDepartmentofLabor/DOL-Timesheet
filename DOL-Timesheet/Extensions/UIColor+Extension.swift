@@ -21,6 +21,18 @@ extension UIColor {
         }
     }
     
+    class var appNavBarColor: UIColor? {
+        get {
+            return UIColor(named: "appNavBarColor")
+        }
+    }
+    
+    class var linkColor: UIColor? {
+        get {
+            return UIColor(named: "linkColor")
+        }
+    }
+    
     class var borderColor: UIColor {
         get {
             return UIColor(named: "borderColor") ?? UIColor.gray
