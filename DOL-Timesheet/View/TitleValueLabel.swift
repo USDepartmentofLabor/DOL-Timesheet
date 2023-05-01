@@ -18,6 +18,6 @@ class TitleValueLabel: UILabel {
     
     func configure() {
         scaleFont(forDataType: .nameValueTitle)
-        textColor = UIColor(named: "appPrimaryColor")
+        textColor = UIColor(named: "appTextColor")
     }
 }

@@ -15,6 +15,12 @@ extension UIColor {
         }
     }
     
+    class var appTextColor: UIColor? {
+        get {
+            return UIColor(named: "appTextColor")
+        }
+    }
+    
     class var appSecondaryColor: UIColor? {
         get {
             return UIColor(named: "appSecondaryColor")

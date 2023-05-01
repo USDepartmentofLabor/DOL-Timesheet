@@ -161,7 +161,7 @@
                                             <accessibilityTraits key="traits" staticText="YES" header="YES"/>
                                         </accessibility>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <color key="textColor" name="appPrimaryColor"/>
+                                        <color key="textColor" name="appTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2J-kN-Xx8" userLabel="EnterTimeView">
@@ -196,8 +196,10 @@
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZe-Qy-nvd" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
                                                                         <rect key="frame" x="108" y="46.5" width="20" height="22"/>
-                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <state key="normal" image="questionmark.circle" catalog="system"/>
+                                                                        <color key="tintColor" name="linkColor"/>
+                                                                        <state key="normal" image="questionmark.circle" catalog="system">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -245,7 +247,7 @@
                                                                                 <accessibilityTraits key="traits" button="YES" staticText="YES"/>
                                                                             </accessibility>
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                                            <color key="textColor" name="appPrimaryColor"/>
+                                                                            <color key="textColor" name="appTextColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="450-Qx-5vh" userLabel="HoursWorkedLabel">
@@ -368,7 +370,7 @@
                                                     <accessibilityTraits key="traits" staticText="YES" header="YES"/>
                                                 </accessibility>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                <color key="textColor" name="appPrimaryColor"/>
+                                                <color key="textColor" name="appTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7x-aH-lC3" userLabel="SummaryContentsView">
@@ -493,7 +495,7 @@
                                                     <accessibilityTraits key="traits" staticText="YES" header="YES"/>
                                                 </accessibility>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                <color key="textColor" name="appPrimaryColor"/>
+                                                <color key="textColor" name="appTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RuU-IR-OkI" userLabel="EarningsContentView">
@@ -1039,13 +1041,13 @@
                                                             <accessibilityTraits key="traits" staticText="YES" header="YES"/>
                                                         </accessibility>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                        <color key="textColor" name="appPrimaryColor"/>
+                                                        <color key="textColor" name="appTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hourly/Weekly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5C-qe-bmv" userLabel="EmploymentTypeLabel">
                                                         <rect key="frame" x="0.0" y="25.5" width="98.5" height="18"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                        <color key="textColor" name="appPrimaryColor"/>
+                                                        <color key="textColor" name="appTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1073,7 +1075,7 @@
                                                                     <accessibilityTraits key="traits" staticText="YES" header="YES"/>
                                                                 </accessibility>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                <color key="textColor" name="appPrimaryColor"/>
+                                                                <color key="textColor" name="appTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="aoO-nE-cpX" userLabel="EditButton">
@@ -1082,7 +1084,7 @@
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="Uza-xl-fWQ"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Edit">
-                                                                    <color key="titleColor" name="editColor"/>
+                                                                    <color key="titleColor" name="appPrimaryColor"/>
                                                                 </state>
                                                                 <connections>
                                                                     <segue destination="feV-ld-dej" kind="presentation" identifier="manageUsers" id="WAs-Gu-1Y7"/>
@@ -1568,13 +1570,13 @@
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Wage and Hour Division Contact Online Form" translatesAutoresizingMaskIntoConstraints="NO" id="B9x-sM-RPr" userLabel="ContactText View">
                                                         <rect key="frame" x="0.0" y="291.5" width="344" height="33"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <color key="tintColor" name="linkColor"/>
                                                         <gestureRecognizers/>
                                                         <color key="textColor" name="linkColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
                                                         <connections>
                                                             <outletCollection property="gestureRecognizers" destination="QFC-1e-9RO" appends="YES" id="N74-Jz-aZp"/>
                                                         </connections>
@@ -1591,6 +1593,7 @@
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Email" translatesAutoresizingMaskIntoConstraints="NO" id="28q-aj-mZA" userLabel="emailTextView">
                                                                 <rect key="frame" x="0.0" y="25.5" width="344" height="33"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="tintColor" name="linkColor"/>
                                                                 <gestureRecognizers/>
                                                                 <color key="textColor" name="linkColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1761,7 +1764,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hourly" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rx2-r5-dIo" userLabel="PaymentTypeLabel">
                                                         <rect key="frame" x="334" y="0.0" width="50" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" name="appPrimaryColor"/>
+                                                        <color key="textColor" name="appTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dv5-oI-QQ5" userLabel="DateView">
@@ -1770,7 +1773,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRd-rS-lRm" userLabel="DateTitleLabel">
                                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" name="appPrimaryColor"/>
+                                                                <color key="textColor" name="appTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDI-WD-bJg" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
@@ -1796,7 +1799,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Time" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="753-bg-pNG" userLabel="TitleLabel">
                                                         <rect key="frame" x="0.0" y="134" width="129" height="33.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                        <color key="textColor" name="appPrimaryColor"/>
+                                                        <color key="textColor" name="appTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbm-cn-ITT" userLabel="AddButton">
@@ -1805,7 +1808,9 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="nd8-vb-Dov"/>
                                                         </constraints>
-                                                        <state key="normal" image="add"/>
+                                                        <state key="normal" image="add">
+                                                            <color key="titleColor" name="appPrimaryColor"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="addRowClick:" destination="OlP-Ji-4yB" eventType="touchUpInside" id="NtH-ah-sbs"/>
                                                         </connections>
@@ -1814,7 +1819,7 @@
                                                         <rect key="frame" x="354" y="136" width="30" height="30"/>
                                                         <accessibility key="accessibilityConfiguration" label="Edit Time Log"/>
                                                         <state key="normal" title="Edit">
-                                                            <color key="titleColor" name="editColor"/>
+                                                            <color key="titleColor" name="appPrimaryColor"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="editClick:" destination="OlP-Ji-4yB" eventType="touchUpInside" id="gYZ-Pz-XDB"/>
@@ -2005,7 +2010,7 @@
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Comments" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sd-Ux-oyN" userLabel="CommentsTitleLabel">
                                                                                             <rect key="frame" x="0.0" y="4" width="83" height="20.5"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                            <color key="textColor" name="appPrimaryColor"/>
+                                                                                            <color key="textColor" name="appTextColor"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HpK-23-3ev">
@@ -2074,7 +2079,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Comments" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0K2-pz-MO9" userLabel="CommentsTitleLabel">
                                                                 <rect key="frame" x="0.0" y="0.0" width="199" height="33.5"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                <color key="textColor" name="appPrimaryColor"/>
+                                                                <color key="textColor" name="appTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MHd-cw-JjA">
@@ -2448,7 +2453,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="3iC-tx-nCj"/>
         <segue reference="KJz-zA-nJd"/>
-        <segue reference="7uc-bX-bfm"/>
+        <segue reference="2Fb-bA-ARb"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DOLLogo" width="60" height="60"/>
@@ -2465,14 +2470,14 @@
         <namedColor name="appSecondaryColor">
             <color red="0.74509803921568629" green="0.19607843137254902" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="appTextColor">
+            <color red="0.12549019607843137" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="borderColor">
             <color red="0.58039215686274515" green="0.58039215686274515" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="darkTextColor">
             <color red="0.35686274509803922" green="0.38039215686274508" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="editColor">
-            <color red="0.0078431372549019607" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
