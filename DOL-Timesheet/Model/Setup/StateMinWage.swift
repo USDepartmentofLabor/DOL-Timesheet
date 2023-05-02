@@ -14,6 +14,46 @@ public class StateMinWage {
     
     init() {
         self.data = StateMinWage.readData(fileName: "StateMinimumWages").states
+        self.fetchData()
+    }
+    
+    func fetchData() {
+        let url = URL(string: "https://www.dol.gov/sites/dolgov/files/WHD/json/StateMinimumWages.json")!
+        let session = URLSession.shared
+        let task = session.dataTask(with: url) { indata, response, error in
+            // Check for errors
+            guard error == nil,
+                let newData = indata else {
+                print("Error: \(error!)")
+                return
+            }
+            guard let httpResponse = response as? HTTPURLResponse,
+                (200...299).contains(httpResponse.statusCode) else {
+                print("Error: Invalid response")
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                let stateData = try decoder.decode(StateDataDetails.self, from: newData)
+                var stateItems: [StateItem] = []
+                stateData.stateMinimumWages.forEach { state in
+                    stateItems.append(
+                        StateItem(
+                            state: state.state,
+                            minimumWage: state.minimumWage,
+                            altMinimumWage: state.altMinimumWage
+                        )
+                    )
+                }
+                print(self.data)
+            } catch {
+                print("Error: \(error)")
+            }
+        }
+
+        // Start the data task
+        task.resume()
+        
     }
     
     static func readData(fileName: String) -> States {
