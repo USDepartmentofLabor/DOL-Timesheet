@@ -86,7 +86,7 @@ class SalaryPaymentViewController: UIViewController {
         if #available(iOS 13.0, *) {
             attributedString.addAttributes(
                 [NSAttributedString.Key.font: Style.scaledFont(forDataType: .aboutText),
-                 NSAttributedString.Key.foregroundColor: UIColor.linkColor],
+                 NSAttributedString.Key.foregroundColor: UIColor.appPrimaryColor],
                 range: NSRange(location: 0, length: attributedString.length))
         } else {
             attributedString.addAttribute(.font, value: Style.scaledFont(forDataType: .aboutText), range: NSRange(location: 0, length: attributedString.length))
@@ -94,7 +94,7 @@ class SalaryPaymentViewController: UIViewController {
         attributedString.addAttribute(.link, value: "fsla", range: NSRange(location: 0, length: attributedString.length))
         fslaTextView.attributedText = attributedString
         fslaTextView.linkTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.linkColor
+            NSAttributedString.Key.foregroundColor: UIColor.appPrimaryColor
         ]
         fslaTextView.textAlignment = .right
         fslaTextView.delegate = self
