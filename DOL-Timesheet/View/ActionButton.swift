@@ -22,7 +22,7 @@ class ActionButton: UIButton {
     }
     
     func configure() {
-        backgroundColor = UIColor(named: "appPrimaryColor")
+        backgroundColor = UIColor.appNavBarColor
         layer.cornerRadius = 4.0
         
         titleLabel?.scaleFont(forDataType: .actionButton)
@@ -86,7 +86,7 @@ class SubActionButton: UIButton {
     }
     
     func configure() {
-        backgroundColor = UIColor(named: "appPrimaryColor")
+        backgroundColor = UIColor.appNavBarColor
         layer.cornerRadius = 4.0
         
         titleLabel?.scaleFont(forDataType: .subActionButton)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -721,7 +721,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggp-rV-rw7" userLabel="HeaderView">
-                                <rect key="frame" x="20" y="20" width="334" height="20.5"/>
+                                <rect key="frame" x="20" y="40" width="334" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPG-bK-9JF" userLabel="UserNameLabel">
                                         <rect key="frame" x="259" y="0.0" width="75" height="20.5"/>
@@ -729,7 +729,7 @@
                                             <accessibilityTraits key="traits" staticText="YES" header="YES"/>
                                         </accessibility>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <color key="textColor" name="appPrimaryColor"/>
+                                        <color key="textColor" name="appTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -741,7 +741,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Employers" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRc-u0-3ZW" userLabel="TitleLabel">
-                                <rect key="frame" x="20" y="56.5" width="83.5" height="20.5"/>
+                                <rect key="frame" x="20" y="76.5" width="83.5" height="20.5"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" header="YES"/>
                                 </accessibility>
@@ -750,7 +750,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="neh-t8-wgR" userLabel="AddButton">
-                                <rect key="frame" x="111.5" y="52" width="50" height="30"/>
+                                <rect key="frame" x="111.5" y="72" width="50" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label="Add"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="WUH-3k-aSd"/>
@@ -764,21 +764,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LDy-5Z-tJy" userLabel="EditButton">
-                                <rect key="frame" x="304" y="52" width="50" height="30"/>
+                                <rect key="frame" x="304" y="72" width="50" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="k8W-p5-U60"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="yeG-dP-8un"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <state key="normal" title="Edit">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" name="editColor"/>
                                 </state>
                                 <connections>
                                     <action selector="editClick:" destination="Pvt-Qp-jca" eventType="touchUpInside" id="p5w-8f-F51"/>
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8s8-Ir-JtW" userLabel="EmploymentView">
-                                <rect key="frame" x="20" y="85" width="334" height="177.5"/>
+                                <rect key="frame" x="20" y="105" width="334" height="177.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyi-Pc-RiR" userLabel="EmloymentTitleView">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="27.5"/>
@@ -989,20 +989,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BzO-fg-WWA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="380"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" text="The Fair Labor Standards Act (FLSA) requirements" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="saf-da-4n4" userLabel="FSLAText View">
-                                        <rect key="frame" x="79" y="15" width="335" height="199.5"/>
+                                        <rect key="frame" x="79" y="15" width="335" height="176.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oNA-9I-GOd" userLabel="HourlyContentView">
-                                        <rect key="frame" x="0.0" y="219.5" width="414" height="180.5"/>
+                                        <rect key="frame" x="0.0" y="196.5" width="414" height="183.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KOF-wt-OIb" customClass="LabelInfoView" customModule="Timesheet" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="15" width="384" height="30.5"/>
+                                                <rect key="frame" x="15" y="15" width="384" height="33.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" header="YES"/>
@@ -1016,7 +1016,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P2k-r9-LyH">
-                                                <rect key="frame" x="15" y="57.5" width="384" height="60"/>
+                                                <rect key="frame" x="15" y="60.5" width="384" height="60"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="KMN-uk-e3e"/>
@@ -1035,7 +1035,7 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Rate Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmt-x3-MCl" userLabel="RateTitleLabel">
                                                                             <rect key="frame" x="0.0" y="0.0" width="92" height="50"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <color key="textColor" name="appPrimaryColor"/>
+                                                                            <color key="textColor" name="borderColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pw8-I4-md5">
@@ -1125,7 +1125,7 @@
                                                 </connections>
                                             </tableView>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="btr-OV-xzv" userLabel="FooterView">
-                                                <rect key="frame" x="15" y="121.5" width="384" height="44"/>
+                                                <rect key="frame" x="15" y="124.5" width="384" height="44"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="500" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SxY-3M-ftC" customClass="SubActionButton" customModule="Timesheet" customModuleProvider="target">
                                                         <rect key="frame" x="262" y="0.0" width="122" height="44"/>
@@ -1206,7 +1206,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCf-xd-cs4" userLabel="SalaryView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="228"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="208"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8W-om-LSh" userLabel="PaymentTypeLabel">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
@@ -1214,7 +1214,7 @@
                                             <accessibilityTraits key="traits" staticText="YES" header="YES"/>
                                         </accessibility>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="appPrimaryColor"/>
+                                        <color key="textColor" name="appTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" text="The Fair Labor Standards Act (FLSA) requirements" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="T8e-CG-6A4" userLabel="FSLAText View">
@@ -1225,7 +1225,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iDH-fD-cCT" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="73.5" width="414" height="154.5"/>
+                                        <rect key="frame" x="0.0" y="73.5" width="414" height="134.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ry4-Kf-y2i" userLabel="TitleLabelInfoView" customClass="LabelInfoView" customModule="Timesheet" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="0.0" width="384" height="30.5"/>
@@ -1238,16 +1238,16 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBH-dd-42C" userLabel="SalaryAmountView">
-                                                <rect key="frame" x="15" y="42.5" width="384" height="97"/>
+                                                <rect key="frame" x="15" y="42.5" width="384" height="77"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGX-6V-yVq" userLabel="SalaryLabel">
-                                                        <rect key="frame" x="12" y="38.5" width="48" height="20.5"/>
+                                                        <rect key="frame" x="12" y="28.5" width="48" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" name="appPrimaryColor"/>
+                                                        <color key="textColor" name="appTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PZ1-oF-2QK" userLabel="SalaryTextField" customClass="UnderlinedTextField" customModule="Timesheet" customModuleProvider="target">
-                                                        <rect key="frame" x="169.5" y="39.5" width="45" height="18.5"/>
+                                                        <rect key="frame" x="169.5" y="29.5" width="45" height="18.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="5qS-YG-1kn"/>
                                                         </constraints>
@@ -1255,7 +1255,7 @@
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZa-iv-RYG" userLabel="SelectSalaryTypeView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
-                                                        <rect key="frame" x="219.5" y="5" width="152.5" height="87"/>
+                                                        <rect key="frame" x="219.5" y="5" width="152.5" height="67"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="r1Q-3S-SJx"/>
@@ -2065,7 +2065,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1BD-JO-JV2" userLabel="ContentView">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="785.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="797"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7TW-xU-g1n" userLabel="ProfileView">
                                                         <rect key="frame" x="20" y="0.0" width="335" height="621.5"/>
@@ -2357,14 +2357,14 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="holaHello" translatesAutoresizingMaskIntoConstraints="NO" id="aKS-l4-zx5">
-                                                                        <rect key="frame" x="8" y="104" width="63" height="60"/>
+                                                                        <rect key="frame" x="1" y="104" width="70" height="50"/>
                                                                         <accessibility key="accessibilityConfiguration">
                                                                             <accessibilityTraits key="traits" button="YES" image="YES"/>
                                                                         </accessibility>
                                                                         <gestureRecognizers/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="60" id="4aN-dg-9a0"/>
-                                                                            <constraint firstAttribute="width" constant="63" id="Cfb-6H-6hN"/>
+                                                                            <constraint firstAttribute="height" constant="50" id="4aN-dg-9a0"/>
+                                                                            <constraint firstAttribute="width" constant="70" id="Cfb-6H-6hN"/>
                                                                         </constraints>
                                                                         <connections>
                                                                             <outletCollection property="gestureRecognizers" destination="IYY-7u-cqu" appends="YES" id="JGl-3P-2kl"/>
@@ -2373,7 +2373,7 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="aKS-l4-zx5" firstAttribute="leading" secondItem="3FM-S5-qQK" secondAttribute="leading" constant="8" id="13Y-9h-zdI"/>
+                                                                    <constraint firstItem="aKS-l4-zx5" firstAttribute="leading" secondItem="3FM-S5-qQK" secondAttribute="leading" constant="1" id="13Y-9h-zdI"/>
                                                                     <constraint firstItem="8z9-zc-eYz" firstAttribute="leading" secondItem="3FM-S5-qQK" secondAttribute="leading" constant="8" id="3Wc-tx-wJZ"/>
                                                                     <constraint firstItem="H8H-A4-9XB" firstAttribute="top" secondItem="3FM-S5-qQK" secondAttribute="top" id="3xW-qZ-svU"/>
                                                                     <constraint firstAttribute="bottom" secondItem="zpG-zR-wdB" secondAttribute="bottom" constant="12" id="GJp-Ig-G6V"/>
@@ -2401,10 +2401,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dfT-aj-dnn" userLabel="EmployeeEmployerView">
-                                                        <rect key="frame" x="20" y="613" width="335" height="102.5"/>
+                                                        <rect key="frame" x="20" y="621.5" width="335" height="105.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AEm-2x-63F" customClass="LabelInfoView" customModule="Timesheet" customModuleProvider="target">
-                                                                <rect key="frame" x="10" y="10" width="315" height="30.5"/>
+                                                                <rect key="frame" x="10" y="10" width="315" height="33.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" header="YES"/>
@@ -2415,7 +2415,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IAT-B1-RHg">
-                                                                <rect key="frame" x="10" y="56.5" width="315" height="34"/>
+                                                                <rect key="frame" x="10" y="59.5" width="315" height="34"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="W5C-es-UNm" userLabel="EmployeeBtn" customClass="RadioButton" customModule="Timesheet" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="152.5" height="34"/>
@@ -2451,7 +2451,7 @@
                                                         </constraints>
                                                     </view>
                                                     <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xtB-iO-HI6">
-                                                        <rect key="frame" x="0.0" y="715.5" width="375" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="727" width="375" height="0.0"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="250" id="UhT-bC-EOX"/>
                                                         </constraints>
@@ -2460,7 +2460,7 @@
                                                         </connections>
                                                     </containerView>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9TY-hI-9Fq" userLabel="FooterView">
-                                                        <rect key="frame" x="20" y="735.5" width="335" height="30"/>
+                                                        <rect key="frame" x="20" y="747" width="335" height="30"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="a4e-KM-fAM" userLabel="NextButton" customClass="NavigationButton" customModule="Timesheet" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
@@ -2587,42 +2587,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To use this button and switch this app from Spanish to English, follow the instructions bellow." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ij-QC-0oF">
-                                <rect key="frame" x="16" y="20" width="343" height="61"/>
+                                <rect key="frame" x="16" y="40" width="343" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(To use this button and switch this app from English to Spanish, follow th instructions bellow.)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEB-Xf-mTG">
-                                <rect key="frame" x="16" y="89" width="343" height="61"/>
+                                <rect key="frame" x="16" y="109" width="343" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Go to Settings &gt; General &gt; Language &amp; Region on your device." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RG3-Lx-sVH">
-                                <rect key="frame" x="16" y="200" width="343" height="41"/>
+                                <rect key="frame" x="16" y="220" width="343" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. Select a language and, when prompted, tap Keep English" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AL3-vc-vY5">
-                                <rect key="frame" x="16" y="278" width="343" height="41"/>
+                                <rect key="frame" x="16" y="298" width="343" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4. Return to Timesheet and tap the buttton agia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E09-Hc-8qt">
-                                <rect key="frame" x="16" y="327" width="343" height="21"/>
+                                <rect key="frame" x="16" y="347" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5B-F6-RPu">
-                                <rect key="frame" x="117.5" y="366" width="140" height="34.5"/>
+                                <rect key="frame" x="117.5" y="386" width="140" height="34.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Get Me Started"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Tap Other Languages." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVY-eU-qOI">
-                                <rect key="frame" x="16" y="249" width="343" height="21"/>
+                                <rect key="frame" x="16" y="269" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2815,7 +2815,7 @@
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="SqH-tt-VSf"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Yes">
-                                                                    <color key="titleColor" name="appPrimaryColor"/>
+                                                                    <color key="titleColor" name="appNavBarColor"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="yesBtnClick:" destination="wbd-iv-hHr" eventType="touchUpInside" id="5Bp-Lv-st4"/>
@@ -2824,7 +2824,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="oZt-M3-122" userLabel="NoBtn" customClass="SelectableButton" customModule="Timesheet" customModuleProvider="target">
                                                                 <rect key="frame" x="140" y="0.0" width="120" height="44"/>
                                                                 <state key="normal" title="No">
-                                                                    <color key="titleColor" name="appPrimaryColor"/>
+                                                                    <color key="titleColor" name="appNavBarColor"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="noBtnClick:" destination="wbd-iv-hHr" eventType="touchUpInside" id="mg9-d6-4Oi"/>
@@ -3119,10 +3119,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPk-kE-QxU">
-                                <rect key="frame" x="20" y="28" width="327" height="619"/>
+                                <rect key="frame" x="20" y="48" width="327" height="599"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdl-KL-DtF">
-                                        <rect key="frame" x="0.0" y="0.0" width="327" height="614"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="594"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="displayLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Cse-Cn-drC">
                                                 <rect key="frame" x="133.5" y="10" width="60" height="55.5"/>
@@ -3217,7 +3217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aam-9m-Vt1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2586" y="-1296"/>
+            <point key="canvasLocation" x="2615.9420289855075" y="-1375.4464285714284"/>
         </scene>
         <!--Setup Payment Type View Controller-->
         <scene sceneID="bMy-sk-3de">
@@ -3339,7 +3339,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="GvG-um-s8D"/>
-        <segue reference="iho-B1-Ur2"/>
+        <segue reference="jna-rX-JMR"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DOLLogo" width="60" height="60"/>
@@ -3349,14 +3349,26 @@
         <image name="garbage" width="20" height="20"/>
         <image name="holaHello" width="199" height="180"/>
         <image name="rightChevron" width="327" height="327"/>
+        <namedColor name="appNavBarColor">
+            <color red="0.12549019607843137" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="appPrimaryColor">
             <color red="0.12549019607843137" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="appSecondaryColor">
             <color red="0.74509803921568629" green="0.19607843137254902" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="appTextColor">
+            <color red="0.12549019607843137" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="borderColor">
+            <color red="0.58039215686274515" green="0.58039215686274515" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="darkTextColor">
             <color red="0.35686274509803922" green="0.38039215686274508" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="editColor">
+            <color red="0.0078431372549019607" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
