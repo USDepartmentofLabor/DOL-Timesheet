@@ -103,7 +103,7 @@ class OnboardReviewViewController: OnboardBaseViewController {
             } else {
                 reviewOvertimeLabel.text = NSLocalizedString("onboard_review_employee_overtime_no", comment: "You are not eligible for overtime (exempt)")
             }
-            let stateString =  NSLocalizedString("onboard_review_employee_state", comment: "You work in") + (employmentModel?.employmentUser?.address?.state ?? "West Virginia")
+            let stateString =  NSLocalizedString("onboard_review_employee_state", comment: "You work in ") + (employmentModel?.employmentUser?.address?.state ?? "West Virginia")
             let minimumString = NSLocalizedString("onboard_review_employee_minimum_wage", comment: "whose state minimum wage is $") + (employmentModel?.minimumWage.stringValue ?? "7.25")
             let endString = "/" + NSLocalizedString("hour", comment: "hour")
             

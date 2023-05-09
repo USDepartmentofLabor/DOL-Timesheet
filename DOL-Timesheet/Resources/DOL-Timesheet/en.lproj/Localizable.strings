@@ -423,7 +423,7 @@
 "onboard_review_employee_rate" = "Your pay rate is $";
 "onboard_review_employee_overtime_yes" = "You are eligible for overtime (non-exempt)";
 "onboard_review_employee_overtime_no" = "You are not eligible for overtime (exempt)";
-"onboard_review_employee_state" = "You works in";
+"onboard_review_employee_state" = "You work in ";
 "onboard_review_employee_minimum_wage" = "whose state minimum wage is $";
 
 "onboard_review_employer" = ", an employer";

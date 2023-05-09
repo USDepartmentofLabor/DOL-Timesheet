@@ -82,7 +82,7 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         onboardingDelegate?.updateCanMoveForward(value:true)
         
         employerButton.tintColor = UIColor.white
-        employeeButton.tintColor = UIColor(named: "appPrimaryColor")
+        employeeButton.tintColor = UIColor(named: "onboardButtonColor")
         
         if let employee = profileViewModel!.profileModel.currentUser as? Employee {
             changeToEmployer(employee: employee)
@@ -96,7 +96,7 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
     @IBAction func employerSelected(_ sender: Any) {
         onboardingDelegate?.updateCanMoveForward(value: true)
         
-        employerButton.tintColor = UIColor(named: "appPrimaryColor")
+        employerButton.tintColor = UIColor(named: "onboardButtonColor")
         employeeButton.tintColor = UIColor.white
         
         if let employer = profileViewModel!.profileModel.currentUser as? Employer {

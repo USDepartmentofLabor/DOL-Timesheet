@@ -336,16 +336,16 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         noOvertimeButton.tintColor = UIColor.white
         noOvertimeButton.backgroundColor = UIColor.white
         noOvertimeButton.setTitleColor(UIColor.black, for: .normal)
-        yesOvertimeButton.tintColor = UIColor(named: "appPrimaryColor")
-        yesOvertimeButton.backgroundColor = UIColor(named: "appPrimaryColor")
+        yesOvertimeButton.tintColor = UIColor(named: "onboardButtonColor")
+        yesOvertimeButton.backgroundColor = UIColor(named: "onboardButtonColor")
         yesOvertimeButton.setTitleColor(UIColor.white, for: .normal)
         self.containerView.bringSubviewToFront(yesOvertimeButton)
         overtimeEligible = true
     }
     
     @IBAction func noOvertimeButtonPressed(_ sender: Any) {
-        noOvertimeButton.tintColor = UIColor(named: "appPrimaryColor")
-        noOvertimeButton.backgroundColor = UIColor(named: "appPrimaryColor")
+        noOvertimeButton.tintColor = UIColor(named: "onboardButtonColor")
+        noOvertimeButton.backgroundColor = UIColor(named: "onboardButtonColor")
         noOvertimeButton.setTitleColor(UIColor.white, for: .normal)
         yesOvertimeButton.tintColor = UIColor.white
         yesOvertimeButton.backgroundColor = UIColor.white
@@ -439,6 +439,14 @@ extension OnboardDetailsViewController: UIPickerViewDelegate {
                 stateMinimumField.text = String(NumberFormatter.localisedCurrencyStr(from: minWage))
             }
             stateValid = true
+            
+            minimumWage = stateMinimumField.text?.currencyAmount() ?? NSNumber(0)
+            stateMinimumField.setBorderColor()
+            if minimumWage.doubleValue < 7.25 {
+                stateMinimumField.setErrorBorderColor()
+            }
+            
+            minimumWageValid = true
         } else {
             payPeriodField.text = payPeriodArray[row]
             selectedPayPeriod = payPeriodArray[row]

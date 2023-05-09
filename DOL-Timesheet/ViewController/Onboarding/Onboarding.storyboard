@@ -55,7 +55,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="0YY-5E-f6J"/>
                                         </constraints>
-                                        <color key="tintColor" name="appPrimaryColor"/>
+                                        <color key="tintColor" name="onboardButtonColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Set me up as an employee">
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
@@ -671,13 +671,13 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmE-Cv-YRR">
                                                 <rect key="frame" x="45" y="465.5" width="170" height="31"/>
-                                                <color key="backgroundColor" name="appPrimaryColor"/>
+                                                <color key="backgroundColor" name="onboardButtonColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="170" id="8ct-TS-hME"/>
                                                     <constraint firstAttribute="height" constant="31" id="krT-HE-Fri"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <color key="tintColor" name="appPrimaryColor"/>
+                                                <color key="tintColor" name="onboardButtonColor"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Yes (non-exempt)">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1319,11 +1319,11 @@
         <namedColor name="appBackgroundColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="appPrimaryColor">
-            <color red="0.12549019607843137" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="navButtonColor">
             <color red="0.16470588235294117" green="0.51764705882352946" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="onboardButtonColor">
+            <color red="0.12549019607843137" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
