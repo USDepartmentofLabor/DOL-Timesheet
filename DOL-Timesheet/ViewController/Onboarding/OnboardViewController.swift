@@ -77,8 +77,8 @@ class OnboardViewController: UIViewController {
 
     @IBAction func didTapNextButton(_ sender: Any) {
         nextButton.isUserInteractionEnabled = false
-        defer {
-            nextButton.isUserInteractionEnabled = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.nextButton.isUserInteractionEnabled = true
         }
         
         guard let onboardVC = onboardPageViewController,
@@ -92,8 +92,8 @@ class OnboardViewController: UIViewController {
     
     @IBAction func didTapPreviousButton(_ sender: Any) {
         previousButton.isUserInteractionEnabled = false
-        defer {
-            previousButton.isUserInteractionEnabled = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.previousButton.isUserInteractionEnabled = true
         }
         
      //   guard let onboardVCcurrentVC = onboardPageViewController?.currentVC else { return }

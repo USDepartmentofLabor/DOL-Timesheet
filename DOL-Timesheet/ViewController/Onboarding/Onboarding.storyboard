@@ -362,6 +362,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zv8-2x-5wC" userLabel="Info Workweek">
                                                 <rect key="frame" x="348.5" y="289" width="45" height="31"/>
+                                                <accessibility key="accessibilityConfiguration" label="Info"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="RNt-g0-2sW"/>
                                                     <constraint firstAttribute="width" constant="45" id="uow-7T-iGI"/>
@@ -509,6 +510,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kat-HQ-EDG" userLabel="Info Frequency">
                                                 <rect key="frame" x="363" y="80.5" width="37" height="37"/>
+                                                <accessibility key="accessibilityConfiguration" label="Info"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="37" id="HXS-jS-Jnx"/>
                                                     <constraint firstAttribute="width" constant="37" id="av3-63-Qvz"/>
@@ -576,6 +578,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLv-Y7-xXs" userLabel="Info Pay Rate">
                                                 <rect key="frame" x="363" y="301" width="37" height="37"/>
+                                                <accessibility key="accessibilityConfiguration" label="Info"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="37" id="7lV-xe-pEF"/>
                                                     <constraint firstAttribute="height" constant="37" id="Vef-ue-ke6"/>
@@ -659,6 +662,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZvX-AR-3py" userLabel="Info Overtime">
                                                 <rect key="frame" x="363" y="428" width="37" height="37"/>
+                                                <accessibility key="accessibilityConfiguration" label="Info"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="37" id="25n-mu-c28"/>
                                                     <constraint firstAttribute="height" constant="37" id="AvA-NQ-KXE"/>
@@ -732,6 +736,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntu-fp-dwe" userLabel="InfoStateButton">
                                                 <rect key="frame" x="363" y="518.5" width="37" height="37"/>
+                                                <accessibility key="accessibilityConfiguration" label="Info"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="37" id="AoA-Og-sod"/>
                                                     <constraint firstAttribute="width" constant="37" id="vcg-Nk-nDZ"/>
