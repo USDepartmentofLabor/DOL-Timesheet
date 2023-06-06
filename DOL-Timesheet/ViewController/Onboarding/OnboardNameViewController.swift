@@ -172,6 +172,11 @@ class OnboardNameViewController: OnboardBaseViewController {
 extension OnboardNameViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == otherNameField {
+            if workweekField.text?.count == 0 {
+                workweekField?.text = Weekday.sunday.title
+            }
+            workWeekStartValid = true
+            check()
             textField.resignFirstResponder()
             workWeekStartPickerHeight.constant = 216
             otherNameSet(textField)
@@ -188,6 +193,7 @@ extension OnboardNameViewController: UITextFieldDelegate {
             if workWeekStartPickerHeight.constant > 1 {
                 workWeekStartPickerHeight.constant = 0
             } else {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 workWeekStartPickerHeight.constant = 216
                 workweekField.text = Weekday.allCases[currentRow].title
                 selectedWeekday = Weekday.allCases[currentRow]

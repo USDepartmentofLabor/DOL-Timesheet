@@ -50,8 +50,8 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
       //  orLabel.scaleFont(forDataType: .introductionBoldText)
         //employerLabel.scaleFont(forDataType: .italic)
         
-        employeeButton.addBorder()
-        employerButton.addBorder()
+        employeeButton.addBorder(cornerRadius: 10.0)
+        employerButton.addBorder(cornerRadius: 10.0)
 
         setupAccessibility()
     }

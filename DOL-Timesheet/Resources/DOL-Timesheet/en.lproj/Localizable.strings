@@ -388,9 +388,9 @@
 "onboard_welcome_employer_button" = "Set me up as an employer";
 
 "onboard_intro_1" = "This app is for your personal use and we don't share your information with anyone.";
-"onboard_intro_2" = "We will guide you through the setup by asking you a few questions that will help you get started using the app.";
+"onboard_intro_2" = "We will guide you through the setup by asking you a few questions that will help you get started using this app.";
 "onboard_intro_3" = "Please answer all of the questions and don't worry, you'll be able to change things later in the app's Settings.";
-"onboard_intro_note" = "Tap the right arrow below to continue.";
+"onboard_intro_note" = "Tap the right arrow below to continue";
 
 "onboard_name" = "What is you name or nickname?";
 "onboard_name_employer" = "What is your employer's name or nickname?";
@@ -435,7 +435,7 @@
 "onboard_review_employer_overtime_no" = "Your employee is not eligible for overtime (exempt)";
 "onboard_review_employer_state" = "Your employee works in ";
 
-"onboard_review_button" = "Looks good, let's go!";
+"onboard_review_button" = "  Looks good, let's go!";
 "onboard_review_note" = "Note: if something doesn't look right, go back to previous steps to make your changes";
 
 "info_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid for 8 hours of work get their pay rounded up/down to the nearest 15 minutes.";
@@ -459,7 +459,7 @@
 "wage_and_hour_division_link" = "http://www.dol.gov/whd/contact_us.htm";
 
 "info_state" = "We use the state you work in to help detect situations where your pay might be below teh federal minimum wage.";
-"state_minimum_wage" = "state minimum wage";
+"state_minimum_wage" = "State minimum wage";
 "first_pay_period"= "First day of your pay period";
 "hour" = "hour";
 

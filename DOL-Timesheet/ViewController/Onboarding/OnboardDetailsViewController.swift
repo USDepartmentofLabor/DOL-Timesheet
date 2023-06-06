@@ -60,6 +60,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     @IBOutlet weak var noteTitle: UILabel!
     
     @IBOutlet weak var nextButton: NavigationButton!
+    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     
     var pickerSelected = ShownPicker.none
     
@@ -73,8 +74,8 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     var stateValid: Bool = false
     var payRateValid: Bool = false
     var minimumWageValid: Bool = false
-    //var frequencyValid: Bool = false
-    //var payPeriodValid: Bool = false
+    var payRateTermValid: Bool = false
+    var payPeriodValid: Bool = false
     
     var selectedPayFrequency: PaymentFrequency? = .daily
     var selectedState: State?
@@ -108,6 +109,21 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         self.setupFieldTap()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            scrollViewBottomConstraint.constant = keyboardHeight
+        }
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        // Reset or handle the keyboard height as needed
+        scrollViewBottomConstraint.constant = 174
     }
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
@@ -115,25 +131,43 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         payFrequencyPickerHeight.constant = 0
         statePickerHeight.constant = 0
         payPeriodPickerHeight.constant = 0
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         
         switch pickerSelected {
         case .payFrequencyPicker:
             if payFrequencyPicker.frame.contains(sender.location(in: view)) {
+                if payFrequencyField.text?.count == 0 {
+                    payFrequencyField.text? = PaymentFrequency.daily.title
+                }
                 payFrequencyPickerHeight.constant = 216
             }
         case .payPeriodPicker:
             if payPeriodPicker.frame.contains(sender.location(in: view)) {
+                if payPeriodField.text?.count == 0 {
+                    payPeriodField.text? = "Hourly"
+                    payRateTermValid = true
+                }
                 payPeriodPickerHeight.constant = 216
             }
         case .payRateStart:
             break
         case .statePicker:
             if statePicker.frame.contains(sender.location(in: view)) {
+                if stateField.text?.count == 0 {
+                    stateField.text? = "Alabama"
+                    selectedState = State.states[0]
+                    if let state = stateMinWages.data.first(where: { $0.state == State.states[0].title }),
+                       let minWage = state.minimumWage {
+                        stateMinimumField.text = String(NumberFormatter.localisedCurrencyStr(from: minWage))
+                    }
+                    stateValid = true
+                }
                 statePickerHeight.constant = 216
             }
         case .none:
             break
         }
+        check()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -284,7 +318,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     func check() {
         canMoveForward = true
 
-        if (!stateValid || !payRateValid || !minimumWageValid) {
+        if (!stateValid || !payRateValid || !minimumWageValid || !payRateTermValid) {
             canMoveForward = false
         }
         if selectedPayFrequency == .biWeekly && firstPayPeriod == nil {
@@ -377,16 +411,29 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
             if payFrequencyPickerHeight.constant > 1 {
                 payFrequencyPickerHeight.constant = 0
             } else {
+                if payFrequencyField.text?.count == 0 {
+                    payFrequencyField.text? = PaymentFrequency.daily.title
+                }
                 payFrequencyPickerHeight.constant = 216
                 statePickerHeight.constant = 0
                 payPeriodPickerHeight.constant = 0
                 pickerSelected = .payFrequencyPicker
             }
+            check()
             return false
         } else if textField == stateField {
             if statePickerHeight.constant > 1 {
                 statePickerHeight.constant = 0
             } else {
+                if stateField.text?.count == 0 {
+                    stateField.text? = "Alabama"
+                    selectedState = State.states[0]
+                    if let state = stateMinWages.data.first(where: { $0.state == State.states[0].title }),
+                       let minWage = state.minimumWage {
+                        stateMinimumField.text = String(NumberFormatter.localisedCurrencyStr(from: minWage))
+                    }
+                    stateValid = true
+                }
                 statePickerHeight.constant = 216
                 payFrequencyPickerHeight.constant = 0
                 payPeriodPickerHeight.constant = 0
@@ -395,16 +442,22 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
                     self.scrollView.scrollToBottom()
                 }
             }
+            check()
             return false
         } else if textField == payPeriodField {
             if payPeriodPickerHeight.constant > 1 {
                 payPeriodPickerHeight.constant = 0
             } else {
+                if payPeriodField.text?.count == 0 {
+                    payPeriodField.text? = "Hourly"
+                    payRateTermValid = true
+                }
                 payPeriodPickerHeight.constant = 216
                 payFrequencyPickerHeight.constant = 0
                 statePickerHeight.constant = 0
                 pickerSelected = .payPeriodPicker
             }
+            check()
             return false
         } else {
             return true
@@ -442,9 +495,9 @@ extension OnboardDetailsViewController: UIPickerViewDelegate {
             
             minimumWage = stateMinimumField.text?.currencyAmount() ?? NSNumber(0)
             stateMinimumField.setBorderColor()
-            if minimumWage.doubleValue < 7.25 {
-                stateMinimumField.setErrorBorderColor()
-            }
+//            if minimumWage.doubleValue < 7.25 {
+//                stateMinimumField.setErrorBorderColor()
+//            }
             
             minimumWageValid = true
         } else {
@@ -513,9 +566,9 @@ extension OnboardDetailsViewController {
         textField.text = NumberFormatter.localisedCurrencyStr(from: minimumWage)
         
         stateMinimumField.setBorderColor()
-        if minimumWage.doubleValue < 7.25 {
-            stateMinimumField.setErrorBorderColor()
-        }
+//        if minimumWage.doubleValue < 7.25 {
+//            stateMinimumField.setErrorBorderColor()
+//        }
         
         minimumWageValid = true
         check()

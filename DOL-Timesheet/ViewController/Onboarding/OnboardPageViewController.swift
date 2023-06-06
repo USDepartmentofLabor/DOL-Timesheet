@@ -36,7 +36,17 @@ class OnboardPageViewController: UIPageViewController {
         }
         
         onboardDelegate?.onboardPageViewController(onboardPageViewController: self, didUpdatePageCount: orderedViewControllers.count)
+        
+        // Disable swiping by removing gesture recognizers
+            for view in self.view.subviews {
+                if let gestureRecognizers = view.gestureRecognizers {
+                    for gestureRecognizer in gestureRecognizers {
+                        view.removeGestureRecognizer(gestureRecognizer)
+                    }
+                }
+            }
     }
+    
     
     /**
      Scrolls to the next view controller.
