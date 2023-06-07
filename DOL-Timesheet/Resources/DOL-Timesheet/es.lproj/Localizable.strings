@@ -427,8 +427,10 @@
 "onboard_review_employee_workweek" = "La semana laboral de tu empleador comienza el ";
 "onboard_review_employee_frequency" = "Te pagan ";
 "onboard_review_employee_rate" = "Tu tarifa de pago es de $";
-"onboard_review_employee_overtime_yes" = "Eres elegible para sobretiempo (no exento)";
-"onboard_review_employee_overtime_no" = "You are not eligible for overtime (exempt)";
+"onboard_review_employee_overtime_yes1" = "Eres elegible para sobretiempo";
+"onboard_review_employee_overtime_yes2" = "(no exento)";
+"onboard_review_employee_overtime_no1" = "You are not eligible for overtime";
+"onboard_review_employee_overtime_no2" = "(exempt)";
 "onboard_review_employee_state" = "Trabajas en ";
 "onboard_review_employee_minimum_wage" = "donde el salario mínimo estatal es de ";
 

@@ -110,6 +110,11 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
         
+        firstDayPeriodText.text = NSLocalizedString("First day of your pay period", comment: "First day of your pay period")
+        firstDayPeriodText.isHidden = true
+        firstPayPeriodField.isHidden = true
+        payRateConstraint.constant = 20
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -171,10 +176,6 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        firstDayPeriodText.text = NSLocalizedString("First day of your pay period", comment: "First day of your pay period")
-        firstDayPeriodText.isHidden = true
-        firstPayPeriodField.isHidden = true
-        payRateConstraint.constant = 20
         
         if userType == .employee {
             payFrequencyTitle.text = NSLocalizedString("onboard_pay_frequency_employer", comment: "How often do you get paid?")
@@ -185,6 +186,10 @@ class OnboardDetailsViewController: OnboardBaseViewController {
             
             stateMinimumText.isHidden = false
             stateMinimumField.isHidden = false
+            
+            stateField.isHidden = false
+            stateTitle.isHidden = false
+            infoStateButton.isHidden = false
 
         } else {
             payFrequencyTitle.text = NSLocalizedString("onboard_pay_frequency_employee", comment: "How often does your employee get paid?")
@@ -194,6 +199,16 @@ class OnboardDetailsViewController: OnboardBaseViewController {
             
             stateMinimumText.isHidden = true
             stateMinimumField.isHidden = true
+            
+            stateField.isHidden = true
+            stateTitle.isHidden = true
+            infoStateButton.isHidden = true
+        }
+        
+        if (selectedPayFrequency == .biWeekly) {
+            firstDayPeriodText.isHidden = false
+            firstPayPeriodField.isHidden = false
+            payRateConstraint.constant = 102.5
         }
     }
 
@@ -310,7 +325,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         }
         
         let user = employmentModel?.employmentUser
-        user?.setAddress(street1: " ", street2: " ", city: " ", state: selectedState!.title, zipCode: " ")
+        user?.setAddress(street1: " ", street2: " ", city: " ", state: selectedState?.title, zipCode: " ")
         
         return true
     }
@@ -318,8 +333,14 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     func check() {
         canMoveForward = true
 
-        if (!stateValid || !payRateValid || !minimumWageValid || !payRateTermValid) {
-            canMoveForward = false
+        if userType == .employee {
+            if (!stateValid || !payRateValid || !minimumWageValid || !payRateTermValid) {
+                canMoveForward = false
+            }
+        } else {
+            if (!payRateValid || !payRateTermValid) {
+                canMoveForward = false
+            }
         }
         if selectedPayFrequency == .biWeekly && firstPayPeriod == nil {
             canMoveForward = false

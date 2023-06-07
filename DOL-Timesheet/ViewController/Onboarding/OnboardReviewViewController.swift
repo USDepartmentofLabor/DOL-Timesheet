@@ -69,12 +69,38 @@ class OnboardReviewViewController: OnboardBaseViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    func boldily(_ start: String, _ middle: String, _ end: String)-> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: start + middle + end)
+        let boldRange = NSRange(location: start.count, length: middle.count) // Specify the range of text to be bolded
+        let boldAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: 16) // Set the bold font
+        ]
+        attributedString.addAttributes(boldAttributes, range: boldRange)
+        return attributedString
+    }
+    
     func displayInfo() {
         if (userType == .employee) {
-            reviewNameLabel.text = NSLocalizedString("onboard_review_name", comment: "You are ") + (profileViewModel!.profileModel.currentUser?.name ?? "John Doe") + NSLocalizedString("onboard_review_employee", comment: ", an employee")
-            reviewOtherNameLabel.text = NSLocalizedString("onboard_review_employee_employer", comment: "You work for ") + (employmentModel?.employmentUser?.name ?? "John Smith")
-            reviewWorkweekLabel.text = NSLocalizedString("onboard_review_employee_workweek", comment: "Your employer's workweek starts on ") + (employmentModel?.workWeekStartDay.title ?? "Monday")
-            reviewPayTypeLabel.text = NSLocalizedString("onboard_review_employee_frequency", comment: "You are paid ") + (employmentModel?.paymentFrequency.title ?? "Unknown")
+            
+            reviewNameLabel.attributedText = boldily(
+                NSLocalizedString("onboard_review_name", comment: "You are "),
+                (profileViewModel!.profileModel.currentUser?.name ?? "John Doe"),
+                 NSLocalizedString("onboard_review_employee", comment: ", an employee"))
+                
+            reviewOtherNameLabel.attributedText = boldily(
+                NSLocalizedString("onboard_review_employee_employer", comment: "You work for "),
+                (employmentModel?.employmentUser?.name ?? "John Smith"),
+                " ")
+            
+            reviewWorkweekLabel.attributedText = boldily(
+                NSLocalizedString("onboard_review_employee_workweek", comment: "Your employer's workweek starts on "),
+                (employmentModel?.workWeekStartDay.title ?? "Monday"),
+                " ")
+            
+            reviewPayTypeLabel.attributedText = boldily(
+                NSLocalizedString("onboard_review_employee_frequency", comment: "You are paid "),
+                (employmentModel?.paymentFrequency.title ?? "Unknown"),
+                " ")
             
             var rate = 0.00
             if (employmentModel?.hourlyRates?.count ?? 0 > 0) {
@@ -82,42 +108,95 @@ class OnboardReviewViewController: OnboardBaseViewController {
             }
             
             if employmentModel?.employmentInfo.paymentType == .hourly {
-                reviewPayRateLabel.text = NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $") + (String(format: "%.2f", rate)) + "/" + NSLocalizedString("payment_type_hourly", comment: "Hourly")
-            }else {
+                
+                reviewPayRateLabel.attributedText = boldily(
+                    NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $"),
+                    (String(format: "%.2f", rate)) + "/",
+                    NSLocalizedString("payment_type_hourly", comment: "Hourly"))
+                
+            } else {
+                
                 let SalaryType = employmentModel?.employmentInfo.salary?.salaryType
                 let salary = employmentModel?.employmentInfo.salary
                 let amount = salary?.value ?? 10.00
                 
                 
                 if SalaryType == .annually {
-                    reviewPayRateLabel.text = NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $") + String(format: "%.2f", amount) + "/" + NSLocalizedString("salary_annually", comment: "Annually")
+                    
+                    reviewPayRateLabel.attributedText = boldily(
+                        NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $"),
+                        String(format: "%.2f", amount) + "/" + NSLocalizedString("salary_annually", comment: "Annually"),
+                        " ")
+                    
                 } else if SalaryType == .monthly {
-                    reviewPayRateLabel.text = NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $") + String(format: "%.2f", amount) + "/" + NSLocalizedString("salary_monthly", comment: "Monthly")
+                    
+                    reviewPayRateLabel.attributedText = boldily(
+                        NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $"),
+                        String(format: "%.2f", amount) + "/",
+                        NSLocalizedString("salary_monthly", comment: "Monthly"))
+                        
                 } else if SalaryType == .weekly {
-                    reviewPayRateLabel.text = NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $") + String(format: "%.2f", amount) + "/" + NSLocalizedString("salary_weekly", comment: "Weekly")
+                    
+                    reviewPayRateLabel.attributedText = boldily(
+                        NSLocalizedString("onboard_review_employee_rate", comment: "Your pay rate is $"),
+                        String(format: "%.2f", amount) + "/",
+                        NSLocalizedString("salary_weekly", comment: "Weekly"))
                 }
             }
             
-            if (employmentModel?.overtimeEligible == true) {
-                reviewOvertimeLabel.text = NSLocalizedString("onboard_review_employee_overtime_yes", comment: "You are eligible for overtime (non-exempt)")
-            } else {
-                reviewOvertimeLabel.text = NSLocalizedString("onboard_review_employee_overtime_no", comment: "You are not eligible for overtime (exempt)")
+            var exempt1 = NSLocalizedString("onboard_review_employee_overtime_yes1", comment: "You are eligible for overtime (non-exempt)")
+            var exempt2 = NSLocalizedString("onboard_review_employee_overtime_yes2", comment: "You are eligible for overtime (non-exempt)")
+            if (employmentModel?.overtimeEligible == false) {
+                exempt1 = NSLocalizedString("onboard_review_employee_overtime_no1", comment: "You are eligible for overtime (non-exempt)")
+                exempt2 = NSLocalizedString("onboard_review_employee_overtime_no2", comment: "You are eligible for overtime (non-exempt)")
             }
-            let stateString =  NSLocalizedString("onboard_review_employee_state", comment: "You work in ") + (employmentModel?.employmentUser?.address?.state ?? "West Virginia")
-            let minimumString = NSLocalizedString("onboard_review_employee_minimum_wage", comment: "whose state minimum wage is $") + (employmentModel?.minimumWage.stringValue ?? "7.25")
+            reviewOvertimeLabel.attributedText = boldily(exempt1, exempt2, " ")
+                                                         
+            let startString =  NSLocalizedString("onboard_review_employee_state", comment: "You work in ")
+            
+            let stateString = (employmentModel?.employmentUser?.address?.state ?? "West Virginia") + " "
+            let minimumString = NSLocalizedString("onboard_review_employee_minimum_wage", comment: "whose state minimum wage is $")
+            let wageString = (employmentModel?.minimumWage.stringValue ?? "7.25")
             let endString = "/" + NSLocalizedString("hour", comment: "hour")
             
+            let attributedString1 = boldily(startString, stateString, minimumString)
+            let attributedString2 = boldily(" ", wageString, endString)
             
-            let reviewStateMinimumString = stateString + " " + minimumString + endString
-            reviewStateLabel.text = reviewStateMinimumString
+            let combinedAttributedString = NSMutableAttributedString()
+
+            combinedAttributedString.append(attributedString1)
+            combinedAttributedString.append(attributedString2)
+            
+            reviewStateLabel.attributedText = combinedAttributedString
+                                                      
         } else {
-            reviewNameLabel.text = NSLocalizedString("onboard_review_name", comment: "You are ") + (profileViewModel!.profileModel.currentUser!.name ?? "John Doe") + NSLocalizedString("onboard_review_employer", comment: ", an employer")
-            reviewOtherNameLabel.text = NSLocalizedString("onboard_review_employer_employee", comment: "Your employee's name is ") + (employmentModel?.employmentUser?.name ?? "John Smith")
-            reviewWorkweekLabel.text = NSLocalizedString("onboard_review_employer_workweek", comment: "Your workweek starts on ") + (employmentModel?.workWeekStartDay.title ?? "Monday")
-            reviewPayTypeLabel.text = NSLocalizedString("onboard_review_employer_frequency", comment: "Your employee is paid ") + (employmentModel?.paymentFrequency.title ?? "Unknown")
+            reviewNameLabel.attributedText = boldily(
+                NSLocalizedString("onboard_review_name", comment: "You are "),
+                (profileViewModel!.profileModel.currentUser!.name ?? "John Doe"),
+                NSLocalizedString("onboard_review_employer", comment: ", an employer"))
+            
+            reviewOtherNameLabel.attributedText = boldily(
+                NSLocalizedString("onboard_review_employer_employee", comment: "Your employee's name is "),
+                (employmentModel?.employmentUser?.name ?? "John Smith"),
+                " ")
+            
+            reviewWorkweekLabel.attributedText = boldily(
+                NSLocalizedString("onboard_review_employer_workweek", comment: "Your workweek starts on "),
+                (employmentModel?.workWeekStartDay.title ?? "Monday"),
+                " ")
+            
+            reviewPayTypeLabel.attributedText = boldily(
+                NSLocalizedString("onboard_review_employer_frequency", comment: "Your employee is paid "),
+                (employmentModel?.paymentFrequency.title ?? "Unknown"),
+                " ")
             
             if employmentModel?.employmentInfo.paymentType == .hourly {
-                reviewPayRateLabel.text = NSLocalizedString("onboard_review_employer_rate", comment: "Your employee's pay rate is $") + (String((employmentModel?.hourlyRates![0].value)!)) + "/" + NSLocalizedString("payment_type_hourly", comment: "Hourly")
+                
+                reviewPayRateLabel.attributedText = boldily(
+                    NSLocalizedString("onboard_review_employer_rate", comment: "Your employee's pay rate is $"),
+                    (String((employmentModel?.hourlyRates![0].value)!)) + "/",
+                    NSLocalizedString("payment_type_hourly", comment: "Hourly"))
+                
             }else {
                 let SalaryType = employmentModel?.employmentInfo.salary?.salaryType
                 let salary = employmentModel?.employmentInfo.salary
@@ -125,20 +204,37 @@ class OnboardReviewViewController: OnboardBaseViewController {
                 
                 
                 if SalaryType == .annually {
-                    reviewPayRateLabel.text = NSLocalizedString("onboard_review_employer_rate", comment: "Your employee's pay rate is $") + String(amount) + "/" + NSLocalizedString("salary_annually", comment: "Annually")
+                    reviewPayRateLabel.attributedText = boldily(
+                        NSLocalizedString("onboard_review_employer_rate", comment: "Your employee's pay rate is $"),
+                        String(amount) + "/",
+                        NSLocalizedString("salary_annually", comment: "Annually"))
+                    
                 } else if SalaryType == .monthly {
-                    reviewPayRateLabel.text = NSLocalizedString("onboard_review_employer_rate", comment: "Your employee's pay rate is $") + String(amount) + "/" + NSLocalizedString("salary_monthly", comment: "Monthly")
+                    reviewPayRateLabel.attributedText = boldily(
+                        NSLocalizedString("onboard_review_employer_rate", comment: "Your employee's pay rate is $"),
+                        String(amount) + "/",
+                        NSLocalizedString("salary_monthly", comment: "Monthly"))
+                    
                 } else if SalaryType == .weekly {
-                    reviewPayRateLabel.text = NSLocalizedString("onboard_review_employer_rate", comment: "Your employee's pay rate is $") + String(amount) + "/" + NSLocalizedString("salary_weekly", comment: "Weekly")
+                    reviewPayRateLabel.attributedText = boldily(
+                        NSLocalizedString("onboard_review_employer_rate", comment: "Your employee's pay rate is $"),
+                        String(amount) + "/",
+                        NSLocalizedString("salary_weekly", comment: "Weekly"))
                 }
             }
             
-            if (employmentModel?.overtimeEligible == true) {
-                reviewOvertimeLabel.text = NSLocalizedString("onboard_review_employer_overtime_yes", comment: "Your employee is eligible for overtime (non-exempt)")
-            } else {
-                reviewOvertimeLabel.text = NSLocalizedString("onboard_review_employer_overtime_no", comment: "Your employee is not eligible for overtime (exempt)")
+            var exempt1 = NSLocalizedString("onboard_review_employer_overtime_yes1", comment: "You are eligible for overtime (non-exempt)")
+            var exempt2 = NSLocalizedString("onboard_review_employer_overtime_yes2", comment: "You are eligible for overtime (non-exempt)")
+            if (employmentModel?.overtimeEligible == false) {
+                exempt1 = NSLocalizedString("onboard_review_employer_overtime_no1", comment: "You are eligible for overtime (non-exempt)")
+                exempt2 = NSLocalizedString("onboard_review_employer_overtime_no2", comment: "You are eligible for overtime (non-exempt)")
             }
-            reviewStateLabel.text = NSLocalizedString("onboard_review_employer_state", comment: "Your employee works in ") + (employmentModel?.employmentUser?.address?.state ?? "West Virginia")
+            reviewOvertimeLabel.attributedText = boldily(exempt1, exempt2, " ")
+
+//            reviewStateLabel.attributedText = boldily(
+//                NSLocalizedString("onboard_review_employer_state", comment: "Your employee works in "),
+//                (employmentModel?.employmentUser?.address?.state ?? "West Virginia"),
+//                " ")
         }
 //        nextButton.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
     }
