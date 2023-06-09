@@ -28,6 +28,7 @@ class OnboardNameViewController: OnboardBaseViewController {
     @IBOutlet weak var workWeekStartPickerHeight: NSLayoutConstraint!
     
     @IBOutlet weak var nextButton: NavigationButton!
+    
 //    weak var delegate: TimeViewControllerDelegate?
     
     var otherName: String?
@@ -43,9 +44,19 @@ class OnboardNameViewController: OnboardBaseViewController {
         setupView()
         displayInfo()
         canMoveForward = false
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGesture)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
+    }
+    
+    @objc func handleTap(sender: UITapGestureRecognizer) {
+        
+        workWeekStartPickerHeight.constant = 0
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+
     }
     
     override func setupView() {
@@ -206,6 +217,7 @@ extension OnboardNameViewController: UITextFieldDelegate {
             }
             return false
         } else {
+            workWeekStartPickerHeight.constant = 0
             return true
         }
     }

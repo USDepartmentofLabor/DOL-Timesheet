@@ -29,7 +29,6 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     @IBOutlet weak var payRateTitle: UILabel!
     @IBOutlet weak var infoPayRateButton: UIButton!
     @IBOutlet weak var payRateField: UnderlinedTextField!
-    @IBOutlet weak var payRateConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var payPeriodField: UITextField!
     @IBOutlet weak var payPeriodPicker: UIPickerView!
@@ -62,9 +61,14 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     @IBOutlet weak var nextButton: NavigationButton!
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var firstDayView: UIView!
+    @IBOutlet weak var firstDayDatePicker: UIDatePicker!
+    @IBOutlet weak var firstDayViewHeightConstraint: NSLayoutConstraint!
+    
     var pickerSelected = ShownPicker.none
     
     var timePickerVC = TimePickerViewController.instantiateFromStoryboard()
+    var dateFormatter = DateFormatter()
     
     var overtimeEligible: Bool = true
     
@@ -82,6 +86,10 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     var selectedPayPeriod: String? = NSLocalizedString("payment_type_hourly", comment: "")
     var selectedPayRate: Double = 0.0
     var firstPayPeriod: Date?
+    
+    let firstDayViewHeightWithPicker:CGFloat = 275
+    let firstDayViewHeightWithField:CGFloat = 80
+    let firstDayViewHeightHidden:CGFloat = 0
     
     var stateMinWages: StateMinWage = StateMinWage.init()
 //    weak var delegate: TimeViewControllerDelegate?
@@ -111,9 +119,9 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         view.addGestureRecognizer(tapGesture)
         
         firstDayPeriodText.text = NSLocalizedString("First day of your pay period", comment: "First day of your pay period")
-        firstDayPeriodText.isHidden = true
-        firstPayPeriodField.isHidden = true
-        payRateConstraint.constant = 20
+        
+        firstDayViewHeightConstraint.constant = firstDayViewHeightHidden
+        firstDayView.isHidden = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -136,6 +144,15 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         payFrequencyPickerHeight.constant = 0
         statePickerHeight.constant = 0
         payPeriodPickerHeight.constant = 0
+        if (selectedPayFrequency == .biWeekly) {
+            firstDayViewHeightConstraint.constant = firstDayViewHeightWithField
+            firstDayDatePicker.isHidden = true
+            firstDayView.isHidden = false
+        } else {
+            firstDayViewHeightConstraint.constant = firstDayViewHeightHidden
+            firstDayView.isHidden = true
+        }
+        
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         
         switch pickerSelected {
@@ -206,11 +223,14 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         }
         
         if (selectedPayFrequency == .biWeekly) {
-            firstDayPeriodText.isHidden = false
-            firstPayPeriodField.isHidden = false
-            payRateConstraint.constant = 102.5
+            firstDayViewHeightConstraint.constant = firstDayViewHeightWithField
+            firstDayView.isHidden = false
+            firstDayDatePicker.isHidden = true
         }
+        
     }
+    
+    
 
     
     func deleteHourlyRate() {
@@ -236,6 +256,8 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         payFrequencyPickerHeight.constant = 0
         statePickerHeight.constant = 0
         payPeriodPickerHeight.constant = 0
+        
+        
         
         payPeriodArray = [NSLocalizedString("payment_type_hourly", comment: ""),
                           NSLocalizedString("salary_weekly", comment: ""),
@@ -363,10 +385,12 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     }
     
     @objc func fieldTapped(_ sender: UITapGestureRecognizer) {
-        self.timePickerVC.sourceView = (firstPayPeriodField)
-        self.timePickerVC.delegate = self
-        self.timePickerVC.pickerMode = .date
-        showPopup(popupController: self.timePickerVC, sender: firstPayPeriodField)
+        firstDayViewHeightConstraint.constant = firstDayViewHeightWithPicker
+        firstDayView.isHidden = false
+        firstDayDatePicker.isHidden = false
+        firstDayDatePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+        firstDayDatePicker.preferredDatePickerStyle = .wheels
+        
     }
     
     @IBAction func infoFrequencyPressed(_ sender: Any) {
@@ -495,14 +519,13 @@ extension OnboardDetailsViewController: UIPickerViewDelegate {
             payFrequencyField.text = PaymentFrequency.allCases[row].title
             selectedPayFrequency = PaymentFrequency.allCases[row]
             
-            firstDayPeriodText.isHidden = true
-            firstPayPeriodField.isHidden = true
-            payRateConstraint.constant = 20
+            firstDayViewHeightConstraint.constant = firstDayViewHeightHidden
+            firstDayView.isHidden = true
             
             if (PaymentFrequency.allCases[row] == .biWeekly) {
-                firstDayPeriodText.isHidden = false
-                firstPayPeriodField.isHidden = false
-                payRateConstraint.constant = 102.5
+                firstDayViewHeightConstraint.constant = firstDayViewHeightWithField
+                firstDayView.isHidden = false
+                firstDayDatePicker.isHidden = true
             }
 //            frequencyValid = true
         } else if pickerView == statePicker {
@@ -596,18 +619,16 @@ extension OnboardDetailsViewController {
     }
 }
 
-extension OnboardDetailsViewController: TimePickerProtocol {
-    func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM d, YYYY"
-        firstPayPeriodField.text = dateFormatter.string(from: timePickerVC.datePicker.date)
-        check()
-    }
+extension OnboardDetailsViewController {
     
-    func donePressed() {
-        timeChanged(sourceView: self.timePickerVC.sourceView, datePicker: self.timePickerVC.datePicker)
-        firstPayPeriod = timePickerVC.datePicker.date
-        self.dismiss(animated: true, completion: nil)
+    @objc func datePickerValueChanged(_ sender: UIDatePicker) {
+        let selectedDate = sender.date
+        firstPayPeriod = selectedDate
+        dateFormatter.dateFormat = "MMMM d, YYYY"
+        firstPayPeriodField.text = dateFormatter.string(from: selectedDate)
         check()
+        // Handle the value change here
+        // You can access the selected date using the 'selectedDate' variable
+        // Perform any desired actions or updates based on the new value
     }
 }

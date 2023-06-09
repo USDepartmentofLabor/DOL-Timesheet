@@ -190,7 +190,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     
     func isValidHourlyRate() -> Bool {
         if let hourlyRate = viewModel?.currentEmploymentModel?.employmentInfo.clock?.hourlyRate {
-            if hourlyRate.value < 0.1 {
+            if hourlyRate.value < 0.01 {
                 let alertController = UIAlertController(title: "Error",
                                                         message: "An error was detected in the hourly rate, this entry has been discarded.".localized,
                                                         preferredStyle: .alert)
