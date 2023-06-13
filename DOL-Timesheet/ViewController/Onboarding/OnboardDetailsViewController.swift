@@ -478,6 +478,7 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
                         stateMinimumField.text = String(NumberFormatter.localisedCurrencyStr(from: minWage))
                     }
                     stateValid = true
+                    minimumWageValid = true
                 }
                 statePickerHeight.constant = 216
                 payFrequencyPickerHeight.constant = 0
