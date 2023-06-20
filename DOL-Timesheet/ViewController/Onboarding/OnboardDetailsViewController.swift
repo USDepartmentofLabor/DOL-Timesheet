@@ -166,7 +166,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         case .payPeriodPicker:
             if payPeriodPicker.frame.contains(sender.location(in: view)) {
                 if payPeriodField.text?.count == 0 {
-                    payPeriodField.text? = "Hourly"
+                    payPeriodField.text? = NSLocalizedString("payment_type_hourly", comment: "Hourly")
                     payRateTermValid = true
                 }
                 payPeriodPickerHeight.constant = 216
@@ -385,12 +385,17 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     }
     
     @objc func fieldTapped(_ sender: UITapGestureRecognizer) {
-        firstDayViewHeightConstraint.constant = firstDayViewHeightWithPicker
-        firstDayView.isHidden = false
-        firstDayDatePicker.isHidden = false
-        firstDayDatePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
-        firstDayDatePicker.preferredDatePickerStyle = .wheels
-        
+        if (firstDayViewHeightConstraint.constant == firstDayViewHeightWithPicker) {
+            firstDayViewHeightConstraint.constant = firstDayViewHeightWithField
+            firstDayView.isHidden = false
+            firstDayDatePicker.isHidden = true
+        } else {
+            firstDayViewHeightConstraint.constant = firstDayViewHeightWithPicker
+            firstDayView.isHidden = false
+            firstDayDatePicker.isHidden = false
+            firstDayDatePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+            firstDayDatePicker.preferredDatePickerStyle = .wheels
+        }
     }
     
     @IBAction func infoFrequencyPressed(_ sender: Any) {
@@ -451,6 +456,14 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
         return true
     }
     
+    func hideFirstDatePayPeriodIfNecessary() {
+        if selectedPayFrequency == .biWeekly {
+            firstDayViewHeightConstraint.constant = firstDayViewHeightWithField
+            firstDayDatePicker.isHidden = true
+            firstDayView.isHidden = false
+        }
+    }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == payFrequencyField {
             if payFrequencyPickerHeight.constant > 1 {
@@ -462,6 +475,7 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
                 payFrequencyPickerHeight.constant = 216
                 statePickerHeight.constant = 0
                 payPeriodPickerHeight.constant = 0
+                hideFirstDatePayPeriodIfNecessary()
                 pickerSelected = .payFrequencyPicker
             }
             check()
@@ -483,6 +497,7 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
                 statePickerHeight.constant = 216
                 payFrequencyPickerHeight.constant = 0
                 payPeriodPickerHeight.constant = 0
+                hideFirstDatePayPeriodIfNecessary()
                 pickerSelected = .statePicker
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     self.scrollView.scrollToBottom()
@@ -495,12 +510,13 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
                 payPeriodPickerHeight.constant = 0
             } else {
                 if payPeriodField.text?.count == 0 {
-                    payPeriodField.text? = "Hourly"
+                    payPeriodField.text? = NSLocalizedString("payment_type_hourly", comment: "Hourly")
                     payRateTermValid = true
                 }
                 payPeriodPickerHeight.constant = 216
                 payFrequencyPickerHeight.constant = 0
                 statePickerHeight.constant = 0
+                hideFirstDatePayPeriodIfNecessary()
                 pickerSelected = .payPeriodPicker
             }
             check()
