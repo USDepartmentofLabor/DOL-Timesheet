@@ -67,10 +67,10 @@ class OnboardNameViewController: OnboardBaseViewController {
         self.workWeekStartPickerHeight.constant = 0
         workWeekStartPicker.selectRow(currentRow, inComponent: 0, animated: true)
         
-        nameLabel.text = NSLocalizedString("onboard_name", comment: "What is you name or nickname?")
+        nameLabel.text = NSLocalizedString("onboard_name", comment: "What is your name or nickname?")
         if userType == .employee {
             otherNameLabel.text = NSLocalizedString("onboard_name_employer", comment: "What is your employer's name or nickname?")
-            nameNoteLabel.text = NSLocalizedString("onboard_employer_note", comment: "Note: you can add more employers later in Settings")
+            nameNoteLabel.text = NSLocalizedString("onboard_employer_note", comment: "Note: You can add more employers later in Settings")
         } else {
             otherNameLabel.text = NSLocalizedString("onboard_name_employee", comment: "What is your employee's name or nickname?")
             nameNoteLabel.text = NSLocalizedString("onboard_employee_note", comment: "Note: You can add more employees later in Settings")

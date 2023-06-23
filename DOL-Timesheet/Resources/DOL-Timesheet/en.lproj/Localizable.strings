@@ -392,11 +392,11 @@
 "onboard_intro_3" = "Please answer all of the questions and don't worry, you'll be able to change things later in the app's Settings.";
 "onboard_intro_note" = "Tap the right arrow below to continue";
 
-"onboard_name" = "What is you name or nickname?";
+"onboard_name" = "What is your name or nickname?";
 "onboard_name_employer" = "What is your employer's name or nickname?";
 "onboard_name_employee" = "What is your employee's name or nickname?";
 "onboard_workweek_start" = "When does the workweek begin?";
-"onboard_employer_note" = "Note: you can add more employers later in Settings";
+"onboard_employer_note" = "Note: You can add more employers later in Settings";
 "onboard_employee_note" = "Note: You can add more employees later in Settings";
 
 "onboard_pay_frequency_employer" = "How often do you get paid?";
@@ -440,7 +440,7 @@
 "onboard_review_employer_state" = "Your employee works in ";
 
 "onboard_review_button" = "  Looks good, let's go!";
-"onboard_review_note" = "Note: if something doesn't look right, go back to previous steps to make your changes";
+"onboard_review_note" = "Note: If something doesn't look right, go back to previous steps to make your changes";
 
 "info_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid for 8 hours of work get their pay rounded up/down to the nearest 15 minutes.";
 "info_dont_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid exactly for 7 hours and 55 minutes of work DO NOT get their pay rounded up/down to the nearest 15 minutes.";

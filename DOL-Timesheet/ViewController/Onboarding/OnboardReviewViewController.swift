@@ -48,7 +48,7 @@ class OnboardReviewViewController: OnboardBaseViewController {
         reviewTitleLabel.text = NSLocalizedString("onboard_review_title", comment: "You're almost done!")
         reviewSetupLabel.text = NSLocalizedString("onboard_review_intro", comment: "Let's review your setup:")
         reviewConfirmButton.setTitle(NSLocalizedString("onboard_review_button", comment: "Looks good, let's go!"), for: .normal)
-        reviewNote.text = NSLocalizedString("onboard_review_note", comment: "Note: if something doesn't look right, go back to previous steps to make your changes")
+        reviewNote.text = NSLocalizedString("onboard_review_note", comment: "Note: If something doesn't look right, go back to previous steps to make your changes")
         
         setupAccessibility()
     }
@@ -160,7 +160,7 @@ class OnboardReviewViewController: OnboardBaseViewController {
             let endString = "/" + NSLocalizedString("hour", comment: "hour")
             
             let attributedString1 = boldily(startString, stateString, minimumString)
-            let attributedString2 = boldily(" ", wageString, endString)
+            let attributedString2 = boldily("", wageString, endString)
             
             let combinedAttributedString = NSMutableAttributedString()
 
@@ -230,6 +230,7 @@ class OnboardReviewViewController: OnboardBaseViewController {
                 exempt2 = NSLocalizedString("onboard_review_employer_overtime_no2", comment: "You are eligible for overtime (non-exempt)")
             }
             reviewOvertimeLabel.attributedText = boldily(exempt1, exempt2, " ")
+            reviewStateLabel.isHidden = true
 
 //            reviewStateLabel.attributedText = boldily(
 //                NSLocalizedString("onboard_review_employer_state", comment: "Your employee works in "),
