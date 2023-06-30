@@ -144,11 +144,11 @@ class OnboardReviewViewController: OnboardBaseViewController {
                 }
             }
             
-            var exempt1 = NSLocalizedString("onboard_review_employee_overtime_yes1", comment: "You are eligible for overtime (non-exempt)")
-            var exempt2 = NSLocalizedString("onboard_review_employee_overtime_yes2", comment: "You are eligible for overtime (non-exempt)")
+            var exempt1 = NSLocalizedString("onboard_review_employee_overtime_yes1", comment: "You are eligible for overtime")
+            var exempt2 = NSLocalizedString("onboard_review_employee_overtime_yes2", comment: "(non-exempt)")
             if (employmentModel?.overtimeEligible == false) {
-                exempt1 = NSLocalizedString("onboard_review_employee_overtime_no1", comment: "You are eligible for overtime (non-exempt)")
-                exempt2 = NSLocalizedString("onboard_review_employee_overtime_no2", comment: "You are eligible for overtime (non-exempt)")
+                exempt1 = NSLocalizedString("onboard_review_employee_overtime_no1", comment: "You are eligible for overtime")
+                exempt2 = NSLocalizedString("onboard_review_employee_overtime_no2", comment: "(non-exempt)")
             }
             reviewOvertimeLabel.attributedText = boldily(exempt1, exempt2, " ")
                                                          
@@ -192,9 +192,14 @@ class OnboardReviewViewController: OnboardBaseViewController {
             
             if employmentModel?.employmentInfo.paymentType == .hourly {
                 
+                var rate = 0.00
+                if (employmentModel?.hourlyRates?.count ?? 0 > 0) {
+                    rate = (employmentModel?.hourlyRates![0].value)!
+                }
+                
                 reviewPayRateLabel.attributedText = boldily(
                     NSLocalizedString("onboard_review_employer_rate", comment: "Your employee's pay rate is $"),
-                    (String((employmentModel?.hourlyRates![0].value)!)) + "/",
+                    (String(format: "%.2f", rate)) + "/",
                     NSLocalizedString("payment_type_hourly", comment: "Hourly"))
                 
             }else {
@@ -206,19 +211,19 @@ class OnboardReviewViewController: OnboardBaseViewController {
                 if SalaryType == .annually {
                     reviewPayRateLabel.attributedText = boldily(
                         NSLocalizedString("onboard_review_employer_rate", comment: "Your employee's pay rate is $"),
-                        String(amount) + "/",
+                        String(format: "%.2f", amount) + "/",
                         NSLocalizedString("salary_annually", comment: "Annually"))
                     
                 } else if SalaryType == .monthly {
                     reviewPayRateLabel.attributedText = boldily(
                         NSLocalizedString("onboard_review_employer_rate", comment: "Your employee's pay rate is $"),
-                        String(amount) + "/",
+                        String(format: "%.2f", amount) + "/",
                         NSLocalizedString("salary_monthly", comment: "Monthly"))
                     
                 } else if SalaryType == .weekly {
                     reviewPayRateLabel.attributedText = boldily(
                         NSLocalizedString("onboard_review_employer_rate", comment: "Your employee's pay rate is $"),
-                        String(amount) + "/",
+                        String(format: "%.2f", amount) + "/",
                         NSLocalizedString("salary_weekly", comment: "Weekly"))
                 }
             }

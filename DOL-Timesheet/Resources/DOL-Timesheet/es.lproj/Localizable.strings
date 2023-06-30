@@ -440,8 +440,10 @@
 "onboard_review_employer_workweek" = "Tu semana laboral comienza el ";
 "onboard_review_employer_frequency" = "A tu empleado se le paga ";
 "onboard_review_employer_rate" = "La tarifa de pago de tu empleado es de $";
-"onboard_review_employer_overtime_yes" = "Tu empleado es elegible para sobretiempo (no exento)";
-"onboard_review_employer_overtime_no" = "Tu empleado no es elegible para horas extras (exento)";
+"onboard_review_employer_overtime_yes1" = "Tu empleado es elegible para sobretiempo";
+"onboard_review_employer_overtime_yes2" = "(no exento)";
+"onboard_review_employer_overtime_no1" = "Tu empleado no es elegible para horas extras ";
+"onboard_review_employer_overtime_no2" = "(exento)";
 "onboard_review_employer_state" = "Tu empleado trabaja en ";
 
 "onboard_review_button" = "Se ve bien, ¡adelante!";

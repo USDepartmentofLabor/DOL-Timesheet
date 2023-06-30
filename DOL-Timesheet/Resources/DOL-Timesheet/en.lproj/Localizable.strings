@@ -421,9 +421,9 @@
 "onboard_review_employee_workweek" = "Your employer's workweek starts on ";
 "onboard_review_employee_frequency" = "You are paid ";
 "onboard_review_employee_rate" = "Your pay rate is $";
-"onboard_review_employee_overtime_yes1" = "You are eligible for overtime (non-exempt)";
+"onboard_review_employee_overtime_yes1" = "You are eligible for overtime ";
 "onboard_review_employee_overtime_yes2" = "(non-exempt)";
-"onboard_review_employee_overtime_no1" = "You are not eligible for overtime";
+"onboard_review_employee_overtime_no1" = "You are not eligible for overtime ";
 "onboard_review_employee_overtime_no2" = "(exempt)";
 "onboard_review_employee_state" = "You work in ";
 "onboard_review_employee_minimum_wage" = "whose state minimum wage is $";
@@ -462,7 +462,7 @@
 "wage_and_hour_division" = "Wage and Hour Division";
 "wage_and_hour_division_link" = "http://www.dol.gov/whd/contact_us.htm";
 
-"info_state" = "We use the state you work in to help detect situations where your pay might be below teh federal minimum wage.";
+"info_state" = "We use the state you work in to help detect situations where your pay might be below the federal minimum wage.";
 "state_minimum_wage" = "State minimum wage";
 "first_pay_period"= "First day of your pay period";
 "hour" = "hour";
