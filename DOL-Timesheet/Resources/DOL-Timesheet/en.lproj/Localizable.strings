@@ -396,8 +396,8 @@
 "onboard_name_employer" = "What is your employer's name or nickname?";
 "onboard_name_employee" = "What is your employee's name or nickname?";
 "onboard_workweek_start" = "When does the workweek begin?";
-"onboard_employer_note" = "Note: You can add more employers later in Settings";
-"onboard_employee_note" = "Note: You can add more employees later in Settings";
+"onboard_employer_note" = "You can add more employers later in Settings";
+"onboard_employee_note" = "You can add more employees later in Settings";
 
 "onboard_pay_frequency_employer" = "How often do you get paid?";
 "onboard_pay_frequency_employee" = "How often does your employee get paid?";
@@ -409,7 +409,7 @@
 "onboard_overtime_no" = "No (exempt)";
 "onboard_state_employer" = "What state do you work in?";
 "onboard_state_employee" = "The state your employee work in?";
-"onboard_pay_note" = "Note: You can add more pay rates and states later in Settings";
+"onboard_pay_note" = "You can add more pay rates and states later in Settings";
 
 "onboard_review_title" = "You're almost done!";
 "onboard_review_intro" = "Let's review your setup:";
@@ -440,7 +440,7 @@
 "onboard_review_employer_state" = "Your employee works in ";
 
 "onboard_review_button" = "  Looks good, let's go!";
-"onboard_review_note" = "Note: If something doesn't look right, go back to previous steps to make your changes";
+"onboard_review_note" = "If something doesn't look right, go back to previous steps to make your changes";
 
 "info_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid for 8 hours of work get their pay rounded up/down to the nearest 15 minutes.";
 "info_dont_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid exactly for 7 hours and 55 minutes of work DO NOT get their pay rounded up/down to the nearest 15 minutes.";
@@ -472,4 +472,15 @@
 "work" = "Work";
 "pay" = "Pay";
 "summary" = "Summary";
+
+"onboarding_name_nickname" = "Name or nickname";
+"onboarding_pay_week" = "Start of pay week";
+"pay_frequency" = "Pay frequency";
+"onboarding_first_day_pay" = "First day of pay period";
+"pay_rate" = "Pay rate";
+"onboarding_eligible_overtime" = "Eligible for overtime";
+"onboarding_state_min_wage" = "State you work in and min. wage";
+
+"onboard_review_overtime_yes" = "Yes (non-exempt)";
+"onboard_review_overtime_no" = "No (exempt)";
 

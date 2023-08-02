@@ -402,8 +402,8 @@
 "onboard_name_employer" = "¿Cuál es el nombre o apodo de tu empleador?";
 "onboard_name_employee" = "¿Cuál es el nombre o apodo de tu empleado?";
 "onboard_workweek_start" = "¿Cuándo comienza la semana laboral?";
-"onboard_employer_note" = "Nota: Puedes agregar más empleadores más adelante en las Configuraciones";
-"onboard_employee_note" = "Nota: Puedes agregar más empleados más adelante en las Configuraciones";
+"onboard_employer_note" = "Puedes agregar más empleadores más adelante en las Configuraciones";
+"onboard_employee_note" = "Puedes agregar más empleados más adelante en las Configuraciones";
 
 "onboard_pay_frequency_employer" = "¿Con qué frecuencia te pagan?";
 "onboard_pay_frequency_employee" = "¿Con qué frecuencia le pagan a tu empleado?";
@@ -415,7 +415,7 @@
 "onboard_overtime_no" = "No (exento)";
 "onboard_state_employer" = "¿Salario mínimo estatal?";
 "onboard_state_employee" = "¿En qué estado trabaja tu empleado?";
-"onboard_pay_note" = "Nota: Puedes agregar más tarifas de pago y estados más adelante en las Configuraciones";
+"onboard_pay_note" = "Puedes agregar más tarifas de pago y estados más adelante en las Configuraciones";
 
 "onboard_review_title" = "¡Ya casi terminas!";
 "onboard_review_intro" = "Revisemos tus configuraciones:";
@@ -447,7 +447,7 @@
 "onboard_review_employer_state" = "Tu empleado trabaja en ";
 
 "onboard_review_button" = "Se ve bien, ¡adelante!";
-"onboard_review_note" = "Nota: Si algo no se ve bien, vuelve a los pasos anteriores para realizar los cambios";
+"onboard_review_note" = "Si algo no se ve bien, vuelve a los pasos anteriores para realizar los cambios";
 
 "state_minimum_wage" = "Salario mínimo estatal";
 "hour" = "hora";
@@ -464,3 +464,14 @@
 
 "info_state" = "We use the state you work in to help detect situations where your pay might be below teh federal minimum wage.";
 "first_pay_period"= "First day of your pay period";
+
+"onboarding_name_nickname" = "Nombre o apodo";
+"onboarding_pay_week" = "Start of pay week";
+"pay_frequency" = "Pay frequency";
+"onboarding_first_day_pay" = "First day of pay period";
+"pay_rate" = "Tarifa de pago";
+"onboarding_eligible_overtime" = "Elegible para sobretiempo";
+"onboarding_state_min_wage" = "State you work in and min. wage";
+
+"onboard_review_overtime_yes" = "Si (no exento)";
+"onboard_review_overtime_no" = "No (exento)";

@@ -18,7 +18,7 @@ enum ShownPicker {
 
 class OnboardDetailsViewController: OnboardBaseViewController {
 
-    @IBOutlet weak var displayLogo: UIImageView!
+    @IBOutlet weak var detailTitleLabel: UILabel!
     @IBOutlet weak var payFrequencyTitle: UILabel!
     @IBOutlet weak var infoFrequencyButton: UIButton!
     
@@ -83,7 +83,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     
     var selectedPayFrequency: PaymentFrequency? = .daily
     var selectedState: State?
-    var selectedPayPeriod: String? = NSLocalizedString("payment_type_hourly", comment: "")
+    var selectedPayPeriod: String?
     var selectedPayRate: Double = 0.0
     var firstPayPeriod: Date?
     
@@ -111,14 +111,10 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
-        setupView()
-        displayInfo()
         canMoveForward = false
         self.setupFieldTap()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
-        
-        firstDayPeriodText.text = NSLocalizedString("First day of your pay period", comment: "First day of your pay period")
         
         firstDayViewHeightConstraint.constant = firstDayViewHeightHidden
         firstDayView.isHidden = true
@@ -166,7 +162,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         case .payPeriodPicker:
             if payPeriodPicker.frame.contains(sender.location(in: view)) {
                 if payPeriodField.text?.count == 0 {
-                    payPeriodField.text? = NSLocalizedString("payment_type_hourly", comment: "Hourly")
+                    payPeriodField.text? = "payment_type_hourly".localized
                     payRateTermValid = true
                 }
                 payPeriodPickerHeight.constant = 216
@@ -180,6 +176,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
                     selectedState = State.states[0]
                     if let state = stateMinWages.data.first(where: { $0.state == State.states[0].title }),
                        let minWage = state.minimumWage {
+                        minimumWage = minWage as NSNumber
                         stateMinimumField.text = String(NumberFormatter.localisedCurrencyStr(from: minWage))
                     }
                     stateValid = true
@@ -194,12 +191,16 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        setupView()
+        displayInfo()
+        
+        detailTitleLabel.text = NSLocalizedString("pay", comment: "Pay")
         if userType == .employee {
-            payFrequencyTitle.text = NSLocalizedString("onboard_pay_frequency_employer", comment: "How often do you get paid?")
-            payRateTitle.text = NSLocalizedString("onboard_pay_rate_employer", comment: "What is your pay rate?")
-            overtimeTitle.text = NSLocalizedString("onboard_overtime_employer", comment: "Are you eligible for paid overtime?")
-            stateTitle.text = NSLocalizedString("onboard_state_employer", comment: "What state do you work in?")
-            stateMinimumText.text = NSLocalizedString("state_minimum_wage", comment: "State minimum wage")
+            payFrequencyTitle.text = "onboard_pay_frequency_employer".localized
+            payRateTitle.text = "onboard_pay_rate_employer".localized
+            overtimeTitle.text = "onboard_overtime_employer".localized
+            stateTitle.text = "onboard_state_employer".localized
+            stateMinimumText.text = "state_minimum_wage".localized
             
             stateMinimumText.isHidden = false
             stateMinimumField.isHidden = false
@@ -209,10 +210,10 @@ class OnboardDetailsViewController: OnboardBaseViewController {
             infoStateButton.isHidden = false
 
         } else {
-            payFrequencyTitle.text = NSLocalizedString("onboard_pay_frequency_employee", comment: "How often does your employee get paid?")
-            payRateTitle.text = NSLocalizedString("onboard_pay_rate_employee", comment: "What is your employee's pay rate?")
-            overtimeTitle.text = NSLocalizedString("onboard_overtime_employee", comment: "Is your employee eligible for paid time?")
-            stateTitle.text = NSLocalizedString("onboard_state_employee", comment: "The state your employee work in?")
+            payFrequencyTitle.text = "onboard_pay_frequency_employee".localized
+            payRateTitle.text = "onboard_pay_rate_employee".localized
+            overtimeTitle.text = "onboard_overtime_employee".localized
+            stateTitle.text = "onboard_state_employee".localized
             
             stateMinimumText.isHidden = true
             stateMinimumField.isHidden = true
@@ -241,6 +242,8 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     
     override func setupView() {
         
+        self.selectedPayPeriod = "payment_type_hourly".localized
+        
         let rate = payRateField.text?.currencyAmount() ?? NSNumber(0)
         payRateField.text = NumberFormatter.localisedCurrencyStr(from: rate)
                 
@@ -259,28 +262,30 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         
         
         
-        payPeriodArray = [NSLocalizedString("payment_type_hourly", comment: ""),
-                          NSLocalizedString("salary_weekly", comment: ""),
-                          NSLocalizedString("salary_monthly", comment: ""),
-                          NSLocalizedString("salary_annually", comment: "")]
+        payPeriodArray = ["payment_type_hourly".localized,
+                          "salary_weekly".localized,
+                          "salary_monthly".localized,
+                          "salary_annually".localized]
+        
+        firstDayPeriodText.text = "First day of your pay period".localized
         
         if userType == .employee {
-            payFrequencyTitle.text = NSLocalizedString("onboard_pay_frequency_employer", comment: "How often do you get paid?")
-            payRateTitle.text = NSLocalizedString("onboard_pay_rate_employer", comment: "What is your pay rate?")
-            overtimeTitle.text = NSLocalizedString("onboard_overtime_employer", comment: "Are you eligible for paid overtime?")
-            stateTitle.text = NSLocalizedString("onboard_state_employer", comment: "What state do you work in?")
+            payFrequencyTitle.text = "onboard_pay_frequency_employer".localized
+            payRateTitle.text = "onboard_pay_rate_employer".localized
+            overtimeTitle.text = "onboard_overtime_employer".localized
+            stateTitle.text = "onboard_state_employer".localized
         } else {
-            payFrequencyTitle.text = NSLocalizedString("onboard_pay_frequency_employee", comment: "How often does your employee get paid?")
-            payRateTitle.text = NSLocalizedString("onboard_pay_rate_employee", comment: "What is your employee's pay rate?")
-            overtimeTitle.text = NSLocalizedString("onboard_overtime_employee", comment: "What is your employee paid time?")
-            stateTitle.text = NSLocalizedString("onboard_state_employee", comment: "What state does your employee work in?")
+            payFrequencyTitle.text = "onboard_pay_frequency_employee".localized
+            payRateTitle.text = "onboard_pay_rate_employee".localized
+            overtimeTitle.text = "onboard_overtime_employee".localized
+            stateTitle.text = "onboard_state_employee".localized
         }
         
         stateMinimumField.addTarget(self, action: #selector(minimumWageDidChange(_:)), for: .editingChanged)
         
-        yesOvertimeButton.setTitle(NSLocalizedString("onboard_overtime_yes", comment: "Yes (non-exempt)"), for: .normal)
-        noOvertimeButton.setTitle(NSLocalizedString("onboard_overtime_no", comment: "No (exempt)"), for: .normal)
-        noteTitle.text = NSLocalizedString("onboard_pay_note", comment: "")
+        yesOvertimeButton.setTitle("onboard_overtime_yes".localized, for: .normal)
+        noOvertimeButton.setTitle("onboard_overtime_no".localized, for: .normal)
+        noteTitle.text = "onboard_pay_note".localized
         
         setupAccessibility()
         
@@ -296,7 +301,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     }
     
     func setupAccessibility() {
-        payRateField.accessibilityLabel = NSLocalizedString("rate_amount", comment: "Rate Amount")
+        payRateField.accessibilityLabel = "rate_amount".localized
         stateMinimumField.accessibilityLabel = "minimum_wage_amount".localized
 
         if Util.isVoiceOverRunning {
@@ -327,7 +332,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         }
         
         employmentModel?.paymentType = .salary
-        if selectedPayPeriod! == NSLocalizedString("payment_type_hourly", comment: "") {
+        if selectedPayPeriod! == "payment_type_hourly".localized {
             employmentModel?.paymentType = .hourly
             if employmentModel?.hourlyRates?.count == 0 {
                 employmentModel?.newHourlyRate()
@@ -335,13 +340,13 @@ class OnboardDetailsViewController: OnboardBaseViewController {
             employmentModel?.hourlyRates?[0].value = selectedPayRate
 //            employmentModel?.hourlyRates?[0].createdAt = Date()
             
-        } else if selectedPayPeriod! == NSLocalizedString("salary_weekly", comment: "") {
+        } else if selectedPayPeriod! == "salary_weekly".localized {
             deleteHourlyRate()
             employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .weekly)
-        } else if selectedPayPeriod! == NSLocalizedString("salary_monthly", comment: "") {
+        } else if selectedPayPeriod! == "salary_monthly".localized {
             deleteHourlyRate()
             employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .monthly)
-        } else if selectedPayPeriod! == NSLocalizedString("salary_annually", comment: "") {
+        } else if selectedPayPeriod! == "salary_annually".localized {
             deleteHourlyRate()
             employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .annually)
         }
@@ -419,10 +424,8 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     @IBAction func yesOvertimeButtonPressed(_ sender: Any) {
         noOvertimeButton.tintColor = UIColor.white
         noOvertimeButton.backgroundColor = UIColor.white
-        noOvertimeButton.setTitleColor(UIColor.black, for: .normal)
         yesOvertimeButton.tintColor = UIColor(named: "onboardButtonColor")
         yesOvertimeButton.backgroundColor = UIColor(named: "onboardButtonColor")
-        yesOvertimeButton.setTitleColor(UIColor.white, for: .normal)
         self.containerView.bringSubviewToFront(yesOvertimeButton)
         overtimeEligible = true
     }
@@ -430,10 +433,8 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     @IBAction func noOvertimeButtonPressed(_ sender: Any) {
         noOvertimeButton.tintColor = UIColor(named: "onboardButtonColor")
         noOvertimeButton.backgroundColor = UIColor(named: "onboardButtonColor")
-        noOvertimeButton.setTitleColor(UIColor.white, for: .normal)
         yesOvertimeButton.tintColor = UIColor.white
         yesOvertimeButton.backgroundColor = UIColor.white
-        yesOvertimeButton.setTitleColor(UIColor.black, for: .normal)
         self.containerView.bringSubviewToFront(noOvertimeButton)
         overtimeEligible = false
     }
@@ -489,6 +490,7 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
                     selectedState = State.states[0]
                     if let state = stateMinWages.data.first(where: { $0.state == State.states[0].title }),
                        let minWage = state.minimumWage {
+                        minimumWage = minWage as NSNumber
                         stateMinimumField.text = String(NumberFormatter.localisedCurrencyStr(from: minWage))
                     }
                     stateValid = true
@@ -510,7 +512,7 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
                 payPeriodPickerHeight.constant = 0
             } else {
                 if payPeriodField.text?.count == 0 {
-                    payPeriodField.text? = NSLocalizedString("payment_type_hourly", comment: "Hourly")
+                    payPeriodField.text? = "payment_type_hourly".localized
                     payRateTermValid = true
                 }
                 payPeriodPickerHeight.constant = 216
@@ -550,6 +552,7 @@ extension OnboardDetailsViewController: UIPickerViewDelegate {
             selectedState = State.states[row]
             if let state = stateMinWages.data.first(where: { $0.state == State.states[row].title }),
                let minWage = state.minimumWage {
+                minimumWage = minWage as NSNumber
                 stateMinimumField.text = String(NumberFormatter.localisedCurrencyStr(from: minWage))
             }
             stateValid = true

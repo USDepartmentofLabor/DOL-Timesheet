@@ -10,13 +10,11 @@ import UIKit
 
 class OnboardIntroductionViewController: OnboardBaseViewController {
 
-    @IBOutlet weak var displayLogo: UIImageView!
     
     @IBOutlet weak var introductionLabel: UILabel!
     @IBOutlet weak var introLabel1: UILabel!
     @IBOutlet weak var introLabel2: UILabel!
     @IBOutlet weak var introLabel3: UILabel!
-    @IBOutlet weak var introNoteLabel: UILabel!
     
     
     @IBOutlet weak var nextButton: NavigationButton!
@@ -25,9 +23,12 @@ class OnboardIntroductionViewController: OnboardBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
+        canMoveForward = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         setupView()
         displayInfo()
-        canMoveForward = true
     }
     
     override func saveData() -> Bool {
@@ -40,18 +41,15 @@ class OnboardIntroductionViewController: OnboardBaseViewController {
 //        label1.scaleFont(forDataType: .introductionBoldText)
 //        label2.scaleFont(forDataType: .introductionText)
         
-        introductionLabel.text = NSLocalizedString("introduction", comment: "Introduction")
-        introLabel1.text = NSLocalizedString("onboard_intro_1", comment: "This app is for your personal use and we don't share your information with anyone.")
-        introLabel2.text = NSLocalizedString("onboard_intro_2", comment: "We will guide you through the setup by asking you a few questions that will help you get started.")
-        introLabel3.text = NSLocalizedString("onboard_intro_3", comment: "Please answer all of the questions and don't worry, you'll be able to change things later in the app's Settings.")
-        introNoteLabel.text = NSLocalizedString("onboard_intro_note", comment: "Tap the right arrow below to continue")
-
+        introductionLabel.text = "introduction".localized
+        introLabel1.text = "onboard_intro_1".localized
+        introLabel2.text = "onboard_intro_2".localized
+        introLabel3.text = "onboard_intro_3".localized
         
         setupAccessibility()
     }
     
     func setupAccessibility() {
-        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
     }
 
     func displayInfo() {

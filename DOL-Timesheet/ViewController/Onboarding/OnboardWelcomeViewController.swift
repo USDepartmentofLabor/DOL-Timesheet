@@ -29,8 +29,12 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         setupNavigationBarSettings()
         setupView()
         displayInfo()
-      //  canMoveForward = true
         canMoveForward = true
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.offerSpanish()
+        }
     }
     
     override func setupView() {
@@ -38,12 +42,12 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
 //        label1.scaleFont(forDataType: .introductionBoldText)
 //        label2.scaleFont(forDataType: .introductionText)
         
-        titleLabel.text = NSLocalizedString("welcome_intro", comment: "Welcome to WHD's Timesheet App")
-        employeeLabel.text = NSLocalizedString("onboard_welcome_employee", comment: "I want to use this app to help me keep track of my own time.")
-        employeeButton.setTitle(NSLocalizedString("onboard_welcome_employee_button", comment: "Set me up as an employee"), for: .normal)
-        orLabel.text = NSLocalizedString("or", comment: "OR")
-        employerLabel.text = NSLocalizedString("onboard_welcome_employer", comment: "I want to use this app to help me keep track of other people's time.")
-        employerButton.setTitle(NSLocalizedString("onboard_welcome_employer_button", comment: "Set me up as an employer"), for: .normal)
+        titleLabel.text = "welcome_intro".localized
+        employeeLabel.text = "onboard_welcome_employee".localized
+        employeeButton.setTitle("onboard_welcome_employee_button".localized, for: .normal)
+        orLabel.text = "or".localized
+        employerLabel.text = "onboard_welcome_employer".localized
+        employerButton.setTitle("onboard_welcome_employer_button".localized, for: .normal)
         
       //  titleLabel.scaleFont(forDataType: .introductionBoldText)
         //employeeLabel.scaleFont(forDataType: .italic)
@@ -81,7 +85,7 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
     @IBAction func employeeSelected(_ sender: Any) {
         onboardingDelegate?.updateCanMoveForward(value:true)
         
-        employerButton.tintColor = UIColor.white
+        employerButton.tintColor = UIColor(named: "onboardSecondButtonColor")
         employeeButton.tintColor = UIColor(named: "onboardButtonColor")
         
         if let employee = profileViewModel!.profileModel.currentUser as? Employee {
@@ -97,7 +101,7 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         onboardingDelegate?.updateCanMoveForward(value: true)
         
         employerButton.tintColor = UIColor(named: "onboardButtonColor")
-        employeeButton.tintColor = UIColor.white
+        employeeButton.tintColor = UIColor(named: "onboardSecondButtonColor")
         
         if let employer = profileViewModel!.profileModel.currentUser as? Employer {
             changeToEmployee(employer: employer)
@@ -159,5 +163,30 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         }
         manageVC?.viewModel = ProfileViewModel(context: profileViewModel!.managedObjectContext.childManagedObjectContext())
     }
+    
+    func offerSpanish() {
+        
+        if Localizer.spanishOffered() == false {
+            let langUpdate = (Localizer.currentLanguage == Localizer.ENGLISH) ? Localizer.SPANISH : Localizer.ENGLISH
+            
+            let alertController =
+                UIAlertController(title: " \n\n \("spanish_support".localized)",
+                                  message: nil,
+                                  preferredStyle: .alert)
+            let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 73, height: 50))
+            imgViewTitle.image = UIImage(named:"holaHello")
+            alertController.view.addSubview(imgViewTitle)
+             
+             alertController.addAction(
+                 UIAlertAction(title: "No", style: .cancel))
+             alertController.addAction(
+                UIAlertAction(title: "yes_si".localized, style: .destructive) { _ in
+                    Localizer.updateCurrentLanguage(lang: langUpdate)
+                    self.setupView()
+                 }
+             )
+             present(alertController, animated: true)
+        }
+     }
     
 }

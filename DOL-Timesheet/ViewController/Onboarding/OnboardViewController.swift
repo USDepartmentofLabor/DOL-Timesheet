@@ -51,12 +51,6 @@ class OnboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        welcomeLabel.text = NSLocalizedString("welcome", comment: "Welcome")
-        introLabel.text = NSLocalizedString("intro", comment: "Intro")
-        workLabel.text = NSLocalizedString("work", comment: "Work")
-        payLabel.text = NSLocalizedString("pay", comment: "Pay")
-        summaryLabel.text =  NSLocalizedString("summary", comment: "Summary")
-        
         let profileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
         if let vcs = onboardPageViewController?.orderedViewControllers {
             for (index, element) in vcs.enumerated() {
@@ -69,6 +63,18 @@ class OnboardViewController: UIViewController {
         progressImages = [progress1, progress2, progress3, progress4, progress5]
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        displayInfo()
+    }
+    
+    func displayInfo() {
+        welcomeLabel.text = "welcome".localized
+        introLabel.text = "intro".localized
+        workLabel.text = "work".localized
+        payLabel.text = "pay".localized
+        summaryLabel.text =  "summary".localized
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let onboardPageViewController = segue.destination as? OnboardPageViewController {
             self.onboardPageViewController = onboardPageViewController
@@ -76,6 +82,9 @@ class OnboardViewController: UIViewController {
     }
 
     @IBAction func didTapNextButton(_ sender: Any) {
+        
+        displayInfo()
+        
         nextButton.isUserInteractionEnabled = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.nextButton.isUserInteractionEnabled = true

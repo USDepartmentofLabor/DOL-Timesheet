@@ -10,7 +10,7 @@ import UIKit
 
 class OnboardNameViewController: OnboardBaseViewController {
 
-    @IBOutlet weak var displayLogo: UIImageView!
+    @IBOutlet weak var nameTitleLabel: UILabel!
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
@@ -41,15 +41,14 @@ class OnboardNameViewController: OnboardBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
-        setupView()
-        displayInfo()
         canMoveForward = false
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        setupView()
     }
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
@@ -67,15 +66,17 @@ class OnboardNameViewController: OnboardBaseViewController {
         self.workWeekStartPickerHeight.constant = 0
         workWeekStartPicker.selectRow(currentRow, inComponent: 0, animated: true)
         
-        nameLabel.text = NSLocalizedString("onboard_name", comment: "What is your name or nickname?")
+        nameTitleLabel.text = "work".localized
+        
+        nameLabel.text = "onboard_name".localized
         if userType == .employee {
-            otherNameLabel.text = NSLocalizedString("onboard_name_employer", comment: "What is your employer's name or nickname?")
-            nameNoteLabel.text = NSLocalizedString("onboard_employer_note", comment: "Note: You can add more employers later in Settings")
+            otherNameLabel.text = "onboard_name_employer".localized
+            nameNoteLabel.text = "onboard_employer_note".localized
         } else {
-            otherNameLabel.text = NSLocalizedString("onboard_name_employee", comment: "What is your employee's name or nickname?")
-            nameNoteLabel.text = NSLocalizedString("onboard_employee_note", comment: "Note: You can add more employees later in Settings")
+            otherNameLabel.text = "onboard_name_employee".localized
+            nameNoteLabel.text = "onboard_employee_note".localized
         }
-        workweekLabel.text = NSLocalizedString("onboard_workweek_start", comment: "When does the workweek begin?")
+        workweekLabel.text = "onboard_workweek_start".localized
         
         setupAccessibility()
         scrollView.keyboardDismissMode = .onDrag
@@ -88,19 +89,6 @@ class OnboardNameViewController: OnboardBaseViewController {
     func setupAccessibility() {
 //        displayLogo.accessibilityLabel = NSLocalizedString("whd_logo", comment: "WHD Logo")
     }
-
-    func displayInfo() {
-//        label1.text = NSLocalizedString("introduction_text1", comment: "Introduction Text1")
-//        label2.text = NSLocalizedString("introduction_text2", comment: "Introduction Text2")
-//        nextButton.setTitle(NSLocalizedString("next", comment: "Next"), for: .normal)
-    }
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "setupProfile",
-//            let setupVC = segue.destination as? SetupProfileViewController {
-//            setupVC.delegate = delegate
-//        }
-//    }
     
     override func saveData() -> Bool  {
         print("OnboardNameViewController SAVE DATA")

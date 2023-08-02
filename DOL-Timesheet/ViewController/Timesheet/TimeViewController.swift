@@ -48,7 +48,7 @@ class TimeViewController: UIViewController {
             performSegue(withIdentifier: "showOnboard", sender: nil)
             return
         }
-        offerSpanish()
+        //offerSpanish()
     }
     
     override func viewWillAppear(_ animated: Bool) {
