@@ -68,6 +68,8 @@
 "payment_type_paid_per_unit" = "Paid Per Unit";
 "hourly_payment_title" = "Hourly Payment";
 
+"payment_hour" = "Hour";
+
 // Payment Types Description
 "payment_type_hourly_desc" = "The Fair Labor Standards Act (FLSA) requires that covered, nonexempt employees in the United States be paid at least the Federal minimum wage for each hour worked and receive overtime pay at one and one-half times the employee's regular rate of pay for all hours worked over 40 in a workweek.";
 "payment_type_salary_desc" = "A salary is a predetermined amount of pay and is generally expressed as an amount paid weekly, bi-weekly, semi-monthly, monthly or yearly.";

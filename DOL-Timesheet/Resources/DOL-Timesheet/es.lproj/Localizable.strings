@@ -68,6 +68,8 @@
 "payment_type_paid_per_unit" = "Pago Por Unidad";
 "hourly_payment_title" = "Pago por Hora";
 
+"payment_hour" = "Por Hora";
+
 // Payment Types Description
 "payment_type_hourly_desc" = "La Ley de Normas Justas de Trabajo (FLSA, por sus siglas en inglés) requiere que los empleados cubiertos, no exentos, en los Estados Unidos se les pague al menos el salario mínimo federal por cada hora trabajada, y reciban pago de sobretiempo a tiempo y medio la tarifa regular de pago del empleado por todas las horas trabajadas por encima de 40 horas en una semana laboral.";
 "payment_type_salary_desc" = "Un salario es una cantida predeterminada de pago y generalmente se expresa como una cantidad pagada semanalmente, cada dos semanas, cada quince días, cada mes o cada año.";

@@ -54,8 +54,9 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
       //  orLabel.scaleFont(forDataType: .introductionBoldText)
         //employerLabel.scaleFont(forDataType: .italic)
         
-        employeeButton.addBorder(cornerRadius: 10.0)
-        employerButton.addBorder(cornerRadius: 10.0)
+//        employeeButton.addBorder(cornerRadius: 10.0)
+//        employerButton.addBorder(cornerRadius: 10.0)
+        employeeSelected(employeeButton)
 
         setupAccessibility()
     }
@@ -82,11 +83,13 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
 //        }
 //    }
     
-    @IBAction func employeeSelected(_ sender: Any) {
+    @IBAction func employerSelected(_ sender: Any) {
         onboardingDelegate?.updateCanMoveForward(value:true)
         
         employerButton.tintColor = UIColor(named: "onboardSecondButtonColor")
-        employeeButton.tintColor = UIColor(named: "onboardButtonColor")
+        employerButton.setBorderColor(named: "onboardSecondButtonColor")
+        employeeButton.tintColor = .white
+        employeeButton.setBorderColor(named: "onboardButtonColor")
         
         if let employee = profileViewModel!.profileModel.currentUser as? Employee {
             changeToEmployer(employee: employee)
@@ -97,13 +100,15 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         canMoveForward = true
     }
     
-    @IBAction func employerSelected(_ sender: Any) {
+    @IBAction func employeeSelected(_ sender: Any) {
         onboardingDelegate?.updateCanMoveForward(value: true)
         
-        employerButton.tintColor = UIColor(named: "onboardButtonColor")
+        employerButton.tintColor = .white
+        employerButton.setBorderColor(named: "onboardButtonColor")
         employeeButton.tintColor = UIColor(named: "onboardSecondButtonColor")
+        employeeButton.setBorderColor(named: "onboardSecondButtonColor")
         
-        if let employer = profileViewModel!.profileModel.currentUser as? Employer {
+        if let employer = profileViewModel?.profileModel.currentUser as? Employer {
             changeToEmployee(employer: employer)
         }
         
@@ -178,9 +183,9 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
             alertController.view.addSubview(imgViewTitle)
              
              alertController.addAction(
-                 UIAlertAction(title: "No", style: .cancel))
+                 UIAlertAction(title: "No", style: .destructive))
              alertController.addAction(
-                UIAlertAction(title: "yes_si".localized, style: .destructive) { _ in
+                UIAlertAction(title: "yes_si".localized, style: .default) { _ in
                     Localizer.updateCurrentLanguage(lang: langUpdate)
                     self.setupView()
                  }

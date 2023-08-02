@@ -162,7 +162,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         case .payPeriodPicker:
             if payPeriodPicker.frame.contains(sender.location(in: view)) {
                 if payPeriodField.text?.count == 0 {
-                    payPeriodField.text? = "payment_type_hourly".localized
+                    payPeriodField.text? = "payment_hour".localized
                     payRateTermValid = true
                 }
                 payPeriodPickerHeight.constant = 216
@@ -242,7 +242,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     
     override func setupView() {
         
-        self.selectedPayPeriod = "payment_type_hourly".localized
+        self.selectedPayPeriod = "payment_hour".localized
         
         let rate = payRateField.text?.currencyAmount() ?? NSNumber(0)
         payRateField.text = NumberFormatter.localisedCurrencyStr(from: rate)
@@ -262,7 +262,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         
         
         
-        payPeriodArray = ["payment_type_hourly".localized,
+        payPeriodArray = ["payment_hour".localized,
                           "salary_weekly".localized,
                           "salary_monthly".localized,
                           "salary_annually".localized]
@@ -295,6 +295,8 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         stateField.setBorderColor()
         firstPayPeriodField.setBorderColor()
         stateMinimumField.setBorderColor()
+        yesOvertimeButton.setBorderColor(named: "onboardButtonColor")
+        noOvertimeButton.setBorderColor(named: "onboardButtonColor")
         
         stateMinimumField.delegate = self
         scrollView.keyboardDismissMode = .onDrag
@@ -332,7 +334,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         }
         
         employmentModel?.paymentType = .salary
-        if selectedPayPeriod! == "payment_type_hourly".localized {
+        if selectedPayPeriod! == "payment_hour".localized {
             employmentModel?.paymentType = .hourly
             if employmentModel?.hourlyRates?.count == 0 {
                 employmentModel?.newHourlyRate()
@@ -512,7 +514,7 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
                 payPeriodPickerHeight.constant = 0
             } else {
                 if payPeriodField.text?.count == 0 {
-                    payPeriodField.text? = "payment_type_hourly".localized
+                    payPeriodField.text? = "payment_hour".localized
                     payRateTermValid = true
                 }
                 payPeriodPickerHeight.constant = 216

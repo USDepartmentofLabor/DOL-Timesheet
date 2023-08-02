@@ -257,7 +257,18 @@ extension OnboardNameViewController: UIPickerViewDataSource {
         return Weekday.allCases.count
     }
 }
-
+extension UIButton {
+    func setBorderColor(named: String) {
+        self.layer.cornerRadius = 8.0
+        self.layer.masksToBounds = true
+        if self.traitCollection.userInterfaceStyle == .dark {
+            self.layer.borderColor = UIColor(named: named)?.cgColor
+        } else {
+            self.layer.borderColor = UIColor(named: named)?.cgColor
+        }
+        self.layer.borderWidth = 1.0
+    }
+}
 extension UITextField {
     func setBorderColor() {
         self.layer.cornerRadius = 8.0
@@ -269,6 +280,7 @@ extension UITextField {
         }
         self.layer.borderWidth = 1.0
     }
+    
     func setErrorBorderColor() {
         self.layer.cornerRadius = 8.0
         self.layer.masksToBounds = true
