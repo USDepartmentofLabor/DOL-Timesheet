@@ -926,7 +926,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uou-oj-4JZ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="713"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="659"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiS-VH-up6">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="719.5"/>
@@ -1027,22 +1027,6 @@
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbd-hs-Ai1">
-                                                <rect key="frame" x="8" y="670.5" width="398" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="Djp-Kv-yjA"/>
-                                                    <constraint firstAttribute="width" constant="398" id="xZq-Vy-uE9"/>
-                                                </constraints>
-                                                <color key="tintColor" name="onboardSecondButtonColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" image="hand.thumbsup" catalog="system" title="  Looks good, let's go!">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
-                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="letsGoPressed:" destination="bDV-Vb-TeD" eventType="touchUpInside" id="P6Q-eX-J0b"/>
-                                                </connections>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Employer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMd-NM-AeG">
                                                 <rect key="frame" x="20" y="140" width="374" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -1115,10 +1099,10 @@
                                             <constraint firstItem="D4Q-Ok-CUg" firstAttribute="top" secondItem="2d0-sc-9oP" secondAttribute="bottom" constant="25" id="GDb-d2-953"/>
                                             <constraint firstAttribute="trailing" secondItem="EgO-3X-SXA" secondAttribute="trailing" constant="20" symbolic="YES" id="HR2-wm-h7r"/>
                                             <constraint firstItem="yL1-ZX-bnj" firstAttribute="top" secondItem="wvR-x5-CNT" secondAttribute="bottom" constant="25" id="IUY-OF-84H"/>
-                                            <constraint firstItem="kbd-hs-Ai1" firstAttribute="top" secondItem="tau-No-7hb" secondAttribute="bottom" constant="34.5" id="Iby-Z9-7fy"/>
                                             <constraint firstItem="iKF-Wd-HAH" firstAttribute="top" secondItem="Fmu-L6-1tZ" secondAttribute="bottom" constant="25" id="Iw5-UT-BVK"/>
                                             <constraint firstItem="2d0-sc-9oP" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="N48-bI-xKv"/>
                                             <constraint firstItem="RwT-li-MEp" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="PDl-9o-ia4"/>
+                                            <constraint firstAttribute="height" constant="719.5" id="Pw6-sO-iV7"/>
                                             <constraint firstItem="jMd-NM-AeG" firstAttribute="top" secondItem="57E-4t-ZKX" secondAttribute="bottom" constant="25" id="Qyy-FB-Dcl"/>
                                             <constraint firstItem="yL1-ZX-bnj" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="WQr-Ph-fCe"/>
                                             <constraint firstItem="7sd-Tx-aYG" firstAttribute="top" secondItem="0n4-to-84l" secondAttribute="bottom" constant="25" id="WUk-0R-09z"/>
@@ -1127,7 +1111,6 @@
                                             <constraint firstAttribute="trailing" secondItem="57E-4t-ZKX" secondAttribute="trailing" constant="20" symbolic="YES" id="Xy1-0W-3Zu"/>
                                             <constraint firstItem="0n4-to-84l" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="ZJE-Uq-Epj"/>
                                             <constraint firstItem="jMd-NM-AeG" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="au1-z0-S1x"/>
-                                            <constraint firstAttribute="trailing" secondItem="kbd-hs-Ai1" secondAttribute="trailing" constant="8" id="az6-jL-JTt"/>
                                             <constraint firstItem="d4G-Kf-7W7" firstAttribute="top" secondItem="WPE-3x-zi5" secondAttribute="bottom" constant="25" id="c12-rQ-8wM"/>
                                             <constraint firstAttribute="trailing" secondItem="Uid-bS-rkG" secondAttribute="trailing" constant="20" symbolic="YES" id="cOc-S0-Vdj"/>
                                             <constraint firstAttribute="trailing" secondItem="wvR-x5-CNT" secondAttribute="trailing" constant="20" symbolic="YES" id="cTk-Vg-ANX"/>
@@ -1141,7 +1124,6 @@
                                             <constraint firstAttribute="trailing" secondItem="jMd-NM-AeG" secondAttribute="trailing" constant="20" symbolic="YES" id="hTw-zV-ZZK"/>
                                             <constraint firstItem="wvR-x5-CNT" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="iTG-hq-cqt"/>
                                             <constraint firstItem="EgO-3X-SXA" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="jeb-Eg-TDg"/>
-                                            <constraint firstAttribute="bottom" secondItem="kbd-hs-Ai1" secondAttribute="bottom" constant="5" id="jvm-Xi-z0T"/>
                                             <constraint firstAttribute="trailing" secondItem="RwT-li-MEp" secondAttribute="trailing" constant="20" symbolic="YES" id="kHW-QN-H4F"/>
                                             <constraint firstItem="wvR-x5-CNT" firstAttribute="top" secondItem="UiS-VH-up6" secondAttribute="top" constant="20" symbolic="YES" id="lxP-xP-Nnj"/>
                                             <constraint firstAttribute="trailing" secondItem="7sd-Tx-aYG" secondAttribute="trailing" constant="20" symbolic="YES" id="mKl-oT-VtK"/>
@@ -1154,7 +1136,6 @@
                                             <constraint firstItem="Fmu-L6-1tZ" firstAttribute="top" secondItem="d4G-Kf-7W7" secondAttribute="bottom" constant="8" symbolic="YES" id="xDf-oy-tYP"/>
                                             <constraint firstItem="WPE-3x-zi5" firstAttribute="top" secondItem="5Cf-tt-svO" secondAttribute="bottom" constant="8" symbolic="YES" id="xuj-Dg-a2B"/>
                                             <constraint firstAttribute="trailing" secondItem="5Cf-tt-svO" secondAttribute="trailing" constant="20" symbolic="YES" id="xyn-tP-cFG"/>
-                                            <constraint firstItem="kbd-hs-Ai1" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="8" id="ygB-dL-3BL"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1169,7 +1150,22 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="avH-6k-bNm"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="d9n-Ju-J6g"/>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If something doesn't look right, go back to previous steps to make your changes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnS-IN-gWv">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbd-hs-Ai1">
+                                <rect key="frame" x="20" y="667" width="374" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Djp-Kv-yjA"/>
+                                </constraints>
+                                <color key="tintColor" name="onboardSecondButtonColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="hand.thumbsup" catalog="system" title="  Looks good, let's go!">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="letsGoPressed:" destination="bDV-Vb-TeD" eventType="touchUpInside" id="P6Q-eX-J0b"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If something doesn't look right, go back to previous steps to make your changes" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnS-IN-gWv">
                                 <rect key="frame" x="20" y="721" width="374" height="41"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1180,12 +1176,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KaM-py-VzY" firstAttribute="trailing" secondItem="CnS-IN-gWv" secondAttribute="trailing" constant="20" id="0ok-dw-bhb"/>
+                            <constraint firstItem="CnS-IN-gWv" firstAttribute="top" secondItem="kbd-hs-Ai1" secondAttribute="bottom" constant="10" id="4Wx-Mj-2h6"/>
                             <constraint firstItem="uou-oj-4JZ" firstAttribute="leading" secondItem="KaM-py-VzY" secondAttribute="leading" id="Dnh-Hs-hFm"/>
-                            <constraint firstItem="CnS-IN-gWv" firstAttribute="top" secondItem="uou-oj-4JZ" secondAttribute="bottom" constant="8" symbolic="YES" id="NYl-zj-bV0"/>
                             <constraint firstItem="uou-oj-4JZ" firstAttribute="top" secondItem="Ikf-h3-ZPV" secondAttribute="top" id="aCi-2f-wKp"/>
                             <constraint firstItem="CnS-IN-gWv" firstAttribute="leading" secondItem="KaM-py-VzY" secondAttribute="leading" constant="20" id="fQ6-Lc-WPc"/>
                             <constraint firstItem="uou-oj-4JZ" firstAttribute="trailing" secondItem="KaM-py-VzY" secondAttribute="trailing" id="uA5-HB-bPg"/>
+                            <constraint firstItem="kbd-hs-Ai1" firstAttribute="top" secondItem="uou-oj-4JZ" secondAttribute="bottom" constant="8" symbolic="YES" id="w3n-BZ-eVy"/>
                             <constraint firstItem="KaM-py-VzY" firstAttribute="bottom" secondItem="CnS-IN-gWv" secondAttribute="bottom" constant="100" id="wzy-8Y-cSd"/>
+                            <constraint firstItem="kbd-hs-Ai1" firstAttribute="leading" secondItem="KaM-py-VzY" secondAttribute="leading" constant="20" id="zRV-0q-wk6"/>
+                            <constraint firstItem="KaM-py-VzY" firstAttribute="trailing" secondItem="kbd-hs-Ai1" secondAttribute="trailing" constant="20" id="zZX-Fh-HYv"/>
                         </constraints>
                     </view>
                     <connections>

@@ -442,7 +442,7 @@
 "onboard_review_employer_state" = "Your employee works in ";
 
 "onboard_review_button" = "  Looks good, let's go!";
-"onboard_review_note" = "If something doesn't look right, go back to previous steps to make your changes";
+"onboard_review_note" = "Go back to previous steps if you need to correct anything and come back here to finish.";
 
 "info_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid for 8 hours of work get their pay rounded up/down to the nearest 15 minutes.";
 "info_dont_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid exactly for 7 hours and 55 minutes of work DO NOT get their pay rounded up/down to the nearest 15 minutes.";
