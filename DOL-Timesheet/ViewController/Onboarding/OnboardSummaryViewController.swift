@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OnboardReviewViewController: OnboardBaseViewController {
+class OnboardSummaryViewController: OnboardBaseViewController {
 
     @IBOutlet weak var displayLogo: UIImageView!
     @IBOutlet weak var reviewTitleLabel: UILabel!

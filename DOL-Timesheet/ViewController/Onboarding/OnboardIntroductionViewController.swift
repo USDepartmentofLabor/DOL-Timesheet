@@ -15,7 +15,7 @@ class OnboardIntroductionViewController: OnboardBaseViewController {
     @IBOutlet weak var introLabel1: UILabel!
     @IBOutlet weak var introLabel2: UILabel!
     @IBOutlet weak var introLabel3: UILabel!
-    
+    @IBOutlet weak var introLabel4: UILabel!
     
     @IBOutlet weak var nextButton: NavigationButton!
 //    weak var delegate: TimeViewControllerDelegate?
@@ -45,6 +45,7 @@ class OnboardIntroductionViewController: OnboardBaseViewController {
         introLabel1.text = "onboard_intro_1".localized
         introLabel2.text = "onboard_intro_2".localized
         introLabel3.text = "onboard_intro_3".localized
+        introLabel4.text = "onboard_intro_4".localized
         
         setupAccessibility()
     }

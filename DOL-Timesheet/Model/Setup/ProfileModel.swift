@@ -58,7 +58,7 @@ class ProfileModel {
         newUser.email = user.email
         newUser.phone = user.phone
         newUser.imageData = user.imageData
-        _currentUser = nil
+        _currentUser = user
 
         return newUser
     }
@@ -77,7 +77,7 @@ class ProfileModel {
         }
         user.currentUser = true
         user.name = name
-        _currentUser = nil
+        _currentUser = user
 
         return user
     }

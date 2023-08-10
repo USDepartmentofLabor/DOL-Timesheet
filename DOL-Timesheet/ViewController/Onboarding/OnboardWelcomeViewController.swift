@@ -86,16 +86,16 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
     @IBAction func employerSelected(_ sender: Any) {
         onboardingDelegate?.updateCanMoveForward(value:true)
         
-        employerButton.tintColor = UIColor(named: "onboardSecondButtonColor")
-        employerButton.setBorderColor(named: "onboardSecondButtonColor")
+        employerButton.tintColor = UIColor(named: "onboardEmployerButtonColor")
+        employerButton.setBorderColor(named: "onboardEmployerButtonColor")
         employeeButton.tintColor = .white
-        employeeButton.setBorderColor(named: "onboardButtonColor")
+        employeeButton.setBorderColor(named: "onboardEmployeeButtonColor")
         
         if let employee = profileViewModel!.profileModel.currentUser as? Employee {
             changeToEmployer(employee: employee)
         }
         
-        onboardingDelegate?.updateUserType(newUserType: .employee)
+        onboardingDelegate?.updateUserType(newUserType: .employer)
         
         canMoveForward = true
     }
@@ -104,15 +104,15 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         onboardingDelegate?.updateCanMoveForward(value: true)
         
         employerButton.tintColor = .white
-        employerButton.setBorderColor(named: "onboardButtonColor")
-        employeeButton.tintColor = UIColor(named: "onboardSecondButtonColor")
-        employeeButton.setBorderColor(named: "onboardSecondButtonColor")
+        employerButton.setBorderColor(named: "onboardEmployerButtonColor")
+        employeeButton.tintColor = UIColor(named: "onboardEmployeeButtonColor")
+        employeeButton.setBorderColor(named: "onboardEmployeeButtonColor")
         
         if let employer = profileViewModel?.profileModel.currentUser as? Employer {
             changeToEmployee(employer: employer)
         }
         
-        onboardingDelegate?.updateUserType(newUserType: .employer)
+        onboardingDelegate?.updateUserType(newUserType: .employee)
 
         canMoveForward = true
     }
@@ -162,9 +162,11 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
     func toggleUserType() {
         if let employer = profileViewModel!.profileModel.currentUser as? Employer {
             profileViewModel!.changeToEmployee(employer: employer)
+            userType = .employee
         }
         else if let employee = profileViewModel!.profileModel.currentUser as? Employee {
             profileViewModel!.changeToEmployer(employee: employee)
+            userType = .employer
         }
         manageVC?.viewModel = ProfileViewModel(context: profileViewModel!.managedObjectContext.childManagedObjectContext())
     }

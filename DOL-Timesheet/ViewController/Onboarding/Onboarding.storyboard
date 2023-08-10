@@ -15,11 +15,11 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="OnboardWelcomeViewController" title="Onboard Welcome View Controller" id="Y6W-OH-hqX" customClass="OnboardWelcomeViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j66-Du-3zB">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j66-Du-3zB">
                                 <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="displayLogo" translatesAutoresizingMaskIntoConstraints="NO" id="vNX-3j-hBO">
@@ -56,7 +56,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="0YY-5E-f6J"/>
                                         </constraints>
-                                        <color key="tintColor" name="onboardButtonColor"/>
+                                        <color key="tintColor" name="onboardEmployeeButtonColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Set me up as an employee">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
@@ -92,7 +92,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="wy3-gT-WF5"/>
                                         </constraints>
-                                        <color key="tintColor" name="onboardSecondButtonColor"/>
+                                        <color key="tintColor" name="onboardEmployerButtonColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Set me up as an employee">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
@@ -165,7 +165,7 @@
                                 <rect key="frame" x="0.0" y="48" width="414" height="744"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gal-pb-kDG">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="302.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="738.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introduction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="co9-zy-15l">
                                                 <rect key="frame" x="8" y="20" width="398" height="20.5"/>
@@ -190,11 +190,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gf-LA-2Bw">
-                                                <rect key="frame" x="20" y="140.5" width="374" height="61"/>
+                                                <rect key="frame" x="20" y="140.5" width="374" height="59.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="We will guide you through the setup by asking you a few questions that will help you get started.">
                                                         <attributes>
-                                                            <font key="NSFont" metaFont="system" size="17"/>
+                                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -202,11 +202,23 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uq-1X-lw5">
-                                                <rect key="frame" x="20" y="241.5" width="374" height="61"/>
+                                                <rect key="frame" x="20" y="240" width="374" height="59.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Please answer all of the questions and don't worry, you'll be able to change things later in the app's Settings.">
                                                         <attributes>
-                                                            <font key="NSFont" metaFont="system" size="17"/>
+                                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7CW-zz-9If">
+                                                <rect key="frame" x="20" y="339.5" width="374" height="59.5"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Please answer all of the questions and don't worry, you'll be able to change things later in the app's Settings.">
+                                                        <attributes>
+                                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -217,16 +229,19 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="5gf-LA-2Bw" firstAttribute="leading" secondItem="Gal-pb-kDG" secondAttribute="leading" constant="20" id="0wZ-eK-YCy"/>
-                                            <constraint firstAttribute="bottom" secondItem="0uq-1X-lw5" secondAttribute="bottom" id="26Y-YE-Dts"/>
                                             <constraint firstAttribute="trailing" secondItem="5gf-LA-2Bw" secondAttribute="trailing" constant="20" id="3Vx-JP-cVb"/>
                                             <constraint firstItem="5gf-LA-2Bw" firstAttribute="top" secondItem="TFD-e1-6cj" secondAttribute="bottom" constant="40" id="Aba-nn-yXl"/>
                                             <constraint firstItem="0uq-1X-lw5" firstAttribute="leading" secondItem="Gal-pb-kDG" secondAttribute="leading" constant="20" id="Bwu-6H-NhS"/>
                                             <constraint firstItem="co9-zy-15l" firstAttribute="top" secondItem="Gal-pb-kDG" secondAttribute="top" constant="20" symbolic="YES" id="DIQ-Gf-mcO"/>
                                             <constraint firstAttribute="trailing" secondItem="co9-zy-15l" secondAttribute="trailing" constant="8" id="EFs-4b-St5"/>
+                                            <constraint firstAttribute="trailing" secondItem="7CW-zz-9If" secondAttribute="trailing" constant="20" symbolic="YES" id="EKe-lI-5XX"/>
+                                            <constraint firstItem="7CW-zz-9If" firstAttribute="centerY" secondItem="Gal-pb-kDG" secondAttribute="centerY" id="EOd-nk-acG"/>
                                             <constraint firstAttribute="trailing" secondItem="0uq-1X-lw5" secondAttribute="trailing" constant="20" id="Fzz-Ih-mQe"/>
                                             <constraint firstItem="TFD-e1-6cj" firstAttribute="top" secondItem="co9-zy-15l" secondAttribute="bottom" constant="20" id="IvU-Sq-Fsr"/>
                                             <constraint firstAttribute="trailing" secondItem="TFD-e1-6cj" secondAttribute="trailing" constant="20" id="Nbw-qT-6CU"/>
+                                            <constraint firstItem="7CW-zz-9If" firstAttribute="top" secondItem="0uq-1X-lw5" secondAttribute="bottom" constant="40" id="RJ8-Kv-bvB"/>
                                             <constraint firstItem="TFD-e1-6cj" firstAttribute="leading" secondItem="Gal-pb-kDG" secondAttribute="leading" constant="20" id="ZQ9-eO-07z"/>
+                                            <constraint firstItem="7CW-zz-9If" firstAttribute="leading" secondItem="Gal-pb-kDG" secondAttribute="leading" constant="20" symbolic="YES" id="dAQ-z7-tdZ"/>
                                             <constraint firstItem="0uq-1X-lw5" firstAttribute="top" secondItem="5gf-LA-2Bw" secondAttribute="bottom" constant="40" id="szs-nE-ojO"/>
                                             <constraint firstItem="co9-zy-15l" firstAttribute="leading" secondItem="Gal-pb-kDG" secondAttribute="leading" constant="8" id="uUG-az-PKu"/>
                                         </constraints>
@@ -259,6 +274,7 @@
                         <outlet property="introLabel1" destination="TFD-e1-6cj" id="f3F-Y6-xcO"/>
                         <outlet property="introLabel2" destination="5gf-LA-2Bw" id="NWc-nH-Swv"/>
                         <outlet property="introLabel3" destination="0uq-1X-lw5" id="bTA-qV-Oyu"/>
+                        <outlet property="introLabel4" destination="7CW-zz-9If" id="p5o-Je-PCl"/>
                         <outlet property="introductionLabel" destination="co9-zy-15l" id="qKr-Zr-NjF"/>
                     </connections>
                 </viewController>
@@ -269,7 +285,7 @@
         <!--Onboard Name View Controller-->
         <scene sceneID="Fi2-ii-2Ju">
             <objects>
-                <viewController storyboardIdentifier="OnboardNameViewController" title="Onboard Name View Controller" id="pRs-jS-dBb" userLabel="Onboard Name View Controller" customClass="OnboardNameViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardNameViewController" title="Onboard Name View Controller" id="pRs-jS-dBb" userLabel="Onboard Name View Controller" customClass="OnboardWorkViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tkr-Va-N7e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -295,7 +311,7 @@
                                                     <constraint firstAttribute="height" constant="34" id="5jd-ip-rmS"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                                                 <connections>
                                                     <action selector="nameSet:" destination="pRs-jS-dBb" eventType="editingDidEnd" id="nZj-18-HyH"/>
                                                     <outlet property="delegate" destination="pRs-jS-dBb" id="VID-Vg-ajc"/>
@@ -313,7 +329,7 @@
                                                     <constraint firstAttribute="height" constant="34" id="Lj5-yw-O5Q"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                                                 <connections>
                                                     <action selector="otherNameSet:" destination="pRs-jS-dBb" eventType="editingDidEnd" id="Pwb-hz-w8t"/>
                                                     <outlet property="delegate" destination="pRs-jS-dBb" id="VHA-LS-T3P"/>
@@ -456,7 +472,7 @@
         <!--Onboard Details View Controller-->
         <scene sceneID="XHZ-ne-bxI">
             <objects>
-                <viewController storyboardIdentifier="OnboardDetailsViewController" title="Onboard Details View Controller" id="1cG-DH-Gtj" userLabel="Onboard Details View Controller" customClass="OnboardDetailsViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardDetailsViewController" title="Onboard Details View Controller" id="1cG-DH-Gtj" userLabel="Onboard Details View Controller" customClass="OnboardPayViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u0o-0W-ZRV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -920,7 +936,7 @@
         <!--Onboard Review View Controller-->
         <scene sceneID="NhC-n1-LUg">
             <objects>
-                <viewController storyboardIdentifier="OnboardReviewViewController" title="Onboard Review View Controller" id="bDV-Vb-TeD" userLabel="Onboard Review View Controller" customClass="OnboardReviewViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardReviewViewController" title="Onboard Review View Controller" id="bDV-Vb-TeD" userLabel="Onboard Review View Controller" customClass="OnboardSummaryViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ikf-h3-ZPV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1419,6 +1435,12 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="onboardButtonColor">
+            <color red="0.68627450980392157" green="0.87450980392156863" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="onboardEmployeeButtonColor">
+            <color red="0.57647058823529407" green="0.8901960784313725" blue="0.5607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="onboardEmployerButtonColor">
             <color red="0.68627450980392157" green="0.87450980392156863" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="onboardSecondButtonColor">

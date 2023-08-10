@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OnboardNameViewController: OnboardBaseViewController {
+class OnboardWorkViewController: OnboardBaseViewController {
 
     @IBOutlet weak var nameTitleLabel: UILabel!
     
@@ -69,12 +69,12 @@ class OnboardNameViewController: OnboardBaseViewController {
         nameTitleLabel.text = "work".localized
         
         nameLabel.text = "onboard_name".localized
-        if userType == .employee {
-            otherNameLabel.text = "onboard_name_employer".localized
-            nameNoteLabel.text = "onboard_employer_note".localized
-        } else {
+        if userType == .employer {
             otherNameLabel.text = "onboard_name_employee".localized
             nameNoteLabel.text = "onboard_employee_note".localized
+        } else {
+            otherNameLabel.text = "onboard_name_employer".localized
+            nameNoteLabel.text = "onboard_employer_note".localized
         }
         workweekLabel.text = "onboard_workweek_start".localized
         
@@ -101,8 +101,8 @@ class OnboardNameViewController: OnboardBaseViewController {
         let userName = nameField.text ?? ""
 //        let userType = UserType(rawValue: employeeBtn.isSelected ? 0 : 1) ?? UserType.employee
         
-        let currentUser = profileViewModel!.profileModel.newProfile(type: userType, name: userName)
-        currentUser.name = userName
+        let currentUser = profileViewModel!.profileModel.currentUser
+        currentUser?.name = userName
         
         if (employmentModel == nil) {
             guard let employmentModel = profileViewModel!.newTempEmploymentModel() else { return false}
@@ -168,7 +168,7 @@ class OnboardNameViewController: OnboardBaseViewController {
     }
 }
 
-extension OnboardNameViewController: UITextFieldDelegate {
+extension OnboardWorkViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == otherNameField {
             if workweekField.text?.count == 0 {
@@ -235,7 +235,7 @@ extension OnboardNameViewController: UITextFieldDelegate {
     }
 }
 
-extension OnboardNameViewController: UIPickerViewDelegate {
+extension OnboardWorkViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         currentRow = row
         workweekField.text = Weekday.allCases[row].title
@@ -248,7 +248,7 @@ extension OnboardNameViewController: UIPickerViewDelegate {
     }
 }
 
-extension OnboardNameViewController: UIPickerViewDataSource {
+extension OnboardWorkViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

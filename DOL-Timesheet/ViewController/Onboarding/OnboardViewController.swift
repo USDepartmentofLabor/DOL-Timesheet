@@ -52,6 +52,8 @@ class OnboardViewController: UIViewController {
         super.viewDidLoad()
         
         let profileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
+        let user = profileViewModel.profileModel.newProfile(type: .employee, name: "")
+ 
         if let vcs = onboardPageViewController?.orderedViewControllers {
             for (index, element) in vcs.enumerated() {
                 element.onboardingDelegate = self

@@ -383,23 +383,24 @@
         overtime pay from their employers.";
 
 "welcome_intro" = "Welcome to WHD's Timesheet App!";
-"onboard_welcome_employee" = "I want to use this app to help me keep track of my own time.";
-"onboard_welcome_employee_button" = "Set me up as an employee";
+"onboard_welcome_employee" = "I want to track my own time. Set me up as an employee.";
+"onboard_welcome_employee_button" = "Employee";
 "or" = "OR";
-"onboard_welcome_employer" = "I want to use this app to help me keep track of other people's time.";
-"onboard_welcome_employer_button" = "Set me up as an employer";
+"onboard_welcome_employer" = "I want to track other people's time.  Set me up as an employer";
+"onboard_welcome_employer_button" = "Employer";
 
-"onboard_intro_1" = "This app is for your personal use and we don't share your information with anyone.";
-"onboard_intro_2" = "We will guide you through the setup by asking you a few questions that will help you get started using this app.";
-"onboard_intro_3" = "Please answer all of the questions and don't worry, you'll be able to change things later in the app's Settings.";
+"onboard_intro_1" = "This app is for your personal use and we don't store or share your information with anyone.";
+"onboard_intro_2" = "If you delete this application, your data will be deleted as well.";
+"onboard_intro_3" = "We will guide you through the setup by asking you a few questions that will help you get started using this app.";
+"onboard_intro_4" = "Please answer each question and don't worry, you'll be able to change things later in 'My Profile'.";
 "onboard_intro_note" = "Tap the right arrow below to continue";
 
 "onboard_name" = "What is your name or nickname?";
 "onboard_name_employer" = "What is your employer's name or nickname?";
 "onboard_name_employee" = "What is your employee's name or nickname?";
 "onboard_workweek_start" = "When does the workweek begin?";
-"onboard_employer_note" = "You can add more employers later in Settings";
-"onboard_employee_note" = "You can add more employees later in Settings";
+"onboard_employer_note" = "You can add more employers later in 'My Profile'.";
+"onboard_employee_note" = "You can add more employees later in 'My Profile'.";
 
 "onboard_pay_frequency_employer" = "How often do you get paid?";
 "onboard_pay_frequency_employee" = "How often does your employee get paid?";
@@ -411,7 +412,7 @@
 "onboard_overtime_no" = "No (exempt)";
 "onboard_state_employer" = "What state do you work in?";
 "onboard_state_employee" = "The state your employee work in?";
-"onboard_pay_note" = "You can add more pay rates and states later in Settings";
+"onboard_pay_note" = "You can add more pay rates and states later in 'My Profile'.";
 
 "onboard_review_title" = "You're almost done!";
 "onboard_review_intro" = "Let's review your setup:";

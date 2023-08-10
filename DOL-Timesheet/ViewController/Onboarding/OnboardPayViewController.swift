@@ -16,7 +16,7 @@ enum ShownPicker {
     case none
 }
 
-class OnboardDetailsViewController: OnboardBaseViewController {
+class OnboardPayViewController: OnboardBaseViewController {
 
     @IBOutlet weak var detailTitleLabel: UILabel!
     @IBOutlet weak var payFrequencyTitle: UILabel!
@@ -244,8 +244,8 @@ class OnboardDetailsViewController: OnboardBaseViewController {
         
         self.selectedPayPeriod = "payment_hour".localized
         
-        let rate = payRateField.text?.currencyAmount() ?? NSNumber(0)
-        payRateField.text = NumberFormatter.localisedCurrencyStr(from: rate)
+//        let rate = payRateField.text?.currencyAmount() ?? NSNumber(0)
+//        payRateField.text = NumberFormatter.localisedCurrencyStr(from: rate)
                 
         if (employmentModel?.overtimeEligible == true) {
             self.yesOvertimeButtonPressed(yesOvertimeButton!)
@@ -447,7 +447,7 @@ class OnboardDetailsViewController: OnboardBaseViewController {
     
 }
 
-extension OnboardDetailsViewController: UITextFieldDelegate {
+extension OnboardPayViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -533,7 +533,7 @@ extension OnboardDetailsViewController: UITextFieldDelegate {
     }
 }
 
-extension OnboardDetailsViewController: UIPickerViewDelegate {
+extension OnboardPayViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 //        selectedWeekday = Weekday.allCases[row]
         if pickerView == payFrequencyPicker {
@@ -584,7 +584,7 @@ extension OnboardDetailsViewController: UIPickerViewDelegate {
     }
 }
 
-extension OnboardDetailsViewController: UIPickerViewDataSource {
+extension OnboardPayViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -600,7 +600,7 @@ extension OnboardDetailsViewController: UIPickerViewDataSource {
     }
 }
 
-extension OnboardDetailsViewController {
+extension OnboardPayViewController {
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField == payRateField {
             let rate = textField.text?.currencyAmount() ?? NSNumber(0)
@@ -613,7 +613,7 @@ extension OnboardDetailsViewController {
     }
 }
 
-extension OnboardDetailsViewController {
+extension OnboardPayViewController {
     func validateInput() -> String? {
         
         var errorStr: String? = nil
@@ -626,7 +626,7 @@ extension OnboardDetailsViewController {
     }
 }
 
-extension OnboardDetailsViewController {
+extension OnboardPayViewController {
     @objc func minimumWageDidChange(_ textField: UITextField) {
         minimumWage = textField.text?.currencyAmount() ?? NSNumber(0)
         textField.text = NumberFormatter.localisedCurrencyStr(from: minimumWage)
@@ -641,7 +641,7 @@ extension OnboardDetailsViewController {
     }
 }
 
-extension OnboardDetailsViewController {
+extension OnboardPayViewController {
     
     @objc func datePickerValueChanged(_ sender: UIDatePicker) {
         let selectedDate = sender.date

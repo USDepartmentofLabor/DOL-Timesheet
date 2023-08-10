@@ -390,14 +390,15 @@
 
 "welcome_intro" = "¡Bienvenido a la aplicación de hoja de tiempo de la WHD!";
 "onboard_welcome_employee" = "Quiero usar esta aplicación para controlar mi propio tiempo";
-"onboard_welcome_employee_button" = "Establéceme como empleado";
+"onboard_welcome_employee_button" = "Empleado";
 "or" = "o";
 "onboard_welcome_employer" = "Quiero usar esta aplicación para controlar el tiempo de otras personas";
-"onboard_welcome_employer_button" = "Establéceme como empleador";
+"onboard_welcome_employer_button" = "Empleador";
 
 "onboard_intro_1" = "Esta aplicación es para tu uso personal y no compartimos tu información con nadie.";
-"onboard_intro_2" = "Te guiaremos a través de las configuraciones haciéndote algunas preguntas que te ayudarán a comenzar a usar la aplicación.";
-"onboard_intro_3" = "Responde todas las preguntas y no te preocupes, podrás cambiar las cosas más adelante en las configuraciones de la aplicación.";
+"onboard_intro_2" = "If you delete this application, your data will be deleted as well.";
+"onboard_intro_3" = "Te guiaremos a través de las configuraciones haciéndote algunas preguntas que te ayudarán a comenzar a usar la aplicación.";
+"onboard_intro_4" = "Responde todas las preguntas y no te preocupes, podrás cambiar las cosas más adelante en las configuraciones de la aplicación.";
 "onboard_intro_note" = "Toca la flecha hacia la derecha debajo para continuar.";
 
 "onboard_name" = "¿Cuál es tu nombre o apodo?";

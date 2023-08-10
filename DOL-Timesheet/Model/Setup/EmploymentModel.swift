@@ -129,6 +129,7 @@ class EmploymentModel {
         if isProfileEmployer {
             employmentInfo.employee = Employee(context: context)
             user = employmentInfo.employee
+            
         }
         else {
             employmentInfo.employer = Employer(context: context)
