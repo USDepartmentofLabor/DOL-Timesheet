@@ -16,8 +16,8 @@ class OnboardPageViewController: UIPageViewController {
         return [
             self.newOnboardViewController("OnboardWelcomeViewController"),
             self.newOnboardViewController("OnboardIntroductionViewController"),
-            self.newOnboardViewController("OnboardNameViewController"),
-            self.newOnboardViewController("OnboardDetailsViewController"),
+            self.newOnboardViewController("OnboardWorkViewController"),
+            self.newOnboardViewController("OnboardPayViewController"),
             self.newOnboardViewController("OnboardReviewViewController")
         ]
     }()

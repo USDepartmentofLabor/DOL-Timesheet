@@ -1,5 +1,5 @@
 //
-//  OnboardNameViewController.swift
+//  OnboardWorkViewController.swift
 //  DOL-Timesheet
 //
 //  Created by Greg Gruse on 9/10/22.
@@ -7,6 +7,12 @@
 //
 
 import UIKit
+
+enum ShownWorkPicker {
+    case payPeriodPicker
+    case workWeekStartPicker
+    case none
+}
 
 class OnboardWorkViewController: OnboardBaseViewController {
 
@@ -27,9 +33,19 @@ class OnboardWorkViewController: OnboardBaseViewController {
     @IBOutlet weak var workWeekStartPicker: UIPickerView!
     @IBOutlet weak var workWeekStartPickerHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var firstDayPeriodText: UILabel!
+    @IBOutlet weak var firstPayPeriodField: UITextField!
+    
+    @IBOutlet weak var firstDayDatePicker: UIDatePicker!
+    @IBOutlet weak var firstDayPickerHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var nextButton: NavigationButton!
     
+    var tapGesture: UITapGestureRecognizer?
+    
 //    weak var delegate: TimeViewControllerDelegate?
+    var dateFormatter = DateFormatter()
+    var pickerSelected = ShownWorkPicker.none
     
     var otherName: String?
     var nameValid: Bool = false
@@ -38,13 +54,21 @@ class OnboardWorkViewController: OnboardBaseViewController {
     var selectedWeekday: Weekday?
     var currentRow: Int = 0
 
+    var firstPayPeriod: Date?
+    
+    let firstDayViewHeightWithPicker:CGFloat = 275
+    let firstDayViewHeightWithField:CGFloat = 80
+    let firstDayViewHeightHidden:CGFloat = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
         canMoveForward = false
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        view.addGestureRecognizer(tapGesture)
-
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tapGesture!.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture!)
+        
+        firstDayPickerHeightConstraint.constant = firstDayViewHeightHidden
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,10 +76,20 @@ class OnboardWorkViewController: OnboardBaseViewController {
     }
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
+        let tapLocation = tapGesture!.location(in: view)
         
+        switch pickerSelected {
+        case .payPeriodPicker:
+            if firstDayDatePicker.frame.contains(tapLocation) {
+                return
+            }
+            break
+        default:
+            break
+        }
         workWeekStartPickerHeight.constant = 0
+        firstDayPickerHeightConstraint.constant = 0
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-
     }
     
     override func setupView() {
@@ -63,6 +97,14 @@ class OnboardWorkViewController: OnboardBaseViewController {
 //        label1.scaleFont(forDataType: .introductionBoldText)
 //        label2.scaleFont(forDataType: .introductionText)
         
+        firstDayDatePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+        if #available(iOS 14.0, *) {
+            firstDayDatePicker.preferredDatePickerStyle = .inline
+        } else {
+            firstDayDatePicker.preferredDatePickerStyle = .wheels
+        }
+        
+        firstDayPickerHeightConstraint.constant = 0
         self.workWeekStartPickerHeight.constant = 0
         workWeekStartPicker.selectRow(currentRow, inComponent: 0, animated: true)
         
@@ -78,12 +120,15 @@ class OnboardWorkViewController: OnboardBaseViewController {
         }
         workweekLabel.text = "onboard_workweek_start".localized
         
+        firstDayPeriodText.text = "First day of your pay period".localized
+        
         setupAccessibility()
         scrollView.keyboardDismissMode = .onDrag
         
         nameField.setBorderColor()
         otherNameField.setBorderColor()
         workweekField.setBorderColor()
+        firstPayPeriodField.setBorderColor()
     }
     
     func setupAccessibility() {
@@ -91,7 +136,7 @@ class OnboardWorkViewController: OnboardBaseViewController {
     }
     
     override func saveData() -> Bool  {
-        print("OnboardNameViewController SAVE DATA")
+        print("OnboardWorkViewController SAVE DATA")
         
         check()
         if !canMoveForward {
@@ -118,6 +163,7 @@ class OnboardWorkViewController: OnboardBaseViewController {
         user?.name = otherNameField.text?.trimmingCharacters(in: .whitespaces)
         
         employmentModel!.workWeekStartDay = selectedWeekday ?? .sunday
+        employmentModel?.employmentInfo.startDate = firstPayPeriod
         
         onboardingDelegate?.updateViewModels(
             profileViewModel: profileViewModel!,
@@ -159,7 +205,7 @@ class OnboardWorkViewController: OnboardBaseViewController {
     }
     
     func check() {
-        if (nameValid && otherNameValid && workWeekStartValid) {
+        if (nameValid && otherNameValid && workWeekStartValid && firstPayPeriod != nil ) {
             canMoveForward = true
         } else {
             canMoveForward = false
@@ -191,6 +237,7 @@ extension OnboardWorkViewController: UITextFieldDelegate {
         if textField == workweekField {
             if workWeekStartPickerHeight.constant > 1 {
                 workWeekStartPickerHeight.constant = 0
+                pickerSelected = .none
             } else {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 workWeekStartPickerHeight.constant = 216
@@ -199,13 +246,36 @@ extension OnboardWorkViewController: UITextFieldDelegate {
                 workWeekStartValid = true
                 check()
                 otherNameSet(textField)
+                firstDayPickerHeightConstraint.constant = 0
+                pickerSelected = .workWeekStartPicker
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                     self?.scrollView.scrollToBottom()
                 }
             }
             return false
-        } else {
+        } else if textField == firstPayPeriodField {
+            if firstDayPickerHeightConstraint.constant > 1 {
+                firstDayPickerHeightConstraint.constant = 0
+                pickerSelected = .none
+            } else {
+                if firstPayPeriodField.text?.count == 0 {
+                    firstPayPeriod = Date()
+                    dateFormatter.dateFormat = "MMMM d, YYYY"
+                    firstPayPeriodField.text = dateFormatter.string(from: firstPayPeriod!)
+                }
+                firstDayPickerHeightConstraint.constant = 216
+                workWeekStartPickerHeight.constant = 0
+                pickerSelected = .payPeriodPicker
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                    self?.scrollView.scrollToBottom()
+                }
+            }
+            check()
+            return false
+        } else{
             workWeekStartPickerHeight.constant = 0
+            firstDayPickerHeightConstraint.constant = 0
+            pickerSelected = .none
             return true
         }
     }
@@ -286,5 +356,19 @@ extension UITextField {
         self.layer.masksToBounds = true
         self.layer.borderColor = UIColor.red.cgColor
         self.layer.borderWidth = 1.0
+    }
+}
+
+extension OnboardWorkViewController {
+    
+    @objc func datePickerValueChanged(_ sender: UIDatePicker) {
+        let selectedDate = sender.date
+        firstPayPeriod = selectedDate
+        dateFormatter.dateFormat = "MMMM d, YYYY"
+        firstPayPeriodField.text = dateFormatter.string(from: selectedDate)
+        check()
+        // Handle the value change here
+        // You can access the selected date using the 'selectedDate' variable
+        // Perform any desired actions or updates based on the new value
     }
 }

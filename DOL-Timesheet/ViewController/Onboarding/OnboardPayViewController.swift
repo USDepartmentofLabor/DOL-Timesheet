@@ -1,5 +1,5 @@
 //
-//  OnboardDetailsViewController.swift
+//  OnboardPayViewController.swift
 //  DOL-Timesheet
 //
 //  Created by Greg Gruse on 9/10/22.
@@ -10,7 +10,6 @@ import UIKit
 
 enum ShownPicker {
     case payFrequencyPicker
-    case payPeriodPicker
     case payRateStart
     case statePicker
     case none
@@ -35,9 +34,6 @@ class OnboardPayViewController: OnboardBaseViewController {
     @IBOutlet weak var payRateStart: UIDatePicker!
     @IBOutlet weak var payPeriodPickerHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var firstDayPeriodText: UILabel!
-    @IBOutlet weak var firstPayPeriodField: UITextField!
-    
     @IBOutlet weak var overtimeTitle: UILabel!
     @IBOutlet weak var infoOvertimeButton: UIButton!
     @IBOutlet weak var yesOvertimeButton: UIButton!
@@ -61,14 +57,9 @@ class OnboardPayViewController: OnboardBaseViewController {
     @IBOutlet weak var nextButton: NavigationButton!
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var firstDayView: UIView!
-    @IBOutlet weak var firstDayDatePicker: UIDatePicker!
-    @IBOutlet weak var firstDayViewHeightConstraint: NSLayoutConstraint!
-    
     var pickerSelected = ShownPicker.none
     
     var timePickerVC = TimePickerViewController.instantiateFromStoryboard()
-    var dateFormatter = DateFormatter()
     
     var overtimeEligible: Bool = true
     
@@ -85,11 +76,6 @@ class OnboardPayViewController: OnboardBaseViewController {
     var selectedState: State?
     var selectedPayPeriod: String?
     var selectedPayRate: Double = 0.0
-    var firstPayPeriod: Date?
-    
-    let firstDayViewHeightWithPicker:CGFloat = 275
-    let firstDayViewHeightWithField:CGFloat = 80
-    let firstDayViewHeightHidden:CGFloat = 0
     
     var stateMinWages: StateMinWage = StateMinWage.init()
 //    weak var delegate: TimeViewControllerDelegate?
@@ -112,12 +98,8 @@ class OnboardPayViewController: OnboardBaseViewController {
         super.viewDidLoad()
         setupNavigationBarSettings()
         canMoveForward = false
-        self.setupFieldTap()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
-        
-        firstDayViewHeightConstraint.constant = firstDayViewHeightHidden
-        firstDayView.isHidden = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -140,14 +122,6 @@ class OnboardPayViewController: OnboardBaseViewController {
         payFrequencyPickerHeight.constant = 0
         statePickerHeight.constant = 0
         payPeriodPickerHeight.constant = 0
-        if (selectedPayFrequency == .biWeekly) {
-            firstDayViewHeightConstraint.constant = firstDayViewHeightWithField
-            firstDayDatePicker.isHidden = true
-            firstDayView.isHidden = false
-        } else {
-            firstDayViewHeightConstraint.constant = firstDayViewHeightHidden
-            firstDayView.isHidden = true
-        }
         
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         
@@ -158,14 +132,6 @@ class OnboardPayViewController: OnboardBaseViewController {
                     payFrequencyField.text? = PaymentFrequency.daily.title
                 }
                 payFrequencyPickerHeight.constant = 216
-            }
-        case .payPeriodPicker:
-            if payPeriodPicker.frame.contains(sender.location(in: view)) {
-                if payPeriodField.text?.count == 0 {
-                    payPeriodField.text? = "payment_hour".localized
-                    payRateTermValid = true
-                }
-                payPeriodPickerHeight.constant = 216
             }
         case .payRateStart:
             break
@@ -222,13 +188,6 @@ class OnboardPayViewController: OnboardBaseViewController {
             stateTitle.isHidden = true
             infoStateButton.isHidden = true
         }
-        
-        if (selectedPayFrequency == .biWeekly) {
-            firstDayViewHeightConstraint.constant = firstDayViewHeightWithField
-            firstDayView.isHidden = false
-            firstDayDatePicker.isHidden = true
-        }
-        
     }
     
     
@@ -260,14 +219,10 @@ class OnboardPayViewController: OnboardBaseViewController {
         statePickerHeight.constant = 0
         payPeriodPickerHeight.constant = 0
         
-        
-        
         payPeriodArray = ["payment_hour".localized,
                           "salary_weekly".localized,
                           "salary_monthly".localized,
                           "salary_annually".localized]
-        
-        firstDayPeriodText.text = "First day of your pay period".localized
         
         if userType == .employee {
             payFrequencyTitle.text = "onboard_pay_frequency_employer".localized
@@ -293,7 +248,6 @@ class OnboardPayViewController: OnboardBaseViewController {
         payFrequencyField.setBorderColor()
         payPeriodField.setBorderColor()
         stateField.setBorderColor()
-        firstPayPeriodField.setBorderColor()
         stateMinimumField.setBorderColor()
         yesOvertimeButton.setBorderColor(named: "onboardButtonColor")
         noOvertimeButton.setBorderColor(named: "onboardButtonColor")
@@ -317,7 +271,7 @@ class OnboardPayViewController: OnboardBaseViewController {
     }
     
     override func saveData() -> Bool  {
-        print("OnboardDetailsViewController SAVE DATA")
+        print("OnboardPayViewController SAVE DATA")
         
         check()
         if !canMoveForward {
@@ -329,9 +283,6 @@ class OnboardPayViewController: OnboardBaseViewController {
         employmentModel?.minimumWage = minimumWage
         
         employmentModel?.employmentInfo.startDate = Date()
-        if selectedPayFrequency == .biWeekly {
-            employmentModel?.employmentInfo.startDate = firstPayPeriod
-        }
         
         employmentModel?.paymentType = .salary
         if selectedPayPeriod! == "payment_hour".localized {
@@ -371,7 +322,7 @@ class OnboardPayViewController: OnboardBaseViewController {
                 canMoveForward = false
             }
         }
-        if selectedPayFrequency == .biWeekly && firstPayPeriod == nil {
+        if selectedPayFrequency == .biWeekly {
             canMoveForward = false
         }
         onboardingDelegate?.updateCanMoveForward(value: canMoveForward)
@@ -383,26 +334,6 @@ class OnboardPayViewController: OnboardBaseViewController {
         payRateField.text = rate.name
         payRateField.text = NumberFormatter.localisedCurrencyStr(from: rate.value)
         
-    }
-    
-    func setupFieldTap() {
-        let fieldTap = UITapGestureRecognizer(target: self, action: #selector(self.fieldTapped(_:)))
-        self.firstPayPeriodField.isUserInteractionEnabled = true
-        self.firstPayPeriodField.addGestureRecognizer(fieldTap)
-    }
-    
-    @objc func fieldTapped(_ sender: UITapGestureRecognizer) {
-        if (firstDayViewHeightConstraint.constant == firstDayViewHeightWithPicker) {
-            firstDayViewHeightConstraint.constant = firstDayViewHeightWithField
-            firstDayView.isHidden = false
-            firstDayDatePicker.isHidden = true
-        } else {
-            firstDayViewHeightConstraint.constant = firstDayViewHeightWithPicker
-            firstDayView.isHidden = false
-            firstDayDatePicker.isHidden = false
-            firstDayDatePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
-            firstDayDatePicker.preferredDatePickerStyle = .wheels
-        }
     }
     
     @IBAction func infoFrequencyPressed(_ sender: Any) {
@@ -459,14 +390,6 @@ extension OnboardPayViewController: UITextFieldDelegate {
         return true
     }
     
-    func hideFirstDatePayPeriodIfNecessary() {
-        if selectedPayFrequency == .biWeekly {
-            firstDayViewHeightConstraint.constant = firstDayViewHeightWithField
-            firstDayDatePicker.isHidden = true
-            firstDayView.isHidden = false
-        }
-    }
-    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == payFrequencyField {
             if payFrequencyPickerHeight.constant > 1 {
@@ -478,7 +401,6 @@ extension OnboardPayViewController: UITextFieldDelegate {
                 payFrequencyPickerHeight.constant = 216
                 statePickerHeight.constant = 0
                 payPeriodPickerHeight.constant = 0
-                hideFirstDatePayPeriodIfNecessary()
                 pickerSelected = .payFrequencyPicker
             }
             check()
@@ -501,7 +423,6 @@ extension OnboardPayViewController: UITextFieldDelegate {
                 statePickerHeight.constant = 216
                 payFrequencyPickerHeight.constant = 0
                 payPeriodPickerHeight.constant = 0
-                hideFirstDatePayPeriodIfNecessary()
                 pickerSelected = .statePicker
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     self.scrollView.scrollToBottom()
@@ -520,8 +441,7 @@ extension OnboardPayViewController: UITextFieldDelegate {
                 payPeriodPickerHeight.constant = 216
                 payFrequencyPickerHeight.constant = 0
                 statePickerHeight.constant = 0
-                hideFirstDatePayPeriodIfNecessary()
-                pickerSelected = .payPeriodPicker
+                pickerSelected = .payFrequencyPicker
             }
             check()
             return false
@@ -539,16 +459,6 @@ extension OnboardPayViewController: UIPickerViewDelegate {
         if pickerView == payFrequencyPicker {
             payFrequencyField.text = PaymentFrequency.allCases[row].title
             selectedPayFrequency = PaymentFrequency.allCases[row]
-            
-            firstDayViewHeightConstraint.constant = firstDayViewHeightHidden
-            firstDayView.isHidden = true
-            
-            if (PaymentFrequency.allCases[row] == .biWeekly) {
-                firstDayViewHeightConstraint.constant = firstDayViewHeightWithField
-                firstDayView.isHidden = false
-                firstDayDatePicker.isHidden = true
-            }
-//            frequencyValid = true
         } else if pickerView == statePicker {
             stateField.text = State.states[row].title
             selectedState = State.states[row]
@@ -638,19 +548,5 @@ extension OnboardPayViewController {
         
         minimumWageValid = true
         check()
-    }
-}
-
-extension OnboardPayViewController {
-    
-    @objc func datePickerValueChanged(_ sender: UIDatePicker) {
-        let selectedDate = sender.date
-        firstPayPeriod = selectedDate
-        dateFormatter.dateFormat = "MMMM d, YYYY"
-        firstPayPeriodField.text = dateFormatter.string(from: selectedDate)
-        check()
-        // Handle the value change here
-        // You can access the selected date using the 'selectedDate' variable
-        // Perform any desired actions or updates based on the new value
     }
 }
