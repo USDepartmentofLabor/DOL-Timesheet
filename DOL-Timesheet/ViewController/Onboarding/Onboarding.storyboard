@@ -486,7 +486,7 @@
                     </view>
                     <connections>
                         <outlet property="firstDayDatePicker" destination="qdU-EJ-eHQ" id="wur-6Z-ThV"/>
-                        <outlet property="firstDayPeriodText" destination="W7B-Lz-L2A" id="Evl-Tq-5iN"/>
+                        <outlet property="firstDayPeriodText" destination="W7B-Lz-L2A" id="T0F-Qe-L4n"/>
                         <outlet property="firstDayPickerHeightConstraint" destination="BgY-ke-WwV" id="LWu-44-aBH"/>
                         <outlet property="firstPayPeriodField" destination="rZC-PF-XTl" id="SgO-7K-x3S"/>
                         <outlet property="infoButton" destination="zv8-2x-5wC" id="enX-kl-MNh"/>

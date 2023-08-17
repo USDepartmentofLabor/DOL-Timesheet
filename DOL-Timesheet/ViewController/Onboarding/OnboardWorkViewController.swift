@@ -114,13 +114,14 @@ class OnboardWorkViewController: OnboardBaseViewController {
         if userType == .employer {
             otherNameLabel.text = "onboard_name_employee".localized
             nameNoteLabel.text = "onboard_employee_note".localized
+            workweekLabel.text = "onboard_employee_workweek_start".localized
+            firstDayPeriodText.text = "employee_first_pay_period".localized
         } else {
             otherNameLabel.text = "onboard_name_employer".localized
             nameNoteLabel.text = "onboard_employer_note".localized
+            workweekLabel.text = "onboard_employer_workweek_start".localized
+            firstDayPeriodText.text = "employer_first_pay_period".localized
         }
-        workweekLabel.text = "onboard_workweek_start".localized
-        
-        firstDayPeriodText.text = "First day of your pay period".localized
         
         setupAccessibility()
         scrollView.keyboardDismissMode = .onDrag
@@ -223,7 +224,7 @@ extension OnboardWorkViewController: UITextFieldDelegate {
             workWeekStartValid = true
             check()
             textField.resignFirstResponder()
-            workWeekStartPickerHeight.constant = 216
+            workWeekStartPickerHeight.constant = 250
             otherNameSet(textField)
 //            UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: employeeEmployerView)
         }
@@ -240,7 +241,7 @@ extension OnboardWorkViewController: UITextFieldDelegate {
                 pickerSelected = .none
             } else {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                workWeekStartPickerHeight.constant = 216
+                workWeekStartPickerHeight.constant = 250
                 workweekField.text = Weekday.allCases[currentRow].title
                 selectedWeekday = Weekday.allCases[currentRow]
                 workWeekStartValid = true
@@ -263,7 +264,7 @@ extension OnboardWorkViewController: UITextFieldDelegate {
                     dateFormatter.dateFormat = "MMMM d, YYYY"
                     firstPayPeriodField.text = dateFormatter.string(from: firstPayPeriod!)
                 }
-                firstDayPickerHeightConstraint.constant = 216
+                firstDayPickerHeightConstraint.constant = 250
                 workWeekStartPickerHeight.constant = 0
                 pickerSelected = .payPeriodPicker
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in

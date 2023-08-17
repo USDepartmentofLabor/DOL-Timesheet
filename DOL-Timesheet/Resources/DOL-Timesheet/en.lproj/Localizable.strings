@@ -398,7 +398,8 @@
 "onboard_name" = "What is your name or nickname?";
 "onboard_name_employer" = "What is your employer's name or nickname?";
 "onboard_name_employee" = "What is your employee's name or nickname?";
-"onboard_workweek_start" = "When does the workweek begin?";
+"onboard_employer_workweek_start" = "When does the workweek begin?";
+"onboard_employee_workweek_start" = "When does the employee's workweek begin?";
 "onboard_employer_note" = "You can add more employers later in 'My Profile'.";
 "onboard_employee_note" = "You can add more employees later in 'My Profile'.";
 
@@ -467,7 +468,8 @@
 
 "info_state" = "We use the state you work in to help detect situations where your pay might be below the federal minimum wage.";
 "state_minimum_wage" = "State minimum wage";
-"first_pay_period"= "First day of your pay period";
+"employee_first_pay_period"= "First day of your employee's pay period";
+"employer_first_pay_period"= "First day of your pay period";
 "hour" = "hour";
 
 "welcome" = "Welcome";
@@ -476,7 +478,7 @@
 "pay" = "Pay";
 "summary" = "Summary";
 
-"onboarding_name_nickname" = "Name or nickname";
+"onboarding_name_nickname" = "Your Name or nickname";
 "onboarding_pay_week" = "Start of pay week";
 "pay_frequency" = "Pay frequency";
 "onboarding_first_day_pay" = "First day of pay period";

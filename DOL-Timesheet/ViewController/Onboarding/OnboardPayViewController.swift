@@ -322,9 +322,6 @@ class OnboardPayViewController: OnboardBaseViewController {
                 canMoveForward = false
             }
         }
-        if selectedPayFrequency == .biWeekly {
-            canMoveForward = false
-        }
         onboardingDelegate?.updateCanMoveForward(value: canMoveForward)
     }
     
