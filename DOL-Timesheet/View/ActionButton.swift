@@ -26,10 +26,13 @@ class ActionButton: UIButton {
         layer.cornerRadius = 4.0
         
         titleLabel?.scaleFont(forDataType: .actionButton)
-        setTitleColor(.white, for: .normal)
+        setTitleColor(.black, for: .normal)
         
         let heightConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 44)
         addConstraint(heightConstraint)
+        
+        let widthConstraint = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200)
+        addConstraint(widthConstraint)
 
         contentEdgeInsets.left = 20
         contentEdgeInsets.right = 20
@@ -37,15 +40,15 @@ class ActionButton: UIButton {
         contentEdgeInsets.bottom = 10
     }
     
-    override var intrinsicContentSize: CGSize {
-        let size = self.titleLabel!.intrinsicContentSize
-        return CGSize(width: size.width + contentEdgeInsets.left + contentEdgeInsets.right, height: size.height + contentEdgeInsets.top + contentEdgeInsets.bottom)
-    }
+//    override var intrinsicContentSize: CGSize {
+//        let size = self.titleLabel!.intrinsicContentSize
+//        return CGSize(width: size.width + contentEdgeInsets.left + contentEdgeInsets.right, height: size.height + contentEdgeInsets.top + contentEdgeInsets.bottom)
+//    }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        titleLabel?.preferredMaxLayoutWidth = self.titleLabel!.frame.size.width
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//    //    titleLabel?.preferredMaxLayoutWidth = self.titleLabel!.frame.size.width
+//    }
 
 }
 

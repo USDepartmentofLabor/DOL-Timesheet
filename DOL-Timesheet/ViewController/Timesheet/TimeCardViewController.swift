@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import DropDown
 
 class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewControllerDelegate {
     func didUpdateUser() {
@@ -48,6 +49,9 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     @IBOutlet weak var commentsView: UIView!
     @IBOutlet weak var commentsTextView: UITextView!
     
+    @IBOutlet weak var popupButton: UIButton!
+    @IBOutlet weak var pullDownButton: UIButton!
+    
     var workedHoursCounter: TimeInterval = 0 {
         didSet {
             let (hours, minutes) = Date.secondsToHoursMinutes(seconds: workedHoursCounter)
@@ -79,6 +83,63 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         Localizer.initialize()  
         setupNavigationBarSettings()
         setupView()
+        setupPopupButton()
+        setupDropDownButton()
+    }
+    
+    func setupPopupButton(){
+        let optionClosure = {(action : UIAction) in
+            print(action.title)
+        }
+        
+        if #available(iOS 14.0, *) {
+            popupButton.menu = UIMenu(children : [
+                UIAction(title : "PopUp 1", state : .on, handler: optionClosure),
+                UIAction(title : "PopUp 2", handler: optionClosure),
+                UIAction(title : "PopUp 3", handler: optionClosure)
+            ])
+            
+            popupButton.showsMenuAsPrimaryAction = true
+        }
+        
+        if #available(iOS 15.0, *) {
+            popupButton.changesSelectionAsPrimaryAction = true
+        }
+    }
+    
+    private lazy var menu = UIMenu(title: "Employer", children: elements)
+    
+    private lazy var first = UIAction(title: "DOL - Timesheet", image: UIImage(systemName: "pencil.circle"), attributes: [.destructive], state: .off) { action in
+        print("dropDown first")
+        self.pullDownButton.setTitle("DOL - Timesheet", for: .normal)
+
+    }
+    private lazy var second = UIAction(title: "DropDown second", image: UIImage(systemName: "pencil.circle"), attributes: [.destructive], state: .off) { action in
+        print("dropDown second")
+        self.pullDownButton.setTitle("DropDown second", for: .normal)
+
+    }
+    private lazy var third = UIAction(title: "DropDown third", image: UIImage(systemName: "pencil.circle"), attributes: [], state: .off) { action in
+        print("dropDown third")
+        self.pullDownButton.setTitle("DropDown third", for: .normal)
+
+    }
+    private lazy var fourth = UIAction(title: "DropDown fourth", image: UIImage(systemName: "pencil.circle"), attributes: [.destructive], state: .off) { action in
+        print("dropDown fourth")
+        self.pullDownButton.setTitle("DropDown fourth", for: .normal)
+
+    }
+    
+    private lazy var elements: [UIAction] = [first, second, third, fourth]
+
+    
+    func setupDropDownButton() {
+        if #available(iOS 14.0, *) {
+            pullDownButton.setTitle("DropDown", for: .normal)
+            pullDownButton.showsMenuAsPrimaryAction = true
+            pullDownButton.menu = menu
+        }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -120,8 +181,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
         commentsTextView.addBorder()
         
-        workedHoursView.addBorder()
-        breakHoursView.addBorder()
+//        workedHoursView.addBorder()
+//        breakHoursView.addBorder()
     }
     
     func displayInfo() {
@@ -419,35 +480,38 @@ extension TimeCardViewController {
         }
         if actions.contains(.startWork) {
             let startWorkBtn = clockAction(title: ClockAction.startWork.title,
-                                            bgColor: UIColor(named: "navButtonColor"),
+                                            bgColor: UIColor(named: "startEndWorkButton"),
                                             action: #selector(startWorkClick(_:)))
             actionStackView.addArrangedSubview(startWorkBtn)
 
             let manualTimeEntryTitle = "manual_time_entry".localized
-            let manualTimeBtn = clockAction(title: manualTimeEntryTitle, action: #selector(manualEntryClick(_:)))
+            let manualTimeBtn = clockAction(title: manualTimeEntryTitle,
+                                            bgColor: UIColor(named: "manualTimeEntryButton"),
+                                            action: #selector(manualEntryClick(_:)))
             actionStackView.addArrangedSubview(manualTimeBtn)
         }
         if actions.contains(.startBreak) {
             let startBreakBtn = clockAction(title: ClockAction.startBreak.title,
-                                            bgColor: #colorLiteral(red: 0.8274509804, green: 0.5960784314, blue: 0.2196078431, alpha: 1),
+                                            bgColor: UIColor(named: "startEndBreakButton"),
                                             action: #selector(startBreakClick(_:)))
             
             actionStackView.addArrangedSubview(startBreakBtn)
         }
         if actions.contains(.endBreak) {
             let endBreakBtn = clockAction(title: ClockAction.endBreak.title,
-                                          bgColor: #colorLiteral(red: 0.8274509804, green: 0.5960784314, blue: 0.2196078431, alpha: 1),
+                                          bgColor: UIColor(named: "startEndBreakButton"),
                                           action: #selector(endBreakClick(_:)))
             actionStackView.addArrangedSubview(endBreakBtn)
         }
         if actions.contains(.endWork) {
             let endWorkBtn = clockAction(title: ClockAction.endWork.title,
+                                         bgColor: UIColor(named: "startEndWorkButton"),
                                          action: #selector(endWorkClick(_:)))
             actionStackView.addArrangedSubview(endWorkBtn)
         }
         if actions.contains(.discardEntry) {
             let discardEntryBtn = clockAction(title: ClockAction.discardEntry.title,
-                                              bgColor: UIColor(named: "appSecondaryColor"),
+                                              bgColor: UIColor(named: "FFFFFF"),
                                               action: #selector(discardEntryClick(_:)))
             actionStackView.addArrangedSubview(discardEntryBtn)
         }
@@ -457,11 +521,12 @@ extension TimeCardViewController {
         let actionBtn = ActionButton(type: .custom)
         actionBtn.setTitle(title, for: .normal)
         actionBtn.addTarget(self, action: action, for: .touchUpInside)
-        actionBtn.setContentHuggingPriority(.defaultHigh, for: .vertical)
+      //  actionBtn.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         if let bgColor = bgColor {
             actionBtn.backgroundColor = bgColor
         }
+        
         return actionBtn
     }
     

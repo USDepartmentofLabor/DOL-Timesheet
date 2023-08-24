@@ -101,10 +101,10 @@ class TimeViewController: UIViewController {
         useNameTapGesture.cancelsTouchesInView = false
         selectUserDropDownView.addGestureRecognizer(useNameTapGesture)
         
-        editBtn.titleLabel?.scaleFont(forDataType: .actionButton)
-        userNameLabel.scaleFont(forDataType: .headingTitle)
-        paymentTypeLabel.scaleFont(forDataType: .timesheetPaymentTypeTitle)
-        employeeEmployerTitleLabel.scaleFont(forDataType: .timesheetSectionTitle)
+     //   editBtn.titleLabel?.scaleFont(forDataType: .actionButton)
+     //   userNameLabel.scaleFont(forDataType: .headingTitle)
+     //   paymentTypeLabel.scaleFont(forDataType: .timesheetPaymentTypeTitle)
+     //   employeeEmployerTitleLabel.scaleFont(forDataType: .timesheetSectionTitle)
         selectUserDropDownView.titleLabel.scaleFont(forDataType: .timesheetSelectedUser)
         selectUserDropDownView.titleLabel.textColor = UIColor(named: "darkTextColor")
         
@@ -118,7 +118,7 @@ class TimeViewController: UIViewController {
         }
         
         let profileUser = viewModel?.userProfileModel.profileModel.currentUser
-        userNameLabel.text = profileUser?.name
+      //  userNameLabel.text = profileUser?.name
         
         let profileImage = profileUser?.image?.normalizedImage() ?? #imageLiteral(resourceName: "profile")
         
@@ -135,14 +135,14 @@ class TimeViewController: UIViewController {
         profileBtn.addTarget(self, action: #selector(profileClicked(sender:)), for: UIControl.Event.touchDown)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileBtn)
         
-        editBtn.setTitle("edit".localized, for: .normal)
+      //  editBtn.setTitle("edit".localized, for: .normal)
         
         if viewModel?.userProfileModel.isProfileEmployer ?? false {
-            employeeEmployerTitleLabel.text = "employee".localized
+        //    employeeEmployerTitleLabel.text = "employee".localized
             selectUserDropDownView.accessibilityHint = "employee_user_hint".localized
         }
         else {
-            employeeEmployerTitleLabel.text = "employer".localized
+        //    employeeEmployerTitleLabel.text = "employer".localized
             selectUserDropDownView.accessibilityHint = "employer_user_hint".localized
         }
         
@@ -285,7 +285,7 @@ extension TimeViewController {
         }
         
         displayTime()
-        paymentTypeLabel.text = employmentModel?.currentPaymentTypeTitle ?? ""
+      //  paymentTypeLabel.text = employmentModel?.currentPaymentTypeTitle ?? ""
     }
 }
 
