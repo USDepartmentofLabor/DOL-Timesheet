@@ -20,7 +20,10 @@ class TimeViewController: UIViewController {
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var employeeEmployerTitleLabel: UILabel!
     @IBOutlet weak var selectUserDropDownView: DropDownView!
-
+    
+    @IBOutlet weak var selectEmployerPopupButton: UIButton!
+    @IBOutlet weak var selectEmployerPopupLabel: UILabel!
+    
     @IBOutlet weak var timeContainerView: UIView!
     
     weak var currentTimeViewController: UIViewController?
@@ -32,6 +35,16 @@ class TimeViewController: UIViewController {
     
     @IBOutlet weak var contactUsBtn: UIBarButtonItem!
     var exportBtn: UIBarButtonItem?
+
+//    var contactUsBtn: UIBarButtonItem?
+    var timesheetBtn: UIBarButtonItem?
+    var timecardBtn: UIBarButtonItem?
+    var profileBtn: UIBarButtonItem?
+    var infoBtn: UIBarButtonItem?
+
+
+    
+    let lighterGrey = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,8 +107,8 @@ class TimeViewController: UIViewController {
 
 
     func setupView() {
-        let infoItem = UIBarButtonItem.infoButton(target: self, action: #selector(infoClicked(sender:)))
-        navigationItem.rightBarButtonItem = infoItem
+//        let infoItem = UIBarButtonItem.infoButton(target: self, action: #selector(infoClicked(sender:)))
+//        navigationItem.rightBarButtonItem = infoItem
         
         let useNameTapGesture = UITapGestureRecognizer(target: self, action: #selector(userBtnClick(_:)))
         useNameTapGesture.cancelsTouchesInView = false
@@ -105,8 +118,28 @@ class TimeViewController: UIViewController {
      //   userNameLabel.scaleFont(forDataType: .headingTitle)
      //   paymentTypeLabel.scaleFont(forDataType: .timesheetPaymentTypeTitle)
      //   employeeEmployerTitleLabel.scaleFont(forDataType: .timesheetSectionTitle)
-        selectUserDropDownView.titleLabel.scaleFont(forDataType: .timesheetSelectedUser)
+        
+        selectEmployerPopupButton.isHidden = true
+        selectEmployerPopupLabel.isHidden = true
+        selectUserDropDownView.isHidden = false
         selectUserDropDownView.titleLabel.textColor = UIColor(named: "darkTextColor")
+        selectUserDropDownView.titleLabel.scaleFont(forDataType: .timesheetSelectedUser)
+
+
+        if #available(iOS 15.0, *) {
+            selectEmployerPopupButton.isHidden = false
+            selectEmployerPopupLabel.isHidden = false
+            selectUserDropDownView.isHidden = true
+            
+            selectEmployerPopupButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
+
+            
+            selectEmployerPopupButton.layer.borderWidth = 1.0 // Set the width of the border
+            selectEmployerPopupButton.layer.borderColor = lighterGrey.cgColor // Set the color of the border
+            selectEmployerPopupButton.layer.cornerRadius = 10.0
+            
+            selectEmployerPopupLabel.textColor = UIColor.gray
+        }
         
     }
     
@@ -117,36 +150,75 @@ class TimeViewController: UIViewController {
             title = "timecard".localized
         }
         
-        let profileUser = viewModel?.userProfileModel.profileModel.currentUser
-      //  userNameLabel.text = profileUser?.name
-        
-        let profileImage = profileUser?.image?.normalizedImage() ?? #imageLiteral(resourceName: "profile")
-        
-        let profileBtn = UIButton(type: .custom)
-        profileBtn.setBackgroundImage(profileImage, for: .normal)
-        profileBtn.clipsToBounds = true
-        profileBtn.contentMode = .scaleAspectFill
-        profileBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        profileBtn.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        profileBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        profileBtn.addBorder(borderColor: .white, borderWidth: 0.5, cornerRadius: profileBtn.bounds.size.width / 2)
-        
-        profileBtn.accessibilityHint = "profile_hint".localized
-        profileBtn.addTarget(self, action: #selector(profileClicked(sender:)), for: UIControl.Event.touchDown)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileBtn)
+//        let profileUser = viewModel?.userProfileModel.profileModel.currentUser
+//      //  userNameLabel.text = profileUser?.name
+//
+//        let profileImage = profileUser?.image?.normalizedImage() ?? #imageLiteral(resourceName: "profile")
+//
+//        let profileBtn = UIButton(type: .custom)
+//        profileBtn.setBackgroundImage(profileImage, for: .normal)
+//        profileBtn.clipsToBounds = true
+//        profileBtn.contentMode = .scaleAspectFill
+//        profileBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+//        profileBtn.widthAnchor.constraint(equalToConstant: 40).isActive = true
+//        profileBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
+//        profileBtn.addBorder(borderColor: .white, borderWidth: 0.5, cornerRadius: profileBtn.bounds.size.width / 2)
+//
+//        profileBtn.accessibilityHint = "profile_hint".localized
+//        profileBtn.addTarget(self, action: #selector(profileClicked(sender:)), for: UIControl.Event.touchDown)
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileBtn)
         
       //  editBtn.setTitle("edit".localized, for: .normal)
         
         if viewModel?.userProfileModel.isProfileEmployer ?? false {
         //    employeeEmployerTitleLabel.text = "employee".localized
             selectUserDropDownView.accessibilityHint = "employee_user_hint".localized
+            selectEmployerPopupLabel.text = "employee".localized
         }
         else {
         //    employeeEmployerTitleLabel.text = "employer".localized
             selectUserDropDownView.accessibilityHint = "employer_user_hint".localized
+            selectEmployerPopupLabel.text = "employer".localized
+        }
+        setupPopupButton()
+        displayEmploymentInfo()
+    }
+    
+    func setupPopupButton(){
+        let optionClosure = {(action : UIAction) in
+            print(action.title)
         }
         
-        displayEmploymentInfo()
+        var menuActions: [UIAction] = []
+        
+        guard let userProfileModel = viewModel?.userProfileModel else { return }
+        
+        let users: [User] = userProfileModel.employmentUsers
+        guard users.count > 0 else {
+            return
+        }
+                
+        for user in users {
+            let action = UIAction(title: user.name!, handler: {_ in
+                self.selectUserDropDownView.title = user.title
+                self.setCurrentUser(user: user)
+            })
+            menuActions.append(action)
+        }
+        let newUserAction = UIAction(title: userProfileModel.addNewUserTitle, handler: {_ in
+            self.addNewUser()
+        })
+        
+        menuActions.append(newUserAction)
+        
+        if #available(iOS 14.0, *) {
+            selectEmployerPopupButton.menu = UIMenu(children : menuActions)
+            selectEmployerPopupButton.showsMenuAsPrimaryAction = true
+        }
+        
+        if #available(iOS 15.0, *) {
+            selectEmployerPopupButton.changesSelectionAsPrimaryAction = true
+        }
     }
     
     
@@ -163,6 +235,27 @@ class TimeViewController: UIViewController {
         if let vc = currentTimeViewController as? TimesheetViewController {
             vc.export(sender)
         }
+    }
+    
+    @IBAction func timesheetClicked(_ sender: Any) {
+        if currentTimeViewController is TimeCardViewController {
+            displayTimeSheet()
+        }
+    }
+    
+    @IBAction func timecardClicked(_ sender: Any) {
+        if currentTimeViewController is TimesheetViewController {
+            displayTimeCard()
+        }
+    }
+    
+    @IBAction func profileClicked(_ sender: Any) {
+        viewProfile()
+        
+    }
+    
+    @IBAction func infoClicked(_ sender: Any) {
+        viewInfo()
     }
     
     @IBAction func contactWHDClick(_ sender: Any) {
@@ -296,6 +389,14 @@ extension TimeViewController {
         resourcesVC.title = "contact_us".localized
         navigationController?.pushViewController(resourcesVC, animated: true)
     }
+    
+    func viewInfo() {
+        performSegue(withIdentifier: "showInfo", sender: self)
+    }
+    
+    func viewProfile() {
+        performSegue(withIdentifier: "showProfile", sender: self)
+    }
 }
 
 extension TimeViewController: TimeViewControllerDelegate {
@@ -327,6 +428,43 @@ extension TimeViewController {
         else {
             displayTimeCard()
         }
+        
+        displayToolbar()
+    }
+    
+    func displayToolbar() {
+        
+        var items = toolbar.items
+        
+        setupButton()
+        
+        items?.insert(timesheetBtn!, at: 2)
+        items?.insert(timecardBtn!, at: 4)
+        items?.insert(profileBtn!, at: 6)
+        items?.insert(infoBtn!, at: 8)
+
+        toolbar.setItems(items, animated: false)
+    }
+    
+    func setupButton() {
+        
+        
+        if timesheetBtn == nil {
+            let image = UIImage(named: "timesheet")
+            timesheetBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "timesheet"), style: .plain, target: self, action: #selector(timesheetClicked(_:)))
+        }
+        if timecardBtn == nil {
+            let image = UIImage(named: "timecard")
+            timecardBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "timecard"), style: .plain, target: self, action: #selector(timecardClicked(_:)))
+        }
+        if profileBtn == nil {
+            let image = UIImage(named: "profile")
+            profileBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "profile"), style: .plain, target: self, action: #selector(profileClicked(_:)))
+        }
+        if infoBtn == nil {
+            let image = UIImage(systemName: "info.circle")
+            infoBtn = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(infoClicked(_:)))
+        }
     }
     
     func displayTimeCard() {
@@ -339,19 +477,19 @@ extension TimeViewController {
             timecardVC = TimeCardViewController.instantiateFromStoryboard()
             timecardVC.viewModel = viewModel
             addViewController(viewController: timecardVC)
-            timecardVC.commentsTextView.delegate = self
+//            timecardVC.commentsTextView.delegate = self
         }
         
-        title = "timecard".localized
-        timesheetToggleBtn.image = #imageLiteral(resourceName: "timesheet")
-        timesheetToggleBtn.title = "timesheet".localized
-        
-        var items = toolbar.items
-        
-        if let exportBtn = exportBtn {
-            items?.removeAll {$0 == exportBtn}
-            toolbar.setItems(items, animated: false)
-        }
+//        title = "timecard".localized
+//        timesheetToggleBtn.image = #imageLiteral(resourceName: "timesheet")
+//        timesheetToggleBtn.title = "timesheet".localized
+//
+//        var items = toolbar.items
+//
+//        if let exportBtn = exportBtn {
+//            items?.removeAll {$0 == exportBtn}
+//            toolbar.setItems(items, animated: false)
+//        }
     }
 
     func displayTimeSheet() {
@@ -366,17 +504,17 @@ extension TimeViewController {
             addViewController(viewController: timesheetVC)
         }
         
-        title = "timesheet".localized
-        timesheetToggleBtn.image = #imageLiteral(resourceName: "timecard")
-        timesheetToggleBtn.title = "timecard".localized
-
-        if exportBtn == nil {
-            exportBtn = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(exportClicked(_:)))
-        }
-        
-        var items = toolbar.items
-        items?.insert(exportBtn!, at: 2)
-        toolbar.setItems(items, animated: false)
+//        title = "timesheet".localized
+//        timesheetToggleBtn.image = #imageLiteral(resourceName: "timecard")
+//        timesheetToggleBtn.title = "timecard".localized
+//
+//        if exportBtn == nil {
+//            exportBtn = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(exportClicked(_:)))
+//        }
+//
+//        var items = toolbar.items
+//        items?.insert(exportBtn!, at: 2)
+//        toolbar.setItems(items, animated: false)
     }
 
     func addViewController(viewController: UIViewController) {

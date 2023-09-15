@@ -30,12 +30,15 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     @IBOutlet weak var rateViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var rateViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var hoursView: UIView!
+    
     @IBOutlet weak var hoursWorkedTitleLabel: UILabel!
     @IBOutlet weak var workedHoursView: UIView!
     @IBOutlet weak var workedHoursCounterLabel: UILabel!
     @IBOutlet weak var timeInfoLabel: UILabel!
 
     @IBOutlet weak var hoursWorkedInfoBtn: UIButton!
+    @IBOutlet weak var breakViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var breakHoursTitleLabel: UILabel!
     @IBOutlet weak var breakHoursView: UIView!
@@ -45,12 +48,19 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     
     @IBOutlet weak var actionStackView: UIStackView!
     
-    @IBOutlet weak var commentsTitleLabel: UILabel!
-    @IBOutlet weak var commentsView: UIView!
-    @IBOutlet weak var commentsTextView: UITextView!
+    @IBOutlet weak var discardButton: UIButton!
     
+    @IBOutlet weak var commentsTitleLabel: UILabel!
+//    @IBOutlet weak var commentsView: UIView!
+//    @IBOutlet weak var commentsTextView: UITextView!
+    
+    @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var popupButton: UIButton!
-    @IBOutlet weak var pullDownButton: UIButton!
+    @IBOutlet weak var popupHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var popupBottomConstraint: NSLayoutConstraint!
+    
+    let lighterGrey = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
+
     
     var workedHoursCounter: TimeInterval = 0 {
         didSet {
@@ -75,6 +85,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     var currentHourlyRate: HourlyRate? {
         didSet {
             rateDropDownView.title = currentHourlyRate?.title ?? ""
+            popupButton.setTitle(currentHourlyRate?.title ?? "", for: .normal)
         }
     }
     
@@ -83,63 +94,6 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         Localizer.initialize()  
         setupNavigationBarSettings()
         setupView()
-        setupPopupButton()
-        setupDropDownButton()
-    }
-    
-    func setupPopupButton(){
-        let optionClosure = {(action : UIAction) in
-            print(action.title)
-        }
-        
-        if #available(iOS 14.0, *) {
-            popupButton.menu = UIMenu(children : [
-                UIAction(title : "PopUp 1", state : .on, handler: optionClosure),
-                UIAction(title : "PopUp 2", handler: optionClosure),
-                UIAction(title : "PopUp 3", handler: optionClosure)
-            ])
-            
-            popupButton.showsMenuAsPrimaryAction = true
-        }
-        
-        if #available(iOS 15.0, *) {
-            popupButton.changesSelectionAsPrimaryAction = true
-        }
-    }
-    
-    private lazy var menu = UIMenu(title: "Employer", children: elements)
-    
-    private lazy var first = UIAction(title: "DOL - Timesheet", image: UIImage(systemName: "pencil.circle"), attributes: [.destructive], state: .off) { action in
-        print("dropDown first")
-        self.pullDownButton.setTitle("DOL - Timesheet", for: .normal)
-
-    }
-    private lazy var second = UIAction(title: "DropDown second", image: UIImage(systemName: "pencil.circle"), attributes: [.destructive], state: .off) { action in
-        print("dropDown second")
-        self.pullDownButton.setTitle("DropDown second", for: .normal)
-
-    }
-    private lazy var third = UIAction(title: "DropDown third", image: UIImage(systemName: "pencil.circle"), attributes: [], state: .off) { action in
-        print("dropDown third")
-        self.pullDownButton.setTitle("DropDown third", for: .normal)
-
-    }
-    private lazy var fourth = UIAction(title: "DropDown fourth", image: UIImage(systemName: "pencil.circle"), attributes: [.destructive], state: .off) { action in
-        print("dropDown fourth")
-        self.pullDownButton.setTitle("DropDown fourth", for: .normal)
-
-    }
-    
-    private lazy var elements: [UIAction] = [first, second, third, fourth]
-
-    
-    func setupDropDownButton() {
-        if #available(iOS 14.0, *) {
-            pullDownButton.setTitle("DropDown", for: .normal)
-            pullDownButton.showsMenuAsPrimaryAction = true
-            pullDownButton.menu = menu
-        }
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -167,22 +121,98 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         
         rateDropDownView.titleLabel.scaleFont(forDataType: .timesheetSelectedUser)
         rateDropDownView.titleLabel.textColor = UIColor(named: "darkTextColor")
+                
+        
+        popupButton.layer.borderWidth = 1.0 // Set the width of the border
+        popupButton.layer.borderColor = lighterGrey.cgColor // Set the color of the border
+        popupButton.layer.cornerRadius = 10.0
 
         workedHoursCounterLabel.scaleFont(forDataType: .timeCounterText)
         hoursWorkedTitleLabel.scaleFont(forDataType: .nameValueTitle)
         timeInfoLabel.scaleFont(forDataType: .timecardInfoText)
-        timeInfoLabel.textColor = UIColor(named: "appSecondaryColor")
+//        timeInfoLabel.textColor = UIColor(named: "appSecondaryColor")
+        
+        timeInfoLabel.isHidden = true
 
-        breakHoursCounterLabel.scaleFont(forDataType: .breakTimeCounterText)
+       // breakHoursCounterLabel.scaleFont(forDataType: .breakTimeCounterText)
         breakHoursTitleLabel.scaleFont(forDataType: .nameValueText)
         breakTimeInfoLabel.scaleFont(forDataType: .timecardInfoText)
-        breakTimeInfoLabel.textColor = UIColor(named: "appSecondaryColor")
+//        breakTimeInfoLabel.textColor = UIColor(named: "appSecondaryColor")
         
-        commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
-        commentsTextView.addBorder()
+//        breakHoursView.isHidden = true
+        breakViewHeightConstraint.constant = 0.0
+        
+//        commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
+//        commentsTextView.addBorder()
+        
+        discardButton.layer.borderWidth = 1.0
+        discardButton.layer.cornerRadius = 5.0
+        discardButton.layer.borderColor = UIColor.red.cgColor
+
+        discardButton.setTitleColor(UIColor.red, for: .normal)
+        discardButton.setTitleColor(UIColor.white, for: .highlighted)
+        discardButton.setTitle("discard".localized, for: .normal)
+                
+   //     workedHoursView.bottomAnchor.constraint(equalTo: hoursView.bottomAnchor).isActive = true
+        
+        popupButton.isHidden = true
+        rateDropDownView.isHidden = false
+
+        if #available(iOS 15.0, *) {
+            popupButton.isHidden = false
+            rateDropDownView.isHidden = true
+            setupPopupButton()
+            
+            popupButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
+            
+            rateLabel.textColor = UIColor.gray
+            rateLabel.text = "rate".localized
+
+        }
         
 //        workedHoursView.addBorder()
 //        breakHoursView.addBorder()
+        
+    }
+    
+    @objc func labelTapped() {
+        popupButton.sendActions(for: .touchUpInside)
+    }
+    
+    func setupPopupButton(){
+        popupButton.isHidden = false
+        rateLabel.isHidden =  false
+        if viewModel?.currentEmploymentModel?.salary != nil {
+            popupButton.isHidden = true
+            rateLabel.isHidden =  true
+            return
+        }
+        
+        let optionClosure = {(action : UIAction) in
+            print(action.title)
+        }
+        
+        var menuActions: [UIAction] = []
+
+        guard  let options = viewModel?.currentEmploymentModel?.hourlyRates else {
+            return
+        }
+                
+        for option in options {
+            let action = UIAction(title: option.title, handler: {_ in
+                self.currentHourlyRate = option
+            })
+            menuActions.append(action)
+        }
+        
+        if #available(iOS 14.0, *) {
+            popupButton.menu = UIMenu(children : menuActions)
+            popupButton.showsMenuAsPrimaryAction = true
+        }
+        
+        if #available(iOS 15.0, *) {
+            popupButton.changesSelectionAsPrimaryAction = true
+        }
     }
     
     func displayInfo() {
@@ -193,20 +223,36 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         
         if let paymentType = viewModel?.currentEmploymentModel?.paymentType,
             paymentType == .salary {
-            rateDropDownView.isHidden = true
-            rateDropDownView.isAccessibilityElement = false
-            rateViewBottomConstraint.priority = .init(200)
-            rateViewHeightConstraint.priority = .init(200)
+            if #available(iOS 15.0, *) {
+                popupButton.isHidden = true
+                popupButton.isAccessibilityElement = false
+                popupBottomConstraint.priority = .init(200)
+                popupHeightConstraint.priority = .init(200)
+                
+            } else {
+                rateDropDownView.isHidden = true
+                rateDropDownView.isAccessibilityElement = false
+                rateViewBottomConstraint.priority = .init(200)
+                rateViewHeightConstraint.priority = .init(200)
+            }
         }
         else {
-            rateDropDownView.isHidden = false
-            rateDropDownView.isAccessibilityElement = true
-            rateViewBottomConstraint.priority = .init(900)
-            rateViewHeightConstraint.priority = .init(900)
-            
-            let rateTapGesture = UITapGestureRecognizer(target: self, action: #selector(rateClick(_:)))
-            rateTapGesture.cancelsTouchesInView = false
-            rateDropDownView.addGestureRecognizer(rateTapGesture)
+            if #available(iOS 15.0, *) {
+                popupButton.isHidden = false
+                popupButton.isAccessibilityElement = true
+                popupBottomConstraint.priority = .init(900)
+                popupHeightConstraint.priority = .init(900)
+                
+            } else {
+                rateDropDownView.isHidden = false
+                rateDropDownView.isAccessibilityElement = true
+                rateViewBottomConstraint.priority = .init(900)
+                rateViewHeightConstraint.priority = .init(900)
+                
+                let rateTapGesture = UITapGestureRecognizer(target: self, action: #selector(rateClick(_:)))
+                rateTapGesture.cancelsTouchesInView = false
+                rateDropDownView.addGestureRecognizer(rateTapGesture)
+            }
         }
         
         if let hourlyRates = viewModel?.currentEmploymentModel?.hourlyRates, hourlyRates.count > 0 {
@@ -215,6 +261,9 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         else {
             currentHourlyRate = nil
         }
+        
+        setupPopupButton()
+        
         displayClock()
     }
     
@@ -223,18 +272,35 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         if clockState == .clockedIn || clockState == .inBreak {
             startTimer()
             // display Comments
-            commentsView.isHidden = false
+//            commentsView.isHidden = true
             rateDropDownView.isEnabled = false
+            popupButton.isEnabled = false
+            
+            popupButton.backgroundColor = lighterGrey
+            popupButton.setTitleColor(UIColor.gray, for: .normal)
+
+            
             if let hourlyRate = viewModel?.currentEmploymentModel?.employmentInfo.clock?.hourlyRate {
                 currentHourlyRate = hourlyRate
             }
+            discardButton.isHidden = false
+            timeInfoLabel.isHidden = false
+            breakTimeInfoLabel.isHidden = false
         }
         else {
             // hide Comments
-            commentsView.isHidden = true
+//            commentsView.isHidden = true
             timeInfoLabel.text = ""
+            timeInfoLabel.isHidden = true
             breakTimeInfoLabel.text = ""
+            breakTimeInfoLabel.isHidden = true
             rateDropDownView.isEnabled = true
+            popupButton.isEnabled = true
+            
+            popupButton.setTitleColor(UIColor.black, for: .normal)
+            popupButton.backgroundColor = UIColor.white
+            
+            discardButton.isHidden = true
         }
         
         displayLoggedTime()
@@ -270,7 +336,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     }
 
     @IBAction func startWorkClick(_ sender: Any) {
-        
+        discardButton.isHidden = false
         viewModel?.clock(action: .startWork, hourlyRate: currentHourlyRate, comments: nil)
         displayClock()
     }
@@ -284,7 +350,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         }
         
         if ( viewModel?.currentEmploymentModel?.employmentInfo.clock?.totalHoursWorked() ?? 0 >= 0) {
-            viewModel?.clock(action: .endWork, comments: commentsTextView.text)
+            viewModel?.clock(action: .endWork, comments: "")
             
             if let clock = viewModel?.currentEmploymentModel?.employmentInfo.clock {
                 
@@ -316,8 +382,12 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     }
     
     @IBAction func startBreakClick(_ sender: Any) {
+        breakViewHeightConstraint.constant = 119.0
         if isValidHourlyRate() {
-            viewModel?.clock(action: .startBreak, comments: commentsTextView.text)
+            viewModel?.clock(action: .startBreak, comments: "")
+       //     breakHoursView.isHidden = false
+            view.layoutSubviews()
+            view.layoutIfNeeded()
             displayClock()
         } else {
             self.discardEntry()
@@ -328,8 +398,11 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             self.discardEntry()
             return
         }
+        breakViewHeightConstraint.constant = 0.0
         if ( viewModel?.currentEmploymentModel?.employmentInfo.clock?.totalBreakTime() ?? 0 >= 0) {
-            viewModel?.clock(action: .endBreak, comments: commentsTextView.text)
+        //    breakHoursView.isHidden = true
+            view.layoutIfNeeded()
+            viewModel?.clock(action: .endBreak, comments: "")
             displayClock()
         } else {
             let alertController = UIAlertController(title: "Error", message: "The time appears to be negative, maybe your clock was set backward.", preferredStyle: .alert)
@@ -365,6 +438,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     }
         
     func discardEntry() {
+        breakViewHeightConstraint.constant = 0.0
+        discardButton.isHidden = true
         viewModel?.clock(action: .discardEntry, comments: nil)
         displayClock()
     }
@@ -408,12 +483,12 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             }
             
             breakTimeInfoLabel.text = breakTimeStr
-            commentsTextView.text = clock.comments
+//            commentsTextView.text = clock.comments
         }
         else {
             timeInfoLabel.text = ""
         }
-        commentsTitleLabel.text = "comments".localized
+//        commentsTitleLabel.text = "comments".localized
         updateTimeCounter()
     }
     
@@ -469,6 +544,8 @@ extension TimeCardViewController {
     func displayActions() {
         guard let actions = viewModel?.availableClockOptions else {return}
 
+        let newHeight: CGFloat = 34.0 // Set the desired button height
+
         actionStackView.arrangedSubviews.forEach {
             actionStackView.removeArrangedSubview($0)
             $0.removeFromSuperview()
@@ -476,6 +553,9 @@ extension TimeCardViewController {
         if actions.count == 0 {
             let manualTimeEntryTitle = "manual_time_entry".localized
             let manualTimeBtn = clockAction(title: manualTimeEntryTitle, action: #selector(manualEntryClick(_:)))
+            
+            manualTimeBtn.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
+            
             actionStackView.addArrangedSubview(manualTimeBtn)
         }
         if actions.contains(.startWork) {
@@ -488,6 +568,9 @@ extension TimeCardViewController {
             let manualTimeBtn = clockAction(title: manualTimeEntryTitle,
                                             bgColor: UIColor(named: "manualTimeEntryButton"),
                                             action: #selector(manualEntryClick(_:)))
+            
+            manualTimeBtn.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
+
             actionStackView.addArrangedSubview(manualTimeBtn)
         }
         if actions.contains(.startBreak) {
@@ -495,24 +578,41 @@ extension TimeCardViewController {
                                             bgColor: UIColor(named: "startEndBreakButton"),
                                             action: #selector(startBreakClick(_:)))
             
+            startBreakBtn.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
+
             actionStackView.addArrangedSubview(startBreakBtn)
         }
         if actions.contains(.endBreak) {
             let endBreakBtn = clockAction(title: ClockAction.endBreak.title,
                                           bgColor: UIColor(named: "startEndBreakButton"),
                                           action: #selector(endBreakClick(_:)))
+            
+            endBreakBtn.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
+
             actionStackView.addArrangedSubview(endBreakBtn)
         }
         if actions.contains(.endWork) {
             let endWorkBtn = clockAction(title: ClockAction.endWork.title,
                                          bgColor: UIColor(named: "startEndWorkButton"),
                                          action: #selector(endWorkClick(_:)))
+            
+            endWorkBtn.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
+
             actionStackView.addArrangedSubview(endWorkBtn)
         }
         if actions.contains(.discardEntry) {
             let discardEntryBtn = clockAction(title: ClockAction.discardEntry.title,
-                                              bgColor: UIColor(named: "FFFFFF"),
+                                              bgColor: UIColor.white,
                                               action: #selector(discardEntryClick(_:)))
+
+            discardEntryBtn.layer.borderWidth = 1.0
+            discardEntryBtn.layer.borderColor = UIColor.red.cgColor
+
+            discardEntryBtn.setTitleColor(UIColor.red, for: .normal)
+            discardEntryBtn.setTitleColor(UIColor.white, for: .highlighted)
+            
+            discardEntryBtn.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
+            
             actionStackView.addArrangedSubview(discardEntryBtn)
         }
     }

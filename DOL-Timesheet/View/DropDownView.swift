@@ -17,6 +17,13 @@ class DropDownView: UIView {
             accessibilityLabel = title
         }
     }
+    
+    @IBInspectable var value: String = "" {
+        didSet {
+            valueLabel.text = value
+            accessibilityLabel = value
+        }
+    }
 
     @IBInspectable var isEnabled: Bool = true {
         didSet {
@@ -30,6 +37,8 @@ class DropDownView: UIView {
     }
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var valueLabel: UILabel!
+    
     var view: UIView!
     
     
@@ -54,8 +63,9 @@ class DropDownView: UIView {
         ]
         addSubview(view)
         titleLabel.scaleFont(forDataType: .barButtonTitle)
+        valueLabel.scaleFont(forDataType: .barButtonTitle)
         self.view = view
-        self.view.addBorder()
+        self.view.addBorder(borderColor: .darkGray)
         
         setupAccessibility()
     }

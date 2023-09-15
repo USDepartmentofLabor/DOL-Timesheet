@@ -167,6 +167,13 @@ extension OnboardViewController: OnboardPageViewControllerDelegate {
 }
 
 extension OnboardViewController: OnboardingProtocol {
+    func resetData() {
+        onboardPageViewController?.resetData()
+        
+        maxPageVisited = 0
+        updateDots()
+    }
+    
     func updateViewModels(profileViewModel: ProfileViewModel,
                           employmentModel: EmploymentModel) {
         if let vcs = onboardPageViewController?.orderedViewControllers {

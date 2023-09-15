@@ -167,8 +167,9 @@
 "end_work" = "End Work";
 "start_break" = "Start Break";
 "end_break" = "End Break";
+"discard" = "Discard";
 "discard_entry" = "Discard Entry";
-"manual_time_entry" = "Manual Time Entry";
+"manual_time_entry" = "Enter Time Manually";
 "discard_entry_confirm" = "Are you sure you want to discard entry?";
 "discard" = "Discard";
 
@@ -309,8 +310,8 @@
 
 "hours_worked" = "Hours Worked";
 "break_hours" = "Break Hours";
-"started_work" = "- Started work on ";
-"started_break" = "- Started break at ";
+"started_work" = "Started work on ";
+"started_break" = "Started break at ";
 "comments" = "Comments";
 
 "info_title" = "Info";
@@ -399,20 +400,20 @@
 "onboard_name_employer" = "What is your employer's name or nickname?";
 "onboard_name_employee" = "What is your employee's name or nickname?";
 "onboard_employer_workweek_start" = "When does the workweek begin?";
-"onboard_employee_workweek_start" = "When does the employee's workweek begin?";
+"onboard_employee_workweek_start" = "When does the workweek begin?";
 "onboard_employer_note" = "You can add more employers later in 'My Profile'.";
 "onboard_employee_note" = "You can add more employees later in 'My Profile'.";
 
 "onboard_pay_frequency_employer" = "How often do you get paid?";
-"onboard_pay_frequency_employee" = "How often does your employee get paid?";
+"onboard_pay_frequency_employee" = "How often does the employee get paid?";
 "onboard_pay_rate_employer" = "What is your pay rate?";
-"onboard_pay_rate_employee" = "What is your employee's pay rate?";
+"onboard_pay_rate_employee" = "What is the employee's pay rate?";
 "onboard_overtime_employer" = "Are you eligible for paid overtime?";
-"onboard_overtime_employee" = "Is your employee eligible for paid time?";
+"onboard_overtime_employee" = "Is the employee eligible for paid overtime?";
 "onboard_overtime_yes" = "Yes (non-exempt)";
 "onboard_overtime_no" = "No (exempt)";
 "onboard_state_employer" = "What state do you work in?";
-"onboard_state_employee" = "The state your employee work in?";
+"onboard_state_employee" = "The state does the employee work in?";
 "onboard_pay_note" = "You can add more pay rates and states later in 'My Profile'.";
 
 "onboard_review_title" = "You're almost done!";
@@ -468,8 +469,8 @@
 
 "info_state" = "We use the state you work in to help detect situations where your pay might be below the federal minimum wage.";
 "state_minimum_wage" = "State minimum wage";
-"employee_first_pay_period"= "First day of your employee's pay period";
-"employer_first_pay_period"= "First day of your pay period";
+"employee_first_pay_period"= "Start date of employee’s first pay period?";
+"employer_first_pay_period"= "Start date of your first pay period?";
 "hour" = "hour";
 
 "welcome" = "Welcome";
@@ -481,10 +482,14 @@
 "onboarding_name_nickname" = "Your Name or nickname";
 "onboarding_pay_week" = "Start of pay week";
 "pay_frequency" = "Pay frequency";
-"onboarding_first_day_pay" = "First day of pay period";
+"employee_pay_frequency" = "Employee's Pay frequency";
+"onboarding_first_day_pay" = "Start date of first pay period";
 "pay_rate" = "Pay rate";
-"onboarding_eligible_overtime" = "Eligible for overtime";
-"onboarding_state_min_wage" = "State you work in and min. wage";
+"employee_pay_rate" = "Employee's Pay rate";
+"onboarding_employee_eligible_overtime" = "Eligible for overtime";
+"onboarding_employer_eligible_overtime" = "Employee eligible for overtime";
+"onboarding_employee_state_min_wage" = "State you work in and min. wage";
+"onboarding_employer_state_min_wage" = "State employee works in and min. wage";
 
 "onboard_review_overtime_yes" = "Yes (non-exempt)";
 "onboard_review_overtime_no" = "No (exempt)";

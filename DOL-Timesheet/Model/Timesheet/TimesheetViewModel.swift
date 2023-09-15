@@ -451,9 +451,9 @@ extension TimesheetViewModel {
         case .none:
             actions = [.startWork]
         case .clockedIn:
-            actions = [.startBreak, .endWork, .discardEntry]
+            actions = [.startBreak, .endWork]
         case .inBreak:
-            actions = [.endBreak, .endWork, .discardEntry]
+            actions = [.endBreak, .endWork]
         }
         
         return actions

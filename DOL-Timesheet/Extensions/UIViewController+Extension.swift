@@ -111,17 +111,18 @@ extension UIViewController {
     func setupNavigationBarSettings() {
         let appearance = UINavigationBarAppearance()
         
-        appearance.configureWithOpaqueBackground()
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.backgroundColor = UIColor.appNavBarColor
+//        appearance.configureWithOpaqueBackground()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        appearance.backgroundColor = UIColor.systemGray6
         navigationController?.navigationBar.standardAppearance = appearance;
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
-                                                            NSAttributedString.Key.font: Style.scaledFont(forDataType: .appTitle)]
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: Style.scaledFont(forDataType: .appTitle)]
         
         UIBarButtonItem.appearance().setTitleTextAttributes([
             NSAttributedString.Key.font : Style.scaledFont(forDataType: .barButtonTitle),
-            NSAttributedString.Key.foregroundColor: UIColor.white],
+            NSAttributedString.Key.foregroundColor: UIColor.black],
                                                             for: .normal)
     }
 }

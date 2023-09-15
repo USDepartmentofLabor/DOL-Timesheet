@@ -47,6 +47,12 @@ class OnboardPageViewController: UIPageViewController {
             }
     }
     
+    func resetData() {
+        orderedViewControllers.forEach { vc in
+            vc.resetData()
+        }
+    }
+    
     
     /**
      Scrolls to the next view controller.

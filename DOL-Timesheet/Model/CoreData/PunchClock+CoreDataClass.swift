@@ -30,7 +30,7 @@ enum ClockAction: OptionsProtocol {
         case .endBreak:
             title = "end_break".localized
         case .discardEntry:
-            title = "discard_entry".localized
+            title = "discard".localized
         }
         
         return title

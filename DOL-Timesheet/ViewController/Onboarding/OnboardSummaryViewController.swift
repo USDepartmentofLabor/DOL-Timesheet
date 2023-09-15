@@ -62,16 +62,25 @@ class OnboardSummaryViewController: OnboardBaseViewController {
         
         reviewTitleLabel.text = "summary".localized
         
-        reviewNameTitleLabel.text = "onboarding_name_nickname".localized + ":"
-        reviewWorkweekTitleLabel.text = "onboarding_pay_week".localized + ":"
-        reviewPayTypeTitleLabel.text = "pay_frequency".localized + ":"
-        reviewStartDateTitleLabel.text = "onboarding_first_day_pay".localized + ":"
-        reviewPayRateTitleLabel.text = "pay_rate".localized + ":"
-        reviewOvertimeTitleLabel.text = "onboarding_eligible_overtime".localized + ":"
-        reviewStateTitleLabel.text = "onboarding_state_min_wage".localized + ":"
+        reviewNameTitleLabel.text = "onboarding_name_nickname".localized
+        reviewWorkweekTitleLabel.text = "onboarding_pay_week".localized
+        reviewPayTypeTitleLabel.text = "pay_frequency".localized
+        reviewStartDateTitleLabel.text = "onboarding_first_day_pay".localized
+        reviewPayRateTitleLabel.text = "pay_rate".localized
+        reviewOvertimeTitleLabel.text = "onboarding_employee_eligible_overtime".localized
+        reviewStateTitleLabel.text = "onboarding_employee_state_min_wage".localized
         
         reviewConfirmButton.setTitle("onboard_review_button".localized, for: .normal)
         reviewNote.text = "onboard_review_note".localized
+        
+        if userType != .employee {
+            reviewPayTypeTitleLabel.text = "employee_pay_frequency".localized
+            reviewPayRateTitleLabel.text = "employee_pay_rate".localized
+            reviewOvertimeTitleLabel.text = "onboarding_employee_eligible_overtime".localized
+            reviewStateTitleLabel.text = "onboarding_employer_state_min_wage".localized
+
+
+        }
         
         setupAccessibility()
     }

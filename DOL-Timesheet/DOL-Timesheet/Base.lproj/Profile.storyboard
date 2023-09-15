@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -3347,7 +3347,7 @@
         <image name="add" width="21" height="16"/>
         <image name="displayLogo" width="60" height="55.5"/>
         <image name="garbage" width="20" height="20"/>
-        <image name="holaHello" width="199" height="180"/>
+        <image name="holaHello" width="2091" height="1979"/>
         <image name="rightChevron" width="327" height="327"/>
         <namedColor name="appNavBarColor">
             <color red="0.12549019607843137" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

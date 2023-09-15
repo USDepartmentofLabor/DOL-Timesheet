@@ -36,6 +36,8 @@ class OnboardPayViewController: OnboardBaseViewController {
     
     @IBOutlet weak var overtimeTitle: UILabel!
     @IBOutlet weak var infoOvertimeButton: UIButton!
+    @IBOutlet weak var overtimeLabel: UILabel!
+    @IBOutlet weak var overtimeSwitch: UISwitch!
     @IBOutlet weak var yesOvertimeButton: UIButton!
     @IBOutlet weak var noOvertimeButton: UIButton!
     
@@ -168,12 +170,6 @@ class OnboardPayViewController: OnboardBaseViewController {
             stateTitle.text = "onboard_state_employer".localized
             stateMinimumText.text = "state_minimum_wage".localized
             
-            stateMinimumText.isHidden = false
-            stateMinimumField.isHidden = false
-            
-            stateField.isHidden = false
-            stateTitle.isHidden = false
-            infoStateButton.isHidden = false
 
         } else {
             payFrequencyTitle.text = "onboard_pay_frequency_employee".localized
@@ -181,12 +177,6 @@ class OnboardPayViewController: OnboardBaseViewController {
             overtimeTitle.text = "onboard_overtime_employee".localized
             stateTitle.text = "onboard_state_employee".localized
             
-            stateMinimumText.isHidden = true
-            stateMinimumField.isHidden = true
-            
-            stateField.isHidden = true
-            stateTitle.isHidden = true
-            infoStateButton.isHidden = true
         }
     }
     
@@ -206,11 +196,13 @@ class OnboardPayViewController: OnboardBaseViewController {
 //        let rate = payRateField.text?.currencyAmount() ?? NSNumber(0)
 //        payRateField.text = NumberFormatter.localisedCurrencyStr(from: rate)
                 
-        if (employmentModel?.overtimeEligible == true) {
-            self.yesOvertimeButtonPressed(yesOvertimeButton!)
-        } else {
-            self.noOvertimeButtonPressed(noOvertimeButton!)
+        overtimeSwitch.isOn = true
+        if (employmentModel?.overtimeEligible != true) {
+            overtimeSwitch.isOn = false
         }
+        
+        self.overtimeSwicthPressed(overtimeSwitch!)
+
         
         payRateField.scaleFont(forDataType: .nameValueText)
         payRateField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -238,8 +230,6 @@ class OnboardPayViewController: OnboardBaseViewController {
         
         stateMinimumField.addTarget(self, action: #selector(minimumWageDidChange(_:)), for: .editingChanged)
         
-        yesOvertimeButton.setTitle("onboard_overtime_yes".localized, for: .normal)
-        noOvertimeButton.setTitle("onboard_overtime_no".localized, for: .normal)
         noteTitle.text = "onboard_pay_note".localized
         
         setupAccessibility()
@@ -249,8 +239,6 @@ class OnboardPayViewController: OnboardBaseViewController {
         payPeriodField.setBorderColor()
         stateField.setBorderColor()
         stateMinimumField.setBorderColor()
-        yesOvertimeButton.setBorderColor(named: "onboardButtonColor")
-        noOvertimeButton.setBorderColor(named: "onboardButtonColor")
         
         stateMinimumField.delegate = self
         scrollView.keyboardDismissMode = .onDrag
@@ -333,6 +321,36 @@ class OnboardPayViewController: OnboardBaseViewController {
         
     }
     
+    override func resetData() {
+        overtimeEligible = true
+        
+        payPeriodArray = []
+        
+        //Checks for canMoveForward
+        stateValid = false
+        payRateValid = false
+        minimumWageValid = false
+        payRateTermValid = false
+        payPeriodValid = false
+        
+        selectedPayFrequency = .daily
+        selectedState = nil
+        selectedPayPeriod = nil
+        selectedPayRate = 0.0
+        
+        hourlyRate = nil
+        minimumWage = 0.0
+        
+        if payFrequencyField != nil {
+            payFrequencyField.text = nil
+            payRateField.text = nil
+            payPeriodField.text = nil
+            overtimeSwitch.isOn = true
+            stateField.text = nil
+            stateMinimumField.text = "0.00"
+        }
+    }
+    
     @IBAction func infoFrequencyPressed(_ sender: Any) {
         if userType == .employee {
             displayInfoPopup(sender, info: .employee_paymentFrequency)
@@ -349,6 +367,16 @@ class OnboardPayViewController: OnboardBaseViewController {
     }
     @IBAction func infoOvertimePressed(_ sender: Any) {
         displayInfoPopup(sender, info: .overtimeEligible)
+    }
+    
+    @IBAction func overtimeSwicthPressed(_ sender: Any) {
+        overtimeLabel.text = "onboard_overtime_no".localized
+        overtimeEligible = false
+
+        if overtimeSwitch.isOn {
+            overtimeLabel.text = "onboard_overtime_yes".localized
+            overtimeEligible = true
+        }
     }
     
     @IBAction func yesOvertimeButtonPressed(_ sender: Any) {

@@ -102,7 +102,7 @@ struct Style {
         .timeCounterText:  ("AvenirNext-Medium", 50, .largeTitle),
         .breakTimeCounterText: ("AvenirNext-Medium", 30, .largeTitle),
         .footerText: ("AvenirNext-Regular", 13, .body),
-        .timecardInfoText: ("AvenirNext-Regular", 14, .body),
+        .timecardInfoText: ("AvenirNext-Italic", 14, .body),
         .contactUsLabel: ("AvenirNext-Light", 17, .body)]
 
     static func scaledFont(forDataType type: DataType) -> UIFont {

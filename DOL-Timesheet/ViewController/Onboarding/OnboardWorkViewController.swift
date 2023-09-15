@@ -92,6 +92,25 @@ class OnboardWorkViewController: OnboardBaseViewController {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
+    override func resetData() {
+        canMoveForward = false
+        
+        nameValid = false
+        otherNameValid = false
+        workWeekStartValid = false
+        selectedWeekday = nil
+        currentRow = 0
+
+        firstPayPeriod = nil
+        
+        if nameField != nil {
+            nameField.text = nil
+            otherNameField.text = nil
+            workweekField.text = nil
+            firstPayPeriodField.text = nil
+        }
+    }
+    
     override func setupView() {
 //        title = NSLocalizedString("introduction", comment: "Introduction")
 //        label1.scaleFont(forDataType: .introductionBoldText)
