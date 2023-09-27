@@ -479,13 +479,13 @@
 "pay" = "Pay";
 "summary" = "Summary";
 
-"onboarding_name_nickname" = "Your Name or nickname";
+"onboarding_name_nickname" = "Your name or nickname";
 "onboarding_pay_week" = "Start of pay week";
 "pay_frequency" = "Pay frequency";
-"employee_pay_frequency" = "Employee's Pay frequency";
-"onboarding_first_day_pay" = "Start date of first pay period";
+"employee_pay_frequency" = "Employee's pay frequency";
+"onboarding_first_day_pay" = "Start date of employee's first pay period";
 "pay_rate" = "Pay rate";
-"employee_pay_rate" = "Employee's Pay rate";
+"employee_pay_rate" = "Employee's pay rate";
 "onboarding_employee_eligible_overtime" = "Eligible for overtime";
 "onboarding_employer_eligible_overtime" = "Employee eligible for overtime";
 "onboarding_employee_state_min_wage" = "State you work in and min. wage";

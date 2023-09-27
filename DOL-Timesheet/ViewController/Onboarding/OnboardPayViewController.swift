@@ -228,6 +228,7 @@ class OnboardPayViewController: OnboardBaseViewController {
             stateTitle.text = "onboard_state_employee".localized
         }
         
+        stateMinimumField.scaleFont(forDataType: .nameValueText)
         stateMinimumField.addTarget(self, action: #selector(minimumWageDidChange(_:)), for: .editingChanged)
         
         noteTitle.text = "onboard_pay_note".localized
@@ -343,7 +344,7 @@ class OnboardPayViewController: OnboardBaseViewController {
         
         if payFrequencyField != nil {
             payFrequencyField.text = nil
-            payRateField.text = nil
+            payRateField.text = "$0.00"
             payPeriodField.text = nil
             overtimeSwitch.isOn = true
             stateField.text = nil

@@ -70,7 +70,7 @@ struct Style {
         .sectionTitle: ("AvenirNext-DemiBold", 17, .headline),
         .columnHeader: ("AvenirNext-Medium", 15, .subheadline),
         .nameValueTitle: ("AvenirNext-Medium", 15, .body),
-         .nameValueText: ("AvenirNext-Regular", 15, .body),
+         .nameValueText: ("AvenirNext-Regular", 16, .body),
          .profileCellTitle1: ("AvenirNext-Medium", 15, .body),
          .profileCellTitle2: ("AvenirNext-Regular", 15, .body),
          .headingTitle: ("AvenirNext-Medium", 24, .title2),
