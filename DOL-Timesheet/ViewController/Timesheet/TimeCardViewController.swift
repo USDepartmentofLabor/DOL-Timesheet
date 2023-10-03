@@ -299,9 +299,6 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             rateDropDownView.isEnabled = true
             ratePopupButton.isEnabled = true
             
-            ratePopupButton.setTitleColor(UIColor.black, for: .normal)
-            ratePopupButton.backgroundColor = UIColor.white
-            
             discardButton.isHidden = true
         }
         
