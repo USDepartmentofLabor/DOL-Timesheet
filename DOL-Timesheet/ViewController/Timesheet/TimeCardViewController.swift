@@ -55,7 +55,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
 //    @IBOutlet weak var commentsTextView: UITextView!
     
     @IBOutlet weak var rateLabel: UILabel!
-    @IBOutlet weak var popupButton: UIButton!
+    @IBOutlet weak var ratePopupButton: UIButton!
     @IBOutlet weak var popupHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var popupBottomConstraint: NSLayoutConstraint!
     
@@ -85,7 +85,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     var currentHourlyRate: HourlyRate? {
         didSet {
             rateDropDownView.title = currentHourlyRate?.title ?? ""
-            popupButton.setTitle(currentHourlyRate?.title ?? "", for: .normal)
+            ratePopupButton.setTitle(currentHourlyRate?.title ?? "", for: .normal)
         }
     }
     
@@ -123,9 +123,9 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         rateDropDownView.titleLabel.textColor = UIColor(named: "darkTextColor")
                 
         
-        popupButton.layer.borderWidth = 1.0 // Set the width of the border
-        popupButton.layer.borderColor = lighterGrey.cgColor // Set the color of the border
-        popupButton.layer.cornerRadius = 10.0
+        ratePopupButton.layer.borderWidth = 1.0 // Set the width of the border
+        ratePopupButton.layer.borderColor = lighterGrey.cgColor // Set the color of the border
+        ratePopupButton.layer.cornerRadius = 10.0
 
         workedHoursCounterLabel.scaleFont(forDataType: .timeCounterText)
         hoursWorkedTitleLabel.scaleFont(forDataType: .nameValueTitle)
@@ -155,17 +155,17 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
                 
    //     workedHoursView.bottomAnchor.constraint(equalTo: hoursView.bottomAnchor).isActive = true
         
-        popupButton.isHidden = true
+        ratePopupButton.isHidden = true
         rateDropDownView.isHidden = false
 
         if #available(iOS 15.0, *) {
-            popupButton.isHidden = false
+            ratePopupButton.isHidden = false
             rateDropDownView.isHidden = true
             setupPopupButton()
             
-            popupButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
+            ratePopupButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
             
-            rateLabel.textColor = UIColor.gray
+            rateLabel.textColor = UIColor(named: "grayTextColor")
             rateLabel.text = "rate".localized
 
         }
@@ -176,14 +176,16 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     }
     
     @objc func labelTapped() {
-        popupButton.sendActions(for: .touchUpInside)
+        ratePopupButton.sendActions(for: .touchUpInside)
     }
     
     func setupPopupButton(){
-        popupButton.isHidden = false
+        ratePopupButton.isHidden = false
         rateLabel.isHidden =  false
-        if viewModel?.currentEmploymentModel?.salary != nil {
-            popupButton.isHidden = true
+        if let paymentType = viewModel?.currentEmploymentModel?.paymentType,
+            paymentType == .salary {
+            
+            ratePopupButton.isHidden = true
             rateLabel.isHidden =  true
             return
         }
@@ -206,12 +208,12 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         }
         
         if #available(iOS 14.0, *) {
-            popupButton.menu = UIMenu(children : menuActions)
-            popupButton.showsMenuAsPrimaryAction = true
+            ratePopupButton.menu = UIMenu(children : menuActions)
+            ratePopupButton.showsMenuAsPrimaryAction = true
         }
         
         if #available(iOS 15.0, *) {
-            popupButton.changesSelectionAsPrimaryAction = true
+            ratePopupButton.changesSelectionAsPrimaryAction = true
         }
     }
     
@@ -224,8 +226,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         if let paymentType = viewModel?.currentEmploymentModel?.paymentType,
             paymentType == .salary {
             if #available(iOS 15.0, *) {
-                popupButton.isHidden = true
-                popupButton.isAccessibilityElement = false
+                ratePopupButton.isHidden = true
+                ratePopupButton.isAccessibilityElement = false
                 popupBottomConstraint.priority = .init(200)
                 popupHeightConstraint.priority = .init(200)
                 
@@ -238,8 +240,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         }
         else {
             if #available(iOS 15.0, *) {
-                popupButton.isHidden = false
-                popupButton.isAccessibilityElement = true
+                ratePopupButton.isHidden = false
+                ratePopupButton.isAccessibilityElement = true
                 popupBottomConstraint.priority = .init(900)
                 popupHeightConstraint.priority = .init(900)
                 
@@ -274,10 +276,10 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             // display Comments
 //            commentsView.isHidden = true
             rateDropDownView.isEnabled = false
-            popupButton.isEnabled = false
+            ratePopupButton.isEnabled = false
             
-            popupButton.backgroundColor = lighterGrey
-            popupButton.setTitleColor(UIColor.gray, for: .normal)
+            ratePopupButton.backgroundColor = lighterGrey
+            ratePopupButton.setTitleColor(UIColor.gray, for: .normal)
 
             
             if let hourlyRate = viewModel?.currentEmploymentModel?.employmentInfo.clock?.hourlyRate {
@@ -295,10 +297,10 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             breakTimeInfoLabel.text = ""
             breakTimeInfoLabel.isHidden = true
             rateDropDownView.isEnabled = true
-            popupButton.isEnabled = true
+            ratePopupButton.isEnabled = true
             
-            popupButton.setTitleColor(UIColor.black, for: .normal)
-            popupButton.backgroundColor = UIColor.white
+            ratePopupButton.setTitleColor(UIColor.black, for: .normal)
+            ratePopupButton.backgroundColor = UIColor.white
             
             discardButton.isHidden = true
         }

@@ -413,7 +413,7 @@
 "onboard_overtime_yes" = "Yes (non-exempt)";
 "onboard_overtime_no" = "No (exempt)";
 "onboard_state_employer" = "What state do you work in?";
-"onboard_state_employee" = "The state does the employee work in?";
+"onboard_state_employee" = "What state does the employee work in?";
 "onboard_pay_note" = "You can add more pay rates and states later in 'My Profile'.";
 
 "onboard_review_title" = "You're almost done!";
@@ -470,7 +470,7 @@
 "info_state" = "We use the state you work in to help detect situations where your pay might be below the federal minimum wage.";
 "state_minimum_wage" = "State minimum wage";
 "employee_first_pay_period"= "Start date of employee’s first pay period?";
-"employer_first_pay_period"= "Start date of your first pay period?";
+"employer_first_pay_period"= "Start date of first pay period?";
 "hour" = "hour";
 
 "welcome" = "Welcome";
@@ -483,7 +483,8 @@
 "onboarding_pay_week" = "Start of pay week";
 "pay_frequency" = "Pay frequency";
 "employee_pay_frequency" = "Employee's pay frequency";
-"onboarding_first_day_pay" = "Start date of employee's first pay period";
+"onboarding_employee_first_day_pay" = "Start date of employee's first pay period";
+"onboarding_employer_first_day_pay" = "Start date of first pay period";
 "pay_rate" = "Pay rate";
 "employee_pay_rate" = "Employee's pay rate";
 "onboarding_employee_eligible_overtime" = "Eligible for overtime";

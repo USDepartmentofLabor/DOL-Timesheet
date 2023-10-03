@@ -65,7 +65,7 @@ class OnboardSummaryViewController: OnboardBaseViewController {
         reviewNameTitleLabel.text = "onboarding_name_nickname".localized
         reviewWorkweekTitleLabel.text = "onboarding_pay_week".localized
         reviewPayTypeTitleLabel.text = "pay_frequency".localized
-        reviewStartDateTitleLabel.text = "employer_first_pay_period".localized
+        reviewStartDateTitleLabel.text = "onboarding_employer_first_day_pay".localized
         reviewPayRateTitleLabel.text = "pay_rate".localized
         reviewOvertimeTitleLabel.text = "onboarding_employee_eligible_overtime".localized
         reviewStateTitleLabel.text = "onboarding_employee_state_min_wage".localized
@@ -79,10 +79,7 @@ class OnboardSummaryViewController: OnboardBaseViewController {
             reviewOvertimeTitleLabel.text = "onboarding_employer_eligible_overtime".localized
             reviewStateTitleLabel.text = "onboarding_employer_state_min_wage".localized
             
-            reviewStartDateTitleLabel.text = "onboarding_first_day_pay".localized
-
-
-
+            reviewStartDateTitleLabel.text = "onboarding_employee_first_day_pay".localized
         }
         
         setupAccessibility()
@@ -194,7 +191,15 @@ class OnboardSummaryViewController: OnboardBaseViewController {
             }
             reviewOvertimeLabel.attributedText = boldily(exempt)
                                                          
+            let stateString = (employmentModel?.employmentUser?.address?.state ?? "West Virginia") + " "
+            let wageString = (employmentModel?.minimumWage.stringValue ?? "7.25")
+            let endString = "/" + "hour".localized
             
+            let stateWageString = stateString + " ($" + wageString + endString + ")"
+            
+            let attributedString = boldily(stateWageString)
+            
+            reviewStateLabel.attributedText = attributedString
                                                       
         } else {
             

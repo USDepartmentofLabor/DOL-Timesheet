@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NNC-uZ-gvN">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
@@ -166,37 +166,37 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2J-kN-Xx8" userLabel="EnterTimeView">
-                                        <rect key="frame" x="0.0" y="34.5" width="414" height="305"/>
+                                        <rect key="frame" x="0.0" y="34.5" width="414" height="240.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xtP-4T-sDE" userLabel="TimeTitleView">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="118.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wdv-lf-57F">
-                                                        <rect key="frame" x="10" y="2" width="394" height="114.5"/>
+                                                        <rect key="frame" x="10" y="2" width="394" height="50"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFG-dh-xM2" userLabel="DayLabel">
-                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="114.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Worked (Hours)" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mu7-bo-n9y" userLabel="HoursWorkedLabel">
-                                                                <rect key="frame" x="133" y="0.0" width="128" height="114.5"/>
+                                                                <rect key="frame" x="133" y="0.0" width="128" height="50"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fw7-3m-6j0">
-                                                                <rect key="frame" x="266" y="0.0" width="128" height="114.5"/>
+                                                                <rect key="frame" x="266" y="0.0" width="128" height="50"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Break (Hours)" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5J-wR-eQC" userLabel="BreakHoursLabel">
-                                                                        <rect key="frame" x="16.5" y="0.0" width="89.5" height="114.5"/>
+                                                                        <rect key="frame" x="16.5" y="0.0" width="89.5" height="50"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZe-Qy-nvd" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
-                                                                        <rect key="frame" x="108" y="46.5" width="20" height="22"/>
+                                                                        <rect key="frame" x="108" y="14" width="20" height="22"/>
                                                                         <color key="tintColor" name="linkColor"/>
                                                                         <state key="normal" image="questionmark.circle" catalog="system">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -225,7 +225,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gpl-Vy-y45">
-                                                <rect key="frame" x="0.0" y="118.5" width="414" height="150"/>
+                                                <rect key="frame" x="0.0" y="54" width="414" height="150"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="rml-AZ-Joe"/>
@@ -293,7 +293,7 @@
                                                 </connections>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Apa-IX-HM6" userLabel="TotalTimeView">
-                                                <rect key="frame" x="0.0" y="268.5" width="414" height="36.5"/>
+                                                <rect key="frame" x="0.0" y="204" width="414" height="36.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xi6-na-afF">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
@@ -356,14 +356,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0G-f1-9Vd" userLabel="TimeFooterView">
-                                        <rect key="frame" x="0.0" y="351.5" width="414" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="287" width="414" height="0.0"/>
                                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="QJr-QR-IO9"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScS-l0-okx" userLabel="SummaryView">
-                                        <rect key="frame" x="0.0" y="363.5" width="414" height="108.5"/>
+                                        <rect key="frame" x="0.0" y="299" width="414" height="108.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jE-Kp-EF9" userLabel="SummaryTileLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="91.5" height="26.5"/>
@@ -488,7 +488,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJi-bk-ZSm" userLabel="EarningsView">
-                                        <rect key="frame" x="0.0" y="484" width="414" height="287.5"/>
+                                        <rect key="frame" x="0.0" y="419.5" width="414" height="352"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earnings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8O-ee-BJR" userLabel="EarningTitleLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="83" height="26.5"/>
@@ -500,7 +500,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RuU-IR-OkI" userLabel="EarningsContentView">
-                                                <rect key="frame" x="0.0" y="34.5" width="414" height="253"/>
+                                                <rect key="frame" x="0.0" y="34.5" width="414" height="317.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umU-1Z-4Te" userLabel="TotalEarningsButton">
                                                         <rect key="frame" x="6" y="12" width="134.5" height="22"/>
@@ -524,19 +524,19 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="LIV-fd-U1f" userLabel="PeriodEarningStack View">
-                                                        <rect key="frame" x="20" y="36" width="374" height="103"/>
+                                                        <rect key="frame" x="20" y="36" width="374" height="167.5"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="wMR-ia-8pa" userLabel="PeriodStraightTimeEarningsStack View">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="113.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Straight Time Earnings" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjr-0x-Miz" userLabel="StraightTimeTitle">
-                                                                        <rect key="frame" x="0.0" y="3" width="243.5" height="14.5"/>
+                                                                        <rect key="frame" x="0.0" y="49.5" width="243.5" height="14.5"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                         <color key="textColor" name="appPrimaryColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGh-nf-fvg" userLabel="StarightEarningsAmount">
-                                                                        <rect key="frame" x="249.5" y="3" width="124.5" height="14.5"/>
+                                                                        <rect key="frame" x="249.5" y="49.5" width="124.5" height="14.5"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                         <color key="textColor" name="appPrimaryColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -547,19 +547,19 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OzL-EE-HsG" userLabel="PeriodOvertimeEarningsStack View">
-                                                                <rect key="frame" x="0.0" y="24.5" width="374" height="78.5"/>
+                                                                <rect key="frame" x="0.0" y="117.5" width="374" height="50"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6g-uK-6r1">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="341" height="78.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="341" height="50"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overtime" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3l8-26-fiC" userLabel="InPeriodOvertimeTitle">
-                                                                                <rect key="frame" x="0.0" y="32" width="52" height="14.5"/>
+                                                                                <rect key="frame" x="0.0" y="18" width="52" height="14.5"/>
                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                                 <color key="textColor" name="appPrimaryColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbh-GE-xdm" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
-                                                                                <rect key="frame" x="54" y="56.5" width="287" height="22"/>
+                                                                                <rect key="frame" x="54" y="28" width="287" height="22"/>
                                                                                 <color key="tintColor" name="appPrimaryColor"/>
                                                                                 <state key="normal" image="questionmark.circle" catalog="system"/>
                                                                             </button>
@@ -577,7 +577,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-AW-UdP" userLabel="InPeriodOvertimeAmount">
-                                                                        <rect key="frame" x="341" y="0.0" width="33" height="78.5"/>
+                                                                        <rect key="frame" x="341" y="0.0" width="33" height="50"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                         <color key="textColor" name="appPrimaryColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -588,7 +588,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </stackView>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="daW-d1-EkJ" userLabel="EarningsTableView">
-                                                        <rect key="frame" x="0.0" y="141" width="414" height="100"/>
+                                                        <rect key="frame" x="0.0" y="205.5" width="414" height="100"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="fRo-bh-uFD"/>
@@ -729,15 +729,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xkI-Ca-cHN">
                                 <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6a-x3-Fa9" userLabel="RateView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e6a-x3-Fa9" userLabel="RateView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="33.5"/>
                                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="999" constant="45" id="BDn-a6-iFg"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fb-J4-WWS" userLabel="HoursView">
-                                        <rect key="frame" x="0.0" y="61" width="414" height="278"/>
+                                        <rect key="frame" x="0.0" y="53" width="414" height="278"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nM2-pb-L5c" userLabel="workedHoursView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="143"/>
@@ -843,7 +843,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="NeJ-x8-7qj">
-                                        <rect key="frame" x="87" y="355" width="240" height="30"/>
+                                        <rect key="frame" x="87" y="347" width="240" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igk-4W-kCg" customClass="ActionButton" customModule="Timesheet" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
@@ -880,11 +880,11 @@
                                             </children>
                                         </menu>
                                         <state key="normal" title="Rate">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" name="blackTextColor"/>
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMU-Ao-MDc">
-                                        <rect key="frame" x="8" y="12" width="35" height="20.5"/>
+                                        <rect key="frame" x="8" y="11" width="35" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -893,10 +893,9 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="e6a-x3-Fa9" secondAttribute="trailing" id="011-SC-rgW"/>
-                                    <constraint firstItem="nM2-pb-L5c" firstAttribute="top" secondItem="Ddh-2s-YTh" secondAttribute="bottom" constant="16" id="4Yn-B6-tBb"/>
+                                    <constraint firstItem="nM2-pb-L5c" firstAttribute="top" secondItem="Ddh-2s-YTh" secondAttribute="bottom" constant="8" id="4Yn-B6-tBb"/>
                                     <constraint firstAttribute="bottom" secondItem="Ywk-ow-xla" secondAttribute="bottom" constant="8" id="5lP-uB-96W"/>
-                                    <constraint firstItem="8fb-J4-WWS" firstAttribute="top" secondItem="e6a-x3-Fa9" secondAttribute="bottom" priority="999" constant="16" id="A5a-f6-yuD"/>
-                                    <constraint firstItem="8fb-J4-WWS" firstAttribute="top" secondItem="xkI-Ca-cHN" secondAttribute="top" priority="750" constant="16" id="B15-lN-UiJ"/>
+                                    <constraint firstItem="8fb-J4-WWS" firstAttribute="top" secondItem="e6a-x3-Fa9" secondAttribute="bottom" priority="999" constant="100" id="A5a-f6-yuD"/>
                                     <constraint firstItem="e6a-x3-Fa9" firstAttribute="top" secondItem="xkI-Ca-cHN" secondAttribute="top" id="BPJ-BY-4Zl"/>
                                     <constraint firstItem="wMU-Ao-MDc" firstAttribute="leading" secondItem="xkI-Ca-cHN" secondAttribute="leading" constant="8" id="E8n-AW-gND"/>
                                     <constraint firstItem="Ddh-2s-YTh" firstAttribute="leading" secondItem="xkI-Ca-cHN" secondAttribute="leading" id="JU6-43-YeK"/>
@@ -904,11 +903,11 @@
                                     <constraint firstItem="Ywk-ow-xla" firstAttribute="centerX" secondItem="xkI-Ca-cHN" secondAttribute="centerX" id="V26-qh-Fmq"/>
                                     <constraint firstAttribute="trailing" secondItem="8fb-J4-WWS" secondAttribute="trailing" id="Wuj-v4-W1c"/>
                                     <constraint firstItem="NeJ-x8-7qj" firstAttribute="top" secondItem="8fb-J4-WWS" secondAttribute="bottom" constant="16" id="XMZ-NR-a77"/>
-                                    <constraint firstItem="wMU-Ao-MDc" firstAttribute="top" secondItem="xkI-Ca-cHN" secondAttribute="top" constant="12" id="YsK-sC-gcO"/>
                                     <constraint firstItem="8fb-J4-WWS" firstAttribute="leading" secondItem="xkI-Ca-cHN" secondAttribute="leading" id="aSx-s7-PNw"/>
                                     <constraint firstItem="e6a-x3-Fa9" firstAttribute="leading" secondItem="xkI-Ca-cHN" secondAttribute="leading" id="coO-RC-ynM"/>
                                     <constraint firstAttribute="trailing" secondItem="Ddh-2s-YTh" secondAttribute="trailing" id="ktq-UM-Ha7"/>
                                     <constraint firstItem="NeJ-x8-7qj" firstAttribute="centerX" secondItem="xkI-Ca-cHN" secondAttribute="centerX" id="sC9-9t-NNJ"/>
+                                    <constraint firstItem="Ddh-2s-YTh" firstAttribute="top" secondItem="wMU-Ao-MDc" secondAttribute="top" constant="-11" id="uCe-tE-aKu"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -934,10 +933,10 @@
                         <outlet property="hoursWorkedInfoBtn" destination="kss-xC-1KB" id="dAk-og-hAL"/>
                         <outlet property="hoursWorkedTitleLabel" destination="JoT-Yc-iPD" id="6y7-3m-Qb5"/>
                         <outlet property="popupBottomConstraint" destination="4Yn-B6-tBb" id="pr3-gY-UOn"/>
-                        <outlet property="popupButton" destination="Ddh-2s-YTh" id="inv-2t-9Be"/>
                         <outlet property="popupHeightConstraint" destination="9KB-te-thT" id="Jcl-jz-IP6"/>
                         <outlet property="rateDropDownView" destination="e6a-x3-Fa9" id="QJc-dr-3Yw"/>
                         <outlet property="rateLabel" destination="wMU-Ao-MDc" id="erV-bR-yep"/>
+                        <outlet property="ratePopupButton" destination="Ddh-2s-YTh" id="inv-2t-9Be"/>
                         <outlet property="rateViewBottomConstraint" destination="A5a-f6-yuD" id="thb-4g-flV"/>
                         <outlet property="rateViewHeightConstraint" destination="BDn-a6-iFg" id="elS-cz-FII"/>
                         <outlet property="timeInfoLabel" destination="a5i-kn-XWE" id="azG-iu-8xK"/>
@@ -1112,7 +1111,7 @@
                                                             </children>
                                                         </menu>
                                                         <state key="normal" title="Rate">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" name="blackTextColor"/>
                                                         </state>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Employer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbt-6g-hL6">
@@ -1259,11 +1258,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="displayLogo" translatesAutoresizingMaskIntoConstraints="NO" id="454-se-Ks2">
-                                <rect key="frame" x="157" y="58" width="60" height="55.5"/>
+                                <rect key="frame" x="-69.5" y="58" width="513" height="512"/>
                                 <color key="tintColor" name="appPrimaryColor"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j5j-dd-QG6">
-                                <rect key="frame" x="0.0" y="123.5" width="374" height="540.5"/>
+                                <rect key="frame" x="0.0" y="580" width="374" height="84"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <imageView key="tableFooterView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DOLLogo" id="io2-oT-WV8">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="75"/>
@@ -2448,9 +2447,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3iC-tx-nCj"/>
-        <segue reference="KJz-zA-nJd"/>
-        <segue reference="2Fb-bA-ARb"/>
+        <segue reference="3GV-mi-63D"/>
+        <segue reference="raw-Tx-Vfv"/>
+        <segue reference="7uc-bX-bfm"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DOLLogo" width="60" height="60"/>
@@ -2469,6 +2468,9 @@
         </namedColor>
         <namedColor name="appTextColor">
             <color red="0.12549019607843137" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="blackTextColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="borderColor">
             <color red="0.58039215686274515" green="0.58039215686274515" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

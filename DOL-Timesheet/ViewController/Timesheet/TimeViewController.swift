@@ -138,7 +138,7 @@ class TimeViewController: UIViewController {
             selectEmployerPopupButton.layer.borderColor = lighterGrey.cgColor // Set the color of the border
             selectEmployerPopupButton.layer.cornerRadius = 10.0
             
-            selectEmployerPopupLabel.textColor = UIColor.gray
+            selectEmployerPopupLabel.textColor = UIColor(named: "grayTextColor")
         }
         
     }
@@ -149,7 +149,7 @@ class TimeViewController: UIViewController {
         } else {
             title = "timecard".localized
         }
-        
+                
 //        let profileUser = viewModel?.userProfileModel.profileModel.currentUser
 //      //  userNameLabel.text = profileUser?.name
 //
