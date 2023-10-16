@@ -430,7 +430,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         alertController.addAction(
             UIAlertAction(title: "cancel".localized, style: .cancel))
         alertController.addAction(
-            UIAlertAction(title: "discard".localized, style: .destructive) { _ in
+            UIAlertAction(title: "discard_button".localized, style: .destructive) { _ in
                 self.discardEntry()
         })
         present(alertController, animated: true)

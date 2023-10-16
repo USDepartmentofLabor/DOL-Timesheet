@@ -391,6 +391,7 @@
 "onboard_welcome_employer_button" = "Employer";
 
 "onboard_intro_1" = "This app is for your personal use and we don't store or share your information with anyone.";
+"onboard_intro_1_bold_text" = "don't store or share your information with anyone.";
 "onboard_intro_2" = "If you delete this application, your data will be deleted as well.";
 "onboard_intro_3" = "We will guide you through the setup by asking you a few questions that will help you get started using this app.";
 "onboard_intro_4" = "Please answer each question and don't worry, you'll be able to change things later in 'My Profile'.";
@@ -451,7 +452,7 @@
 "info_dont_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid exactly for 7 hours and 55 minutes of work DO NOT get their pay rounded up/down to the nearest 15 minutes.";
 "fsla_info2" = "The law includes some exemptions from these requirements. Some executive, administrative, professional, and outside sales workers, as well as some workers in the computer field, for example, are among those who, by law, are not required to receive the minimum wage and overtime pay from their employers.";
 
-"spanish_support" = "¿Le gustaría configurar esta aplicación en español?\n\n(Would you like to set this app to Spanish?)";
+"spanish_support" = "¿Te gustaría cambiar esta aplicación a español?\n\n(Would you like to set this app to Spanish?)";
 "yes_si" = "Sí (Yes)";
 "switch_to_spanish" = "Switch to Spanish";
 "switch_to_english" = "Switch to English";

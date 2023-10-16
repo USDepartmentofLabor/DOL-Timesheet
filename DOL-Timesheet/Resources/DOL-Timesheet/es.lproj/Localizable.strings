@@ -41,12 +41,13 @@
 "edit_employer" = "Editar Empleador";
 "add_employer" = "Añadir Empleador";
 "company_name" = "Nombre de la Compañía";
-"payment_frequency_employer" = "¿Con qué frecuencia le paga a su empleado?";
+"payment_frequency_employer" = "¿Con qué frecuencia se le paga al empleado?";
 "work_week_employer" = "¿Qué día comienza la semana laboral de su empleado?";
 "payment_type_employer" = "¿Cómo se determina el pago de su empleado?";
-"hourly_rate_employer" = "¿Cuál es la tarifa de pago por hora del empleado?";
+"hourly_rate_employer" = "¿Cuál es la tarifa de pago del
+empleado?";
 "salary_employer" = "¿Cuál es el salario de su empleado?";
-"overtime_eligible_employer" = "¿Es su empleado elegible para el pago de sobretiempo (no exento)?";
+"overtime_eligible_employer" = "¿Es elegible el empleado para pago de sobretiempo?";
 "confirm_delete_employees" = "Cambiar de empleador a empleado eliminará todos los empleados existentes. ¿Está seguro de que desea eliminar todos los empleados?";
 "rate_amount" = "Cantidad de Tarifa";
 "minimum_wage_amount" = "Cantidad de Salario Mínimo";
@@ -56,19 +57,19 @@
 "no_employers" = "Sin Empleadores";
 
 // Salary Type
-"salary_annually" = "Cada Año";
-"salary_monthly" = "Cada Mes";
-"salary_weekly" = "Cada Semana";
+"salary_annually" = "Anualmente";
+"salary_monthly" = "Mensual";
+"salary_weekly" = "Semanalmente";
 
 // Payment Types
 "payment_type" = "Tipo de Pago";
-"payment_type_hourly" = "Por Hora";
+"payment_type_hourly" = "Hora";
 "payment_type_salary" = "Salario";
 "payment_type_tips" = "Propinas";
 "payment_type_paid_per_unit" = "Pago Por Unidad";
 "hourly_payment_title" = "Pago por Hora";
 
-"payment_hour" = "Por Hora";
+"payment_hour" = "Hora";
 
 // Payment Types Description
 "payment_type_hourly_desc" = "La Ley de Normas Justas de Trabajo (FLSA, por sus siglas en inglés) requiere que los empleados cubiertos, no exentos, en los Estados Unidos se les pague al menos el salario mínimo federal por cada hora trabajada, y reciban pago de sobretiempo a tiempo y medio la tarifa regular de pago del empleado por todas las horas trabajadas por encima de 40 horas en una semana laboral.";
@@ -86,11 +87,11 @@
 
 
 // Payment Frequncy
-"payment_frequency_daily" = "Cada Día";
-"payment_frequency_weekly" = "Cada Semana";
-"payment_frequency_biweekly" = "Cada Dos Semanas";
-"payment_frequency_monthly" = "Cada Mes";
-"payment_frequency_semimonthly" = "Cada Quince Días";
+"payment_frequency_daily" = "Diario";
+"payment_frequency_weekly" = "Semanal";
+"payment_frequency_biweekly" = "Quincenal";
+"payment_frequency_monthly" = "Mensual";
+"payment_frequency_semimonthly" = "Semi mensual";
 
 // TimeSheet
 "add_new_employer" = "Añadir Nuevo Empleador";
@@ -162,15 +163,16 @@
 "hourly_rate_deleted" = "Tarifa por Hora Eliminada";
 
 // Clock
-"start_work" = "Comenzar a trabajar";
-"end_work" = "Terminar de trabajar";
-"start_break" = "Comenzar el descanso";
+"start_work" = "Empezar a trabajar";
+"end_work" = "Terminar el trabajo";
+"start_break" = "Empezar el descanso";
 "end_break" = "Terminar el descanso";
 "discard" = "Descartar";
 "discard_entry" = "Descartar Entrada";
-"manual_time_entry" = "Entrada de Tiempo Manual ";
-"discard_entry_confirm" = "¿Está seguro de que quiere descartar la entrada?";
-"discard" = "Descartar";
+"manual_time_entry" = "Ingresar manualmente";
+"discard_entry_confirm" = "¿Estás seguro de que quieres descartar la entrada?";
+"discard" = "Desechar";
+"discard_button" = "Descartar";
 
 // Error Strings
 "err_title" = "Error";
@@ -302,7 +304,7 @@
 "payment_frequency" = "Frecuencia de Pago";
 "fsla_requirements" = "Los requisitos de la Ley de Normas Justas de Trabajo (FLSA)";
 "rate_name" = "Nombre de la Tarifa";
-"per_hour" = "Por Hora";
+"per_hour" = "Hora";
 "what_is_minimum_wage_title" = "¿Cuál es el salario mínimo en su estado?";
 "federal_wage_label" = "El Salario Mínimo Federal es $7.25";
 "minimum_wage_table" = "Tabla de Salario Mínimo";
@@ -310,8 +312,8 @@
 
 "hours_worked" = "Horas Trabajadas";
 "break_hours" = "Horas de Descanso";
-"started_work" = "- Inicio de trabajo ";
-"started_break" = "- Inicio de descanso ";
+"started_work" = "- Comenzó a trabajar el ";
+"started_break" = "- Comenzo el descanso el ";
 "comments" = "Comentarios";
 
 "info_title" = "Información";
@@ -376,7 +378,7 @@
 "fsla_info1" = "La Ley de Normas Justas de Trabajo (FLSA, por sus siglas en inglés) requiere que la mayoría de los empleados reciban el salario mínimo por todas las horas que trabajen, y sobretiempo, a tiempo y medio de su tarifa regular de pago, por las horas que trabajen por encima de 40 horas en una semana laboral.";
 "fsla_info2" = "La ley incluye algunas excepciones a estos requisitos. Algunos trabajadores ejecutivos, administrativos, profesionales y de ventas externas, así como algunos trabajadores en el campo de las computadoras, por ejemplo, están entre aquellos que, por ley, no están requeridos a recibir el pago de salario mínimo y sobretiempo de sus empleadores.";
 
-"spanish_support" = "Would you like to set this app to English?\n\n(¿Le gustaría configurar esta aplicación en inglés?)";
+"spanish_support" = "Would you like to set this app to English?\n\n(¿Te gustaría cambiar esta aplicación a español?)";
 "yes_si" = "Yes (Sí)";
 "switch_to_spanish" = "cambiar a español";
 "switch_to_english" = "Cambiar a inglés";
@@ -390,14 +392,15 @@
 "back" = "Atras";
 
 "welcome_intro" = "¡Bienvenido a la aplicación de hoja de tiempo de la WHD!";
-"onboard_welcome_employee" = "Quiero usar esta aplicación para controlar mi propio tiempo";
+"onboard_welcome_employee" = "Quiero usar esta aplicación para controlar mi propio tiempo. Ponme como empleado.";
 "onboard_welcome_employee_button" = "Empleado";
 "or" = "o";
-"onboard_welcome_employer" = "Quiero usar esta aplicación para controlar el tiempo de otras personas";
+"onboard_welcome_employer" = "Quiero usar esta aplicación para controlar el tiempo de otras personas. Establéceme como empleador.";
 "onboard_welcome_employer_button" = "Empleador";
 
 "onboard_intro_1" = "Esta aplicación es para tu uso personal y no compartimos tu información con nadie.";
-"onboard_intro_2" = "If you delete this application, your data will be deleted as well.";
+"onboard_intro_1_bold_text" = "no compartimos tu información con nadie.";
+"onboard_intro_2" = "Si eliminas esta aplicación, tus datos también se eliminarán.";
 "onboard_intro_3" = "Te guiaremos a través de las configuraciones haciéndote algunas preguntas que te ayudarán a comenzar a usar la aplicación.";
 "onboard_intro_4" = "Responde todas las preguntas y no te preocupes, podrás cambiar las cosas más adelante en las configuraciones de la aplicación.";
 "onboard_intro_note" = "Toca la flecha hacia la derecha debajo para continuar.";
@@ -405,9 +408,10 @@
 "onboard_name" = "¿Cuál es tu nombre o apodo?";
 "onboard_name_employer" = "¿Cuál es el nombre o apodo de tu empleador?";
 "onboard_name_employee" = "¿Cuál es el nombre o apodo de tu empleado?";
-"onboard_workweek_start" = "¿Cuándo comienza la semana laboral?";
+"onboard_employer_workweek_start" = "¿Cuándo comienza la semana laboral?";
+"onboard_employee_workweek_start" = "¿Cuándo comienza la semana laboral?";
 "onboard_employer_note" = "Puedes agregar más empleadores más adelante en las Configuraciones";
-"onboard_employee_note" = "Puedes agregar más empleados más adelante en las Configuraciones";
+"onboard_employee_note" = "Puedes agregar más empleados más adelante en ‘Mi Perfil’.";
 
 "onboard_pay_frequency_employer" = "¿Con qué frecuencia te pagan?";
 "onboard_pay_frequency_employee" = "¿Con qué frecuencia le pagan a tu empleado?";
@@ -418,8 +422,8 @@
 "onboard_overtime_yes" = "Sí (no exento)";
 "onboard_overtime_no" = "No (exento)";
 "onboard_state_employer" = "¿Salario mínimo estatal?";
-"onboard_state_employee" = "¿En qué estado trabaja tu empleado?";
-"onboard_pay_note" = "Puedes agregar más tarifas de pago y estados más adelante en las Configuraciones";
+"onboard_state_employee" = "¿En qué estado trabaja el empleado?";
+"onboard_pay_note" = "Puedes agregar más tarifas de pago y estados más adelante en ‘Mi Perfil.’";
 
 "onboard_review_title" = "¡Ya casi terminas!";
 "onboard_review_intro" = "Revisemos tus configuraciones:";
@@ -451,7 +455,7 @@
 "onboard_review_employer_state" = "Tu empleado trabaja en ";
 
 "onboard_review_button" = "Se ve bien, ¡adelante!";
-"onboard_review_note" = "Si algo no se ve bien, vuelve a los pasos anteriores para realizar los cambios";
+"onboard_review_note" = "Si algo no se ve bien, regresa a los pasos anteriores para corregir y regresa aquí para terminar.";
 
 "state_minimum_wage" = "Salario mínimo estatal";
 "hour" = "hora";
@@ -467,19 +471,22 @@
 "info_dont_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid exactly for 7 hours and 55 minutes of work DO NOT get their pay rounded up/down to the nearest 15 minutes.";
 
 "info_state" = "We use the state you work in to help detect situations where your pay might be below teh federal minimum wage.";
-"first_pay_period"= "First day of your pay period";
+"employer_first_pay_period"= "¿Cual es el primer día de tu período de pago?";
+"employee_first_pay_period"= "¿Cual es el primer día de tu período de pago?";
 
 "onboarding_name_nickname" = "Nombre o apodo";
-"onboarding_pay_week" = "Start of pay week";
-"pay_frequency" = "Pay frequency";
-"employee_pay_frequency" = "Empleado Pay frequency";
-"onboarding_first_day_pay" = "First day of pay period";
+"onboarding_pay_week" = "Comienzo de la semana de pago";
+"pay_frequency" = "Frecuencia de pago";
+"employee_pay_frequency" = "Frecuencia de pago del empleado";
+"onboarding_employer_first_day_pay" = "Primer día del período de pago";
+"onboarding_employee_first_day_pay" = "Primer día del período de pago del empleado";
 "pay_rate" = "Tarifa de pago";
-"employee_pay_rate" = "Empleado Tarifa de pago";
+"employee_pay_rate" = "Tarifa de pago del empleado";
 "onboarding_employee_eligible_overtime" = "Elegible para sobretiempo";
-"onboarding_employer_eligible_overtime" = "Empleado Elegible para sobretiempo";
-"onboarding_employee_state_min_wage" = "State you work in and min. wage";
-"onboarding_employer_state_min_wage" = "State employee works in and min. wage";
+"onboarding_employer_eligible_overtime" = "Empleado elegible para sobretiempo";
+"onboarding_employee_state_min_wage" = "Estado en el que trabaja y el salario mínimo";
+"onboarding_employer_state_min_wage" = "Estado en el que trabaja y el salario mínimo";
 
 "onboard_review_overtime_yes" = "Sí (no exento)";
 "onboard_review_overtime_no" = "No (exento)";
+"state_minimum_wage" = "Salario mínimo estatal";

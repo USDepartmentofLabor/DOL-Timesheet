@@ -42,11 +42,12 @@ class OnboardIntroductionViewController: OnboardBaseViewController {
 //        label2.scaleFont(forDataType: .introductionText)
         
         let boldFont = UIFont.boldSystemFont(ofSize: 17.0)
-        let boldPhrase = "don't store or share your information with anyone."
+        let boldPhrase = "onboard_intro_1_bold_text".localized
         
         let intro1Text = "onboard_intro_1".localized
+        let range = intro1Text.count - boldPhrase.count
         let intro1AttributedText = NSMutableAttributedString(string: intro1Text)
-        intro1AttributedText.addAttribute(.font, value: boldFont, range: NSRange(location: 40, length: boldPhrase.count))
+        intro1AttributedText.addAttribute(.font, value: boldFont, range: NSRange(location: range, length: boldPhrase.count))
         
         let intro2Text = "onboard_intro_2".localized
         let intro2AttributedText = NSMutableAttributedString(string: intro2Text)
