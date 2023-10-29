@@ -98,7 +98,6 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         onboardingDelegate?.updateUserType(newUserType: .employer)
         onboardingDelegate?.resetData()
 
-        _ = profileViewModel?.profileModel.newProfile(type: .employer, name: "")
         canMoveForward = true
     }
     
@@ -117,7 +116,6 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         onboardingDelegate?.updateUserType(newUserType: .employee)
         onboardingDelegate?.resetData()
         
-        _ = profileViewModel?.profileModel.newProfile(type: .employee, name: "")
         canMoveForward = true
     }
     

@@ -132,9 +132,7 @@ class ProfileViewModel {
         }
         
         _ = profileModel.newProfile(type: .employee, user: employer)
-        // We needed to comment out the below to avoid a dangling reference error when we finished
-        // onboarding when the user switched midway through between employee to employer and vice versa
-     //   managedObjectContext.delete(employer)
+        managedObjectContext.delete(employer)
     }
 
     func changeToEmployer(employee: Employee) {
@@ -143,9 +141,7 @@ class ProfileViewModel {
         }
         
         _ = profileModel.newProfile(type: .employer, user: employee)
-        // We needed to comment out the below to avoid a dangling reference error when we finished
-        // onboarding when the user switched midway through between employee to employer and vice versa
-      //  managedObjectContext.delete(employee)
+        managedObjectContext.delete(employee)
     }
 
     private var employmentInfos: [EmploymentInfo]? {
