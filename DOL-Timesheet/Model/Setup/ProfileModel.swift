@@ -64,9 +64,9 @@ class ProfileModel {
     }
     
     func newProfile(type: UserType, name: String) -> User {
-        if currentUser != nil {
-            return currentUser!
-        }
+//        if currentUser != nil {
+//            return currentUser!
+//        }
         
         let user: User
         if type == .employer {
