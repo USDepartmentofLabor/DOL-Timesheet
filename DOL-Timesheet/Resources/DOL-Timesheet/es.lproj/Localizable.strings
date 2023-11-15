@@ -171,8 +171,6 @@ empleado?";
 "discard_entry" = "Descartar Entrada";
 "manual_time_entry" = "Ingresar manualmente";
 "discard_entry_confirm" = "¿Estás seguro de que quieres descartar la entrada?";
-"discard" = "Desechar";
-"discard_button" = "Descartar";
 
 // Error Strings
 "err_title" = "Error";
@@ -457,7 +455,6 @@ empleado?";
 "onboard_review_button" = "Se ve bien, ¡adelante!";
 "onboard_review_note" = "Si algo no se ve bien, regresa a los pasos anteriores para corregir y regresa aquí para terminar.";
 
-"state_minimum_wage" = "Salario mínimo estatal";
 "hour" = "hora";
 
 "welcome" = "Bienvenido";
@@ -471,8 +468,8 @@ empleado?";
 "info_dont_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid exactly for 7 hours and 55 minutes of work DO NOT get their pay rounded up/down to the nearest 15 minutes.";
 
 "info_state" = "We use the state you work in to help detect situations where your pay might be below teh federal minimum wage.";
-"employer_first_pay_period"= "¿Cual es el primer día de tu período de pago?";
-"employee_first_pay_period"= "¿Cual es el primer día de tu período de pago?";
+"employer_first_pay_period"= "¿Fecha de inicio de su actual período de pago?";
+"employee_first_pay_period"= "¿Fecha de inicio del actual período de pago del empleado?";
 
 "onboarding_name_nickname" = "Nombre o apodo";
 "onboarding_pay_week" = "Comienzo de la semana de pago";

@@ -44,7 +44,19 @@ class OnboardWorkViewController: OnboardBaseViewController {
     var tapGesture: UITapGestureRecognizer?
     
 //    weak var delegate: TimeViewControllerDelegate?
-    var dateFormatter = DateFormatter()
+    var dateFormatter = {
+        let formatter = DateFormatter()
+
+        var locale = "en_EN"
+        if (Localizer.currentLanguage == Localizer.SPANISH) {
+            locale = "es_ES"
+        }
+        
+        formatter.locale = Locale(identifier: locale)
+        return formatter
+    }()
+    
+    
     var pickerSelected = ShownWorkPicker.none
     
     var otherName: String?
@@ -126,6 +138,16 @@ class OnboardWorkViewController: OnboardBaseViewController {
         firstDayPickerHeightConstraint.constant = 0
         self.workWeekStartPickerHeight.constant = 0
         workWeekStartPicker.selectRow(currentRow, inComponent: 0, animated: true)
+        
+        
+        var locale = Locale(identifier: "en_EN")
+        if (Localizer.currentLanguage == Localizer.SPANISH) {
+            locale = Locale(identifier: "es_ES")
+        }
+        
+        firstDayDatePicker.locale = locale
+        firstDayDatePicker.calendar = locale.calendar
+
         
         nameTitleLabel.text = "work".localized
         

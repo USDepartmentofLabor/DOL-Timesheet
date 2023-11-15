@@ -90,9 +90,9 @@ class TimeViewController: UIViewController {
         selectEmployerPopupButton.isHidden = true
         selectEmployerPopupLabel.isHidden = true
         selectUserDropDownView.isHidden = false
-        selectUserDropDownView.titleLabel.textColor = UIColor(named: "darkTextColor")
         selectUserDropDownView.titleLabel.scaleFont(forDataType: .timesheetSelectedUser)
 
+        selectEmployerPopupLabel.textColor = UIColor(named: "grayTextColor")
 
         if #available(iOS 15.0, *) {
             selectEmployerPopupButton.isHidden = false
@@ -107,6 +107,9 @@ class TimeViewController: UIViewController {
             selectEmployerPopupButton.layer.cornerRadius = 10.0
             
             selectEmployerPopupLabel.textColor = UIColor(named: "grayTextColor")
+            
+            selectEmployerPopupButton.backgroundColor = UIColor.white
+            selectEmployerPopupButton.setTitleColor(UIColor.black, for: .normal)
         }
         
     }
@@ -504,6 +507,9 @@ extension TimeViewController {
             ])
         
         viewController.didMove(toParent: self)
+        let addedViewSize = viewController.view.frame.size
+        let existingScrollViewContentSize = self.scrollView.contentSize
+        self.scrollView.contentSize = CGSize(width: existingScrollViewContentSize.width, height: addedViewSize.height+200)
     }
     
     func hideContentController(controller: UIViewController) {

@@ -182,7 +182,7 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
                 UIAlertController(title: " \n\n \("spanish_support".localized)",
                                   message: nil,
                                   preferredStyle: .alert)
-            let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 73, height: 50))
+            let imgViewTitle = UIImageView(frame: CGRect(x: 270/2-36.5, y: 10, width: 52.8, height: 50))
             imgViewTitle.image = UIImage(named:"holaHello")
             alertController.view.addSubview(imgViewTitle)
              

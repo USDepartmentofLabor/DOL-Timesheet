@@ -120,7 +120,6 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     func setupView() {
         
         rateDropDownView.titleLabel.scaleFont(forDataType: .timesheetSelectedUser)
-        rateDropDownView.titleLabel.textColor = UIColor(named: "darkTextColor")
                 
         
         ratePopupButton.layer.borderWidth = 1.0 // Set the width of the border
@@ -153,7 +152,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         discardButton.setTitleColor(UIColor.white, for: .highlighted)
         discardButton.setTitle("discard".localized, for: .normal)
                 
-   //     workedHoursView.bottomAnchor.constraint(equalTo: hoursView.bottomAnchor).isActive = true
+        workedHoursView.bottomAnchor.constraint(equalTo: hoursView.bottomAnchor).isActive = true
         
         ratePopupButton.isHidden = true
         rateDropDownView.isHidden = false
@@ -166,9 +165,12 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             ratePopupButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
             
             rateLabel.textColor = UIColor(named: "grayTextColor")
-            rateLabel.text = "rate".localized
 
         }
+        
+        ratePopupButton.backgroundColor = UIColor.white
+        ratePopupButton.setTitleColor(UIColor.black, for: .normal)
+        rateLabel.textColor = UIColor(named: "grayTextColor")
         
 //        workedHoursView.addBorder()
 //        breakHoursView.addBorder()
@@ -220,6 +222,9 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     func displayInfo() {
         // Remove Rate if salaried employee
         
+        rateLabel.text = "rate".localized
+        discardButton.setTitle("discard".localized, for: .normal)
+
         hoursWorkedTitleLabel.text = "hours_worked".localized
         breakHoursTitleLabel.text = "break_hours".localized
         
@@ -280,6 +285,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             
             ratePopupButton.backgroundColor = lighterGrey
             ratePopupButton.setTitleColor(UIColor.gray, for: .normal)
+            rateLabel.textColor = UIColor.gray
 
             
             if let hourlyRate = viewModel?.currentEmploymentModel?.employmentInfo.clock?.hourlyRate {
@@ -430,7 +436,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         alertController.addAction(
             UIAlertAction(title: "cancel".localized, style: .cancel))
         alertController.addAction(
-            UIAlertAction(title: "discard_button".localized, style: .destructive) { _ in
+            UIAlertAction(title: "discard".localized, style: .destructive) { _ in
                 self.discardEntry()
         })
         present(alertController, animated: true)
@@ -441,6 +447,10 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         discardButton.isHidden = true
         viewModel?.clock(action: .discardEntry, comments: nil)
         displayClock()
+        
+        ratePopupButton.backgroundColor = UIColor.white
+        ratePopupButton.setTitleColor(UIColor.black, for: .normal)
+        rateLabel.textColor = UIColor(named: "grayTextColor")
     }
     
     @IBAction func breakInfoClicked(_ sender: Any) {

@@ -124,6 +124,28 @@ extension UIViewController {
             NSAttributedString.Key.font : Style.scaledFont(forDataType: .barButtonTitle),
             NSAttributedString.Key.foregroundColor: UIColor.black],
                                                             for: .normal)
+        
+        let systemGray6 = UIColor.systemGray6
+        let hexColor = systemGray6.toHex()
+
+        print("Hex Color: \(hexColor)")
+    }
+}
+
+extension UIColor {
+    func toHex() -> String {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+        let redInt = Int(red * 255.0)
+        let greenInt = Int(green * 255.0)
+        let blueInt = Int(blue * 255.0)
+
+        return String(format: "#%02X%02X%02X", redInt, greenInt, blueInt)
     }
 }
 

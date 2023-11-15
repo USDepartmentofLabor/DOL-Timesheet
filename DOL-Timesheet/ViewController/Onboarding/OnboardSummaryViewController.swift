@@ -155,7 +155,7 @@ class OnboardSummaryViewController: OnboardBaseViewController {
             if employmentModel?.employmentInfo.paymentType == .hourly {
                 
                 reviewPayRateLabel.attributedText = boldily(
-                    "$" + (String(format: "%.2f", rate)) + "/" + "payment_hour".localized
+                    "$" + (String(format: "%.2f", rate)) + "/" + "hour".localized
                 )
                 
             } else {
@@ -283,7 +283,18 @@ class OnboardSummaryViewController: OnboardBaseViewController {
     }
     
     func formatDateToString(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
+        let dateFormatter = {
+            let formatter = DateFormatter()
+
+            var locale = "en_EN"
+            if (Localizer.currentLanguage == Localizer.SPANISH) {
+                locale = "es_ES"
+            }
+            
+            formatter.locale = Locale(identifier: locale)
+            return formatter
+        }()
+        
         dateFormatter.dateFormat = "MMMM d, yyyy"
         return dateFormatter.string(from: date)
     }

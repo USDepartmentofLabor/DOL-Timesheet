@@ -162,7 +162,7 @@ class OnboardPayViewController: OnboardBaseViewController {
         setupView()
         displayInfo()
         
-        detailTitleLabel.text = NSLocalizedString("pay", comment: "Pay")
+        detailTitleLabel.text = "pay".localized
         if userType == .employee {
             payFrequencyTitle.text = "onboard_pay_frequency_employer".localized
             payRateTitle.text = "onboard_pay_rate_employer".localized
