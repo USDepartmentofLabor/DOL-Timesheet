@@ -1170,7 +1170,7 @@
         <!--Onboard View Controller-->
         <scene sceneID="0u7-eH-jwn">
             <objects>
-                <viewController storyboardIdentifier="OnboardViewController" title="Onboard View Controller" id="JGy-Bm-CQV" customClass="OnboardViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardViewController" title="Onboard View Controller" id="JGy-Bm-CQV" customClass="OnboardPageNavigationViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6rQ-mV-edc"/>
                         <viewControllerLayoutGuide type="bottom" id="W3f-0z-xsz"/>

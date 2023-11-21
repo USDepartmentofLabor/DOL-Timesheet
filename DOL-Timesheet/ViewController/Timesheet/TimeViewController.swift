@@ -238,7 +238,7 @@ class TimeViewController: UIViewController {
         
         if segue.identifier == "showOnboard",
             let navVC = segue.destination as? UINavigationController,
-            let introVC = navVC.topViewController as? OnboardViewController {
+            let introVC = navVC.topViewController as? OnboardPageNavigationViewController {
             introVC.delegate = self
         }
         else if segue.identifier == "setupProfile",

@@ -53,6 +53,7 @@ class ProfileModel {
         else {
             newUser = Employee(context: context)
         }
+        print("GGG Onboarding: ProfileModel-newProfile created based on previous user: \(newUser.debugDescription)")
         newUser.currentUser = true
         newUser.name = user.name
         newUser.email = user.email
@@ -75,6 +76,7 @@ class ProfileModel {
         else {
             user = Employee(context: context)
         }
+        print("GGG Onboarding: ProfileModel-newProfile created: \(user.debugDescription)")
         user.currentUser = true
         user.name = name
         _currentUser = user
@@ -93,6 +95,7 @@ class ProfileModel {
             employedUser = employmentInfo.employee
             employer.removeFromEmployees(employmentInfo)
         }
+        
         
 //        context.delete(employmentInfo)
         if let employedUser = employedUser {

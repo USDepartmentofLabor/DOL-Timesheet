@@ -100,6 +100,7 @@ class ProfileViewModel {
         }
         
         let employmentInfo = EmploymentInfo(context: childContext)
+        print("GGG Onboarding: ProfileViewModel-newTempEmploymentModel created new EmploymentInfo: \(employmentInfo.debugDescription)")
         
         if let employee = userInContext as? Employee {
             employmentInfo.employee = employee
@@ -109,6 +110,7 @@ class ProfileViewModel {
             employmentInfo.employer = employer
 //            employmentInfo.employee = Employee(context: childContext)
         }
+        print("GGG Onboarding: ProfileViewModel-newTempEmploymentModel setting employmentInfo childContext.object(with: user.objectID): \(userInContext.debugDescription)")
         
         return EmploymentModel(employmentInfo: employmentInfo)
     }
@@ -128,20 +130,34 @@ class ProfileViewModel {
     
     func changeToEmployee(employer: Employer) {
         employer.employees?.forEach {
+            let empInfo: EmploymentInfo = $0 as! EmploymentInfo
+            print("GGG Onboarding: ProfileViewModel-changeToEmployee deleting subs: \(empInfo.debugDescription)")
             profileModel.delete(employmentInfo: $0 as! EmploymentInfo)
         }
-        
-        _ = profileModel.newProfile(type: .employee, user: employer)
-        managedObjectContext.delete(employer)
+        if let currUser = profileModel.currentUser {
+            print("GGG Onboarding: ProfileViewModel-changeToEmployee deleting primary: \(currUser.debugDescription)")
+            managedObjectContext.delete(currUser)
+        }
+   //     managedObjectContext.rollback()
+        print("GGG Onboarding: ProfileViewModel-changeToEmployee creating new profile for ??? : \(employer.debugDescription)")
+        _ = profileModel.newProfile(type: .employee, name: "")
+      //  managedObjectContext.delete(employer)
     }
 
     func changeToEmployer(employee: Employee) {
         employee.employers?.forEach {
+            let empInfo: EmploymentInfo = $0 as! EmploymentInfo
+            print("GGG Onboarding: ProfileViewModel-changeToEmployer deleting subs: \(empInfo.debugDescription)")
             profileModel.delete(employmentInfo: $0 as! EmploymentInfo)
         }
-        
-        _ = profileModel.newProfile(type: .employer, user: employee)
-        managedObjectContext.delete(employee)
+        if let currUser = profileModel.currentUser {
+            print("GGG Onboarding: ProfileViewModel-changeToEmployer deleting primary: \(currUser.debugDescription)")
+            managedObjectContext.delete(currUser)
+        }
+      //  managedObjectContext.rollback()
+        print("GGG Onboarding: ProfileViewModel-changeToEmployer creating new profile for ??? : \(employee.debugDescription)")
+        _ = profileModel.newProfile(type: .employer, name: "")
+       // managedObjectContext.delete(employee)
     }
 
     private var employmentInfos: [EmploymentInfo]? {

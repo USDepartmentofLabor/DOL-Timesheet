@@ -11,7 +11,7 @@ import UIKit
 protocol OnboardingProtocol: AnyObject {
     func resetData()
     func updateCanMoveForward(value: Bool)
-    func updateViewModels(profileViewModel: ProfileViewModel, employmentModel: EmploymentModel)
+    func updateViewModels(profileViewModel: ProfileViewModel, employmentModel: EmploymentModel?)
     func updateUserType(newUserType: UserType)
 }
 

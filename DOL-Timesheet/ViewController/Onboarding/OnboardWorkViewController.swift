@@ -193,14 +193,15 @@ class OnboardWorkViewController: OnboardBaseViewController {
         
         if (employmentModel == nil) {
             guard let employmentModel = profileViewModel!.newTempEmploymentModel() else { return false}
+            print("GGG Onboarding: OnboardWorkViewController-saveData created new Employement Model: \(employmentModel)")
             self.employmentModel = employmentModel
         }
 
         var user = employmentModel!.employmentUser
         if user == nil {
             user = employmentModel!.newEmploymentUser()
+            print("GGG Onboarding: OnboardWorkViewController-saveData created new user: \(user.debugDescription)")
         }
-//        user?.name = otherNameField.text?.trimmingCharacters(in: .whitespaces)
         
         user?.name = otherNameField.text?.trimmingCharacters(in: .whitespaces)
         

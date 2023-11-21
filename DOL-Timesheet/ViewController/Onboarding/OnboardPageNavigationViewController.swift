@@ -16,7 +16,7 @@
 
 import UIKit
 
-class OnboardViewController: UIViewController {
+class OnboardPageNavigationViewController: UIViewController {
 
     @IBOutlet weak var containerView: UIView!
     
@@ -122,7 +122,7 @@ class OnboardViewController: UIViewController {
     }
 }
 
-extension OnboardViewController: OnboardPageViewControllerDelegate {
+extension OnboardPageNavigationViewController: OnboardPageViewControllerDelegate {
     
     func onboardPageViewController(onboardPageViewController: OnboardPageViewController,
         didUpdatePageCount count: Int) {
@@ -166,7 +166,7 @@ extension OnboardViewController: OnboardPageViewControllerDelegate {
     
 }
 
-extension OnboardViewController: OnboardingProtocol {
+extension OnboardPageNavigationViewController: OnboardingProtocol {
     func resetData() {
         onboardPageViewController?.resetData()
         
@@ -175,7 +175,7 @@ extension OnboardViewController: OnboardingProtocol {
     }
     
     func updateViewModels(profileViewModel: ProfileViewModel,
-                          employmentModel: EmploymentModel) {
+                          employmentModel: EmploymentModel?) {
         if let vcs = onboardPageViewController?.orderedViewControllers {
             for (_, element) in vcs.enumerated() {
                 element.employmentModel = employmentModel

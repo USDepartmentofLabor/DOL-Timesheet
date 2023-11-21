@@ -170,6 +170,14 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
             profileViewModel!.changeToEmployer(employee: employee)
             userType = .employer
         }
+        
+        if let empModel = employmentModel {
+            empModel.managedObjectContext?.delete(empModel.employmentInfo)
+            onboardingDelegate?.updateViewModels(
+                profileViewModel: profileViewModel!,
+                employmentModel: nil
+            )
+        }
         manageVC?.viewModel = ProfileViewModel(context: profileViewModel!.managedObjectContext.childManagedObjectContext())
     }
     

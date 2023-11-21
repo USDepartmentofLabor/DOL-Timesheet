@@ -135,6 +135,7 @@ class EmploymentModel {
             employmentInfo.employer = Employer(context: context)
             user = employmentInfo.employer
         }
+        print("GGG Onboarding: EmploymentModel-newEmploymentUser created new user: \(user.debugDescription)")
         
         return user
     }
