@@ -59,6 +59,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     @IBOutlet weak var popupHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var popupBottomConstraint: NSLayoutConstraint!
     
+    var rateOptions: [HourlyRate]?
     let lighterGrey = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
 
     
@@ -163,14 +164,9 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             setupPopupButton()
             
             ratePopupButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
-            
-            rateLabel.textColor = UIColor(named: "grayTextColor")
-
         }
         
-        ratePopupButton.backgroundColor = UIColor.white
-        ratePopupButton.setTitleColor(UIColor.black, for: .normal)
-        rateLabel.textColor = UIColor(named: "grayTextColor")
+        rateOptions = viewModel?.currentEmploymentModel?.hourlyRates
         
 //        workedHoursView.addBorder()
 //        breakHoursView.addBorder()
@@ -198,7 +194,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         
         var menuActions: [UIAction] = []
 
-        guard  let options = viewModel?.currentEmploymentModel?.hourlyRates else {
+        guard  let options = rateOptions else {
             return
         }
                 
@@ -280,12 +276,6 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             startTimer()
             // display Comments
 //            commentsView.isHidden = true
-            rateDropDownView.isEnabled = false
-            ratePopupButton.isEnabled = false
-            
-            ratePopupButton.backgroundColor = lighterGrey
-            ratePopupButton.setTitleColor(UIColor.gray, for: .normal)
-            rateLabel.textColor = UIColor.gray
 
             
             if let hourlyRate = viewModel?.currentEmploymentModel?.employmentInfo.clock?.hourlyRate {
@@ -448,9 +438,6 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         viewModel?.clock(action: .discardEntry, comments: nil)
         displayClock()
         
-        ratePopupButton.backgroundColor = UIColor.white
-        ratePopupButton.setTitleColor(UIColor.black, for: .normal)
-        rateLabel.textColor = UIColor(named: "grayTextColor")
     }
     
     @IBAction func breakInfoClicked(_ sender: Any) {
@@ -644,7 +631,7 @@ extension TimeCardViewController {
 extension TimeCardViewController {
     @objc func rateClick(_ sender: Any) {
         guard rateDropDownView.isEnabled else { return }
-        guard  let options =  viewModel?.currentEmploymentModel?.hourlyRates else {
+        guard  let options = rateOptions else {
             return
         }
 

@@ -286,7 +286,7 @@
                                 <rect key="frame" x="0.0" y="48" width="414" height="648"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VAO-KD-N4A">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="961.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1011.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your name or nickname?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysb-PE-k93">
                                                 <rect key="frame" x="20" y="53.5" width="374" height="20.5"/>
@@ -426,7 +426,7 @@
                                             <constraint firstItem="qi4-o4-Ezl" firstAttribute="leading" secondItem="VAO-KD-N4A" secondAttribute="leading" constant="20" symbolic="YES" id="cRi-Ld-bDT"/>
                                             <constraint firstItem="Ysb-PE-k93" firstAttribute="top" secondItem="Amd-lv-zjl" secondAttribute="bottom" constant="25" id="dSB-Ep-ro2"/>
                                             <constraint firstItem="bW0-1v-KJZ" firstAttribute="top" secondItem="ndb-XR-AJa" secondAttribute="bottom" constant="40" id="ear-Nu-3sX"/>
-                                            <constraint firstAttribute="bottom" secondItem="qdU-EJ-eHQ" secondAttribute="bottom" id="ery-Gz-Pmk"/>
+                                            <constraint firstAttribute="bottom" secondItem="qdU-EJ-eHQ" secondAttribute="bottom" constant="50" id="ery-Gz-Pmk"/>
                                             <constraint firstItem="zv8-2x-5wC" firstAttribute="leading" secondItem="qi4-o4-Ezl" secondAttribute="trailing" id="hO4-8R-MQj"/>
                                             <constraint firstItem="Amd-lv-zjl" firstAttribute="leading" secondItem="VAO-KD-N4A" secondAttribute="leading" constant="8" id="iQx-rM-pa3"/>
                                             <constraint firstItem="RB8-rY-LB4" firstAttribute="top" secondItem="bW0-1v-KJZ" secondAttribute="bottom" constant="8" id="jlH-QW-gLR"/>

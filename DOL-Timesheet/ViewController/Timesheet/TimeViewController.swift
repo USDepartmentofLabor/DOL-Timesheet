@@ -92,8 +92,6 @@ class TimeViewController: UIViewController {
         selectUserDropDownView.isHidden = false
         selectUserDropDownView.titleLabel.scaleFont(forDataType: .timesheetSelectedUser)
 
-        selectEmployerPopupLabel.textColor = UIColor(named: "grayTextColor")
-
         if #available(iOS 15.0, *) {
             selectEmployerPopupButton.isHidden = false
             selectEmployerPopupLabel.isHidden = false
@@ -106,10 +104,6 @@ class TimeViewController: UIViewController {
             selectEmployerPopupButton.layer.borderColor = lighterGrey.cgColor // Set the color of the border
             selectEmployerPopupButton.layer.cornerRadius = 10.0
             
-            selectEmployerPopupLabel.textColor = UIColor(named: "grayTextColor")
-            
-            selectEmployerPopupButton.backgroundColor = UIColor.white
-            selectEmployerPopupButton.setTitleColor(UIColor.black, for: .normal)
         }
         
     }

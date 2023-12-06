@@ -192,7 +192,14 @@ class OnboardSummaryViewController: OnboardBaseViewController {
             reviewOvertimeLabel.attributedText = boldily(exempt)
                                                          
             let stateString = (employmentModel?.employmentUser?.address?.state ?? "West Virginia") + " "
-            let wageString = (employmentModel?.minimumWage.stringValue ?? "7.25")
+            let wageValue = employmentModel?.minimumWage
+            var wageString = "7.25"
+            
+            
+            if (wageValue != nil) {
+                wageString = String(format: "%.2f", wageValue!.doubleValue)
+            }
+            
             let endString = "/" + "hour".localized
             
             let stateWageString = stateString + " ($" + wageString + endString + ")"
@@ -265,7 +272,15 @@ class OnboardSummaryViewController: OnboardBaseViewController {
             reviewOvertimeLabel.attributedText = boldily(exempt)
             
             let stateString = (employmentModel?.employmentUser?.address?.state ?? "West Virginia") + " "
-            let wageString = (employmentModel?.minimumWage.stringValue ?? "7.25")
+           
+            let wageValue = employmentModel?.minimumWage
+            var wageString = "7.25"
+            
+            
+            if (wageValue != nil) {
+                wageString = String(format: "%.2f", wageValue!.doubleValue)
+            }
+            
             let endString = "/" + "hour".localized
             
             let stateWageString = stateString + " ($" + wageString + endString + ")"

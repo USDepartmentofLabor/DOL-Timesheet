@@ -212,7 +212,7 @@
 "info_employee_payment_type" = "Your employer may pay you in a variety of ways: a certain amount of money per hour, a pre-determined salary, or by some other method. Please select the method that your employer uses to pay you.";
 "info_employer_payment_type" = "As an employer you may pay your employees in a variety of ways: a certain amount of money per hour, or by some other method. Please select the method that you use to pay your employees.";
 
-"info_employee_hourly_pay_rate" = "If you are paid by the hour, enter the amount per hour here. \n\nKeep in mind that your hourly rate must be at least the federal minimum wage of $7.25 per hour.  If you are paid less than that amount, please contact the <a href=\"https://www.dol.gov/agencies/whd\">Wage and Hour Division.</a>";
+"info_employee_hourly_pay_rate" = "If you are paid by the hour, enter the amount per hour here. \n\nKeep in mind that your hourly rate must be at least the federal minimum wage of $7.25 per hour.  If you are paid less than that amount, please contact the <a href=\"https://www.dol.gov/agencies/whd\" style=\"text-decoration: none\">Wage and Hour Division.</a>";
 "info_employer_hourly_pay_rate" = "If your employee is paid by the hour, enter the amount per hour here. Keep in mind that their hourly rate must be at least the federal minimum wage of $7.25 per hour. If employees are paid less than that amount, please contact the <a href=\"https://www.dol.gov/agencies/whd\" style=\"text-decoration: none\">Wage and Hour Division.</a>";
 "info_overtime_eligible" = "In the United States, more than 148 million workers in more than 10.2 million workplaces are protected (or “covered”) by the Fair Labor Standards Act (FLSA). \n\nUnless a specific exemption applies, covered employees are due the federal minimum wage, currently $7.25 per hour, for every hour that they work, and overtime at time and one-half their regular rates of pay for any hours they work beyond 40 in a workweek. \n\nThe law includes specific exemptions from these requirements under a variety of circumstances. For example, salaried “white-collar” employees may be exempt from the FLSA’s minimum wage and overtime pay requirements. If an employee meets all of the criteria for an exemption from minimum wage and/or overtime pay requirements, then those requirements do not apply to that employee. \n\n“Exempt” employees are not legally required to be paid minimum wage and/or overtime, depending upon the specific exemption that applies. \n\n“Non-exempt” employees are entitled by law to minimum wage and overtime pay. \n\nFor additional information please contact the <a href=\"https://www.dol.gov/agencies/whd\" style=\"text-decoration: none\">Wage and Hour Division.</a>";
 "info_minimum_wage" = "The federal minimum wage is $7.25 per hour. \n\nMany states also have their own minimum wage laws. These state laws may provide greater employee protections than federal law; employers must comply with both. Where state law requires a higher minimum wage, that higher standard applies. \n\nFor more information, or to find the minimum wage required by your state, click the “Minimum Wage Table” button.";
@@ -483,8 +483,8 @@
 "onboarding_pay_week" = "Start of pay week";
 "pay_frequency" = "Pay frequency";
 "employee_pay_frequency" = "Employee's pay frequency";
-"onboarding_employee_first_day_pay" = "Start date of employee's first pay period";
-"onboarding_employer_first_day_pay" = "Start date of pay period";
+"onboarding_employee_first_day_pay" = "Start date of employee's current pay period";
+"onboarding_employer_first_day_pay" = "Start date of current pay period";
 "pay_rate" = "Pay rate";
 "employee_pay_rate" = "Employee's pay rate";
 "onboarding_employee_eligible_overtime" = "Eligible for overtime";
