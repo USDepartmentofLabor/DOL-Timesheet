@@ -124,6 +124,7 @@
 		696D20DD28318CC9007E041F /* DOL_Timesheet.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */; };
 		696D20DE28318CC9007E041F /* DOL_Timesheet.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */; };
 		698AE54728C7ACBA0038945B /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 698AE54628C7ACBA0038945B /* Onboarding.storyboard */; };
+		698CF4092B2A33C400E0F63A /* EnterTimeSoftenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CF4082B2A33C400E0F63A /* EnterTimeSoftenViewController.swift */; };
 		6999703E290C942E00DCDE7C /* SwitchLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */; };
 		69997040290DDB8C00DCDE7C /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6999703F290DDB8B00DCDE7C /* Localizer.swift */; };
 		69A71F3C29DC8C2A0017A1F6 /* StateMinimumWages.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A71F3B29DC8C2A0017A1F6 /* StateMinimumWages.json */; };
@@ -286,6 +287,7 @@
 		696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-shm"; sourceTree = "<group>"; };
 		696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-wal"; sourceTree = "<group>"; };
 		698AE54628C7ACBA0038945B /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		698CF4082B2A33C400E0F63A /* EnterTimeSoftenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterTimeSoftenViewController.swift; sourceTree = "<group>"; };
 		6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchLanguageViewController.swift; sourceTree = "<group>"; };
 		6999703F290DDB8B00DCDE7C /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
 		69A71F3B29DC8C2A0017A1F6 /* StateMinimumWages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StateMinimumWages.json; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 			children = (
 				0324C3DE2260E47100712576 /* TimesheetViewController.swift */,
 				03264F6E22834ED100FF6010 /* EnterTimeViewController.swift */,
+				698CF4082B2A33C400E0F63A /* EnterTimeSoftenViewController.swift */,
 				032430DD2285D81800E86E3E /* TimePickerViewController.swift */,
 				032D3CCF231EBC930095AAA8 /* TimeCardViewController.swift */,
 				032D3CD1231EF9BA0095AAA8 /* TimeViewController.swift */,
@@ -905,6 +908,7 @@
 				036D71982277529400CC62CE /* PaymentFrequencyTableViewCell.swift in Sources */,
 				59AD9E6322A1ADB500075193 /* SummaryTableViewHeaderView.swift in Sources */,
 				0329BFF2237341F7006AB18A /* ImportDBViewController.swift in Sources */,
+				698CF4092B2A33C400E0F63A /* EnterTimeSoftenViewController.swift in Sources */,
 				032C9F152264E83A00FB1468 /* IntroductionViewController.swift in Sources */,
 				0326DB622326C46500EDA2F7 /* ShadowView.swift in Sources */,
 				0324C41D2260FCF600712576 /* InfoViewController.swift in Sources */,
@@ -1151,7 +1155,7 @@
 				CURRENT_PROJECT_VERSION = 102;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1174,7 +1178,7 @@
 				CURRENT_PROJECT_VERSION = 102;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

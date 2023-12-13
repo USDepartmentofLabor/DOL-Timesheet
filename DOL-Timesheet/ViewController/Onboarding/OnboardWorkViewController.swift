@@ -71,6 +71,10 @@ class OnboardWorkViewController: OnboardBaseViewController {
     let firstDayViewHeightWithPicker:CGFloat = 275
     let firstDayViewHeightWithField:CGFloat = 80
     let firstDayViewHeightHidden:CGFloat = 0
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setFirstDatePickerHeight(height: firstDayViewHeightHidden, relatedBy: .equal)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +84,7 @@ class OnboardWorkViewController: OnboardBaseViewController {
         tapGesture!.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture!)
         
-        firstDayPickerHeightConstraint.constant = firstDayViewHeightHidden
+        setFirstDatePickerHeight(height: firstDayViewHeightHidden, relatedBy: .equal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -100,7 +104,7 @@ class OnboardWorkViewController: OnboardBaseViewController {
             break
         }
         workWeekStartPickerHeight.constant = 0
-        firstDayPickerHeightConstraint.constant = 0
+        setFirstDatePickerHeight(height: firstDayViewHeightHidden, relatedBy: .equal)
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
@@ -134,8 +138,7 @@ class OnboardWorkViewController: OnboardBaseViewController {
         } else {
             firstDayDatePicker.preferredDatePickerStyle = .wheels
         }
-        
-        firstDayPickerHeightConstraint.constant = 0
+        setFirstDatePickerHeight(height: firstDayViewHeightHidden, relatedBy: .equal)
         self.workWeekStartPickerHeight.constant = 0
         workWeekStartPicker.selectRow(currentRow, inComponent: 0, animated: true)
         
@@ -255,6 +258,30 @@ class OnboardWorkViewController: OnboardBaseViewController {
         }
         onboardingDelegate?.updateCanMoveForward(value: canMoveForward)
     }
+    
+    func setFirstDatePickerHeight(height: CGFloat, relatedBy: NSLayoutConstraint.Relation) {
+        firstDayPickerHeightConstraint.constant = height
+        
+
+        // Create a new constraint with a greater than or equal to relation
+        let newHeightConstraint = NSLayoutConstraint(item: firstDayPickerHeightConstraint.firstItem,
+                                                      attribute: firstDayPickerHeightConstraint.firstAttribute,
+                                                      relatedBy: relatedBy,
+                                                      toItem: firstDayPickerHeightConstraint.secondItem,
+                                                      attribute: firstDayPickerHeightConstraint.secondAttribute,
+                                                      multiplier: firstDayPickerHeightConstraint.multiplier,
+                                                      constant: firstDayPickerHeightConstraint.constant)
+
+        firstDayPickerHeightConstraint.isActive = false
+        newHeightConstraint.isActive = true
+
+        // Optionally, update the IBOutlet reference
+        firstDayPickerHeightConstraint = newHeightConstraint
+        
+        let pickerView = UIPickerView()
+        pickerView.frame = CGRect(x: 0, y: 0, width: firstDayDatePicker.frame.width, height: height) // Adjust the frame as needed
+        view.addSubview(pickerView)
+    }
 }
 
 extension OnboardWorkViewController: UITextFieldDelegate {
@@ -289,7 +316,7 @@ extension OnboardWorkViewController: UITextFieldDelegate {
                 workWeekStartValid = true
                 check()
                 otherNameSet(textField)
-                firstDayPickerHeightConstraint.constant = 0
+                setFirstDatePickerHeight(height: firstDayViewHeightHidden, relatedBy: .equal)
                 pickerSelected = .workWeekStartPicker
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                     self?.scrollView.scrollToBottom()
@@ -298,7 +325,7 @@ extension OnboardWorkViewController: UITextFieldDelegate {
             return false
         } else if textField == firstPayPeriodField {
             if firstDayPickerHeightConstraint.constant > 1 {
-                firstDayPickerHeightConstraint.constant = 0
+                setFirstDatePickerHeight(height: firstDayViewHeightHidden, relatedBy: .equal)
                 pickerSelected = .none
             } else {
                 if firstPayPeriodField.text?.count == 0 {
@@ -306,7 +333,7 @@ extension OnboardWorkViewController: UITextFieldDelegate {
                     dateFormatter.dateFormat = "MMMM d, YYYY"
                     firstPayPeriodField.text = dateFormatter.string(from: firstPayPeriod!)
                 }
-                firstDayPickerHeightConstraint.constant = 250
+                setFirstDatePickerHeight(height: 307, relatedBy: .greaterThanOrEqual)
                 workWeekStartPickerHeight.constant = 0
                 pickerSelected = .payPeriodPicker
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
@@ -317,7 +344,7 @@ extension OnboardWorkViewController: UITextFieldDelegate {
             return false
         } else{
             workWeekStartPickerHeight.constant = 0
-            firstDayPickerHeightConstraint.constant = 0
+            setFirstDatePickerHeight(height: firstDayViewHeightHidden, relatedBy: .equal)
             pickerSelected = .none
             return true
         }
