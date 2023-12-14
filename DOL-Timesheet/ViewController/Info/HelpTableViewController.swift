@@ -15,6 +15,9 @@ public struct HelpItem {
 
 class HelpTableViewController: UIViewController {
 
+    @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contactUsView: UIView!
+    @IBOutlet weak var glossaryView: UIView!
     @IBOutlet weak var helpItemTable: UITableView!
     //    @IBOutlet weak var displayLogo: UIImageView!
     
@@ -28,21 +31,22 @@ class HelpTableViewController: UIViewController {
     
     func setupView() {
         helpItemTable.reloadData()
+        helpItemTable.layer.cornerRadius = 10
+        glossaryView.layer.cornerRadius = 10
+        contactUsView.layer.cornerRadius = 10
+        tableHeightConstraint.constant = CGFloat((45 * helpItems.count))
         setupAccessibility()
     }
     
     func setupAccessibility() {
         
-        navigationItem.leftBarButtonItem?.tintColor = .black
-//        let cancelBtn = UIBarButtonItem(title: "cancel".localized, style: .plain, target: self, action: nil)
-//        navigationItem.leftBarButtonItem = cancelBtn
-//
-//        let saveBtn = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: nil)
-//        navigationItem.rightBarButtonItem = saveBtn
-        
         
 //        displayLogo.isAccessibilityElement = true
 //        displayLogo.accessibilityLabel = "whd_logo".localized
+    }
+    
+    @objc func cancel(_ sender: Any?) {
+        dismiss(animated: true, completion: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -65,9 +69,10 @@ extension HelpTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "helpItem")
         
-        cell.textLabel?.scaleFont(forDataType: .aboutText)
+        cell.textLabel?.scaleFont(forDataType: .infoSection)
         cell.textLabel?.text = helpItems[indexPath.row].title
         cell.textLabel?.numberOfLines = 0
+        cell.accessoryType = .disclosureIndicator
         
         return cell
     }

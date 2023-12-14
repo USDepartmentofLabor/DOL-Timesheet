@@ -97,11 +97,11 @@ class EnterTimeSoftenViewController: UIViewController {
 //        hourlyRateTitleLabel.scaleFont(forDataType: .columnHeader)
 //        commentTextView.scaleFont(forDataType: .enterCommentsValue)
         
-        employmentView.layer.cornerRadius = 5
-        dateView.layer.cornerRadius = 5
-        timeView.layer.cornerRadius = 5
-        commentView.layer.cornerRadius = 5
-        helpView.layer.cornerRadius = 5
+        employmentView.layer.cornerRadius = 10
+        dateView.layer.cornerRadius = 10
+        timeView.layer.cornerRadius = 10
+        commentView.layer.cornerRadius = 10
+        helpView.layer.cornerRadius = 10
         
         dateDropDownView.title = "date".localized
     }
