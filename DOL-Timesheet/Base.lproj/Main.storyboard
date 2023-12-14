@@ -1035,10 +1035,12 @@
                         <outlet property="commentsTitleLabel" destination="vOb-lE-3e9" id="Mtn-ym-rtL"/>
                         <outlet property="dateDropDownView" destination="wFc-rN-pqq" id="oyP-KJ-8lc"/>
                         <outlet property="dateTitleLabel" destination="cIO-w4-OYY" id="x1V-yj-drZ"/>
-                        <outlet property="employmentDropDown" destination="isW-l3-TIp" id="4Cn-t5-SZi"/>
+                        <outlet property="employmentPopUp" destination="isW-l3-TIp" id="mQJ-Ge-GVJ"/>
+                        <outlet property="employmentTitleLabel" destination="nVU-8i-HqJ" id="8vH-Qg-pgx"/>
                         <outlet property="endTitleLabel" destination="Rka-Mu-JbO" id="S7g-iW-avK"/>
                         <outlet property="hourlyRateTitleLabel" destination="nU1-xX-WEV" id="AHL-QE-zNh"/>
-                        <outlet property="rateDropDown" destination="Aqc-nq-SkZ" id="yBj-Na-Zn7"/>
+                        <outlet property="ratePopUp" destination="Aqc-nq-SkZ" id="ILG-I6-Av0"/>
+                        <outlet property="rateTitleLabel" destination="nU1-xX-WEV" id="NPF-tE-X4S"/>
                         <outlet property="startTitleLabel" destination="8sv-Zs-nVj" id="eVg-Wa-JOm"/>
                     </connections>
                 </viewController>
@@ -1117,7 +1119,7 @@
                                     <constraint firstItem="zkZ-qj-XFK" firstAttribute="centerY" secondItem="UZZ-qS-oUT" secondAttribute="centerY" id="x3u-dd-U48"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="rmv-Y9-bGh" appends="YES" id="EnF-zR-bDJ"/>
+                                    <outletCollection property="gestureRecognizers" destination="L39-hd-q8K" appends="YES" id="i1m-3D-gKj"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RvB-GH-khT">
@@ -1170,7 +1172,7 @@
                                     <constraint firstItem="wNn-Kt-COw" firstAttribute="leading" secondItem="RvB-GH-khT" secondAttribute="leading" constant="8" id="uTe-dP-3h4"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="uzb-DM-rwO" appends="YES" id="l1J-Rx-nyp"/>
+                                    <outletCollection property="gestureRecognizers" destination="4dD-jQ-6fa" appends="YES" id="dUX-2e-qR1"/>
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kLc-FK-AsL">
@@ -1180,7 +1182,7 @@
                                     <constraint firstAttribute="height" constant="128" id="gVA-w6-ORP"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="helpItem" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="helpItem" id="3yR-EG-uan">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3yR-EG-uan">
                                         <rect key="frame" x="0.0" y="50" width="374" height="44.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3yR-EG-uan" id="eRC-3p-cwC">
@@ -1215,8 +1217,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="zZ2-Em-sed" id="tQV-lD-UdG"/>
-                                    <outlet property="delegate" destination="zZ2-Em-sed" id="SAZ-VC-Opk"/>
+                                    <outlet property="dataSource" destination="zZ2-Em-sed" id="Yk2-OS-0Py"/>
+                                    <outlet property="delegate" destination="zZ2-Em-sed" id="n5i-9D-EIg"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -1239,23 +1241,23 @@
                     </view>
                     <navigationItem key="navigationItem" id="rNM-LF-WKx"/>
                     <connections>
-                        <outlet property="helpItemTable" destination="kLc-FK-AsL" id="BgV-aN-fUu"/>
+                        <outlet property="helpItemTable" destination="kLc-FK-AsL" id="kP5-d1-1JZ"/>
                         <segue destination="7lm-wm-pPj" kind="show" identifier="helpDetail" id="0UW-pd-o3e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZY-Ar-khd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="rmv-Y9-bGh">
+                <tapGestureRecognizer id="L39-hd-q8K">
                     <connections>
-                        <segue destination="YeA-yJ-t1m" kind="show" id="PmW-XW-kmf"/>
+                        <segue destination="YeA-yJ-t1m" kind="show" id="isf-7E-suF"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="uzb-DM-rwO">
+                <tapGestureRecognizer id="4dD-jQ-6fa">
                     <connections>
-                        <segue destination="FeP-NS-JCI" kind="show" id="7gy-sW-54y"/>
+                        <segue destination="FeP-NS-JCI" kind="show" id="GGP-HT-mqi"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4533" y="-794"/>
+            <point key="canvasLocation" x="4462" y="-826"/>
         </scene>
         <!--EmploymentInfoViewController-->
         <scene sceneID="zpK-H4-oix">
@@ -1594,11 +1596,11 @@
         <scene sceneID="fdQ-8z-5Cs">
             <objects>
                 <viewController storyboardIdentifier="TimeViewController" id="Uz1-t8-iUz" customClass="TimeViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="cWj-y1-X7Y">
+                    <view key="view" contentMode="scaleToFill" id="cWj-y1-X7Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-7B-2z6">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-7B-2z6">
                                 <rect key="frame" x="15" y="107" width="384" height="691"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vjf-Wa-z7c" userLabel="HeaderView">
@@ -1608,7 +1610,7 @@
                                             <constraint firstAttribute="height" id="2MD-c3-XdB"/>
                                         </constraints>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-ou-4jf">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-ou-4jf">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="691"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHt-00-RNc" userLabel="ContentView">
@@ -1710,7 +1712,7 @@
                                     <constraint firstAttribute="bottom" secondItem="DcB-ou-4jf" secondAttribute="bottom" id="tm4-Vs-kXF"/>
                                 </constraints>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-ox-87c">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-ox-87c">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="bTx-ty-Sku"/>
@@ -2044,7 +2046,7 @@
                             <constraint firstItem="QTk-lu-S07" firstAttribute="top" secondItem="frZ-zh-0oV" secondAttribute="top" constant="5" id="vzR-kG-iXI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="82h-dh-bf6"/>
+                    <navigationItem key="navigationItem" id="94L-cQ-z98"/>
                     <connections>
                         <outlet property="tableView" destination="QTk-lu-S07" id="81q-lY-TyE"/>
                     </connections>
@@ -2238,7 +2240,7 @@
                             <constraint firstItem="Rg9-xc-zIs" firstAttribute="top" secondItem="295-ZO-5H0" secondAttribute="top" id="sTw-Nt-H6X"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="iS1-mL-LSh"/>
+                    <navigationItem key="navigationItem" id="a69-vI-XoL"/>
                     <connections>
                         <outlet property="contactTextView" destination="B9x-sM-RPr" id="XLv-jM-YGy"/>
                         <outlet property="contactTitleLabel" destination="rJk-if-yD1" id="psC-Qf-Gau"/>
@@ -2736,7 +2738,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AtM-UA-I70" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4346" y="-1441"/>
+            <point key="canvasLocation" x="4396" y="-1470"/>
         </scene>
         <!--Time Picker View Controller-->
         <scene sceneID="skE-YH-FCS">
@@ -3042,15 +3044,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fl-4i-0YO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5512" y="-794"/>
+            <point key="canvasLocation" x="5180" y="-826"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="3GV-mi-63D"/>
-        <segue reference="KJz-zA-nJd"/>
-        <segue reference="7uc-bX-bfm"/>
-        <segue reference="7gy-sW-54y"/>
-        <segue reference="PmW-XW-kmf"/>
+        <segue reference="raw-Tx-Vfv"/>
+        <segue reference="2Fb-bA-ARb"/>
+        <segue reference="GGP-HT-mqi"/>
+        <segue reference="isf-7E-suF"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DOLLogo" width="60" height="60"/>
