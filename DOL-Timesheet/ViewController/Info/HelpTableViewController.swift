@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct HelpItem {
+public struct HelpItem {
     var title: String
     var body: String
 }
@@ -37,14 +37,10 @@ class HelpTableViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-//        if segue.identifier == "helpDetail",
-//            let helpVC = segue.destination as? HelpTableViewController {
-//            helpVC.helpItems = [
-//                HelpItem(
-//                    title: "info_break_time_title".localized,
-//                    body: "info_break_time".localized),
-//                HelpItem(title: "overnight_hours".localized, body: "info_end_time")]
-//        }
+        if segue.identifier == "helpDetail",
+            let helpDetailVC = segue.destination as? HelpDetailViewController {
+            helpDetailVC.helpItem = helpItems[selectedIndex]
+        }
     }
 }
 

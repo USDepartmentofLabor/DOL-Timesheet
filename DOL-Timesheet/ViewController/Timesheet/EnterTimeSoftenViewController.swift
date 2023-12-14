@@ -369,7 +369,7 @@ extension EnterTimeSoftenViewController {
                 HelpItem(
                     title: "info_break_time_title".localized,
                     body: "info_break_time".localized),
-                HelpItem(title: "overnight_hours".localized, body: "info_end_time")]
+                HelpItem(title: "overnight_hours".localized, body: "info_end_time".localized)]
         }
     }
 }

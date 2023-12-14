@@ -1053,7 +1053,7 @@
             </objects>
             <point key="canvasLocation" x="3632" y="-826"/>
         </scene>
-        <!--Help Table View Controller-->
+        <!--HELP-->
         <scene sceneID="xJ0-ij-9P8">
             <objects>
                 <viewController id="zZ2-Em-sed" customClass="HelpTableViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
@@ -1061,16 +1061,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfa-l2-lix">
-                                <rect key="frame" x="0.0" y="56" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="New Time Entry" id="NKw-oX-fF2">
-                                        <barButtonItem key="backBarButtonItem" title="Cancel" id="zEL-DB-Bxn"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gf8-5A-ckc">
-                                <rect key="frame" x="20" y="268" width="374" height="44"/>
+                                <rect key="frame" x="20" y="224" width="374" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Glossary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZZ-qS-oUT">
                                         <rect key="frame" x="38" y="11.5" width="66.5" height="21"/>
@@ -1123,7 +1115,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RvB-GH-khT">
-                                <rect key="frame" x="20" y="332" width="374" height="44"/>
+                                <rect key="frame" x="20" y="288" width="374" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hd-pf-Hws">
                                         <rect key="frame" x="38" y="11.5" width="85.5" height="21"/>
@@ -1176,7 +1168,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kLc-FK-AsL">
-                                <rect key="frame" x="20" y="120" width="374" height="128"/>
+                                <rect key="frame" x="20" y="76" width="374" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="gVA-w6-ORP"/>
@@ -1229,17 +1221,14 @@
                             <constraint firstItem="RvB-GH-khT" firstAttribute="top" secondItem="Gf8-5A-ckc" secondAttribute="bottom" constant="20" id="3ud-uA-ZIi"/>
                             <constraint firstItem="sqH-yn-oKW" firstAttribute="trailing" secondItem="kLc-FK-AsL" secondAttribute="trailing" constant="20" id="AYG-Iw-ZF9"/>
                             <constraint firstItem="kLc-FK-AsL" firstAttribute="leading" secondItem="sqH-yn-oKW" secondAttribute="leading" constant="20" id="EUP-n5-f1T"/>
-                            <constraint firstItem="kLc-FK-AsL" firstAttribute="top" secondItem="nfa-l2-lix" secondAttribute="bottom" constant="20" id="Jum-kK-HGg"/>
                             <constraint firstItem="Gf8-5A-ckc" firstAttribute="leading" secondItem="sqH-yn-oKW" secondAttribute="leading" constant="20" id="XY5-n1-Lnt"/>
-                            <constraint firstItem="nfa-l2-lix" firstAttribute="top" secondItem="sqH-yn-oKW" secondAttribute="top" id="ZxI-OG-tz9"/>
-                            <constraint firstItem="nfa-l2-lix" firstAttribute="trailing" secondItem="sqH-yn-oKW" secondAttribute="trailing" id="dlh-8I-TL1"/>
                             <constraint firstItem="Gf8-5A-ckc" firstAttribute="top" secondItem="kLc-FK-AsL" secondAttribute="bottom" constant="20" id="ezF-iB-BTe"/>
                             <constraint firstItem="sqH-yn-oKW" firstAttribute="trailing" secondItem="Gf8-5A-ckc" secondAttribute="trailing" constant="20" id="fWa-fd-os1"/>
-                            <constraint firstItem="nfa-l2-lix" firstAttribute="leading" secondItem="sqH-yn-oKW" secondAttribute="leading" id="ttP-yw-JFT"/>
                             <constraint firstItem="RvB-GH-khT" firstAttribute="leading" secondItem="sqH-yn-oKW" secondAttribute="leading" constant="20" id="zTT-cq-e3a"/>
+                            <constraint firstItem="kLc-FK-AsL" firstAttribute="top" secondItem="sqH-yn-oKW" secondAttribute="top" constant="20" id="zZ5-cY-1fp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="rNM-LF-WKx"/>
+                    <navigationItem key="navigationItem" title="HELP" id="rNM-LF-WKx"/>
                     <connections>
                         <outlet property="helpItemTable" destination="kLc-FK-AsL" id="kP5-d1-1JZ"/>
                         <segue destination="7lm-wm-pPj" kind="show" identifier="helpDetail" id="0UW-pd-o3e"/>
@@ -1493,7 +1482,7 @@
                         <outlet property="timeInfoLabel" destination="a5i-kn-XWE" id="azG-iu-8xK"/>
                         <outlet property="workedHoursCounterLabel" destination="lH3-5h-4v6" id="Lfi-3Q-nqr"/>
                         <outlet property="workedHoursView" destination="nM2-pb-L5c" id="88U-qL-rhU"/>
-                        <segue destination="LpA-L8-8Q7" kind="presentation" identifier="enterTime" id="3GV-mi-63D"/>
+                        <segue destination="LpA-L8-8Q7" kind="show" identifier="enterTime" id="3GV-mi-63D"/>
                         <segue destination="YdL-DH-HL3" kind="presentation" identifier="showUserProfile" id="7uc-bX-bfm"/>
                     </connections>
                 </viewController>
@@ -2866,6 +2855,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LpA-L8-8Q7" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="0MP-PK-1AQ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JGH-MF-Gso">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3006,24 +2996,16 @@
             </objects>
             <point key="canvasLocation" x="1000.0000000000001" y="1774.5535714285713"/>
         </scene>
-        <!--View Controller-->
+        <!--Break-->
         <scene sceneID="plE-yM-3oe">
             <objects>
-                <viewController id="7lm-wm-pPj" sceneMemberID="viewController">
+                <viewController id="7lm-wm-pPj" customClass="HelpDetailViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pkc-TY-juz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4X5-RZ-lRR">
-                                <rect key="frame" x="0.0" y="56" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="OVERNIGHT HOURS" id="aXs-u1-OwL">
-                                        <barButtonItem key="backBarButtonItem" title="Help" id="3ef-DB-gDy"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you work an overnight shift, hours after midnight will populate your timesheet on the next day." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHa-ad-8A2">
-                                <rect key="frame" x="20" y="120" width="374" height="61"/>
+                                <rect key="frame" x="20" y="76" width="374" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -3034,13 +3016,14 @@
                         <constraints>
                             <constraint firstItem="SHa-ad-8A2" firstAttribute="leading" secondItem="Ugj-vq-fH3" secondAttribute="leading" constant="20" id="Lem-la-ZX8"/>
                             <constraint firstItem="Ugj-vq-fH3" firstAttribute="trailing" secondItem="SHa-ad-8A2" secondAttribute="trailing" constant="20" id="NwM-Qg-jLJ"/>
-                            <constraint firstItem="SHa-ad-8A2" firstAttribute="top" secondItem="4X5-RZ-lRR" secondAttribute="bottom" constant="20" id="SH8-bB-Fx3"/>
-                            <constraint firstItem="4X5-RZ-lRR" firstAttribute="trailing" secondItem="Ugj-vq-fH3" secondAttribute="trailing" id="aGr-r0-D6F"/>
-                            <constraint firstItem="4X5-RZ-lRR" firstAttribute="top" secondItem="Ugj-vq-fH3" secondAttribute="top" id="cjJ-Sb-KnR"/>
-                            <constraint firstItem="4X5-RZ-lRR" firstAttribute="leading" secondItem="Ugj-vq-fH3" secondAttribute="leading" id="nbH-h5-Fpz"/>
+                            <constraint firstItem="SHa-ad-8A2" firstAttribute="top" secondItem="Ugj-vq-fH3" secondAttribute="top" constant="20" id="fkC-lq-6bj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wTU-cT-oup"/>
+                    <navigationItem key="navigationItem" title="Break" id="wTU-cT-oup"/>
+                    <connections>
+                        <outlet property="details" destination="SHa-ad-8A2" id="2TN-4p-LS9"/>
+                        <outlet property="navBar" destination="wTU-cT-oup" id="pWF-4l-yeG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fl-4i-0YO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3050,7 +3033,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="3GV-mi-63D"/>
         <segue reference="raw-Tx-Vfv"/>
-        <segue reference="2Fb-bA-ARb"/>
+        <segue reference="7uc-bX-bfm"/>
         <segue reference="GGP-HT-mqi"/>
         <segue reference="isf-7E-suF"/>
     </inferredMetricsTieBreakers>
