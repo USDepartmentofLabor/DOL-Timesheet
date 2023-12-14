@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NNC-uZ-gvN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NNC-uZ-gvN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1047,16 +1047,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jia-Tl-Xzw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="9tG-Y3-tcz">
                     <connections>
-                        <segue destination="zZ2-Em-sed" kind="show" id="YxR-Kp-HIr"/>
+                        <segue destination="zZ2-Em-sed" kind="show" identifier="newTimeHelpScreen" id="YxR-Kp-HIr"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3632" y="-826"/>
         </scene>
-        <!--View Controller-->
+        <!--Help Table View Controller-->
         <scene sceneID="xJ0-ij-9P8">
             <objects>
-                <viewController id="zZ2-Em-sed" sceneMemberID="viewController">
+                <viewController id="zZ2-Em-sed" customClass="HelpTableViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oWm-zq-EII">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1104,6 +1104,7 @@
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES"/>
                                 </accessibility>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="UZZ-qS-oUT" firstAttribute="centerY" secondItem="jXw-HT-Xv1" secondAttribute="centerY" id="1rm-Ay-EKU"/>
                                     <constraint firstAttribute="bottom" secondItem="jXw-HT-Xv1" secondAttribute="bottom" id="2MF-yY-e6a"/>
@@ -1117,6 +1118,9 @@
                                     <constraint firstItem="jXw-HT-Xv1" firstAttribute="top" secondItem="Gf8-5A-ckc" secondAttribute="top" id="ltB-h7-cq5"/>
                                     <constraint firstItem="zkZ-qj-XFK" firstAttribute="centerY" secondItem="UZZ-qS-oUT" secondAttribute="centerY" id="x3u-dd-U48"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="L39-hd-q8K" appends="YES" id="i1m-3D-gKj"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RvB-GH-khT">
                                 <rect key="frame" x="20" y="332" width="374" height="44"/>
@@ -1153,6 +1157,7 @@
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES"/>
                                 </accessibility>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="4td-Hj-XAc"/>
                                     <constraint firstAttribute="trailing" secondItem="0Os-Dn-dNP" secondAttribute="trailing" id="8f3-FL-nLg"/>
@@ -1166,6 +1171,9 @@
                                     <constraint firstItem="4hd-pf-Hws" firstAttribute="centerY" secondItem="0Os-Dn-dNP" secondAttribute="centerY" id="r0J-CA-uUd"/>
                                     <constraint firstItem="wNn-Kt-COw" firstAttribute="leading" secondItem="RvB-GH-khT" secondAttribute="leading" constant="8" id="uTe-dP-3h4"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4dD-jQ-6fa" appends="YES" id="dUX-2e-qR1"/>
+                                </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kLc-FK-AsL">
                                 <rect key="frame" x="20" y="120" width="374" height="128"/>
@@ -1208,6 +1216,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="zZ2-Em-sed" id="Yk2-OS-0Py"/>
+                                    <outlet property="delegate" destination="zZ2-Em-sed" id="n5i-9D-EIg"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sqH-yn-oKW"/>
@@ -1229,10 +1241,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="rNM-LF-WKx"/>
                     <connections>
-                        <segue destination="7lm-wm-pPj" kind="show" id="0UW-pd-o3e"/>
+                        <outlet property="helpItemTable" destination="kLc-FK-AsL" id="kP5-d1-1JZ"/>
+                        <segue destination="7lm-wm-pPj" kind="show" identifier="helpDetail" id="0UW-pd-o3e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZY-Ar-khd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="L39-hd-q8K">
+                    <connections>
+                        <segue destination="YeA-yJ-t1m" kind="show" id="isf-7E-suF"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="4dD-jQ-6fa">
+                    <connections>
+                        <segue destination="FeP-NS-JCI" kind="show" id="GGP-HT-mqi"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4462" y="-826"/>
         </scene>
@@ -1573,11 +1596,11 @@
         <scene sceneID="fdQ-8z-5Cs">
             <objects>
                 <viewController storyboardIdentifier="TimeViewController" id="Uz1-t8-iUz" customClass="TimeViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="cWj-y1-X7Y">
+                    <view key="view" contentMode="scaleToFill" id="cWj-y1-X7Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-7B-2z6">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-7B-2z6">
                                 <rect key="frame" x="15" y="107" width="384" height="691"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vjf-Wa-z7c" userLabel="HeaderView">
@@ -1587,7 +1610,7 @@
                                             <constraint firstAttribute="height" id="2MD-c3-XdB"/>
                                         </constraints>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-ou-4jf">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-ou-4jf">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="691"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHt-00-RNc" userLabel="ContentView">
@@ -1689,7 +1712,7 @@
                                     <constraint firstAttribute="bottom" secondItem="DcB-ou-4jf" secondAttribute="bottom" id="tm4-Vs-kXF"/>
                                 </constraints>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-ox-87c">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-ox-87c">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="bTx-ty-Sku"/>
@@ -1952,31 +1975,31 @@
             <objects>
                 <viewController id="YeA-yJ-t1m" customClass="GlossaryViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="teS-fg-GOF">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="703"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QTk-lu-S07">
-                                <rect key="frame" x="0.0" y="53" width="374" height="616"/>
+                                <rect key="frame" x="0.0" y="61" width="414" height="825"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GlossaryTableViewCell" rowHeight="500" id="qGr-d7-sj1" customClass="GlossaryTableViewCell" customModule="Timesheet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="500"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="500"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qGr-d7-sj1" id="cuK-Ja-sIX">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="500"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="riD-rh-1m5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="500"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfZ-X4-ZH3" userLabel="TitleLabel">
-                                                            <rect key="frame" x="5" y="5" width="364" height="20.5"/>
+                                                            <rect key="frame" x="5" y="5" width="404" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Lorem " translatesAutoresizingMaskIntoConstraints="NO" id="HMy-qR-5II">
-                                                            <rect key="frame" x="0.0" y="25.5" width="374" height="475.5"/>
+                                                            <rect key="frame" x="0.0" y="25.5" width="414" height="475.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="textColor" systemColor="labelColor"/>
                                                             <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="22"/>
@@ -2023,6 +2046,7 @@
                             <constraint firstItem="QTk-lu-S07" firstAttribute="top" secondItem="frZ-zh-0oV" secondAttribute="top" constant="5" id="vzR-kG-iXI"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="94L-cQ-z98"/>
                     <connections>
                         <outlet property="tableView" destination="QTk-lu-S07" id="81q-lY-TyE"/>
                     </connections>
@@ -2036,35 +2060,35 @@
             <objects>
                 <viewController storyboardIdentifier="ResourcesViewController" id="FeP-NS-JCI" customClass="ResourcesViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SoT-m9-UfL">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="703"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rg9-xc-zIs">
-                                <rect key="frame" x="0.0" y="48" width="374" height="621"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="830"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQE-5W-1Bn">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="622"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="622"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="BYv-NH-48X">
-                                                <rect key="frame" x="15" y="20" width="344" height="496.5"/>
+                                                <rect key="frame" x="15" y="20" width="384" height="476"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Lip-0y-VYX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="344" height="113"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="384" height="113"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call us (toll-free)" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJk-if-yD1" userLabel="ContactTitleLabel">
-                                                                <rect key="frame" x="0.0" y="0.0" width="344" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="384" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help is available M-F, 8 AM - 8PM Eastern" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYd-UW-6E7" userLabel="PhoneHoursLabel">
-                                                                <rect key="frame" x="0.0" y="22.5" width="344" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="22.5" width="384" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="1-866-4-USWAGE (1-866-487-9243)" translatesAutoresizingMaskIntoConstraints="NO" id="Wew-0x-fNo" userLabel="PhoneTextView1">
-                                                                <rect key="frame" x="0.0" y="45" width="344" height="33"/>
+                                                                <rect key="frame" x="0.0" y="45" width="384" height="33"/>
                                                                 <gestureRecognizers/>
                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2075,7 +2099,7 @@
                                                                 </connections>
                                                             </textView>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="1-877-889-5627 (TTY)" translatesAutoresizingMaskIntoConstraints="NO" id="AdR-h4-8Q4" userLabel="PhoneTextView2">
-                                                                <rect key="frame" x="0.0" y="80" width="344" height="33"/>
+                                                                <rect key="frame" x="0.0" y="80" width="384" height="33"/>
                                                                 <gestureRecognizers/>
                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2088,20 +2112,20 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIY-Mo-aNO" userLabel="ServicesLabel">
-                                                        <rect key="frame" x="0.0" y="125" width="344" height="122"/>
+                                                        <rect key="frame" x="0.0" y="125" width="384" height="101.5"/>
                                                         <string key="text">All services are free and confidential, whether you are documented or not. Please remember that your employer cannot terminate you or in any other manner discriminate against you for filing a complaint with Wage and Hour Division.</string>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask us a specific question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkb-fl-g3w">
-                                                        <rect key="frame" x="0.0" y="259" width="344" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="238.5" width="384" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Wage and Hour Division Contact Online Form" translatesAutoresizingMaskIntoConstraints="NO" id="B9x-sM-RPr" userLabel="ContactText View">
-                                                        <rect key="frame" x="0.0" y="291.5" width="344" height="33"/>
+                                                        <rect key="frame" x="0.0" y="271" width="384" height="33"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <color key="tintColor" name="linkColor"/>
                                                         <gestureRecognizers/>
@@ -2114,16 +2138,16 @@
                                                         </connections>
                                                     </textView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DDk-HO-7v4">
-                                                        <rect key="frame" x="0.0" y="336.5" width="344" height="160"/>
+                                                        <rect key="frame" x="0.0" y="316" width="384" height="160"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about issues with the app" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWa-d1-wSm">
-                                                                <rect key="frame" x="0.0" y="0.0" width="344" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="384" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Email" translatesAutoresizingMaskIntoConstraints="NO" id="28q-aj-mZA" userLabel="emailTextView">
-                                                                <rect key="frame" x="0.0" y="25.5" width="344" height="33"/>
+                                                                <rect key="frame" x="0.0" y="25.5" width="384" height="33"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <color key="tintColor" name="linkColor"/>
                                                                 <gestureRecognizers/>
@@ -2136,13 +2160,13 @@
                                                                 </connections>
                                                             </textView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vist us online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUK-te-aLx">
-                                                                <rect key="frame" x="0.0" y="63.5" width="344" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="63.5" width="384" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Wage and Hour Division" translatesAutoresizingMaskIntoConstraints="NO" id="90P-iv-diL" userLabel="gitHubTextView">
-                                                                <rect key="frame" x="0.0" y="89" width="344" height="33"/>
+                                                                <rect key="frame" x="0.0" y="89" width="384" height="33"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <color key="tintColor" name="linkColor"/>
                                                                 <gestureRecognizers/>
@@ -2155,7 +2179,7 @@
                                                                 </connections>
                                                             </textView>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Wage and Hour Division Local Offices" translatesAutoresizingMaskIntoConstraints="NO" id="sP9-yW-InQ" userLabel="secondGitHubTextView">
-                                                                <rect key="frame" x="0.0" y="127" width="344" height="33"/>
+                                                                <rect key="frame" x="0.0" y="127" width="384" height="33"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <color key="tintColor" name="linkColor"/>
                                                                 <gestureRecognizers/>
@@ -2182,7 +2206,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwD-g4-XQQ">
-                                        <rect key="frame" x="0.0" y="583" width="374" height="39"/>
+                                        <rect key="frame" x="0.0" y="583" width="414" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="GeZ-dA-bxa"/>
                                         </constraints>
@@ -2216,6 +2240,7 @@
                             <constraint firstItem="Rg9-xc-zIs" firstAttribute="top" secondItem="295-ZO-5H0" secondAttribute="top" id="sTw-Nt-H6X"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="a69-vI-XoL"/>
                     <connections>
                         <outlet property="contactTextView" destination="B9x-sM-RPr" id="XLv-jM-YGy"/>
                         <outlet property="contactTitleLabel" destination="rJk-if-yD1" id="psC-Qf-Gau"/>
@@ -3026,6 +3051,8 @@
         <segue reference="3GV-mi-63D"/>
         <segue reference="raw-Tx-Vfv"/>
         <segue reference="2Fb-bA-ARb"/>
+        <segue reference="GGP-HT-mqi"/>
+        <segue reference="isf-7E-suF"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DOLLogo" width="60" height="60"/>
@@ -3078,10 +3105,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="viewFlipsideBackgroundColor">
             <color red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
