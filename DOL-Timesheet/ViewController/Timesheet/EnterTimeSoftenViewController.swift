@@ -20,7 +20,6 @@ class EnterTimeSoftenViewController: UIViewController {
     @IBOutlet weak var endTitleLabel: UILabel!
     @IBOutlet weak var breakTimeTitleLabel: UILabel!
     
-    
     @IBOutlet weak var hourlyRateTitleLabel: UILabel!
     @IBOutlet weak var commentsTitleLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
@@ -72,9 +71,9 @@ class EnterTimeSoftenViewController: UIViewController {
 //        tableView.rowHeight = UITableView.automaticDimension
 
         commentTextView.addBorder()
-        dateTitleLabel.scaleFont(forDataType: .enterTimeTitle)
+//        dateTitleLabel.scaleFont(forDataType: .enterTimeTitle)
         dateTitleLabel.text = "date".localized
-        commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
+//        commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
 
         
         let dateTapGesture = UITapGestureRecognizer(target: self, action: #selector(dateBtnClick(_:)))
@@ -85,15 +84,16 @@ class EnterTimeSoftenViewController: UIViewController {
         
         setupTimeView()
         setupEmploymentPopupButton()
+        setupRatePopupButton()
         setupAccessibility()
     }
     
     func setupTimeView() {
-        startTitleLabel.scaleFont(forDataType: .columnHeader)
-        endTitleLabel.scaleFont(forDataType: .columnHeader)
-        breakTimeTitleLabel.scaleFont(forDataType: .columnHeader)
-        hourlyRateTitleLabel.scaleFont(forDataType: .columnHeader)
-        commentTextView.scaleFont(forDataType: .enterCommentsValue)
+//        startTitleLabel.scaleFont(forDataType: .columnHeader)
+//        endTitleLabel.scaleFont(forDataType: .columnHeader)
+//        breakTimeTitleLabel.scaleFont(forDataType: .columnHeader)
+//        hourlyRateTitleLabel.scaleFont(forDataType: .columnHeader)
+//        commentTextView.scaleFont(forDataType: .enterCommentsValue)
         
         if viewModel?.paymentType == PaymentType.salary {
             setupSalaryView()
@@ -182,7 +182,7 @@ class EnterTimeSoftenViewController: UIViewController {
         if let hourlyLabel = hourlyRateTitleLabel {
             hourlyLabel.text = "rate".localized
         }
-        commentsTitleLabel.text = "daily_comments".localized
+        commentsTitleLabel.text = "comments".localized
 
         dateDropDownView.title = viewModel?.title ?? ""
         commentTextView.text = viewModel?.comment

@@ -493,15 +493,15 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             let navVC = segue.destination as? UINavigationController,
             let enterTimeVC = navVC.topViewController as? EnterTimeSoftenViewController,
             let viewModel = viewModel {
-//            let enterTimeModel: EnterTimeViewModel?
-//            if let clock = sender as? PunchClock {
-//                enterTimeModel = viewModel.createEnterTimeViewModel(for: clock, hourlyRate: currentHourlyRate)
-//            }
-//            else {
-//                 enterTimeModel = viewModel.createEnterTimeViewModel(for: Date())
-//            }
+            let enterTimeModel: EnterTimeViewModel?
+            if let clock = sender as? PunchClock {
+                enterTimeModel = viewModel.createEnterTimeViewModel(for: clock, hourlyRate: currentHourlyRate)
+            }
+            else {
+                 enterTimeModel = viewModel.createEnterTimeViewModel(for: Date())
+            }
 //            
-//            enterTimeVC.viewModel = enterTimeModel
+            enterTimeVC.viewModel = enterTimeModel
             enterTimeVC.timeSheetModel = viewModel
             enterTimeVC.delegate = self
         }
