@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NNC-uZ-gvN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NNC-uZ-gvN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -801,26 +801,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXr-eo-35A" userLabel="Date View">
                                 <rect key="frame" x="20" y="190" width="374" height="46"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIO-w4-OYY">
-                                        <rect key="frame" x="8" y="12.5" width="36" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wFc-rN-pqq" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
-                                        <rect key="frame" x="52" y="8" width="314" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wFc-rN-pqq" customClass="DropDownSoftenView" customModule="Timesheet" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="358" height="30"/>
                                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="fcX-hW-fNJ"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isBorderEnabled" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Date"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="value" value="1"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="cIO-w4-OYY" firstAttribute="leading" secondItem="xXr-eo-35A" secondAttribute="leading" constant="8" id="0D5-SQ-bdG"/>
-                                    <constraint firstItem="wFc-rN-pqq" firstAttribute="leading" secondItem="cIO-w4-OYY" secondAttribute="trailing" constant="8" id="3Vb-V5-v9G"/>
                                     <constraint firstAttribute="trailing" secondItem="wFc-rN-pqq" secondAttribute="trailing" constant="8" id="MMC-4N-6Dx"/>
-                                    <constraint firstItem="cIO-w4-OYY" firstAttribute="centerY" secondItem="wFc-rN-pqq" secondAttribute="centerY" id="e1U-hg-0o7"/>
+                                    <constraint firstItem="wFc-rN-pqq" firstAttribute="leading" secondItem="xXr-eo-35A" secondAttribute="leading" constant="8" id="TnB-ub-Kk4"/>
                                     <constraint firstItem="wFc-rN-pqq" firstAttribute="top" secondItem="xXr-eo-35A" secondAttribute="top" constant="8" id="gJn-Ha-ipr"/>
                                     <constraint firstAttribute="bottom" secondItem="wFc-rN-pqq" secondAttribute="bottom" constant="8" id="sik-Xk-L7h"/>
                                 </constraints>
@@ -828,17 +825,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pps-XX-7E4">
                                 <rect key="frame" x="20" y="256" width="374" height="146"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sv-Zs-nVj">
-                                        <rect key="frame" x="8" y="12.5" width="79" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="u9i-FC-EK6"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Nb-zk-Kzq" userLabel="StartTimeView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
-                                        <rect key="frame" x="95" y="8" width="271" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Nb-zk-Kzq" userLabel="StartTimeView" customClass="DropDownSoftenView" customModule="Timesheet" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="358" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" label="Start Time">
                                             <bool key="isElement" value="YES"/>
@@ -846,6 +834,10 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="m9B-Y8-T1I"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isBorderEnabled" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Start Time"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxe-c7-9AA" userLabel="Border">
                                         <rect key="frame" x="0.0" y="46" width="374" height="4"/>
@@ -854,22 +846,17 @@
                                             <constraint firstAttribute="height" constant="4" id="sfq-IB-td7"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Break Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Wg-EL-lKf">
-                                        <rect key="frame" x="8" y="62.5" width="85.5" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="laT-va-bvg"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCi-nk-d6b" userLabel="BreakTimeView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
-                                        <rect key="frame" x="101.5" y="58" width="264.5" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCi-nk-d6b" userLabel="BreakTimeView" customClass="DropDownSoftenView" customModule="Timesheet" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="58" width="358" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" label="Break Time"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="EHO-57-Hqo"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isBorderEnabled" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Break Time"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRK-hQ-z5D" userLabel="Border">
                                         <rect key="frame" x="0.0" y="96" width="374" height="4"/>
@@ -878,44 +865,33 @@
                                             <constraint firstAttribute="height" constant="4" id="kht-H1-ihu"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rka-Mu-JbO">
-                                        <rect key="frame" x="8" y="112.5" width="71.5" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="6nr-eT-6BJ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z46-Vu-Rvb" userLabel="EndTimeView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
-                                        <rect key="frame" x="87.5" y="108" width="278.5" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z46-Vu-Rvb" userLabel="EndTimeView" customClass="DropDownSoftenView" customModule="Timesheet" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="108" width="358" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" label="End Time"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="gcd-CE-l49"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isBorderEnabled" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="End Time"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Z46-Vu-Rvb" secondAttribute="bottom" constant="8" id="39y-56-PbE"/>
-                                    <constraint firstItem="Rka-Mu-JbO" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" constant="8" id="4BV-XS-YzP"/>
-                                    <constraint firstItem="8sv-Zs-nVj" firstAttribute="centerY" secondItem="2Nb-zk-Kzq" secondAttribute="centerY" id="5Lk-Q3-Vm2"/>
-                                    <constraint firstItem="5Wg-EL-lKf" firstAttribute="centerY" secondItem="jCi-nk-d6b" secondAttribute="centerY" id="6gg-cd-e36"/>
+                                    <constraint firstItem="jCi-nk-d6b" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" constant="8" id="76p-8e-VYz"/>
                                     <constraint firstAttribute="trailing" secondItem="jCi-nk-d6b" secondAttribute="trailing" constant="8" id="C8J-bL-bsA"/>
-                                    <constraint firstItem="Z46-Vu-Rvb" firstAttribute="leading" secondItem="Rka-Mu-JbO" secondAttribute="trailing" constant="8" id="DeH-V1-H9F"/>
                                     <constraint firstItem="jCi-nk-d6b" firstAttribute="top" secondItem="Vxe-c7-9AA" secondAttribute="bottom" constant="8" id="JAn-0I-sGX"/>
-                                    <constraint firstItem="8sv-Zs-nVj" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" constant="8" id="JrZ-bv-RU7"/>
-                                    <constraint firstItem="2Nb-zk-Kzq" firstAttribute="leading" secondItem="8sv-Zs-nVj" secondAttribute="trailing" constant="8" id="PnY-Cd-7b8"/>
+                                    <constraint firstItem="Z46-Vu-Rvb" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" constant="8" id="Kb6-pb-crP"/>
+                                    <constraint firstItem="2Nb-zk-Kzq" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" constant="8" id="S10-X1-Cwj"/>
                                     <constraint firstAttribute="trailing" secondItem="2Nb-zk-Kzq" secondAttribute="trailing" constant="8" id="Tw3-JY-W6l"/>
-                                    <constraint firstItem="jCi-nk-d6b" firstAttribute="leading" secondItem="5Wg-EL-lKf" secondAttribute="trailing" constant="8" id="YAv-KI-hAN"/>
                                     <constraint firstItem="2Nb-zk-Kzq" firstAttribute="top" secondItem="pps-XX-7E4" secondAttribute="top" constant="8" id="ZFi-mA-XIb"/>
                                     <constraint firstItem="uRK-hQ-z5D" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" id="cwN-UO-LrD"/>
                                     <constraint firstItem="Vxe-c7-9AA" firstAttribute="top" secondItem="2Nb-zk-Kzq" secondAttribute="bottom" constant="8" id="d5W-Qv-fwa"/>
-                                    <constraint firstItem="5Wg-EL-lKf" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" constant="8" id="esT-oQ-AOH"/>
                                     <constraint firstItem="Vxe-c7-9AA" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" id="glc-Jw-oFD"/>
                                     <constraint firstItem="Z46-Vu-Rvb" firstAttribute="top" secondItem="uRK-hQ-z5D" secondAttribute="bottom" constant="8" id="ine-gW-kyB"/>
-                                    <constraint firstItem="Rka-Mu-JbO" firstAttribute="centerY" secondItem="Z46-Vu-Rvb" secondAttribute="centerY" id="kLw-zL-34U"/>
                                     <constraint firstItem="uRK-hQ-z5D" firstAttribute="top" secondItem="jCi-nk-d6b" secondAttribute="bottom" constant="8" id="p5x-2Y-YlY"/>
                                     <constraint firstAttribute="trailing" secondItem="Vxe-c7-9AA" secondAttribute="trailing" id="t9T-jw-4uY"/>
                                     <constraint firstAttribute="trailing" secondItem="uRK-hQ-z5D" secondAttribute="trailing" id="ygu-wp-Y7D"/>
@@ -1020,23 +996,19 @@
                     </navigationItem>
                     <connections>
                         <outlet property="breakDropDownView" destination="jCi-nk-d6b" id="bgL-pV-PQW"/>
-                        <outlet property="breakTimeTitleLabel" destination="5Wg-EL-lKf" id="ZXc-zI-Ct2"/>
                         <outlet property="commentTextView" destination="APU-sW-hQy" id="Uam-cl-wgW"/>
                         <outlet property="commentView" destination="0f0-p5-BAk" id="jpe-h0-FJ5"/>
                         <outlet property="dateDropDownView" destination="wFc-rN-pqq" id="oyP-KJ-8lc"/>
-                        <outlet property="dateTitleLabel" destination="cIO-w4-OYY" id="x1V-yj-drZ"/>
                         <outlet property="dateView" destination="xXr-eo-35A" id="YTG-YB-Dct"/>
                         <outlet property="employmentPopUp" destination="isW-l3-TIp" id="mQJ-Ge-GVJ"/>
                         <outlet property="employmentTitleLabel" destination="nVU-8i-HqJ" id="8vH-Qg-pgx"/>
                         <outlet property="employmentView" destination="XMk-Zz-y1D" id="eto-S7-LQC"/>
                         <outlet property="endDropDownView" destination="Z46-Vu-Rvb" id="3k8-Tv-oRk"/>
-                        <outlet property="endTitleLabel" destination="Rka-Mu-JbO" id="S7g-iW-avK"/>
                         <outlet property="helpView" destination="1qk-Wq-zas" id="WUP-QP-3y3"/>
                         <outlet property="hourlyRateTitleLabel" destination="nU1-xX-WEV" id="AHL-QE-zNh"/>
                         <outlet property="ratePopUp" destination="Aqc-nq-SkZ" id="ILG-I6-Av0"/>
                         <outlet property="rateTitleLabel" destination="nU1-xX-WEV" id="NPF-tE-X4S"/>
                         <outlet property="startDropDownView" destination="2Nb-zk-Kzq" id="Kgj-jP-89l"/>
-                        <outlet property="startTitleLabel" destination="8sv-Zs-nVj" id="eVg-Wa-JOm"/>
                         <outlet property="timeView" destination="pps-XX-7E4" id="fP4-uo-8oI"/>
                     </connections>
                 </viewController>
@@ -1265,7 +1237,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xkI-Ca-cHN">
                                 <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6a-x3-Fa9" userLabel="RateView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e6a-x3-Fa9" userLabel="RateView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="33.5"/>
                                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
@@ -1581,11 +1553,11 @@
         <scene sceneID="fdQ-8z-5Cs">
             <objects>
                 <viewController storyboardIdentifier="TimeViewController" id="Uz1-t8-iUz" customClass="TimeViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cWj-y1-X7Y">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="cWj-y1-X7Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-7B-2z6">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-7B-2z6">
                                 <rect key="frame" x="15" y="107" width="384" height="691"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vjf-Wa-z7c" userLabel="HeaderView">
@@ -1595,7 +1567,7 @@
                                             <constraint firstAttribute="height" id="2MD-c3-XdB"/>
                                         </constraints>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-ou-4jf">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-ou-4jf">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="691"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHt-00-RNc" userLabel="ContentView">
@@ -1697,7 +1669,7 @@
                                     <constraint firstAttribute="bottom" secondItem="DcB-ou-4jf" secondAttribute="bottom" id="tm4-Vs-kXF"/>
                                 </constraints>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-ox-87c">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-ox-87c">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="bTx-ty-Sku"/>

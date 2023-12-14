@@ -35,6 +35,14 @@ class DropDownView: UIView {
             }
         }
     }
+    
+    @IBInspectable var isBorderEnabled: Bool = true {
+        didSet {
+            if isBorderEnabled {
+                self.view.addBorder(borderColor: .darkGray)
+            }
+        }
+    }
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
@@ -65,7 +73,6 @@ class DropDownView: UIView {
         titleLabel.scaleFont(forDataType: .barButtonTitle)
         valueLabel.scaleFont(forDataType: .barButtonTitle)
         self.view = view
-        self.view.addBorder(borderColor: .darkGray)
         
         setupAccessibility()
     }

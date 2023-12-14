@@ -22,11 +22,8 @@ class EnterTimeSoftenViewController: UIViewController {
     @IBOutlet weak var dateTitleLabel: UILabel!
     @IBOutlet weak var dateDropDownView: DropDownView!
     
-    @IBOutlet weak var startTitleLabel: UILabel!
     @IBOutlet weak var startDropDownView: DropDownView!
-    @IBOutlet weak var breakTimeTitleLabel: UILabel!
     @IBOutlet weak var breakDropDownView: DropDownView!
-    @IBOutlet weak var endTitleLabel: UILabel!
     @IBOutlet weak var endDropDownView: DropDownView!
     
     @IBOutlet weak var hourlyRateTitleLabel: UILabel!
@@ -79,7 +76,6 @@ class EnterTimeSoftenViewController: UIViewController {
 //        tableView.rowHeight = UITableView.automaticDimension
 
 //        dateTitleLabel.scaleFont(forDataType: .enterTimeTitle)
-        dateTitleLabel.text = "date".localized
 //        commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
 
         
@@ -107,6 +103,8 @@ class EnterTimeSoftenViewController: UIViewController {
         timeView.layer.cornerRadius = 5
         commentView.layer.cornerRadius = 5
         helpView.layer.cornerRadius = 5
+        
+        dateDropDownView.title = "date".localized
     }
     
     func setupEmploymentPopupButton(){
@@ -181,13 +179,7 @@ class EnterTimeSoftenViewController: UIViewController {
     }
     
     func displayInfo() {
-        startTitleLabel.text = "start".localized
-        endTitleLabel.text = "end".localized
-        breakTimeTitleLabel.text = "break".localized
-        if let hourlyLabel = hourlyRateTitleLabel {
-            hourlyLabel.text = "rate".localized
-        }
-        dateDropDownView.title = viewModel?.title ?? ""
+        dateDropDownView.value = viewModel?.title ?? ""
         commentTextView.text = viewModel?.comment
     }
 

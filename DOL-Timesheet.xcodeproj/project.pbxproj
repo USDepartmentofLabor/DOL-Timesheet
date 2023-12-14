@@ -130,6 +130,8 @@
 		6999703E290C942E00DCDE7C /* SwitchLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */; };
 		69997040290DDB8C00DCDE7C /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6999703F290DDB8B00DCDE7C /* Localizer.swift */; };
 		69A71F3C29DC8C2A0017A1F6 /* StateMinimumWages.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A71F3B29DC8C2A0017A1F6 /* StateMinimumWages.json */; };
+		69AA754A2B2AAC29005E7A44 /* DropDownSoftenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AA75482B2AAC29005E7A44 /* DropDownSoftenView.swift */; };
+		69AA754B2B2AAC29005E7A44 /* DropDownSoftenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69AA75492B2AAC29005E7A44 /* DropDownSoftenView.xib */; };
 		69ADCF7E28CCDB46001AC363 /* OnboardWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF7D28CCDB46001AC363 /* OnboardWelcomeViewController.swift */; };
 		69ADCF8028CCDB5C001AC363 /* OnboardIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */; };
 		69ADCF8228CCDB70001AC363 /* OnboardWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADCF8128CCDB70001AC363 /* OnboardWorkViewController.swift */; };
@@ -295,6 +297,8 @@
 		6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchLanguageViewController.swift; sourceTree = "<group>"; };
 		6999703F290DDB8B00DCDE7C /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
 		69A71F3B29DC8C2A0017A1F6 /* StateMinimumWages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StateMinimumWages.json; sourceTree = "<group>"; };
+		69AA75482B2AAC29005E7A44 /* DropDownSoftenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownSoftenView.swift; sourceTree = "<group>"; };
+		69AA75492B2AAC29005E7A44 /* DropDownSoftenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownSoftenView.xib; sourceTree = "<group>"; };
 		69ADCF7D28CCDB46001AC363 /* OnboardWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewController.swift; sourceTree = "<group>"; };
 		69ADCF7F28CCDB5C001AC363 /* OnboardIntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardIntroductionViewController.swift; sourceTree = "<group>"; };
 		69ADCF8128CCDB70001AC363 /* OnboardWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWorkViewController.swift; sourceTree = "<group>"; };
@@ -547,8 +551,8 @@
 			isa = PBXGroup;
 			children = (
 				69BAE4092A95560100BC63AE /* PopUpButton */,
-				032920D522C103C9003E4732 /* DropDownView.swift */,
-				032920D622C103C9003E4732 /* DropDownView.xib */,
+				69AA75472B2AAC13005E7A44 /* DropDownView */,
+				69AA754C2B2AAC2E005E7A44 /* DropDownSoftenView */,
 				59AD9E6022A1ADA300075193 /* TableViewHeader */,
 				032560182268CC4400BF64C5 /* TableViewCell */,
 				032C9F1A2264FD1900FB1468 /* ButonWithInfo.swift */,
@@ -655,6 +659,24 @@
 				696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */,
 			);
 			path = Datafiles;
+			sourceTree = "<group>";
+		};
+		69AA75472B2AAC13005E7A44 /* DropDownView */ = {
+			isa = PBXGroup;
+			children = (
+				032920D522C103C9003E4732 /* DropDownView.swift */,
+				032920D622C103C9003E4732 /* DropDownView.xib */,
+			);
+			path = DropDownView;
+			sourceTree = "<group>";
+		};
+		69AA754C2B2AAC2E005E7A44 /* DropDownSoftenView */ = {
+			isa = PBXGroup;
+			children = (
+				69AA75482B2AAC29005E7A44 /* DropDownSoftenView.swift */,
+				69AA75492B2AAC29005E7A44 /* DropDownSoftenView.xib */,
+			);
+			path = DropDownSoftenView;
 			sourceTree = "<group>";
 		};
 		69ADCF7C28CCD7C8001AC363 /* Onboarding */ = {
@@ -815,6 +837,7 @@
 				696D20DE28318CC9007E041F /* DOL_Timesheet.sqlite-wal in Resources */,
 				032DFD2C228B5774001A1C3B /* EarningsTableViewCell.xib in Resources */,
 				032920D822C103C9003E4732 /* DropDownView.xib in Resources */,
+				69AA754B2B2AAC29005E7A44 /* DropDownSoftenView.xib in Resources */,
 				696D20DC28318CC9007E041F /* DOL_Timesheet.sqlite in Resources */,
 				696D20DD28318CC9007E041F /* DOL_Timesheet.sqlite-shm in Resources */,
 				69FBFCA328F74D8400FEED84 /* Settings.storyboard in Resources */,
@@ -960,6 +983,7 @@
 				0329EBD622678ED90001EDE7 /* SetupBaseEmploymentViewController.swift in Sources */,
 				0329EBD4226780CF0001EDE7 /* MinimumWageViewController.swift in Sources */,
 				03264F7222834F8D00FF6010 /* EnterTimeViewModel.swift in Sources */,
+				69AA754A2B2AAC29005E7A44 /* DropDownSoftenView.swift in Sources */,
 				0334744A228C9DEF00A67E97 /* TimesheetViewModel.swift in Sources */,
 				03CEDF8A226E3F390041C3ED /* UIImage+Extension.swift in Sources */,
 				03CEDF8C226E47320041C3ED /* UIColor+Extension.swift in Sources */,
