@@ -19,7 +19,6 @@ class EnterTimeSoftenViewController: UIViewController {
     @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var helpView: UIView!
     
-    @IBOutlet weak var dateTitleLabel: UILabel!
     @IBOutlet weak var dateDropDownView: DropDownView!
     
     @IBOutlet weak var startDropDownView: DropDownView!
