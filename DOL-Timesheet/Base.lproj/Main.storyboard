@@ -723,24 +723,16 @@
             </objects>
             <point key="canvasLocation" x="1628.985507246377" y="-557.14285714285711"/>
         </scene>
-        <!--Enter Time Soften View Controller-->
+        <!--New Time Entry-->
         <scene sceneID="Rhx-5m-qiI">
             <objects>
-                <viewController storyboardIdentifier="EnterTimeSoftenViewController" id="zY3-x1-MpB" customClass="EnterTimeSoftenViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnterTimeSoftenViewController" id="zY3-x1-MpB" customClass="EnterTimeSoftenViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7M4-h0-lY6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ex3-pN-qMD">
-                                <rect key="frame" x="0.0" y="48" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="New Time Entry" id="E4e-4i-qXM">
-                                        <barButtonItem key="backBarButtonItem" title="Cancel" id="kT2-SJ-NTp"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XMk-Zz-y1D" userLabel="Employee Rate View">
-                                <rect key="frame" x="20" y="130" width="374" height="94"/>
+                                <rect key="frame" x="20" y="76" width="374" height="94"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Employer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVU-8i-HqJ">
                                         <rect key="frame" x="8" y="12.5" width="71" height="21"/>
@@ -807,7 +799,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXr-eo-35A" userLabel="Date View">
-                                <rect key="frame" x="20" y="244" width="374" height="46"/>
+                                <rect key="frame" x="20" y="190" width="374" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIO-w4-OYY">
                                         <rect key="frame" x="8" y="12.5" width="36" height="21"/>
@@ -834,7 +826,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pps-XX-7E4">
-                                <rect key="frame" x="20" y="310" width="374" height="146"/>
+                                <rect key="frame" x="20" y="256" width="374" height="146"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sv-Zs-nVj">
                                         <rect key="frame" x="8" y="12.5" width="79" height="21"/>
@@ -931,7 +923,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0f0-p5-BAk">
-                                <rect key="frame" x="20" y="476" width="374" height="46"/>
+                                <rect key="frame" x="20" y="422" width="374" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOb-lE-3e9">
                                         <rect key="frame" x="8" y="12.5" width="83" height="21"/>
@@ -964,7 +956,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qk-Wq-zas">
-                                <rect key="frame" x="20" y="542" width="374" height="44"/>
+                                <rect key="frame" x="20" y="488" width="374" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEe-aR-4mh">
                                         <rect key="frame" x="38" y="11.5" width="35.5" height="21"/>
@@ -989,15 +981,13 @@
                                         </constraints>
                                         <color key="tintColor" name="appPrimaryColor"/>
                                         <state key="normal" image="questionmark.circle" catalog="system"/>
-                                        <connections>
-                                            <action selector="breakInfoClicked:" destination="rCf-pn-GQ9" eventType="touchUpInside" id="i7t-Ah-Ja0"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES"/>
                                 </accessibility>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3Uh-ps-snL"/>
                                     <constraint firstAttribute="bottom" secondItem="ccf-8v-smz" secondAttribute="bottom" id="Act-8y-97E"/>
@@ -1011,17 +1001,18 @@
                                     <constraint firstItem="ccf-8v-smz" firstAttribute="top" secondItem="1qk-Wq-zas" secondAttribute="top" id="rpt-yt-hYM"/>
                                     <constraint firstItem="tEe-aR-4mh" firstAttribute="centerY" secondItem="ccf-8v-smz" secondAttribute="centerY" id="xqL-9b-eO6"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="9tG-Y3-tcz" appends="YES" id="pl7-vj-osf"/>
+                                </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fZo-VG-2aG"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="fZo-VG-2aG" firstAttribute="trailing" secondItem="0f0-p5-BAk" secondAttribute="trailing" constant="20" id="5uo-wm-M1h"/>
+                            <constraint firstItem="XMk-Zz-y1D" firstAttribute="top" secondItem="fZo-VG-2aG" secondAttribute="top" constant="20" id="6k2-b8-Gqf"/>
                             <constraint firstItem="fZo-VG-2aG" firstAttribute="trailing" secondItem="xXr-eo-35A" secondAttribute="trailing" constant="20" id="8CR-z5-Vw9"/>
                             <constraint firstItem="xXr-eo-35A" firstAttribute="leading" secondItem="fZo-VG-2aG" secondAttribute="leading" constant="20" id="ETK-7i-LHf"/>
-                            <constraint firstItem="ex3-pN-qMD" firstAttribute="top" secondItem="fZo-VG-2aG" secondAttribute="top" id="GgZ-9n-g01"/>
-                            <constraint firstItem="ex3-pN-qMD" firstAttribute="trailing" secondItem="fZo-VG-2aG" secondAttribute="trailing" id="HIy-o3-mKT"/>
-                            <constraint firstItem="ex3-pN-qMD" firstAttribute="leading" secondItem="fZo-VG-2aG" secondAttribute="leading" id="HLC-4b-irB"/>
                             <constraint firstItem="XMk-Zz-y1D" firstAttribute="leading" secondItem="fZo-VG-2aG" secondAttribute="leading" constant="20" id="HT4-mT-dUZ"/>
                             <constraint firstItem="1qk-Wq-zas" firstAttribute="leading" secondItem="fZo-VG-2aG" secondAttribute="leading" constant="20" id="MO5-U4-put"/>
                             <constraint firstItem="0f0-p5-BAk" firstAttribute="top" secondItem="pps-XX-7E4" secondAttribute="bottom" constant="20" id="Sdo-55-80j"/>
@@ -1033,22 +1024,32 @@
                             <constraint firstItem="pps-XX-7E4" firstAttribute="leading" secondItem="fZo-VG-2aG" secondAttribute="leading" constant="20" id="gvr-if-igh"/>
                             <constraint firstItem="fZo-VG-2aG" firstAttribute="trailing" secondItem="1qk-Wq-zas" secondAttribute="trailing" constant="20" id="kdb-Ci-wQg"/>
                             <constraint firstItem="0f0-p5-BAk" firstAttribute="leading" secondItem="fZo-VG-2aG" secondAttribute="leading" constant="20" id="v5C-Zw-d7x"/>
-                            <constraint firstItem="XMk-Zz-y1D" firstAttribute="top" secondItem="ex3-pN-qMD" secondAttribute="bottom" constant="38" id="vpx-7g-KwK"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="New Time Entry" id="oZP-ur-hLf">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="xNm-bV-YW3"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="breakTimeTitleLabel" destination="5Wg-EL-lKf" id="e9U-2G-f0Q"/>
-                        <outlet property="commentTextView" destination="APU-sW-hQy" id="dx8-8Y-Gqb"/>
-                        <outlet property="commentsTitleLabel" destination="vOb-lE-3e9" id="lqd-Zk-1nx"/>
-                        <outlet property="dateDropDownView" destination="wFc-rN-pqq" id="mcn-Zm-E5Z"/>
-                        <outlet property="endTitleLabel" destination="Rka-Mu-JbO" id="x9I-D9-jrr"/>
-                        <outlet property="startTitleLabel" destination="8sv-Zs-nVj" id="xvZ-Tj-mDR"/>
-                        <segue destination="zZ2-Em-sed" kind="show" id="N14-8a-T0X"/>
+                        <outlet property="breakTimeTitleLabel" destination="5Wg-EL-lKf" id="ZXc-zI-Ct2"/>
+                        <outlet property="commentTextView" destination="APU-sW-hQy" id="Uam-cl-wgW"/>
+                        <outlet property="commentsTitleLabel" destination="vOb-lE-3e9" id="Mtn-ym-rtL"/>
+                        <outlet property="dateDropDownView" destination="wFc-rN-pqq" id="oyP-KJ-8lc"/>
+                        <outlet property="dateTitleLabel" destination="cIO-w4-OYY" id="x1V-yj-drZ"/>
+                        <outlet property="employmentDropDown" destination="isW-l3-TIp" id="4Cn-t5-SZi"/>
+                        <outlet property="endTitleLabel" destination="Rka-Mu-JbO" id="S7g-iW-avK"/>
+                        <outlet property="hourlyRateTitleLabel" destination="nU1-xX-WEV" id="AHL-QE-zNh"/>
+                        <outlet property="rateDropDown" destination="Aqc-nq-SkZ" id="yBj-Na-Zn7"/>
+                        <outlet property="startTitleLabel" destination="8sv-Zs-nVj" id="eVg-Wa-JOm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jia-Tl-Xzw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="9tG-Y3-tcz">
+                    <connections>
+                        <segue destination="zZ2-Em-sed" kind="show" id="YxR-Kp-HIr"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4595.652173913044" y="-794.19642857142856"/>
+            <point key="canvasLocation" x="3632" y="-826"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="xJ0-ij-9P8">
@@ -1059,7 +1060,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfa-l2-lix">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="New Time Entry" id="NKw-oX-fF2">
                                         <barButtonItem key="backBarButtonItem" title="Cancel" id="zEL-DB-Bxn"/>
@@ -1067,7 +1068,7 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gf8-5A-ckc">
-                                <rect key="frame" x="20" y="224" width="374" height="44"/>
+                                <rect key="frame" x="20" y="268" width="374" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Glossary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZZ-qS-oUT">
                                         <rect key="frame" x="38" y="11.5" width="66.5" height="21"/>
@@ -1116,7 +1117,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RvB-GH-khT">
-                                <rect key="frame" x="20" y="288" width="374" height="44"/>
+                                <rect key="frame" x="20" y="332" width="374" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hd-pf-Hws">
                                         <rect key="frame" x="38" y="11.5" width="85.5" height="21"/>
@@ -1165,7 +1166,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kLc-FK-AsL">
-                                <rect key="frame" x="20" y="76" width="374" height="128"/>
+                                <rect key="frame" x="20" y="120" width="374" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="gVA-w6-ORP"/>
@@ -1231,7 +1232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZY-Ar-khd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5337.68115942029" y="-794.19642857142856"/>
+            <point key="canvasLocation" x="4533" y="-794"/>
         </scene>
         <!--EmploymentInfoViewController-->
         <scene sceneID="zpK-H4-oix">
@@ -2278,14 +2279,14 @@
             <objects>
                 <viewController storyboardIdentifier="EnterTimeViewController" id="OlP-Ji-4yB" customClass="EnterTimeViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jZZ-Hr-5mH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="skK-8U-FUa">
-                                <rect key="frame" x="15" y="76" width="384" height="790"/>
+                                <rect key="frame" x="15" y="68" width="384" height="774"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="mef-x7-DWH">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="790"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="774"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGM-IZ-H7I">
                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="577"/>
@@ -2710,7 +2711,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AtM-UA-I70" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4083" y="-781"/>
+            <point key="canvasLocation" x="4346" y="-1441"/>
         </scene>
         <!--Time Picker View Controller-->
         <scene sceneID="skE-YH-FCS">
@@ -2844,7 +2845,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="OlP-Ji-4yB" kind="relationship" relationship="rootViewController" id="qjt-Iu-yLu"/>
+                        <segue destination="zY3-x1-MpB" kind="relationship" relationship="rootViewController" id="prk-fh-ByM"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTu-QV-sGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2987,7 +2988,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4X5-RZ-lRR">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="OVERNIGHT HOURS" id="aXs-u1-OwL">
                                         <barButtonItem key="backBarButtonItem" title="Help" id="3ef-DB-gDy"/>
@@ -2995,7 +2996,7 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you work an overnight shift, hours after midnight will populate your timesheet on the next day." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHa-ad-8A2">
-                                <rect key="frame" x="20" y="76" width="374" height="61"/>
+                                <rect key="frame" x="20" y="120" width="374" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -3016,7 +3017,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fl-4i-0YO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6068" y="-794"/>
+            <point key="canvasLocation" x="5262" y="-794"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

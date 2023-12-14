@@ -12,27 +12,21 @@ class EnterTimeSoftenViewController: UIViewController {
 
     var viewModel: EnterTimeViewModel?
     var timeSheetModel: TimesheetViewModel?
-        
-    @IBOutlet weak var paymentTypeLabel: UILabel!
     
     @IBOutlet weak var dateTitleLabel: UILabel!
     @IBOutlet weak var dateDropDownView: DropDownView!
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var enterTimeView: UIView!
     @IBOutlet weak var startTitleLabel: UILabel!
     @IBOutlet weak var endTitleLabel: UILabel!
     @IBOutlet weak var breakTimeTitleLabel: UILabel!
     
     
-    @IBOutlet weak var endTimeInfoBtn: InfoButton!
-    @IBOutlet weak var breakTimeInfoButton: InfoButton!
     @IBOutlet weak var hourlyRateTitleLabel: UILabel!
     @IBOutlet weak var commentsTitleLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
     
-    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var employmentDropDown: UIButton!
+    @IBOutlet weak var rateDropDown: UIButton!
     
     weak var delegate: EnterTimeViewControllerDelegate?
     var timePickerVC: TimePickerViewController?
@@ -62,15 +56,12 @@ class EnterTimeSoftenViewController: UIViewController {
 //        title = viewModel?.title
         title = "manual_time_entry".localized
         
-        tableView.estimatedRowHeight = 150
-        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = 150
+//        tableView.rowHeight = UITableView.automaticDimension
 
-        enterTimeView.addBorder()
         commentTextView.addBorder()
-        paymentTypeLabel.scaleFont(forDataType: .enterTimePaymentType)
         dateTitleLabel.scaleFont(forDataType: .enterTimeTitle)
         dateTitleLabel.text = "date".localized
-        titleLabel.scaleFont(forDataType: .enterTimeTitle)
         commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
 
         
@@ -78,26 +69,18 @@ class EnterTimeSoftenViewController: UIViewController {
         dateTapGesture.cancelsTouchesInView = false
         dateDropDownView.addGestureRecognizer(dateTapGesture)
 
-        commentTextView.delegate = self
+//        commentTextView.delegate = self
         
         setupTimeView()
         setupAccessibility()
     }
     
     func setupTimeView() {
-        paymentTypeLabel.accessibilityTraits = .header
-        titleLabel.accessibilityTraits = .header
         startTitleLabel.scaleFont(forDataType: .columnHeader)
         endTitleLabel.scaleFont(forDataType: .columnHeader)
         breakTimeTitleLabel.scaleFont(forDataType: .columnHeader)
         hourlyRateTitleLabel.scaleFont(forDataType: .columnHeader)
         commentTextView.scaleFont(forDataType: .enterCommentsValue)
-        
-        endTimeInfoBtn.infoType = .endTime
-        endTimeInfoBtn.delegate = self
-        
-        breakTimeInfoButton.infoType = .breakTime
-        breakTimeInfoButton.delegate = self
         
         if viewModel?.paymentType == PaymentType.salary {
             setupSalaryView()
@@ -123,7 +106,6 @@ class EnterTimeSoftenViewController: UIViewController {
     }
     
     func displayInfo() {
-        titleLabel.text = "enter_time".localized
         startTitleLabel.text = "start".localized
         endTitleLabel.text = "end".localized
         breakTimeTitleLabel.text = "break".localized
@@ -133,19 +115,7 @@ class EnterTimeSoftenViewController: UIViewController {
         commentsTitleLabel.text = "daily_comments".localized
 
         dateDropDownView.title = viewModel?.title ?? ""
-        paymentTypeLabel.text = viewModel?.paymentType?.title
         commentTextView.text = viewModel?.comment
-        displayTime()
-    }
-    
-    func displayTime() {
-        tableView.reloadData()
-        
-        UIView.animate(withDuration: 0, animations: {
-            self.tableView.layoutIfNeeded()
-        }) { (complete) in
-            self.tableViewHeightConstraint.constant = self.tableView.contentSize.height
-        }
     }
 
     @objc func cancel(_ sender: Any?) {
@@ -171,25 +141,6 @@ class EnterTimeSoftenViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func addRowClick(_ sender: Any) {
-        _ = viewModel?.addTimeLog()
-//        displayTime()
-//        return
-        
-        guard let viewModel = viewModel, let totalLogs = viewModel.numberOfTimeLogs else {return}
-        
-        let newIndexPath = IndexPath(row: totalLogs-1, section: 0)
-        tableView.insertRows(at: [newIndexPath], with: .none)
-        
-        UIView.animate(withDuration: 0, animations: {
-            self.tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: false)
-        }) { (complete) in
-            self.tableViewHeightConstraint.constant = self.tableView.contentSize.height
-            if let cell = self.tableView.cellForRow(at: newIndexPath) as? EnterHourlyTimeTableViewCell {
-                UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: cell)
-            }
-        }
-    }
 }
 
 extension EnterTimeSoftenViewController: UITableViewDataSource {
@@ -206,8 +157,7 @@ extension EnterTimeSoftenViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: EnterHourlyTimeTableViewCell.reuseIdentifier) as! EnterHourlyTimeTableViewCell
             
         cell.timeLog = timeLog
-        cell.delegate = self
-        cell.textViewDelegate = self
+//        cell.textViewDelegate = self
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
 
@@ -247,21 +197,19 @@ extension EnterTimeSoftenViewController: UITableViewDataSource {
         alertController.addAction(
             UIAlertAction(title: "delete".localized, style: .destructive) { _ in
                 self.viewModel?.removeTimeLog(timeLog: timeLog)
-                self.displayTime()
         })
         present(alertController, animated: true)
     }
 
 }
 
-extension EnterTimeSoftenViewController: EnterTimeTableCellProtocol {
+extension EnterTimeSoftenViewController {
     func dismissPicker() {
         self.dismiss(animated: true, completion: nil)
     }
     
     func remove(cell: UITableViewCell, timeLog: TimeLog) {
         viewModel?.removeTimeLog(timeLog: timeLog)
-        displayTime()
     }
     
     func showPicker(cell: UITableViewCell, sender: Any?, pickerVC: UIViewController) {
@@ -318,7 +266,6 @@ extension EnterTimeSoftenViewController: EnterTimeTableCellProtocol {
         alertController.addAction(UIAlertAction(title: "yes".localized, style: .default, handler: { [weak self] (action) in
             guard let strongSelf = self else { return }
             strongSelf.viewModel?.splitTime(endTime: endTime, for: timeLog)
-            strongSelf.tableView.reloadData()
         }))
         
         alertController.addAction(UIAlertAction(title: "no".localized, style: .cancel, handler: nil))
@@ -339,11 +286,6 @@ extension EnterTimeSoftenViewController: EnterTimeTableCellProtocol {
         return true
     }
     
-    func contentDidChange(cell: EnterHourlyTimeTableViewCell) {
-        tableView.beginUpdates()
-        tableView.endUpdates()
-        tableViewHeightConstraint.constant = tableView.contentSize.height
-    }
     
     func showAlert(cell: UITableViewCell, sender: Any?, alertController: UIAlertController) {
         present(alertController, animated: false)
