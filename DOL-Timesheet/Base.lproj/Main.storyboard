@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NNC-uZ-gvN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NNC-uZ-gvN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -925,17 +925,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0f0-p5-BAk">
                                 <rect key="frame" x="20" y="422" width="374" height="46"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOb-lE-3e9">
-                                        <rect key="frame" x="8" y="12.5" width="83" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="9gS-sz-hvG"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="APU-sW-hQy">
-                                        <rect key="frame" x="99" y="8" width="267" height="30"/>
+                                        <rect key="frame" x="8" y="8" width="358" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" label="Comments"/>
                                         <constraints>
@@ -948,11 +939,9 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="APU-sW-hQy" secondAttribute="trailing" constant="8" id="8hZ-sy-SeD"/>
-                                    <constraint firstItem="vOb-lE-3e9" firstAttribute="centerY" secondItem="APU-sW-hQy" secondAttribute="centerY" id="F7z-DI-b2u"/>
                                     <constraint firstAttribute="bottom" secondItem="APU-sW-hQy" secondAttribute="bottom" constant="8" id="NNk-aZ-crE"/>
                                     <constraint firstItem="APU-sW-hQy" firstAttribute="top" secondItem="0f0-p5-BAk" secondAttribute="top" constant="8" id="NbG-tN-S0o"/>
-                                    <constraint firstItem="vOb-lE-3e9" firstAttribute="leading" secondItem="0f0-p5-BAk" secondAttribute="leading" constant="8" id="pnA-8X-WnP"/>
-                                    <constraint firstItem="APU-sW-hQy" firstAttribute="leading" secondItem="vOb-lE-3e9" secondAttribute="trailing" constant="8" id="zcV-Bo-Qip"/>
+                                    <constraint firstItem="APU-sW-hQy" firstAttribute="leading" secondItem="0f0-p5-BAk" secondAttribute="leading" constant="8" id="SdV-pI-cu7"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qk-Wq-zas">
@@ -1030,18 +1019,25 @@
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="xNm-bV-YW3"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="breakDropDownView" destination="jCi-nk-d6b" id="bgL-pV-PQW"/>
                         <outlet property="breakTimeTitleLabel" destination="5Wg-EL-lKf" id="ZXc-zI-Ct2"/>
                         <outlet property="commentTextView" destination="APU-sW-hQy" id="Uam-cl-wgW"/>
-                        <outlet property="commentsTitleLabel" destination="vOb-lE-3e9" id="Mtn-ym-rtL"/>
+                        <outlet property="commentView" destination="0f0-p5-BAk" id="jpe-h0-FJ5"/>
                         <outlet property="dateDropDownView" destination="wFc-rN-pqq" id="oyP-KJ-8lc"/>
                         <outlet property="dateTitleLabel" destination="cIO-w4-OYY" id="x1V-yj-drZ"/>
+                        <outlet property="dateView" destination="xXr-eo-35A" id="YTG-YB-Dct"/>
                         <outlet property="employmentPopUp" destination="isW-l3-TIp" id="mQJ-Ge-GVJ"/>
                         <outlet property="employmentTitleLabel" destination="nVU-8i-HqJ" id="8vH-Qg-pgx"/>
+                        <outlet property="employmentView" destination="XMk-Zz-y1D" id="eto-S7-LQC"/>
+                        <outlet property="endDropDownView" destination="Z46-Vu-Rvb" id="3k8-Tv-oRk"/>
                         <outlet property="endTitleLabel" destination="Rka-Mu-JbO" id="S7g-iW-avK"/>
+                        <outlet property="helpView" destination="1qk-Wq-zas" id="WUP-QP-3y3"/>
                         <outlet property="hourlyRateTitleLabel" destination="nU1-xX-WEV" id="AHL-QE-zNh"/>
                         <outlet property="ratePopUp" destination="Aqc-nq-SkZ" id="ILG-I6-Av0"/>
                         <outlet property="rateTitleLabel" destination="nU1-xX-WEV" id="NPF-tE-X4S"/>
+                        <outlet property="startDropDownView" destination="2Nb-zk-Kzq" id="Kgj-jP-89l"/>
                         <outlet property="startTitleLabel" destination="8sv-Zs-nVj" id="eVg-Wa-JOm"/>
+                        <outlet property="timeView" destination="pps-XX-7E4" id="fP4-uo-8oI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jia-Tl-Xzw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1051,7 +1047,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3632" y="-826"/>
+            <point key="canvasLocation" x="3631.884057971015" y="-826.33928571428567"/>
         </scene>
         <!--HELP-->
         <scene sceneID="xJ0-ij-9P8">
@@ -1590,7 +1586,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-7B-2z6">
-                                <rect key="frame" x="15" y="107" width="384" height="691"/>
+                                <rect key="frame" x="15" y="107" width="384" height="1500"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vjf-Wa-z7c" userLabel="HeaderView">
                                         <rect key="frame" x="0.0" y="8" width="384" height="0.0"/>
@@ -1600,7 +1596,7 @@
                                         </constraints>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-ou-4jf">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="691"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="1500"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHt-00-RNc" userLabel="ContentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="1500"/>
@@ -1702,7 +1698,7 @@
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-ox-87c">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="1622" width="414" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="bTx-ty-Sku"/>
                                 </constraints>

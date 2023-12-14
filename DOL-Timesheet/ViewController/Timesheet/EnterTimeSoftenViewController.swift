@@ -12,16 +12,24 @@ class EnterTimeSoftenViewController: UIViewController {
 
     var viewModel: EnterTimeViewModel?
     var timeSheetModel: TimesheetViewModel?
-
+    
+    @IBOutlet weak var employmentView: UIView!
+    @IBOutlet weak var dateView: UIView!
+    @IBOutlet weak var timeView: UIView!
+    @IBOutlet weak var commentView: UIView!
+    @IBOutlet weak var helpView: UIView!
+    
     @IBOutlet weak var dateTitleLabel: UILabel!
     @IBOutlet weak var dateDropDownView: DropDownView!
     
     @IBOutlet weak var startTitleLabel: UILabel!
-    @IBOutlet weak var endTitleLabel: UILabel!
+    @IBOutlet weak var startDropDownView: DropDownView!
     @IBOutlet weak var breakTimeTitleLabel: UILabel!
+    @IBOutlet weak var breakDropDownView: DropDownView!
+    @IBOutlet weak var endTitleLabel: UILabel!
+    @IBOutlet weak var endDropDownView: DropDownView!
     
     @IBOutlet weak var hourlyRateTitleLabel: UILabel!
-    @IBOutlet weak var commentsTitleLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
     
     @IBOutlet weak var employmentTitleLabel: UILabel!
@@ -70,7 +78,6 @@ class EnterTimeSoftenViewController: UIViewController {
 //        tableView.estimatedRowHeight = 150
 //        tableView.rowHeight = UITableView.automaticDimension
 
-        commentTextView.addBorder()
 //        dateTitleLabel.scaleFont(forDataType: .enterTimeTitle)
         dateTitleLabel.text = "date".localized
 //        commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
@@ -95,9 +102,11 @@ class EnterTimeSoftenViewController: UIViewController {
 //        hourlyRateTitleLabel.scaleFont(forDataType: .columnHeader)
 //        commentTextView.scaleFont(forDataType: .enterCommentsValue)
         
-        if viewModel?.paymentType == PaymentType.salary {
-            setupSalaryView()
-        }
+        employmentView.layer.cornerRadius = 5
+        dateView.layer.cornerRadius = 5
+        timeView.layer.cornerRadius = 5
+        commentView.layer.cornerRadius = 5
+        helpView.layer.cornerRadius = 5
     }
     
     func setupEmploymentPopupButton(){
@@ -167,10 +176,6 @@ class EnterTimeSoftenViewController: UIViewController {
         self.timePickerVC = datePickerVC
     }
     
-    func setupSalaryView() {
-        hourlyRateTitleLabel.removeFromSuperview()
-    }
-    
     func setupAccessibility() {
         commentTextView.accessibilityHint = "enter_daily_comments".localized
     }
@@ -182,8 +187,6 @@ class EnterTimeSoftenViewController: UIViewController {
         if let hourlyLabel = hourlyRateTitleLabel {
             hourlyLabel.text = "rate".localized
         }
-        commentsTitleLabel.text = "comments".localized
-
         dateDropDownView.title = viewModel?.title ?? ""
         commentTextView.text = viewModel?.comment
     }
