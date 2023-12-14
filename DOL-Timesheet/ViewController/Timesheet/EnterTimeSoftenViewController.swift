@@ -290,7 +290,18 @@ extension EnterTimeSoftenViewController {
     func showAlert(cell: UITableViewCell, sender: Any?, alertController: UIAlertController) {
         present(alertController, animated: false)
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "newTimeHelpScreen",
+            let helpVC = segue.destination as? HelpTableViewController {
+            helpVC.helpItems = [
+                HelpItem(
+                    title: "info_break_time_title".localized,
+                    body: "info_break_time".localized),
+                HelpItem(title: "overnight_hours".localized, body: "info_end_time")]
+        }
+    }
 }
 
 
@@ -318,4 +329,3 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: dateDropDownView)
     }
 }
-

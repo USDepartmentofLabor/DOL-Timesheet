@@ -108,6 +108,7 @@
 		03F2F5D52282090A007B1B68 /* NumberFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2F5D42282090A007B1B68 /* NumberFormatter+Extension.swift */; };
 		03F2F5D722821157007B1B68 /* ManageUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2F5D622821157007B1B68 /* ManageUsersViewController.swift */; };
 		03F2F5D922822CF8007B1B68 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2F5D822822CF8007B1B68 /* Date+Extension.swift */; };
+		110552742B2A8FC600EF5D1C /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110552732B2A8FC600EF5D1C /* HelpTableViewController.swift */; };
 		1118714729DE569B00F087F3 /* StateMinWage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1118714629DE569B00F087F3 /* StateMinWage.swift */; };
 		59821CC122AABC1300436B03 /* PhoneFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59821CC022AABC1300436B03 /* PhoneFormatter.swift */; };
 		59AD9E5B22A1645800075193 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AD9E5A22A1645800075193 /* Style.swift */; };
@@ -270,6 +271,7 @@
 		03F2F5D42282090A007B1B68 /* NumberFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extension.swift"; sourceTree = "<group>"; };
 		03F2F5D622821157007B1B68 /* ManageUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageUsersViewController.swift; sourceTree = "<group>"; };
 		03F2F5D822822CF8007B1B68 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		110552732B2A8FC600EF5D1C /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		1118714629DE569B00F087F3 /* StateMinWage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMinWage.swift; sourceTree = "<group>"; };
 		59821CC022AABC1300436B03 /* PhoneFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFormatter.swift; sourceTree = "<group>"; };
 		59AD9E5A22A1645800075193 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				0324C41C2260FCF600712576 /* InfoViewController.swift */,
 				0324C422226100F500712576 /* AboutViewController.swift */,
 				0324C4242261010100712576 /* ResourcesViewController.swift */,
+				110552732B2A8FC600EF5D1C /* HelpTableViewController.swift */,
 				0324C4262261010E00712576 /* GlossaryViewController.swift */,
 				0328A18322661DDB00957F53 /* InfoPopupViewController.swift */,
 				0329EBD72267A2720001EDE7 /* WebInfoViewController.swift */,
@@ -942,6 +945,7 @@
 				69FBFCB128FF398D00FEED84 /* SettingsEmploymentTabelViewCell.swift in Sources */,
 				03CEDF86226E3CDC0041C3ED /* SelectableButton.swift in Sources */,
 				032560152268C6DB00BF64C5 /* UnderlineTextField.swift in Sources */,
+				110552742B2A8FC600EF5D1C /* HelpTableViewController.swift in Sources */,
 				032DFD27228B2D8B001A1C3B /* EarningsTableViewHeaderView.swift in Sources */,
 				03347448228C826900A67E97 /* WorkWeekViewModel.swift in Sources */,
 				0328BCB5227238B8006B695A /* WorkWeekTableViewCell.swift in Sources */,
