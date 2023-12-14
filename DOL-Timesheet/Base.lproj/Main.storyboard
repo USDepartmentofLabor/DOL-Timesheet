@@ -1035,10 +1035,12 @@
                         <outlet property="commentsTitleLabel" destination="vOb-lE-3e9" id="Mtn-ym-rtL"/>
                         <outlet property="dateDropDownView" destination="wFc-rN-pqq" id="oyP-KJ-8lc"/>
                         <outlet property="dateTitleLabel" destination="cIO-w4-OYY" id="x1V-yj-drZ"/>
-                        <outlet property="employmentDropDown" destination="isW-l3-TIp" id="4Cn-t5-SZi"/>
+                        <outlet property="employmentPopUp" destination="isW-l3-TIp" id="mQJ-Ge-GVJ"/>
+                        <outlet property="employmentTitleLabel" destination="nVU-8i-HqJ" id="8vH-Qg-pgx"/>
                         <outlet property="endTitleLabel" destination="Rka-Mu-JbO" id="S7g-iW-avK"/>
                         <outlet property="hourlyRateTitleLabel" destination="nU1-xX-WEV" id="AHL-QE-zNh"/>
-                        <outlet property="rateDropDown" destination="Aqc-nq-SkZ" id="yBj-Na-Zn7"/>
+                        <outlet property="ratePopUp" destination="Aqc-nq-SkZ" id="ILG-I6-Av0"/>
+                        <outlet property="rateTitleLabel" destination="nU1-xX-WEV" id="NPF-tE-X4S"/>
                         <outlet property="startTitleLabel" destination="8sv-Zs-nVj" id="eVg-Wa-JOm"/>
                     </connections>
                 </viewController>
@@ -1232,7 +1234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZY-Ar-khd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4533" y="-794"/>
+            <point key="canvasLocation" x="4462" y="-826"/>
         </scene>
         <!--EmploymentInfoViewController-->
         <scene sceneID="zpK-H4-oix">
@@ -2711,7 +2713,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AtM-UA-I70" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4346" y="-1441"/>
+            <point key="canvasLocation" x="4396" y="-1470"/>
         </scene>
         <!--Time Picker View Controller-->
         <scene sceneID="skE-YH-FCS">
@@ -3017,13 +3019,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fl-4i-0YO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5262" y="-794"/>
+            <point key="canvasLocation" x="5180" y="-826"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="3GV-mi-63D"/>
-        <segue reference="KJz-zA-nJd"/>
-        <segue reference="7uc-bX-bfm"/>
+        <segue reference="raw-Tx-Vfv"/>
+        <segue reference="2Fb-bA-ARb"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DOLLogo" width="60" height="60"/>

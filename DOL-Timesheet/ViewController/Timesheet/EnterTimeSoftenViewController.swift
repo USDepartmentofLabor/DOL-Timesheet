@@ -12,7 +12,7 @@ class EnterTimeSoftenViewController: UIViewController {
 
     var viewModel: EnterTimeViewModel?
     var timeSheetModel: TimesheetViewModel?
-    
+
     @IBOutlet weak var dateTitleLabel: UILabel!
     @IBOutlet weak var dateDropDownView: DropDownView!
     
@@ -25,11 +25,23 @@ class EnterTimeSoftenViewController: UIViewController {
     @IBOutlet weak var commentsTitleLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
     
-    @IBOutlet weak var employmentDropDown: UIButton!
-    @IBOutlet weak var rateDropDown: UIButton!
+    @IBOutlet weak var employmentTitleLabel: UILabel!
+    @IBOutlet weak var rateTitleLabel: UILabel!
+    
+    @IBOutlet weak var employmentPopUp: UIButton!
+    @IBOutlet weak var ratePopUp: UIButton!
     
     weak var delegate: EnterTimeViewControllerDelegate?
     var timePickerVC: TimePickerViewController?
+    
+    var rateOptions: [HourlyRate]?
+
+
+    var currentHourlyRate: HourlyRate? {
+        didSet {
+            ratePopUp.setTitle(currentHourlyRate?.title ?? "", for: .normal)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +84,7 @@ class EnterTimeSoftenViewController: UIViewController {
 //        commentTextView.delegate = self
         
         setupTimeView()
+        setupEmploymentPopupButton()
         setupAccessibility()
     }
     
@@ -85,6 +98,63 @@ class EnterTimeSoftenViewController: UIViewController {
         if viewModel?.paymentType == PaymentType.salary {
             setupSalaryView()
         }
+    }
+    
+    func setupEmploymentPopupButton(){
+        let optionClosure = {(action : UIAction) in
+            print(action.title)
+        }
+        
+        var menuActions: [UIAction] = []
+        
+        guard let userProfileModel = timeSheetModel?.userProfileModel else { return }
+        
+        let users: [User] = userProfileModel.employmentUsers
+        guard users.count > 0 else {
+            return
+        }
+                
+        for user in users {
+            let action = UIAction(title: user.name!, handler: {_ in
+                self.setCurrentUser(user: user)
+            })
+            menuActions.append(action)
+        }
+                
+        employmentPopUp.menu = UIMenu(children : menuActions)
+        employmentPopUp.showsMenuAsPrimaryAction = true
+        
+        employmentPopUp.changesSelectionAsPrimaryAction = true
+    }
+    
+    func setCurrentUser(user: User) {
+        timeSheetModel?.setCurrentEmploymentModel(for: user)
+        setupRatePopupButton()
+    }
+    
+    func setupRatePopupButton(){
+        rateOptions = timeSheetModel?.currentEmploymentModel?.hourlyRates
+        
+        let optionClosure = {(action : UIAction) in
+            print(action.title)
+        }
+        
+        var menuActions: [UIAction] = []
+
+        guard  let options = rateOptions else {
+            return
+        }
+                
+        for option in options {
+            let action = UIAction(title: option.title, handler: {_ in
+                self.currentHourlyRate = option
+            })
+            menuActions.append(action)
+        }
+        
+        ratePopUp.menu = UIMenu(children : menuActions)
+        ratePopUp.showsMenuAsPrimaryAction = true
+        ratePopUp.changesSelectionAsPrimaryAction = true
     }
     
     @objc func dateBtnClick(_ sender: Any) {

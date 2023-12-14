@@ -491,17 +491,17 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "enterTime",
             let navVC = segue.destination as? UINavigationController,
-            let enterTimeVC = navVC.topViewController as? EnterTimeViewController,
+            let enterTimeVC = navVC.topViewController as? EnterTimeSoftenViewController,
             let viewModel = viewModel {
-            let enterTimeModel: EnterTimeViewModel?
-            if let clock = sender as? PunchClock {
-                enterTimeModel = viewModel.createEnterTimeViewModel(for: clock, hourlyRate: currentHourlyRate)
-            }
-            else {
-                 enterTimeModel = viewModel.createEnterTimeViewModel(for: Date())
-            }
-            
-            enterTimeVC.viewModel = enterTimeModel
+//            let enterTimeModel: EnterTimeViewModel?
+//            if let clock = sender as? PunchClock {
+//                enterTimeModel = viewModel.createEnterTimeViewModel(for: clock, hourlyRate: currentHourlyRate)
+//            }
+//            else {
+//                 enterTimeModel = viewModel.createEnterTimeViewModel(for: Date())
+//            }
+//            
+//            enterTimeVC.viewModel = enterTimeModel
             enterTimeVC.timeSheetModel = viewModel
             enterTimeVC.delegate = self
         }
