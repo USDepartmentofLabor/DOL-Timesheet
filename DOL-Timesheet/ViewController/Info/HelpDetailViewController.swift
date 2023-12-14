@@ -21,6 +21,7 @@ class HelpDetailViewController: UIViewController {
     }
     
     func setupView() {
+        navBar.leftBarButtonItem?.tintColor = .black
         navBar.title = helpItem.title
         details.text = helpItem.body
         setupAccessibility()

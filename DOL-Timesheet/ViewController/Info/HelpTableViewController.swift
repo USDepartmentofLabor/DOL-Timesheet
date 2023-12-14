@@ -32,6 +32,15 @@ class HelpTableViewController: UIViewController {
     }
     
     func setupAccessibility() {
+        
+        navigationItem.leftBarButtonItem?.tintColor = .black
+//        let cancelBtn = UIBarButtonItem(title: "cancel".localized, style: .plain, target: self, action: nil)
+//        navigationItem.leftBarButtonItem = cancelBtn
+//
+//        let saveBtn = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: nil)
+//        navigationItem.rightBarButtonItem = saveBtn
+        
+        
 //        displayLogo.isAccessibilityElement = true
 //        displayLogo.accessibilityLabel = "whd_logo".localized
     }
