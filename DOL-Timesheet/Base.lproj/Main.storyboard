@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NNC-uZ-gvN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NNC-uZ-gvN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -716,12 +716,12 @@
                         <outlet property="totalHoursWorkedLabel" destination="tky-8o-QJU" id="Jmv-JT-kC5"/>
                         <outlet property="totalTitleLabel" destination="ijH-Yr-02B" id="wEA-2p-Mne"/>
                         <segue destination="PIS-M8-enc" kind="presentation" identifier="addEmploymentInfo" id="KJz-zA-nJd"/>
-                        <segue destination="LpA-L8-8Q7" kind="presentation" identifier="enterTime" id="3iC-tx-nCj"/>
+                        <segue destination="R60-cM-Gps" kind="presentation" identifier="enterTime" id="viL-0D-ElM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628.985507246377" y="-557.14285714285711"/>
+            <point key="canvasLocation" x="1390" y="-544"/>
         </scene>
         <!--New Time Entry-->
         <scene sceneID="Rhx-5m-qiI">
@@ -914,6 +914,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="zY3-x1-MpB" id="sVR-ZY-L0O"/>
+                                        </connections>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1027,7 +1030,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3631.884057971015" y="-826.33928571428567"/>
+            <point key="canvasLocation" x="3986" y="-733"/>
         </scene>
         <!--HELP-->
         <scene sceneID="xJ0-ij-9P8">
@@ -1223,7 +1226,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4462" y="-826"/>
+            <point key="canvasLocation" x="4814" y="-733"/>
         </scene>
         <!--EmploymentInfoViewController-->
         <scene sceneID="zpK-H4-oix">
@@ -1562,11 +1565,11 @@
         <scene sceneID="fdQ-8z-5Cs">
             <objects>
                 <viewController storyboardIdentifier="TimeViewController" id="Uz1-t8-iUz" customClass="TimeViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cWj-y1-X7Y">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="cWj-y1-X7Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-7B-2z6">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-7B-2z6">
                                 <rect key="frame" x="15" y="107" width="384" height="1500"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vjf-Wa-z7c" userLabel="HeaderView">
@@ -1576,7 +1579,7 @@
                                             <constraint firstAttribute="height" id="2MD-c3-XdB"/>
                                         </constraints>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-ou-4jf">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-ou-4jf">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="1500"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHt-00-RNc" userLabel="ContentView">
@@ -1678,7 +1681,7 @@
                                     <constraint firstAttribute="bottom" secondItem="DcB-ou-4jf" secondAttribute="bottom" id="tm4-Vs-kXF"/>
                                 </constraints>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-ox-87c">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-ox-87c">
                                 <rect key="frame" x="0.0" y="1622" width="414" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="bTx-ty-Sku"/>
@@ -2272,14 +2275,14 @@
             <objects>
                 <viewController storyboardIdentifier="EnterTimeViewController" id="OlP-Ji-4yB" customClass="EnterTimeViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jZZ-Hr-5mH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="skK-8U-FUa">
-                                <rect key="frame" x="15" y="68" width="384" height="774"/>
+                                <rect key="frame" x="15" y="76" width="384" height="790"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="mef-x7-DWH">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="774"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="790"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGM-IZ-H7I">
                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="577"/>
@@ -2495,6 +2498,9 @@
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="l3G-dv-bsk"/>
                                                                                             </constraints>
+                                                                                            <userDefinedRuntimeAttributes>
+                                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isBorderEnabled" value="YES"/>
+                                                                                            </userDefinedRuntimeAttributes>
                                                                                         </view>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWC-5m-GkU" userLabel="EndTimeView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
                                                                                             <rect key="frame" x="94" y="0.0" width="86" height="30.5"/>
@@ -2503,6 +2509,9 @@
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="LVt-nj-uO1"/>
                                                                                             </constraints>
+                                                                                            <userDefinedRuntimeAttributes>
+                                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isBorderEnabled" value="YES"/>
+                                                                                            </userDefinedRuntimeAttributes>
                                                                                         </view>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZH-yY-hid" userLabel="BreakTimeView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
                                                                                             <rect key="frame" x="188" y="0.0" width="86" height="30.5"/>
@@ -2511,6 +2520,9 @@
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="HJG-fs-DQG"/>
                                                                                             </constraints>
+                                                                                            <userDefinedRuntimeAttributes>
+                                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isBorderEnabled" value="YES"/>
+                                                                                            </userDefinedRuntimeAttributes>
                                                                                         </view>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sTv-D7-9Xe" userLabel="HourlyRateView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
                                                                                             <rect key="frame" x="282" y="0.0" width="86" height="30.5"/>
@@ -2519,6 +2531,9 @@
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="N9A-3U-zZu"/>
                                                                                             </constraints>
+                                                                                            <userDefinedRuntimeAttributes>
+                                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isBorderEnabled" value="YES"/>
+                                                                                            </userDefinedRuntimeAttributes>
                                                                                         </view>
                                                                                     </subviews>
                                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2706,6 +2721,22 @@
             </objects>
             <point key="canvasLocation" x="4396" y="-1470"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vbA-j4-xjE">
+            <objects>
+                <navigationController id="R60-cM-Gps" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OkF-nB-t4z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="OlP-Ji-4yB" kind="relationship" relationship="rootViewController" id="xTc-5s-vxW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dce-3E-Rbm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3306" y="-1589"/>
+        </scene>
         <!--Time Picker View Controller-->
         <scene sceneID="skE-YH-FCS">
             <objects>
@@ -2807,7 +2838,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3sR-1o-Xtd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3032" y="-1627"/>
+            <point key="canvasLocation" x="2033" y="-1983"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rqD-Lc-OsV">
@@ -2844,7 +2875,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTu-QV-sGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2853.6231884057975" y="-794.19642857142856"/>
+            <point key="canvasLocation" x="3043" y="-732"/>
         </scene>
         <!--Regular Rate Info View Controller-->
         <scene sceneID="ube-ca-yuQ">
@@ -3004,12 +3035,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fl-4i-0YO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5180" y="-826"/>
+            <point key="canvasLocation" x="5639" y="-755"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3GV-mi-63D"/>
-        <segue reference="raw-Tx-Vfv"/>
+        <segue reference="KJz-zA-nJd"/>
         <segue reference="7uc-bX-bfm"/>
         <segue reference="GGP-HT-mqi"/>
         <segue reference="isf-7E-suF"/>
@@ -3065,10 +3095,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="viewFlipsideBackgroundColor">
             <color red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

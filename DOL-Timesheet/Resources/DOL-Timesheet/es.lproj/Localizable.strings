@@ -145,6 +145,9 @@ empleado?";
 "save_time_entry" = "Guardar el registro de tiempo para %@";
 
 // Enter Time
+"start_time" = "Start Time";
+"break_time" = "Break Time";
+"end_time" = "End Time";
 "start_time_hint" = "Presione Para Seleccionar la Hora de Entrada";
 "end_time_hint" = "Presione Para Seleccionar la Hora de Salida";
 "break_time_hint" = "Presione para Seleccionar el Tiempo de Descanso";
@@ -179,7 +182,7 @@ empleado?";
 "settings" = "Configuración";
 "err_enter_name" = "Por favor, ingrese su nombre.";
 "err_more_than_24_hours" = " El total de horas por día no puede ser más de 24 horas.";
-"err_startTime_before_endtime" = "La hora de salida debe ser después de la hora de entrada.";
+"err_endtime_is_before_startTime" = "La hora de salida debe ser después de la hora de entrada.";
 "err_time_too_early" = "La hora que ha ingresado es demasiado temprano. La hora debe ser después de cualquier entrada de tiempo anterior.";
 "err_time_too_late" = "La hora que ha ingresado es demasiado tarde. La hora debe ser antes de cualquier entrada de tiempo a continuación.";
 "err_time_between_start_endtime" = "%@ se encuentra entre el tiempo %@ y %@.";

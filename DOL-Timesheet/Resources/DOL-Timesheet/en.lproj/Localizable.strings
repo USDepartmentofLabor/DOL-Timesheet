@@ -144,6 +144,9 @@
 "save_time_entry" = "Saved time log for %@";
 
 // Enter Time
+"start_time" = "Start Time";
+"break_time" = "Break Time";
+"end_time" = "End Time";
 "start_time_hint" = "Tap To Select Start Time";
 "end_time_hint" = "Tap To Select End Time";
 "break_time_hint" = "Tap To Select Break Time";
@@ -179,7 +182,7 @@
 "settings" = "Settings";
 "err_enter_name" = "Please enter name.";
 "err_more_than_24_hours" = " Total hours for day can not be more that 24 hours.";
-"err_startTime_before_endtime" = "End time should be after start time.";
+"err_endtime_is_before_startTime" = "End time should be after start time.";
 "err_time_too_early" = "The time you entered is too early. The time must be after any time entries above.";
 "err_time_too_late" = "The time you entered is too late. The time must be before any time entries below.";
 "err_time_between_start_endtime" = "%@ lies in between time %@ and %@.";

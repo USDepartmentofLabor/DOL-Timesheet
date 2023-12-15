@@ -76,7 +76,7 @@ struct EnterTimeViewModel {
         
         // If this is end Time, make sure it is less that StartTime
         if !isStartTime, currentTimeLog?.startTime?.compare(time) != .orderedAscending {
-            errStr = "err_startTime_before_endtime".localized
+            errStr = "err_endtime_is_before_startTime".localized
             return errStr
         }
         

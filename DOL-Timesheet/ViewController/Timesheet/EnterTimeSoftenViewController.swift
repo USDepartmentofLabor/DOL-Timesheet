@@ -1,5 +1,5 @@
 //
-//  EnnterTimeViewController.swift
+//  EnterTimeSoftenViewController.swift
 //  DOL-Timesheet
 //
 //  Created by Nidhi Chawla on 5/8/19.
@@ -27,6 +27,8 @@ class EnterTimeSoftenViewController: UIViewController {
     
     @IBOutlet weak var hourlyRateTitleLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
+    weak var textViewDelegate: UITextViewDelegate?
+
     
     @IBOutlet weak var employmentTitleLabel: UILabel!
     @IBOutlet weak var rateTitleLabel: UILabel!
@@ -38,7 +40,16 @@ class EnterTimeSoftenViewController: UIViewController {
     var timePickerVC: TimePickerViewController?
     
     var rateOptions: [HourlyRate]?
+    var startTime: Date?
+    var breakTime: TimeInterval = 0.0
+    var endTime: Date?
+    var comment: String = ""
 
+    var timeLog: TimeLog? {
+        didSet {
+            displayInfo()
+        }
+    }
 
     var currentHourlyRate: HourlyRate? {
         didSet {
@@ -81,8 +92,25 @@ class EnterTimeSoftenViewController: UIViewController {
         let dateTapGesture = UITapGestureRecognizer(target: self, action: #selector(dateBtnClick(_:)))
         dateTapGesture.cancelsTouchesInView = false
         dateDropDownView.addGestureRecognizer(dateTapGesture)
-
+        
+        let startTapGesture = UITapGestureRecognizer(target: self, action: #selector(startBtnClick(_:)))
+        startTapGesture.cancelsTouchesInView = false
+        startDropDownView.addGestureRecognizer(startTapGesture)
+        
+        let breakTapGesture = UITapGestureRecognizer(target: self, action: #selector(breakBtnClick(_:)))
+        breakTapGesture.cancelsTouchesInView = false
+        breakDropDownView.addGestureRecognizer(breakTapGesture)
+        
+        let endTapGesture = UITapGestureRecognizer(target: self, action: #selector(endBtnClick(_:)))
+        endTapGesture.cancelsTouchesInView = false
+        endDropDownView.addGestureRecognizer(endTapGesture)
+        
 //        commentTextView.delegate = self
+        
+        startTime = timeLog?.startTime
+        breakTime = timeLog?.totalBreakTime ?? 0
+        endTime = timeLog?.endTime
+        comment = timeLog?.comment ?? ""
         
         setupTimeView()
         setupEmploymentPopupButton()
@@ -104,6 +132,9 @@ class EnterTimeSoftenViewController: UIViewController {
         helpView.layer.cornerRadius = 10
         
         dateDropDownView.title = "date".localized
+        startDropDownView.title = "start_time".localized
+        breakDropDownView.title = "break_time".localized
+        endDropDownView.title = "end_time".localized
     }
     
     func setupEmploymentPopupButton(){
@@ -173,13 +204,56 @@ class EnterTimeSoftenViewController: UIViewController {
         self.timePickerVC = datePickerVC
     }
     
+    @objc func startBtnClick(_ sender: Any) {
+        showPicker(mode: .time, sender: startDropDownView as Any, date: startTime)
+    }
+    
+    @objc func breakBtnClick(_ sender: Any) {
+        showPicker(mode: .countDownTimer, sender: breakDropDownView as Any, countdownDuration: breakTime)
+    }
+    
+    @objc func endBtnClick(_ sender: Any) {
+        showPicker(mode: .time, sender: endDropDownView as Any, date: endTime)
+    }
+    
+    func showPicker(mode: UIDatePicker.Mode, sender: Any, date: Date? = nil, countdownDuration: TimeInterval = 0) {
+        let timePickerVC = TimePickerViewController.instantiateFromStoryboard()
+        timePickerVC.delegate = self
+        timePickerVC.sourceView = (sender as! UIView)
+        timePickerVC.pickerMode = mode
+        if mode == .countDownTimer {
+            timePickerVC.countdownDuration = countdownDuration
+        }
+        else if mode == .time {
+            if let date = date {
+                timePickerVC.currentDate = date
+            }
+            else if let logDate = timeLog?.dateLog?.date {
+                var dateComponent = Calendar.current.dateComponents([.year, .month, .day], from: logDate)
+                let timeComponent = Calendar.current.dateComponents([.hour, .minute], from: Date())
+                dateComponent.hour = timeComponent.hour
+                dateComponent.minute = timeComponent.minute
+                timePickerVC.currentDate = Calendar.current.date(from: dateComponent)
+            }
+        }
+        showPopup(popupController: timePickerVC, sender: sender as! UIView)
+        self.timePickerVC = timePickerVC
+    }
+    
     func setupAccessibility() {
         commentTextView.accessibilityHint = "enter_daily_comments".localized
     }
     
     func displayInfo() {
         dateDropDownView.value = viewModel?.title ?? ""
-        commentTextView.text = viewModel?.comment
+        
+        let formattedStartTime = startTime?.formattedTime
+        startDropDownView.value = formattedStartTime ?? ""
+        
+        let formattedEndTime = endTime?.formattedTime
+        endDropDownView.value = formattedEndTime ?? ""
+        
+        displayBreakTime(timeInSeconds: breakTime)
     }
 
     @objc func cancel(_ sender: Any?) {
@@ -188,14 +262,37 @@ class EnterTimeSoftenViewController: UIViewController {
     }
 
     @objc func save(_ sender: Any?) {
-        viewModel?.comment = commentTextView.text
+        guard let safeViewModel = viewModel else { return }
+        if startTime == nil || endTime == nil {
+            return
+        }
+        
+        if timeLog == nil {
+            if let safeTimeLogs = safeViewModel.timeLogs,
+                safeTimeLogs.count > 0 {
+                
+                timeLog = safeTimeLogs[safeTimeLogs.count - 1]
+            }else {
+                timeLog = safeViewModel.addTimeLog()
+            }
+        }
+        
+        timeLog?.startTime = startTime
+        timeLog?.addBreak(duration: breakTime)
+        timeLog?.endTime = endTime
+        
+        if !isValid(endTime: endTime!, for: timeLog) {
+            return
+        }
+        
+        timeLog?.comment = comment
                 
         if let errorStr = viewModel?.validate() {
             displayError(message: errorStr, title: "Error")
             return
         }
         
-        viewModel?.save()
+        safeViewModel.save()
         let annnouncementMsg = "save_time_entry".localized
         let announcementStr = String(format: annnouncementMsg, viewModel?.title ?? "")
         UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementStr)
@@ -264,21 +361,22 @@ extension EnterTimeSoftenViewController: UITableViewDataSource {
         })
         present(alertController, animated: true)
     }
+    
+    func displayBreakTime(timeInSeconds: Double?) {
+        guard let timeInSeconds = timeInSeconds else {
+            breakDropDownView.value = "0 Min"
+            return
+        }
+        
+        let timeStr: String = Date.secondsToHoursMinutes(seconds: timeInSeconds)
+        breakDropDownView.value = timeStr
+    }
 
 }
 
 extension EnterTimeSoftenViewController {
     func dismissPicker() {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    func remove(cell: UITableViewCell, timeLog: TimeLog) {
-        viewModel?.removeTimeLog(timeLog: timeLog)
-    }
-    
-    func showPicker(cell: UITableViewCell, sender: Any?, pickerVC: UIViewController) {
-        view.endEditing(true)
-        showPopup(popupController: pickerVC, sender: sender as! UIView)
     }
     
     func isValid(startTime: Date, for timeLog: TimeLog?) -> Bool {
@@ -295,31 +393,35 @@ extension EnterTimeSoftenViewController {
         return true
     }
     
-    func isValid(endTime: Date, for timeLog: TimeLog?) -> Bool {
-        guard let viewModel = viewModel, let timeLog = timeLog else {
-            return false
-        }
-        
-        if timeLog.startTime == nil {
-            let message = "set_start_time_before_end_time".localized
-            let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "ok".localized, style: .cancel, handler: nil))
-            present(alertController, animated: false)
-            return false
-        }
-
+    func isValid(endTime: Date, for timeLogTest: TimeLog?) -> Bool {
         // If endTime is before StartTime
         // Warn if this spans over next day?
-        if timeLog.startTime?.compare(endTime) != .orderedAscending {
-            handleNightShift(endTime: endTime, for: timeLog)
+        //MARK: handel nightShift elsewhere
+//        if timeLog.startTime?.compare(endTime) != .orderedAscending {
+//            handleNightShift(endTime: endTime, for: timeLog)
+//            return false
+//        }
+        
+        return true
+    }
+    
+    func isValid(newEndTime: Date) -> Bool {
+        guard let safeStartTime = startTime else {
+            alert(message: "set_start_time_before_end_time".localized)
             return false
         }
         
-        let errorStr = viewModel.isValid(time: endTime, for: timeLog)
-        if !errorStr.isEmpty {
-            displayError(message: errorStr)
+        if safeStartTime.compare(newEndTime) != .orderedAscending {
+            //Mark: rethink handleNightShift() logic here
+            //if the user somehow work over midnight
+            
+        }
+
+        if safeStartTime > newEndTime {
+            displayError(message: "err_endtime_is_before_startTime".localized)
             return false
         }
+        
         
         return true
     }
@@ -350,11 +452,6 @@ extension EnterTimeSoftenViewController {
         return true
     }
     
-    
-    func showAlert(cell: UITableViewCell, sender: Any?, alertController: UIAlertController) {
-        present(alertController, animated: false)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "newTimeHelpScreen",
@@ -379,6 +476,20 @@ extension EnterTimeSoftenViewController {
     }
 }
 
+extension EnterTimeSoftenViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        comment = textView.text
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        comment = textView.text
+    }
+    func textViewDidChange(_ textView: UITextView) {
+        comment = textView.text
+    }
+    
+}
+
 
 extension EnterTimeSoftenViewController: TimePickerProtocol {
     func donePressed() {
@@ -388,8 +499,57 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
     }
     
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
-        viewModel = timeSheetModel?.createEnterTimeViewModel(for: datePicker.date)
+        if sourceView == dateDropDownView {
+            viewModel = timeSheetModel?.createEnterTimeViewModel(for: datePicker.date)
+            displayInfo()
+            UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: dateDropDownView)
+        } else if sourceView == startDropDownView {
+            let time = datePicker.date.removeSeconds()
+            if isValid(startTime: time, for: timeLog) {
+                startTime = time
+            }
+        } else if sourceView == endDropDownView {
+            var time = datePicker.date.removeSeconds()
+            
+            if time.isMidnight() {
+                time = time.addDays(days: 1)
+            }
+            
+            if isValid(newEndTime: time) {
+                endTime = time
+            }
+            
+        } else if sourceView == breakDropDownView,
+                  isValid(breakTime: datePicker.countDownDuration, for: timeLog) {
+            updateBreakTime(duration: datePicker.countDownDuration)
+        }
         displayInfo()
-        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: dateDropDownView)
+    }
+    
+    func alert(message: String) {
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "ok".localized, style: .cancel, handler: nil))
+        present(alertController, animated: false)
+    }
+
+    func updateBreakTime(duration: TimeInterval) {
+        if duration <= EmploymentModel.ALLOWED_BREAK_SECONDS {
+            let title = "info_break_time_title".localized
+            let message = "break_time_warning".localized
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { [weak self] (action) in
+                guard let strongSelf = self else {return}
+                strongSelf.timeLog?.addBreak(duration: duration)
+                strongSelf.displayBreakTime(timeInSeconds: duration)
+            }))
+            showAlert(sender: breakDropDownView, alertController: alertController)
+        }
+        else {
+            breakTime = duration
+        }
+    }
+    
+    func showAlert(sender: Any?, alertController: UIAlertController) {
+        present(alertController, animated: false)
     }
 }
