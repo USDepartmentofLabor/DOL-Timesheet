@@ -975,9 +975,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightChevron" translatesAutoresizingMaskIntoConstraints="NO" id="ccf-8v-smz">
-                                        <rect key="frame" x="352" y="0.0" width="22" height="44"/>
+                                        <rect key="frame" x="352" y="16" width="22" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="DGm-Dy-3KF"/>
+                                            <constraint firstAttribute="height" constant="12" id="Men-r8-CK1"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrg-Ue-HQV" userLabel="InfoButton">
@@ -998,16 +999,13 @@
                                 </accessibility>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstItem="ccf-8v-smz" firstAttribute="centerY" secondItem="1qk-Wq-zas" secondAttribute="centerY" id="0u6-UC-1lx"/>
                                     <constraint firstAttribute="height" constant="44" id="3Uh-ps-snL"/>
-                                    <constraint firstAttribute="bottom" secondItem="ccf-8v-smz" secondAttribute="bottom" id="Act-8y-97E"/>
                                     <constraint firstAttribute="trailing" secondItem="ccf-8v-smz" secondAttribute="trailing" id="H1H-9b-ML7"/>
                                     <constraint firstAttribute="trailing" secondItem="ccf-8v-smz" secondAttribute="trailing" id="OH1-AO-SJJ"/>
                                     <constraint firstItem="yrg-Ue-HQV" firstAttribute="centerY" secondItem="tEe-aR-4mh" secondAttribute="centerY" id="WNF-MI-6uf"/>
                                     <constraint firstItem="tEe-aR-4mh" firstAttribute="leading" secondItem="yrg-Ue-HQV" secondAttribute="trailing" constant="8" id="XdQ-ts-9ck"/>
-                                    <constraint firstAttribute="bottom" secondItem="ccf-8v-smz" secondAttribute="bottom" id="ciq-mA-iul"/>
                                     <constraint firstItem="yrg-Ue-HQV" firstAttribute="leading" secondItem="1qk-Wq-zas" secondAttribute="leading" constant="8" id="l7a-Hd-Lvf"/>
-                                    <constraint firstItem="ccf-8v-smz" firstAttribute="top" secondItem="1qk-Wq-zas" secondAttribute="top" id="nrb-GA-Xnq"/>
-                                    <constraint firstItem="ccf-8v-smz" firstAttribute="top" secondItem="1qk-Wq-zas" secondAttribute="top" id="rpt-yt-hYM"/>
                                     <constraint firstItem="tEe-aR-4mh" firstAttribute="centerY" secondItem="ccf-8v-smz" secondAttribute="centerY" id="xqL-9b-eO6"/>
                                 </constraints>
                                 <connections>
