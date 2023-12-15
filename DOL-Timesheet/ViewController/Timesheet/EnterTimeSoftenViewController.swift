@@ -13,6 +13,7 @@ class EnterTimeSoftenViewController: UIViewController {
     var viewModel: EnterTimeViewModel?
     var timeSheetModel: TimesheetViewModel?
     
+    @IBOutlet weak var commentsHint: UILabel!
     @IBOutlet weak var employmentView: UIView!
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var timeView: UIView!
@@ -499,6 +500,11 @@ extension EnterTimeSoftenViewController: UITextViewDelegate {
     }
     func textViewDidChange(_ textView: UITextView) {
         comment = textView.text
+        if comment.count == 0 {
+            commentsHint.isHidden = false
+        } else {
+            commentsHint.isHidden = true
+        }
     }
     
 }
