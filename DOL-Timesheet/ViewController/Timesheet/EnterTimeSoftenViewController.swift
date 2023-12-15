@@ -19,6 +19,10 @@ class EnterTimeSoftenViewController: UIViewController {
     @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var helpView: UIView!
     
+    @IBOutlet weak var startTimeErrorMessage: UILabel!
+    @IBOutlet weak var breakTimeErrorMessage: UILabel!
+    @IBOutlet weak var endTimeErrorMessage: UILabel!
+    
     @IBOutlet weak var dateDropDownView: DropDownView!
     
     @IBOutlet weak var startDropDownView: DropDownView!
@@ -111,6 +115,10 @@ class EnterTimeSoftenViewController: UIViewController {
         breakTime = timeLog?.totalBreakTime ?? 0
         endTime = timeLog?.endTime
         comment = timeLog?.comment ?? ""
+        
+        startTimeErrorMessage.text = ""
+        breakTimeErrorMessage.text = ""
+        endTimeErrorMessage.text = ""
         
         setupTimeView()
         setupEmploymentPopupButton()
@@ -381,15 +389,18 @@ extension EnterTimeSoftenViewController {
     
     func isValid(startTime: Date, for timeLog: TimeLog?) -> Bool {
         guard let viewModel = viewModel else {
+            startTimeErrorMessage.text = "Internal View Model Error"
             return false
         }
         
         let errorStr = viewModel.isValid(time: startTime, for: timeLog, isStartTime: true)
         if !errorStr.isEmpty {
+            startTimeErrorMessage.text = errorStr
             displayError(message: errorStr)
             return false
         }
         
+        startTimeErrorMessage.text = ""
         return true
     }
     
@@ -407,6 +418,7 @@ extension EnterTimeSoftenViewController {
     
     func isValid(newEndTime: Date) -> Bool {
         guard let safeStartTime = startTime else {
+            endTimeErrorMessage.text = "set_start_time_before_end_time".localized
             alert(message: "set_start_time_before_end_time".localized)
             return false
         }
@@ -418,11 +430,12 @@ extension EnterTimeSoftenViewController {
         }
 
         if safeStartTime > newEndTime {
+            endTimeErrorMessage.text = "err_endtime_is_before_startTime".localized
             displayError(message: "err_endtime_is_before_startTime".localized)
             return false
         }
         
-        
+        endTimeErrorMessage.text = ""
         return true
     }
     
@@ -508,6 +521,11 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
             if isValid(startTime: time, for: timeLog) {
                 startTime = time
             }
+            if let safeEndTime = endTime {
+                if isValid(newEndTime: safeEndTime) {
+                    endTimeErrorMessage.text = ""
+                }
+            }
         } else if sourceView == endDropDownView {
             var time = datePicker.date.removeSeconds()
             
@@ -517,6 +535,7 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
             
             if isValid(newEndTime: time) {
                 endTime = time
+                endTimeErrorMessage.text = ""
             }
             
         } else if sourceView == breakDropDownView,
@@ -534,6 +553,8 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
 
     func updateBreakTime(duration: TimeInterval) {
         if duration <= EmploymentModel.ALLOWED_BREAK_SECONDS {
+          //  breakTimeErrorMessage.text = "break_time_warning".localized
+            
             let title = "info_break_time_title".localized
             let message = "break_time_warning".localized
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -545,6 +566,7 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
             showAlert(sender: breakDropDownView, alertController: alertController)
         }
         else {
+            breakTimeErrorMessage.text = ""
             breakTime = duration
         }
     }

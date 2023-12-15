@@ -827,7 +827,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pps-XX-7E4">
-                                <rect key="frame" x="20" y="243" width="374" height="140"/>
+                                <rect key="frame" x="20" y="243" width="374" height="198.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Nb-zk-Kzq" userLabel="StartTimeView" customClass="DropDownSoftenView" customModule="Timesheet" customModuleProvider="target">
                                         <rect key="frame" x="8" y="8" width="358" height="30"/>
@@ -843,15 +843,21 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Start Time"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a ferer ladna  aslfjsldfjksd alskdjfl sdf ljasdf lsd" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdP-in-OAq">
+                                        <rect key="frame" x="16" y="33" width="342" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" name="appSecondaryColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxe-c7-9AA" userLabel="Border">
-                                        <rect key="frame" x="0.0" y="46" width="374" height="1"/>
+                                        <rect key="frame" x="0.0" y="76.5" width="374" height="1"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="sfq-IB-td7"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCi-nk-d6b" userLabel="BreakTimeView" customClass="DropDownSoftenView" customModule="Timesheet" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="55" width="358" height="30"/>
+                                        <rect key="frame" x="8" y="85.5" width="358" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" label="Break Time"/>
                                         <constraints>
@@ -862,15 +868,21 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Break Time"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkH-n8-xgx">
+                                        <rect key="frame" x="16" y="110.5" width="342" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" name="appSecondaryColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRK-hQ-z5D" userLabel="Border">
-                                        <rect key="frame" x="0.0" y="93" width="374" height="1"/>
+                                        <rect key="frame" x="0.0" y="137.5" width="374" height="1"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="kht-H1-ihu"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z46-Vu-Rvb" userLabel="EndTimeView" customClass="DropDownSoftenView" customModule="Timesheet" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="102" width="358" height="30"/>
+                                        <rect key="frame" x="8" y="146.5" width="358" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" label="End Time"/>
                                         <constraints>
@@ -881,29 +893,44 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="End Time"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSg-Oz-DN6">
+                                        <rect key="frame" x="16" y="171.5" width="342" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" name="appSecondaryColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Z46-Vu-Rvb" secondAttribute="bottom" constant="8" id="39y-56-PbE"/>
                                     <constraint firstItem="jCi-nk-d6b" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" constant="8" id="76p-8e-VYz"/>
+                                    <constraint firstAttribute="trailing" secondItem="pdP-in-OAq" secondAttribute="trailing" constant="16" id="88l-nh-XYe"/>
+                                    <constraint firstItem="YkH-n8-xgx" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" constant="16" id="9OZ-DR-d7R"/>
                                     <constraint firstAttribute="trailing" secondItem="jCi-nk-d6b" secondAttribute="trailing" constant="8" id="C8J-bL-bsA"/>
+                                    <constraint firstItem="uRK-hQ-z5D" firstAttribute="top" secondItem="YkH-n8-xgx" secondAttribute="bottom" constant="10" id="D0k-Qb-FcS"/>
+                                    <constraint firstItem="QSg-Oz-DN6" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" constant="16" id="Ejn-VZ-ybu"/>
+                                    <constraint firstAttribute="bottom" secondItem="QSg-Oz-DN6" secondAttribute="bottom" constant="10" id="IGU-GI-Erc"/>
                                     <constraint firstItem="jCi-nk-d6b" firstAttribute="top" secondItem="Vxe-c7-9AA" secondAttribute="bottom" constant="8" id="JAn-0I-sGX"/>
                                     <constraint firstItem="Z46-Vu-Rvb" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" constant="8" id="Kb6-pb-crP"/>
+                                    <constraint firstItem="YkH-n8-xgx" firstAttribute="top" secondItem="jCi-nk-d6b" secondAttribute="bottom" constant="-5" id="MW1-Fv-Qfh"/>
                                     <constraint firstItem="2Nb-zk-Kzq" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" constant="8" id="S10-X1-Cwj"/>
                                     <constraint firstAttribute="trailing" secondItem="2Nb-zk-Kzq" secondAttribute="trailing" constant="8" id="Tw3-JY-W6l"/>
+                                    <constraint firstItem="Vxe-c7-9AA" firstAttribute="top" secondItem="pdP-in-OAq" secondAttribute="bottom" constant="10" id="W9A-Kt-u95"/>
+                                    <constraint firstItem="pdP-in-OAq" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" constant="16" id="WaF-zF-D8s"/>
+                                    <constraint firstAttribute="trailing" secondItem="YkH-n8-xgx" secondAttribute="trailing" constant="16" id="Y0I-zv-ifg"/>
                                     <constraint firstItem="2Nb-zk-Kzq" firstAttribute="top" secondItem="pps-XX-7E4" secondAttribute="top" constant="8" id="ZFi-mA-XIb"/>
                                     <constraint firstItem="uRK-hQ-z5D" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" id="cwN-UO-LrD"/>
-                                    <constraint firstItem="Vxe-c7-9AA" firstAttribute="top" secondItem="2Nb-zk-Kzq" secondAttribute="bottom" constant="8" id="d5W-Qv-fwa"/>
                                     <constraint firstItem="Vxe-c7-9AA" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" id="glc-Jw-oFD"/>
                                     <constraint firstItem="Z46-Vu-Rvb" firstAttribute="top" secondItem="uRK-hQ-z5D" secondAttribute="bottom" constant="8" id="ine-gW-kyB"/>
-                                    <constraint firstItem="uRK-hQ-z5D" firstAttribute="top" secondItem="jCi-nk-d6b" secondAttribute="bottom" constant="8" id="p5x-2Y-YlY"/>
+                                    <constraint firstAttribute="trailing" secondItem="QSg-Oz-DN6" secondAttribute="trailing" constant="16" id="q6W-g1-3WF"/>
                                     <constraint firstAttribute="trailing" secondItem="Vxe-c7-9AA" secondAttribute="trailing" id="t9T-jw-4uY"/>
+                                    <constraint firstItem="pdP-in-OAq" firstAttribute="top" secondItem="2Nb-zk-Kzq" secondAttribute="bottom" constant="-5" id="tZM-DI-bwm"/>
                                     <constraint firstAttribute="trailing" secondItem="uRK-hQ-z5D" secondAttribute="trailing" id="ygu-wp-Y7D"/>
                                     <constraint firstAttribute="trailing" secondItem="Z46-Vu-Rvb" secondAttribute="trailing" constant="8" id="yyC-qt-e2b"/>
+                                    <constraint firstItem="QSg-Oz-DN6" firstAttribute="top" secondItem="Z46-Vu-Rvb" secondAttribute="bottom" constant="-5" id="zU2-a6-6Wq"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0f0-p5-BAk">
-                                <rect key="frame" x="20" y="403" width="374" height="46"/>
+                                <rect key="frame" x="20" y="461.5" width="374" height="46"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="APU-sW-hQy">
                                         <rect key="frame" x="8" y="8" width="358" height="30"/>
@@ -928,7 +955,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qk-Wq-zas">
-                                <rect key="frame" x="20" y="469" width="374" height="44"/>
+                                <rect key="frame" x="20" y="527.5" width="374" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEe-aR-4mh">
                                         <rect key="frame" x="38" y="11.5" width="35.5" height="21"/>
@@ -1007,6 +1034,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="breakDropDownView" destination="jCi-nk-d6b" id="bgL-pV-PQW"/>
+                        <outlet property="breakTimeErrorMessage" destination="YkH-n8-xgx" id="nSx-ZN-Pi3"/>
                         <outlet property="commentTextView" destination="APU-sW-hQy" id="Uam-cl-wgW"/>
                         <outlet property="commentView" destination="0f0-p5-BAk" id="jpe-h0-FJ5"/>
                         <outlet property="dateDropDownView" destination="wFc-rN-pqq" id="oyP-KJ-8lc"/>
@@ -1015,11 +1043,13 @@
                         <outlet property="employmentTitleLabel" destination="nVU-8i-HqJ" id="8vH-Qg-pgx"/>
                         <outlet property="employmentView" destination="XMk-Zz-y1D" id="eto-S7-LQC"/>
                         <outlet property="endDropDownView" destination="Z46-Vu-Rvb" id="3k8-Tv-oRk"/>
+                        <outlet property="endTimeErrorMessage" destination="QSg-Oz-DN6" id="7WB-C2-exL"/>
                         <outlet property="helpView" destination="1qk-Wq-zas" id="WUP-QP-3y3"/>
                         <outlet property="hourlyRateTitleLabel" destination="nU1-xX-WEV" id="AHL-QE-zNh"/>
                         <outlet property="ratePopUp" destination="Aqc-nq-SkZ" id="ILG-I6-Av0"/>
                         <outlet property="rateTitleLabel" destination="nU1-xX-WEV" id="NPF-tE-X4S"/>
                         <outlet property="startDropDownView" destination="2Nb-zk-Kzq" id="Kgj-jP-89l"/>
+                        <outlet property="startTimeErrorMessage" destination="pdP-in-OAq" id="Puf-Yw-Uxz"/>
                         <outlet property="timeView" destination="pps-XX-7E4" id="fP4-uo-8oI"/>
                     </connections>
                 </viewController>
@@ -1030,7 +1060,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3986" y="-733"/>
+            <point key="canvasLocation" x="3985.507246376812" y="-733.25892857142856"/>
         </scene>
         <!--HELP-->
         <scene sceneID="xJ0-ij-9P8">
