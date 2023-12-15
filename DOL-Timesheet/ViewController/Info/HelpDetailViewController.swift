@@ -17,11 +17,11 @@ class HelpDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBarSettings()
         setupView()
     }
     
     func setupView() {
-        navBar.leftBarButtonItem?.tintColor = .black
         navBar.title = helpItem.title
         details.text = helpItem.body
         setupAccessibility()

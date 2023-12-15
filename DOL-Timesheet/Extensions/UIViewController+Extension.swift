@@ -117,12 +117,12 @@ extension UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance;
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         UINavigationBar.appearance().titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.foregroundColor: UIColor(named: "blackTextColor"),
             NSAttributedString.Key.font: Style.scaledFont(forDataType: .appTitle)]
         
         UIBarButtonItem.appearance().setTitleTextAttributes([
             NSAttributedString.Key.font : Style.scaledFont(forDataType: .barButtonTitle),
-            NSAttributedString.Key.foregroundColor: UIColor.black],
+            NSAttributedString.Key.foregroundColor:UIColor(named: "blackTextColor")],
                                                             for: .normal)
         
         let systemGray6 = UIColor.systemGray6

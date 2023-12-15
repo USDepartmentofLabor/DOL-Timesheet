@@ -20,16 +20,25 @@ class HelpTableViewController: UIViewController {
     @IBOutlet weak var glossaryView: UIView!
     @IBOutlet weak var helpItemTable: UITableView!
     //    @IBOutlet weak var displayLogo: UIImageView!
+    @IBOutlet weak var contactUsImageView: UIImageView!
     
     var helpItems: [HelpItem] = []
     var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBarSettings()
         setupView()
     }
     
     func setupView() {
+        
+        let originalImage = UIImage(named: "contact us")
+        contactUsImageView.image = originalImage
+
+        contactUsImageView.tintColor = UIColor(named: "appPrimaryColor")
+        contactUsImageView.image = contactUsImageView.image?.withRenderingMode(.alwaysTemplate)
+        
         helpItemTable.reloadData()
         helpItemTable.layer.cornerRadius = 10
         glossaryView.layer.cornerRadius = 10

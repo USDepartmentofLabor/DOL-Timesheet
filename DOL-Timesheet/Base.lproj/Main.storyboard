@@ -752,7 +752,7 @@
                                             </children>
                                         </menu>
                                         <state key="normal" title="Button">
-                                            <color key="titleColor" red="0.081001378600000007" green="0.17752784490000001" blue="0.3358286023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" name="blackTextColor"/>
                                         </state>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGU-OR-FMJ" userLabel="Border">
@@ -780,7 +780,7 @@
                                             </children>
                                         </menu>
                                         <state key="normal" title="Button">
-                                            <color key="titleColor" red="0.081001378600000007" green="0.17752784490000001" blue="0.3358286023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" name="blackTextColor"/>
                                         </state>
                                     </button>
                                 </subviews>
@@ -807,7 +807,6 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wFc-rN-pqq" customClass="DropDownSoftenView" customModule="Timesheet" customModuleProvider="target">
                                         <rect key="frame" x="8" y="8" width="358" height="30"/>
-                                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="fcX-hW-fNJ"/>
                                         </constraints>
@@ -1035,7 +1034,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="New Time Entry" id="oZP-ur-hLf">
                         <barButtonItem key="backBarButtonItem" title="Back" id="xNm-bV-YW3">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" name="darkTextColor"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1104,9 +1103,6 @@
                                         </constraints>
                                         <color key="tintColor" name="appPrimaryColor"/>
                                         <state key="normal" image="exclamationmark.circle" catalog="system"/>
-                                        <connections>
-                                            <action selector="breakInfoClicked:" destination="rCf-pn-GQ9" eventType="touchUpInside" id="icX-ck-aWP"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1146,18 +1142,14 @@
                                             <constraint firstAttribute="width" constant="22" id="oMC-J3-IXn"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNn-Kt-COw" userLabel="InfoButton">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contact us" translatesAutoresizingMaskIntoConstraints="NO" id="1FL-HE-6ig">
                                         <rect key="frame" x="8" y="11" width="22" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="22" id="Ao9-96-6ZE"/>
-                                            <constraint firstAttribute="height" constant="22" id="oas-hq-dGD"/>
-                                        </constraints>
                                         <color key="tintColor" name="appPrimaryColor"/>
-                                        <state key="normal" image="contact us"/>
-                                        <connections>
-                                            <action selector="breakInfoClicked:" destination="rCf-pn-GQ9" eventType="touchUpInside" id="Tj5-gy-Y7j"/>
-                                        </connections>
-                                    </button>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="ILx-rs-W14"/>
+                                            <constraint firstAttribute="width" constant="22" id="hVZ-6p-jLg"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -1167,11 +1159,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="4td-Hj-XAc"/>
                                     <constraint firstAttribute="trailing" secondItem="0Os-Dn-dNP" secondAttribute="trailing" constant="12" id="8f3-FL-nLg"/>
-                                    <constraint firstItem="4hd-pf-Hws" firstAttribute="leading" secondItem="wNn-Kt-COw" secondAttribute="trailing" constant="8" id="CnU-FW-upp"/>
-                                    <constraint firstItem="wNn-Kt-COw" firstAttribute="centerY" secondItem="4hd-pf-Hws" secondAttribute="centerY" id="Gqv-oG-Lgo"/>
+                                    <constraint firstItem="1FL-HE-6ig" firstAttribute="centerY" secondItem="4hd-pf-Hws" secondAttribute="centerY" id="D3H-UU-FSB"/>
+                                    <constraint firstItem="1FL-HE-6ig" firstAttribute="leading" secondItem="RvB-GH-khT" secondAttribute="leading" constant="8" id="HCr-Dv-hcX"/>
                                     <constraint firstItem="0Os-Dn-dNP" firstAttribute="centerY" secondItem="RvB-GH-khT" secondAttribute="centerY" id="PYb-OP-2qN"/>
+                                    <constraint firstItem="4hd-pf-Hws" firstAttribute="leading" secondItem="1FL-HE-6ig" secondAttribute="trailing" constant="8" id="jZT-4r-luo"/>
                                     <constraint firstItem="4hd-pf-Hws" firstAttribute="centerY" secondItem="0Os-Dn-dNP" secondAttribute="centerY" id="r0J-CA-uUd"/>
-                                    <constraint firstItem="wNn-Kt-COw" firstAttribute="leading" secondItem="RvB-GH-khT" secondAttribute="leading" constant="8" id="uTe-dP-3h4"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="4dD-jQ-6fa" appends="YES" id="dUX-2e-qR1"/>
@@ -1244,6 +1236,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="contactUsImageView" destination="1FL-HE-6ig" id="L9S-ck-maA"/>
                         <outlet property="contactUsView" destination="RvB-GH-khT" id="R5T-JN-SqG"/>
                         <outlet property="glossaryView" destination="Gf8-5A-ckc" id="Khw-Tg-VwT"/>
                         <outlet property="helpItemTable" destination="kLc-FK-AsL" id="kP5-d1-1JZ"/>
@@ -1263,7 +1256,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4814" y="-733"/>
+            <point key="canvasLocation" x="4813.04347826087" y="-733.25892857142856"/>
         </scene>
         <!--EmploymentInfoViewController-->
         <scene sceneID="zpK-H4-oix">
@@ -1286,7 +1279,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xkI-Ca-cHN">
                                 <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e6a-x3-Fa9" userLabel="RateView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6a-x3-Fa9" userLabel="RateView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="33.5"/>
                                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
@@ -1602,12 +1595,12 @@
         <scene sceneID="fdQ-8z-5Cs">
             <objects>
                 <viewController storyboardIdentifier="TimeViewController" id="Uz1-t8-iUz" customClass="TimeViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="cWj-y1-X7Y">
+                    <view key="view" contentMode="scaleToFill" id="cWj-y1-X7Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-7B-2z6">
-                                <rect key="frame" x="15" y="107" width="384" height="1500"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-7B-2z6">
+                                <rect key="frame" x="15" y="107" width="384" height="691"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vjf-Wa-z7c" userLabel="HeaderView">
                                         <rect key="frame" x="0.0" y="8" width="384" height="0.0"/>
@@ -1616,8 +1609,8 @@
                                             <constraint firstAttribute="height" id="2MD-c3-XdB"/>
                                         </constraints>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-ou-4jf">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="1500"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-ou-4jf">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="691"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHt-00-RNc" userLabel="ContentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="1500"/>
@@ -1718,8 +1711,8 @@
                                     <constraint firstAttribute="bottom" secondItem="DcB-ou-4jf" secondAttribute="bottom" id="tm4-Vs-kXF"/>
                                 </constraints>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-ox-87c">
-                                <rect key="frame" x="0.0" y="1622" width="414" height="49"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-ox-87c">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="bTx-ty-Sku"/>
                                 </constraints>
@@ -2895,12 +2888,16 @@
             </objects>
             <point key="canvasLocation" x="2526" y="-145"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navagation New Time Entry-->
         <scene sceneID="VLJ-oH-Xbd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LpA-L8-8Q7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="0MP-PK-1AQ"/>
+                    <navigationItem key="navigationItem" title="Navagation New Time Entry" id="0MP-PK-1AQ">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="jK6-F3-oO0">
+                            <color key="tintColor" name="darkTextColor"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JGH-MF-Gso">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2912,7 +2909,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTu-QV-sGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3043" y="-732"/>
+            <point key="canvasLocation" x="3043" y="-733"/>
         </scene>
         <!--Regular Rate Info View Controller-->
         <scene sceneID="ube-ca-yuQ">
@@ -3076,8 +3073,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="KJz-zA-nJd"/>
-        <segue reference="7uc-bX-bfm"/>
+        <segue reference="raw-Tx-Vfv"/>
+        <segue reference="2Fb-bA-ARb"/>
         <segue reference="GGP-HT-mqi"/>
         <segue reference="isf-7E-suF"/>
     </inferredMetricsTieBreakers>

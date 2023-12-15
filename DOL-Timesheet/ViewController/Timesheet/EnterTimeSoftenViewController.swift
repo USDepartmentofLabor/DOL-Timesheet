@@ -62,6 +62,11 @@ class EnterTimeSoftenViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIBarButtonItem.appearance().setTitleTextAttributes(nil, for: .normal)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
@@ -79,6 +84,7 @@ class EnterTimeSoftenViewController: UIViewController {
     }
     
     func setupView() {
+
         let cancelBtn = UIBarButtonItem(title: "cancel".localized, style: .plain, target: self, action: #selector(cancel(_:)))
         navigationItem.leftBarButtonItem = cancelBtn
 
