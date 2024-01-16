@@ -49,7 +49,7 @@ class OnboardPayViewController: OnboardBaseViewController {
     
     @IBOutlet weak var stateMinimumText: UILabel!
     @IBOutlet weak var stateMinimumField: UITextField!
-    
+    @IBOutlet weak var infoStateMinimumButton: UIButton!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var containerView: UIView!
@@ -400,6 +400,10 @@ class OnboardPayViewController: OnboardBaseViewController {
     
     @IBAction func infoStateButtonPressed(_ sender: Any) {
         displayInfoPopup(sender, info: .state)
+    }
+    
+    @IBAction func infoMinimumWageButton(_ sender: Any) {
+        displayInfoPopup(sender, info: .state_minimumWage)
     }
     
 }

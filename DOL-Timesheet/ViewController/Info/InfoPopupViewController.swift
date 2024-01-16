@@ -39,6 +39,7 @@ enum Info: String {
     case round_updown
     case dont_round_updown
     case state
+    case state_minimumWage
     case unknown
     
     var title: String {
@@ -104,6 +105,8 @@ enum Info: String {
             title = NSLocalizedString("info_dont_round_up_down_text", comment: "Dont Round UpDown Time")
         case .state:
             title = "info_state".localized
+        case .state_minimumWage:
+            title = "info_state_minimumWage".localized
         case .unknown:
             title = ""
         }

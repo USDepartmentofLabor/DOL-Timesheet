@@ -25,6 +25,7 @@ class WorkWeekTableViewCell: UITableViewCell {
             }
             
             workWeekBtn.setTitle(title, for: .normal)
+            workWeekBtn.setTitleColor(UIColor.white, for: .normal)
         }
     }
 

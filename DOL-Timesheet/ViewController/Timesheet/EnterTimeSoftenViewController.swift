@@ -41,6 +41,9 @@ class EnterTimeSoftenViewController: UIViewController {
     @IBOutlet weak var employmentPopUp: UIButton!
     @IBOutlet weak var ratePopUp: UIButton!
     
+    @IBOutlet weak var employerRateBorderView: UIView!
+    @IBOutlet weak var employerRateHeightConstraint: NSLayoutConstraint!
+    
     weak var delegate: EnterTimeViewControllerDelegate?
     var timePickerVC: TimePickerViewController?
     
@@ -185,6 +188,23 @@ class EnterTimeSoftenViewController: UIViewController {
     }
     
     func setupRatePopupButton(){
+        if let paymentType = timeSheetModel?.currentEmploymentModel?.paymentType,
+           paymentType == .salary {
+            
+            employerRateBorderView.isHidden = true
+            rateTitleLabel.isHidden = true
+            ratePopUp.isHidden =  true
+            employerRateHeightConstraint.constant = 45
+//            view.layoutIfNeeded()
+            return
+        }
+        
+        employerRateBorderView.isHidden = false
+        rateTitleLabel.isHidden = false
+        ratePopUp.isHidden =  false
+        employerRateHeightConstraint.constant = 91
+//        view.layoutIfNeeded()
+        
         rateOptions = timeSheetModel?.currentEmploymentModel?.hourlyRates
         
         let optionClosure = {(action : UIAction) in

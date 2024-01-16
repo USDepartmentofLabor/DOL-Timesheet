@@ -26,6 +26,7 @@ class PaymentFrequencyTableViewCell: UITableViewCell {
             }
             
             paymentFrequencyBtn.setTitle(title, for: .normal)
+            paymentFrequencyBtn.setTitleColor(UIColor.white, for: .normal)
         }
     }
     

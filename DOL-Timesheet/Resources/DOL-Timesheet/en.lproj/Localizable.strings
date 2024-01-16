@@ -471,6 +471,7 @@
 "wage_and_hour_division_link" = "http://www.dol.gov/whd/contact_us.htm";
 
 "info_state" = "We use the state you work in to help detect situations where your pay might be below the federal minimum wage.";
+"info_state_minimumWage" = "Where a state minimum wage law is less restrictive than the federal law, the federal law applies. Where a state child labor law is more restrictive than the federal law, the state law applies. For further information, please visit: <a href=\"https://www.dol.gov/agencies/whd/mw-consolidated\" style=\"text-decoration:none\">https://www.dol.gov/agencies/whd/mw-consolidated</a> or contact us at 1-866-4US-WAGE.";
 "state_minimum_wage" = "State minimum wage";
 "employee_first_pay_period"= "Start date of employee’s current pay period?";
 "employer_first_pay_period"= "Start date of your current pay period?";

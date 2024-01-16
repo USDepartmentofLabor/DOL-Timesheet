@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupApprearance() {
         UINavigationBar.appearance().barTintColor = UIColor(named: "appNavBarColor")
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = UIColor(named: "blackTextColor")
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
                                                             NSAttributedString.Key.font: Style.scaledFont(forDataType: .appTitle)]
         UIBarButtonItem.appearance().setTitleTextAttributes([

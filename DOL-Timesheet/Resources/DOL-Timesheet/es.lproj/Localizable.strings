@@ -471,6 +471,7 @@ empleado?";
 "info_dont_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid exactly for 7 hours and 55 minutes of work DO NOT get their pay rounded up/down to the nearest 15 minutes.";
 
 "info_state" = "Utilizamos el estado en el que trabaja para ayudar a detectar situaciones en las que su salario podría estar por debajo del salario mínimo federal.";
+"info_state_minimumWage" = "Where a state minimum wage law is less restrictive than the federal law, the federal law applies. Where a state child labor law is more restrictive than the federal law, the state law applies. For further information, please visit: <a href=\"https://www.dol.gov/agencies/whd/mw-consolidated\" style=\"text-decoration:none\">https://www.dol.gov/agencies/whd/mw-consolidated</a> or contact us at 1-866-4US-WAGE.";
 "employer_first_pay_period"= "¿Fecha de inicio de su actual período de pago?";
 "employee_first_pay_period"= "¿Fecha de inicio del actual período de pago del empleado?";
 

@@ -21,6 +21,7 @@ class PaymentTypeTableViewCell: UITableViewCell {
     var paymentType: PaymentType? {
         didSet {
             paymentTypeButton.setTitle(paymentType?.title, for: .normal)
+            paymentTypeButton.setTitleColor(UIColor.white, for: .normal)
             paymentTypeLabel.text = paymentType?.desc
         }
     }
@@ -41,6 +42,7 @@ class PaymentTypeTableViewCell: UITableViewCell {
     
     func setupView() {
         paymentTypeLabel.scaleFont(forDataType: .glossaryText)
+        paymentTypeButton
         setupAccessibility()
     }
     

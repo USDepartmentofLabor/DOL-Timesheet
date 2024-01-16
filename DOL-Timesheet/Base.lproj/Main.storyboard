@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NNC-uZ-gvN">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
@@ -756,7 +756,7 @@
                                         </state>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGU-OR-FMJ" userLabel="Border">
-                                        <rect key="frame" x="0.0" y="46" width="374" height="1"/>
+                                        <rect key="frame" x="0.0" y="45" width="374" height="1"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="F9b-ts-4Ws"/>
@@ -787,17 +787,17 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="PGU-OR-FMJ" secondAttribute="trailing" id="1Op-VT-L91"/>
+                                    <constraint firstAttribute="height" constant="91" id="5dL-9i-6lf"/>
                                     <constraint firstItem="nU1-xX-WEV" firstAttribute="leading" secondItem="XMk-Zz-y1D" secondAttribute="leading" constant="16" id="9qK-dy-ML7"/>
                                     <constraint firstAttribute="trailing" secondItem="Aqc-nq-SkZ" secondAttribute="trailing" constant="8" id="Cdo-mZ-YPw"/>
                                     <constraint firstItem="PGU-OR-FMJ" firstAttribute="leading" secondItem="XMk-Zz-y1D" secondAttribute="leading" id="LBJ-48-6kf"/>
-                                    <constraint firstItem="Aqc-nq-SkZ" firstAttribute="top" secondItem="PGU-OR-FMJ" secondAttribute="bottom" constant="8" id="Nws-8k-VTE"/>
                                     <constraint firstItem="isW-l3-TIp" firstAttribute="leading" secondItem="nVU-8i-HqJ" secondAttribute="trailing" constant="8" id="Sqj-sc-krN"/>
                                     <constraint firstAttribute="bottom" secondItem="Aqc-nq-SkZ" secondAttribute="bottom" constant="6" id="Wlg-16-1p1"/>
-                                    <constraint firstItem="PGU-OR-FMJ" firstAttribute="top" secondItem="isW-l3-TIp" secondAttribute="bottom" constant="8" id="ZrH-3d-k7d"/>
                                     <constraint firstAttribute="trailing" secondItem="isW-l3-TIp" secondAttribute="trailing" constant="8" id="dMq-8p-k9W"/>
                                     <constraint firstItem="nVU-8i-HqJ" firstAttribute="leading" secondItem="XMk-Zz-y1D" secondAttribute="leading" constant="16" id="m8x-EJ-wKC"/>
                                     <constraint firstItem="Aqc-nq-SkZ" firstAttribute="leading" secondItem="nU1-xX-WEV" secondAttribute="trailing" constant="8" id="nZs-hH-a5P"/>
                                     <constraint firstItem="nVU-8i-HqJ" firstAttribute="centerY" secondItem="isW-l3-TIp" secondAttribute="centerY" id="nm8-UX-8AS"/>
+                                    <constraint firstItem="PGU-OR-FMJ" firstAttribute="centerY" secondItem="XMk-Zz-y1D" secondAttribute="centerY" id="vl7-2A-ZDa"/>
                                     <constraint firstItem="isW-l3-TIp" firstAttribute="top" secondItem="XMk-Zz-y1D" secondAttribute="top" constant="8" id="xmb-uP-ncy"/>
                                     <constraint firstItem="nU1-xX-WEV" firstAttribute="centerY" secondItem="Aqc-nq-SkZ" secondAttribute="centerY" id="yuo-cK-n9G"/>
                                 </constraints>
@@ -1045,6 +1045,8 @@
                         <outlet property="commentsHint" destination="wRh-eT-A0U" id="29M-AT-von"/>
                         <outlet property="dateDropDownView" destination="wFc-rN-pqq" id="oyP-KJ-8lc"/>
                         <outlet property="dateView" destination="xXr-eo-35A" id="YTG-YB-Dct"/>
+                        <outlet property="employerRateBorderView" destination="PGU-OR-FMJ" id="5vM-RI-nN5"/>
+                        <outlet property="employerRateHeightConstraint" destination="5dL-9i-6lf" id="uYF-bT-S48"/>
                         <outlet property="employmentPopUp" destination="isW-l3-TIp" id="mQJ-Ge-GVJ"/>
                         <outlet property="employmentTitleLabel" destination="nVU-8i-HqJ" id="8vH-Qg-pgx"/>
                         <outlet property="employmentView" destination="XMk-Zz-y1D" id="eto-S7-LQC"/>
@@ -1279,7 +1281,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xkI-Ca-cHN">
                                 <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6a-x3-Fa9" userLabel="RateView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e6a-x3-Fa9" userLabel="RateView" customClass="DropDownView" customModule="Timesheet" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="33.5"/>
                                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
@@ -1364,7 +1366,6 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="xck-2b-Cqf" firstAttribute="leading" secondItem="Cgs-LS-hLE" secondAttribute="trailing" constant="12" id="09W-sH-iIP"/>
                                                     <constraint firstItem="Cgs-LS-hLE" firstAttribute="centerX" secondItem="wwX-Cf-acN" secondAttribute="centerX" id="9XQ-0i-1Gi"/>
@@ -1474,7 +1475,7 @@
                         <outlet property="actionStackView" destination="NeJ-x8-7qj" id="2Qh-7W-GPG"/>
                         <outlet property="breakHoursCounterLabel" destination="5Uo-XB-yhV" id="RVe-4N-RnH"/>
                         <outlet property="breakHoursTitleLabel" destination="Cgs-LS-hLE" id="jeq-Ag-Drk"/>
-                        <outlet property="breakHoursView" destination="wwX-Cf-acN" id="QCu-uJ-HEY"/>
+                        <outlet property="breakHoursView" destination="wwX-Cf-acN" id="I0m-TM-8EM"/>
                         <outlet property="breakTimeInfoBtn" destination="xck-2b-Cqf" id="JPG-yw-smc"/>
                         <outlet property="breakTimeInfoLabel" destination="C1S-yc-BdG" id="du1-V6-AcO"/>
                         <outlet property="breakViewHeightConstraint" destination="Ba6-FV-PZ5" id="bvo-8V-vwZ"/>
@@ -1482,6 +1483,7 @@
                         <outlet property="hoursView" destination="8fb-J4-WWS" id="Lpr-Js-EJd"/>
                         <outlet property="hoursWorkedInfoBtn" destination="kss-xC-1KB" id="dAk-og-hAL"/>
                         <outlet property="hoursWorkedTitleLabel" destination="JoT-Yc-iPD" id="6y7-3m-Qb5"/>
+                        <outlet property="myView" destination="cif-Hr-XOI" id="rhn-nt-kzm"/>
                         <outlet property="popupBottomConstraint" destination="4Yn-B6-tBb" id="pr3-gY-UOn"/>
                         <outlet property="popupHeightConstraint" destination="9KB-te-thT" id="Jcl-jz-IP6"/>
                         <outlet property="rateDropDownView" destination="e6a-x3-Fa9" id="QJc-dr-3Yw"/>
@@ -1600,7 +1602,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-7B-2z6">
-                                <rect key="frame" x="15" y="107" width="384" height="691"/>
+                                <rect key="frame" x="15" y="107" width="384" height="1500"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vjf-Wa-z7c" userLabel="HeaderView">
                                         <rect key="frame" x="0.0" y="8" width="384" height="0.0"/>
@@ -1610,7 +1612,7 @@
                                         </constraints>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-ou-4jf">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="691"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="1500"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHt-00-RNc" userLabel="ContentView">
                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="1500"/>
@@ -1712,7 +1714,7 @@
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-ox-87c">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="1622" width="414" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="bTx-ty-Sku"/>
                                 </constraints>
@@ -3074,7 +3076,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="raw-Tx-Vfv"/>
-        <segue reference="2Fb-bA-ARb"/>
+        <segue reference="7uc-bX-bfm"/>
         <segue reference="GGP-HT-mqi"/>
         <segue reference="isf-7E-suF"/>
     </inferredMetricsTieBreakers>

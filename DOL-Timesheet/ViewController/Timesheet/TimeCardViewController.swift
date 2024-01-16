@@ -25,6 +25,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     }
     
     
+    @IBOutlet var myView: UIView!
     @IBOutlet weak var rateDropDownView: DropDownView!
     
     @IBOutlet weak var rateViewHeightConstraint: NSLayoutConstraint!
@@ -139,7 +140,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         breakTimeInfoLabel.scaleFont(forDataType: .timecardInfoText)
 //        breakTimeInfoLabel.textColor = UIColor(named: "appSecondaryColor")
         
-//        breakHoursView.isHidden = true
+        breakHoursView.isHidden = true
         breakViewHeightConstraint.constant = 0.0
         
 //        commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
@@ -153,7 +154,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         discardButton.setTitleColor(UIColor.white, for: .highlighted)
         discardButton.setTitle("discard".localized, for: .normal)
                 
-        workedHoursView.bottomAnchor.constraint(equalTo: hoursView.bottomAnchor).isActive = true
+//        workedHoursView.bottomAnchor.constraint(equalTo: hoursView.bottomAnchor).isActive = true
         
         ratePopupButton.isHidden = true
         rateDropDownView.isHidden = false
@@ -260,6 +261,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         
         if let hourlyRates = viewModel?.currentEmploymentModel?.hourlyRates, hourlyRates.count > 0 {
             currentHourlyRate = hourlyRates[0]
+            rateOptions = viewModel?.currentEmploymentModel?.hourlyRates
         }
         else {
             currentHourlyRate = nil
@@ -380,7 +382,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         breakViewHeightConstraint.constant = 119.0
         if isValidHourlyRate() {
             viewModel?.clock(action: .startBreak, comments: "")
-       //     breakHoursView.isHidden = false
+            breakHoursView.isHidden = false
             view.layoutSubviews()
             view.layoutIfNeeded()
             displayClock()
@@ -395,7 +397,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         }
         breakViewHeightConstraint.constant = 0.0
         if ( viewModel?.currentEmploymentModel?.employmentInfo.clock?.totalBreakTime() ?? 0 >= 0) {
-        //    breakHoursView.isHidden = true
+            breakHoursView.isHidden = true
             view.layoutIfNeeded()
             viewModel?.clock(action: .endBreak, comments: "")
             displayClock()
@@ -434,6 +436,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         
     func discardEntry() {
         breakViewHeightConstraint.constant = 0.0
+        breakHoursView.isHidden = true
         discardButton.isHidden = true
         viewModel?.clock(action: .discardEntry, comments: nil)
         displayClock()
