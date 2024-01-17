@@ -278,9 +278,6 @@ class OnboardWorkViewController: OnboardBaseViewController {
         // Optionally, update the IBOutlet reference
         firstDayPickerHeightConstraint = newHeightConstraint
         
-        let pickerView = UIPickerView()
-        pickerView.frame = CGRect(x: 0, y: 0, width: firstDayDatePicker.frame.width, height: height) // Adjust the frame as needed
-        view.addSubview(pickerView)
     }
 }
 

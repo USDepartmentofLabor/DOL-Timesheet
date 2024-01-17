@@ -27,7 +27,7 @@ class TimeViewController: UIViewController {
     @IBOutlet weak var timeContainerView: UIView!
     
     weak var currentTimeViewController: UIViewController?
-    var viewModel: TimesheetViewModel?
+    public var viewModel: TimesheetViewModel?
     
     @IBOutlet weak var toolbar: UIToolbar!
     
@@ -366,6 +366,9 @@ extension TimeViewController {
 
 extension TimeViewController: TimeViewControllerDelegate {
     func didUpdateUser() {
+        if let user = viewModel?.userProfileModel.employmentUsers.first {
+            self.setCurrentUser(user: user)
+        }
         displayInfo()
     }
     

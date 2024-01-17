@@ -563,8 +563,8 @@
 				03CEDF85226E3CDC0041C3ED /* SelectableButton.swift */,
 				59B1BEA12294588D00F0D37A /* TitleValueLabel.swift */,
 				032C514A22A7F03E0095C1A2 /* RadioButton.swift */,
-				032E5F2B22A99EE400F6EC26 /* BorderedView.swift */,
 				0326DB612326C46500EDA2F7 /* ShadowView.swift */,
+				032E5F2B22A99EE400F6EC26 /* BorderedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
