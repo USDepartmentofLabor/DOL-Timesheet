@@ -255,7 +255,7 @@ class Period {
     }
     
     var title: String {
-        get { return "\("period_of".localized) \(startDate.formattedDate) - \(endDate.formattedDate)"}
+        get { return "\(startDate.formattedDate) - \(endDate.formattedDate)"}
     }
     
     func numberOfDays() -> Int {

@@ -206,14 +206,9 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             menuActions.append(action)
         }
         
-        if #available(iOS 14.0, *) {
-            ratePopupButton.menu = UIMenu(children : menuActions)
-            ratePopupButton.showsMenuAsPrimaryAction = true
-        }
-        
-        if #available(iOS 15.0, *) {
-            ratePopupButton.changesSelectionAsPrimaryAction = true
-        }
+        ratePopupButton.menu = UIMenu(children : menuActions)
+        ratePopupButton.showsMenuAsPrimaryAction = true
+        ratePopupButton.changesSelectionAsPrimaryAction = true
     }
     
     func displayInfo() {

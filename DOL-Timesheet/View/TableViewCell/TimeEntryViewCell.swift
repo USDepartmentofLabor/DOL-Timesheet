@@ -1,0 +1,52 @@
+//
+//  TimeEntryViewCell.swift
+//  DOL-Timesheet
+//
+//  Created by Greg Gruse on 1/19/24.
+//  Copyright © 2024 Department of Labor. All rights reserved.
+//
+
+import UIKit
+
+class TimeEntryViewCell: UITableViewCell {
+    
+    class var nibName: String { return "TimeEntryViewCell" }
+    class var reuseIdentifier: String { return "TimeEntryViewCell" }
+
+    @IBOutlet weak var rateName: UILabel!
+    @IBOutlet weak var timeFrame: UILabel!
+    @IBOutlet weak var totalTime: UILabel!
+    
+    
+    public func configure(timeLog: TimeLog) {
+        
+        if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
+            let title = (hourlyTimeLog.value > 0) ? "\(hourlyTimeLog.hourlyRate?.name ?? "") \(NumberFormatter.localisedCurrencyStr(from: hourlyTimeLog.value))" :
+            hourlyTimeLog.hourlyRate?.title
+            rateName.text = title ?? ""
+        } else {
+            rateName.text = "Rate"
+        }
+        
+        if let start = timeLog.startTime,
+           let end = timeLog.endTime {
+            timeFrame.text = "\(start.formattedTime) - \(end.formattedTime)"
+            
+        }
+        let hours: Int = timeLog.hoursLogged / 3600
+        let minutes: Int = (timeLog.hoursLogged - (hours * 3600)) / 60
+        
+        totalTime.text = "\(hours) hrs \(minutes) min"
+    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+}
