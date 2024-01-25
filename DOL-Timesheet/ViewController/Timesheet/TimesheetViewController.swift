@@ -21,6 +21,10 @@ protocol EnterTimeViewControllerDelegate: class {
     func didCancelEnterTime()
 }
 
+protocol TimeCardViewControllerDelegate: class {
+    func didEnterTime(enterTimeModel: EnterTimeViewModel?)
+}
+
 
 class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerProtocol {
 

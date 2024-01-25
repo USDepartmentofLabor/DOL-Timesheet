@@ -89,7 +89,10 @@ class EnterTimeSoftenViewController: UIViewController {
     func setupView() {
 
         let cancelBtn = UIBarButtonItem(title: "cancel".localized, style: .plain, target: self, action: #selector(cancel(_:)))
+        cancelBtn.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.red], for: .normal)
         navigationItem.leftBarButtonItem = cancelBtn
+
+
 
         let saveBtn = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(save(_:)))
         navigationItem.rightBarButtonItem = saveBtn
@@ -142,6 +145,8 @@ class EnterTimeSoftenViewController: UIViewController {
 //        breakTimeTitleLabel.scaleFont(forDataType: .columnHeader)
 //        hourlyRateTitleLabel.scaleFont(forDataType: .columnHeader)
 //        commentTextView.scaleFont(forDataType: .enterCommentsValue)
+        
+        commentTextView.textColor = UIColor(named: "blackTextColor")
         
         employmentView.layer.cornerRadius = 10
         dateView.layer.cornerRadius = 10

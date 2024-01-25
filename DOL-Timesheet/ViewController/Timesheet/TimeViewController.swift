@@ -12,7 +12,7 @@ protocol TimeViewDelegate: class {
     func displayInfo()
 }
 
-class TimeViewController: UIViewController {
+class TimeViewController: UIViewController, TimeCardDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -109,44 +109,48 @@ class TimeViewController: UIViewController {
     }
     
     func displayInfo() {
-        if currentTimeViewController is TimesheetSoftenViewController {
+        if currentTimeViewController is TimesheetViewController {
             title = "timesheet".localized
         } else {
             title = "timecard".localized
         }
-                
-//        let profileUser = viewModel?.userProfileModel.profileModel.currentUser
-//      //  userNameLabel.text = profileUser?.name
-//
-//        let profileImage = profileUser?.image?.normalizedImage() ?? #imageLiteral(resourceName: "profile")
-//
-//        let profileBtn = UIButton(type: .custom)
-//        profileBtn.setBackgroundImage(profileImage, for: .normal)
-//        profileBtn.clipsToBounds = true
-//        profileBtn.contentMode = .scaleAspectFill
-//        profileBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-//        profileBtn.widthAnchor.constraint(equalToConstant: 40).isActive = true
-//        profileBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
-//        profileBtn.addBorder(borderColor: .white, borderWidth: 0.5, cornerRadius: profileBtn.bounds.size.width / 2)
-//
-//        profileBtn.accessibilityHint = "profile_hint".localized
-//        profileBtn.addTarget(self, action: #selector(profileClicked(sender:)), for: UIControl.Event.touchDown)
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileBtn)
         
-      //  editBtn.setTitle("edit".localized, for: .normal)
+        //        let profileUser = viewModel?.userProfileModel.profileModel.currentUser
+        //      //  userNameLabel.text = profileUser?.name
+        //
+        //        let profileImage = profileUser?.image?.normalizedImage() ?? #imageLiteral(resourceName: "profile")
+        //
+        //        let profileBtn = UIButton(type: .custom)
+        //        profileBtn.setBackgroundImage(profileImage, for: .normal)
+        //        profileBtn.clipsToBounds = true
+        //        profileBtn.contentMode = .scaleAspectFill
+        //        profileBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        //        profileBtn.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        //        profileBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        //        profileBtn.addBorder(borderColor: .white, borderWidth: 0.5, cornerRadius: profileBtn.bounds.size.width / 2)
+        //
+        //        profileBtn.accessibilityHint = "profile_hint".localized
+        //        profileBtn.addTarget(self, action: #selector(profileClicked(sender:)), for: UIControl.Event.touchDown)
+        //        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileBtn)
+        
+        //  editBtn.setTitle("edit".localized, for: .normal)
         
         if viewModel?.userProfileModel.isProfileEmployer ?? false {
-        //    employeeEmployerTitleLabel.text = "employee".localized
+            //    employeeEmployerTitleLabel.text = "employee".localized
             selectUserDropDownView.accessibilityHint = "employee_user_hint".localized
             selectEmployerPopupLabel.text = "employee".localized
         }
         else {
-        //    employeeEmployerTitleLabel.text = "employer".localized
+            //    employeeEmployerTitleLabel.text = "employer".localized
             selectUserDropDownView.accessibilityHint = "employer_user_hint".localized
             selectEmployerPopupLabel.text = "employer".localized
         }
         setupPopupButton()
         displayEmploymentInfo()
+    }
+    
+    func gotoTimesheet() {
+        displayTimeSheet()
     }
     
     func setupPopupButton(){
@@ -183,7 +187,7 @@ class TimeViewController: UIViewController {
     
     
     @IBAction func timeToggleClicked(_ sender: Any) {
-        if currentTimeViewController is TimesheetSoftenViewController {
+        if currentTimeViewController is TimesheetViewController {
             displayTimeCard()
         }
         else {
@@ -192,7 +196,7 @@ class TimeViewController: UIViewController {
     }
     
     @IBAction func exportClicked(_ sender: Any) {
-        if let vc = currentTimeViewController as? TimesheetSoftenViewController {
+        if let vc = currentTimeViewController as? TimesheetViewController {
             vc.export(sender)
         }
     }
@@ -204,7 +208,7 @@ class TimeViewController: UIViewController {
     }
     
     @IBAction func timecardClicked(_ sender: Any) {
-        if currentTimeViewController is TimesheetSoftenViewController {
+        if currentTimeViewController is TimesheetViewController {
             displayTimeCard()
         }
     }
@@ -439,6 +443,7 @@ extension TimeViewController {
         else {
             timecardVC = TimeCardViewController.instantiateFromStoryboard()
             timecardVC.viewModel = viewModel
+            timecardVC.timeViewControllerDelegate = self
             addViewController(viewController: timecardVC)
 //            timecardVC.commentsTextView.delegate = self
         }
@@ -456,13 +461,13 @@ extension TimeViewController {
     }
 
     func displayTimeSheet() {
-        let timesheetVC: TimesheetSoftenViewController
+        let timesheetVC: TimesheetViewController
         
-        if let vc = currentTimeViewController as? TimesheetSoftenViewController {
+        if let vc = currentTimeViewController as? TimesheetViewController {
             timesheetVC = vc
         }
         else {
-            timesheetVC = TimesheetSoftenViewController.instantiateFromStoryboard()
+            timesheetVC = TimesheetViewController.instantiateFromStoryboard()
             timesheetVC.viewModel = viewModel
             addViewController(viewController: timesheetVC)
         }

@@ -423,6 +423,8 @@ class SetupProfileViewController: UIViewController {
         }
         
         manageVC?.viewModel = ProfileViewModel(context: viewModel.managedObjectContext.childManagedObjectContext())
+        
+        addClicked()
     }
     
     

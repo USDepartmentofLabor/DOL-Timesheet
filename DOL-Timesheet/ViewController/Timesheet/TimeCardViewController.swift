@@ -9,7 +9,12 @@
 import UIKit
 //import DropDown
 
-class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewControllerDelegate {
+protocol TimeCardDelegate: class {
+    func gotoTimesheet()
+}
+
+
+class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewControllerDelegate, TimeCardViewControllerDelegate {
     func didUpdateUser() {
     
     }
@@ -62,6 +67,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     
     var rateOptions: [HourlyRate]?
     let lighterGrey = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
+    
+    weak var delegate: EnterTimeViewControllerDelegate?
 
     
     var workedHoursCounter: TimeInterval = 0 {
@@ -83,6 +90,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     }
     
     var viewModel: TimesheetViewModel?
+    weak var timeViewControllerDelegate: TimeCardDelegate?
     var timer: Timer?
     var currentHourlyRate: HourlyRate? {
         didSet {
@@ -222,36 +230,16 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         
         if let paymentType = viewModel?.currentEmploymentModel?.paymentType,
             paymentType == .salary {
-            if #available(iOS 15.0, *) {
-                ratePopupButton.isHidden = true
-                ratePopupButton.isAccessibilityElement = false
-                popupBottomConstraint.priority = .init(200)
-                popupHeightConstraint.priority = .init(200)
-                
-            } else {
-                rateDropDownView.isHidden = true
-                rateDropDownView.isAccessibilityElement = false
-                rateViewBottomConstraint.priority = .init(200)
-                rateViewHeightConstraint.priority = .init(200)
-            }
+            ratePopupButton.isHidden = true
+            ratePopupButton.isAccessibilityElement = false
+            popupBottomConstraint.priority = .init(200)
+            popupHeightConstraint.priority = .init(200)
         }
         else {
-            if #available(iOS 15.0, *) {
-                ratePopupButton.isHidden = false
-                ratePopupButton.isAccessibilityElement = true
-                popupBottomConstraint.priority = .init(900)
-                popupHeightConstraint.priority = .init(900)
-                
-            } else {
-                rateDropDownView.isHidden = false
-                rateDropDownView.isAccessibilityElement = true
-                rateViewBottomConstraint.priority = .init(900)
-                rateViewHeightConstraint.priority = .init(900)
-                
-                let rateTapGesture = UITapGestureRecognizer(target: self, action: #selector(rateClick(_:)))
-                rateTapGesture.cancelsTouchesInView = false
-                rateDropDownView.addGestureRecognizer(rateTapGesture)
-            }
+            ratePopupButton.isHidden = false
+            ratePopupButton.isAccessibilityElement = true
+            popupBottomConstraint.priority = .init(900)
+            popupHeightConstraint.priority = .init(900)
         }
         
         if let hourlyRates = viewModel?.currentEmploymentModel?.hourlyRates, hourlyRates.count > 0 {
@@ -335,7 +323,6 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     
     @IBAction func endWorkClick(_ sender: Any) {
         
-        
         if !isValidHourlyRate(){
             self.discardEntry()
             return
@@ -343,7 +330,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         
         if ( viewModel?.currentEmploymentModel?.employmentInfo.clock?.totalHoursWorked() ?? 0 >= 0) {
             viewModel?.clock(action: .endWork, comments: "")
-            
+  
             if let clock = viewModel?.currentEmploymentModel?.employmentInfo.clock {
                 
                 if !(clock.startTime?.isEqualOnlyDate(date: Date()) ?? true) {
@@ -351,14 +338,20 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
                     let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "yes".localized, style: .default, handler: { [weak self] (action) in
                         guard let strongSelf = self else { return }
-                            strongSelf.performSegue(withIdentifier: "enterTime", sender: clock)
+                        strongSelf.timeViewControllerDelegate?.gotoTimesheet()
+                        strongSelf.resetClock(clock)
+//                        strongSelf.discardEntry()
                     }))
                         
                     alertController.addAction(UIAlertAction(title: "no".localized, style: .cancel, handler: nil))
                     present(alertController, animated: false)
                 }
                 else {
-                    performSegue(withIdentifier: "enterTime", sender: clock)
+                   // displayClock()
+                    timeViewControllerDelegate?.gotoTimesheet()
+                    resetClock(clock)
+//                    self.discardEntry()
+//                    performSegue(withIdentifier: "enterTime", sender: clock)
                 }
             }
         } else {
@@ -434,6 +427,20 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         breakHoursView.isHidden = true
         discardButton.isHidden = true
         viewModel?.clock(action: .discardEntry, comments: nil)
+        displayClock()
+        
+    }
+    
+    func resetClock(_ clock: PunchClock) {
+        breakViewHeightConstraint.constant = 0.0
+        breakHoursView.isHidden = true
+        discardButton.isHidden = true
+        
+        let enterTimeModel = viewModel?.createEnterTimeViewModel(for: clock, hourlyRate: currentHourlyRate)
+        enterTimeModel?.save()
+        
+        delegate?.didEnterTime(enterTimeModel: enterTimeModel)
+        
         displayClock()
         
     }
@@ -608,6 +615,11 @@ extension TimeCardViewController {
             discardEntryBtn.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
             
             actionStackView.addArrangedSubview(discardEntryBtn)
+        }
+        
+        for action in actionStackView.arrangedSubviews {
+            let heightConstraint = action.heightAnchor.constraint(equalToConstant: newHeight)
+            heightConstraint.isActive = true
         }
     }
     
