@@ -20,6 +20,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     @IBOutlet weak var timeTableView: UITableView!
     @IBOutlet weak var timeTableviewHeightConstraint: NSLayoutConstraint!
 
+    @IBOutlet weak var scrollView: UIScrollView!
     var viewModel: TimesheetViewModel?
 
     override func viewDidLoad() {
@@ -89,6 +90,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             self.timeTableView.layoutIfNeeded()
         }) { (complete) in
             self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
+            self.scrollView.contentSize = CGSize(width: self.scrollView.frame.size.width, height: self.timeTableView.contentSize.height + self.payPeriodDatePicker.frame.origin.y + self.payPeriodDatePicker.frame.size.height)
         }
 
        // displayTotals()
@@ -120,9 +122,10 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
 
         let titleLabel = UILabel()
         let sectionDate = viewModel?.currentPeriod?.date(at: section)
-        titleLabel.text = "\(sectionDate?.formattedWeekday ?? "") \(sectionDate?.formattedDate ?? "")" // Customize the header text
-        titleLabel.textColor = UIColor.black // Customize the text color
-        titleLabel.frame = CGRect(x: 15, y: 5, width: tableView.frame.width - 30, height: 30) // Adjust the frame as needed
+        titleLabel.text = "\(sectionDate?.formattedWeekday ?? "") \(sectionDate?.formattedDate ?? "")".uppercased() // Customize the header text
+        titleLabel.textColor = UIColor(named: "darkTextColor") // Customize the text color
+        titleLabel.frame = CGRect(x: 0, y: 0, width: tableView.frame.width - 30, height: 30) // Adjust the frame as needed
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 10)
 
         headerView.addSubview(titleLabel)
 
@@ -131,9 +134,12 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let sectionDate = viewModel?.currentPeriod?.date(at: section)
-        let timeEntryViewModel: EnterTimeViewModel = (viewModel?.createEnterTimeViewModel(for: sectionDate!))!
-        let count = timeEntryViewModel.timeLogs?.count ?? 0
+        guard let sectionDate = viewModel?.currentPeriod?.date(at: section),
+              let viewModel = viewModel,
+              let dateLog = viewModel.currentEmploymentModel?.employmentInfo.log(forDate: sectionDate),
+              let count = dateLog.timeLogs?.count
+        else { return 0 }
+        
         return count
     }
     

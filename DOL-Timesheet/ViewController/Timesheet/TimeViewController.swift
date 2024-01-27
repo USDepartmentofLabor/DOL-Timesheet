@@ -109,7 +109,7 @@ class TimeViewController: UIViewController, TimeCardDelegate {
     }
     
     func displayInfo() {
-        if currentTimeViewController is TimesheetViewController {
+        if currentTimeViewController is TimesheetSoftenViewController {
             title = "timesheet".localized
         } else {
             title = "timecard".localized
@@ -187,7 +187,7 @@ class TimeViewController: UIViewController, TimeCardDelegate {
     
     
     @IBAction func timeToggleClicked(_ sender: Any) {
-        if currentTimeViewController is TimesheetViewController {
+        if currentTimeViewController is TimesheetSoftenViewController {
             displayTimeCard()
         }
         else {
@@ -196,7 +196,7 @@ class TimeViewController: UIViewController, TimeCardDelegate {
     }
     
     @IBAction func exportClicked(_ sender: Any) {
-        if let vc = currentTimeViewController as? TimesheetViewController {
+        if let vc = currentTimeViewController as? TimesheetSoftenViewController {
             vc.export(sender)
         }
     }
@@ -208,7 +208,7 @@ class TimeViewController: UIViewController, TimeCardDelegate {
     }
     
     @IBAction func timecardClicked(_ sender: Any) {
-        if currentTimeViewController is TimesheetViewController {
+        if currentTimeViewController is TimesheetSoftenViewController {
             displayTimeCard()
         }
     }
@@ -461,13 +461,13 @@ extension TimeViewController {
     }
 
     func displayTimeSheet() {
-        let timesheetVC: TimesheetViewController
+        let timesheetVC: TimesheetSoftenViewController
         
-        if let vc = currentTimeViewController as? TimesheetViewController {
+        if let vc = currentTimeViewController as? TimesheetSoftenViewController {
             timesheetVC = vc
         }
         else {
-            timesheetVC = TimesheetViewController.instantiateFromStoryboard()
+            timesheetVC = TimesheetSoftenViewController.instantiateFromStoryboard()
             timesheetVC.viewModel = viewModel
             addViewController(viewController: timesheetVC)
         }

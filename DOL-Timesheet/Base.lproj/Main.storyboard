@@ -1597,11 +1597,11 @@
         <scene sceneID="fdQ-8z-5Cs">
             <objects>
                 <viewController storyboardIdentifier="TimeViewController" id="Uz1-t8-iUz" customClass="TimeViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="cWj-y1-X7Y">
+                    <view key="view" contentMode="scaleToFill" id="cWj-y1-X7Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-7B-2z6">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-7B-2z6">
                                 <rect key="frame" x="15" y="107" width="384" height="1500"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vjf-Wa-z7c" userLabel="HeaderView">
@@ -1611,7 +1611,7 @@
                                             <constraint firstAttribute="height" id="2MD-c3-XdB"/>
                                         </constraints>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-ou-4jf">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-ou-4jf">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="1500"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHt-00-RNc" userLabel="ContentView">
@@ -1713,7 +1713,7 @@
                                     <constraint firstAttribute="bottom" secondItem="DcB-ou-4jf" secondAttribute="bottom" id="tm4-Vs-kXF"/>
                                 </constraints>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-ox-87c">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7a-ox-87c">
                                 <rect key="frame" x="0.0" y="1622" width="414" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="bTx-ty-Sku"/>
@@ -2822,14 +2822,14 @@
         <scene sceneID="iMK-HL-EYV">
             <objects>
                 <viewController storyboardIdentifier="TimesheetSoftenViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6XM-Qq-FLd" customClass="TimesheetSoftenViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="jho-iO-5AR">
+                    <view key="view" contentMode="scaleToFill" id="jho-iO-5AR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="2038"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CfL-X6-RXv">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CfL-X6-RXv">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="2038"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nQ9-Jo-6sj">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nQ9-Jo-6sj">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="2038"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AAu-dH-HIw" userLabel="EmploymentView">
@@ -2916,11 +2916,11 @@
                                                     <constraint firstAttribute="height" constant="307" id="ZYg-JO-a7j"/>
                                                 </constraints>
                                             </datePicker>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="y8X-5l-EaK">
-                                                <rect key="frame" x="20" y="447" width="374" height="1567"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="y8X-5l-EaK">
+                                                <rect key="frame" x="20" y="447" width="374" height="1583"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="1567" id="PUj-FW-ioz"/>
+                                                    <constraint firstAttribute="height" constant="1583" id="i9f-GB-5cj"/>
                                                 </constraints>
                                                 <color key="sectionIndexBackgroundColor" systemColor="systemGray5Color"/>
                                                 <prototypes>
@@ -2952,7 +2952,6 @@
                                             <constraint firstAttribute="trailing" secondItem="zz9-Cj-oFV" secondAttribute="trailing" constant="20" symbolic="YES" id="PkS-mU-q41"/>
                                             <constraint firstAttribute="trailing" secondItem="CqI-HB-hfQ" secondAttribute="trailing" constant="20" symbolic="YES" id="X4C-l2-aW6"/>
                                             <constraint firstItem="y8X-5l-EaK" firstAttribute="top" secondItem="zz9-Cj-oFV" secondAttribute="bottom" id="XEe-UN-LEm"/>
-                                            <constraint firstAttribute="bottom" secondItem="y8X-5l-EaK" secondAttribute="bottom" constant="8" id="ibZ-BL-ogf"/>
                                             <constraint firstItem="AAu-dH-HIw" firstAttribute="leading" secondItem="nQ9-Jo-6sj" secondAttribute="leading" constant="20" symbolic="YES" id="oNY-62-h8N"/>
                                             <constraint firstItem="zz9-Cj-oFV" firstAttribute="leading" secondItem="nQ9-Jo-6sj" secondAttribute="leading" constant="20" symbolic="YES" id="qPy-IB-zhZ"/>
                                         </constraints>
@@ -2985,8 +2984,9 @@
                         <outlet property="payPeriodDatePicker" destination="zz9-Cj-oFV" id="R1j-Rz-NJX"/>
                         <outlet property="payPeriodHeightConstraint" destination="ZYg-JO-a7j" id="pEN-Al-cNu"/>
                         <outlet property="periodLabel" destination="r0q-fU-Yy8" id="W8B-FQ-8wL"/>
+                        <outlet property="scrollView" destination="CfL-X6-RXv" id="rtO-Zi-INj"/>
                         <outlet property="timeTableView" destination="y8X-5l-EaK" id="86F-84-833"/>
-                        <outlet property="timeTableviewHeightConstraint" destination="PUj-FW-ioz" id="K2Q-pE-iKd"/>
+                        <outlet property="timeTableviewHeightConstraint" destination="i9f-GB-5cj" id="WZJ-XP-qaF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IbD-zb-aaL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
