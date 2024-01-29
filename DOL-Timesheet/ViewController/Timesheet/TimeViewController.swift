@@ -19,7 +19,6 @@ class TimeViewController: UIViewController, TimeCardDelegate {
     @IBOutlet weak var paymentTypeLabel: UILabel!
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var employeeEmployerTitleLabel: UILabel!
-    @IBOutlet weak var selectUserDropDownView: DropDownView!
     
     @IBOutlet weak var selectEmployerPopupButton: UIButton!
     @IBOutlet weak var selectEmployerPopupLabel: UILabel!
@@ -28,22 +27,7 @@ class TimeViewController: UIViewController, TimeCardDelegate {
     
     weak var currentTimeViewController: UIViewController?
     public var viewModel: TimesheetViewModel?
-    
-    @IBOutlet weak var toolbar: UIToolbar!
-    
-    @IBOutlet weak var timesheetToggleBtn: UIBarButtonItem!
-    
-    @IBOutlet weak var contactUsBtn: UIBarButtonItem!
-    var exportBtn: UIBarButtonItem?
 
-//    var contactUsBtn: UIBarButtonItem?
-    var timesheetBtn: UIBarButtonItem?
-    var timecardBtn: UIBarButtonItem?
-    var profileBtn: UIBarButtonItem?
-    var infoBtn: UIBarButtonItem?
-
-
-    
     let lighterGrey = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
     
     override func viewDidLoad() {
@@ -75,36 +59,18 @@ class TimeViewController: UIViewController, TimeCardDelegate {
     }
 
     func setupView() {
-//        let infoItem = UIBarButtonItem.infoButton(target: self, action: #selector(infoClicked(sender:)))
-//        navigationItem.rightBarButtonItem = infoItem
         
-        let useNameTapGesture = UITapGestureRecognizer(target: self, action: #selector(userBtnClick(_:)))
-        useNameTapGesture.cancelsTouchesInView = false
-        selectUserDropDownView.addGestureRecognizer(useNameTapGesture)
-        
-     //   editBtn.titleLabel?.scaleFont(forDataType: .actionButton)
-     //   userNameLabel.scaleFont(forDataType: .headingTitle)
-     //   paymentTypeLabel.scaleFont(forDataType: .timesheetPaymentTypeTitle)
-     //   employeeEmployerTitleLabel.scaleFont(forDataType: .timesheetSectionTitle)
-        
-        selectEmployerPopupButton.isHidden = true
-        selectEmployerPopupLabel.isHidden = true
-        selectUserDropDownView.isHidden = false
-        selectUserDropDownView.titleLabel.scaleFont(forDataType: .timesheetSelectedUser)
 
-        if #available(iOS 15.0, *) {
-            selectEmployerPopupButton.isHidden = false
-            selectEmployerPopupLabel.isHidden = false
-            selectUserDropDownView.isHidden = true
-            
-            selectEmployerPopupButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
+        selectEmployerPopupButton.isHidden = false
+        selectEmployerPopupLabel.isHidden = false
+        
+        selectEmployerPopupButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
 
+        
+        selectEmployerPopupButton.layer.borderWidth = 1.0 // Set the width of the border
+        selectEmployerPopupButton.layer.borderColor = lighterGrey.cgColor // Set the color of the border
+        selectEmployerPopupButton.layer.cornerRadius = 10.0
             
-            selectEmployerPopupButton.layer.borderWidth = 1.0 // Set the width of the border
-            selectEmployerPopupButton.layer.borderColor = lighterGrey.cgColor // Set the color of the border
-            selectEmployerPopupButton.layer.cornerRadius = 10.0
-            
-        }
         
     }
     
@@ -115,34 +81,12 @@ class TimeViewController: UIViewController, TimeCardDelegate {
             title = "timecard".localized
         }
         
-        //        let profileUser = viewModel?.userProfileModel.profileModel.currentUser
-        //      //  userNameLabel.text = profileUser?.name
-        //
-        //        let profileImage = profileUser?.image?.normalizedImage() ?? #imageLiteral(resourceName: "profile")
-        //
-        //        let profileBtn = UIButton(type: .custom)
-        //        profileBtn.setBackgroundImage(profileImage, for: .normal)
-        //        profileBtn.clipsToBounds = true
-        //        profileBtn.contentMode = .scaleAspectFill
-        //        profileBtn.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        //        profileBtn.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        //        profileBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        //        profileBtn.addBorder(borderColor: .white, borderWidth: 0.5, cornerRadius: profileBtn.bounds.size.width / 2)
-        //
-        //        profileBtn.accessibilityHint = "profile_hint".localized
-        //        profileBtn.addTarget(self, action: #selector(profileClicked(sender:)), for: UIControl.Event.touchDown)
-        //        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileBtn)
-        
-        //  editBtn.setTitle("edit".localized, for: .normal)
-        
         if viewModel?.userProfileModel.isProfileEmployer ?? false {
             //    employeeEmployerTitleLabel.text = "employee".localized
-            selectUserDropDownView.accessibilityHint = "employee_user_hint".localized
             selectEmployerPopupLabel.text = "employee".localized
         }
         else {
             //    employeeEmployerTitleLabel.text = "employer".localized
-            selectUserDropDownView.accessibilityHint = "employer_user_hint".localized
             selectEmployerPopupLabel.text = "employer".localized
         }
         setupPopupButton()
@@ -169,7 +113,6 @@ class TimeViewController: UIViewController, TimeCardDelegate {
                 
         for user in users {
             let action = UIAction(title: user.name!, handler: {_ in
-                self.selectUserDropDownView.title = user.title
                 self.setCurrentUser(user: user)
             })
             menuActions.append(action)
@@ -184,48 +127,6 @@ class TimeViewController: UIViewController, TimeCardDelegate {
         selectEmployerPopupButton.showsMenuAsPrimaryAction = true
         selectEmployerPopupButton.changesSelectionAsPrimaryAction = true
     }
-    
-    
-    @IBAction func timeToggleClicked(_ sender: Any) {
-        if currentTimeViewController is TimesheetSoftenViewController {
-            displayTimeCard()
-        }
-        else {
-            displayTimeSheet()
-        }
-    }
-    
-    @IBAction func exportClicked(_ sender: Any) {
-        if let vc = currentTimeViewController as? TimesheetSoftenViewController {
-            vc.export(sender)
-        }
-    }
-    
-    @IBAction func timesheetClicked(_ sender: Any) {
-        if currentTimeViewController is TimeCardViewController {
-            displayTimeSheet()
-        }
-    }
-    
-    @IBAction func timecardClicked(_ sender: Any) {
-        if currentTimeViewController is TimesheetSoftenViewController {
-            displayTimeCard()
-        }
-    }
-    
-    @IBAction func profileClicked(_ sender: Any) {
-        viewProfile()
-        
-    }
-    
-    @IBAction func infoClicked(_ sender: Any) {
-        viewInfo()
-    }
-    
-    @IBAction func contactWHDClick(_ sender: Any) {
-        contactWHD()
-    }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -260,64 +161,11 @@ class TimeViewController: UIViewController, TimeCardDelegate {
             employmentInfoVC.viewModel = viewModel.userProfileModel.newTempEmploymentModel()
             employmentInfoVC.delegate = self
         }
-//        else if segue.identifier == "enterTime",
-//            let navVC = segue.destination as? UINavigationController,
-//            let enterTimeVC = navVC.topViewController as? EnterTimeViewController,
-//            let currentDate = sender as? Date,
-//            let viewModel = viewModel {
-//            enterTimeVC.viewModel = viewModel.createEnterTimeViewModel(forDate: currentDate)
-//            enterTimeVC.delegate = self
-//        }
     }
-
 }
 
 //MARK : Actions
 extension TimeViewController {
-    
-    @objc fileprivate func infoClicked(sender: Any?) {
-
-        let backItem = UIBarButtonItem()
-        backItem.title = " "
-        navigationItem.backBarButtonItem = backItem
-
-        performSegue(withIdentifier: "showInfo", sender: self)
-    }
-
-    @objc fileprivate func profileClicked(sender: Any?) {
-        
-//        let viewController = SettingsTableViewController.instantiateFromStoryboard("Settings")
-//
-//        self.navigationController?.pushViewController(viewController, animated: true)
-        performSegue(withIdentifier: "showProfile", sender: self)
-    }
-
-    @IBAction func userBtnClick(_ sender: Any) {
-        guard let userProfileModel = viewModel?.userProfileModel else { return }
-        
-        let users: [User]? = userProfileModel.employmentUsers
-        guard users?.count ?? 0 > 0 else {
-            addNewUser()
-            return
-        }
-        
-        let newRowTitle: String = userProfileModel.addNewUserTitle
-        let vc = OptionsListViewController(options: users!,
-                                           title: "", addRowTitle: newRowTitle)
-        vc.didSelect = { [weak self] (popVC: UIViewController, user: User?) in
-            popVC.dismiss(animated: true, completion: nil)
-            guard let strongSelf = self else { return }
-            if let user = user {
-                strongSelf.selectUserDropDownView.title = user.title
-                strongSelf.setCurrentUser(user: user)
-            }
-            else {
-                strongSelf.addNewUser()
-            }
-        }
-        
-        showPopup(popupController: vc, sender: selectUserDropDownView)
-    }
     
     func addNewUser() {
         performSegue(withIdentifier: "addEmploymentInfo", sender: self)
@@ -327,7 +175,6 @@ extension TimeViewController {
         viewModel?.setCurrentEmploymentModel(for: user)
         displayEmploymentInfo()
         
-        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: selectUserDropDownView)
     }
 
     func displayEmploymentInfo() {
@@ -335,31 +182,10 @@ extension TimeViewController {
         
         if employmentModel == nil {
             let addUserTitle = viewModel?.userProfileModel.addNewUserTitle
-            selectUserDropDownView.title = addUserTitle ?? ""
-        }
-        else {
-            selectUserDropDownView.title = viewModel?.selectedUserName ?? ""
         }
         
         displayTime()
       //  paymentTypeLabel.text = employmentModel?.currentPaymentTypeTitle ?? ""
-    }
-}
-
-// MARK: Toolbar Actions
-extension TimeViewController {
-    func contactWHD() {
-        let resourcesVC = ResourcesViewController.instantiateFromStoryboard()
-        resourcesVC.title = "contact_us".localized
-        navigationController?.pushViewController(resourcesVC, animated: true)
-    }
-    
-    func viewInfo() {
-        performSegue(withIdentifier: "showInfo", sender: self)
-    }
-    
-    func viewProfile() {
-        performSegue(withIdentifier: "showProfile", sender: self)
     }
 }
 
@@ -395,45 +221,8 @@ extension TimeViewController {
         else {
             displayTimeCard()
         }
-        
-        displayToolbar()
     }
-    
-    func displayToolbar() {
-        
-        var items = toolbar.items
-        
-        setupButton()
-        
-        items?.insert(timesheetBtn!, at: 2)
-        items?.insert(timecardBtn!, at: 4)
-        items?.insert(profileBtn!, at: 6)
-        items?.insert(infoBtn!, at: 8)
 
-        toolbar.setItems(items, animated: false)
-    }
-    
-    func setupButton() {
-        
-        
-        if timesheetBtn == nil {
-            let image = UIImage(named: "timesheet")
-            timesheetBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "timesheet"), style: .plain, target: self, action: #selector(timesheetClicked(_:)))
-        }
-        if timecardBtn == nil {
-            let image = UIImage(named: "timecard")
-            timecardBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "timecard"), style: .plain, target: self, action: #selector(timecardClicked(_:)))
-        }
-        if profileBtn == nil {
-            let image = UIImage(named: "profile")
-            profileBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "profile"), style: .plain, target: self, action: #selector(profileClicked(_:)))
-        }
-        if infoBtn == nil {
-            let image = UIImage(systemName: "info.circle")
-            infoBtn = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(infoClicked(_:)))
-        }
-    }
-    
     func displayTimeCard() {
         let timecardVC: TimeCardViewController
         
@@ -447,17 +236,6 @@ extension TimeViewController {
             addViewController(viewController: timecardVC)
 //            timecardVC.commentsTextView.delegate = self
         }
-        
-//        title = "timecard".localized
-//        timesheetToggleBtn.image = #imageLiteral(resourceName: "timesheet")
-//        timesheetToggleBtn.title = "timesheet".localized
-//
-//        var items = toolbar.items
-//
-//        if let exportBtn = exportBtn {
-//            items?.removeAll {$0 == exportBtn}
-//            toolbar.setItems(items, animated: false)
-//        }
     }
 
     func displayTimeSheet() {
@@ -471,18 +249,6 @@ extension TimeViewController {
             timesheetVC.viewModel = viewModel
             addViewController(viewController: timesheetVC)
         }
-        
-//        title = "timesheet".localized
-//        timesheetToggleBtn.image = #imageLiteral(resourceName: "timecard")
-//        timesheetToggleBtn.title = "timecard".localized
-//
-//        if exportBtn == nil {
-//            exportBtn = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(exportClicked(_:)))
-//        }
-//
-//        var items = toolbar.items
-//        items?.insert(exportBtn!, at: 2)
-//        toolbar.setItems(items, animated: false)
     }
 
     func addViewController(viewController: UIViewController) {

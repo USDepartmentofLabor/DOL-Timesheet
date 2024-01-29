@@ -111,6 +111,7 @@
 		110552742B2A8FC600EF5D1C /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110552732B2A8FC600EF5D1C /* HelpTableViewController.swift */; };
 		110552762B2AA5DB00EF5D1C /* HelpDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110552752B2AA5DB00EF5D1C /* HelpDetailViewController.swift */; };
 		1118714729DE569B00F087F3 /* StateMinWage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1118714629DE569B00F087F3 /* StateMinWage.swift */; };
+		1151B4202B6599D800157869 /* WHDTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151B41F2B6599D800157869 /* WHDTabBarController.swift */; };
 		59821CC122AABC1300436B03 /* PhoneFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59821CC022AABC1300436B03 /* PhoneFormatter.swift */; };
 		59AD9E5B22A1645800075193 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AD9E5A22A1645800075193 /* Style.swift */; };
 		59AD9E5D22A16B7F00075193 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AD9E5C22A16B7F00075193 /* UIFont+Extension.swift */; };
@@ -280,6 +281,7 @@
 		110552732B2A8FC600EF5D1C /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		110552752B2AA5DB00EF5D1C /* HelpDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpDetailViewController.swift; sourceTree = "<group>"; };
 		1118714629DE569B00F087F3 /* StateMinWage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMinWage.swift; sourceTree = "<group>"; };
+		1151B41F2B6599D800157869 /* WHDTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WHDTabBarController.swift; sourceTree = "<group>"; };
 		59821CC022AABC1300436B03 /* PhoneFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFormatter.swift; sourceTree = "<group>"; };
 		59AD9E5A22A1645800075193 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		59AD9E5C22A16B7F00075193 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				0324C41B2260FCDF00712576 /* ViewController */,
 				0324C40D2260E8A600712576 /* Model */,
 				0324C3DC2260E47100712576 /* AppDelegate.swift */,
+				1151B41F2B6599D800157869 /* WHDTabBarController.swift */,
 				037C22682278B6400021A309 /* Profile.storyboard */,
 				0324C3E02260E47100712576 /* Main.storyboard */,
 				0324C3E62260E47200712576 /* Assets.xcassets */,
@@ -923,6 +926,7 @@
 				03F2F5D922822CF8007B1B68 /* Date+Extension.swift in Sources */,
 				03A354C52280A871002536B8 /* HourlyPaymentViewController.swift in Sources */,
 				0327532D229334160019BA10 /* Util.swift in Sources */,
+				1151B4202B6599D800157869 /* WHDTabBarController.swift in Sources */,
 				69ADCF8428CCDB91001AC363 /* OnboardPayViewController.swift in Sources */,
 				0329260F2289CB7D00DB69AD /* SummaryTableViewCell.swift in Sources */,
 				690F8D612B5B381200B7625E /* TimesheetSoftenViewController.swift in Sources */,

@@ -9,9 +9,17 @@
 import UIKit
 import MessageUI
 
+
+struct PayPeriodSummary {
+    let name: String
+    let value1: String
+    let value2: String
+}
+
 class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePickerProtocol {
 
     @IBOutlet weak var periodLabel: UILabel!
+    @IBOutlet weak var employmentView: UIView!
     @IBOutlet weak var employmentPopup: UIButton!
     @IBOutlet weak var payPeriodButton: UIButton!
     @IBOutlet weak var payPeriodDatePicker: UIDatePicker!
@@ -22,13 +30,20 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
 
     @IBOutlet weak var scrollView: UIScrollView!
     var viewModel: TimesheetViewModel?
+    var payPeriodSummaryData: [PayPeriodSummary] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
+        viewModel = TimesheetViewModel()
         setupView()
         displayInfo()
        // self.setupLabelTap()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        displayInfo()
     }
     
     func setupView() {
@@ -82,6 +97,14 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     
     func displayPeriodInfo() {
         periodLabel.text = viewModel?.currentPeriod?.title
+        payPeriodSummaryData = []
+        payPeriodSummaryData.append(PayPeriodSummary(name: "Total Hours Worked", value1: "xx hrs", value2: "x min"))
+        viewModel?.currentEmploymentModel?.hourlyRates?.forEach {rate in
+            payPeriodSummaryData.append(PayPeriodSummary(name: rate.title, value1: "xx hrs", value2: "x min"))
+        }
+        payPeriodSummaryData.append(PayPeriodSummary(name: "Break Hours", value1: "xx hrs", value2: "x min"))
+        payPeriodSummaryData.append(PayPeriodSummary(name: "Overtime", value1: "xx hrs", value2: "x min"))
+        payPeriodSummaryData.append(PayPeriodSummary(name: "Weekly Summary", value1: "", value2: ""))
         timeTableView.reloadData()
         
 //        self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
@@ -113,7 +136,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
 extension TimesheetSoftenViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
 
-        return viewModel?.currentPeriod?.numberOfDays() ?? 0
+        return (viewModel?.currentPeriod?.numberOfDays() ?? 0) + 2
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -121,8 +144,17 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
         headerView.backgroundColor = UIColor.systemGray5
 
         let titleLabel = UILabel()
-        let sectionDate = viewModel?.currentPeriod?.date(at: section)
-        titleLabel.text = "\(sectionDate?.formattedWeekday ?? "") \(sectionDate?.formattedDate ?? "")".uppercased() // Customize the header text
+        var sectionTitle = ""
+        let numDays = viewModel?.currentPeriod?.numberOfDays() ?? 0
+        if section < numDays {
+            let sectionDate = viewModel?.currentPeriod?.date(at: section)
+            sectionTitle = "\(sectionDate?.formattedWeekday ?? "") \(sectionDate?.formattedDate ?? "")".uppercased()
+        } else if section < numDays + 1 {
+            sectionTitle = "PAY PERIOD SUMMARY"
+        } else {
+            return nil
+        }
+        titleLabel.text = sectionTitle // Customize the header text
         titleLabel.textColor = UIColor(named: "darkTextColor") // Customize the text color
         titleLabel.frame = CGRect(x: 0, y: 0, width: tableView.frame.width - 30, height: 30) // Adjust the frame as needed
         titleLabel.font = UIFont.boldSystemFont(ofSize: 10)
@@ -134,29 +166,47 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        let numDays = viewModel?.currentPeriod?.numberOfDays() ?? 0
+        
+        if section >= numDays + 1 {
+            return 1
+        } else if section >= numDays {
+            return payPeriodSummaryData.count
+        }
+        
         guard let sectionDate = viewModel?.currentPeriod?.date(at: section),
               let viewModel = viewModel,
               let dateLog = viewModel.currentEmploymentModel?.employmentInfo.log(forDate: sectionDate),
               let count = dateLog.timeLogs?.count
         else { return 0 }
-        
         return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell!
-        
-        let sectionDate = viewModel?.currentPeriod?.date(at: indexPath.section)
-        let timeEntryViewModel: EnterTimeViewModel = (viewModel?.createEnterTimeViewModel(for: sectionDate!))!
-        var timeLog = timeEntryViewModel.timeLogs![indexPath.row]
-        
         let hourlyCell = tableView.dequeueReusableCell(withIdentifier: TimeEntryViewCell.reuseIdentifier) as! TimeEntryViewCell
+        let numDays = viewModel?.currentPeriod?.numberOfDays() ?? 0
+        let section = indexPath.section
+        let row = indexPath.row
+        if section < numDays {
+            let sectionDate = viewModel?.currentPeriod?.date(at: indexPath.section)
+            let timeEntryViewModel: EnterTimeViewModel = (viewModel?.createEnterTimeViewModel(for: sectionDate!))!
+            var timeLog = timeEntryViewModel.timeLogs![indexPath.row]
 
-        hourlyCell.configure(timeLog: timeLog)
+            hourlyCell.configure(timeLog: timeLog)
+        } else if section < numDays + 1 {
+            hourlyCell.rateName.text = payPeriodSummaryData[row].name
+            hourlyCell.timeFrame.text = payPeriodSummaryData[row].value1
+            hourlyCell.totalTime.text = payPeriodSummaryData[row].value2
+        } else {
+            hourlyCell.rateName.text = "Earning Details"
+            hourlyCell.timeFrame.text = ""
+            hourlyCell.totalTime.text = "$$$"
+        }
         
-        cell = hourlyCell
+        hourlyCell.layer.cornerRadius = 10
+        hourlyCell.layer.masksToBounds = true
         
-        return cell
+        return hourlyCell
     }
 }
 
@@ -234,5 +284,24 @@ extension TimesheetSoftenViewController {
 extension TimesheetSoftenViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+
+extension TimesheetSoftenViewController: TimeViewControllerDelegate {
+    func didUpdateUser() {
+        if let user = viewModel?.userProfileModel.employmentUsers.first {
+            self.setCurrentUser(user: user)
+        }
+        displayInfo()
+    }
+    
+    func didUpdateEmploymentInfo() {
+     //   displayEmploymentInfo()
+    }
+    
+    func didUpdateLanguageChoice() {
+        displayInfo()
+     //   displayEmploymentInfo()
     }
 }

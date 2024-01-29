@@ -298,7 +298,7 @@ class EnterTimeSoftenViewController: UIViewController {
 
     @objc func cancel(_ sender: Any?) {
         delegate?.didCancelEnterTime()
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
 
     @objc func save(_ sender: Any?) {
@@ -308,13 +308,13 @@ class EnterTimeSoftenViewController: UIViewController {
         }
         
         if timeLog == nil {
-            if let safeTimeLogs = safeViewModel.timeLogs,
-                safeTimeLogs.count > 0 {
-                
-                timeLog = safeTimeLogs[safeTimeLogs.count - 1]
-            }else {
+//            if let safeTimeLogs = safeViewModel.timeLogs,
+//                safeTimeLogs.count > 0 {
+//                
+//                timeLog = safeTimeLogs[safeTimeLogs.count - 1]
+//            }else {
                 timeLog = safeViewModel.addTimeLog()
-            }
+//            }
         }
         
         timeLog?.startTime = startTime
@@ -339,7 +339,8 @@ class EnterTimeSoftenViewController: UIViewController {
         
 
         delegate?.didEnterTime(enterTimeModel: viewModel)
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
 }
@@ -426,11 +427,11 @@ extension EnterTimeSoftenViewController {
         }
         
         let errorStr = viewModel.isValid(time: startTime, for: timeLog, isStartTime: true)
-        if !errorStr.isEmpty {
-            startTimeErrorMessage.text = errorStr
-            displayError(message: errorStr)
-            return false
-        }
+//        if !errorStr.isEmpty {
+//            startTimeErrorMessage.text = errorStr
+//            displayError(message: errorStr)
+//            return false
+//        }
         
         startTimeErrorMessage.text = ""
         return true

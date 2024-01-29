@@ -31,7 +31,6 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     
     
     @IBOutlet var myView: UIView!
-    @IBOutlet weak var rateDropDownView: DropDownView!
     
     @IBOutlet weak var rateViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var rateViewBottomConstraint: NSLayoutConstraint!
@@ -94,7 +93,6 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     var timer: Timer?
     var currentHourlyRate: HourlyRate? {
         didSet {
-            rateDropDownView.title = currentHourlyRate?.title ?? ""
             ratePopupButton.setTitle(currentHourlyRate?.title ?? "", for: .normal)
         }
     }
@@ -109,6 +107,12 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         Localizer.initialize()
+        
+        guard let viewModel = viewModel, viewModel.userProfileExists else {
+            //performSegue(withIdentifier: "setupProfile", sender: nil)
+            performSegue(withIdentifier: "showOnboard", sender: nil)
+            return
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -128,9 +132,6 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
 //    }
 //
     func setupView() {
-        
-        rateDropDownView.titleLabel.scaleFont(forDataType: .timesheetSelectedUser)
-                
         
         ratePopupButton.layer.borderWidth = 1.0 // Set the width of the border
         ratePopupButton.layer.borderColor = lighterGrey.cgColor // Set the color of the border
@@ -164,17 +165,10 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
                 
 //        workedHoursView.bottomAnchor.constraint(equalTo: hoursView.bottomAnchor).isActive = true
         
-        ratePopupButton.isHidden = true
-        rateDropDownView.isHidden = false
-
-        if #available(iOS 15.0, *) {
-            ratePopupButton.isHidden = false
-            rateDropDownView.isHidden = true
-            setupPopupButton()
+        ratePopupButton.isHidden = false
+        setupPopupButton()
             
-            ratePopupButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
-        }
-        
+        ratePopupButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
         rateOptions = viewModel?.currentEmploymentModel?.hourlyRates
         
 //        workedHoursView.addBorder()
@@ -277,7 +271,6 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             timeInfoLabel.isHidden = true
             breakTimeInfoLabel.text = ""
             breakTimeInfoLabel.isHidden = true
-            rateDropDownView.isEnabled = true
             ratePopupButton.isEnabled = true
             
             discardButton.isHidden = true
@@ -495,8 +488,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "enterTime",
-            let navVC = segue.destination as? UINavigationController,
-            let enterTimeVC = navVC.topViewController as? EnterTimeSoftenViewController,
+            let enterTimeVC = segue.destination as? EnterTimeSoftenViewController,
             let viewModel = viewModel {
             let enterTimeModel: EnterTimeViewModel?
             if let clock = sender as? PunchClock {
@@ -516,7 +508,12 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
              let viewModel = viewModel {
              profileVC.viewModel = ProfileViewModel(context: viewModel.managedObjectContext.childManagedObjectContext())
              profileVC.delegate = self
-         }
+        }
+        else if segue.identifier == "showOnboard",
+            let navVC = segue.destination as? UINavigationController,
+            let introVC = navVC.topViewController as? OnboardPageNavigationViewController {
+            introVC.delegate = self
+        }
     }
 }
 
@@ -636,28 +633,6 @@ extension TimeCardViewController {
         return actionBtn
     }
     
-}
-
-extension TimeCardViewController {
-    @objc func rateClick(_ sender: Any) {
-        guard rateDropDownView.isEnabled else { return }
-        guard  let options = rateOptions else {
-            return
-        }
-
-        let optionsVC = OptionsListViewController(options: options,
-                                                  title: "")
-        optionsVC.didSelect = { [weak self] (popVC: UIViewController, hourlyRate: HourlyRate?) in
-            guard let strongSelf = self else { return }
-            if let hourlyRate = hourlyRate {
-                strongSelf.currentHourlyRate = hourlyRate
-            }
-            popVC.dismiss(animated: true, completion: nil)
-        }
-
-        showPopup(popupController: optionsVC, sender: rateDropDownView)
-    }
-
 }
 
 extension TimeCardViewController: EnterTimeViewControllerDelegate {
