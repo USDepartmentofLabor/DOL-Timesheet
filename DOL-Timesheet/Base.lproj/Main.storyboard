@@ -2818,7 +2818,7 @@
         <scene sceneID="cj7-hP-CPp">
             <objects>
                 <navigationController id="CnT-xh-Kd9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Time Sheet" image="timesheet" id="tSB-ob-9Yp"/>
+                    <tabBarItem key="tabBarItem" title="Time Sheet" image="calendar" id="tSB-ob-9Yp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pyo-wH-s6k">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3250,7 +3250,9 @@
         <scene sceneID="kmY-Wy-2n1">
             <objects>
                 <navigationController id="7QQ-DJ-p4v" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="Default Profile Photo" id="BXN-zD-u84"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="BXN-zD-u84">
+                        <imageReference key="image" image="face" symbolScale="large"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2fN-ml-crH">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3292,19 +3294,19 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DOLLogo" width="60" height="60"/>
-        <image name="Default Profile Photo" width="34" height="34"/>
         <image name="add" width="21" height="16"/>
+        <image name="calendar" width="12" height="13"/>
         <image name="collape" width="21" height="16"/>
         <image name="contact us" width="25" height="25"/>
         <image name="displayLogo" width="60" height="55.5"/>
         <image name="exclamationmark.circle" catalog="system" width="128" height="123"/>
+        <image name="face" width="13" height="13"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
         <image name="leftArrow" width="20" height="20"/>
         <image name="questionmark.circle" catalog="system" width="128" height="123"/>
         <image name="rightArrow" width="20" height="20"/>
         <image name="rightChevron" width="327" height="327"/>
         <image name="timecard" width="25" height="25"/>
-        <image name="timesheet" width="25" height="25"/>
         <namedColor name="appPrimaryColor">
             <color red="0.12549019607843137" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
