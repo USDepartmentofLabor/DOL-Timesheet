@@ -48,7 +48,7 @@ class EnterTimeSoftenViewController: UIViewController {
     weak var delegate: EnterTimeViewControllerDelegate?
     var timePickerVC: TimePickerViewController?
     
-    var selectedEmployment: [UIMenuElement]?
+    var selectedEmployment: Int?
     var selectedRate: Int?
     
     var rateOptions: [HourlyRate]?
@@ -194,8 +194,12 @@ class EnterTimeSoftenViewController: UIViewController {
         guard users.count > 0 else {
             return
         }
+        
+        var tmpUsers = users
+        let currUser = tmpUsers.remove(at: selectedEmployment!)
+        tmpUsers.insert(currUser, at: 0)
                 
-        for user in users {
+        for user in tmpUsers {
             let action = UIAction(title: user.name!, handler: {_ in
                 self.setCurrentUser(user: user)
             })

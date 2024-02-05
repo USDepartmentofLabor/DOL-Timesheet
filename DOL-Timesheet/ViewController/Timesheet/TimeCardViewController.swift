@@ -200,7 +200,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             rateLabel.isHidden =  true
             return
         }
-        
+        self.selectedRate = 0
         let optionClosure = {(action : UIAction) in
             print(action.title)
         }
@@ -512,13 +512,16 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             enterTimeVC.viewModel = enterTimeModel
             enterTimeVC.timeSheetModel = viewModel
             enterTimeVC.delegate = self
-                        
+                       
+            enterTimeVC.selectedRate = 0
+            
             if let paymentType = viewModel.currentEmploymentModel?.paymentType,
                 paymentType != .salary {
                 enterTimeVC.selectedRate = selectedRate
-            } else {
-                enterTimeVC.selectedRate = 0
             }
+            
+            enterTimeVC.selectedEmployment = viewModel.userProfileModel.employmentUsers.firstIndex(of: (viewModel.currentEmploymentModel?.employmentUser)!)
+    
         }
         else if segue.identifier == "showUserProfile",
              let navVC = segue.destination as? UINavigationController,
