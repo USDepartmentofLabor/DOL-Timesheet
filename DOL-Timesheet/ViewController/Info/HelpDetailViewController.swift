@@ -22,6 +22,10 @@ class HelpDetailViewController: UIViewController {
     }
     
     func setupView() {
+        let backButton = UIBarButtonItem()
+        backButton.title = "back".localized
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+                
         navBar.title = helpItem.title
         details.text = helpItem.body
         setupAccessibility()

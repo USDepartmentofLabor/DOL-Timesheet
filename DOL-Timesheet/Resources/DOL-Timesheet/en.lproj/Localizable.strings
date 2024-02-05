@@ -318,7 +318,6 @@
 
 "info_title" = "Info";
 "glossary" = "Glossary";
-"contact_us" = "Contact Us";
 "about" = "About";
 
 "contact_whd_title" = "Call us (toll-free)";
@@ -454,7 +453,7 @@
 "info_dont_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid exactly for 7 hours and 55 minutes of work DO NOT get their pay rounded up/down to the nearest 15 minutes.";
 "fsla_info2" = "The law includes some exemptions from these requirements. Some executive, administrative, professional, and outside sales workers, as well as some workers in the computer field, for example, are among those who, by law, are not required to receive the minimum wage and overtime pay from their employers.";
 
-"spanish_support" = "¿Te gustaría cambiar esta aplicación a español?\n\n(Would you like to set this app to Spanish?)";
+"spanish_support" = "¿Te gustaría cambiar esta aplicación en español?\n\n(Would you like to set this app to Spanish?)";
 "yes_si" = "Sí (Yes)";
 "switch_to_spanish" = "Switch to Spanish";
 "switch_to_english" = "Switch to English";
@@ -484,7 +483,8 @@
 "summary" = "Summary";
 
 "onboarding_name_nickname" = "Your name or nickname";
-"onboarding_pay_week" = "Start of pay week";
+"onboarding_employee_pay_week" = "Start of pay week";
+"onboarding_employer_pay_week" = "Start of pay week";
 "pay_frequency" = "Pay frequency";
 "employee_pay_frequency" = "Employee's pay frequency";
 "onboarding_employee_first_day_pay" = "Start date of employee's current pay period";
@@ -499,3 +499,5 @@
 "onboard_review_overtime_yes" = "Yes (non-exempt)";
 "onboard_review_overtime_no" = "No (exempt)";
 "overnight_hours" = "Overnight Hours";
+
+"help" = "Help";

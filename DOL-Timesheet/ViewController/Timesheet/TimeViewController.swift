@@ -239,16 +239,21 @@ extension TimeViewController {
     }
 
     func displayTimeSheet() {
-        let timesheetVC: TimesheetSoftenViewController
         
-        if let vc = currentTimeViewController as? TimesheetSoftenViewController {
-            timesheetVC = vc
+        if let tabBarController = self.tabBarController {
+            tabBarController.selectedIndex = 1 // 1 corresponds to the second tab, index starts from 0
         }
-        else {
-            timesheetVC = TimesheetSoftenViewController.instantiateFromStoryboard()
-            timesheetVC.viewModel = viewModel
-            addViewController(viewController: timesheetVC)
-        }
+        
+//        let timesheetVC: TimesheetSoftenViewController
+//        
+//        if let vc = currentTimeViewController as? TimesheetSoftenViewController {
+//            timesheetVC = vc
+//        }
+//        else {
+//            timesheetVC = TimesheetSoftenViewController.instantiateFromStoryboard()
+//            timesheetVC.viewModel = viewModel
+//            addViewController(viewController: timesheetVC)
+//        }
     }
 
     func addViewController(viewController: UIViewController) {

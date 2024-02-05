@@ -17,6 +17,13 @@ class TimeEntryViewCell: UITableViewCell {
     @IBOutlet weak var timeFrame: UILabel!
     @IBOutlet weak var totalTime: UILabel!
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        contentView.layer.cornerRadius = Style.CORNER_ROUNDING
+        contentView.clipsToBounds = true
+    }
+    
     
     public func configure(timeLog: TimeLog) {
         

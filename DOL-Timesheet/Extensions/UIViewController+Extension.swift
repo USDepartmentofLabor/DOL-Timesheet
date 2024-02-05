@@ -124,11 +124,6 @@ extension UIViewController {
             NSAttributedString.Key.font : Style.scaledFont(forDataType: .barButtonTitle),
             NSAttributedString.Key.foregroundColor:UIColor(named: "blackTextColor")],
                                                             for: .normal)
-        
-        let systemBlueColor = UIColor.systemBlue
-        let hexColor = systemBlueColor.toHex()
-
-        print("Hex Color: \(hexColor)")
     }
 }
 

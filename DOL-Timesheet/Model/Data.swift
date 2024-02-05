@@ -103,13 +103,13 @@ enum SalaryType: Int, OptionsProtocol, CaseIterable {
 }
 
 enum Weekday: Int, OptionsProtocol, CaseIterable {
-    case sunday = 1
-    case monday
+    case monday = 1
     case tuesday
     case wednesday
     case thurdsday
     case friday
     case saturday
+    case sunday
     
     var title: String {
         let title: String

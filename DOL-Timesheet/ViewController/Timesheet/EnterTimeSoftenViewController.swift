@@ -34,6 +34,7 @@ class EnterTimeSoftenViewController: UIViewController {
     @IBOutlet weak var commentTextView: UITextView!
     weak var textViewDelegate: UITextViewDelegate?
 
+    @IBOutlet weak var helpLabel: UILabel!
     
     @IBOutlet weak var employmentTitleLabel: UILabel!
     @IBOutlet weak var rateTitleLabel: UILabel!
@@ -46,6 +47,9 @@ class EnterTimeSoftenViewController: UIViewController {
     
     weak var delegate: EnterTimeViewControllerDelegate?
     var timePickerVC: TimePickerViewController?
+    
+    var selectedEmployment: [UIMenuElement]?
+    var selectedRate: Int?
     
     var rateOptions: [HourlyRate]?
     var startTime: Date?
@@ -98,6 +102,23 @@ class EnterTimeSoftenViewController: UIViewController {
         navigationItem.rightBarButtonItem = saveBtn
 //        title = viewModel?.title
         title = "manual_time_entry".localized
+        
+        employmentTitleLabel.text = "employer".localized
+        
+        if timeSheetModel?.currentEmploymentModel?.isProfileEmployer ?? false {
+            employmentTitleLabel.text = "employee".localized
+        }
+        
+        rateTitleLabel.text = "rate".localized
+        
+        startDropDownView.title = "start_time".localized
+        breakDropDownView.title = "break_time".localized
+        endDropDownView.title = "end_time".localized
+        
+        commentsHint.text = "comments".localized
+        
+        helpLabel.text = "help".localized
+
         
 //        tableView.estimatedRowHeight = 150
 //        tableView.rowHeight = UITableView.automaticDimension
@@ -185,6 +206,8 @@ class EnterTimeSoftenViewController: UIViewController {
         employmentPopUp.showsMenuAsPrimaryAction = true
         
         employmentPopUp.changesSelectionAsPrimaryAction = true
+        
+//        employmentPopUp.menu?.selectedElements =
     }
     
     func setCurrentUser(user: User) {
@@ -221,8 +244,12 @@ class EnterTimeSoftenViewController: UIViewController {
         guard  let options = rateOptions else {
             return
         }
+        var tmpOptions = options
+        let currRate = tmpOptions.remove(at: selectedRate!)
+        tmpOptions.insert(currRate, at: 0)
+        
                 
-        for option in options {
+        for option in tmpOptions {
             let action = UIAction(title: option.title, handler: {_ in
                 self.currentHourlyRate = option
             })
@@ -281,7 +308,7 @@ class EnterTimeSoftenViewController: UIViewController {
     }
     
     func setupAccessibility() {
-        commentTextView.accessibilityHint = "enter_daily_comments".localized
+//        commentTextView.accessibilityHint = "enter_daily_comments".localized
     }
     
     func displayInfo() {
@@ -321,6 +348,12 @@ class EnterTimeSoftenViewController: UIViewController {
         timeLog?.addBreak(duration: breakTime)
         timeLog?.endTime = endTime
         
+        if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
+            hourlyTimeLog.hourlyRate = currentHourlyRate
+            hourlyTimeLog.value = currentHourlyRate?.value ?? 0
+        }
+     
+        
         if !isValid(endTime: endTime!, for: timeLog) {
             return
         }
@@ -341,6 +374,10 @@ class EnterTimeSoftenViewController: UIViewController {
         delegate?.didEnterTime(enterTimeModel: viewModel)
         //dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
+        
+        if let tabBarController = self.tabBarController {
+            tabBarController.selectedIndex = 1 // 1 corresponds to the second tab, index starts from 0
+        }
     }
     
 }

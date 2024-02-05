@@ -328,7 +328,11 @@ extension OnboardWorkViewController: UITextFieldDelegate {
                 if firstPayPeriodField.text?.count == 0 {
                     firstPayPeriod = Date()
                     dateFormatter.dateFormat = "MMMM d, YYYY"
-                    firstPayPeriodField.text = dateFormatter.string(from: firstPayPeriod!)
+                    let formattedDate = dateFormatter.string(from: firstPayPeriod!)
+                    let formattedDateCapitalized = formattedDate.prefix(1).capitalized + formattedDate.dropFirst()
+                    
+                    firstPayPeriodField.text = formattedDateCapitalized
+
                 }
                 setFirstDatePickerHeight(height: 307, relatedBy: .greaterThanOrEqual)
                 workWeekStartPickerHeight.constant = 0

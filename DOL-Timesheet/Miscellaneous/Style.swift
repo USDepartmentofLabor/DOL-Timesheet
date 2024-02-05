@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 struct Style {
+    
+    static let CORNER_ROUNDING: CGFloat = 8
+    
     enum DataType {
         case appTitle
         case barButtonTitle

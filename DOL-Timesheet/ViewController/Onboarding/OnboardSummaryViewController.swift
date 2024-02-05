@@ -63,7 +63,7 @@ class OnboardSummaryViewController: OnboardBaseViewController {
         reviewTitleLabel.text = "summary".localized
         
         reviewNameTitleLabel.text = "onboarding_name_nickname".localized
-        reviewWorkweekTitleLabel.text = "onboarding_pay_week".localized
+        reviewWorkweekTitleLabel.text = "onboarding_employee_pay_week".localized
         reviewPayTypeTitleLabel.text = "pay_frequency".localized
         reviewStartDateTitleLabel.text = "onboarding_employer_first_day_pay".localized
         reviewPayRateTitleLabel.text = "pay_rate".localized
@@ -74,6 +74,7 @@ class OnboardSummaryViewController: OnboardBaseViewController {
         reviewNote.text = "onboard_review_note".localized
         
         if userType != .employee {
+            reviewWorkweekTitleLabel.text = "onboarding_employer_pay_week".localized
             reviewPayTypeTitleLabel.text = "employee_pay_frequency".localized
             reviewPayRateTitleLabel.text = "employee_pay_rate".localized
             reviewOvertimeTitleLabel.text = "onboarding_employer_eligible_overtime".localized
@@ -143,9 +144,10 @@ class OnboardSummaryViewController: OnboardBaseViewController {
                 (employmentModel?.paymentFrequency.title ?? " ")
             )
             
-            reviewStartDateLabel.attributedText = boldily(
-                (formatDateToString((employmentModel?.employmentInfo.startDate)!))
-            )
+            let formattedDate = formatDateToString((employmentModel?.employmentInfo.startDate)!)
+            let formattedDateCapitalized = formattedDate.prefix(1).capitalized + formattedDate.dropFirst()
+                        
+            reviewStartDateLabel.attributedText = boldily(formattedDateCapitalized)
                         
             var rate = 0.00
             if (employmentModel?.hourlyRates?.count ?? 0 > 0) {
@@ -228,9 +230,10 @@ class OnboardSummaryViewController: OnboardBaseViewController {
                 (employmentModel?.paymentFrequency.title ?? " ")
             )
             
-            reviewStartDateLabel.attributedText = boldily(
-                (formatDateToString((employmentModel?.employmentInfo.startDate)!))
-            )
+            let formattedDate = formatDateToString((employmentModel?.employmentInfo.startDate)!)
+            let formattedDateCapitalized = formattedDate.prefix(1).capitalized + formattedDate.dropFirst()
+                        
+            reviewStartDateLabel.attributedText = boldily(formattedDateCapitalized)
             
             if employmentModel?.employmentInfo.paymentType == .hourly {
                 

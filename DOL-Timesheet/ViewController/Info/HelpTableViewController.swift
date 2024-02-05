@@ -22,6 +22,9 @@ class HelpTableViewController: UIViewController {
     //    @IBOutlet weak var displayLogo: UIImageView!
     @IBOutlet weak var contactUsImageView: UIImageView!
     
+    @IBOutlet weak var glossaryLabel: UILabel!
+    @IBOutlet weak var contactUsLabel: UILabel!
+    
     var helpItems: [HelpItem] = []
     var selectedIndex = 0
     
@@ -33,8 +36,18 @@ class HelpTableViewController: UIViewController {
     
     func setupView() {
         
+        let backButton = UIBarButtonItem()
+        backButton.title = "back".localized
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        self.title = "help".localized
+
+        
         let originalImage = UIImage(named: "contact us")
         contactUsImageView.image = originalImage
+        
+        glossaryLabel.text = "glossary".localized
+        contactUsLabel.text = "contact_us".localized
 
         contactUsImageView.tintColor = UIColor(named: "appPrimaryColor")
         contactUsImageView.image = contactUsImageView.image?.withRenderingMode(.alwaysTemplate)

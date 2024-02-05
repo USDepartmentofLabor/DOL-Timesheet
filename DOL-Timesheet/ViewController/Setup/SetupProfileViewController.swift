@@ -483,10 +483,22 @@ class SetupProfileViewController: UIViewController {
                 self.setupLabels()
                 self.delegate?.didUpdateLanguageChoice()
                 self.manageVC?.didUpdateLanguageChoice()
+                self.setTabBarTitle()
              }
          )
          present(alertController, animated: true)
      }
+    
+    func setTabBarTitle() {
+        if let viewControllers = self.tabBarController?.viewControllers {
+            // Set titles for each tab bar item
+            viewControllers[0].tabBarItem.title = "contact_us".localized
+            viewControllers[1].tabBarItem.title = "timesheet".localized
+            viewControllers[2].tabBarItem.title = "timecard".localized
+            viewControllers[3].tabBarItem.title = "my_profile".localized
+            viewControllers[4].tabBarItem.title = "info_title".localized
+        }
+    }
     @IBAction func nextClick(_ sender: Any) {
         guard validateInput() == true else {
             return

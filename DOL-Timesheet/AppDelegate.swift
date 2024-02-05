@@ -17,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupApprearance()
+        
+        let systemBlueColor = UIColor.systemGray5
+        let hexColor = systemBlueColor.toHex()
+
+        print("Hex Color: \(hexColor)")
+        
         return true
     }
 

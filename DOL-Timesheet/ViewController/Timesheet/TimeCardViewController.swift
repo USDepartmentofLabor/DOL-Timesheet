@@ -65,6 +65,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     @IBOutlet weak var popupBottomConstraint: NSLayoutConstraint!
     
     var rateOptions: [HourlyRate]?
+    var selectedRate = 0
     let lighterGrey = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
     
     weak var delegate: EnterTimeViewControllerDelegate?
@@ -102,6 +103,15 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         Localizer.initialize()  
         setupNavigationBarSettings()
         setupView()
+        
+        if let viewControllers = self.tabBarController?.viewControllers {
+            // Set titles for each tab bar item
+            viewControllers[0].tabBarItem.title = "contact_us".localized
+            viewControllers[1].tabBarItem.title = "timesheet".localized
+            viewControllers[2].tabBarItem.title = "timecard".localized
+            viewControllers[3].tabBarItem.title = "my_profile".localized
+            viewControllers[4].tabBarItem.title = "info_title".localized
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -201,9 +211,10 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             return
         }
                 
-        for option in options {
+        for (index, option) in options.enumerated() {
             let action = UIAction(title: option.title, handler: {_ in
                 self.currentHourlyRate = option
+                self.selectedRate = index
             })
             menuActions.append(action)
         }
@@ -495,12 +506,19 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
                 enterTimeModel = viewModel.createEnterTimeViewModel(for: clock, hourlyRate: currentHourlyRate)
             }
             else {
-                 enterTimeModel = viewModel.createEnterTimeViewModel(for: Date())
+                enterTimeModel = viewModel.createEnterTimeViewModel(for: Date())
             }
-//            
+            
             enterTimeVC.viewModel = enterTimeModel
             enterTimeVC.timeSheetModel = viewModel
             enterTimeVC.delegate = self
+                        
+            if let paymentType = viewModel.currentEmploymentModel?.paymentType,
+                paymentType != .salary {
+                enterTimeVC.selectedRate = selectedRate
+            } else {
+                enterTimeVC.selectedRate = 0
+            }
         }
         else if segue.identifier == "showUserProfile",
              let navVC = segue.destination as? UINavigationController,

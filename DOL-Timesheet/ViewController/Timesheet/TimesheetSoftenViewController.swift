@@ -21,6 +21,8 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     @IBOutlet weak var periodLabel: UILabel!
     @IBOutlet weak var employmentView: UIView!
     @IBOutlet weak var employmentPopup: UIButton!
+    
+    @IBOutlet weak var payPeriodView: UIView!
     @IBOutlet weak var payPeriodButton: UIButton!
     @IBOutlet weak var payPeriodDatePicker: UIDatePicker!
     @IBOutlet weak var payPeriodHeightConstraint: NSLayoutConstraint!
@@ -48,14 +50,24 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     
     func setupView() {
         
+        title = "timesheet".localized
+        
         payPeriodHeightConstraint.constant = 0
         
         
         timeTableView.register(UINib(nibName: TimeEntryViewCell.nibName, bundle: nil), forCellReuseIdentifier: TimeEntryViewCell.reuseIdentifier)
         timeTableView.rowHeight = UITableView.automaticDimension
         timeTableView.estimatedRowHeight = 40
-        timeTableView.backgroundColor = UIColor.systemGray5
         
+        employmentView.layer.cornerRadius = Style.CORNER_ROUNDING
+        employmentView.clipsToBounds = true
+        
+        payPeriodView.layer.cornerRadius = Style.CORNER_ROUNDING
+        payPeriodView.clipsToBounds = true
+        
+//        timeTableView.backgroundColor = UIColor.systemGray5
+//        2C2C2E dark
+//        E5E5EA light
     }
     
     func displayInfo() {
@@ -113,7 +125,10 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             self.timeTableView.layoutIfNeeded()
         }) { (complete) in
             self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
-            self.scrollView.contentSize = CGSize(width: self.scrollView.frame.size.width, height: self.timeTableView.contentSize.height + self.payPeriodDatePicker.frame.origin.y + self.payPeriodDatePicker.frame.size.height)
+            self.scrollView.contentSize = CGSize(
+                width: self.scrollView.frame.size.width,
+                height: self.timeTableView.contentSize.height + self.payPeriodDatePicker.frame.origin.y + self.payPeriodDatePicker.frame.size.height+25
+            )
         }
 
        // displayTotals()
@@ -141,7 +156,7 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        headerView.backgroundColor = UIColor.systemGray5
+//        headerView.backgroundColor = UIColor.systemGray5
 
         let titleLabel = UILabel()
         var sectionTitle = ""

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="r2E-sp-Eko">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="r2E-sp-Eko">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -931,9 +931,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0f0-p5-BAk">
                                 <rect key="frame" x="20" y="405.5" width="374" height="46"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRh-eT-A0U">
-                                        <rect key="frame" x="19" y="13.5" width="83" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRh-eT-A0U">
+                                        <rect key="frame" x="19" y="12.5" width="83" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -955,7 +954,10 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="wRh-eT-A0U" firstAttribute="leading" secondItem="0f0-p5-BAk" secondAttribute="leading" constant="19" id="0rO-Et-f2I"/>
                                     <constraint firstAttribute="trailing" secondItem="APU-sW-hQy" secondAttribute="trailing" constant="8" id="8hZ-sy-SeD"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wRh-eT-A0U" secondAttribute="trailing" constant="20" symbolic="YES" id="FwK-Fv-zEa"/>
+                                    <constraint firstItem="wRh-eT-A0U" firstAttribute="centerY" secondItem="APU-sW-hQy" secondAttribute="centerY" id="GyH-jm-lnH"/>
                                     <constraint firstAttribute="bottom" secondItem="APU-sW-hQy" secondAttribute="bottom" constant="8" id="NNk-aZ-crE"/>
                                     <constraint firstItem="APU-sW-hQy" firstAttribute="top" secondItem="0f0-p5-BAk" secondAttribute="top" constant="8" id="NbG-tN-S0o"/>
                                     <constraint firstItem="APU-sW-hQy" firstAttribute="leading" secondItem="0f0-p5-BAk" secondAttribute="leading" constant="15" id="SdV-pI-cu7"/>
@@ -1052,6 +1054,7 @@
                         <outlet property="employmentView" destination="XMk-Zz-y1D" id="eto-S7-LQC"/>
                         <outlet property="endDropDownView" destination="Z46-Vu-Rvb" id="3k8-Tv-oRk"/>
                         <outlet property="endTimeErrorMessage" destination="QSg-Oz-DN6" id="7WB-C2-exL"/>
+                        <outlet property="helpLabel" destination="tEe-aR-4mh" id="vCL-LF-hZH"/>
                         <outlet property="helpView" destination="1qk-Wq-zas" id="WUP-QP-3y3"/>
                         <outlet property="hourlyRateTitleLabel" destination="nU1-xX-WEV" id="AHL-QE-zNh"/>
                         <outlet property="ratePopUp" destination="Aqc-nq-SkZ" id="ILG-I6-Av0"/>
@@ -1239,7 +1242,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contactUsImageView" destination="1FL-HE-6ig" id="L9S-ck-maA"/>
+                        <outlet property="contactUsLabel" destination="4hd-pf-Hws" id="ClL-rz-AMF"/>
                         <outlet property="contactUsView" destination="RvB-GH-khT" id="R5T-JN-SqG"/>
+                        <outlet property="glossaryLabel" destination="UZZ-qS-oUT" id="Gbv-Zo-hmP"/>
                         <outlet property="glossaryView" destination="Gf8-5A-ckc" id="Khw-Tg-VwT"/>
                         <outlet property="helpItemTable" destination="kLc-FK-AsL" id="kP5-d1-1JZ"/>
                         <outlet property="tableHeightConstraint" destination="gVA-w6-ORP" id="7g3-gn-dm3"/>
@@ -1402,7 +1407,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ywk-ow-xla">
-                                        <rect key="frame" x="87" y="771.5" width="240" height="34.5"/>
+                                        <rect key="frame" x="87" y="477" width="240" height="34.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="nIg-RL-fSM"/>
                                         </constraints>
@@ -1437,7 +1442,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="nM2-pb-L5c" firstAttribute="top" secondItem="Ddh-2s-YTh" secondAttribute="bottom" constant="8" id="4Yn-B6-tBb"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ywk-ow-xla" secondAttribute="bottom" constant="8" id="5lP-uB-96W"/>
+                                    <constraint firstItem="Ywk-ow-xla" firstAttribute="top" secondItem="NeJ-x8-7qj" secondAttribute="bottom" constant="100" id="4tL-Bz-hF4"/>
                                     <constraint firstItem="wMU-Ao-MDc" firstAttribute="leading" secondItem="xkI-Ca-cHN" secondAttribute="leading" constant="8" id="E8n-AW-gND"/>
                                     <constraint firstItem="Ddh-2s-YTh" firstAttribute="leading" secondItem="xkI-Ca-cHN" secondAttribute="leading" id="JU6-43-YeK"/>
                                     <constraint firstItem="Ddh-2s-YTh" firstAttribute="top" secondItem="xkI-Ca-cHN" secondAttribute="top" id="Knu-GZ-Nn4"/>
@@ -1972,31 +1977,31 @@
             <objects>
                 <viewController id="YeA-yJ-t1m" customClass="GlossaryViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="teS-fg-GOF">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="654"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QTk-lu-S07">
-                                <rect key="frame" x="0.0" y="53" width="374" height="567"/>
+                                <rect key="frame" x="0.0" y="5" width="414" height="881"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GlossaryTableViewCell" rowHeight="500" id="qGr-d7-sj1" customClass="GlossaryTableViewCell" customModule="Timesheet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="500"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="500"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qGr-d7-sj1" id="cuK-Ja-sIX">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="500"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="riD-rh-1m5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="500"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfZ-X4-ZH3" userLabel="TitleLabel">
-                                                            <rect key="frame" x="5" y="5" width="364" height="20.5"/>
+                                                            <rect key="frame" x="5" y="5" width="404" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" editable="NO" text="Lorem " translatesAutoresizingMaskIntoConstraints="NO" id="HMy-qR-5II">
-                                                            <rect key="frame" x="0.0" y="25.5" width="374" height="475.5"/>
+                                                            <rect key="frame" x="0.0" y="25.5" width="414" height="475.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="textColor" systemColor="labelColor"/>
                                                             <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="22"/>
@@ -2057,11 +2062,11 @@
             <objects>
                 <viewController storyboardIdentifier="ResourcesViewController" id="FeP-NS-JCI" customClass="ResourcesViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SoT-m9-UfL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rg9-xc-zIs">
-                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQE-5W-1Bn">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="622"/>
@@ -2814,11 +2819,11 @@
             </objects>
             <point key="canvasLocation" x="4223" y="-145"/>
         </scene>
-        <!--Time Sheet-->
+        <!--Timesheet-->
         <scene sceneID="cj7-hP-CPp">
             <objects>
                 <navigationController id="CnT-xh-Kd9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Time Sheet" image="calendar" id="tSB-ob-9Yp"/>
+                    <tabBarItem key="tabBarItem" title="Timesheet" image="calendar" id="tSB-ob-9Yp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pyo-wH-s6k">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2835,15 +2840,15 @@
         <scene sceneID="iMK-HL-EYV">
             <objects>
                 <viewController storyboardIdentifier="TimesheetSoftenViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6XM-Qq-FLd" customClass="TimesheetSoftenViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="jho-iO-5AR">
+                    <view key="view" contentMode="scaleToFill" id="jho-iO-5AR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CfL-X6-RXv">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="2038"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CfL-X6-RXv">
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nQ9-Jo-6sj">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2038"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nQ9-Jo-6sj">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AAu-dH-HIw" userLabel="EmploymentView">
                                                 <rect key="frame" x="20" y="20" width="374" height="44"/>
@@ -2870,7 +2875,7 @@
                                                         </state>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" name="timesheetSubviewColor"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" button="YES"/>
                                                 </accessibility>
@@ -2906,7 +2911,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" name="timesheetSubviewColor"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" button="YES"/>
                                                 </accessibility>
@@ -2930,22 +2935,22 @@
                                                 </constraints>
                                             </datePicker>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="y8X-5l-EaK">
-                                                <rect key="frame" x="20" y="447" width="374" height="1583"/>
+                                                <rect key="frame" x="20" y="447" width="374" height="273"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="1583" id="i9f-GB-5cj"/>
+                                                    <constraint firstAttribute="height" constant="273" id="9XC-ca-FyT"/>
                                                 </constraints>
-                                                <color key="sectionIndexBackgroundColor" systemColor="systemGray5Color"/>
+                                                <color key="sectionIndexBackgroundColor" name="timesheetSubviewColor"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="711" id="vio-yf-GpV">
-                                                        <rect key="frame" x="0.0" y="50" width="374" height="711"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="132" id="vio-yf-GpV">
+                                                        <rect key="frame" x="0.0" y="50" width="374" height="132"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vio-yf-GpV" id="tz7-aJ-Sw0">
-                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="711"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="132"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                            <color key="backgroundColor" name="timesheetSubviewColor"/>
                                                         </tableViewCellContentView>
-                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                        <color key="backgroundColor" name="timesheetSubviewColor"/>
                                                     </tableViewCell>
                                                 </prototypes>
                                                 <connections>
@@ -2954,7 +2959,7 @@
                                                 </connections>
                                             </tableView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <color key="backgroundColor" name="timesheetBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="y8X-5l-EaK" firstAttribute="leading" secondItem="nQ9-Jo-6sj" secondAttribute="leading" constant="20" symbolic="YES" id="63p-WO-kGm"/>
                                             <constraint firstAttribute="trailing" secondItem="AAu-dH-HIw" secondAttribute="trailing" constant="20" symbolic="YES" id="721-FO-XuV"/>
@@ -2963,6 +2968,7 @@
                                             <constraint firstItem="CqI-HB-hfQ" firstAttribute="leading" secondItem="nQ9-Jo-6sj" secondAttribute="leading" constant="20" symbolic="YES" id="FkW-QI-cXr"/>
                                             <constraint firstItem="zz9-Cj-oFV" firstAttribute="top" secondItem="CqI-HB-hfQ" secondAttribute="bottom" constant="16" id="GBy-P1-lEk"/>
                                             <constraint firstAttribute="trailing" secondItem="y8X-5l-EaK" secondAttribute="trailing" constant="20" symbolic="YES" id="K9b-S5-RVD"/>
+                                            <constraint firstAttribute="bottom" secondItem="y8X-5l-EaK" secondAttribute="bottom" id="LWz-Xf-fpp"/>
                                             <constraint firstAttribute="trailing" secondItem="zz9-Cj-oFV" secondAttribute="trailing" constant="20" symbolic="YES" id="PkS-mU-q41"/>
                                             <constraint firstAttribute="trailing" secondItem="CqI-HB-hfQ" secondAttribute="trailing" constant="20" symbolic="YES" id="X4C-l2-aW6"/>
                                             <constraint firstItem="y8X-5l-EaK" firstAttribute="top" secondItem="zz9-Cj-oFV" secondAttribute="bottom" id="XEe-UN-LEm"/>
@@ -2971,13 +2977,12 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" name="timesheetBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="nQ9-Jo-6sj" firstAttribute="width" secondItem="cV0-Ea-0jt" secondAttribute="width" id="EDW-WQ-wa6"/>
                                     <constraint firstItem="nQ9-Jo-6sj" firstAttribute="top" secondItem="iZf-O4-a59" secondAttribute="top" id="iR6-BF-X7G"/>
                                     <constraint firstItem="nQ9-Jo-6sj" firstAttribute="bottom" secondItem="iZf-O4-a59" secondAttribute="bottom" constant="2000" id="mn2-Df-3d5"/>
                                     <constraint firstItem="nQ9-Jo-6sj" firstAttribute="leading" secondItem="iZf-O4-a59" secondAttribute="leading" id="pVS-MQ-cbI"/>
-                                    <constraint firstItem="nQ9-Jo-6sj" firstAttribute="height" secondItem="cV0-Ea-0jt" secondAttribute="height" id="sCC-vc-vdU"/>
                                     <constraint firstItem="nQ9-Jo-6sj" firstAttribute="trailing" secondItem="iZf-O4-a59" secondAttribute="trailing" constant="414" id="vRu-Ar-ggD"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="iZf-O4-a59"/>
@@ -2987,10 +2992,11 @@
                         <viewLayoutGuide key="safeArea" id="pLe-lO-gBv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="pLe-lO-gBv" firstAttribute="bottom" secondItem="CfL-X6-RXv" secondAttribute="bottom" id="JuE-8S-eK2"/>
                             <constraint firstItem="CfL-X6-RXv" firstAttribute="trailing" secondItem="pLe-lO-gBv" secondAttribute="trailing" id="VDc-2n-td1"/>
-                            <constraint firstAttribute="bottom" secondItem="CfL-X6-RXv" secondAttribute="bottom" id="XIp-1X-ZSy"/>
                             <constraint firstItem="CfL-X6-RXv" firstAttribute="leading" secondItem="pLe-lO-gBv" secondAttribute="leading" id="cbC-PW-QTg"/>
-                            <constraint firstItem="CfL-X6-RXv" firstAttribute="top" secondItem="jho-iO-5AR" secondAttribute="top" id="h9a-Uj-md1"/>
+                            <constraint firstItem="CfL-X6-RXv" firstAttribute="top" secondItem="pLe-lO-gBv" secondAttribute="top" id="nI4-bS-VBx"/>
+                            <constraint firstItem="pLe-lO-gBv" firstAttribute="bottom" secondItem="nQ9-Jo-6sj" secondAttribute="bottom" constant="1" id="ufA-oP-pUQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pAG-uu-EdR"/>
@@ -2999,10 +3005,11 @@
                         <outlet property="employmentView" destination="AAu-dH-HIw" id="g0h-QB-cla"/>
                         <outlet property="payPeriodDatePicker" destination="zz9-Cj-oFV" id="R1j-Rz-NJX"/>
                         <outlet property="payPeriodHeightConstraint" destination="ZYg-JO-a7j" id="pEN-Al-cNu"/>
+                        <outlet property="payPeriodView" destination="CqI-HB-hfQ" id="y92-u8-y9d"/>
                         <outlet property="periodLabel" destination="r0q-fU-Yy8" id="W8B-FQ-8wL"/>
                         <outlet property="scrollView" destination="CfL-X6-RXv" id="rtO-Zi-INj"/>
                         <outlet property="timeTableView" destination="y8X-5l-EaK" id="86F-84-833"/>
-                        <outlet property="timeTableviewHeightConstraint" destination="i9f-GB-5cj" id="WZJ-XP-qaF"/>
+                        <outlet property="timeTableviewHeightConstraint" destination="9XC-ca-FyT" id="5JX-bA-8ek"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IbD-zb-aaL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3012,7 +3019,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1323" y="-1983"/>
+            <point key="canvasLocation" x="-1323.1884057971015" y="-1983.4821428571427"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cok-Ci-psV">
@@ -3211,7 +3218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4DY-Pz-F4P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="858" y="1457"/>
+            <point key="canvasLocation" x="342" y="1456"/>
         </scene>
         <!--Break-->
         <scene sceneID="plE-yM-3oe">
@@ -3287,8 +3294,8 @@
         <segue reference="raw-Tx-Vfv"/>
         <segue reference="2Fb-bA-ARb"/>
         <segue reference="0RP-Z6-OgJ"/>
-        <segue reference="3zX-6L-oiB"/>
-        <segue reference="Bpe-zS-p8A"/>
+        <segue reference="GGP-HT-mqi"/>
+        <segue reference="isf-7E-suF"/>
         <segue reference="KeN-5T-wEn"/>
         <segue reference="gIR-CR-1ps"/>
     </inferredMetricsTieBreakers>
@@ -3333,6 +3340,12 @@
         </namedColor>
         <namedColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="timesheetBackgroundColor">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="timesheetSubviewColor">
+            <color red="0.99607843137254903" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

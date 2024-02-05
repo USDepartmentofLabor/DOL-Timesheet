@@ -15,11 +15,11 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="OnboardWelcomeViewController" title="Onboard Welcome View Controller" id="Y6W-OH-hqX" customClass="OnboardWelcomeViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j66-Du-3zB" userLabel="welcomeView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j66-Du-3zB" userLabel="welcomeView">
                                 <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="displayLogo" translatesAutoresizingMaskIntoConstraints="NO" id="vNX-3j-hBO">
@@ -387,7 +387,7 @@
                                                     <constraint firstAttribute="height" constant="34" id="vjm-cK-b6h"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="pRs-jS-dBb" id="jda-v2-O9o"/>
                                                 </connections>
@@ -1111,7 +1111,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="d9n-Ju-J6g"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbd-hs-Ai1">
-                                <rect key="frame" x="20" y="674.5" width="374" height="44"/>
+                                <rect key="frame" x="50" y="674.5" width="314" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Djp-Kv-yjA"/>
                                 </constraints>
@@ -1143,8 +1143,8 @@
                             <constraint firstItem="uou-oj-4JZ" firstAttribute="trailing" secondItem="KaM-py-VzY" secondAttribute="trailing" id="uA5-HB-bPg"/>
                             <constraint firstItem="kbd-hs-Ai1" firstAttribute="top" secondItem="uou-oj-4JZ" secondAttribute="bottom" constant="1" id="w3n-BZ-eVy"/>
                             <constraint firstItem="KaM-py-VzY" firstAttribute="bottom" secondItem="CnS-IN-gWv" secondAttribute="bottom" constant="75" id="wzy-8Y-cSd"/>
-                            <constraint firstItem="kbd-hs-Ai1" firstAttribute="leading" secondItem="KaM-py-VzY" secondAttribute="leading" constant="20" id="zRV-0q-wk6"/>
-                            <constraint firstItem="KaM-py-VzY" firstAttribute="trailing" secondItem="kbd-hs-Ai1" secondAttribute="trailing" constant="20" id="zZX-Fh-HYv"/>
+                            <constraint firstItem="kbd-hs-Ai1" firstAttribute="leading" secondItem="KaM-py-VzY" secondAttribute="leading" constant="50" id="zRV-0q-wk6"/>
+                            <constraint firstItem="KaM-py-VzY" firstAttribute="trailing" secondItem="kbd-hs-Ai1" secondAttribute="trailing" constant="50" id="zZX-Fh-HYv"/>
                         </constraints>
                     </view>
                     <connections>

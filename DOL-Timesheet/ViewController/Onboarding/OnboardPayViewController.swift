@@ -176,7 +176,7 @@ class OnboardPayViewController: OnboardBaseViewController {
             payRateTitle.text = "onboard_pay_rate_employee".localized
             overtimeTitle.text = "onboard_overtime_employee".localized
             stateTitle.text = "onboard_state_employee".localized
-            
+            stateMinimumText.text = "state_minimum_wage".localized
         }
     }
     
@@ -221,17 +221,18 @@ class OnboardPayViewController: OnboardBaseViewController {
             payRateTitle.text = "onboard_pay_rate_employer".localized
             overtimeTitle.text = "onboard_overtime_employer".localized
             stateTitle.text = "onboard_state_employer".localized
+            noteTitle.text = "onboard_employer_note".localized
         } else {
             payFrequencyTitle.text = "onboard_pay_frequency_employee".localized
             payRateTitle.text = "onboard_pay_rate_employee".localized
             overtimeTitle.text = "onboard_overtime_employee".localized
             stateTitle.text = "onboard_state_employee".localized
+            noteTitle.text = "onboard_employee_note".localized
         }
         
         stateMinimumField.scaleFont(forDataType: .nameValueText)
         stateMinimumField.addTarget(self, action: #selector(minimumWageDidChange(_:)), for: .editingChanged)
         
-        noteTitle.text = "onboard_pay_note".localized
         
         setupAccessibility()
         
