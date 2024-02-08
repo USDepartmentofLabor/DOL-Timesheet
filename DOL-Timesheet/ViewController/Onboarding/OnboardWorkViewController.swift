@@ -92,7 +92,7 @@ class OnboardWorkViewController: OnboardBaseViewController {
     }
     
     @objc func handleTap(sender: UITapGestureRecognizer) {
-        let tapLocation = tapGesture!.location(in: view)
+        let tapLocation = tapGesture!.location(in: scrollView)
         
         switch pickerSelected {
         case .payPeriodPicker:

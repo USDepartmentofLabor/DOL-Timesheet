@@ -167,6 +167,14 @@ extension OnboardPageNavigationViewController: OnboardPageViewControllerDelegate
 }
 
 extension OnboardPageNavigationViewController: OnboardingProtocol {
+    func displayTabs() {
+        welcomeLabel.text = "welcome".localized
+        introLabel.text = "intro".localized
+        workLabel.text = "work".localized
+        payLabel.text = "pay".localized
+        summaryLabel.text =  "summary".localized
+    }
+    
     func resetData() {
         onboardPageViewController?.resetData()
         

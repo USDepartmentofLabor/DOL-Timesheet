@@ -200,10 +200,10 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
                 UIAlertAction(title: "yes_si".localized, style: .default) { _ in
                     Localizer.updateCurrentLanguage(lang: langUpdate)
                     self.setupView()
+                    self.onboardingDelegate?.displayTabs()
                  }
              )
              present(alertController, animated: true)
         }
      }
-    
 }

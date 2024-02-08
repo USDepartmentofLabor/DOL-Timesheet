@@ -9,6 +9,7 @@
 import UIKit
 
 protocol OnboardingProtocol: AnyObject {
+    func displayTabs()
     func resetData()
     func updateCanMoveForward(value: Bool)
     func updateViewModels(profileViewModel: ProfileViewModel, employmentModel: EmploymentModel?)
