@@ -284,7 +284,6 @@ extension TimesheetViewModel {
     // WorkWeek5 - 05/26/2019 - -6/01/2019
     func hoursWorked(workWeek index: Int) -> Double {
         guard let currentPeriod = currentPeriod else { return 0 }
-        
         let workWeek = currentPeriod.workWeeks[index]
         
         let workWeekDaysInPeriod = workWeek.days
@@ -298,8 +297,8 @@ extension TimesheetViewModel {
     
     func overTimeHours(workWeek index: Int) -> Double {
         guard let currentPeriod = currentPeriod else { return 0 }
-        
         let workWeek = currentPeriod.workWeeks[index]
+        
         let totalHoursWorked = workWeek.days.reduce(0) {$0 + totalHoursTime(forDate: $1)}
         let expectedWorkTime: Double = WorkWeekViewModel.WORK_WEEK_SECONDS
         return totalHoursWorked > expectedWorkTime ? totalHoursWorked - expectedWorkTime : 0
@@ -307,6 +306,20 @@ extension TimesheetViewModel {
     
     func overTimeHours(workWeek index: Int) -> String {
         return Date.secondsToHoursMinutes(seconds: overTimeHours(workWeek: index))
+    }
+    
+    func breakTimeHours(workWeek index: Int) -> Double {
+        guard let currentPeriod = currentPeriod else { return 0 }
+        let workWeek = currentPeriod.workWeeks[index]
+        
+        let totalBreak = workWeek.days.reduce(0) {$0 + totalBreakTime(forDate: $1)}
+        let minimumBreakTime: Double = 20 * 60
+        
+        return totalBreak >= minimumBreakTime ? totalBreak : 0
+    }
+    
+    func breakTimeHours(workWeek index: Int) -> String{
+        return Date.secondsToHoursMinutes(seconds: breakTimeHours(workWeek: index))
     }
 }
 

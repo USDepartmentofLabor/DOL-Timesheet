@@ -120,6 +120,7 @@
 		59AD9E6422A1ADB500075193 /* SummaryTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59AD9E6222A1ADB500075193 /* SummaryTableViewHeaderView.xib */; };
 		59B1BEA22294588D00F0D37A /* TitleValueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B1BEA12294588D00F0D37A /* TitleValueLabel.swift */; };
 		59EB62F2229EE3EE00470AA4 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EB62F1229EE3EE00470AA4 /* ProfileModel.swift */; };
+		690CE2DD2B716BEB00A78D8A /* WeeklySummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690CE2DC2B716BEB00A78D8A /* WeeklySummaryViewController.swift */; };
 		690F8D5E2B5B2A1D00B7625E /* TimeEntryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690F8D5C2B5B2A1D00B7625E /* TimeEntryViewCell.swift */; };
 		690F8D5F2B5B2A1D00B7625E /* TimeEntryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690F8D5D2B5B2A1D00B7625E /* TimeEntryViewCell.xib */; };
 		690F8D612B5B381200B7625E /* TimesheetSoftenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690F8D602B5B381200B7625E /* TimesheetSoftenViewController.swift */; };
@@ -290,6 +291,7 @@
 		59AD9E6222A1ADB500075193 /* SummaryTableViewHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SummaryTableViewHeaderView.xib; path = "DOL-Timesheet/View/TableViewCell/SummaryTableViewHeaderView.xib"; sourceTree = SOURCE_ROOT; };
 		59B1BEA12294588D00F0D37A /* TitleValueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueLabel.swift; sourceTree = "<group>"; };
 		59EB62F1229EE3EE00470AA4 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		690CE2DC2B716BEB00A78D8A /* WeeklySummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklySummaryViewController.swift; sourceTree = "<group>"; };
 		690F8D5C2B5B2A1D00B7625E /* TimeEntryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryViewCell.swift; sourceTree = "<group>"; };
 		690F8D5D2B5B2A1D00B7625E /* TimeEntryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeEntryViewCell.xib; sourceTree = "<group>"; };
 		690F8D602B5B381200B7625E /* TimesheetSoftenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetSoftenViewController.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 		03264F6D22834EB200FF6010 /* Timesheet */ = {
 			isa = PBXGroup;
 			children = (
+				690CE2DC2B716BEB00A78D8A /* WeeklySummaryViewController.swift */,
 				0324C3DE2260E47100712576 /* TimesheetViewController.swift */,
 				690F8D602B5B381200B7625E /* TimesheetSoftenViewController.swift */,
 				03264F6E22834ED100FF6010 /* EnterTimeViewController.swift */,
@@ -948,6 +951,7 @@
 				1118714729DE569B00F087F3 /* StateMinWage.swift in Sources */,
 				032C9F1B2264FD1900FB1468 /* ButonWithInfo.swift in Sources */,
 				69FBFCA528F89A0500FEED84 /* SettingsProfileViewController.swift in Sources */,
+				690CE2DD2B716BEB00A78D8A /* WeeklySummaryViewController.swift in Sources */,
 				033FB84E2296E658006BA459 /* String+Extension.swift in Sources */,
 				0324C40F2260E8B000712576 /* CoreDataManager.swift in Sources */,
 				036D71982277529400CC62CE /* PaymentFrequencyTableViewCell.swift in Sources */,
@@ -1200,7 +1204,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 105;
+				CURRENT_PROJECT_VERSION = 106;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -1223,7 +1227,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 105;
+				CURRENT_PROJECT_VERSION = 106;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

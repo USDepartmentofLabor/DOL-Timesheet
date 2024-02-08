@@ -111,7 +111,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         periodLabel.text = viewModel?.currentPeriod?.title
         payPeriodSummaryData = []
         payPeriodSummaryData.append(PayPeriodSummary(name: "Total Hours Worked", value1: "xx hrs", value2: "x min"))
-        viewModel?.currentEmploymentModel?.hourlyRates?.forEach {rate in
+        viewModel?.currentEmploymentModel?.hourlyRates?.forEach { rate in
             payPeriodSummaryData.append(PayPeriodSummary(name: rate.title, value1: "xx hrs", value2: "x min"))
         }
         payPeriodSummaryData.append(PayPeriodSummary(name: "Break Hours", value1: "xx hrs", value2: "x min"))

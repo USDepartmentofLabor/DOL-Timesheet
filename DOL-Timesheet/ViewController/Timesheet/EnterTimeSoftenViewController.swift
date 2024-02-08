@@ -237,7 +237,20 @@ class EnterTimeSoftenViewController: UIViewController {
         employerRateHeightConstraint.constant = 91
 //        view.layoutIfNeeded()
         
-        rateOptions = timeSheetModel?.currentEmploymentModel?.hourlyRates
+        if timeLog == nil {
+            if viewModel?.timeLogs?.count == 0 {
+                timeLog = viewModel?.addTimeLog()
+            } else {
+                if let firstLog = viewModel?.timeLogs?.first,
+                   firstLog.startTime == nil,
+                   firstLog.endTime == nil {
+                        timeLog = firstLog
+                } else {
+                    timeLog = viewModel?.addTimeLog()
+                }
+            }
+        }
+        rateOptions = timeLog?.dateLog?.employmentInfo?.sortedRates()
         
         let optionClosure = {(action : UIAction) in
             print(action.title)
@@ -251,8 +264,8 @@ class EnterTimeSoftenViewController: UIViewController {
         var tmpOptions = options
         let currRate = tmpOptions.remove(at: selectedRate!)
         tmpOptions.insert(currRate, at: 0)
+        currentHourlyRate = currRate
         
-                
         for option in tmpOptions {
             let action = UIAction(title: option.title, handler: {_ in
                 self.currentHourlyRate = option
@@ -347,6 +360,7 @@ class EnterTimeSoftenViewController: UIViewController {
                 timeLog = safeViewModel.addTimeLog()
 //            }
         }
+        print("GGG: timelog count \(viewModel!.dateLog.timeLogs!.count)")
         
         timeLog?.startTime = startTime
         timeLog?.addBreak(duration: breakTime)

@@ -472,16 +472,16 @@ empleado?";
 
 "info_state" = "Utilizamos el estado en el que trabaja para ayudar a detectar situaciones en las que su salario podría estar por debajo del salario mínimo federal.";
 "info_state_minimumWage" = "Where a state minimum wage law is less restrictive than the federal law, the federal law applies. Where a state child labor law is more restrictive than the federal law, the state law applies. For further information, please visit: <a href=\"https://www.dol.gov/agencies/whd/mw-consolidated\" style=\"text-decoration:none\">https://www.dol.gov/agencies/whd/mw-consolidated</a> or contact us at 1-866-4US-WAGE.";
-"employer_first_pay_period"= "¿Fecha de inicio de su actual período de pago?​";
-"employee_first_pay_period"= "¿Fecha de inicio del actual período de pago del empleado?​";
+"employer_first_pay_period"= "¿Fecha de inicio de tu período de pago actual?​";
+"employee_first_pay_period"= "¿Fecha de inicio del período de pago actual del empleado?​";
 
 "onboarding_name_nickname" = "Nombre o apodo";
 "onboarding_employee_pay_week" = "Inicio de la semana de pago";
 "onboarding_employer_pay_week" = "Inicio de la semana de pago";
 "pay_frequency" = "Frecuencia de pago";
 "employee_pay_frequency" = "Frecuencia de pago del empleado";
-"onboarding_employer_first_day_pay" = "Primer día del período de pago actual";
-"onboarding_employee_first_day_pay" = "Primer pago actual del empleado ";
+"onboarding_employer_first_day_pay" = "Fecha de inicio del período de pago actual";
+"onboarding_employee_first_day_pay" = "Fecha de inicio del período de pago actual del empleado";
 "pay_rate" = "Tarifa de pago";
 "employee_pay_rate" = "Tarifa de pago del empleado";
 "onboarding_employee_eligible_overtime" = "Elegible para sobretiempo";
