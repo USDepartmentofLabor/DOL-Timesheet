@@ -13,9 +13,7 @@ class WeeklySummaryViewController: UIViewController, TimeViewDelegate, TimePicke
 
     @IBOutlet weak var weeklyTableView: UITableView!
 
-    lazy var viewModel: TimesheetViewModel = TimesheetViewModel()
-    var summaryTableData: [[PayPeriodSummary]] = []
-    var payPeriodSummaryData: [PayPeriodSummary] = []
+    lazy var timesheetViewModel: TimesheetViewModel = TimesheetViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +30,7 @@ class WeeklySummaryViewController: UIViewController, TimeViewDelegate, TimePicke
     
     func setupView() {
         
-        title = "timesheet".localized
+        title = "Weekly Summary"
                 
         
         weeklyTableView.register(UINib(nibName: TimeEntryViewCell.nibName, bundle: nil), forCellReuseIdentifier: TimeEntryViewCell.reuseIdentifier)
@@ -45,19 +43,11 @@ class WeeklySummaryViewController: UIViewController, TimeViewDelegate, TimePicke
     }
     
     func displayInfo() {
-        viewModel.updatePeriod()
+        timesheetViewModel.updatePeriod()
         displayPeriodInfo()
     }
     
     func displayPeriodInfo() {
-        payPeriodSummaryData = []
-        payPeriodSummaryData.append(PayPeriodSummary(name: "Total Hours Worked", value1: "xx hrs", value2: "x min"))
-        viewModel.currentEmploymentModel?.hourlyRates?.forEach {rate in
-            payPeriodSummaryData.append(PayPeriodSummary(name: rate.title, value1: "xx hrs", value2: "x min"))
-        }
-        payPeriodSummaryData.append(PayPeriodSummary(name: "Break Hours", value1: "xx hrs", value2: "x min"))
-        payPeriodSummaryData.append(PayPeriodSummary(name: "Overtime", value1: "xx hrs", value2: "x min"))
-        payPeriodSummaryData.append(PayPeriodSummary(name: "Weekly Summary", value1: "", value2: ""))
         weeklyTableView.reloadData()
         
 //        self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
@@ -82,7 +72,7 @@ class WeeklySummaryViewController: UIViewController, TimeViewDelegate, TimePicke
 extension WeeklySummaryViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return viewModel.numberOfWorkWeeks
+        return timesheetViewModel.numberOfWorkWeeks
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -104,13 +94,16 @@ extension WeeklySummaryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3 + (viewModel.currentEmploymentModel?.hourlyRates?.count ?? 0)
+        if timesheetViewModel.currentEmploymentModel?.paymentType == .hourly {
+            return 3 + (timesheetViewModel.currentEmploymentModel?.hourlyRates?.count ?? 0)
+        }
+        return 3+1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let hourlyCell = tableView.dequeueReusableCell(withIdentifier: TimeEntryViewCell.reuseIdentifier) as! TimeEntryViewCell
-        let numDays = viewModel.currentPeriod?.numberOfDays() ?? 0
+        let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         let section = indexPath.section
         let row = indexPath.row
         
@@ -121,18 +114,29 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             // TOTAL HOURS WORKED
             // Section Identifies Work Week
             // Get total hours for work week and set hrs / mins
-            title = "TOTAL HOURS WORKED"
-            totalTime = viewModel.hoursWorked(workWeek: indexPath.section)
-        } else if row < (1 + (viewModel.currentEmploymentModel?.hourlyRates?.count ?? 1)) {
+            title = "Total Hours Worked"
+            totalTime = timesheetViewModel.hoursWorked(workWeek: indexPath.section)
+        } else if row < (1 + (timesheetViewModel.currentEmploymentModel?.hourlyRates?.count ?? 1)) {
             // Multiple RATES
             // Section Identifies Work Week
             // Row - 1 Identifies rate to get total for and set hrs / mins
-        } else if row == (1 + (viewModel.currentEmploymentModel?.hourlyRates?.count ?? 1)) {
+            
+            if timesheetViewModel.currentEmploymentModel?.paymentType == .hourly {
+                let rate = timesheetViewModel.currentEmploymentModel?.hourlyRates?[row-1]
+                title = rate?.title ?? "Rate Title"
+                totalTime = "xx hrs xx mins"
+            } else {
+                let salary = timesheetViewModel.currentEmploymentModel?.salary
+                title = "payment_type_salary".localized
+                totalTime = "xx hrs xx mins"
+            }
+            
+        } else if row == (1 + (timesheetViewModel.currentEmploymentModel?.hourlyRates?.count ?? 1)) {
             // BREAK TIME
             // Section Identifies Work Week
             // Get break Time for work week and set hrs / mins
             title = "Break Time"
-            totalTime = viewModel.breakTimeHours(workWeek: indexPath.section)
+            totalTime = timesheetViewModel.breakTimeHours(workWeek: indexPath.section)
 
         } else {
             // OVERTIME
@@ -140,7 +144,7 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             // Get overtime for work week and set hrs / mins
             title = "Overtime"
 
-            totalTime = viewModel.overTimeHours(workWeek: indexPath.section)
+            totalTime = timesheetViewModel.overTimeHours(workWeek: indexPath.section)
         }
         
         hourlyCell.rateName.text = title
@@ -163,7 +167,7 @@ extension WeeklySummaryViewController: UITableViewDelegate {
     }
     
     func titleForWorkWeek(week: Int) -> String? {
-        guard let workWeekViewModel = viewModel.workWeekViewModel(at: week) else {
+        guard let workWeekViewModel = timesheetViewModel.workWeekViewModel(at: week) else {
             return nil
         }
         
@@ -176,7 +180,7 @@ extension WeeklySummaryViewController: UITableViewDelegate {
 extension WeeklySummaryViewController {
     
     func export(_ sender: Any) {
-        guard let csvPath = viewModel.csv() else {
+        guard let csvPath = timesheetViewModel.csv() else {
             return
         }
         
@@ -221,7 +225,7 @@ extension WeeklySummaryViewController {
     }
     
     func setCurrentUser(user: User) {
-        viewModel.setCurrentEmploymentModel(for: user)
+        timesheetViewModel.setCurrentEmploymentModel(for: user)
     }
          
 }
@@ -235,7 +239,7 @@ extension WeeklySummaryViewController: MFMailComposeViewControllerDelegate {
 
 extension WeeklySummaryViewController: TimeViewControllerDelegate {
     func didUpdateUser() {
-        if let user = viewModel.userProfileModel.employmentUsers.first {
+        if let user = timesheetViewModel.userProfileModel.employmentUsers.first {
             self.setCurrentUser(user: user)
         }
         displayInfo()
