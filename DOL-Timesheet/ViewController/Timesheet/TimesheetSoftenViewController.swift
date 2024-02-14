@@ -33,6 +33,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     @IBOutlet weak var scrollView: UIScrollView!
     var timesheetViewModel: TimesheetViewModel?
     var payPeriodSummaryData: [PayPeriodSummary] = []
+    var selectedTimeLog = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,13 +162,21 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "enterTime",
-           let navVC = segue.destination as? UINavigationController,
-           let enterTimeVC = navVC.topViewController as? EnterTimeSoftenViewController,
+           let enterTimeVC = segue.destination as? EnterTimeSoftenViewController,
            let currentDate = sender as? Date,
-           let viewModel = timesheetViewModel {
-               enterTimeVC.viewModel = viewModel.createEnterTimeViewModel(for: currentDate)
-               enterTimeVC.timeSheetModel = viewModel
-               enterTimeVC.delegate = self
+           let timesheetViewModel = timesheetViewModel {
+            enterTimeVC.timeSheetModel = timesheetViewModel
+            
+            let enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: currentDate)
+            enterTimeVC.enterTimeViewModel = enterTimeViewModel
+            
+            enterTimeVC.selectedEmployment = timesheetViewModel.userProfileModel.employmentUsers.firstIndex(of: (timesheetViewModel.currentEmploymentModel?.employmentUser)!)
+            
+            let timeLog = enterTimeViewModel?.timeLogs![selectedTimeLog]
+            
+            enterTimeVC.timeLogEntry = timeLog
+            
+            enterTimeVC.delegate = self
         }
         
         if segue.identifier == "weeklySummary",
@@ -236,7 +245,7 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
         if section < numDays {
             let sectionDate = timesheetViewModel?.currentPeriod?.date(at: indexPath.section)
             let timeEntryViewModel: EnterTimeViewModel = (timesheetViewModel?.createEnterTimeViewModel(for: sectionDate!))!
-            var timeLog = timeEntryViewModel.timeLogs![indexPath.row]
+            let timeLog = timeEntryViewModel.timeLogs![indexPath.row]
 
             hourlyCell.configure(timeLog: timeLog)
         } else if section < numDays + 1 {

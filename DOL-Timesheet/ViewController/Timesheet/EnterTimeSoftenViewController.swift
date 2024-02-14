@@ -10,8 +10,9 @@ import UIKit
 
 class EnterTimeSoftenViewController: UIViewController {
 
-    var viewModel: EnterTimeViewModel?
+    var enterTimeViewModel: EnterTimeViewModel?
     var timeSheetModel: TimesheetViewModel?
+    var timeLogEntry: TimeLog?
     
     @IBOutlet weak var commentsHint: UILabel!
     @IBOutlet weak var employmentView: UIView!
@@ -77,6 +78,11 @@ class EnterTimeSoftenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
+
+        
+        if timeLogEntry != nil {
+            setupTimeLog()
+        }
         setupView()
         displayInfo()
     }
@@ -90,6 +96,25 @@ class EnterTimeSoftenViewController: UIViewController {
         view.endEditing(true)
     }
     
+    func setupTimeLog() {
+        timeLog = timeLogEntry
+        
+        var rateName = "Rate"
+        
+        if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
+            let title = (hourlyTimeLog.value > 0) ? 
+            "\(hourlyTimeLog.hourlyRate?.name ?? "") (\(NumberFormatter.localisedCurrencyStr(from: hourlyTimeLog.value)))" :
+            hourlyTimeLog.hourlyRate?.title
+            rateName = title ?? ""
+        }
+        
+        rateOptions = timeLog?.dateLog?.employmentInfo?.sortedRates()
+        
+        selectedRate = rateOptions!.firstIndex(where: {
+            $0.title == rateName
+        })
+    }
+    
     func setupView() {
 
         let cancelBtn = UIBarButtonItem(title: "cancel".localized, style: .plain, target: self, action: #selector(cancel(_:)))
@@ -100,7 +125,7 @@ class EnterTimeSoftenViewController: UIViewController {
 
         let saveBtn = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(save(_:)))
         navigationItem.rightBarButtonItem = saveBtn
-//        title = viewModel?.title
+//        title = enterTimeViewModel?.title
         title = "manual_time_entry".localized
         
         employmentTitleLabel.text = "employer".localized
@@ -238,15 +263,15 @@ class EnterTimeSoftenViewController: UIViewController {
 //        view.layoutIfNeeded()
         
         if timeLog == nil {
-            if viewModel?.timeLogs?.count == 0 {
-                timeLog = viewModel?.addTimeLog()
+            if enterTimeViewModel?.timeLogs?.count == 0 {
+                timeLog = enterTimeViewModel?.addTimeLog()
             } else {
-                if let firstLog = viewModel?.timeLogs?.first,
+                if let firstLog = enterTimeViewModel?.timeLogs?.first,
                    firstLog.startTime == nil,
                    firstLog.endTime == nil {
                         timeLog = firstLog
                 } else {
-                    timeLog = viewModel?.addTimeLog()
+                    timeLog = enterTimeViewModel?.addTimeLog()
                 }
             }
         }
@@ -329,7 +354,7 @@ class EnterTimeSoftenViewController: UIViewController {
     }
     
     func displayInfo() {
-        dateDropDownView.value = viewModel?.title ?? ""
+        dateDropDownView.value = enterTimeViewModel?.title ?? ""
         
         let formattedStartTime = startTime?.formattedTime
         startDropDownView.value = formattedStartTime ?? ""
@@ -346,7 +371,7 @@ class EnterTimeSoftenViewController: UIViewController {
     }
 
     @objc func save(_ sender: Any?) {
-        guard let safeViewModel = viewModel else { return }
+        guard let safeViewModel = enterTimeViewModel else { return }
         if startTime == nil || endTime == nil {
             return
         }
@@ -360,7 +385,7 @@ class EnterTimeSoftenViewController: UIViewController {
                 timeLog = safeViewModel.addTimeLog()
 //            }
         }
-        print("GGG: timelog count \(viewModel!.dateLog.timeLogs!.count)")
+        print("GGG: timelog count \(enterTimeViewModel!.dateLog.timeLogs!.count)")
         
         timeLog?.startTime = startTime
         timeLog?.addBreak(duration: breakTime)
@@ -378,18 +403,18 @@ class EnterTimeSoftenViewController: UIViewController {
         
         timeLog?.comment = comment
                 
-        if let errorStr = viewModel?.validate() {
+        if let errorStr = enterTimeViewModel?.validate() {
             displayError(message: errorStr, title: "Error")
             return
         }
         
         safeViewModel.save()
         let annnouncementMsg = "save_time_entry".localized
-        let announcementStr = String(format: annnouncementMsg, viewModel?.title ?? "")
+        let announcementStr = String(format: annnouncementMsg, enterTimeViewModel?.title ?? "")
         UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementStr)
         
 
-        delegate?.didEnterTime(enterTimeModel: viewModel)
+        delegate?.didEnterTime(enterTimeModel: enterTimeViewModel)
         //dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
         
@@ -406,11 +431,11 @@ extension EnterTimeSoftenViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.numberOfTimeLogs ?? 0
+        return enterTimeViewModel?.numberOfTimeLogs ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let timeLog = viewModel?.timeLogs?[indexPath.row]
+        let timeLog = enterTimeViewModel?.timeLogs?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: EnterHourlyTimeTableViewCell.reuseIdentifier) as! EnterHourlyTimeTableViewCell
             
         cell.timeLog = timeLog
@@ -427,7 +452,7 @@ extension EnterTimeSoftenViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if let timeLog = viewModel?.timeLogs?[indexPath.row] {
+            if let timeLog = enterTimeViewModel?.timeLogs?[indexPath.row] {
                 deleteTimeLog(timeLog: timeLog)
             }
         }
@@ -453,7 +478,7 @@ extension EnterTimeSoftenViewController: UITableViewDataSource {
             UIAlertAction(title: "cancel".localized, style: .cancel))
         alertController.addAction(
             UIAlertAction(title: "delete".localized, style: .destructive) { _ in
-                self.viewModel?.removeTimeLog(timeLog: timeLog)
+                self.enterTimeViewModel?.removeTimeLog(timeLog: timeLog)
         })
         present(alertController, animated: true)
     }
@@ -476,12 +501,12 @@ extension EnterTimeSoftenViewController {
     }
     
     func isValid(startTime: Date, for timeLog: TimeLog?) -> Bool {
-        guard let viewModel = viewModel else {
+        guard let safeViewModel = enterTimeViewModel else {
             startTimeErrorMessage.text = "Internal View Model Error"
             return false
         }
         
-        let errorStr = viewModel.isValid(time: startTime, for: timeLog, isStartTime: true)
+        let errorStr = safeViewModel.isValid(time: startTime, for: timeLog, isStartTime: true)
 //        if !errorStr.isEmpty {
 //            startTimeErrorMessage.text = errorStr
 //            displayError(message: errorStr)
@@ -532,7 +557,7 @@ extension EnterTimeSoftenViewController {
         let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "yes".localized, style: .default, handler: { [weak self] (action) in
             guard let strongSelf = self else { return }
-            strongSelf.viewModel?.splitTime(endTime: endTime, for: timeLog)
+            strongSelf.enterTimeViewModel?.splitTime(endTime: endTime, for: timeLog)
         }))
         
         alertController.addAction(UIAlertAction(title: "no".localized, style: .cancel, handler: nil))
@@ -540,11 +565,11 @@ extension EnterTimeSoftenViewController {
     }
     
     func isValid(breakTime: Double, for timeLog: TimeLog?) -> Bool {
-        guard let viewModel = viewModel else {
+        guard let safeViewModel = enterTimeViewModel else {
             return false
         }
         
-        let errorStr = viewModel.isValid(breakTime: breakTime, for: timeLog)
+        let errorStr = safeViewModel.isValid(breakTime: breakTime, for: timeLog)
         if !errorStr.isEmpty {
             displayError(message: errorStr)
             return false
@@ -606,7 +631,7 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
     
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
         if sourceView == dateDropDownView {
-            viewModel = timeSheetModel?.createEnterTimeViewModel(for: datePicker.date)
+            enterTimeViewModel = timeSheetModel?.createEnterTimeViewModel(for: datePicker.date)
             displayInfo()
             UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: dateDropDownView)
         } else if sourceView == startDropDownView {

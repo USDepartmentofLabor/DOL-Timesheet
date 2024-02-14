@@ -509,7 +509,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
                 enterTimeModel = viewModel.createEnterTimeViewModel(for: Date())
             }
             
-            enterTimeVC.viewModel = enterTimeModel
+            enterTimeVC.enterTimeViewModel = enterTimeModel
             enterTimeVC.timeSheetModel = viewModel
             enterTimeVC.delegate = self
                        
