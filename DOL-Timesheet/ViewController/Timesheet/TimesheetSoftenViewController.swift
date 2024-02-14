@@ -274,11 +274,12 @@ extension TimesheetSoftenViewController: UITableViewDelegate {
         let secondToLastRow = tableView.numberOfRows(inSection: secondToLastSection) - 1
         let numDays = timesheetViewModel?.currentPeriod?.numberOfDays() ?? 0
         
-        guard let currentDate = timesheetViewModel?.currentPeriod?.date(at: indexPath.row) else {
+        guard let currentDate = timesheetViewModel?.currentPeriod?.date(at: indexPath.section) else {
             return
         }
         
         if indexPath.section < secondToLastRow {
+            selectedTimeLog = indexPath.row
             performSegue(withIdentifier: "enterTime", sender: currentDate)
         }
         

@@ -12,7 +12,6 @@ class EnterTimeSoftenViewController: UIViewController {
 
     var enterTimeViewModel: EnterTimeViewModel?
     var timeSheetModel: TimesheetViewModel?
-    var timeLogEntry: TimeLog?
     
     @IBOutlet weak var commentsHint: UILabel!
     @IBOutlet weak var employmentView: UIView!
@@ -58,7 +57,9 @@ class EnterTimeSoftenViewController: UIViewController {
     var endTime: Date?
     var comment: String = ""
 
-    var timeLog: TimeLog? {
+    var timeLogEntry: TimeLog?
+
+    private var timeLog: TimeLog? {
         didSet {
             displayInfo()
         }
@@ -113,6 +114,8 @@ class EnterTimeSoftenViewController: UIViewController {
         selectedRate = rateOptions!.firstIndex(where: {
             $0.title == rateName
         })
+        
+        
     }
     
     func setupView() {
@@ -363,6 +366,13 @@ class EnterTimeSoftenViewController: UIViewController {
         endDropDownView.value = formattedEndTime ?? ""
         
         displayBreakTime(timeInSeconds: breakTime)
+        
+        commentTextView.text = comment
+        
+        commentsHint.isHidden = true
+        if comment.count == 0 {
+            commentsHint.isHidden = false
+        }
     }
 
     @objc func cancel(_ sender: Any?) {
@@ -612,10 +622,9 @@ extension EnterTimeSoftenViewController: UITextViewDelegate {
     }
     func textViewDidChange(_ textView: UITextView) {
         comment = textView.text
+        commentsHint.isHidden = true
         if comment.count == 0 {
             commentsHint.isHidden = false
-        } else {
-            commentsHint.isHidden = true
         }
     }
     
