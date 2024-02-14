@@ -56,6 +56,7 @@ class EnterTimeSoftenViewController: UIViewController {
     var selectedRate: Int?
     
     var rateOptions: [HourlyRate]?
+    var selectedDate: Date = Date().removeTimeStamp()
     var startTime: Date?
     var breakTime: TimeInterval = 0.0
     var endTime: Date?
@@ -178,10 +179,17 @@ class EnterTimeSoftenViewController: UIViewController {
         
 //        commentTextView.delegate = self
         
-        startTime = timeLog?.startTime
-        breakTime = timeLog?.totalBreakTime ?? 0
-        endTime = timeLog?.endTime
-        comment = timeLog?.comment ?? ""
+        if let safeTimeLog = timeLog {
+            startTime = safeTimeLog.startTime
+            breakTime = safeTimeLog.totalBreakTime 
+            endTime = safeTimeLog.endTime
+            comment = safeTimeLog.comment ?? ""
+        } else {
+            startTime = selectedDate + (8*60*60)
+            breakTime = 0
+            endTime = selectedDate + (17*60*60)
+            comment = ""
+        }
         
         startTimeErrorMessage.text = ""
         breakTimeErrorMessage.text = ""
@@ -326,6 +334,7 @@ class EnterTimeSoftenViewController: UIViewController {
         datePickerVC.delegate = self
         datePickerVC.sourceView = (dateDropDownView)
         datePickerVC.pickerMode = .date
+        datePickerVC.currentDate = selectedDate
 
         showPopup(popupController: datePickerVC, sender: dateDropDownView)
         self.timePickerVC = datePickerVC
@@ -417,6 +426,12 @@ class EnterTimeSoftenViewController: UIViewController {
         timeLog?.endTime = endTime
         
         if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
+            
+            if let rateOptions = timeLog?.dateLog?.employmentInfo?.sortedRates() {
+                let selectedRate =  rateOptions.filter { $0.name == currentHourlyRate!.name && $0.value == currentHourlyRate!.value}.first
+                currentHourlyRate = selectedRate
+            }
+            
             hourlyTimeLog.hourlyRate = currentHourlyRate
             hourlyTimeLog.value = currentHourlyRate?.value ?? 0
         }
@@ -669,11 +684,15 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
     
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
         if sourceView == dateDropDownView {
+            selectedDate = datePicker.date
             enterTimeViewModel = timeSheetModel?.createEnterTimeViewModel(for: datePicker.date)
+            timeLog = enterTimeViewModel?.timeLogs?.first
             displayInfo()
             UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: dateDropDownView)
         } else if sourceView == startDropDownView {
-            let time = datePicker.date.removeSeconds()
+            var time = selectedDate
+            let timeInterval = datePicker.date.removeDate()
+            time.addTimeInterval(timeInterval)
             if isValid(startTime: time, for: timeLog) {
                 startTime = time
             }
@@ -683,7 +702,9 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
                 }
             }
         } else if sourceView == endDropDownView {
-            var time = datePicker.date.removeSeconds()
+            var time = selectedDate
+            let timeInterval = datePicker.date.removeDate()
+            time.addTimeInterval(timeInterval)
             
             if time.isMidnight() {
                 time = time.addDays(days: 1)

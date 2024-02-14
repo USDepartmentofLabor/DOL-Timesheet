@@ -64,6 +64,9 @@ class TimePickerViewController: UIViewController {
         else if pickerMode == .time, let date = currentDate {
             datePicker.date = date
         }
+        else if pickerMode == .date, let date = currentDate {
+            datePicker.date = date
+        }
     }
     
     

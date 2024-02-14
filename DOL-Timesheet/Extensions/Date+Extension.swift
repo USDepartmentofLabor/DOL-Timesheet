@@ -141,6 +141,17 @@ extension Date {
 }
 
 extension Date {
+    func removeDate() -> TimeInterval {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute, .second], from: self)
+        guard let hour = components.hour, let minute = components.minute else {
+            return 0 // or handle the error accordingly
+        }
+
+        let secondsSinceMidnight = TimeInterval(hour * 3600 + minute * 60)
+        return secondsSinceMidnight
+    }
+    
     func removeSeconds() -> Date {
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: self)
         guard let date = Calendar.current.date(from: dateComponents)
