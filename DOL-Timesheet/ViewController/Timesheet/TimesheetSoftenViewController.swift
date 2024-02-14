@@ -29,6 +29,9 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
   
     @IBOutlet weak var timeTableView: UITableView!
     @IBOutlet weak var timeTableviewHeightConstraint: NSLayoutConstraint!
+    
+    var timePickerVC = TimePickerViewController.instantiateFromStoryboard()
+
 
     @IBOutlet weak var scrollView: UIScrollView!
     var timesheetViewModel: TimesheetViewModel?
@@ -153,11 +156,30 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     }
     
     @IBAction func payPeriodPressed(_ sender: Any) {
-        
+        self.timePickerVC.sourceView = (periodLabel)
+        self.timePickerVC.delegate = self
+        self.timePickerVC.pickerMode = .date
+        showPopup(popupController: self.timePickerVC, sender: periodLabel)
     }
     
     func donePressed() {
+        timeChanged(sourceView: self.timePickerVC.sourceView, datePicker: self.timePickerVC.datePicker)
+        timesheetViewModel?.updatePeriod(currentDate: (timePickerVC.datePicker.date))
+        displayPeriodInfo()
+        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: periodLabel)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func deleteTimeLog(indexPath: IndexPath) {
+        let sectionDate = (timesheetViewModel?.currentPeriod?.date(at: indexPath.section))!
+        let enterTimeViewModel = timesheetViewModel!.createEnterTimeViewModel(for: sectionDate)
         
+        let timeLog = enterTimeViewModel?.timeLogs![indexPath.row]
+
+        
+        guard let safeEnterTimeViewModel = enterTimeViewModel else { return }
+        safeEnterTimeViewModel.removeTimeLog(timeLog: timeLog!)
+        safeEnterTimeViewModel.save()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -262,6 +284,19 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
         hourlyCell.layer.masksToBounds = true
         
         return hourlyCell
+    }
+    
+    func tableView(_ tableView:UITableView, editingStyleForRowAt: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView:UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        tableView.beginUpdates()
+        
+        deleteTimeLog(indexPath: indexPath)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        
+        tableView.endUpdates()
     }
 }
 
