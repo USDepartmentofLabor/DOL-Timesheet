@@ -1013,6 +1013,17 @@
                                     <outletCollection property="gestureRecognizers" destination="9tG-Y3-tcz" appends="YES" id="pl7-vj-osf"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVi-c4-VOK">
+                                <rect key="frame" x="87" y="535.5" width="240" height="34.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="aWK-pA-J1o"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Discard"/>
+                                <connections>
+                                    <action selector="discardPressed:" destination="zY3-x1-MpB" eventType="touchUpInside" id="GoD-kQ-QMy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fZo-VG-2aG"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -1020,9 +1031,11 @@
                             <constraint firstItem="fZo-VG-2aG" firstAttribute="trailing" secondItem="0f0-p5-BAk" secondAttribute="trailing" constant="20" id="5uo-wm-M1h"/>
                             <constraint firstItem="XMk-Zz-y1D" firstAttribute="top" secondItem="fZo-VG-2aG" secondAttribute="top" constant="20" id="6k2-b8-Gqf"/>
                             <constraint firstItem="fZo-VG-2aG" firstAttribute="trailing" secondItem="xXr-eo-35A" secondAttribute="trailing" constant="20" id="8CR-z5-Vw9"/>
+                            <constraint firstItem="BVi-c4-VOK" firstAttribute="top" secondItem="1qk-Wq-zas" secondAttribute="bottom" constant="20" id="AfY-D9-BWH"/>
                             <constraint firstItem="xXr-eo-35A" firstAttribute="leading" secondItem="fZo-VG-2aG" secondAttribute="leading" constant="20" id="ETK-7i-LHf"/>
                             <constraint firstItem="XMk-Zz-y1D" firstAttribute="leading" secondItem="fZo-VG-2aG" secondAttribute="leading" constant="20" id="HT4-mT-dUZ"/>
                             <constraint firstItem="1qk-Wq-zas" firstAttribute="leading" secondItem="fZo-VG-2aG" secondAttribute="leading" constant="20" id="MO5-U4-put"/>
+                            <constraint firstItem="BVi-c4-VOK" firstAttribute="centerX" secondItem="fZo-VG-2aG" secondAttribute="centerX" id="RX6-BB-Sho"/>
                             <constraint firstItem="0f0-p5-BAk" firstAttribute="top" secondItem="pps-XX-7E4" secondAttribute="bottom" constant="20" id="Sdo-55-80j"/>
                             <constraint firstItem="fZo-VG-2aG" firstAttribute="trailing" secondItem="pps-XX-7E4" secondAttribute="trailing" constant="20" id="U5a-3Y-o2y"/>
                             <constraint firstItem="xXr-eo-35A" firstAttribute="top" secondItem="XMk-Zz-y1D" secondAttribute="bottom" constant="10" id="UjD-Yl-i4b"/>
@@ -1047,6 +1060,7 @@
                         <outlet property="commentsHint" destination="wRh-eT-A0U" id="29M-AT-von"/>
                         <outlet property="dateDropDownView" destination="wFc-rN-pqq" id="oyP-KJ-8lc"/>
                         <outlet property="dateView" destination="xXr-eo-35A" id="YTG-YB-Dct"/>
+                        <outlet property="discardButton" destination="BVi-c4-VOK" id="LUR-tS-HI3"/>
                         <outlet property="employerRateBorderView" destination="PGU-OR-FMJ" id="5vM-RI-nN5"/>
                         <outlet property="employerRateHeightConstraint" destination="5dL-9i-6lf" id="uYF-bT-S48"/>
                         <outlet property="employmentPopUp" destination="isW-l3-TIp" id="mQJ-Ge-GVJ"/>

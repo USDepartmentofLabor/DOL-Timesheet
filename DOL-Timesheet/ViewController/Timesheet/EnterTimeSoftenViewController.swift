@@ -45,6 +45,10 @@ class EnterTimeSoftenViewController: UIViewController {
     @IBOutlet weak var employerRateBorderView: UIView!
     @IBOutlet weak var employerRateHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var discardButton: UIButton!
+    var discardHidden = true
+    
+    
     weak var delegate: EnterTimeViewControllerDelegate?
     var timePickerVC: TimePickerViewController?
     
@@ -115,6 +119,7 @@ class EnterTimeSoftenViewController: UIViewController {
             $0.title == rateName
         })
         
+        discardHidden = false
         
     }
     
@@ -181,6 +186,16 @@ class EnterTimeSoftenViewController: UIViewController {
         startTimeErrorMessage.text = ""
         breakTimeErrorMessage.text = ""
         endTimeErrorMessage.text = ""
+        
+        discardButton.layer.borderWidth = 1.0
+        discardButton.layer.cornerRadius = 5.0
+        discardButton.layer.borderColor = UIColor.red.cgColor
+
+        discardButton.setTitleColor(UIColor.red, for: .normal)
+        discardButton.setTitleColor(UIColor.white, for: .highlighted)
+        discardButton.setTitle("discard".localized, for: .normal)
+        
+        discardButton.isHidden = discardHidden
         
         setupTimeView()
         setupEmploymentPopupButton()
@@ -432,6 +447,20 @@ class EnterTimeSoftenViewController: UIViewController {
             tabBarController.selectedIndex = 1 // 1 corresponds to the second tab, index starts from 0
         }
     }
+    
+    @IBAction func discardPressed(_ sender: Any) {
+        guard let safeEnterTimeViewModel = enterTimeViewModel else { return }
+        safeEnterTimeViewModel.removeTimeLog(timeLog: timeLogEntry!)
+        safeEnterTimeViewModel.save()
+
+        delegate?.didEnterTime(enterTimeModel: enterTimeViewModel)
+        navigationController?.popViewController(animated: true)
+        
+        if let tabBarController = self.tabBarController {
+            tabBarController.selectedIndex = 1 // 1 corresponds to the second tab, index starts from 0
+        }
+    }
+    
     
 }
 
