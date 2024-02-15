@@ -116,6 +116,8 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             // Get total hours for work week and set hrs / mins
             title = "Total Hours Worked"
             totalTime = timesheetViewModel.hoursWorked(workWeek: indexPath.section)
+            hourlyCell.firstItem = true
+            hourlyCell.lastItem = false
         } else if row < (1 + (timesheetViewModel.currentEmploymentModel?.hourlyRates?.count ?? 1)) {
             // Multiple RATES
             // Section Identifies Work Week
@@ -134,6 +136,8 @@ extension WeeklySummaryViewController: UITableViewDataSource {
                 title = "payment_type_salary".localized
                 totalTime = "xx hrs xx mins"
             }
+            hourlyCell.firstItem = false
+            hourlyCell.lastItem = false
             
         } else if row == (1 + (timesheetViewModel.currentEmploymentModel?.hourlyRates?.count ?? 1)) {
             // BREAK TIME
@@ -141,6 +145,8 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             // Get break Time for work week and set hrs / mins
             title = "Break Time"
             totalTime = timesheetViewModel.breakTimeHours(workWeek: indexPath.section)
+            hourlyCell.firstItem = false
+            hourlyCell.lastItem = false
 
         } else {
             // OVERTIME
@@ -149,15 +155,16 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             title = "Overtime"
 
             totalTime = timesheetViewModel.overTimeHours(workWeek: indexPath.section)
+            hourlyCell.firstItem = false
+            hourlyCell.lastItem = true
         }
         
         hourlyCell.rateName.text = title
         hourlyCell.timeFrame.text = ""
         hourlyCell.totalTime.text = totalTime
         
-        
-        hourlyCell.layer.cornerRadius = 10
-        hourlyCell.layer.masksToBounds = true
+        hourlyCell.addborder()
+        hourlyCell.rightChevronIcon.isHidden = true
         
         return hourlyCell
     }

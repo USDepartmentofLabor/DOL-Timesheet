@@ -687,7 +687,10 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
             selectedDate = datePicker.date
             enterTimeViewModel = timeSheetModel?.createEnterTimeViewModel(for: datePicker.date)
             timeLog = enterTimeViewModel?.timeLogs?.first
-            displayInfo()
+            timeLog?.startTime = selectedDate + (8*60*60)
+            timeLog?.endTime = selectedDate + (17*60*60)
+            timeLog?.comment = ""
+            setupView()
             UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: dateDropDownView)
         } else if sourceView == startDropDownView {
             var time = selectedDate
