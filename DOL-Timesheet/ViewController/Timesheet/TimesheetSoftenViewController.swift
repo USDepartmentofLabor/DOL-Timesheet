@@ -119,17 +119,36 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         let hoursWorked: String = timesheetViewModel!.totalHoursTime()
         payPeriodSummaryData.append(PayPeriodSummary(name: "Total Hours Worked", value1: "", value2: hoursWorked))
         
-        timesheetViewModel?.currentEmploymentModel?.hourlyRates?.forEach { rate in
-            payPeriodSummaryData.append(PayPeriodSummary(name: rate.title, value1: "", value2: "xx hrs xx min"))
+        let numDays = timesheetViewModel?.currentPeriod?.numberOfDays() ?? 0
+        
+        if let timeSheetModel = timesheetViewModel,
+           let currentPeriod = timeSheetModel.currentPeriod {
+            
+            timeSheetModel.currentEmploymentModel?.hourlyRates?.forEach { rate in
+                var totalRateHours = 0
+                for dayIndex in 0..<numDays {
+                    let sectionDate = currentPeriod.date(at: dayIndex)
+                    totalRateHours += timeSheetModel.totalRateHoursTime(forRate: rate, forDate: sectionDate)
+                }
+                let hrsMinStr: String = Date.secondsToHoursMinutes(seconds: Double(totalRateHours))
+
+                payPeriodSummaryData.append(PayPeriodSummary(name: rate.title, value1: "", value2: hrsMinStr))
+            }
         }
         
-        let breakTimeHours: String = timesheetViewModel!.breakTimeHours(workWeek: 0)
+        let breakTimeHours: String = timesheetViewModel!.totalBreakTime()
         payPeriodSummaryData.append(PayPeriodSummary(name: "Break Hours", value1: "", value2: breakTimeHours))
         
-        let overTimeHours: String = timesheetViewModel!.overTimeHours(workWeek: 0)
-        payPeriodSummaryData.append(PayPeriodSummary(name: "Overtime", value1: "", value2: overTimeHours))
         
-        let numDays = timesheetViewModel?.currentPeriod?.numberOfDays() ?? 0
+        if let timeSheetModel = timesheetViewModel {
+            var totalOvertime: Double = 0.0
+            for weekIndex in 0..<timeSheetModel.numberOfWorkWeeks {
+                totalOvertime += timeSheetModel.overTimeHours(workWeek: weekIndex)
+            }
+            
+            let overtimeStr: String = Date.secondsToHoursMinutes(seconds: totalOvertime)
+            payPeriodSummaryData.append(PayPeriodSummary(name: "Overtime", value1: "", value2: overtimeStr))
+        }
         
         if numDays >= 7 {
             payPeriodSummaryData.append(PayPeriodSummary(name: "Weekly Summary", value1: "", value2: ""))
@@ -264,30 +283,50 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
         let numDays = timesheetViewModel?.currentPeriod?.numberOfDays() ?? 0
         let section = indexPath.section
         let row = indexPath.row
+        hourlyCell.firstItem = indexPath.row == 0
+        
         if section < numDays {
             let sectionDate = timesheetViewModel?.currentPeriod?.date(at: indexPath.section)
             let timeEntryViewModel: EnterTimeViewModel = (timesheetViewModel?.createEnterTimeViewModel(for: sectionDate!))!
             let timeLog = timeEntryViewModel.timeLogs![indexPath.row]
-
+            hourlyCell.lastItem = indexPath.row == (timeEntryViewModel.timeLogs!.count - 1)
             hourlyCell.configure(timeLog: timeLog)
+            hourlyCell.rightChevronIcon.isHidden = false
+            
         } else if section < numDays + 1 {
             hourlyCell.rateName.text = payPeriodSummaryData[row].name
             hourlyCell.timeFrame.text = payPeriodSummaryData[row].value1
             hourlyCell.totalTime.text = payPeriodSummaryData[row].value2
+            hourlyCell.lastItem = indexPath.row == (payPeriodSummaryData.count - 1)
+            hourlyCell.rightChevronIcon.isHidden = false
+            if((payPeriodSummaryData.count - 1) != row){
+                hourlyCell.rightChevronIcon.isHidden = true
+            }
+            hourlyCell.addborder()
         } else {
             hourlyCell.rateName.text = "Earning Details"
             hourlyCell.timeFrame.text = ""
-            hourlyCell.totalTime.text = "$$$"
+            hourlyCell.totalTime.text = timesheetViewModel?.totalEarningsStr
+            hourlyCell.lastItem = true
+            hourlyCell.rightChevronIcon.isHidden = false
+            hourlyCell.addborder()
         }
         
-        hourlyCell.layer.cornerRadius = 10
-        hourlyCell.layer.masksToBounds = true
+       // hourlyCell.layer.cornerRadius = 10
+       // hourlyCell.layer.masksToBounds = true
         
         return hourlyCell
     }
     
     func tableView(_ tableView:UITableView, editingStyleForRowAt: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
+        let numDays = timesheetViewModel?.currentPeriod?.numberOfDays() ?? 0
+        let section = editingStyleForRowAt.section
+        
+        if section < numDays {
+            return .delete
+        }
+        
+        return .none
     }
     
     func tableView(_ tableView:UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

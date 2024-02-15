@@ -16,17 +16,31 @@ class TimeEntryViewCell: UITableViewCell {
     @IBOutlet weak var rateName: UILabel!
     @IBOutlet weak var timeFrame: UILabel!
     @IBOutlet weak var totalTime: UILabel!
+    @IBOutlet weak var rightChevronIcon: UIImageView!
+    
+    var firstItem: Bool = false
+    var lastItem: Bool = false
+    @IBOutlet weak var topBackgroundView: UIView!
+    @IBOutlet weak var bottomBackgroundView: UIView!
     
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        contentView.layer.cornerRadius = Style.CORNER_ROUNDING
-        contentView.clipsToBounds = true
+//        contentView.layer.cornerRadius = Style.CORNER_ROUNDING
+//        contentView.clipsToBounds = true
     }
     
+    public func addborder() {
+        topBackgroundView.layer.cornerRadius = firstItem ? 10.0 : 0.0
+        topBackgroundView.clipsToBounds = true
+        bottomBackgroundView.layer.cornerRadius = lastItem ? 10.0 : 0.0
+        bottomBackgroundView.clipsToBounds = true
+    }
     
     public func configure(timeLog: TimeLog) {
         
+        self.addborder()
+    
         if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
             let title = (hourlyTimeLog.value > 0) ? "\(hourlyTimeLog.hourlyRate?.name ?? "") \(NumberFormatter.localisedCurrencyStr(from: hourlyTimeLog.value))" :
             hourlyTimeLog.hourlyRate?.title

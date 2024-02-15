@@ -215,6 +215,24 @@ extension TimesheetViewModel {
         return 0.0
     }
     
+    func totalRateHoursTime(forRate: HourlyRate, forDate date: Date) -> Int {
+        var retValue = 0
+        guard let employmentModel = currentEmploymentModel else {
+            return retValue
+        }
+        
+        if let dateLog = employmentModel.employmentInfo.log(forDate: date),
+           let sortedTimeLogs = dateLog.sortedTimeLogs {
+            sortedTimeLogs.forEach({ (timeLog) in
+                if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog,
+                   hourlyTimeLog.hourlyRate == forRate {
+                    retValue = hourlyTimeLog.hoursLogged
+                }
+            })
+        }
+        return retValue
+    }
+    
     func totalHoursTime(forDate date: Date) -> String {
         let hoursWorked: Double = totalHoursTime(forDate: date)
         return Date.secondsToHoursMinutes(seconds: hoursWorked)

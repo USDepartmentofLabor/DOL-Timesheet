@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,6 +18,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="340" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PnE-Xh-8ZB">
+                        <rect key="frame" x="0.0" y="0.0" width="340" height="30"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" name="timesheetSubviewColor"/>
+                    </view>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2jA-bk-Xlg">
+                        <rect key="frame" x="0.0" y="13" width="340" height="30"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" name="timesheetSubviewColor"/>
+                    </view>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7AA-le-FKP">
                         <rect key="frame" x="8" y="15" width="297" height="14"/>
                         <subviews>
@@ -64,22 +73,31 @@
                             <constraint firstAttribute="width" constant="10" id="nz9-Hj-CXG"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEm-kl-uuZ">
+                        <rect key="frame" x="0.0" y="42" width="340" height="2"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" name="timesheetBackgroundColor"/>
+                    </view>
                 </subviews>
-                <color key="backgroundColor" name="timesheetSubviewColor"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Bjn-s2-sae" secondAttribute="trailing" id="33q-lD-OVa"/>
                     <constraint firstItem="7AA-le-FKP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="FTC-iP-IhQ"/>
                     <constraint firstItem="7AA-le-FKP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Qhx-uV-mPx"/>
                     <constraint firstItem="Bjn-s2-sae" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="YxS-wx-CA7"/>
                     <constraint firstAttribute="bottom" secondItem="7AA-le-FKP" secondAttribute="bottom" constant="15" id="e2L-n9-dWu"/>
                     <constraint firstItem="Bjn-s2-sae" firstAttribute="leading" secondItem="7AA-le-FKP" secondAttribute="trailing" id="m3s-0d-5EC"/>
+                    <constraint firstAttribute="trailing" secondItem="Bjn-s2-sae" secondAttribute="trailing" constant="10" id="sNZ-uz-QEF"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <color key="backgroundColor" systemColor="systemGray5Color"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="bottomBackgroundView" destination="2jA-bk-Xlg" id="KzU-Pp-bjA"/>
                 <outlet property="rateName" destination="KZu-PJ-S8D" id="Gcs-fw-ZjK"/>
+                <outlet property="rightChevronIcon" destination="Bjn-s2-sae" id="sIT-5H-jTu"/>
                 <outlet property="timeFrame" destination="2xN-jm-NOJ" id="ls7-6O-9IF"/>
+                <outlet property="topBackgroundView" destination="PnE-Xh-8ZB" id="Chk-SZ-bwC"/>
                 <outlet property="totalTime" destination="qQC-06-enL" id="e1h-7f-olw"/>
             </connections>
             <point key="canvasLocation" x="-96.18320610687023" y="19.718309859154932"/>
@@ -87,11 +105,11 @@
     </objects>
     <resources>
         <image name="rightChevron" width="327" height="327"/>
-        <namedColor name="timesheetSubviewColor">
-            <color red="0.99999994039535522" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <systemColor name="systemGray5Color">
+        <namedColor name="timesheetBackgroundColor">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        </namedColor>
+        <namedColor name="timesheetSubviewColor">
+            <color red="0.99607843137254903" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
