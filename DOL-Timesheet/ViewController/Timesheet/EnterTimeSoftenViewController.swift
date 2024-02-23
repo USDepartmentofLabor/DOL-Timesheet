@@ -135,7 +135,7 @@ class EnterTimeSoftenViewController: UIViewController {
         let saveBtn = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(save(_:)))
         navigationItem.rightBarButtonItem = saveBtn
 //        title = enterTimeViewModel?.title
-        title = "manual_time_entry".localized
+        title = "new_time_entry".localized
         
         employmentTitleLabel.text = "employer".localized
         

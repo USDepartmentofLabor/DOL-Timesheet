@@ -757,7 +757,7 @@
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGU-OR-FMJ" userLabel="Border">
                                         <rect key="frame" x="0.0" y="45" width="374" height="1"/>
-                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <color key="backgroundColor" name="enterTimeBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="F9b-ts-4Ws"/>
                                         </constraints>
@@ -850,7 +850,7 @@
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxe-c7-9AA" userLabel="Border">
                                         <rect key="frame" x="0.0" y="76.5" width="374" height="1"/>
-                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <color key="backgroundColor" name="enterTimeBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="sfq-IB-td7"/>
                                         </constraints>
@@ -875,7 +875,7 @@
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRK-hQ-z5D" userLabel="Border">
                                         <rect key="frame" x="0.0" y="137.5" width="374" height="1"/>
-                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <color key="backgroundColor" name="enterTimeBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="kht-H1-ihu"/>
                                         </constraints>
@@ -1026,7 +1026,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fZo-VG-2aG"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <color key="backgroundColor" name="enterTimeBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fZo-VG-2aG" firstAttribute="trailing" secondItem="0f0-p5-BAk" secondAttribute="trailing" constant="20" id="5uo-wm-M1h"/>
                             <constraint firstItem="XMk-Zz-y1D" firstAttribute="top" secondItem="fZo-VG-2aG" secondAttribute="top" constant="20" id="6k2-b8-Gqf"/>
@@ -3401,6 +3401,9 @@
         </namedColor>
         <namedColor name="darkTextColor">
             <color red="0.35686274509803922" green="0.38039215686274508" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="enterTimeBackgroundColor">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="hoursWorked">
             <color red="0.19215686274509805" green="0.6705882352941176" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -136,7 +136,7 @@ empleado?";
 "next_period" = "Período Siguiente";
 "straight_earnings" = "Ingresos de Tiempo Regular";
 "straight_time_calculation" = "Horas Trabajadas x Tarifa por Hora";
-"overtime" = "Pago de Sobretiempo";
+"overtime_pay" = "Pago de Sobretiempo";
 "details" = "Detalles";
 "click_enter_time" = "Presione para Ingresar Tiempo";
 "yes" = "Sí";
@@ -145,6 +145,7 @@ empleado?";
 "save_time_entry" = "Guardar el registro de tiempo para %@";
 
 // Enter Time
+"new_time_entry" = "Nueva entrada de tiempo";
 "start_time" = "Hora de inicio";
 "break_time" = "Descanso";
 "end_time" = "Hora de salida";
@@ -232,7 +233,6 @@ empleado?";
 "info_regular_rate" = "Tarifa Regular";
 
 "info_pay_title" = "Pago";
-"info_overtime_title" = "Sobretiempo";
 "info_minimum_wage_title" = "Salario Mínimo";
 "info_non_exempt_title" = "No Exento";
 "info_work_week_title" = "Semana Laboral";
@@ -349,8 +349,6 @@ empleado?";
 "total" = "Total";
 
 "summary" = "Resumen";
-"overtime_summary" = "Sobretiempo";
-
 "earnings" = "Ingresos";
 "total_earning" = "Total de Ingresos";
 "straight_time_earnings" = "Ingresos de Tiempo Regular";
@@ -376,10 +374,14 @@ empleado?";
 "csv_header2" = ",Fecha,Hora de Entrada,Hora de Salida, Descanso,Comentarios,Tarifa,Comentario Diario\n";
 "csv_header3" = ",Semana Laboral,Total de Horas Trabajadas,Total de Horas de Descanso,Horas de Sobretiempo,Ganancias de Tiempo Regular,Tarifa Regular,Pago de Sobretiempo\n";
 
+"total_hours_worked" = "Total de Horas Trabajadas";
+"overtime" = "Sobretiempo";
+"weekly_summary" = "Resumen Semanal";
+
 "fsla_info1" = "La Ley de Normas Justas de Trabajo (FLSA, por sus siglas en inglés) requiere que la mayoría de los empleados reciban el salario mínimo por todas las horas que trabajen, y sobretiempo, a tiempo y medio de su tarifa regular de pago, por las horas que trabajen por encima de 40 horas en una semana laboral.";
 "fsla_info2" = "La ley incluye algunas excepciones a estos requisitos. Algunos trabajadores ejecutivos, administrativos, profesionales y de ventas externas, así como algunos trabajadores en el campo de las computadoras, por ejemplo, están entre aquellos que, por ley, no están requeridos a recibir el pago de salario mínimo y sobretiempo de sus empleadores.";
 
-"spanish_support" = "Would you like to set this app to English?\n\n(¿Te gustaría cambiar esta aplicación en español?)";
+"spanish_support" = "Would you like to set this app to English?\n\n(¿Te gustaría cambiar esta aplicación a español?)";
 "yes_si" = "Yes (Sí)";
 "switch_to_spanish" = "cambiar a español";
 "switch_to_english" = "Cambiar a inglés";
@@ -415,14 +417,14 @@ empleado?";
 "onboard_employee_note" = "Puedes agregar más tarifas de pago y estados más adelante en ‘Mi Perfil.’";
 
 "onboard_pay_frequency_employer" = "¿Con qué frecuencia te pagan?";
-"onboard_pay_frequency_employee" = "¿Con qué frecuencia le pagan a tu empleado?";
+"onboard_pay_frequency_employee" = "¿Con qué frecuencia se le paga al empleado?";
 "onboard_pay_rate_employer" = "¿Cuál es tu tarifa de pago?";
-"onboard_pay_rate_employee" = "¿Cuál es la tarifa de pago de tu empleado?";
+"onboard_pay_rate_employee" = "¿Cuál es la tarifa de pago del empleado?";
 "onboard_overtime_employer" = "¿Eres elegible para pago de sobretiempo?";
-"onboard_overtime_employee" = "¿Tu empleado es elegible para pago de sobretiempo?";
+"onboard_overtime_employee" = "¿Es elegible el empleado para pago de sobretiempo?";
 "onboard_overtime_yes" = "Sí (no exento)";
 "onboard_overtime_no" = "No (exento)";
-"onboard_state_employer" = "¿Salario mínimo estatal?";
+"onboard_state_employer" = "¿En qué estado trabajas?";
 "onboard_state_employee" = "¿En qué estado trabaja el empleado?";
 "onboard_pay_note" = "Puedes agregar más tarifas de pago y estados más adelante en ‘Mi Perfil.’";
 
@@ -495,3 +497,5 @@ empleado?";
 "overnight_hours" = "Horario nocturno";
 
 "help" = "Ayuda";
+
+"earning_details" = "Detalles de ganancias";

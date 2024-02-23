@@ -135,7 +135,7 @@
 "next_period" = "Next Period";
 "straight_earnings" = "Straight Time Earnings";
 "straight_time_calculation" = "Hours Worked x Hourly Rate";
-"overtime" = "Overtime Pay";
+"overtime_pay" = "Overtime Pay";
 "details" = "Details";
 "click_enter_time" = "Tap to Enter time";
 "yes" = "Yes";
@@ -144,6 +144,7 @@
 "save_time_entry" = "Saved time log for %@";
 
 // Enter Time
+"new_time_entry" = "New Time Entry";
 "start_time" = "Start Time";
 "break_time" = "Break Time";
 "end_time" = "End Time";
@@ -233,7 +234,6 @@
 "info_regular_rate" = "Regular Rate";
 
 "info_pay_title" = "Pay";
-"info_overtime_title" = "Overtime";
 "info_minimum_wage_title" = "Minimum Wage";
 "info_non_exempt_title" = "Non-Exempt";
 "info_work_week_title" = "Workweek";
@@ -347,7 +347,6 @@
 "total" = "Total";
 
 "summary" = "Summary";
-"overtime_summary" = "Overtime";
 
 "earnings" = "Earnings";
 "total_earning" = "Total Earning";
@@ -375,6 +374,11 @@
 "csv_header" = "\n,Start Date,End Date,Employer,Employer Address,Employee,Employee Number,Employee Address,Payment Type,Payment Frequency,Total Earnings,Straight Time Earnings,Overtime\n";
 "csv_header2" = ",Date,StartTime,EndTime,Break,Comments,Rate,Daily Comment\n";
 "csv_header3" = ",Work Week,Total Hours Worked,Total Break Hours,Overtime Hours,Straight Time Earnings,Regular Rate, Overtime Pay\n";
+
+"total_hours_worked" = "Total Hours Worked";
+"overtime" = "Overtime";
+"weekly_summary" = "Weekly Summary";
+
 
 "fsla_info" = "Please see the elaws FLSA Overtime Security Advisor for more information.";
 
@@ -453,7 +457,7 @@
 "info_dont_round_up_down_text" = "Employees working 7 hours and 55 minutes who are paid exactly for 7 hours and 55 minutes of work DO NOT get their pay rounded up/down to the nearest 15 minutes.";
 "fsla_info2" = "The law includes some exemptions from these requirements. Some executive, administrative, professional, and outside sales workers, as well as some workers in the computer field, for example, are among those who, by law, are not required to receive the minimum wage and overtime pay from their employers.";
 
-"spanish_support" = "¿Te gustaría cambiar esta aplicación en español?\n\n(Would you like to set this app to Spanish?)";
+"spanish_support" = "¿Te gustaría cambiar esta aplicación a español?\n\n(Would you like to set this app to Spanish?)";
 "yes_si" = "Sí (Yes)";
 "switch_to_spanish" = "Switch to Spanish";
 "switch_to_english" = "Switch to English";
@@ -501,3 +505,5 @@
 "overnight_hours" = "Overnight Hours";
 
 "help" = "Help";
+
+"earning_details" = "Earning Details";

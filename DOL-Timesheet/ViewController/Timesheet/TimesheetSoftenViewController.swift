@@ -117,7 +117,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         
         
         let hoursWorked: String = timesheetViewModel!.totalHoursTime()
-        payPeriodSummaryData.append(PayPeriodSummary(name: "Total Hours Worked", value1: "", value2: hoursWorked))
+        payPeriodSummaryData.append(PayPeriodSummary(name: "total_hours_worked".localized, value1: "", value2: hoursWorked))
         
         let numDays = timesheetViewModel?.currentPeriod?.numberOfDays() ?? 0
         
@@ -137,7 +137,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         }
         
         let breakTimeHours: String = timesheetViewModel!.totalBreakTime()
-        payPeriodSummaryData.append(PayPeriodSummary(name: "Break Hours", value1: "", value2: breakTimeHours))
+        payPeriodSummaryData.append(PayPeriodSummary(name: "break_hours".localized, value1: "", value2: breakTimeHours))
         
         
         if let timeSheetModel = timesheetViewModel {
@@ -147,11 +147,11 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             }
             
             let overtimeStr: String = Date.secondsToHoursMinutes(seconds: totalOvertime)
-            payPeriodSummaryData.append(PayPeriodSummary(name: "Overtime", value1: "", value2: overtimeStr))
+            payPeriodSummaryData.append(PayPeriodSummary(name: "overtime".localized, value1: "", value2: overtimeStr))
         }
         
         if numDays >= 7 {
-            payPeriodSummaryData.append(PayPeriodSummary(name: "Weekly Summary", value1: "", value2: ""))
+            payPeriodSummaryData.append(PayPeriodSummary(name: "weekly_summary".localized, value1: "", value2: ""))
         }
         timeTableView.reloadData()
         
@@ -304,7 +304,7 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
             }
             hourlyCell.addborder()
         } else {
-            hourlyCell.rateName.text = "Earning Details"
+            hourlyCell.rateName.text = "earning_details".localized
             hourlyCell.timeFrame.text = ""
             hourlyCell.totalTime.text = timesheetViewModel?.totalEarningsStr
             hourlyCell.lastItem = true

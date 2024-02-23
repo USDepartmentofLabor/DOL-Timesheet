@@ -30,7 +30,7 @@ class WeeklySummaryViewController: UIViewController, TimeViewDelegate, TimePicke
     
     func setupView() {
         
-        title = "Weekly Summary"
+        title = "weekly_summary".localized
                 
         
         weeklyTableView.register(UINib(nibName: TimeEntryViewCell.nibName, bundle: nil), forCellReuseIdentifier: TimeEntryViewCell.reuseIdentifier)
@@ -114,7 +114,7 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             // TOTAL HOURS WORKED
             // Section Identifies Work Week
             // Get total hours for work week and set hrs / mins
-            title = "Total Hours Worked"
+            title = "total_hours_worked".localized
             totalTime = timesheetViewModel.hoursWorked(workWeek: indexPath.section)
             hourlyCell.firstItem = true
             hourlyCell.lastItem = false
@@ -143,7 +143,7 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             // BREAK TIME
             // Section Identifies Work Week
             // Get break Time for work week and set hrs / mins
-            title = "Break Time"
+            title = "break_time".localized
             totalTime = timesheetViewModel.breakTimeHours(workWeek: indexPath.section)
             hourlyCell.firstItem = false
             hourlyCell.lastItem = false
@@ -152,7 +152,7 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             // OVERTIME
             // Section Identifies Work Week
             // Get overtime for work week and set hrs / mins
-            title = "Overtime"
+            title = "overtime".localized
 
             totalTime = timesheetViewModel.overTimeHours(workWeek: indexPath.section)
             hourlyCell.firstItem = false

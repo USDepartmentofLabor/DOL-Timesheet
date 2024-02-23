@@ -202,7 +202,7 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
         
         summaryTitleLabel.text = "summary".localized
         totalTitleLabel.text = "total".localized
-        totalBreakLabel.text = "overtime_summary".localized
+        totalBreakLabel.text = "overtime".localized
         
         earningsTitleLabel.text = "earnings".localized
         totalEarningsBtn.setTitle("total_earning".localized, for: .normal)
@@ -285,7 +285,7 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
             
             if viewModel?.currentEmploymentModel?.overtimeEligible ?? false {
                 periodEarningsStackView.insertArrangedSubview(periodOvertimeEarningsStackView, at: 1)
-                periodOvertimeTitle.text = "overtime".localized
+                periodOvertimeTitle.text = "overtime_pay".localized
                 periodOvertimeAmount.text = viewModel?.periodOvertimeAmountStr
             }
             else {

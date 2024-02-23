@@ -27,7 +27,7 @@ class GlossaryViewController: UIViewController {
             case .pay:
                 title = "info_pay_title".localized
             case .overtime:
-                title = "info_overtime_title".localized
+                title = "overtime".localized
             case .minimumWage:
                 title = "info_minimum_wage_title".localized
             case .nonExempt:

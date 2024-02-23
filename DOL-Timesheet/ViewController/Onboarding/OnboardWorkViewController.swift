@@ -150,7 +150,7 @@ class OnboardWorkViewController: OnboardBaseViewController {
         
         firstDayDatePicker.locale = locale
         firstDayDatePicker.calendar = locale.calendar
-
+        firstDayDatePicker.calendar.firstWeekday = 1
         
         nameTitleLabel.text = "work".localized
         
@@ -328,6 +328,7 @@ extension OnboardWorkViewController: UITextFieldDelegate {
                 if firstPayPeriodField.text?.count == 0 {
                     firstPayPeriod = Date()
                     dateFormatter.dateFormat = "MMMM d, YYYY"
+                    dateFormatter.locale = Locale(identifier: Localizer.currentLanguage)
                     let formattedDate = dateFormatter.string(from: firstPayPeriod!)
                     let formattedDateCapitalized = formattedDate.prefix(1).capitalized + formattedDate.dropFirst()
                     
@@ -436,7 +437,11 @@ extension OnboardWorkViewController {
         let selectedDate = sender.date
         firstPayPeriod = selectedDate
         dateFormatter.dateFormat = "MMMM d, YYYY"
-        firstPayPeriodField.text = dateFormatter.string(from: selectedDate)
+        dateFormatter.locale = Locale(identifier: Localizer.currentLanguage)
+        let formattedDate = dateFormatter.string(from: firstPayPeriod!)
+        let formattedDateCapitalized = formattedDate.prefix(1).capitalized + formattedDate.dropFirst()
+        
+        firstPayPeriodField.text = formattedDateCapitalized
         check()
         // Handle the value change here
         // You can access the selected date using the 'selectedDate' variable

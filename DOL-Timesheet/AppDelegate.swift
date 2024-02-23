@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         print("Hex Color: \(hexColor)")
         
+        
+        
         return true
     }
 
