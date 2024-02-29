@@ -892,7 +892,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="665"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiS-VH-up6">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="594"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="559"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introduction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvR-x5-CNT">
                                                 <rect key="frame" x="20" y="20" width="374" height="21"/>
@@ -919,13 +919,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Employer" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMd-NM-AeG">
-                                                <rect key="frame" x="20" y="128.5" width="374" height="19.5"/>
+                                                <rect key="frame" x="20" y="123.5" width="374" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" name="onboardingNoteColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uid-bS-rkG">
-                                                <rect key="frame" x="20" y="156" width="374" height="20.5"/>
+                                                <rect key="frame" x="20" y="151" width="374" height="20.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Dol">
                                                         <attributes>
@@ -937,13 +937,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start of pay week" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RwT-li-MEp">
-                                                <rect key="frame" x="20" y="196.5" width="374" height="19.5"/>
+                                                <rect key="frame" x="20" y="186.5" width="374" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" name="onboardingNoteColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2d0-sc-9oP">
-                                                <rect key="frame" x="20" y="224" width="374" height="20.5"/>
+                                                <rect key="frame" x="20" y="214" width="374" height="20.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Monday">
                                                         <attributes>
@@ -955,13 +955,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First day of pay period" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sd-Tx-aYG">
-                                                <rect key="frame" x="20" y="264.5" width="374" height="19.5"/>
+                                                <rect key="frame" x="20" y="249.5" width="374" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" name="onboardingNoteColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgO-3X-SXA">
-                                                <rect key="frame" x="20" y="292" width="374" height="20"/>
+                                                <rect key="frame" x="20" y="277" width="374" height="20"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="June 19th, 2023">
                                                         <attributes>
@@ -973,13 +973,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay frequency" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4Q-Ok-CUg">
-                                                <rect key="frame" x="20" y="332" width="374" height="19.5"/>
+                                                <rect key="frame" x="20" y="312" width="374" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" name="onboardingNoteColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0n4-to-84l">
-                                                <rect key="frame" x="20" y="359.5" width="374" height="20.5"/>
+                                                <rect key="frame" x="20" y="339.5" width="374" height="20.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Bi-Weekly">
                                                         <attributes>
@@ -991,13 +991,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay rate" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Cf-tt-svO">
-                                                <rect key="frame" x="20" y="400" width="374" height="19.5"/>
+                                                <rect key="frame" x="20" y="375" width="374" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" name="onboardingNoteColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPE-3x-zi5">
-                                                <rect key="frame" x="20" y="427.5" width="374" height="20.5"/>
+                                                <rect key="frame" x="20" y="402.5" width="374" height="20.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="$10.00/hour">
                                                         <attributes>
@@ -1009,13 +1009,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eligible for overtime" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4G-Kf-7W7">
-                                                <rect key="frame" x="20" y="468" width="374" height="19.5"/>
+                                                <rect key="frame" x="20" y="438" width="374" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" name="onboardingNoteColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmu-L6-1tZ">
-                                                <rect key="frame" x="20" y="495.5" width="374" height="20.5"/>
+                                                <rect key="frame" x="20" y="465.5" width="374" height="20.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Yes (non-exempt)">
                                                         <attributes>
@@ -1027,13 +1027,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State you work in and min. wage" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKF-Wd-HAH">
-                                                <rect key="frame" x="20" y="536" width="374" height="19.5"/>
+                                                <rect key="frame" x="20" y="501" width="374" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" name="onboardingNoteColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tau-No-7hb">
-                                                <rect key="frame" x="20" y="563.5" width="374" height="20.5"/>
+                                                <rect key="frame" x="20" y="528.5" width="374" height="20.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Ohio ($7.25/hour)">
                                                         <attributes>
@@ -1060,19 +1060,19 @@
                                             <constraint firstAttribute="trailing" secondItem="Fmu-L6-1tZ" secondAttribute="trailing" constant="20" symbolic="YES" id="Eia-LV-X7N"/>
                                             <constraint firstAttribute="trailing" secondItem="EgO-3X-SXA" secondAttribute="trailing" constant="20" symbolic="YES" id="HR2-wm-h7r"/>
                                             <constraint firstItem="yL1-ZX-bnj" firstAttribute="top" secondItem="wvR-x5-CNT" secondAttribute="bottom" constant="20" id="IUY-OF-84H"/>
-                                            <constraint firstItem="iKF-Wd-HAH" firstAttribute="top" secondItem="Fmu-L6-1tZ" secondAttribute="bottom" constant="20" id="Iw5-UT-BVK"/>
+                                            <constraint firstItem="iKF-Wd-HAH" firstAttribute="top" secondItem="Fmu-L6-1tZ" secondAttribute="bottom" constant="15" id="Iw5-UT-BVK"/>
                                             <constraint firstItem="2d0-sc-9oP" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="N48-bI-xKv"/>
                                             <constraint firstItem="RwT-li-MEp" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="PDl-9o-ia4"/>
-                                            <constraint firstItem="jMd-NM-AeG" firstAttribute="top" secondItem="57E-4t-ZKX" secondAttribute="bottom" constant="20" id="Qyy-FB-Dcl"/>
+                                            <constraint firstItem="jMd-NM-AeG" firstAttribute="top" secondItem="57E-4t-ZKX" secondAttribute="bottom" constant="15" id="Qyy-FB-Dcl"/>
                                             <constraint firstItem="yL1-ZX-bnj" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="WQr-Ph-fCe"/>
                                             <constraint firstItem="tau-No-7hb" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="Wk1-ji-prZ"/>
                                             <constraint firstAttribute="trailing" secondItem="d4G-Kf-7W7" secondAttribute="trailing" constant="20" symbolic="YES" id="Wz4-wL-faB"/>
-                                            <constraint firstItem="D4Q-Ok-CUg" firstAttribute="top" secondItem="EgO-3X-SXA" secondAttribute="bottom" constant="20" id="X6x-Qj-rb9"/>
-                                            <constraint firstItem="5Cf-tt-svO" firstAttribute="top" secondItem="0n4-to-84l" secondAttribute="bottom" constant="20" id="XgK-Hl-Vtf"/>
+                                            <constraint firstItem="D4Q-Ok-CUg" firstAttribute="top" secondItem="EgO-3X-SXA" secondAttribute="bottom" constant="15" id="X6x-Qj-rb9"/>
+                                            <constraint firstItem="5Cf-tt-svO" firstAttribute="top" secondItem="0n4-to-84l" secondAttribute="bottom" constant="15" id="XgK-Hl-Vtf"/>
                                             <constraint firstAttribute="trailing" secondItem="57E-4t-ZKX" secondAttribute="trailing" constant="20" symbolic="YES" id="Xy1-0W-3Zu"/>
                                             <constraint firstItem="0n4-to-84l" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="ZJE-Uq-Epj"/>
                                             <constraint firstItem="jMd-NM-AeG" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="au1-z0-S1x"/>
-                                            <constraint firstItem="d4G-Kf-7W7" firstAttribute="top" secondItem="WPE-3x-zi5" secondAttribute="bottom" constant="20" id="c12-rQ-8wM"/>
+                                            <constraint firstItem="d4G-Kf-7W7" firstAttribute="top" secondItem="WPE-3x-zi5" secondAttribute="bottom" constant="15" id="c12-rQ-8wM"/>
                                             <constraint firstAttribute="trailing" secondItem="Uid-bS-rkG" secondAttribute="trailing" constant="20" symbolic="YES" id="cOc-S0-Vdj"/>
                                             <constraint firstAttribute="trailing" secondItem="wvR-x5-CNT" secondAttribute="trailing" constant="20" symbolic="YES" id="cTk-Vg-ANX"/>
                                             <constraint firstItem="Fmu-L6-1tZ" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="cjO-6M-qpw"/>
@@ -1080,7 +1080,7 @@
                                             <constraint firstItem="7sd-Tx-aYG" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="dsU-Xu-QNk"/>
                                             <constraint firstItem="Uid-bS-rkG" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="e5V-um-uld"/>
                                             <constraint firstItem="57E-4t-ZKX" firstAttribute="top" secondItem="yL1-ZX-bnj" secondAttribute="bottom" constant="8" symbolic="YES" id="eNt-pb-EQt"/>
-                                            <constraint firstItem="RwT-li-MEp" firstAttribute="top" secondItem="Uid-bS-rkG" secondAttribute="bottom" constant="20" id="gXl-65-7JT"/>
+                                            <constraint firstItem="RwT-li-MEp" firstAttribute="top" secondItem="Uid-bS-rkG" secondAttribute="bottom" constant="15" id="gXl-65-7JT"/>
                                             <constraint firstAttribute="trailing" secondItem="D4Q-Ok-CUg" secondAttribute="trailing" constant="20" symbolic="YES" id="hGo-SW-DT7"/>
                                             <constraint firstAttribute="trailing" secondItem="jMd-NM-AeG" secondAttribute="trailing" constant="20" symbolic="YES" id="hTw-zV-ZZK"/>
                                             <constraint firstAttribute="bottom" secondItem="tau-No-7hb" secondAttribute="bottom" constant="10" id="i2e-8B-0CU"/>
@@ -1089,7 +1089,7 @@
                                             <constraint firstAttribute="trailing" secondItem="RwT-li-MEp" secondAttribute="trailing" constant="20" symbolic="YES" id="kHW-QN-H4F"/>
                                             <constraint firstItem="wvR-x5-CNT" firstAttribute="top" secondItem="UiS-VH-up6" secondAttribute="top" constant="20" symbolic="YES" id="lxP-xP-Nnj"/>
                                             <constraint firstAttribute="trailing" secondItem="7sd-Tx-aYG" secondAttribute="trailing" constant="20" symbolic="YES" id="mKl-oT-VtK"/>
-                                            <constraint firstItem="7sd-Tx-aYG" firstAttribute="top" secondItem="2d0-sc-9oP" secondAttribute="bottom" constant="20" id="p0h-Vd-56G"/>
+                                            <constraint firstItem="7sd-Tx-aYG" firstAttribute="top" secondItem="2d0-sc-9oP" secondAttribute="bottom" constant="15" id="p0h-Vd-56G"/>
                                             <constraint firstItem="2d0-sc-9oP" firstAttribute="top" secondItem="RwT-li-MEp" secondAttribute="bottom" constant="8" symbolic="YES" id="r4F-s7-UQz"/>
                                             <constraint firstItem="57E-4t-ZKX" firstAttribute="leading" secondItem="UiS-VH-up6" secondAttribute="leading" constant="20" symbolic="YES" id="u2u-Ty-l5S"/>
                                             <constraint firstItem="EgO-3X-SXA" firstAttribute="top" secondItem="7sd-Tx-aYG" secondAttribute="bottom" constant="8" symbolic="YES" id="uFH-Rg-2PI"/>

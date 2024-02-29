@@ -131,6 +131,9 @@
 "delete_confirm_hourly_rate_log" = "Are you sure you want to delete %@?";
 "delete_rate_hint" = "Tap to delete %@";
 
+"pay_period" = "Pay Period";
+"pay_period_summary" = "Pay Period Summary";
+
 "prev_period" = "Previous Period";
 "next_period" = "Next Period";
 "straight_earnings" = "Straight Time Earnings";

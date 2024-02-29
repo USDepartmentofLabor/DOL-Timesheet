@@ -20,9 +20,11 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
 
     @IBOutlet weak var periodLabel: UILabel!
     @IBOutlet weak var employmentView: UIView!
+    @IBOutlet weak var employmentTitleLabel: UILabel!
     @IBOutlet weak var employmentPopup: UIButton!
     
     @IBOutlet weak var payPeriodView: UIView!
+    @IBOutlet weak var payPeriodTitleLabel: UILabel!
     @IBOutlet weak var payPeriodButton: UIButton!
     @IBOutlet weak var payPeriodDatePicker: UIDatePicker!
     @IBOutlet weak var payPeriodHeightConstraint: NSLayoutConstraint!
@@ -55,6 +57,13 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     func setupView() {
         
         title = "timesheet".localized
+        
+        employmentTitleLabel.text = "employer".localized
+        if timesheetViewModel?.currentEmploymentModel?.isProfileEmployer ?? false {
+            employmentTitleLabel.text = "employee".localized
+        }
+        
+        payPeriodTitleLabel.text = "pay_period".localized
         
         payPeriodHeightConstraint.constant = 0
         
@@ -218,13 +227,17 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             enterTimeVC.timeLogEntry = timeLog
             
             enterTimeVC.delegate = self
-        }
-        
-        if segue.identifier == "weeklySummary",
+        } else if segue.identifier == "weeklySummary",
            let weeklySummaryVC = segue.destination as? WeeklySummaryViewController,
            let timesheetViewModel = timesheetViewModel {
             weeklySummaryVC.timesheetViewModel = timesheetViewModel
-        }
+        } else if segue.identifier == "addEmploymentInfo",
+                  let navVC = segue.destination as? UINavigationController,
+                  let employmentInfoVC = navVC.topViewController as? EmploymentInfoViewController,
+                  let viewModel = timesheetViewModel {
+                  employmentInfoVC.viewModel = viewModel.userProfileModel.newTempEmploymentModel()
+                  employmentInfoVC.delegate = self
+              }
     }
 }
 
@@ -246,7 +259,7 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
             let sectionDate = timesheetViewModel?.currentPeriod?.date(at: section)
             sectionTitle = "\(sectionDate?.formattedWeekday ?? "") \(sectionDate?.formattedDate ?? "")".uppercased()
         } else if section < numDays + 1 {
-            sectionTitle = "PAY PERIOD SUMMARY"
+            sectionTitle = "pay_period_summary".localized.uppercased()
         } else {
             return nil
         }

@@ -1085,7 +1085,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-494" y="-751"/>
+            <point key="canvasLocation" x="-475" y="-767"/>
         </scene>
         <!--HELP-->
         <scene sceneID="xJ0-ij-9P8">
@@ -3016,9 +3016,11 @@
                     <navigationItem key="navigationItem" id="pAG-uu-EdR"/>
                     <connections>
                         <outlet property="employmentPopup" destination="h80-tl-P27" id="pAA-5S-g1n"/>
+                        <outlet property="employmentTitleLabel" destination="diF-mm-zpV" id="Rn8-ee-t9K"/>
                         <outlet property="employmentView" destination="AAu-dH-HIw" id="g0h-QB-cla"/>
                         <outlet property="payPeriodDatePicker" destination="zz9-Cj-oFV" id="R1j-Rz-NJX"/>
                         <outlet property="payPeriodHeightConstraint" destination="ZYg-JO-a7j" id="pEN-Al-cNu"/>
+                        <outlet property="payPeriodTitleLabel" destination="uhA-ne-WOW" id="ACs-Zh-Qom"/>
                         <outlet property="payPeriodView" destination="CqI-HB-hfQ" id="y92-u8-y9d"/>
                         <outlet property="periodLabel" destination="r0q-fU-Yy8" id="W8B-FQ-8wL"/>
                         <outlet property="scrollView" destination="CfL-X6-RXv" id="rtO-Zi-INj"/>
@@ -3026,6 +3028,7 @@
                         <outlet property="timeTableviewHeightConstraint" destination="9XC-ca-FyT" id="5JX-bA-8ek"/>
                         <segue destination="THZ-Xp-jbU" kind="show" identifier="weeklySummary" id="YbY-aO-0Vc"/>
                         <segue destination="zY3-x1-MpB" kind="show" identifier="enterTime" id="80M-Vn-wJ3"/>
+                        <segue destination="PIS-M8-enc" kind="show" identifier="addEmploymentInfo" id="AVg-wA-CjU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IbD-zb-aaL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3146,6 +3149,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PIS-M8-enc" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="lt0-PK-gmp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wrz-Ua-wOr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3357,13 +3361,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="KJz-zA-nJd"/>
-        <segue reference="7uc-bX-bfm"/>
+        <segue reference="raw-Tx-Vfv"/>
+        <segue reference="2Fb-bA-ARb"/>
         <segue reference="0RP-Z6-OgJ"/>
         <segue reference="GGP-HT-mqi"/>
         <segue reference="isf-7E-suF"/>
         <segue reference="KeN-5T-wEn"/>
-        <segue reference="wvV-4w-p5x"/>
+        <segue reference="gIR-CR-1ps"/>
         <segue reference="80M-Vn-wJ3"/>
     </inferredMetricsTieBreakers>
     <resources>

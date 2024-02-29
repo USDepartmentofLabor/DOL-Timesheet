@@ -31,7 +31,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7AA-le-FKP">
                         <rect key="frame" x="8" y="15" width="297" height="14"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dishwasher Night" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZu-PJ-S8D">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL HOURS WORKED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZu-PJ-S8D">
                                 <rect key="frame" x="0.0" y="0.0" width="99" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="99" id="O09-n2-nDf"/>
@@ -86,7 +86,7 @@
                     <constraint firstItem="Bjn-s2-sae" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="YxS-wx-CA7"/>
                     <constraint firstAttribute="bottom" secondItem="7AA-le-FKP" secondAttribute="bottom" constant="15" id="e2L-n9-dWu"/>
                     <constraint firstItem="Bjn-s2-sae" firstAttribute="leading" secondItem="7AA-le-FKP" secondAttribute="trailing" id="m3s-0d-5EC"/>
-                    <constraint firstAttribute="trailing" secondItem="Bjn-s2-sae" secondAttribute="trailing" constant="10" id="sNZ-uz-QEF"/>
+                    <constraint firstAttribute="trailing" secondItem="Bjn-s2-sae" secondAttribute="trailing" constant="5" id="sNZ-uz-QEF"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

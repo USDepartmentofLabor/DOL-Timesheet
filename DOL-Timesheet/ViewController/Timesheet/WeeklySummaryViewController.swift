@@ -97,7 +97,7 @@ extension WeeklySummaryViewController: UITableViewDataSource {
         if timesheetViewModel.currentEmploymentModel?.paymentType == .hourly {
             return 3 + (timesheetViewModel.currentEmploymentModel?.hourlyRates?.count ?? 0)
         }
-        return 3+1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -114,7 +114,7 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             // TOTAL HOURS WORKED
             // Section Identifies Work Week
             // Get total hours for work week and set hrs / mins
-            title = "total_hours_worked".localized
+            title = "total_hours_worked".localized.uppercased()
             totalTime = timesheetViewModel.hoursWorked(workWeek: indexPath.section)
             hourlyCell.firstItem = true
             hourlyCell.lastItem = false

@@ -132,6 +132,9 @@ empleado?";
 "delete_confirm_hourly_rate_log" = "¿Está seguro que quiere eliminar %@?";
 "delete_rate_hint" = "Presione para eliminar %@";
 
+"pay_period" = "Período de pago";
+"pay_period_summary" = "Resumen del período de pago";
+
 "prev_period" = "Período Anterior";
 "next_period" = "Período Siguiente";
 "straight_earnings" = "Ingresos de Tiempo Regular";
