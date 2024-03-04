@@ -24,11 +24,11 @@ class EnterTimeSoftenViewController: UIViewController {
     @IBOutlet weak var breakTimeErrorMessage: UILabel!
     @IBOutlet weak var endTimeErrorMessage: UILabel!
     
-    @IBOutlet weak var dateDropDownView: DropDownView!
+    @IBOutlet weak var dateDropDownView: DropDownSoftenView!
     
-    @IBOutlet weak var startDropDownView: DropDownView!
-    @IBOutlet weak var breakDropDownView: DropDownView!
-    @IBOutlet weak var endDropDownView: DropDownView!
+    @IBOutlet weak var startDropDownView: DropDownSoftenView!
+    @IBOutlet weak var breakDropDownView: DropDownSoftenView!
+    @IBOutlet weak var endDropDownView: DropDownSoftenView!
     
     @IBOutlet weak var hourlyRateTitleLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
@@ -79,6 +79,9 @@ class EnterTimeSoftenViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIBarButtonItem.appearance().setTitleTextAttributes(nil, for: .normal)
+        
+        setupView()
+        displayInfo()
     }
     
     override func viewDidLoad() {
@@ -89,8 +92,6 @@ class EnterTimeSoftenViewController: UIViewController {
         if timeLogEntry != nil {
             setupTimeLog()
         }
-        setupView()
-        displayInfo()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

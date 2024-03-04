@@ -312,7 +312,7 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
             hourlyCell.totalTime.text = payPeriodSummaryData[row].value2
             hourlyCell.lastItem = indexPath.row == (payPeriodSummaryData.count - 1)
             hourlyCell.rightChevronIcon.isHidden = false
-            if((payPeriodSummaryData.count - 1) != row){
+            if (numDays < 7) || ((payPeriodSummaryData.count - 1) != row){
                 hourlyCell.rightChevronIcon.isHidden = true
             }
             hourlyCell.addborder()
@@ -365,7 +365,7 @@ extension TimesheetSoftenViewController: UITableViewDelegate {
             return
         }
         
-        if indexPath.section < secondToLastRow {
+        if indexPath.section < secondToLastSection {
             selectedTimeLog = indexPath.row
             performSegue(withIdentifier: "enterTime", sender: currentDate)
         }
