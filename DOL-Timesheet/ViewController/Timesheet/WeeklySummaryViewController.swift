@@ -176,7 +176,7 @@ extension WeeklySummaryViewController: UITableViewDataSource {
         
         var totalRateHours = 0
         workWeek.days.forEach {
-            totalRateHours += timesheetViewModel.totalRateHoursTime(forRate: rate, forDate: $0)
+            totalRateHours += timesheetViewModel.rateTotalHours(forRate: rate, forDate: $0)
         }
         let hrsMinStr: String = Date.secondsToHoursMinutes(seconds: Double(totalRateHours))
         return hrsMinStr

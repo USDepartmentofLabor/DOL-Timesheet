@@ -25,9 +25,6 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     
     @IBOutlet weak var payPeriodView: UIView!
     @IBOutlet weak var payPeriodTitleLabel: UILabel!
-    @IBOutlet weak var payPeriodButton: UIButton!
-    @IBOutlet weak var payPeriodDatePicker: UIDatePicker!
-    @IBOutlet weak var payPeriodHeightConstraint: NSLayoutConstraint!
   
     @IBOutlet weak var timeTableView: UITableView!
     @IBOutlet weak var timeTableviewHeightConstraint: NSLayoutConstraint!
@@ -65,7 +62,6 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         
         payPeriodTitleLabel.text = "pay_period".localized
         
-        payPeriodHeightConstraint.constant = 0
         
         
         timeTableView.register(UINib(nibName: TimeEntryViewCell.nibName, bundle: nil), forCellReuseIdentifier: TimeEntryViewCell.reuseIdentifier)
@@ -137,7 +133,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
                 var totalRateHours = 0
                 for dayIndex in 0..<numDays {
                     let sectionDate = currentPeriod.date(at: dayIndex)
-                    totalRateHours += timeSheetModel.totalRateHoursTime(forRate: rate, forDate: sectionDate)
+                    totalRateHours += timeSheetModel.rateTotalHours(forRate: rate, forDate: sectionDate)
                 }
                 let hrsMinStr: String = Date.secondsToHoursMinutes(seconds: Double(totalRateHours))
 
@@ -172,7 +168,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
             self.scrollView.contentSize = CGSize(
                 width: self.scrollView.frame.size.width,
-                height: self.timeTableView.contentSize.height + self.payPeriodDatePicker.frame.origin.y + self.payPeriodDatePicker.frame.size.height+25
+                height: self.timeTableView.contentSize.height + 70
             )
         }
 
@@ -306,7 +302,7 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
             hourlyCell.configure(timeLog: timeLog)
             hourlyCell.rightChevronIcon.isHidden = false
             
-        } else if section < numDays + 1 {
+        } else if section == numDays {
             hourlyCell.rateName.text = payPeriodSummaryData[row].name
             hourlyCell.timeFrame.text = payPeriodSummaryData[row].value1
             hourlyCell.totalTime.text = payPeriodSummaryData[row].value2

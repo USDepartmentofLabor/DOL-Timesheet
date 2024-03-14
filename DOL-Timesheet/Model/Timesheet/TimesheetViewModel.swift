@@ -215,7 +215,7 @@ extension TimesheetViewModel {
         return 0.0
     }
     
-    func totalRateHoursTime(forRate: HourlyRate, forDate date: Date) -> Int {
+    func rateTotalHours(forRate: HourlyRate, forDate date: Date) -> Int {
         var retValue = 0
         guard let employmentModel = currentEmploymentModel else {
             return retValue

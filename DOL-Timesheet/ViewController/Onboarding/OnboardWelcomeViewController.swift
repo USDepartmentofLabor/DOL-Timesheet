@@ -120,45 +120,11 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
     }
     
     fileprivate func changeToEmployee(employer: Employer) {
-        if (employer.employees?.count ?? 0) > 0 {
-            let alertController =
-                UIAlertController(title: "confirm_title".localized,
-                                  message: "confirm_delete_employees".localized,
-                                  preferredStyle: .alert)
-            
-            alertController.addAction(
-                UIAlertAction(title: "cancel".localized, style: .cancel))
-            alertController.addAction(
-                UIAlertAction(title: "delete".localized, style: .destructive) { _ in
-                    self.toggleUserType()
-                }
-            )
-            present(alertController, animated: true)
-        }
-        else {
-            toggleUserType()
-        }
+        toggleUserType()
     }
     
     fileprivate func changeToEmployer(employee: Employee) {
-        if (employee.employers?.count ?? 0) > 0 {
-            let alertController =
-                UIAlertController(title: "confirm_title".localized,
-                                  message: "confirm_delete_employers".localized,
-                                  preferredStyle: .alert)
-            
-            alertController.addAction(
-                UIAlertAction(title: "cancel".localized, style: .cancel))
-            alertController.addAction(
-                UIAlertAction(title: "delete".localized, style: .destructive) { _ in
-                    self.toggleUserType()
-                }
-            )
-            present(alertController, animated: true)
-        }
-        else {
-            toggleUserType()
-        }
+        toggleUserType()
     }
     
     func toggleUserType() {
