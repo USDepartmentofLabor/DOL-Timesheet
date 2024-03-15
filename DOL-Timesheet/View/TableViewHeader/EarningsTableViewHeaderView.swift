@@ -23,7 +23,7 @@ class EarningsTableViewHeaderView: UITableViewHeaderFooterView {
     var section: Int = 0
     
     weak var delegate: EarningsHeaderViewDelegate?
-    var viewModel: WorkWeekViewModel! {
+    var workWeekViewModel: WorkWeekViewModel! {
         didSet {
             displayInfo()
         }
@@ -51,18 +51,18 @@ class EarningsTableViewHeaderView: UITableViewHeaderFooterView {
     
     func displayInfo() {
         let workWeekStr = "work_week".localized
-        let title = "\(workWeekStr)\(section+1): \(viewModel.title)"
+        let title = "\(workWeekStr)\(section+1): \(workWeekViewModel.title)"
         titleLabel.text = title
         
-        let paymentFrequency = viewModel.employmentInfo.payFrequency
+        let paymentFrequency = workWeekViewModel.employmentInfo.payFrequency
         if paymentFrequency == .weekly || paymentFrequency == .biWeekly {
-            amountLabel.text = viewModel.totalEarningsStr
+            amountLabel.text = workWeekViewModel.totalEarningsStr
         }
         else {
             amountLabel.text = ""
         }
         
-        collapseSection(collapse: viewModel.isCollapsed)
+        collapseSection(collapse: workWeekViewModel.isCollapsed)
 
     }
     

@@ -10,7 +10,7 @@ import UIKit
 
 class EditEmploymentInfoViewController: UIViewController {
 
-    var viewModel: EmploymentModel!
+    var employmentModel: EmploymentModel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var paymentTypeContainerView: UIView!
     @IBOutlet weak var paymentFrequencyTitleLabelInfo: LabelInfoView!
@@ -57,7 +57,7 @@ class EditEmploymentInfoViewController: UIViewController {
         
         paymentFrequencyTitleLabelInfo.delegate = self
         workWeekTitleLabelInfo.delegate = self
-        if viewModel.isProfileEmployer {
+        if employmentModel.isProfileEmployer {
             paymentFrequencyTitleLabelInfo.title = "payment_frequency_employer".localized
             paymentFrequencyTitleLabelInfo.infoType = .employer_paymentFrequency
             workWeekTitleLabelInfo.title = "work_week_employer".localized
@@ -80,8 +80,8 @@ class EditEmploymentInfoViewController: UIViewController {
     }
     
     func displayInfo() {
-        selectPaymentFrequency.title = viewModel.paymentFrequency.title
-        selectWorkWeekView.title = viewModel.workWeekStartDay.title
+        selectPaymentFrequency.title = employmentModel.paymentFrequency.title
+        selectWorkWeekView.title = employmentModel.workWeekStartDay.title
     }
 
     func registerKeyboardNotifications() {
@@ -112,9 +112,9 @@ class EditEmploymentInfoViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destVC = segue.destination as? MinimumWageViewController {
             destVC.view.translatesAutoresizingMaskIntoConstraints = false
-            destVC.overtimeEligible = viewModel.overtimeEligible
-            destVC.minimumWage = viewModel.minimumWage
-            destVC.isProfileEmployer = viewModel?.isProfileEmployer ?? false
+            destVC.overtimeEligible = employmentModel.overtimeEligible
+            destVC.minimumWage = employmentModel.minimumWage
+            destVC.isProfileEmployer = employmentModel?.isProfileEmployer ?? false
             minimumWageVC = destVC
         }
         else {
@@ -125,15 +125,15 @@ class EditEmploymentInfoViewController: UIViewController {
     func setupPaymentType() {
         let controller: UIViewController
         
-        switch viewModel.paymentType {
+        switch employmentModel.paymentType {
         case .hourly:
             let hourlyController = HourlyPaymentViewController.instantiateFromStoryboard("Profile")
-            hourlyController.viewModel = viewModel
+            hourlyController.employmentModel = employmentModel
             hourlyController.paymentViewDelegate = self
             controller = hourlyController
         case .salary:
             let salaryController = SalaryPaymentViewController.instantiateFromStoryboard("Profile")
-            salaryController.viewModel = viewModel
+            salaryController.employmentModel = employmentModel
             salaryController.paymentViewDelegate = self
             controller = salaryController
         }
@@ -166,7 +166,7 @@ class EditEmploymentInfoViewController: UIViewController {
             guard let strongSelf = self else { return }
             if let paymentFrquency = paymentFrquency {
                 strongSelf.selectPaymentFrequency.title = paymentFrquency.title
-                strongSelf.viewModel.paymentFrequency = paymentFrquency
+                strongSelf.employmentModel.paymentFrequency = paymentFrquency
             }
             popVC.dismiss(animated: true, completion: nil)
         }
@@ -180,7 +180,7 @@ class EditEmploymentInfoViewController: UIViewController {
             guard let strongSelf = self else { return }
             if let weekday = weekday {
                 strongSelf.selectWorkWeekView.title = weekday.title
-                strongSelf.viewModel.workWeekStartDay = weekday
+                strongSelf.employmentModel.workWeekStartDay = weekday
             }
             popVC.dismiss(animated: true, completion: nil)
         }
@@ -192,14 +192,14 @@ class EditEmploymentInfoViewController: UIViewController {
         guard validateInput() else { return }
         
         if let minimumWageVC = minimumWageVC {
-            viewModel.overtimeEligible = minimumWageVC.overtimeEligible
-            viewModel.minimumWage = minimumWageVC.minimumWage
+            employmentModel.overtimeEligible = minimumWageVC.overtimeEligible
+            employmentModel.minimumWage = minimumWageVC.minimumWage
         }
         if let salaryController = paymentController as? SalaryPaymentViewController {
-            viewModel.salary = (salaryController.salaryAmount, salaryController.salaryType)
+            employmentModel.salary = (salaryController.salaryAmount, salaryController.salaryType)
             
         }
-        viewModel.save()
+        employmentModel.save()
         delegate?.didUpdateUser()
         dismiss(animated: true, completion: nil)
     }

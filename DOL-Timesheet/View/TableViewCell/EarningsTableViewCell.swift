@@ -45,7 +45,7 @@ class EarningsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var overtimeInfoBtn: InfoButton!
     
-    var viewModel: WorkWeekViewModel! {
+    var workWeekViewModel: WorkWeekViewModel! {
         didSet {
             displayEarnings()
         }
@@ -94,7 +94,7 @@ class EarningsTableViewCell: UITableViewCell {
     }
     
     func displayEarnings() {
-        straightTimeEarningsAmountLabel.text = viewModel.straightTimeAmountStr
+        straightTimeEarningsAmountLabel.text = workWeekViewModel.straightTimeAmountStr
         
         straightTimeTitleLabel.text = "straight_time_earnings".localized
         straightTimeSubTitleLabel.text = "straight_time_calculation".localized
@@ -105,7 +105,7 @@ class EarningsTableViewCell: UITableViewCell {
         overtimeTitleLabel.text = "overtime_pay".localized
         overtimeCalculationTitleLabel.text = "overtime_pay_equation".localized
         
-        let straightTimeCalculationsStr = viewModel.straightTimeCalculationsStr
+        let straightTimeCalculationsStr = workWeekViewModel.straightTimeCalculationsStr
         straightTimeCalculationsLabel.text = straightTimeCalculationsStr
         if straightTimeCalculationsStr.isEmpty {
             straightTimeSubTitleLabel.text = ""
@@ -113,21 +113,21 @@ class EarningsTableViewCell: UITableViewCell {
         else {
             straightTimeSubTitleLabel.text = "straight_time_calculation".localized
         }
-        if viewModel.isBelowMinimumWage {
+        if workWeekViewModel.isBelowMinimumWage {
             minimumWageWarning.text = "err_title_minimum_wage".localized
         }
         else {
             minimumWageWarning.text = ""
         }
-        regularRateLabel.text = viewModel.regularRateStr
-        regularRateCalculationsLabel.text = viewModel.regularRateCalculationStr
+        regularRateLabel.text = workWeekViewModel.regularRateStr
+        regularRateCalculationsLabel.text = workWeekViewModel.regularRateCalculationStr
 
-        if viewModel.overtimeEligible {
+        if workWeekViewModel.overtimeEligible {
             overtimeView.isHidden = false
-            overtimeAmountLabel.text = viewModel.overtimeAmountStr
-            overtimeCalculationLabel.text = viewModel.overtimeCalculationStr
+            overtimeAmountLabel.text = workWeekViewModel.overtimeAmountStr
+            overtimeCalculationLabel.text = workWeekViewModel.overtimeCalculationStr
             
-            overtimeInfoLabel.text = viewModel.overtimePaymentTimeInfo
+            overtimeInfoLabel.text = workWeekViewModel.overtimePaymentTimeInfo
             overtimeTitleLabel.isHidden = false
             overtimeAmountLabel.isHidden = false
             overtimeCalculationTitleLabel.isHidden = false

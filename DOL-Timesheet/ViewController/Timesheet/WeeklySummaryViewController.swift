@@ -13,7 +13,7 @@ class WeeklySummaryViewController: UIViewController, TimeViewDelegate, TimePicke
 
     @IBOutlet weak var weeklyTableView: UITableView!
 
-    lazy var timesheetViewModel: TimesheetViewModel = TimesheetViewModel()
+    var timesheetViewModel = TimesheetViewModel.shared()
     
     override func viewDidLoad() {
         super.viewDidLoad()

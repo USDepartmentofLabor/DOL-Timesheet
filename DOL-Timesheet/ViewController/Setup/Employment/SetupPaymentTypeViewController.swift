@@ -22,7 +22,7 @@ class SetupPaymentTypeViewController: SetupBaseEmploymentViewController {
         
         title = "payment_type".localized
         
-        if viewModel?.isProfileEmployer ?? false {
+        if employmentModel?.isProfileEmployer ?? false {
             titleLabelInfo.title = "payment_type_employer".localized
             titleLabelInfo.infoType = .employer_paymentType
         }
@@ -37,7 +37,7 @@ class SetupPaymentTypeViewController: SetupBaseEmploymentViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if let destVC = segue.destination as? EditEmploymentInfoViewController {
-            destVC.viewModel = viewModel
+            destVC.employmentModel = employmentModel
             destVC.delegate = delegate
         }
     }
@@ -74,7 +74,7 @@ extension SetupPaymentTypeViewController: PaymentTypeCellDelegate {
         backItem.title = "back".localized
         navigationItem.backBarButtonItem = backItem
         
-        viewModel?.paymentType = paymentType
+        employmentModel?.paymentType = paymentType
         if paymentType == .hourly {
             performSegue(withIdentifier: "hourlyPaymentInfo", sender: self)
         }

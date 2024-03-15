@@ -10,7 +10,7 @@ import UIKit
 
 class ManageUsersViewController: UIViewController {
 
-    var viewModel: ProfileViewModel? {
+    var profileViewModel: ProfileViewModel? {
         didSet {
             if isViewLoaded {
                 displayInfo()
@@ -61,7 +61,7 @@ class ManageUsersViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if viewModel?.numberOfEmploymentInfo ?? 0 <= 0 {
+        if profileViewModel?.numberOfEmploymentInfo ?? 0 <= 0 {
             editBtn.isEnabled = false
         }
         else {
@@ -70,7 +70,7 @@ class ManageUsersViewController: UIViewController {
     }
     
     func setupView() {
-        title = viewModel?.manageUsersTitle
+        title = profileViewModel?.manageUsersTitle
         let cancelBtn = UIBarButtonItem(title: "cancel".localized, style: .plain, target: self, action:  #selector(cancelClick(sender:)))
         navigationItem.leftBarButtonItem = cancelBtn
 
@@ -103,7 +103,7 @@ class ManageUsersViewController: UIViewController {
         addressHeaderTitleLabel.text = "address".localized
         paymentTypeHeaderTitleLabel.text = "payment_type".localized
         editBtn.setTitle("edit".localized, for: .normal)
-        if viewModel?.isProfileEmployer ?? false {
+        if profileViewModel?.isProfileEmployer ?? false {
             titleLabel.text = "employees".localized
             userHeaderTitleLabel.text = "employee".localized
             addBtn.accessibilityLabel = "add_employee".localized
@@ -117,15 +117,15 @@ class ManageUsersViewController: UIViewController {
         }
         
         if userNameLabel != nil {
-            userNameLabel.text = viewModel?.profileModel.currentUser?.name
+            userNameLabel.text = profileViewModel?.profileModel.currentUser?.name
         }
         
         tableView.reloadData()
         
-        if let viewModel = viewModel, viewModel.numberOfEmploymentInfo <= 0 {
+        if let safeProfileViewModel = profileViewModel, safeProfileViewModel.numberOfEmploymentInfo <= 0 {
             noView.isHidden = false
             noUsersLabel.isHidden = false
-            noUsersLabel.text = viewModel.isProfileEmployer ?
+            noUsersLabel.text = safeProfileViewModel.isProfileEmployer ?
             "no_employees".localized :
             "no_employers".localized
         }
@@ -150,7 +150,7 @@ class ManageUsersViewController: UIViewController {
     }
 
     @objc func saveClick(sender: Any?) {
-        viewModel?.saveProfile()
+        profileViewModel?.saveProfile()
         
         delegate?.didUpdateEmploymentInfo()
         dismiss(animated: true, completion: nil)
@@ -181,7 +181,7 @@ class ManageUsersViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let viewModel = viewModel else {
+        guard let safeProfileViewModel = profileViewModel else {
             return
         }
         
@@ -191,13 +191,13 @@ class ManageUsersViewController: UIViewController {
         
         if segue.identifier == "addEmploymentInfo",
             let employmentVC = segue.destination as? EmploymentInfoViewController {
-            employmentVC.viewModel = viewModel.newTempEmploymentModel()
+            employmentVC.employmentModel = safeProfileViewModel.newTempEmploymentModel()
             employmentVC.delegate = delegate
         }
         else if segue.identifier == "editEmploymentInfo",
             let vc = segue.destination as? EmploymentInfoViewController,
             let employmentViewModel = sender as? EmploymentModel {
-                vc.viewModel = employmentViewModel
+                vc.employmentModel = employmentViewModel
                 vc.delegate = delegate
         }
     }
@@ -209,17 +209,17 @@ extension ManageUsersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.numberOfEmploymentInfo ?? 0
+        return profileViewModel?.numberOfEmploymentInfo ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.reuseIdentifier) as! ProfileTableViewCell
         
-        guard let employmentModel = viewModel?.employmentModels[indexPath.row] else {
+        guard let employmentModel = profileViewModel?.employmentModels[indexPath.row] else {
             return cell
         }
         
-        if viewModel?.isProfileEmployer ?? false {
+        if profileViewModel?.isProfileEmployer ?? false {
             cell.nameLabel.text = employmentModel.employeeName
 //            cell.addressLabel.text = employmentModel.employeeAddress?.description
             cell.addressLabel.isHidden = true
@@ -245,7 +245,7 @@ extension ManageUsersViewController: UITableViewDataSource {
     }
     
     func deleteEmployment(indexPath: IndexPath) {
-        guard let employmentModel = viewModel?.employmentModels[indexPath.row] else {
+        guard let employmentModel = profileViewModel?.employmentModels[indexPath.row] else {
             return
         }
         
@@ -268,7 +268,7 @@ extension ManageUsersViewController: UITableViewDataSource {
             UIAlertAction(title: "cancel".localized, style: .cancel))
         alertController.addAction(
             UIAlertAction(title: "delete".localized, style: .destructive) { _ in
-                self.viewModel?.deleteEmploymentModel(employmentModel: employmentModel)
+                self.profileViewModel?.deleteEmploymentModel(employmentModel: employmentModel)
                 self.tableView.beginUpdates()
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 self.tableView.endUpdates()
@@ -282,18 +282,18 @@ extension ManageUsersViewController: UITableViewDataSource {
 
 extension ManageUsersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let viewModel = viewModel else {
+        guard let safeProfileViewModel = profileViewModel else {
             return
         }
 
-        let selectedModel = viewModel.employmentModels[indexPath.row]
+        let selectedModel = safeProfileViewModel.employmentModels[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: false)
-        let employmentModel = viewModel.tempEmploymentModel(for: selectedModel)
+        let employmentModel = safeProfileViewModel.tempEmploymentModel(for: selectedModel)
 
         
         if let setupVC = navigationController?.topViewController as? SetupProfileViewController,
             let employmentModel = employmentModel {
-            setupVC.editClicked(viewModel: employmentModel)
+            setupVC.editClicked(employmentModel: employmentModel)
         }
         else {
             performSegue(withIdentifier: "editEmploymentInfo", sender: employmentModel)

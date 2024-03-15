@@ -25,7 +25,7 @@ class SetupPaymentFrequencyViewController: SetupBaseEmploymentViewController {
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableView.automaticDimension
         
-        if viewModel?.isProfileEmployer ?? false {
+        if employmentModel?.isProfileEmployer ?? false {
             titleLabelInfo.title = "payment_frequency_employer".localized
             titleLabelInfo.infoType = .employer_paymentFrequency
         }
@@ -68,7 +68,7 @@ extension SetupPaymentFrequencyViewController: PaymentFrequencyCellDelegate {
         backItem.title = "back".localized
         navigationItem.backBarButtonItem = backItem
         
-        viewModel?.paymentFrequency = paymentFrequency ?? .weekly
+        employmentModel?.paymentFrequency = paymentFrequency ?? .weekly
         performSegue(withIdentifier: "showWorkWeek", sender: self)
     }
 }

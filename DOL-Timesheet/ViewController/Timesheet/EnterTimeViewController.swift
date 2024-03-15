@@ -10,8 +10,8 @@ import UIKit
 
 class EnterTimeViewController: UIViewController {
 
-    var viewModel: EnterTimeViewModel?
-    var timeSheetModel: TimesheetViewModel?
+    var enterTimeViewModel: EnterTimeViewModel?
+    var timeSheetModel = TimesheetViewModel.shared()
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
@@ -112,7 +112,7 @@ class EnterTimeViewController: UIViewController {
         breakTimeInfoButton.infoType = .breakTime
         breakTimeInfoButton.delegate = self
         
-        if viewModel?.paymentType == PaymentType.salary {
+        if enterTimeViewModel?.paymentType == PaymentType.salary {
             setupSalaryView()
         }
     }
@@ -146,9 +146,9 @@ class EnterTimeViewController: UIViewController {
         commentsTitleLabel.text = "daily_comments".localized
         editBtn.setTitle("edit".localized, for: .normal)
         
-        dateDropDownView.title = viewModel?.title ?? ""
-        paymentTypeLabel.text = viewModel?.paymentType?.title
-        commentTextView.text = viewModel?.comment
+        dateDropDownView.title = enterTimeViewModel?.title ?? ""
+        paymentTypeLabel.text = enterTimeViewModel?.paymentType?.title
+        commentTextView.text = enterTimeViewModel?.comment
         displayTime()
     }
     
@@ -168,29 +168,29 @@ class EnterTimeViewController: UIViewController {
     }
 
     @objc func save(_ sender: Any?) {
-        viewModel?.comment = commentTextView.text
+        enterTimeViewModel?.comment = commentTextView.text
                 
-        if let errorStr = viewModel?.validate() {
+        if let errorStr = enterTimeViewModel?.validate() {
             displayError(message: errorStr, title: "Error")
             return
         }
         
-        viewModel?.save()
+        enterTimeViewModel?.save()
         let annnouncementMsg = "save_time_entry".localized
-        let announcementStr = String(format: annnouncementMsg, viewModel?.title ?? "")
+        let announcementStr = String(format: annnouncementMsg, enterTimeViewModel?.title ?? "")
         UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementStr)
         
 
-        delegate?.didEnterTime(enterTimeModel: viewModel)
+        delegate?.didEnterTime(enterTimeModel: enterTimeViewModel)
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func addRowClick(_ sender: Any) {
-        _ = viewModel?.addTimeLog()
+        _ = enterTimeViewModel?.addTimeLog()
 //        displayTime()
 //        return
         
-        guard let viewModel = viewModel, let totalLogs = viewModel.numberOfTimeLogs else {return}
+        guard let safeEnterTimeViewModel = enterTimeViewModel, let totalLogs = safeEnterTimeViewModel.numberOfTimeLogs else {return}
         
         let newIndexPath = IndexPath(row: totalLogs-1, section: 0)
         tableView.insertRows(at: [newIndexPath], with: .none)
@@ -255,11 +255,11 @@ extension EnterTimeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.numberOfTimeLogs ?? 0
+        return enterTimeViewModel?.numberOfTimeLogs ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let timeLog = viewModel?.timeLogs?[indexPath.row]
+        let timeLog = enterTimeViewModel?.timeLogs?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: EnterHourlyTimeTableViewCell.reuseIdentifier) as! EnterHourlyTimeTableViewCell
             
         cell.timeLog = timeLog
@@ -277,7 +277,7 @@ extension EnterTimeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if let timeLog = viewModel?.timeLogs?[indexPath.row] {
+            if let timeLog = enterTimeViewModel?.timeLogs?[indexPath.row] {
                 deleteTimeLog(timeLog: timeLog)
             }
         }
@@ -303,7 +303,7 @@ extension EnterTimeViewController: UITableViewDataSource {
             UIAlertAction(title: "cancel".localized, style: .cancel))
         alertController.addAction(
             UIAlertAction(title: "delete".localized, style: .destructive) { _ in
-                self.viewModel?.removeTimeLog(timeLog: timeLog)
+                self.enterTimeViewModel?.removeTimeLog(timeLog: timeLog)
                 self.displayTime()
         })
         present(alertController, animated: true)
@@ -317,7 +317,7 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
     }
     
     func remove(cell: UITableViewCell, timeLog: TimeLog) {
-        viewModel?.removeTimeLog(timeLog: timeLog)
+        enterTimeViewModel?.removeTimeLog(timeLog: timeLog)
         displayTime()
     }
     
@@ -327,11 +327,11 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
     }
     
     func isValid(startTime: Date, for timeLog: TimeLog?) -> Bool {
-        guard let viewModel = viewModel else {
+        guard let safeEnterTimeViewModel = enterTimeViewModel else {
             return false
         }
         
-        let errorStr = viewModel.isValid(time: startTime, for: timeLog, isStartTime: true)
+        let errorStr = safeEnterTimeViewModel.isValid(time: startTime, for: timeLog, isStartTime: true)
         if !errorStr.isEmpty {
             displayError(message: errorStr)
             return false
@@ -341,7 +341,7 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
     }
     
     func isValid(endTime: Date, for timeLog: TimeLog?) -> Bool {
-        guard let viewModel = viewModel, let timeLog = timeLog else {
+        guard let safeEnterTimeViewModel = enterTimeViewModel, let timeLog = timeLog else {
             return false
         }
         
@@ -360,7 +360,7 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
             return false
         }
         
-        let errorStr = viewModel.isValid(time: endTime, for: timeLog)
+        let errorStr = safeEnterTimeViewModel.isValid(time: endTime, for: timeLog)
         if !errorStr.isEmpty {
             displayError(message: errorStr)
             return false
@@ -374,7 +374,7 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
         let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "yes".localized, style: .default, handler: { [weak self] (action) in
             guard let strongSelf = self else { return }
-            strongSelf.viewModel?.splitTime(endTime: endTime, for: timeLog)
+            strongSelf.enterTimeViewModel?.splitTime(endTime: endTime, for: timeLog)
             strongSelf.tableView.reloadData()
         }))
         
@@ -383,11 +383,11 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
     }
     
     func isValid(breakTime: Double, for timeLog: TimeLog?) -> Bool {
-        guard let viewModel = viewModel else {
+        guard let safeEnterTimeViewModel = enterTimeViewModel else {
             return false
         }
         
-        let errorStr = viewModel.isValid(breakTime: breakTime, for: timeLog)
+        let errorStr = safeEnterTimeViewModel.isValid(breakTime: breakTime, for: timeLog)
         if !errorStr.isEmpty {
             displayError(message: errorStr)
             return false
@@ -435,7 +435,7 @@ extension EnterTimeViewController: TimePickerProtocol {
     }
     
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
-        viewModel = timeSheetModel?.createEnterTimeViewModel(for: datePicker.date)
+        enterTimeViewModel = timeSheetModel.createEnterTimeViewModel(for: datePicker.date)
         displayInfo()
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: dateDropDownView)
     }

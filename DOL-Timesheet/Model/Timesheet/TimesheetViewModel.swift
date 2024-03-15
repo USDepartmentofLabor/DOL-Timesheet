@@ -10,6 +10,15 @@ import Foundation
 
 class TimesheetViewModel {
     
+    private static var sharedTimesheetViewModel: TimesheetViewModel = {
+        let coreDataManager = TimesheetViewModel()
+        return coreDataManager
+    }()
+    
+    class func shared() -> TimesheetViewModel {
+        return sharedTimesheetViewModel
+    }
+    
     let managedObjectContext = CoreDataManager.shared().viewManagedContext
 
     var userProfileModel: ProfileViewModel

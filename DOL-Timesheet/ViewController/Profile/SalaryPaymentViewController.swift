@@ -14,7 +14,7 @@ protocol SetupPaymentViewDelegate {
 
 class SalaryPaymentViewController: UIViewController {
     
-    var viewModel: EmploymentModel!
+    var employmentModel: EmploymentModel!
 
     @IBOutlet weak var titleLabelInfo: LabelInfoView!
     @IBOutlet weak var salaryTitleLabel: UILabel!
@@ -118,12 +118,12 @@ class SalaryPaymentViewController: UIViewController {
     }
     
     func displayInfo() {
-        if let salary = viewModel?.salary {
+        if let salary = employmentModel?.salary {
             salaryAmount = salary.amount
             salaryType = salary.salaryType
         }
         
-        isProfileEmployer = viewModel.isProfileEmployer
+        isProfileEmployer = employmentModel.isProfileEmployer
     }
     
     @IBAction func salaryTypeClick(_ sender: Any) {

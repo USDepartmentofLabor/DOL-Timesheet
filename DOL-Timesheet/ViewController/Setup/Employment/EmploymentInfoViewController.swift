@@ -93,7 +93,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
     override func setupView() {
         super.setupView()
 
-        assert(viewModel != nil)
+        assert(employmentModel != nil)
         
         // If this is Root ViewController
         if let rootViewController = navigationController?.viewControllers.first,
@@ -133,7 +133,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         userTitleLabel.scaleFont(forDataType: .sectionTitle)
         employmentTitleLabel.scaleFont(forDataType: .sectionTitle)
         
-        setupEmploymentType(isProfileEmployer: viewModel?.isProfileEmployer ?? false)
+        setupEmploymentType(isProfileEmployer: employmentModel?.isProfileEmployer ?? false)
         
         requiredFooterLabel.text = "indicates_a_required_field".localized
         
@@ -153,10 +153,10 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         nextBtn.setTitle("next".localized, for: .normal)
         
         // remove Skip button from navbar
-        if viewModel?.employmentUser != nil {
+        if employmentModel?.employmentUser != nil {
             isNewUser = false
             navigationItem.rightBarButtonItem = nil
-            if let viewModel = viewModel, viewModel.isProfileEmployer {
+            if let safeEmploymentModel = employmentModel, safeEmploymentModel.isProfileEmployer {
                 title = "edit_employee".localized
             }
             else {
@@ -262,14 +262,14 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
     }
 
     func displayInfo() {
-        guard let viewModel = viewModel else { return }
+        guard let safeEmploymentModel = employmentModel else { return }
         
         // If profile User is Employer, display Employee Information
-        let user = viewModel.employmentUser
+        let user = safeEmploymentModel.employmentUser
         
         nameTextField.text = user?.name
         
-        if !viewModel.isProfileEmployer {
+        if !safeEmploymentModel.isProfileEmployer {
             street1TextField.text = user?.address?.street1
             street2TextField.text = user?.address?.street2
             cityTextField.text = user?.address?.city
@@ -279,11 +279,11 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         
         emailTextField.text = user?.email
         phoneTextField.text = user?.phone
-        employmentNumberTextField.text = viewModel.employmentNumber
-        supervisorNameTextField.text = viewModel.supervisorName
-        supervisorEmailTextField.text = viewModel.supervisorEmail
-        paymentTypeTextField.text = viewModel.paymentType.title
-        startDate = viewModel.employmentStartDate
+        employmentNumberTextField.text = safeEmploymentModel.employmentNumber
+        supervisorNameTextField.text = safeEmploymentModel.supervisorName
+        supervisorEmailTextField.text = safeEmploymentModel.supervisorEmail
+        paymentTypeTextField.text = safeEmploymentModel.paymentType.title
+        startDate = safeEmploymentModel.employmentStartDate
         nameTextField.placeholder = "required".localized
         paymentTypeTitleLabel.text = "payment_type".localized
     }
@@ -292,7 +292,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         super.prepare(for: segue, sender: sender)
         if segue.identifier == "editEmploymentInfo",
             let destVC = segue.destination as? EditEmploymentInfoViewController {
-            destVC.viewModel = viewModel
+            destVC.employmentModel = employmentModel
             destVC.delegate = delegate
         }
     }
@@ -334,7 +334,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
     }
     
     func validateInput() -> Bool {
-        guard let viewModel = viewModel else { return false }
+        guard let safeEmploymentModel = employmentModel else { return false }
         
         var errorStr: String? = nil
         
@@ -342,7 +342,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         if name == nil || name!.isEmpty {
             errorStr = "err_enter_name".localized
         }
-        else if !viewModel.isProfileEmployer,
+        else if !safeEmploymentModel.isProfileEmployer,
             let zipcode = zipcodeTextField.text?.trimmingCharacters(in: .whitespaces),
             !zipcode.isEmpty, !Util.isValidPostalCode(postalCode: zipcode) {
             errorStr = "err_invalid_zipcode".localized
@@ -353,7 +353,7 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
         }
         else if let emailAddress = emailTextField.text?.trimmingCharacters(in: .whitespaces),
             !emailAddress.isEmpty, !Util.isValidEmailAddress(emailAddress: emailAddress) {
-            if viewModel.isProfileEmployer {
+            if safeEmploymentModel.isProfileEmployer {
                 errorStr = "err_invalid_employee_emailaddress".localized
             }
             else {
@@ -375,21 +375,21 @@ class EmploymentInfoViewController: SetupBaseEmploymentViewController {
     }
     
     func updateEmployment() {
-        guard let viewModel = viewModel else { return }
+        guard let safeEmploymentModel = employmentModel else { return }
         
-        viewModel.employmentNumber = employmentNumberTextField.text?.trimmingCharacters(in: .whitespaces)
-        viewModel.supervisorName = supervisorNameTextField.text?.trimmingCharacters(in: .whitespaces)
-        viewModel.supervisorEmail = supervisorEmailTextField.text?.trimmingCharacters(in: .whitespaces)
-        viewModel.employmentStartDate = startDate
+        safeEmploymentModel.employmentNumber = employmentNumberTextField.text?.trimmingCharacters(in: .whitespaces)
+        safeEmploymentModel.supervisorName = supervisorNameTextField.text?.trimmingCharacters(in: .whitespaces)
+        safeEmploymentModel.supervisorEmail = supervisorEmailTextField.text?.trimmingCharacters(in: .whitespaces)
+        safeEmploymentModel.employmentStartDate = startDate
 
-        var user = viewModel.employmentUser
+        var user = safeEmploymentModel.employmentUser
         if user == nil {
-            user = viewModel.newEmploymentUser()
+            user = safeEmploymentModel.newEmploymentUser()
         }
         
         user?.name = nameTextField.text?.trimmingCharacters(in: .whitespaces)
         
-        if !viewModel.isProfileEmployer {
+        if !safeEmploymentModel.isProfileEmployer {
             let street1 = street1TextField.text?.trimmingCharacters(in: .whitespaces)
             let street2 = street2TextField.text?.trimmingCharacters(in: .whitespaces)
             let city = cityTextField.text?.trimmingCharacters(in: .whitespaces)
@@ -468,7 +468,7 @@ extension EmploymentInfoViewController: UITextFieldDelegate {
                 guard let strongSelf = self else { return }
                 if let paymentType = paymentType {
                     strongSelf.paymentTypeTextField.text = paymentType.title
-                    strongSelf.viewModel?.paymentType = paymentType
+                    strongSelf.employmentModel?.paymentType = paymentType
                 }
                 optionsVC.dismiss(animated: true, completion: nil)
                 UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: strongSelf.nextBtn)

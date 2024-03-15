@@ -89,7 +89,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         }
     }
     
-    var viewModel: TimesheetViewModel?
+    var timesheetViewModel = TimesheetViewModel.shared()
     weak var timeViewControllerDelegate: TimeCardDelegate?
     var timer: Timer?
     var currentHourlyRate: HourlyRate? {
@@ -118,7 +118,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         super.viewDidAppear(animated)
         Localizer.initialize()
         
-        guard let viewModel = viewModel, viewModel.userProfileExists else {
+        guard timesheetViewModel.userProfileExists else {
             //performSegue(withIdentifier: "setupProfile", sender: nil)
             performSegue(withIdentifier: "showOnboard", sender: nil)
             return
@@ -179,7 +179,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         setupPopupButton()
             
         ratePopupButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
-        rateOptions = viewModel?.currentEmploymentModel?.hourlyRates
+        rateOptions = timesheetViewModel.currentEmploymentModel?.hourlyRates
         
 //        workedHoursView.addBorder()
 //        breakHoursView.addBorder()
@@ -193,7 +193,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     func setupPopupButton(){
         ratePopupButton.isHidden = false
         rateLabel.isHidden =  false
-        if let paymentType = viewModel?.currentEmploymentModel?.paymentType,
+        if let paymentType = timesheetViewModel.currentEmploymentModel?.paymentType,
             paymentType == .salary {
             
             ratePopupButton.isHidden = true
@@ -233,7 +233,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         hoursWorkedTitleLabel.text = "hours_worked".localized
         breakHoursTitleLabel.text = "break_hours".localized
         
-        if let paymentType = viewModel?.currentEmploymentModel?.paymentType,
+        if let paymentType = timesheetViewModel.currentEmploymentModel?.paymentType,
             paymentType == .salary {
             ratePopupButton.isHidden = true
             ratePopupButton.isAccessibilityElement = false
@@ -247,9 +247,9 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             popupHeightConstraint.priority = .init(900)
         }
         
-        if let hourlyRates = viewModel?.currentEmploymentModel?.hourlyRates, hourlyRates.count > 0 {
+        if let hourlyRates = timesheetViewModel.currentEmploymentModel?.hourlyRates, hourlyRates.count > 0 {
             currentHourlyRate = hourlyRates[0]
-            rateOptions = viewModel?.currentEmploymentModel?.hourlyRates
+            rateOptions = timesheetViewModel.currentEmploymentModel?.hourlyRates
         }
         else {
             currentHourlyRate = nil
@@ -261,14 +261,14 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     }
     
     func displayClock() {
-        let clockState = viewModel?.clockState
+        let clockState = timesheetViewModel.clockState
         if clockState == .clockedIn || clockState == .inBreak {
             startTimer()
             // display Comments
 //            commentsView.isHidden = true
 
             
-            if let hourlyRate = viewModel?.currentEmploymentModel?.employmentInfo.clock?.hourlyRate {
+            if let hourlyRate = timesheetViewModel.currentEmploymentModel?.employmentInfo.clock?.hourlyRate {
                 currentHourlyRate = hourlyRate
             }
             discardButton.isHidden = false
@@ -300,7 +300,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     }
     
     func isValidHourlyRate() -> Bool {
-        if let hourlyRate = viewModel?.currentEmploymentModel?.employmentInfo.clock?.hourlyRate {
+        if let hourlyRate = timesheetViewModel.currentEmploymentModel?.employmentInfo.clock?.hourlyRate {
             if hourlyRate.value < 0.01 {
                 let alertController = UIAlertController(title: "Error",
                                                         message: "An error was detected in the hourly rate, this entry has been discarded.".localized,
@@ -321,7 +321,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
 
     @IBAction func startWorkClick(_ sender: Any) {
         discardButton.isHidden = false
-        viewModel?.clock(action: .startWork, hourlyRate: currentHourlyRate, comments: nil)
+        timesheetViewModel.clock(action: .startWork, hourlyRate: currentHourlyRate, comments: nil)
         displayClock()
     }
     
@@ -332,10 +332,10 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             return
         }
         
-        if ( viewModel?.currentEmploymentModel?.employmentInfo.clock?.totalHoursWorked() ?? 0 >= 0) {
-            viewModel?.clock(action: .endWork, comments: "")
+        if ( timesheetViewModel.currentEmploymentModel?.employmentInfo.clock?.totalHoursWorked() ?? 0 >= 0) {
+            timesheetViewModel.clock(action: .endWork, comments: "")
   
-            if let clock = viewModel?.currentEmploymentModel?.employmentInfo.clock {
+            if let clock = timesheetViewModel.currentEmploymentModel?.employmentInfo.clock {
                 
                 if !(clock.startTime?.isEqualOnlyDate(date: Date()) ?? true) {
                     let message = "warning_split_time".localized
@@ -373,7 +373,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     @IBAction func startBreakClick(_ sender: Any) {
         breakViewHeightConstraint.constant = 119.0
         if isValidHourlyRate() {
-            viewModel?.clock(action: .startBreak, comments: "")
+            timesheetViewModel.clock(action: .startBreak, comments: "")
             breakHoursView.isHidden = false
             view.layoutSubviews()
             view.layoutIfNeeded()
@@ -388,10 +388,10 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             return
         }
         breakViewHeightConstraint.constant = 0.0
-        if ( viewModel?.currentEmploymentModel?.employmentInfo.clock?.totalBreakTime() ?? 0 >= 0) {
+        if ( timesheetViewModel.currentEmploymentModel?.employmentInfo.clock?.totalBreakTime() ?? 0 >= 0) {
             breakHoursView.isHidden = true
             view.layoutIfNeeded()
-            viewModel?.clock(action: .endBreak, comments: "")
+            timesheetViewModel.clock(action: .endBreak, comments: "")
             displayClock()
         } else {
             let alertController = UIAlertController(title: "Error", message: "The time appears to be negative, maybe your clock was set backward.", preferredStyle: .alert)
@@ -430,7 +430,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         breakViewHeightConstraint.constant = 0.0
         breakHoursView.isHidden = true
         discardButton.isHidden = true
-        viewModel?.clock(action: .discardEntry, comments: nil)
+        timesheetViewModel.clock(action: .discardEntry, comments: nil)
         displayClock()
         
     }
@@ -440,7 +440,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         breakHoursView.isHidden = true
         discardButton.isHidden = true
         
-        let enterTimeModel = viewModel?.createEnterTimeViewModel(for: clock, hourlyRate: currentHourlyRate)
+        let enterTimeModel = timesheetViewModel.createEnterTimeViewModel(for: clock, hourlyRate: currentHourlyRate)
         enterTimeModel?.save()
         
         delegate?.didEnterTime(enterTimeModel: enterTimeModel)
@@ -459,7 +459,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
 
     
     func displayLoggedTime() {
-        if let clock = viewModel?.currentEmploymentModel?.employmentInfo.clock,
+        if let clock = timesheetViewModel.currentEmploymentModel?.employmentInfo.clock,
             let startTime = clock.startTime {
 
             let dateFormatter = DateFormatter()
@@ -499,35 +499,33 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "enterTime",
-            let enterTimeVC = segue.destination as? EnterTimeSoftenViewController,
-            let viewModel = viewModel {
+            let enterTimeVC = segue.destination as? EnterTimeSoftenViewController {
             let enterTimeModel: EnterTimeViewModel?
             if let clock = sender as? PunchClock {
-                enterTimeModel = viewModel.createEnterTimeViewModel(for: clock, hourlyRate: currentHourlyRate)
+                enterTimeModel = timesheetViewModel.createEnterTimeViewModel(for: clock, hourlyRate: currentHourlyRate)
             }
             else {
-                enterTimeModel = viewModel.createEnterTimeViewModel(for: Date())
+                enterTimeModel = timesheetViewModel.createEnterTimeViewModel(for: Date())
             }
             
             enterTimeVC.enterTimeViewModel = enterTimeModel
-            enterTimeVC.timeSheetModel = viewModel
+            enterTimeVC.timeSheetModel = timesheetViewModel
             enterTimeVC.delegate = self
                        
             enterTimeVC.selectedRate = 0
             
-            if let paymentType = viewModel.currentEmploymentModel?.paymentType,
+            if let paymentType = timesheetViewModel.currentEmploymentModel?.paymentType,
                 paymentType != .salary {
                 enterTimeVC.selectedRate = selectedRate
             }
             
-            enterTimeVC.selectedEmployment = viewModel.userProfileModel.employmentUsers.firstIndex(of: (viewModel.currentEmploymentModel?.employmentUser)!)
+            enterTimeVC.selectedEmployment = timesheetViewModel.userProfileModel.employmentUsers.firstIndex(of: (timesheetViewModel.currentEmploymentModel?.employmentUser)!)
     
         }
         else if segue.identifier == "showUserProfile",
              let navVC = segue.destination as? UINavigationController,
-             let profileVC = navVC.topViewController as? SetupProfileViewController,
-             let viewModel = viewModel {
-             profileVC.viewModel = ProfileViewModel(context: viewModel.managedObjectContext.childManagedObjectContext())
+             let profileVC = navVC.topViewController as? SetupProfileViewController {
+             profileVC.profileViewModel = ProfileViewModel(context: timesheetViewModel.managedObjectContext.childManagedObjectContext())
              profileVC.delegate = self
         }
         else if segue.identifier == "showOnboard",
@@ -556,12 +554,12 @@ extension TimeCardViewController {
     }
 
     @objc func updateTimeCounter() {
-        workedHoursCounter = viewModel?.currentEmploymentModel?.employmentInfo.clock?.totalHoursWorked() ?? 0
-        breakHoursCounter = viewModel?.currentEmploymentModel?.employmentInfo.clock?.totalBreakTime() ?? 0
+        workedHoursCounter = timesheetViewModel.currentEmploymentModel?.employmentInfo.clock?.totalHoursWorked() ?? 0
+        breakHoursCounter = timesheetViewModel.currentEmploymentModel?.employmentInfo.clock?.totalBreakTime() ?? 0
     }
     
     func displayActions() {
-        guard let actions = viewModel?.availableClockOptions else {return}
+        let actions = timesheetViewModel.availableClockOptions
 
         let newHeight: CGFloat = 34.0 // Set the desired button height
 

@@ -66,14 +66,14 @@ class SetupHourlyPaymentViewController: SetupBaseEmploymentViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "minimumWage", let destVC = segue.destination as? MinimumWageViewController {
             destVC.view.translatesAutoresizingMaskIntoConstraints = false
-            destVC.overtimeEligible = viewModel?.overtimeEligible ?? true
-            destVC.minimumWage = viewModel?.minimumWage ?? 0
-            destVC.paymentType = viewModel?.paymentType
-            destVC.isProfileEmployer = viewModel?.isProfileEmployer ?? false
+            destVC.overtimeEligible = employmentModel?.overtimeEligible ?? true
+            destVC.minimumWage = employmentModel?.minimumWage ?? 0
+            destVC.paymentType = employmentModel?.paymentType
+            destVC.isProfileEmployer = employmentModel?.isProfileEmployer ?? false
             minimumWageVC = destVC
         }
         else if segue.identifier == "hourlyPayment", let destVC = segue.destination as? HourlyPaymentViewController {
-            destVC.viewModel = viewModel
+            destVC.employmentModel = employmentModel
             destVC.view.translatesAutoresizingMaskIntoConstraints = false
             destVC.paymentViewDelegate = self
             hourlyPaymentVC = destVC
@@ -86,11 +86,11 @@ class SetupHourlyPaymentViewController: SetupBaseEmploymentViewController {
         }
         
         if let minimumWageVC = minimumWageVC {
-            viewModel?.overtimeEligible = minimumWageVC.overtimeEligible
-            viewModel?.minimumWage = minimumWageVC.minimumWage
+            employmentModel?.overtimeEligible = minimumWageVC.overtimeEligible
+            employmentModel?.minimumWage = minimumWageVC.minimumWage
         }
 
-        viewModel?.save()
+        employmentModel?.save()
         delegate?.didUpdateUser()
         dismiss(animated: true, completion: nil)
     }

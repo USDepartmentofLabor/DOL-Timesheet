@@ -11,7 +11,7 @@ import UIKit
 class EnterTimeSoftenViewController: UIViewController {
 
     var enterTimeViewModel: EnterTimeViewModel?
-    var timeSheetModel: TimesheetViewModel?
+    var timeSheetModel = TimesheetViewModel.shared()
     
     @IBOutlet weak var commentsHint: UILabel!
     @IBOutlet weak var employmentView: UIView!
@@ -140,7 +140,7 @@ class EnterTimeSoftenViewController: UIViewController {
         
         employmentTitleLabel.text = "employer".localized
         
-        if timeSheetModel?.currentEmploymentModel?.isProfileEmployer ?? false {
+        if timeSheetModel.currentEmploymentModel?.isProfileEmployer ?? false {
             employmentTitleLabel.text = "employee".localized
         }
         
@@ -240,7 +240,7 @@ class EnterTimeSoftenViewController: UIViewController {
         
         var menuActions: [UIAction] = []
         
-        guard let userProfileModel = timeSheetModel?.userProfileModel else { return }
+        let userProfileModel = timeSheetModel.userProfileModel
         
         let users: [User] = userProfileModel.employmentUsers
         guard users.count > 0 else {
@@ -267,12 +267,12 @@ class EnterTimeSoftenViewController: UIViewController {
     }
     
     func setCurrentUser(user: User) {
-        timeSheetModel?.setCurrentEmploymentModel(for: user)
+        timeSheetModel.setCurrentEmploymentModel(for: user)
         setupRatePopupButton()
     }
     
     func setupRatePopupButton(){
-        if let paymentType = timeSheetModel?.currentEmploymentModel?.paymentType,
+        if let paymentType = timeSheetModel.currentEmploymentModel?.paymentType,
            paymentType == .salary {
             
             employerRateBorderView.isHidden = true
@@ -686,7 +686,7 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
         if sourceView == dateDropDownView {
             selectedDate = datePicker.date
-            enterTimeViewModel = timeSheetModel?.createEnterTimeViewModel(for: datePicker.date)
+            enterTimeViewModel = timeSheetModel.createEnterTimeViewModel(for: datePicker.date)
             timeLog = enterTimeViewModel?.timeLogs?.first
             timeLog?.startTime = selectedDate + (8*60*60)
             timeLog?.endTime = selectedDate + (17*60*60)

@@ -10,7 +10,7 @@ import UIKit
 
 class HourlyPaymentViewController: UIViewController {
 
-    var viewModel: EmploymentModel!
+    var employmentModel: EmploymentModel!
     
     @IBOutlet weak var titleLabelInfo: LabelInfoView!
     
@@ -38,7 +38,7 @@ class HourlyPaymentViewController: UIViewController {
         hourlyRateTableView.estimatedRowHeight = 44
         hourlyRateTableView.rowHeight = UITableView.automaticDimension
         
-        if viewModel.isProfileEmployer {
+        if employmentModel.isProfileEmployer {
             titleLabelInfo.title = "hourly_rate_employer".localized
             titleLabelInfo.infoType = .employer_hourlyPayRate
         }
@@ -48,7 +48,7 @@ class HourlyPaymentViewController: UIViewController {
         }
         titleLabelInfo.delegate = self
         
-        if viewModel?.hourlyRates?.count ?? 0 > 0 {
+        if employmentModel?.hourlyRates?.count ?? 0 > 0 {
             loadHourlyRate()
         }
         else {
@@ -79,10 +79,10 @@ class HourlyPaymentViewController: UIViewController {
     }
     
     func addRate() {
-        viewModel?.newHourlyRate()
+        employmentModel?.newHourlyRate()
 //        loadHourlyRate()
         
-        guard let viewModel = viewModel, let totalHourlyRates = viewModel.hourlyRates?.count else {return}
+        guard let safeEmploymentModel = employmentModel, let totalHourlyRates = safeEmploymentModel.hourlyRates?.count else {return}
         let newIndexPath = IndexPath(row: totalHourlyRates-1, section: 0)
         hourlyRateTableView.insertRows(at: [newIndexPath], with: .none)
         
@@ -117,13 +117,13 @@ extension HourlyPaymentViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.hourlyRates?.count ?? 0
+        return employmentModel.hourlyRates?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HourlyRateTableViewCell.reuseIdentifier) as! HourlyRateTableViewCell
         
-        if let hourlyRate = viewModel.hourlyRates?[indexPath.row] {
+        if let hourlyRate = employmentModel.hourlyRates?[indexPath.row] {
             cell.hourlyRate = hourlyRate
         }
 
@@ -135,7 +135,7 @@ extension HourlyPaymentViewController: UITableViewDataSource {
         cell.rateNameTextField.tag = indexPath.row + 1
         cell.rateValueTextField.tag = (indexPath.row+1) * 100
         cell.perHourLabel.tag = cell.rateValueTextField.tag + 1
-        if indexPath.row < (viewModel.hourlyRates?.count ?? 0) - 1 {
+        if indexPath.row < (employmentModel.hourlyRates?.count ?? 0) - 1 {
             cell.rateValueTextField.returnKeyType = .next
         }
         else {
@@ -148,8 +148,8 @@ extension HourlyPaymentViewController: UITableViewDataSource {
 
 extension HourlyPaymentViewController: HourlyRateCellDelegate {
     func removeItem(index: Int) {
-        guard index < viewModel?.hourlyRates?.count ?? 0 else { return }
-        guard let hourlyRate = viewModel.hourlyRates?[index] else {return}
+        guard index < employmentModel?.hourlyRates?.count ?? 0 else { return }
+        guard let hourlyRate = employmentModel.hourlyRates?[index] else {return}
         
         let titleMsg = "delete_hourly_rate".localized
         let errorMsg = "delete_confirm_hourly_rate_log".localized
@@ -163,7 +163,7 @@ extension HourlyPaymentViewController: HourlyRateCellDelegate {
         UIAlertAction(title: "cancel".localized, style: .cancel))
         alertController.addAction(
         UIAlertAction(title: "delete".localized, style: .destructive) { _ in
-            self.viewModel.deleteHourlyRate(hourlyRate: hourlyRate)
+            self.employmentModel.deleteHourlyRate(hourlyRate: hourlyRate)
             
             let deleteAnnouncement = "hourly_rate_deleted".localized
             UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: deleteAnnouncement)
@@ -179,11 +179,11 @@ extension HourlyPaymentViewController {
     func validateInput() -> String? {
         var errorStr: String? = nil
         
-        if (viewModel?.hourlyRates?.count ?? 0) < 1 {
+        if (employmentModel?.hourlyRates?.count ?? 0) < 1 {
             errorStr = "err_add_hourly_rate".localized
         }
         else {
-            viewModel?.hourlyRates?.forEach {
+            employmentModel?.hourlyRates?.forEach {
                 if ($0.name ?? "").isEmpty {
                     errorStr = "err_add_hourly_rate_name".localized
                     return

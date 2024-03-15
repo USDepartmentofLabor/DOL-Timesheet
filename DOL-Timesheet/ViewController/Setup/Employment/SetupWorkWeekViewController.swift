@@ -24,7 +24,7 @@ class SetupWorkWeekViewController: SetupBaseEmploymentViewController {
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableView.automaticDimension
         
-        if viewModel?.isProfileEmployer ?? false {
+        if employmentModel?.isProfileEmployer ?? false {
             titleLabelInfo.title = "work_week_employer".localized
             titleLabelInfo.infoType = .employer_workweek
         }
@@ -72,7 +72,7 @@ extension SetupWorkWeekViewController: WorkWeekCellDelegate {
         backItem.title = "back".localized
         navigationItem.backBarButtonItem = backItem
         
-        viewModel?.workWeekStartDay = weekday ?? .sunday
+        employmentModel?.workWeekStartDay = weekday ?? .sunday
         performSegue(withIdentifier: "setupPaymentInfo", sender: self)
     }
 }

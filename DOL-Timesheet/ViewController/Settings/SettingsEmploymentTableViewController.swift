@@ -13,7 +13,7 @@ class SettingsEmploymentTableViewController: UITableViewController {
     let cellReuseIdentifier = "cell"
     let settingsOptions: [String] = ["John Doe"]
     
-    lazy var viewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
+    lazy var profileViewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +27,14 @@ class SettingsEmploymentTableViewController: UITableViewController {
     }
     
     func settingsTable(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.employmentUsers.count
+        return profileViewModel.employmentUsers.count
     }
     
     func settingsTable(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:UITableViewCell = (self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
         
-        cell.textLabel?.text = viewModel.employmentUsers[indexPath.row].name
+        cell.textLabel?.text = profileViewModel.employmentUsers[indexPath.row].name
         
         return cell
     }

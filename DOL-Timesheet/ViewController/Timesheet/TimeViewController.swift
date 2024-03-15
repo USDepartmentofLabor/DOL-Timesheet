@@ -26,21 +26,20 @@ class TimeViewController: UIViewController, TimeCardDelegate {
     @IBOutlet weak var timeContainerView: UIView!
     
     weak var currentTimeViewController: UIViewController?
-    public var viewModel: TimesheetViewModel?
+    public var timesheetViewModel = TimesheetViewModel.shared()
 
     let lighterGrey = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
-        viewModel = TimesheetViewModel()
         setupView()
         displayInfo()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard let viewModel = viewModel, viewModel.userProfileExists else {
+        guard timesheetViewModel.userProfileExists else {
             //performSegue(withIdentifier: "setupProfile", sender: nil)
             performSegue(withIdentifier: "showOnboard", sender: nil)
             return
@@ -81,7 +80,7 @@ class TimeViewController: UIViewController, TimeCardDelegate {
             title = "timecard".localized
         }
         
-        if viewModel?.userProfileModel.isProfileEmployer ?? false {
+        if timesheetViewModel.userProfileModel.isProfileEmployer {
             //    employeeEmployerTitleLabel.text = "employee".localized
             selectEmployerPopupLabel.text = "employee".localized
         }
@@ -104,7 +103,7 @@ class TimeViewController: UIViewController, TimeCardDelegate {
         
         var menuActions: [UIAction] = []
         
-        guard let userProfileModel = viewModel?.userProfileModel else { return }
+        let userProfileModel = timesheetViewModel.userProfileModel
         
         let users: [User] = userProfileModel.employmentUsers
         guard users.count > 0 else {
@@ -142,23 +141,20 @@ class TimeViewController: UIViewController, TimeCardDelegate {
         }
         else if segue.identifier == "showProfile",
             let navVC = segue.destination as? UINavigationController,
-            let profileVC = navVC.topViewController as? SetupProfileViewController,
-            let viewModel = viewModel {
-            profileVC.viewModel = ProfileViewModel(context: viewModel.managedObjectContext.childManagedObjectContext())
+            let profileVC = navVC.topViewController as? SetupProfileViewController {
+            profileVC.profileViewModel = ProfileViewModel(context: timesheetViewModel.managedObjectContext.childManagedObjectContext())
             profileVC.delegate = self
         }
         else if segue.identifier == "manageUsers",
             let navVC = segue.destination as? UINavigationController,
-            let manageUserVC = navVC.topViewController as? ManageUsersViewController,
-            let viewModel = viewModel {
-            manageUserVC.viewModel = ProfileViewModel(context: viewModel.managedObjectContext.childManagedObjectContext())
+            let manageUserVC = navVC.topViewController as? ManageUsersViewController {
+            manageUserVC.profileViewModel = ProfileViewModel(context: timesheetViewModel.managedObjectContext.childManagedObjectContext())
             manageUserVC.delegate = self
         }
         else if segue.identifier == "addEmploymentInfo",
             let navVC = segue.destination as? UINavigationController,
-            let employmentInfoVC = navVC.topViewController as? EmploymentInfoViewController,
-            let viewModel = viewModel {
-            employmentInfoVC.viewModel = viewModel.userProfileModel.newTempEmploymentModel()
+            let employmentInfoVC = navVC.topViewController as? EmploymentInfoViewController {
+            employmentInfoVC.employmentModel = timesheetViewModel.userProfileModel.newTempEmploymentModel()
             employmentInfoVC.delegate = self
         }
     }
@@ -172,16 +168,16 @@ extension TimeViewController {
     }
     
     func setCurrentUser(user: User) {
-        viewModel?.setCurrentEmploymentModel(for: user)
+        timesheetViewModel.setCurrentEmploymentModel(for: user)
         displayEmploymentInfo()
         
     }
 
     func displayEmploymentInfo() {
-        let employmentModel =  viewModel?.currentEmploymentModel
+        let employmentModel =  timesheetViewModel.currentEmploymentModel
         
         if employmentModel == nil {
-            let addUserTitle = viewModel?.userProfileModel.addNewUserTitle
+            let addUserTitle = timesheetViewModel.userProfileModel.addNewUserTitle
         }
         
         displayTime()
@@ -191,7 +187,7 @@ extension TimeViewController {
 
 extension TimeViewController: TimeViewControllerDelegate {
     func didUpdateUser() {
-        if let user = viewModel?.userProfileModel.employmentUsers.first {
+        if let user = timesheetViewModel.userProfileModel.employmentUsers.first {
             self.setCurrentUser(user: user)
         }
         displayInfo()
@@ -215,7 +211,7 @@ extension TimeViewController {
             delegate.displayInfo()
             return
         }
-        if viewModel?.userProfileModel.isProfileEmployer ?? false {
+        if timesheetViewModel.userProfileModel.isProfileEmployer {
             displayTimeSheet()
         }
         else {
@@ -231,7 +227,7 @@ extension TimeViewController {
         }
         else {
             timecardVC = TimeCardViewController.instantiateFromStoryboard()
-            timecardVC.viewModel = viewModel
+            timecardVC.timesheetViewModel = timesheetViewModel
             timecardVC.timeViewControllerDelegate = self
             addViewController(viewController: timecardVC)
 //            timecardVC.commentsTextView.delegate = self

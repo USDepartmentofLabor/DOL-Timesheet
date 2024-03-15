@@ -97,7 +97,7 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
     // Earnings View
     @IBOutlet weak var earningsContentView: UIView!
     
-    var viewModel: TimesheetViewModel?
+    var timesheetViewModel = TimesheetViewModel.shared()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -207,12 +207,12 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
         earningsTitleLabel.text = "earnings".localized
         totalEarningsBtn.setTitle("total_earning".localized, for: .normal)
         
-        viewModel?.updatePeriod()
+        timesheetViewModel.updatePeriod()
         displayPeriodInfo()
     }
     
     func displayPeriodInfo() {
-        periodLabel.text = viewModel?.currentPeriod?.title
+        periodLabel.text = timesheetViewModel.currentPeriod?.title
         timeTableView.reloadData()
         
         self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
@@ -227,12 +227,10 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
     }
     
     func displayTotals() {
-        guard let viewModel = viewModel else {
-            return
-        }
+        
 
-        totalHoursWorkedLabel.text = viewModel.totalHoursTime()
-        totalBreakLabel.text = viewModel.totalBreakTime()
+        totalHoursWorkedLabel.text = timesheetViewModel.totalHoursTime()
+        totalBreakLabel.text = timesheetViewModel.totalBreakTime()
         
         let hoursWorkedAccessibilityLabel = "period_total_hours_worked".localized + (totalHoursWorkedLabel.text ?? "")
         totalHoursWorkedLabel.accessibilityLabel = hoursWorkedAccessibilityLabel
@@ -241,7 +239,7 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
         totalBreakLabel.accessibilityLabel = hoursBreakAccessibilityLabel
 
         
-        viewModel.updateWorkWeeks()
+        timesheetViewModel.updateWorkWeeks()
         displaySummary()
         displayEarnings()
     }
@@ -251,14 +249,10 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
     }
     
     func displayEarnings() {
-        guard let viewModel = viewModel else {
-            return
-        }
-        
-        totalEarningsAmountLabel.text = viewModel.totalEarningsStr
-        if viewModel.isBelowMinimumWage() {
+        totalEarningsAmountLabel.text = timesheetViewModel.totalEarningsStr
+        if timesheetViewModel.isBelowMinimumWage() {
             totalEarningsWarningLabel.text = "err_title_minimum_wage".localized
-        } else if viewModel.isBelowSalaryWeeklyWage() {
+        } else if timesheetViewModel.isBelowSalaryWeeklyWage() {
             totalEarningsWarningLabel.text = "err_title_minimum_weekly_wage".localized
         }
         else {
@@ -281,12 +275,12 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
             periodEarningsStackView.insertArrangedSubview(periodStraightTimeEarningsStackView, at: 0)
             periodEarningsStackView.isHidden = false
             periodStraightTimeTitle.text = "straight_earnings".localized
-            periodStraightTimeAmount.text = viewModel?.currentPeriod?.straightTimeAmountStr
+            periodStraightTimeAmount.text = timesheetViewModel.currentPeriod?.straightTimeAmountStr
             
-            if viewModel?.currentEmploymentModel?.overtimeEligible ?? false {
+            if timesheetViewModel.currentEmploymentModel?.overtimeEligible ?? false {
                 periodEarningsStackView.insertArrangedSubview(periodOvertimeEarningsStackView, at: 1)
                 periodOvertimeTitle.text = "overtime_pay".localized
-                periodOvertimeAmount.text = viewModel?.periodOvertimeAmountStr
+                periodOvertimeAmount.text = timesheetViewModel.periodOvertimeAmountStr
             }
             else {
                 periodOvertimeEarningsStackView.isHidden = true
@@ -301,10 +295,9 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
         if segue.identifier == "enterTime",
             let navVC = segue.destination as? UINavigationController,
             let enterTimeVC = navVC.topViewController as? EnterTimeViewController,
-            let currentDate = sender as? Date,
-            let viewModel = viewModel {
-                enterTimeVC.viewModel = viewModel.createEnterTimeViewModel(for: currentDate)
-                enterTimeVC.timeSheetModel = viewModel
+            let currentDate = sender as? Date {
+                enterTimeVC.enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: currentDate)
+                enterTimeVC.timeSheetModel = timesheetViewModel
                 enterTimeVC.delegate = self
         }
     }
@@ -328,20 +321,20 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
     
     func donePressed() {
         timeChanged(sourceView: self.timePickerVC.sourceView, datePicker: self.timePickerVC.datePicker)
-        viewModel?.updatePeriod(currentDate: (timePickerVC.datePicker.date))
+        timesheetViewModel.updatePeriod(currentDate: (timePickerVC.datePicker.date))
         displayPeriodInfo()
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: periodLabel)
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func prevNextClick(_ sender: Any) {
-        viewModel?.nextPeriod(direction: .backward)
+        timesheetViewModel.nextPeriod(direction: .backward)
         displayPeriodInfo()
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: periodLabel)
     }
     
     @IBAction func nextPeriodClick(_ sender: Any) {
-        viewModel?.nextPeriod(direction: .forward)
+        timesheetViewModel.nextPeriod(direction: .forward)
         displayPeriodInfo()
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: periodLabel)
     }
@@ -396,10 +389,10 @@ extension TimesheetViewController: UITableViewDataSource {
             numSections = 1
         }
         else if tableView == summaryTableView {
-            numSections = viewModel?.numberOfWorkWeeks ?? 0
+            numSections = timesheetViewModel.numberOfWorkWeeks
         }
         else if tableView == earningsTableView && !earningsCollapsed {
-            numSections = viewModel?.numberOfWorkWeeks ?? 0
+            numSections = timesheetViewModel.numberOfWorkWeeks
         }
         else {
             numSections = 0
@@ -409,20 +402,17 @@ extension TimesheetViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard  let viewModel = viewModel else {
-            return 0
-        }
         
         var numRows: Int = 0
        
         if tableView == timeTableView {
-            numRows = viewModel.currentPeriod?.numberOfDays() ?? 0
+            numRows = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         }
         else if tableView == summaryTableView {
             numRows = 1
         }
         else if tableView == earningsTableView {
-            if let workWeekViewModel = viewModel.workWeekViewModel(at: section), (!workWeekViewModel.isCollapsed || Util.isVoiceOverRunning) {
+            if let workWeekViewModel = timesheetViewModel.workWeekViewModel(at: section), (!workWeekViewModel.isCollapsed || Util.isVoiceOverRunning) {
                 numRows = 1
             }
         }
@@ -455,24 +445,16 @@ extension TimesheetViewController: UITableViewDataSource {
     }
         
     func configure(cell: HourlyTimeTableViewCell, at indexPath: IndexPath) {
-        guard let viewModel = viewModel else {
-            return
-        }
-
-        cell.currentDate = viewModel.currentPeriod?.date(at: indexPath.row)
-        cell.workedHours = viewModel.totalHoursTime(forDate: (cell.currentDate!))
-        cell.breakHours = viewModel.totalBreakTime(forDate: (cell.currentDate!))
+        cell.currentDate = timesheetViewModel.currentPeriod?.date(at: indexPath.row)
+        cell.workedHours = timesheetViewModel.totalHoursTime(forDate: (cell.currentDate!))
+        cell.breakHours = timesheetViewModel.totalBreakTime(forDate: (cell.currentDate!))
     }
     
     func configure(cell: SummaryTableViewCell, at indexPath: IndexPath) {
-        guard let viewModel = viewModel else {
-            return
-        }
-        
-        cell.totalValueLabel.text = viewModel.hoursWorked(workWeek: indexPath.section)
+        cell.totalValueLabel.text = timesheetViewModel.hoursWorked(workWeek: indexPath.section)
 
-        if viewModel.currentEmploymentModel?.overtimeEligible ?? false {
-            cell.totalOvertimeLabel.text = viewModel.overTimeHours(workWeek: indexPath.section)
+        if timesheetViewModel.currentEmploymentModel?.overtimeEligible ?? false {
+            cell.totalOvertimeLabel.text = timesheetViewModel.overTimeHours(workWeek: indexPath.section)
             cell.ovetimeHoursStackView.isHidden = false
             cell.totalOvertimeLabel.isHidden = false
             cell.totalOvertimeTitleLabel.isHidden = false
@@ -485,11 +467,9 @@ extension TimesheetViewController: UITableViewDataSource {
     }
     
     func configure(cell: EarningsTableViewCell, at indexPath: IndexPath) {
-        guard let workWeekViewModel = viewModel?.workWeekViewModel(at: indexPath.section) else {
-            return
-        }
+        let workWeekViewModel = timesheetViewModel.workWeekViewModel(at: indexPath.section)
         
-        cell.viewModel = workWeekViewModel
+        cell.workWeekViewModel = workWeekViewModel
         cell.regularRateInfoBtn.delegate = self
         cell.overtimeInfoBtn.delegate = self
     }
@@ -498,13 +478,9 @@ extension TimesheetViewController: UITableViewDataSource {
 //MARK : TableView DataSource Delegate
 extension TimesheetViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let viewModel = viewModel else {
-            return
-        }
-
-        guard viewModel.currentEmploymentModel != nil else {
+        guard timesheetViewModel.currentEmploymentModel != nil else {
             let errMsg: String
-            if viewModel.userProfileModel.isProfileEmployer {
+            if timesheetViewModel.userProfileModel.isProfileEmployer {
                 errMsg = "err_add_employee".localized
             }
             else {
@@ -515,7 +491,7 @@ extension TimesheetViewController: UITableViewDelegate {
             return
         }
 
-        guard let currentDate = viewModel.currentPeriod?.date(at: indexPath.row) else {
+        guard let currentDate = timesheetViewModel.currentPeriod?.date(at: indexPath.row) else {
             return
         }
         
@@ -523,7 +499,7 @@ extension TimesheetViewController: UITableViewDelegate {
     }
     
     func titleForWorkWeek(week: Int) -> String? {
-        guard let workWeekViewModel = viewModel?.workWeekViewModel(at: week) else {
+        guard let workWeekViewModel = timesheetViewModel.workWeekViewModel(at: week) else {
             return nil
         }
         
@@ -532,27 +508,23 @@ extension TimesheetViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if tableView == summaryTableView {
-            guard let workWeekViewModel = viewModel?.workWeekViewModel(at: section) else {
-                return nil
-            }
+            let workWeekViewModel = timesheetViewModel.workWeekViewModel(at: section)
             
             guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: SummaryTableViewHeaderView.reuseIdentifier) as? SummaryTableViewHeaderView
                 else { return nil }
             
             headerView.section = section
-            headerView.viewModel = workWeekViewModel
+            headerView.workWeekViewModel = workWeekViewModel
             return headerView
         }
         else if tableView == earningsTableView {
-            guard let workWeekViewModel = viewModel?.workWeekViewModel(at: section) else {
-                return nil
-            }
+            let workWeekViewModel = timesheetViewModel.workWeekViewModel(at: section)
             
             guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: EarningsTableViewHeaderView.reuseIdentifier) as? EarningsTableViewHeaderView
                 else { return nil }
             
             headerView.section = section
-            headerView.viewModel = workWeekViewModel
+            headerView.workWeekViewModel = workWeekViewModel
             headerView.delegate = self
             return headerView
         }
@@ -565,11 +537,9 @@ extension TimesheetViewController: UITableViewDelegate {
 
 extension TimesheetViewController: EarningsHeaderViewDelegate {
     func sectionHeader(_ sectionHeader: EarningsTableViewHeaderView, toggleExpand section: Int) {
-        guard let workWeekViewModel = viewModel?.workWeekViewModel(at: section)  else {
-            return
-        }
+        let workWeekViewModel = timesheetViewModel.workWeekViewModel(at: section)
         
-        workWeekViewModel.isCollapsed = !workWeekViewModel.isCollapsed
+        workWeekViewModel!.isCollapsed = !workWeekViewModel!.isCollapsed
         
         earningsTableView.reloadSections([section], with: .bottom)
         
@@ -592,7 +562,7 @@ extension TimesheetViewController: EarningsHeaderViewDelegate {
 extension TimesheetViewController {
     
     func export(_ sender: Any) {
-        guard let csvPath = viewModel?.csv() else {
+        guard let csvPath = timesheetViewModel.csv() else {
             return
         }
         

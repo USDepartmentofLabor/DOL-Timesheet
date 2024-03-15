@@ -144,7 +144,7 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
                 employmentModel: nil
             )
         }
-        manageVC?.viewModel = ProfileViewModel(context: profileViewModel!.managedObjectContext.childManagedObjectContext())
+        manageVC?.profileViewModel = ProfileViewModel(context: profileViewModel!.managedObjectContext.childManagedObjectContext())
     }
     
     func offerSpanish() {

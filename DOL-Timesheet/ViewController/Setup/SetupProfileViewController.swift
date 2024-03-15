@@ -73,7 +73,7 @@ class SetupProfileViewController: UIViewController {
     
     weak var importDBViewController: UIViewController?
     
-    lazy var viewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
+    lazy var profileViewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
     
     var profileImage: UIImage? {
         didSet {
@@ -218,7 +218,7 @@ class SetupProfileViewController: UIViewController {
     }
     
     func displayInfo() {
-        guard let profileUser = viewModel.profileModel.currentUser else {
+        guard let profileUser = profileViewModel.profileModel.currentUser else {
             manageEmploymentContentView.removeFromSuperview()
             
             profileType = .employee
@@ -249,7 +249,7 @@ class SetupProfileViewController: UIViewController {
         
         nameTextField.text = profileUser.name
         
-        if viewModel.isProfileEmployer {
+        if profileViewModel.isProfileEmployer {
             street1TextField.text = profileUser.address?.street1
             street2TextField.text = profileUser.address?.street2
             cityTextField.text = profileUser.address?.city
@@ -263,7 +263,7 @@ class SetupProfileViewController: UIViewController {
         profileImageView.accessibilityHint = (profileUser.image == nil) ?
         "profile_image_new_hint".localized :
         "profile_image_hint".localized
-        profileType = viewModel.profileModel.isEmployer ? .employer : .employee
+        profileType = profileViewModel.profileModel.isEmployer ? .employer : .employee
         
     }
     
@@ -340,18 +340,18 @@ class SetupProfileViewController: UIViewController {
         
         if segue.identifier == "addEmploymentInfo",
             let employmentVC = segue.destination as? EmploymentInfoViewController {
-            employmentVC.viewModel = viewModel.newTempEmploymentModel()
-            employmentVC.viewModel?.isWizard = isWizard
+            employmentVC.employmentModel = profileViewModel.newTempEmploymentModel()
+            employmentVC.employmentModel?.isWizard = isWizard
             employmentVC.delegate = delegate
         }
         else if segue.identifier == "editEmploymentInfo",
             let employmentVC = segue.destination as? EmploymentInfoViewController,
             let employmentModel = sender as? EmploymentModel {
-            employmentVC.viewModel = employmentModel
+            employmentVC.employmentModel = employmentModel
             employmentVC.delegate = delegate
         }
         else if let destVC = segue.destination as? ManageUsersViewController {
-            destVC.viewModel = ProfileViewModel(context: viewModel.managedObjectContext)
+            destVC.profileViewModel = ProfileViewModel(context: profileViewModel.managedObjectContext)
             destVC.view.translatesAutoresizingMaskIntoConstraints = false
             destVC.isEmbeded = true
             destVC.delegate = delegate
@@ -382,7 +382,7 @@ class SetupProfileViewController: UIViewController {
     
     @IBAction func employeeBtnClick(_ sender: Any) {
         // Profile is Employer, check if there are any Employees for this user
-        if let employer = viewModel.profileModel.currentUser as? Employer {
+        if let employer = profileViewModel.profileModel.currentUser as? Employer {
             changeToEmployee(employer: employer)
         }
         else {
@@ -413,23 +413,23 @@ class SetupProfileViewController: UIViewController {
     }
     
     func toggleUserType() {
-        if let employer = viewModel.profileModel.currentUser as? Employer {
-            viewModel.changeToEmployee(employer: employer)
+        if let employer = profileViewModel.profileModel.currentUser as? Employer {
+            profileViewModel.changeToEmployee(employer: employer)
             profileType = .employee
         }
-        else if let employee = viewModel.profileModel.currentUser as? Employee {
-            viewModel.changeToEmployer(employee: employee)
+        else if let employee = profileViewModel.profileModel.currentUser as? Employee {
+            profileViewModel.changeToEmployer(employee: employee)
             profileType = .employer
         }
         
-        manageVC?.viewModel = ProfileViewModel(context: viewModel.managedObjectContext.childManagedObjectContext())
+        manageVC?.profileViewModel = ProfileViewModel(context: profileViewModel.managedObjectContext.childManagedObjectContext())
         
         addClicked()
     }
     
     
     @IBAction func employerBtnClick(_ sender: Any) {
-        if let employee = viewModel.profileModel.currentUser as? Employee {
+        if let employee = profileViewModel.profileModel.currentUser as? Employee {
             changeToEmployer(employee: employee)
         }
         else {
@@ -507,7 +507,7 @@ class SetupProfileViewController: UIViewController {
         let userName = nameTextField.text ?? ""
         let userType = UserType(rawValue: employeeBtn.isSelected ? 0 : 1) ?? UserType.employee
 
-        let profileUser = viewModel.profileModel.newProfile(type: userType, name: userName)
+        let profileUser = profileViewModel.profileModel.newProfile(type: userType, name: userName)
 
         saveProfile()
         
@@ -537,28 +537,28 @@ class SetupProfileViewController: UIViewController {
         performSegue(withIdentifier: "addEmploymentInfo", sender: self)
     }
     
-    func editClicked(viewModel: EmploymentModel) {
+    func editClicked(employmentModel: EmploymentModel) {
         if !validateInput() {
             return
         }
         
         updateProfile()
-        performSegue(withIdentifier: "editEmploymentInfo", sender: viewModel)
+        performSegue(withIdentifier: "editEmploymentInfo", sender: employmentModel)
     }
     
     func saveProfile() {
         updateProfile()
-        viewModel.saveProfile()
+        profileViewModel.saveProfile()
     }
     
     func updateProfile() {
-        guard let  profileUser = viewModel.profileModel.currentUser else {
+        guard let  profileUser = profileViewModel.profileModel.currentUser else {
             return
         }
         
         profileUser.name = nameTextField.text?.trimmingCharacters(in: .whitespaces) ?? ""
         
-        if viewModel.profileModel.isEmployer {
+        if profileViewModel.profileModel.isEmployer {
             let street1 = street1TextField.text?.trimmingCharacters(in: .whitespaces)
             let street2 = street2TextField.text?.trimmingCharacters(in: .whitespaces)
             let city = cityTextField.text?.trimmingCharacters(in: .whitespaces)
@@ -581,7 +581,7 @@ class SetupProfileViewController: UIViewController {
         if name == nil || name!.isEmpty {
             errorStr = "err_enter_name".localized
         }
-        else if viewModel.isProfileEmployer,
+        else if profileViewModel.isProfileEmployer,
             let zipcode = zipcodeTextField.text?.trimmingCharacters(in: .whitespaces),
             !zipcode.isEmpty, !Util.isValidPostalCode(postalCode: zipcode) {
             errorStr = "err_invalid_zipcode".localized
@@ -606,7 +606,7 @@ class SetupProfileViewController: UIViewController {
     func addManageEmploymentView() {
         let controller = ManageUsersViewController.instantiateFromStoryboard("Profile")
         addChild(controller)
-        controller.viewModel = viewModel
+        controller.profileViewModel = profileViewModel
         controller.view.translatesAutoresizingMaskIntoConstraints = false
         manageEmploymentContentView.addSubview(controller.view)
         
@@ -701,16 +701,16 @@ extension SetupProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfEmploymentInfo
+        return profileViewModel.numberOfEmploymentInfo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.reuseIdentifier) as! ProfileTableViewCell
         
-        let employmentModels = viewModel.employmentModels
+        let employmentModels = profileViewModel.employmentModels
         if indexPath.row < employmentModels.count {
             let employmentModel = employmentModels[indexPath.row]
-            if viewModel.isProfileEmployer {
+            if profileViewModel.isProfileEmployer {
                 cell.nameLabel.text = employmentModel.employeeName
                 cell.addressLabel.text = employmentModel.employeeAddress?.description
             }

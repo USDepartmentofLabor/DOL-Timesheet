@@ -9,7 +9,7 @@
 import UIKit
 
 class SetupBaseEmploymentViewController: UIViewController {
-    var viewModel: EmploymentModel?
+    var employmentModel: EmploymentModel?
     
     weak var delegate: TimeViewControllerDelegate?
     
@@ -50,7 +50,7 @@ class SetupBaseEmploymentViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destVC = segue.destination as? SetupBaseEmploymentViewController {
-            destVC.viewModel = viewModel
+            destVC.employmentModel = employmentModel
             destVC.delegate = delegate
         }
     }

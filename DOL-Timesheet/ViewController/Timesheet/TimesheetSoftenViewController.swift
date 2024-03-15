@@ -18,13 +18,13 @@ struct PayPeriodSummary {
 
 class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePickerProtocol {
 
-    @IBOutlet weak var periodLabel: UILabel!
     @IBOutlet weak var employmentView: UIView!
     @IBOutlet weak var employmentTitleLabel: UILabel!
     @IBOutlet weak var employmentPopup: UIButton!
     
     @IBOutlet weak var payPeriodView: UIView!
     @IBOutlet weak var payPeriodTitleLabel: UILabel!
+    @IBOutlet weak var periodLabel: UILabel!
   
     @IBOutlet weak var timeTableView: UITableView!
     @IBOutlet weak var timeTableviewHeightConstraint: NSLayoutConstraint!
@@ -33,14 +33,13 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
 
 
     @IBOutlet weak var scrollView: UIScrollView!
-    var timesheetViewModel: TimesheetViewModel?
+    var timesheetViewModel = TimesheetViewModel.shared()
     var payPeriodSummaryData: [PayPeriodSummary] = []
     var selectedTimeLog = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
-        timesheetViewModel = TimesheetViewModel()
         setupView()
         displayInfo()
        // self.setupLabelTap()
@@ -56,7 +55,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         title = "timesheet".localized
         
         employmentTitleLabel.text = "employer".localized
-        if timesheetViewModel?.currentEmploymentModel?.isProfileEmployer ?? false {
+        if timesheetViewModel.currentEmploymentModel?.isProfileEmployer ?? false {
             employmentTitleLabel.text = "employee".localized
         }
         
@@ -80,7 +79,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     }
     
     func displayInfo() {
-        timesheetViewModel?.updatePeriod()
+        timesheetViewModel.updatePeriod()
         setupEmploymentPopupButton()
         displayPeriodInfo()
     }
@@ -92,7 +91,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         
         var menuActions: [UIAction] = []
         
-        guard let userProfileModel = timesheetViewModel?.userProfileModel else { return }
+        let userProfileModel = timesheetViewModel.userProfileModel
         
         let users: [User] = userProfileModel.employmentUsers
         guard users.count > 0 else {
@@ -102,6 +101,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         for user in users {
             let action = UIAction(title: user.name!, handler: {_ in
                 self.setCurrentUser(user: user)
+                self.displayPeriodInfo()
             })
             menuActions.append(action)
         }
@@ -117,23 +117,22 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     }
     
     func displayPeriodInfo() {
-        periodLabel.text = timesheetViewModel?.currentPeriod?.title
+        periodLabel.text = timesheetViewModel.currentPeriod?.title
         payPeriodSummaryData = []
         
         
-        let hoursWorked: String = timesheetViewModel!.totalHoursTime()
+        let hoursWorked: String = timesheetViewModel.totalHoursTime()
         payPeriodSummaryData.append(PayPeriodSummary(name: "total_hours_worked".localized, value1: "", value2: hoursWorked))
         
-        let numDays = timesheetViewModel?.currentPeriod?.numberOfDays() ?? 0
+        let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         
-        if let timeSheetModel = timesheetViewModel,
-           let currentPeriod = timeSheetModel.currentPeriod {
+        if let currentPeriod = timesheetViewModel.currentPeriod {
             
-            timeSheetModel.currentEmploymentModel?.hourlyRates?.forEach { rate in
+            timesheetViewModel.currentEmploymentModel?.hourlyRates?.forEach { rate in
                 var totalRateHours = 0
                 for dayIndex in 0..<numDays {
                     let sectionDate = currentPeriod.date(at: dayIndex)
-                    totalRateHours += timeSheetModel.rateTotalHours(forRate: rate, forDate: sectionDate)
+                    totalRateHours += timesheetViewModel.rateTotalHours(forRate: rate, forDate: sectionDate)
                 }
                 let hrsMinStr: String = Date.secondsToHoursMinutes(seconds: Double(totalRateHours))
 
@@ -141,36 +140,34 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             }
         }
         
-        let breakTimeHours: String = timesheetViewModel!.totalBreakTime()
+        let breakTimeHours: String = timesheetViewModel.totalBreakTime()
         payPeriodSummaryData.append(PayPeriodSummary(name: "break_hours".localized, value1: "", value2: breakTimeHours))
         
         
-        if let timeSheetModel = timesheetViewModel {
-            var totalOvertime: Double = 0.0
-            for weekIndex in 0..<timeSheetModel.numberOfWorkWeeks {
-                totalOvertime += timeSheetModel.overTimeHours(workWeek: weekIndex)
-            }
-            
-            let overtimeStr: String = Date.secondsToHoursMinutes(seconds: totalOvertime)
-            payPeriodSummaryData.append(PayPeriodSummary(name: "overtime".localized, value1: "", value2: overtimeStr))
+        var totalOvertime: Double = 0.0
+        for weekIndex in 0..<timesheetViewModel.numberOfWorkWeeks {
+            totalOvertime += timesheetViewModel.overTimeHours(workWeek: weekIndex)
         }
+        
+        let overtimeStr: String = Date.secondsToHoursMinutes(seconds: totalOvertime)
+        payPeriodSummaryData.append(PayPeriodSummary(name: "overtime".localized, value1: "", value2: overtimeStr))
         
         if numDays >= 7 {
             payPeriodSummaryData.append(PayPeriodSummary(name: "weekly_summary".localized, value1: "", value2: ""))
         }
         timeTableView.reloadData()
-        
+
 //        self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
-        
         UIView.animate(withDuration: 0, animations: {
             self.timeTableView.layoutIfNeeded()
         }) { (complete) in
             self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
             self.scrollView.contentSize = CGSize(
                 width: self.scrollView.frame.size.width,
-                height: self.timeTableView.contentSize.height + 70
+                height: self.timeTableView.contentSize.height + 140
             )
         }
+
 
        // displayTotals()
     }
@@ -188,15 +185,15 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     
     func donePressed() {
         timeChanged(sourceView: self.timePickerVC.sourceView, datePicker: self.timePickerVC.datePicker)
-        timesheetViewModel?.updatePeriod(currentDate: (timePickerVC.datePicker.date))
+        timesheetViewModel.updatePeriod(currentDate: (timePickerVC.datePicker.date))
         displayPeriodInfo()
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: periodLabel)
         self.dismiss(animated: true, completion: nil)
     }
     
     func deleteTimeLog(indexPath: IndexPath) {
-        let sectionDate = (timesheetViewModel?.currentPeriod?.date(at: indexPath.section))!
-        let enterTimeViewModel = timesheetViewModel!.createEnterTimeViewModel(for: sectionDate)
+        let sectionDate = (timesheetViewModel.currentPeriod?.date(at: indexPath.section))!
+        let enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: sectionDate)
         
         let timeLog = enterTimeViewModel?.timeLogs![indexPath.row]
 
@@ -209,8 +206,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "enterTime",
            let enterTimeVC = segue.destination as? EnterTimeSoftenViewController,
-           let currentDate = sender as? Date,
-           let timesheetViewModel = timesheetViewModel {
+           let currentDate = sender as? Date {
             enterTimeVC.timeSheetModel = timesheetViewModel
             
             let enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: currentDate)
@@ -224,14 +220,12 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             
             enterTimeVC.delegate = self
         } else if segue.identifier == "weeklySummary",
-           let weeklySummaryVC = segue.destination as? WeeklySummaryViewController,
-           let timesheetViewModel = timesheetViewModel {
+           let weeklySummaryVC = segue.destination as? WeeklySummaryViewController {
             weeklySummaryVC.timesheetViewModel = timesheetViewModel
         } else if segue.identifier == "addEmploymentInfo",
                   let navVC = segue.destination as? UINavigationController,
-                  let employmentInfoVC = navVC.topViewController as? EmploymentInfoViewController,
-                  let viewModel = timesheetViewModel {
-                  employmentInfoVC.viewModel = viewModel.userProfileModel.newTempEmploymentModel()
+                  let employmentInfoVC = navVC.topViewController as? EmploymentInfoViewController {
+                  employmentInfoVC.employmentModel = timesheetViewModel.userProfileModel.newTempEmploymentModel()
                   employmentInfoVC.delegate = self
               }
     }
@@ -241,7 +235,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
 extension TimesheetSoftenViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
 
-        return (timesheetViewModel?.currentPeriod?.numberOfDays() ?? 0) + 2
+        return (timesheetViewModel.currentPeriod?.numberOfDays() ?? 0) + 2
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -250,9 +244,9 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
 
         let titleLabel = UILabel()
         var sectionTitle = ""
-        let numDays = timesheetViewModel?.currentPeriod?.numberOfDays() ?? 0
+        let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         if section < numDays {
-            let sectionDate = timesheetViewModel?.currentPeriod?.date(at: section)
+            let sectionDate = timesheetViewModel.currentPeriod?.date(at: section)
             sectionTitle = "\(sectionDate?.formattedWeekday ?? "") \(sectionDate?.formattedDate ?? "")".uppercased()
         } else if section < numDays + 1 {
             sectionTitle = "pay_period_summary".localized.uppercased()
@@ -271,7 +265,7 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let numDays = timesheetViewModel?.currentPeriod?.numberOfDays() ?? 0
+        let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         
         if section >= numDays + 1 {
             return 1
@@ -279,9 +273,8 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
             return payPeriodSummaryData.count
         }
         
-        guard let sectionDate = timesheetViewModel?.currentPeriod?.date(at: section),
-              let safeTimesheetViewModel = timesheetViewModel,
-              let dateLog = safeTimesheetViewModel.currentEmploymentModel?.employmentInfo.log(forDate: sectionDate),
+        guard let sectionDate = timesheetViewModel.currentPeriod?.date(at: section),
+              let dateLog = timesheetViewModel.currentEmploymentModel?.employmentInfo.log(forDate: sectionDate),
               let count = dateLog.timeLogs?.count
         else { return 0 }
         return count
@@ -289,14 +282,14 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let hourlyCell = tableView.dequeueReusableCell(withIdentifier: TimeEntryViewCell.reuseIdentifier) as! TimeEntryViewCell
-        let numDays = timesheetViewModel?.currentPeriod?.numberOfDays() ?? 0
+        let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         let section = indexPath.section
         let row = indexPath.row
         hourlyCell.firstItem = indexPath.row == 0
         
         if section < numDays {
-            let sectionDate = timesheetViewModel?.currentPeriod?.date(at: indexPath.section)
-            let timeEntryViewModel: EnterTimeViewModel = (timesheetViewModel?.createEnterTimeViewModel(for: sectionDate!))!
+            let sectionDate = timesheetViewModel.currentPeriod?.date(at: indexPath.section)
+            let timeEntryViewModel: EnterTimeViewModel = (timesheetViewModel.createEnterTimeViewModel(for: sectionDate!))!
             let timeLog = timeEntryViewModel.timeLogs![indexPath.row]
             hourlyCell.lastItem = indexPath.row == (timeEntryViewModel.timeLogs!.count - 1)
             hourlyCell.configure(timeLog: timeLog)
@@ -315,7 +308,7 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
         } else {
             hourlyCell.rateName.text = "earning_details".localized
             hourlyCell.timeFrame.text = ""
-            hourlyCell.totalTime.text = timesheetViewModel?.totalEarningsStr
+            hourlyCell.totalTime.text = timesheetViewModel.totalEarningsStr
             hourlyCell.lastItem = true
             hourlyCell.rightChevronIcon.isHidden = false
             hourlyCell.addborder()
@@ -328,7 +321,7 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView:UITableView, editingStyleForRowAt: IndexPath) -> UITableViewCell.EditingStyle {
-        let numDays = timesheetViewModel?.currentPeriod?.numberOfDays() ?? 0
+        let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         let section = editingStyleForRowAt.section
         
         if section < numDays {
@@ -355,9 +348,9 @@ extension TimesheetSoftenViewController: UITableViewDelegate {
         
         let secondToLastSection = tableView.numberOfSections - 2
         let secondToLastRow = tableView.numberOfRows(inSection: secondToLastSection) - 1
-        let numDays = timesheetViewModel?.currentPeriod?.numberOfDays() ?? 0
+        let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         
-        guard let currentDate = timesheetViewModel?.currentPeriod?.date(at: indexPath.section) else {
+        guard let currentDate = timesheetViewModel.currentPeriod?.date(at: indexPath.section) else {
             return
         }
         
@@ -379,7 +372,7 @@ extension TimesheetSoftenViewController: UITableViewDelegate {
     }
     
     func titleForWorkWeek(week: Int) -> String? {
-        guard let workWeekViewModel = timesheetViewModel?.workWeekViewModel(at: week) else {
+        guard let workWeekViewModel = timesheetViewModel.workWeekViewModel(at: week) else {
             return nil
         }
         
@@ -392,7 +385,7 @@ extension TimesheetSoftenViewController: UITableViewDelegate {
 extension TimesheetSoftenViewController {
     
     func export(_ sender: Any) {
-        guard let csvPath = timesheetViewModel?.csv() else {
+        guard let csvPath = timesheetViewModel.csv() else {
             return
         }
         
@@ -437,7 +430,7 @@ extension TimesheetSoftenViewController {
     }
     
     func setCurrentUser(user: User) {
-        timesheetViewModel?.setCurrentEmploymentModel(for: user)
+        timesheetViewModel.setCurrentEmploymentModel(for: user)
     }
 }
 
@@ -450,7 +443,7 @@ extension TimesheetSoftenViewController: MFMailComposeViewControllerDelegate {
 
 extension TimesheetSoftenViewController: TimeViewControllerDelegate {
     func didUpdateUser() {
-        if let user = timesheetViewModel?.userProfileModel.employmentUsers.first {
+        if let user = timesheetViewModel.userProfileModel.employmentUsers.first {
             self.setCurrentUser(user: user)
         }
         displayInfo()
