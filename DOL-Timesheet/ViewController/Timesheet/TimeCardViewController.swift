@@ -65,7 +65,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     @IBOutlet weak var popupBottomConstraint: NSLayoutConstraint!
     
     var rateOptions: [HourlyRate]?
-    var selectedRate = 0
+    var selectedRate: Int = 0
     let lighterGrey = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
     
     weak var delegate: EnterTimeViewControllerDelegate?
@@ -509,7 +509,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             }
             
             enterTimeVC.enterTimeViewModel = enterTimeModel
-            enterTimeVC.timeSheetModel = timesheetViewModel
+            enterTimeVC.timesheetViewModel = timesheetViewModel
             enterTimeVC.delegate = self
                        
             enterTimeVC.selectedRate = 0

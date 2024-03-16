@@ -110,8 +110,15 @@ class TimeViewController: UIViewController, TimeCardDelegate {
             return
         }
                 
+        let selectedUserName = timesheetViewModel.selectedUserName
+        
         for user in users {
-            let action = UIAction(title: user.name!, handler: {_ in
+            var state: UIAction.State = .off
+            if user.name == selectedUserName {
+                state = .on
+            }
+            
+            let action = UIAction(title: user.name!, state: state, handler: {_ in
                 self.setCurrentUser(user: user)
             })
             menuActions.append(action)

@@ -73,6 +73,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         payPeriodView.layer.cornerRadius = Style.CORNER_ROUNDING
         payPeriodView.clipsToBounds = true
         
+        
 //        timeTableView.backgroundColor = UIColor.systemGray5
 //        2C2C2E dark
 //        E5E5EA light
@@ -97,9 +98,16 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         guard users.count > 0 else {
             return
         }
-                
+        
+        let selectedUserName = timesheetViewModel.selectedUserName
+        
         for user in users {
-            let action = UIAction(title: user.name!, handler: {_ in
+            var state: UIAction.State = .off
+            if user.name == selectedUserName {
+                state = .on
+            }
+            
+            let action = UIAction(title: user.name!, state: state, handler: {_ in
                 self.setCurrentUser(user: user)
                 self.displayPeriodInfo()
             })
@@ -207,7 +215,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         if segue.identifier == "enterTime",
            let enterTimeVC = segue.destination as? EnterTimeSoftenViewController,
            let currentDate = sender as? Date {
-            enterTimeVC.timeSheetModel = timesheetViewModel
+            enterTimeVC.timesheetViewModel = timesheetViewModel
             
             let enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: currentDate)
             enterTimeVC.enterTimeViewModel = enterTimeViewModel
@@ -465,5 +473,12 @@ extension TimesheetSoftenViewController: EnterTimeViewControllerDelegate {
     
     func didCancelEnterTime() {
         
+    }
+}
+
+
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
     }
 }

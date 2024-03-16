@@ -11,7 +11,7 @@ import UIKit
 class EnterTimeSoftenViewController: UIViewController {
 
     var enterTimeViewModel: EnterTimeViewModel?
-    var timeSheetModel = TimesheetViewModel.shared()
+    var timesheetViewModel = TimesheetViewModel.shared()
     
     @IBOutlet weak var commentsHint: UILabel!
     @IBOutlet weak var employmentView: UIView!
@@ -140,7 +140,7 @@ class EnterTimeSoftenViewController: UIViewController {
         
         employmentTitleLabel.text = "employer".localized
         
-        if timeSheetModel.currentEmploymentModel?.isProfileEmployer ?? false {
+        if timesheetViewModel.currentEmploymentModel?.isProfileEmployer ?? false {
             employmentTitleLabel.text = "employee".localized
         }
         
@@ -206,6 +206,8 @@ class EnterTimeSoftenViewController: UIViewController {
         
         discardButton.isHidden = discardHidden
         
+        employmentView.backgroundColor = UIColor(named: "disabledColor")
+        
         setupTimeView()
         setupEmploymentPopupButton()
         setupRatePopupButton()
@@ -240,19 +242,22 @@ class EnterTimeSoftenViewController: UIViewController {
         
         var menuActions: [UIAction] = []
         
-        let userProfileModel = timeSheetModel.userProfileModel
+        let userProfileModel = timesheetViewModel.userProfileModel
         
         let users: [User] = userProfileModel.employmentUsers
         guard users.count > 0 else {
             return
         }
         
-        var tmpUsers = users
-        let currUser = tmpUsers.remove(at: selectedEmployment!)
-        tmpUsers.insert(currUser, at: 0)
-                
-        for user in tmpUsers {
-            let action = UIAction(title: user.name!, handler: {_ in
+        let selectedUserName = timesheetViewModel.selectedUserName
+        
+        for user in users {
+            var state: UIAction.State = .off
+            if user.name == selectedUserName {
+                state = .on
+            }
+            
+            let action = UIAction(title: user.name!, state: state, handler: {_ in
                 self.setCurrentUser(user: user)
             })
             menuActions.append(action)
@@ -267,12 +272,13 @@ class EnterTimeSoftenViewController: UIViewController {
     }
     
     func setCurrentUser(user: User) {
-        timeSheetModel.setCurrentEmploymentModel(for: user)
+        selectedRate = 0
+        timesheetViewModel.setCurrentEmploymentModel(for: user)
         setupRatePopupButton()
     }
     
     func setupRatePopupButton(){
-        if let paymentType = timeSheetModel.currentEmploymentModel?.paymentType,
+        if let paymentType = timesheetViewModel.currentEmploymentModel?.paymentType,
            paymentType == .salary {
             
             employerRateBorderView.isHidden = true
@@ -303,7 +309,9 @@ class EnterTimeSoftenViewController: UIViewController {
             }
         }
         rateOptions = timeLog?.dateLog?.employmentInfo?.sortedRates()
-        
+
+       // rateOptions = timesheetViewModel.currentEmploymentModel?.hourlyRates
+
         let optionClosure = {(action : UIAction) in
             print(action.title)
         }
@@ -313,13 +321,16 @@ class EnterTimeSoftenViewController: UIViewController {
         guard  let options = rateOptions else {
             return
         }
-        var tmpOptions = options
-        let currRate = tmpOptions.remove(at: selectedRate!)
-        tmpOptions.insert(currRate, at: 0)
-        currentHourlyRate = currRate
         
-        for option in tmpOptions {
-            let action = UIAction(title: option.title, handler: {_ in
+        for (index, option) in options.enumerated() {
+            
+            var state: UIAction.State = .off
+            if index == selectedRate {
+                state = .on
+                self.currentHourlyRate = option
+            }
+            
+            let action = UIAction(title: option.title, state: state, handler: {_ in
                 self.currentHourlyRate = option
             })
             menuActions.append(action)
@@ -686,7 +697,7 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
         if sourceView == dateDropDownView {
             selectedDate = datePicker.date
-            enterTimeViewModel = timeSheetModel.createEnterTimeViewModel(for: datePicker.date)
+            enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: datePicker.date)
             timeLog = enterTimeViewModel?.timeLogs?.first
             timeLog?.startTime = selectedDate + (8*60*60)
             timeLog?.endTime = selectedDate + (17*60*60)

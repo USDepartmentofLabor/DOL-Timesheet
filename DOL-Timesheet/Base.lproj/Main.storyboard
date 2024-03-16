@@ -3140,7 +3140,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lt0-PK-gmp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wrz-Ua-wOr">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3350,7 +3350,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AVg-wA-CjU"/>
+        <segue reference="KJz-zA-nJd"/>
         <segue reference="7uc-bX-bfm"/>
         <segue reference="0RP-Z6-OgJ"/>
         <segue reference="GGP-HT-mqi"/>
