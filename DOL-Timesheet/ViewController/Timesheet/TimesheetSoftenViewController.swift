@@ -50,6 +50,13 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         displayInfo()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: (timeTableView.contentSize.height+200))
+
+    }
+    
     func setupView() {
         
         title = "timesheet".localized
@@ -166,15 +173,15 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         timeTableView.reloadData()
 
 //        self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
-        UIView.animate(withDuration: 0, animations: {
-            self.timeTableView.layoutIfNeeded()
-        }) { (complete) in
-            self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
-            self.scrollView.contentSize = CGSize(
-                width: self.scrollView.frame.size.width,
-                height: self.timeTableView.contentSize.height + 140
-            )
-        }
+//        UIView.animate(withDuration: 0, animations: {
+//            self.timeTableView.layoutIfNeeded()
+//        }) { (complete) in
+//            self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
+//            self.scrollView.contentSize = CGSize(
+//                width: self.scrollView.frame.size.width,
+//                height: self.timeTableView.contentSize.height + 140
+//            )
+//        }
 
 
        // displayTotals()
@@ -276,19 +283,27 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
         let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         
         if section >= numDays + 1 {
+            print("GGG: A 1 number of rows in section \(section) ")
             return 1
         } else if section >= numDays {
+            print("GGG: B \(payPeriodSummaryData.count) number of rows in section \(section) ")
             return payPeriodSummaryData.count
         }
         
         guard let sectionDate = timesheetViewModel.currentPeriod?.date(at: section),
               let dateLog = timesheetViewModel.currentEmploymentModel?.employmentInfo.log(forDate: sectionDate),
               let count = dateLog.timeLogs?.count
-        else { return 0 }
+        else {
+            print("GGG: C 1 number of rows in section \(section) ")
+            return 0
+        }
+        print("GGG: D \(count) number of rows in section \(section) ")
         return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        print("GGG: cell for row at index path \(indexPath) ")
         let hourlyCell = tableView.dequeueReusableCell(withIdentifier: TimeEntryViewCell.reuseIdentifier) as! TimeEntryViewCell
         let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         let section = indexPath.section

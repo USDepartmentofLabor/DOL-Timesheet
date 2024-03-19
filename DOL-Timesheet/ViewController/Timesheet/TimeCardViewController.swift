@@ -177,6 +177,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         
         ratePopupButton.isHidden = false
         setupPopupButton()
+        rateButtonEnabled()
             
         ratePopupButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
         rateOptions = timesheetViewModel.currentEmploymentModel?.hourlyRates
@@ -321,8 +322,19 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
 
     @IBAction func startWorkClick(_ sender: Any) {
         discardButton.isHidden = false
+        rateButtonEnabled(enabled: false)
         timesheetViewModel.clock(action: .startWork, hourlyRate: currentHourlyRate, comments: nil)
         displayClock()
+    }
+    
+    func rateButtonEnabled(enabled: Bool = true) {
+        ratePopupButton.isEnabled = enabled
+        if enabled {
+            ratePopupButton.backgroundColor = UIColor.clear
+            return
+        }
+        ratePopupButton.backgroundColor = UIColor(named: "disabledColor")
+
     }
     
     @IBAction func endWorkClick(_ sender: Any) {
@@ -431,6 +443,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         breakHoursView.isHidden = true
         discardButton.isHidden = true
         timesheetViewModel.clock(action: .discardEntry, comments: nil)
+        rateButtonEnabled()
         displayClock()
         
     }
@@ -569,7 +582,9 @@ extension TimeCardViewController {
         }
         if actions.count == 0 {
             let manualTimeEntryTitle = "manual_time_entry".localized
-            let manualTimeBtn = clockAction(title: manualTimeEntryTitle, action: #selector(manualEntryClick(_:)))
+            let manualTimeBtn = clockAction(title: manualTimeEntryTitle,
+                                            bgColor: UIColor(named: "manualTimeEntryButton"),
+                                            action: #selector(manualEntryClick(_:)))
             
             manualTimeBtn.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
             

@@ -127,6 +127,7 @@
 		6923D0752A95571600C9210D /* PopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6923D0742A95571600C9210D /* PopUpButton.swift */; };
 		6923D0772A95573500C9210D /* PopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6923D0762A95573500C9210D /* PopUpView.xib */; };
 		6927AB6628D28BF0003AF1B0 /* OnboardBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6927AB6528D28BF0003AF1B0 /* OnboardBaseViewController.swift */; };
+		693BDBB92BAA3759000402E0 /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693BDBB82BAA3759000402E0 /* SelfSizedTableView.swift */; };
 		696D20DC28318CC9007E041F /* DOL_Timesheet.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */; };
 		696D20DD28318CC9007E041F /* DOL_Timesheet.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */; };
 		696D20DE28318CC9007E041F /* DOL_Timesheet.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */; };
@@ -298,6 +299,7 @@
 		6923D0742A95571600C9210D /* PopUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpButton.swift; sourceTree = "<group>"; };
 		6923D0762A95573500C9210D /* PopUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUpView.xib; sourceTree = "<group>"; };
 		6927AB6528D28BF0003AF1B0 /* OnboardBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardBaseViewController.swift; sourceTree = "<group>"; };
+		693BDBB82BAA3759000402E0 /* SelfSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
 		69602727289840EB0033D6E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "DOL-Timesheet/es.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = DOL_Timesheet.sqlite; sourceTree = "<group>"; };
 		696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-shm"; sourceTree = "<group>"; };
@@ -580,6 +582,7 @@
 				032C514A22A7F03E0095C1A2 /* RadioButton.swift */,
 				0326DB612326C46500EDA2F7 /* ShadowView.swift */,
 				032E5F2B22A99EE400F6EC26 /* BorderedView.swift */,
+				693BDBB82BAA3759000402E0 /* SelfSizedTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -889,6 +892,7 @@
 			files = (
 				0324C4252261010100712576 /* ResourcesViewController.swift in Sources */,
 				032665C222A5645F00F45288 /* Bundle+Extension.swift in Sources */,
+				693BDBB92BAA3759000402E0 /* SelfSizedTableView.swift in Sources */,
 				0328A18422661DDB00957F53 /* InfoPopupViewController.swift in Sources */,
 				037DD81423A2D07E00EB728E /* FSLAInfoViewController.swift in Sources */,
 				0324C3DF2260E47100712576 /* TimesheetViewController.swift in Sources */,
@@ -1204,7 +1208,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 116;
+				CURRENT_PROJECT_VERSION = 118;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -1227,7 +1231,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 116;
+				CURRENT_PROJECT_VERSION = 118;
 				DEVELOPMENT_TEAM = FRPCGFXS7Q;
 				INFOPLIST_FILE = "DOL-Timesheet/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

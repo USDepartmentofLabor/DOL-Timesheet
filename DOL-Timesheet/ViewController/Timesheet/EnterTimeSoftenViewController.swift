@@ -14,7 +14,6 @@ class EnterTimeSoftenViewController: UIViewController {
     var timesheetViewModel = TimesheetViewModel.shared()
     
     @IBOutlet weak var commentsHint: UILabel!
-    @IBOutlet weak var employmentView: UIView!
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var commentView: UIView!
@@ -37,13 +36,12 @@ class EnterTimeSoftenViewController: UIViewController {
     @IBOutlet weak var helpLabel: UILabel!
     
     @IBOutlet weak var employmentTitleLabel: UILabel!
-    @IBOutlet weak var rateTitleLabel: UILabel!
-    
     @IBOutlet weak var employmentPopUp: UIButton!
-    @IBOutlet weak var ratePopUp: UIButton!
+    @IBOutlet weak var employmentView: UIView!
     
-    @IBOutlet weak var employerRateBorderView: UIView!
-    @IBOutlet weak var employerRateHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var rateTitleLabel: UILabel!
+    @IBOutlet weak var ratePopUp: UIButton!
+    @IBOutlet weak var rateView: UIView!
     
     @IBOutlet weak var discardButton: UIButton!
     var discardHidden = true
@@ -207,6 +205,7 @@ class EnterTimeSoftenViewController: UIViewController {
         discardButton.isHidden = discardHidden
         
         employmentView.backgroundColor = UIColor(named: "disabledColor")
+        employmentPopUp.isEnabled = false
         
         setupTimeView()
         setupEmploymentPopupButton()
@@ -223,7 +222,6 @@ class EnterTimeSoftenViewController: UIViewController {
         
         commentTextView.textColor = UIColor(named: "blackTextColor")
         
-        employmentView.layer.cornerRadius = 10
         dateView.layer.cornerRadius = 10
         timeView.layer.cornerRadius = 10
         commentView.layer.cornerRadius = 10
@@ -234,6 +232,15 @@ class EnterTimeSoftenViewController: UIViewController {
         breakDropDownView.title = "break_time".localized
         endDropDownView.title = "end_time".localized
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        employmentView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+        rateView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
+        
+    }
+    
+    
     
     func setupEmploymentPopupButton(){
         let optionClosure = {(action : UIAction) in
@@ -281,18 +288,16 @@ class EnterTimeSoftenViewController: UIViewController {
         if let paymentType = timesheetViewModel.currentEmploymentModel?.paymentType,
            paymentType == .salary {
             
-            employerRateBorderView.isHidden = true
             rateTitleLabel.isHidden = true
             ratePopUp.isHidden =  true
-            employerRateHeightConstraint.constant = 45
+            rateView.isHidden =  true
 //            view.layoutIfNeeded()
             return
         }
         
-        employerRateBorderView.isHidden = false
         rateTitleLabel.isHidden = false
         ratePopUp.isHidden =  false
-        employerRateHeightConstraint.constant = 91
+        rateView.isHidden =  false
 //        view.layoutIfNeeded()
         
         if timeLog == nil {
