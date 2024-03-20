@@ -201,7 +201,9 @@ class EditEmploymentInfoViewController: UIViewController {
         }
         employmentModel.save()
         delegate?.didUpdateUser()
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
+
     }
     
     func validateInput() -> Bool {

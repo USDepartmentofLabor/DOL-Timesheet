@@ -123,7 +123,8 @@ class SetupSalaryPaymentViewController: SetupBaseEmploymentViewController {
             
         employmentModel?.save()
         delegate?.didUpdateUser()
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
+//        dismiss(animated: true, completion: nil)
     }
     
 }

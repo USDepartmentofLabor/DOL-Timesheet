@@ -74,7 +74,7 @@ class ResourcesViewController: UIViewController {
 //        whdWebsiteTextView.textContainerInset = UIEdgeInsets.zero
 //        whdWebsiteTextView.textContainer.lineFragmentPadding = 0
         
-        copyDatabase.isHidden = true
+//        copyDatabase.isHidden = true
     }
     
     func displayInfo() {
