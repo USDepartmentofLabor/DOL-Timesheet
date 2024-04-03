@@ -43,7 +43,7 @@ class WeeklySummaryViewController: UIViewController, TimeViewDelegate, TimePicke
     }
     
     func displayInfo() {
-        timesheetViewModel.updatePeriod()
+     //   timesheetViewModel.updatePeriod()
         displayPeriodInfo()
     }
     

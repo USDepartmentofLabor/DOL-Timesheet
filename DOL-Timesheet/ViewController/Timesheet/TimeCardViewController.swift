@@ -275,6 +275,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             discardButton.isHidden = false
             timeInfoLabel.isHidden = false
             breakTimeInfoLabel.isHidden = false
+            rateButtonEnabled(enabled: false)
         }
         else {
             // hide Comments
@@ -286,6 +287,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             ratePopupButton.isEnabled = true
             
             discardButton.isHidden = true
+            
+            rateButtonEnabled(enabled: true)
         }
         
         displayLoggedTime()
@@ -331,9 +334,13 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         ratePopupButton.isEnabled = enabled
         if enabled {
             ratePopupButton.backgroundColor = UIColor.clear
+            rateLabel.textColor = UIColor(named: "blackTextColor")
+            ratePopupButton.setTitleColor(UIColor(named: "blackTextColor"), for: .normal)
             return
         }
         ratePopupButton.backgroundColor = UIColor(named: "disabledColor")
+        rateLabel.textColor = UIColor(named: "disabledDarkTextColor")
+        ratePopupButton.setTitleColor(UIColor(named: "disabledDarkTextColor"), for: .normal)
 
     }
     

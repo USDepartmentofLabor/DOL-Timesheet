@@ -40,6 +40,13 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
+        
+        let shareBtn = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share(_:)))
+        navigationItem.leftBarButtonItem = shareBtn
+
+        let newBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNew(_:)))
+        navigationItem.rightBarButtonItem = newBtn
+        
         setupView()
         displayInfo()
        // self.setupLabelTap()
@@ -47,7 +54,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        displayInfo()
+       // displayInfo()
     }
     
     override func viewDidLayoutSubviews() {
@@ -185,6 +192,14 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
 
 
        // displayTotals()
+    }
+    
+    @objc func share(_ sender: Any?) {
+        export(sender!)
+    }
+    
+    @objc func addNew(_ sender: Any?) {
+        performSegue(withIdentifier: "enterTime", sender: self)
     }
 
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {

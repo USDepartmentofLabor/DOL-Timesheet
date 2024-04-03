@@ -137,10 +137,13 @@ class EnterTimeSoftenViewController: UIViewController {
         title = "new_time_entry".localized
         
         employmentTitleLabel.text = "employer".localized
+        employmentTitleLabel.textColor = UIColor(named: "disabledDarkTextColor")
         
         if timesheetViewModel.currentEmploymentModel?.isProfileEmployer ?? false {
             employmentTitleLabel.text = "employee".localized
         }
+        
+        employmentPopUp.setTitleColor(UIColor(named: "disabledDarkTextColor"), for: .normal)
         
         rateTitleLabel.text = "rate".localized
         

@@ -315,7 +315,7 @@ empleado?";
 "add_another_rate" = "Agregar Otra Tarifa";
 
 "hours_worked" = "Horas Trabajadas";
-"break_hours" = "Horas de Descanso";
+"break_hours" = "Descanso";
 "started_work" = "- Comenzó a trabajar el ";
 "started_break" = "- Comenzo el descanso el ";
 "comments" = "Comentarios";

@@ -2222,7 +2222,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwD-g4-XQQ">
-                                        <rect key="frame" x="0.0" y="583" width="414" height="39"/>
+                                        <rect key="frame" x="8" y="583" width="177" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="39" id="GeZ-dA-bxa"/>
                                         </constraints>
@@ -2234,15 +2234,29 @@
                                             <action selector="copyDatabase:" destination="FeP-NS-JCI" eventType="touchUpInside" id="a7j-51-QgO"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQT-7w-C4V">
+                                        <rect key="frame" x="261" y="583" width="145" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39" id="OPk-L5-CH7"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Share Database">
+                                            <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="shareDatabase:" destination="FeP-NS-JCI" eventType="touchUpInside" id="H8q-Cg-UYZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="CQE-5W-1Bn" firstAttribute="leading" secondItem="TwD-g4-XQQ" secondAttribute="leading" id="FBI-p0-Gpt"/>
+                                    <constraint firstItem="qQT-7w-C4V" firstAttribute="trailing" secondItem="CQE-5W-1Bn" secondAttribute="trailing" constant="-8" id="BYC-aq-viL"/>
+                                    <constraint firstItem="CQE-5W-1Bn" firstAttribute="leading" secondItem="TwD-g4-XQQ" secondAttribute="leading" constant="-8" id="FBI-p0-Gpt"/>
                                     <constraint firstItem="CQE-5W-1Bn" firstAttribute="leading" secondItem="Rg9-xc-zIs" secondAttribute="leading" id="T4Y-JJ-RrG"/>
                                     <constraint firstItem="CQE-5W-1Bn" firstAttribute="top" secondItem="Rg9-xc-zIs" secondAttribute="top" id="ZrH-qg-9gb"/>
-                                    <constraint firstItem="CQE-5W-1Bn" firstAttribute="trailing" secondItem="TwD-g4-XQQ" secondAttribute="trailing" id="gg0-oa-KHh"/>
                                     <constraint firstAttribute="bottom" secondItem="TwD-g4-XQQ" secondAttribute="bottom" id="hDp-nV-1Od"/>
                                     <constraint firstAttribute="trailing" secondItem="CQE-5W-1Bn" secondAttribute="trailing" id="job-pu-Zxv"/>
                                     <constraint firstAttribute="bottom" secondItem="CQE-5W-1Bn" secondAttribute="bottom" id="tqx-d7-tlH"/>
+                                    <constraint firstAttribute="bottom" secondItem="qQT-7w-C4V" secondAttribute="bottom" id="wqd-oA-mqV"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -2268,6 +2282,7 @@
                         <outlet property="phoneTextView2" destination="AdR-h4-8Q4" id="qCF-P1-l7a"/>
                         <outlet property="secondGitHubTextView" destination="sP9-yW-InQ" id="Z1o-r8-hLM"/>
                         <outlet property="servicesLabel" destination="zIY-Mo-aNO" id="tTu-QE-M2Z"/>
+                        <outlet property="shareDatabase" destination="qQT-7w-C4V" id="NXX-Fc-bP0"/>
                         <outlet property="submitIssuesTitleLabel" destination="UWa-d1-wSm" id="Xma-CY-LkX"/>
                         <outlet property="vistUsLabel" destination="HUK-te-aLx" id="GgO-Si-cSI"/>
                         <outlet property="webadminTextView" destination="28q-aj-mZA" id="YCJ-mK-bQp"/>

@@ -9,8 +9,9 @@
 import UIKit
 import Foundation
 import CoreData
+import MessageUI
 
-class ResourcesViewController: UIViewController {
+class ResourcesViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
     let emailLink = "https://webapps.dol.gov/contactwhd/"
     let contactOfficeLink = "https://www.dol.gov/whd/local/"
@@ -18,6 +19,7 @@ class ResourcesViewController: UIViewController {
     let webadminEmail = "webmaster@dol.gov"
     
     @IBOutlet weak var copyDatabase: UIButton!
+    @IBOutlet weak var shareDatabase: UIButton!
     @IBOutlet weak var contactTitleLabel: UILabel!
     @IBOutlet weak var contactTitleLabel2: UILabel!
     @IBOutlet weak var phoneTextView1: UITextView!
@@ -174,6 +176,44 @@ class ResourcesViewController: UIViewController {
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
+    @IBAction func shareDatabase(_ sender: Any) {
+        let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+        guard let appSupportDirectory = urls.first else { return }
+        let sqliteFileUrl = appSupportDirectory.appendingPathComponent("DOL_Timesheet.sqlite")
+        let shmFileUrl = appSupportDirectory.appendingPathComponent("DOL_Timesheet.sqlite-shm")
+        let walFileUrl = appSupportDirectory.appendingPathComponent("DOL_Timesheet.sqlite-wal")
+
+        do {
+            // 2. Convert the SQLite file to Data
+            let sqliteData = try Data(contentsOf: sqliteFileUrl)
+            let shmData = try Data(contentsOf: shmFileUrl)
+            let walData = try Data(contentsOf: walFileUrl)
+
+            // 3. Create an email
+            if MFMailComposeViewController.canSendMail() {
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self
+                mail.setToRecipients(["gruse.george.g@dol.gov"])
+                mail.setSubject("WHD Timesheet Database")
+                mail.setMessageBody("Here are the database files", isHTML: false)
+
+                // 4. Attach the Data to the email
+                mail.addAttachmentData(sqliteData, mimeType: "application/x-sqlite3", fileName: "DOL_Timesheet.sqlite")
+                mail.addAttachmentData(shmData, mimeType: "application/octet-stream", fileName: "DOL_Timesheet.sqlite-shm")
+                mail.addAttachmentData(walData, mimeType: "application/octet-stream", fileName: "DOL_Timesheet.sqlite-wal")
+
+                present(mail, animated: true)
+            } else {
+                print("Email cannot be sent")
+            }
+        } catch {
+            print("An error occurred: \(error)")
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
 }
 
 extension CoreDataManager {
