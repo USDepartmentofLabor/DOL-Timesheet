@@ -70,6 +70,13 @@ struct EnterTimeViewModel {
         
         return errStr
     }
+    
+    func isValid(startTime: Date, for currentTimeLog: TimeLog?) -> String {
+        var errStr: String = ""
+        
+   
+        return errStr
+    }
 
     func isValid(time: Date, for currentTimeLog: TimeLog?, isStartTime: Bool = false) -> String {
         var errStr: String = ""
@@ -91,6 +98,42 @@ struct EnterTimeViewModel {
         }
     
         return errStr
+    }
+    
+    func orderingCheck(for checkTimeLog: TimeLog) -> String? {
+        var orderingMsg: String? = nil
+        guard let checkStartTime = checkTimeLog.startTime,
+              let checkEndTime = checkTimeLog.endTime else { return "Invalid Time Check" }
+        
+        if checkStartTime >= checkEndTime {
+            orderingMsg = "err_endtime_is_before_startTime".localized
+            return orderingMsg
+        }
+        
+        guard let sortedTimeLogs = dateLog.sortedTimeLogs else { return orderingMsg }
+        sortedTimeLogs.forEach {
+            guard let currentStartTime = $0.startTime,
+                  let currentEndTime = $0.endTime else { return }
+            
+            if $0 == checkTimeLog { return }
+            
+            let currentTimeStr = timeEntryString(currentStartTime, currentEndTime)
+            
+            if checkStartTime >= currentStartTime && checkEndTime <= currentEndTime {
+                orderingMsg = "time_entry_within_another_error".localized + " \n \(currentTimeStr)"
+                return
+            }
+            if checkStartTime < currentStartTime && checkEndTime > currentStartTime ||
+               checkStartTime < currentEndTime && checkEndTime > currentEndTime {
+                orderingMsg = "time_entry_overlap_another_error".localized + " \n \(currentTimeStr)"
+                return
+            }
+        }
+        return orderingMsg
+    }
+    
+    func timeEntryString(_ startTime: Date, _ endTime: Date) -> String {
+        return startTime.formattedTime + " - " + endTime.formattedTime
     }
     
     func timeIsInOrder(time: Date, for currentTimeLog: TimeLog?) -> OrderingCheck {
@@ -148,7 +191,7 @@ struct EnterTimeViewModel {
 extension EnterTimeViewModel {
     // If the time spans over midnight then split the time
     // to startTime - 11.59 and next Day - 12:00 - endTime
-    func splitTime(endTime: Date, for timeLog: TimeLog) {
+    func splitTime(endTime: Date, for timeLog: TimeLog) -> TimeLog? {
         if let startTime = timeLog.startTime {
             timeLog.endTime = startTime.endOfDay()
             
@@ -163,8 +206,12 @@ extension EnterTimeViewModel {
                 let nextHourlyTimeLog = nextTimeLog as? HourlyPaymentTimeLog {
                 nextHourlyTimeLog.hourlyRate = hourlyTimeLog.hourlyRate
                 nextHourlyTimeLog.value = hourlyTimeLog.value
+                return nextHourlyTimeLog
+            } else {
+                return nextTimeLog
             }
         }
+        return nil
     }
 }
 

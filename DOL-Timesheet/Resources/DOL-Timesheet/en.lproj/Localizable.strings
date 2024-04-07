@@ -510,3 +510,5 @@
 "help" = "Help";
 
 "earning_details" = "Earning Details";
+"time_entry_within_another_error" = "The time entry cannot be within another time entry for this date.  There is already a time entry for:";
+"time_entry_overlap_another_error" = "The time entry cannot overlap another time entry for this date.  There is already a time entry for:";

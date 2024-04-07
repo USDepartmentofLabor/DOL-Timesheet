@@ -89,6 +89,8 @@ class EnterTimeSoftenViewController: UIViewController {
         
         if timeLogEntry != nil {
             setupTimeLog()
+        } else {
+            selectedRate = 0
         }
     }
     
@@ -132,6 +134,7 @@ class EnterTimeSoftenViewController: UIViewController {
 
 
         let saveBtn = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(save(_:)))
+        saveBtn.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(named: "blackTextColor")], for: .normal)
         navigationItem.rightBarButtonItem = saveBtn
 //        title = enterTimeViewModel?.title
         title = "new_time_entry".localized
@@ -187,9 +190,9 @@ class EnterTimeSoftenViewController: UIViewController {
             endTime = safeTimeLog.endTime
             comment = safeTimeLog.comment ?? ""
         } else {
-            startTime = selectedDate + (8*60*60)
+            startTime = nil
             breakTime = 0
-            endTime = selectedDate + (17*60*60)
+            endTime = nil
             comment = ""
         }
         
@@ -425,7 +428,8 @@ class EnterTimeSoftenViewController: UIViewController {
     }
 
     @objc func save(_ sender: Any?) {
-        guard let safeViewModel = enterTimeViewModel else { return }
+        guard let safeViewModel = enterTimeViewModel,
+        let safeStartTime = startTime else { return }
         if startTime == nil || endTime == nil {
             return
         }
@@ -441,9 +445,9 @@ class EnterTimeSoftenViewController: UIViewController {
         }
         print("GGG: timelog count \(enterTimeViewModel!.dateLog.timeLogs!.count)")
         
-        timeLog?.startTime = startTime
-        timeLog?.addBreak(duration: breakTime)
-        timeLog?.endTime = endTime
+        timeLog!.startTime = startTime
+        timeLog!.addBreak(duration: breakTime)
+        timeLog!.endTime = endTime
         
         if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
             
@@ -455,20 +459,29 @@ class EnterTimeSoftenViewController: UIViewController {
             hourlyTimeLog.hourlyRate = currentHourlyRate
             hourlyTimeLog.value = currentHourlyRate?.value ?? 0
         }
-     
         
-        if !isValid(endTime: endTime!, for: timeLog) {
+        timeLog?.comment = comment
+        
+        if timeLog!.startTime?.compare(endTime!) != .orderedAscending {
+            handleNightShift(endTime: endTime!, for: timeLog!)
             return
         }
         
-        timeLog?.comment = comment
+        if let errMsg = enterTimeViewModel!.orderingCheck(for: timeLog!) {
+            alert(message: errMsg)
+            return
+        }
                 
         if let errorStr = enterTimeViewModel?.validate() {
             displayError(message: errorStr, title: "Error")
             return
         }
         
-        safeViewModel.save()
+        handleSave(safeViewModel)
+    }
+    
+    func handleSave(_ viewModel: EnterTimeViewModel) {
+        viewModel.save()
         let annnouncementMsg = "save_time_entry".localized
         let announcementStr = String(format: annnouncementMsg, enterTimeViewModel?.title ?? "")
         UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementStr)
@@ -574,64 +587,33 @@ extension EnterTimeSoftenViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func isValid(startTime: Date, for timeLog: TimeLog?) -> Bool {
-        guard let safeViewModel = enterTimeViewModel else {
-            startTimeErrorMessage.text = "Internal View Model Error"
-            return false
-        }
-        
-        let errorStr = safeViewModel.isValid(time: startTime, for: timeLog, isStartTime: true)
-//        if !errorStr.isEmpty {
-//            startTimeErrorMessage.text = errorStr
-//            displayError(message: errorStr)
-//            return false
-//        }
-        
-        startTimeErrorMessage.text = ""
-        return true
-    }
-    
-    func isValid(endTime: Date, for timeLogTest: TimeLog?) -> Bool {
-        // If endTime is before StartTime
-        // Warn if this spans over next day?
-        //MARK: handel nightShift elsewhere
-//        if timeLog.startTime?.compare(endTime) != .orderedAscending {
-//            handleNightShift(endTime: endTime, for: timeLog)
-//            return false
-//        }
-        
-        return true
-    }
-    
-    func isValid(newEndTime: Date) -> Bool {
-        guard let safeStartTime = startTime else {
-            endTimeErrorMessage.text = "set_start_time_before_end_time".localized
-            alert(message: "set_start_time_before_end_time".localized)
-            return false
-        }
-        
-        if safeStartTime.compare(newEndTime) != .orderedAscending {
-            //Mark: rethink handleNightShift() logic here
-            //if the user somehow work over midnight
-            
-        }
-
-        if safeStartTime > newEndTime {
-            endTimeErrorMessage.text = "err_endtime_is_before_startTime".localized
-            displayError(message: "err_endtime_is_before_startTime".localized)
-            return false
-        }
-        
-        endTimeErrorMessage.text = ""
-        return true
-    }
-    
     func handleNightShift(endTime: Date, for timeLog: TimeLog) {
         let message = "warning_split_time".localized
         let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "yes".localized, style: .default, handler: { [weak self] (action) in
             guard let strongSelf = self else { return }
-            strongSelf.enterTimeViewModel?.splitTime(endTime: endTime, for: timeLog)
+            let nextTimeLog = strongSelf.enterTimeViewModel?.splitTime(endTime: endTime, for: timeLog)
+            
+            if let errMsg = strongSelf.enterTimeViewModel!.orderingCheck(for: timeLog) {
+                strongSelf.alert(message: errMsg)
+                return
+            }
+            
+            guard let nextTimeLog = nextTimeLog,
+                  let safeViewModel = strongSelf.enterTimeViewModel else { return }
+            
+            if let errMsg = strongSelf.enterTimeViewModel!.orderingCheck(for: nextTimeLog) {
+                strongSelf.alert(message: errMsg)
+                return
+            }
+            
+            if let errorStr = strongSelf.enterTimeViewModel?.validate() {
+                strongSelf.displayError(message: errorStr, title: "Error")
+                return
+            }
+            
+            strongSelf.handleSave(safeViewModel)
+            
         }))
         
         alertController.addAction(UIAlertAction(title: "no".localized, style: .cancel, handler: nil))
@@ -707,8 +689,8 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
             selectedDate = datePicker.date
             enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: datePicker.date)
             timeLog = enterTimeViewModel?.timeLogs?.first
-            timeLog?.startTime = selectedDate + (8*60*60)
-            timeLog?.endTime = selectedDate + (17*60*60)
+//            timeLog?.startTime = selectedDate + (8*60*60)
+//            timeLog?.endTime = selectedDate + (17*60*60)
             timeLog?.comment = ""
             setupView()
             UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: dateDropDownView)
@@ -716,14 +698,8 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
             var time = selectedDate
             let timeInterval = datePicker.date.removeDate()
             time.addTimeInterval(timeInterval)
-            if isValid(startTime: time, for: timeLog) {
-                startTime = time
-            }
-            if let safeEndTime = endTime {
-                if isValid(newEndTime: safeEndTime) {
-                    endTimeErrorMessage.text = ""
-                }
-            }
+            startTime = time
+            
         } else if sourceView == endDropDownView {
             var time = selectedDate
             let timeInterval = datePicker.date.removeDate()
@@ -733,10 +709,7 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
                 time = time.addDays(days: 1)
             }
             
-            if isValid(newEndTime: time) {
-                endTime = time
-                endTimeErrorMessage.text = ""
-            }
+            endTime = time
             
         } else if sourceView == breakDropDownView,
                   isValid(breakTime: datePicker.countDownDuration, for: timeLog) {

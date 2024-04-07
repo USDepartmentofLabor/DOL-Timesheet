@@ -19,8 +19,17 @@ public class DateLog: NSManagedObject {
     
     var sortedTimeLogs: [TimeLog]? {
         let timeLogSet = timeLogs as? Set<TimeLog>
-        return timeLogSet?.sorted()
-
+        return timeLogSet?.sorted  { (log1, log2) in
+            if let startTime1 = log1.startTime, let startTime2 = log2.startTime {
+                return startTime1 < startTime2
+            } else if log1.startTime != nil {
+                // log2.startTime is nil, so log1 should come after log2
+                return true
+            } else {
+                // log1.startTime is nil or both are nil, so log1 should come before log2
+                return false
+            }
+        }
     }
     
     func createTimeLog() -> TimeLog? {

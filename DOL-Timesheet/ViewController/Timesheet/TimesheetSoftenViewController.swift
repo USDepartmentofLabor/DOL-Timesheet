@@ -30,6 +30,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     @IBOutlet weak var timeTableviewHeightConstraint: NSLayoutConstraint!
     
     var timePickerVC = TimePickerViewController.instantiateFromStoryboard()
+    var newBarButtonItem: UIBarButtonItem?
 
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -44,8 +45,8 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         let shareBtn = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share(_:)))
         navigationItem.leftBarButtonItem = shareBtn
 
-        let newBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNew(_:)))
-        navigationItem.rightBarButtonItem = newBtn
+        newBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNew(_:)))
+        navigationItem.rightBarButtonItem = newBarButtonItem
         
         setupView()
         displayInfo()
@@ -54,7 +55,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       // displayInfo()
+        displayPeriodInfo()
     }
     
     override func viewDidLayoutSubviews() {
@@ -199,7 +200,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     }
     
     @objc func addNew(_ sender: Any?) {
-        performSegue(withIdentifier: "enterTime", sender: self)
+        performSegue(withIdentifier: "enterTime", sender: newBarButtonItem)
     }
 
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
@@ -234,7 +235,18 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "enterTime",
+        if newBarButtonItem  == sender as? UIBarButtonItem,
+           let enterTimeVC = segue.destination as? EnterTimeSoftenViewController {
+            enterTimeVC.timesheetViewModel = timesheetViewModel
+            
+            let enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: Date())
+            enterTimeVC.enterTimeViewModel = enterTimeViewModel
+            
+            enterTimeVC.selectedEmployment = timesheetViewModel.userProfileModel.employmentUsers.firstIndex(of: (timesheetViewModel.currentEmploymentModel?.employmentUser)!)
+            
+            enterTimeVC.delegate = self
+            
+        } else if segue.identifier == "enterTime",
            let enterTimeVC = segue.destination as? EnterTimeSoftenViewController,
            let currentDate = sender as? Date {
             enterTimeVC.timesheetViewModel = timesheetViewModel
@@ -499,6 +511,7 @@ extension TimesheetSoftenViewController: TimeViewControllerDelegate {
 
 extension TimesheetSoftenViewController: EnterTimeViewControllerDelegate {
     func didEnterTime(enterTimeModel: EnterTimeViewModel?) {
+        displayPeriodInfo()
     }
     
     func didCancelEnterTime() {
