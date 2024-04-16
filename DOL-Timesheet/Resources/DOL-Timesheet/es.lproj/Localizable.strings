@@ -504,3 +504,4 @@ empleado?";
 "earning_details" = "Detalles de ganancias";
 "time_entry_within_another_error" = "The time entry cannot be within another time entry for this date.  There is already a time entry for:";
 "time_entry_overlap_another_error" = "The time entry cannot overlap another time entry for this date.  There is already a time entry for:";
+"time_entry_start_and_end_time_error" = "Start Time and End Time must be set";

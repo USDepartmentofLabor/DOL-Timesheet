@@ -18,6 +18,7 @@ class WeeklySummaryViewController: UIViewController, TimeViewDelegate, TimePicke
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
+        
         setupView()
         displayInfo()
        // self.setupLabelTap()
@@ -195,7 +196,7 @@ extension WeeklySummaryViewController: UITableViewDelegate {
             return nil
         }
         
-        return "Work Week\(week+1): \(workWeekViewModel.title)"
+        return "\("work_week".localized) \(week+1): \(workWeekViewModel.title)"
     }
     
 }

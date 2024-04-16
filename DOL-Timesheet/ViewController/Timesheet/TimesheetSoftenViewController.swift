@@ -263,6 +263,11 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             enterTimeVC.delegate = self
         } else if segue.identifier == "weeklySummary",
            let weeklySummaryVC = segue.destination as? WeeklySummaryViewController {
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = "back".localized
+            navigationItem.backBarButtonItem = backItem
+            
             weeklySummaryVC.timesheetViewModel = timesheetViewModel
         } else if segue.identifier == "addEmploymentInfo",
                   let navVC = segue.destination as? UINavigationController,

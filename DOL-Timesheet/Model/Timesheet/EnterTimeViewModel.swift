@@ -103,13 +103,10 @@ struct EnterTimeViewModel {
     func orderingCheck(for checkTimeLog: TimeLog) -> String? {
         var orderingMsg: String? = nil
         guard let checkStartTime = checkTimeLog.startTime,
-              let checkEndTime = checkTimeLog.endTime else { return "Invalid Time Check" }
-        
-        if checkStartTime >= checkEndTime {
-            orderingMsg = "err_endtime_is_before_startTime".localized
+              let checkEndTime = checkTimeLog.endTime else {   orderingMsg = "time_entry_start_and_end_time_error".localized
             return orderingMsg
         }
-        
+                
         guard let sortedTimeLogs = dateLog.sortedTimeLogs else { return orderingMsg }
         sortedTimeLogs.forEach {
             guard let currentStartTime = $0.startTime,
