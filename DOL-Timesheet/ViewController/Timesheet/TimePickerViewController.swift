@@ -22,6 +22,7 @@ class TimePickerViewController: UIViewController {
     
     weak var delegate: TimePickerProtocol?
     var pickerMode: UIDatePicker.Mode = .countDownTimer
+    var pickerStyle: UIDatePickerStyle = .wheels
     var countdownDuration: TimeInterval = 0
     var currentDate: Date?
     
@@ -36,7 +37,7 @@ class TimePickerViewController: UIViewController {
     }
     override var preferredContentSize: CGSize {
         get {
-            let height: CGFloat = 240
+            let height: CGFloat = 320
             return CGSize(width: super.preferredContentSize.width, height: height)
         }
         set { super.preferredContentSize = newValue }
@@ -53,7 +54,7 @@ class TimePickerViewController: UIViewController {
             datePicker.locale = loc
         }
         
-        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.preferredDatePickerStyle = pickerStyle
         doneButton.setTitle("done".localized, for: .normal)
         if pickerMode == .countDownTimer {
             let duration: Int = countdownDuration > 0 ? Int(countdownDuration) : TimePickerViewController.DEFAULT_BREAK_TIME

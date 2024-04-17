@@ -211,6 +211,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         self.timePickerVC.sourceView = (periodLabel)
         self.timePickerVC.delegate = self
         self.timePickerVC.pickerMode = .date
+        self.timePickerVC.pickerStyle = .inline
         showPopup(popupController: self.timePickerVC, sender: periodLabel)
     }
     

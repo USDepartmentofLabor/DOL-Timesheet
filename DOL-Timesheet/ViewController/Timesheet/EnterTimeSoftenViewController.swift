@@ -358,6 +358,7 @@ class EnterTimeSoftenViewController: UIViewController {
         datePickerVC.sourceView = (dateDropDownView)
         datePickerVC.pickerMode = .date
         datePickerVC.currentDate = selectedDate
+        datePickerVC.pickerStyle = .inline
 
         showPopup(popupController: datePickerVC, sender: dateDropDownView)
         self.timePickerVC = datePickerVC
