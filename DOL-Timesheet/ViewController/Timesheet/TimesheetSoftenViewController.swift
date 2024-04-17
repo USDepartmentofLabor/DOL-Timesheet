@@ -55,7 +55,8 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        displayPeriodInfo()
+        setupEmploymentPopupButton()
+        displayInfo()
     }
     
     override func viewDidLayoutSubviews() {
