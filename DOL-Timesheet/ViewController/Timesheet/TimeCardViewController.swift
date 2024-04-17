@@ -143,8 +143,6 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
 //
     func setupView() {
         
-        ratePopupButton.layer.borderWidth = 1.0 // Set the width of the border
-        ratePopupButton.layer.borderColor = lighterGrey.cgColor // Set the color of the border
         ratePopupButton.layer.cornerRadius = 10.0
 
         workedHoursCounterLabel.scaleFont(forDataType: .timeCounterText)
@@ -333,9 +331,9 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     func rateButtonEnabled(enabled: Bool = true) {
         ratePopupButton.isEnabled = enabled
         if enabled {
-            ratePopupButton.backgroundColor = UIColor.clear
-            rateLabel.textColor = UIColor(named: "blackTextColor")
-            ratePopupButton.setTitleColor(UIColor(named: "blackTextColor"), for: .normal)
+            ratePopupButton.backgroundColor = UIColor.white
+            rateLabel.textColor = UIColor(named: "disabledDarkTextColor")
+            ratePopupButton.setTitleColor(UIColor.black, for: .normal)
             return
         }
         ratePopupButton.backgroundColor = UIColor(named: "disabledColor")
