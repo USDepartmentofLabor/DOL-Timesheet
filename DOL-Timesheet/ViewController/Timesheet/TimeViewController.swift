@@ -65,10 +65,12 @@ class TimeViewController: UIViewController, TimeCardDelegate {
         
         selectEmployerPopupButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
 
-        selectEmployerPopupLabel.textColor = UIColor(named: "disabledDarkTextColor")
+        selectEmployerPopupLabel.textColor = UIColor(named: "labelTextActive")
         selectEmployerPopupButton.setTitleColor(UIColor.black, for: .normal)
         selectEmployerPopupButton.backgroundColor = UIColor.white
+        selectEmployerPopupButton.layer.borderWidth = 1.0
         selectEmployerPopupButton.layer.cornerRadius = 10.0
+        selectEmployerPopupButton.layer.borderColor = UIColor(named: "cellActiveBorder")?.cgColor
             
         
     }

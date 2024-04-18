@@ -95,6 +95,8 @@ extension HelpTableViewController: UITableViewDataSource {
         cell.textLabel?.text = helpItems[indexPath.row].title
         cell.textLabel?.numberOfLines = 0
         cell.accessoryType = .disclosureIndicator
+        cell.backgroundColor = UIColor(named: "cellActiveBackground")
+        cell.textLabel?.textColor = UIColor(named: "labelTextActive")
         
         return cell
     }

@@ -343,11 +343,14 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
         let section = indexPath.section
         let row = indexPath.row
         hourlyCell.firstItem = indexPath.row == 0
+        hourlyCell.rateName.textColor = UIColor(named: "valueActiveText")
+        hourlyCell.timeFrame.textColor = UIColor(named: "labelTextActive")
         
         if section < numDays {
             let sectionDate = timesheetViewModel.currentPeriod?.date(at: indexPath.section)
             let timeEntryViewModel: EnterTimeViewModel = (timesheetViewModel.createEnterTimeViewModel(for: sectionDate!))!
             let timeLog = timeEntryViewModel.timeLogs![indexPath.row]
+            hourlyCell.totalTime.textColor = UIColor(named: "greenColor")
             hourlyCell.lastItem = indexPath.row == (timeEntryViewModel.timeLogs!.count - 1)
             hourlyCell.configure(timeLog: timeLog)
             hourlyCell.rightChevronIcon.isHidden = false
@@ -356,6 +359,8 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
             hourlyCell.rateName.text = payPeriodSummaryData[row].name
             hourlyCell.timeFrame.text = payPeriodSummaryData[row].value1
             hourlyCell.totalTime.text = payPeriodSummaryData[row].value2
+            hourlyCell.totalTime.textColor = UIColor(named: "purpleColor")
+
             hourlyCell.lastItem = indexPath.row == (payPeriodSummaryData.count - 1)
             hourlyCell.rightChevronIcon.isHidden = false
             if (numDays < 7) || ((payPeriodSummaryData.count - 1) != row){
@@ -366,6 +371,7 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
             hourlyCell.rateName.text = "earning_details".localized
             hourlyCell.timeFrame.text = ""
             hourlyCell.totalTime.text = timesheetViewModel.totalEarningsStr
+            hourlyCell.totalTime.textColor = UIColor(named: "greenColor")
             hourlyCell.lastItem = true
             hourlyCell.rightChevronIcon.isHidden = false
             hourlyCell.addborder()

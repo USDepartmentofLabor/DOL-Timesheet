@@ -209,7 +209,7 @@
 "err_title_minimum_weekly_wage" = "Your salary appears to be below the Federal requirement";
 "err_invalid_supervisor_emailaddress" = "Please provide valid supervisor email address.";
 "warning" = "Warning";
-"warning_split_time" = "Hours after midnight will populate your timesheet on the next day. Do you want to continue?";
+"warning_split_time" = "Hours after midnight will populate on your timesheet on the next day. Do you want to continue?";
 //Are you sure you want to enter in hours for the next day?";
 
 
@@ -395,7 +395,7 @@
 "onboard_welcome_employee" = "I want to track my own time. Set me up as an employee.";
 "onboard_welcome_employee_button" = "Employee";
 "or" = "OR";
-"onboard_welcome_employer" = "I want to track other people's time.  Set me up as an employer";
+"onboard_welcome_employer" = "I want to track other people's time.  Set me up as an employer.";
 "onboard_welcome_employer_button" = "Employer";
 
 "onboard_intro_1" = "This app is for your personal use and we don't store or share your information with anyone.";

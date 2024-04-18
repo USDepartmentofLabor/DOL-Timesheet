@@ -103,6 +103,8 @@ extension WeeklySummaryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let paymentType = timesheetViewModel.currentEmploymentModel?.paymentType
+        
         let hourlyCell = tableView.dequeueReusableCell(withIdentifier: TimeEntryViewCell.reuseIdentifier) as! TimeEntryViewCell
         let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         let section = indexPath.section
@@ -119,7 +121,7 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             totalTime = timesheetViewModel.hoursWorked(workWeek: indexPath.section)
             hourlyCell.firstItem = true
             hourlyCell.lastItem = false
-        } else if row < (1 + (timesheetViewModel.currentEmploymentModel?.hourlyRates?.count ?? 1)) {
+        } else if (row < (1 + (timesheetViewModel.currentEmploymentModel?.hourlyRates?.count ?? 1)) && paymentType == .hourly) {
             // Multiple RATES
             // Section Identifies Work Week
             // Row - 1 Identifies rate to get total for and set hrs / mins

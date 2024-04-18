@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="r2E-sp-Eko">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="r2E-sp-Eko">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -564,16 +564,16 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OzL-EE-HsG" userLabel="PeriodOvertimeEarningsStack View">
                                                                 <rect key="frame" x="0.0" y="117.5" width="374" height="50"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6g-uK-6r1">
+                                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X6g-uK-6r1">
                                                                         <rect key="frame" x="0.0" y="0.0" width="341" height="50"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overtime" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3l8-26-fiC" userLabel="InPeriodOvertimeTitle">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Overtime" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3l8-26-fiC" userLabel="InPeriodOvertimeTitle">
                                                                                 <rect key="frame" x="0.0" y="18" width="52" height="14.5"/>
                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                                 <color key="textColor" name="appPrimaryColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbh-GE-xdm" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
+                                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbh-GE-xdm" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
                                                                                 <rect key="frame" x="54" y="28" width="287" height="22"/>
                                                                                 <color key="tintColor" name="appPrimaryColor"/>
                                                                                 <state key="normal" image="questionmark.circle" catalog="system"/>
@@ -591,7 +591,7 @@
                                                                             <constraint firstItem="3l8-26-fiC" firstAttribute="centerY" secondItem="X6g-uK-6r1" secondAttribute="centerY" id="xEM-cJ-dI6"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-AW-UdP" userLabel="InPeriodOvertimeAmount">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-AW-UdP" userLabel="InPeriodOvertimeAmount">
                                                                         <rect key="frame" x="341" y="0.0" width="33" height="50"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                         <color key="textColor" name="appPrimaryColor"/>
@@ -740,7 +740,7 @@
                                             <constraint firstAttribute="height" constant="21" id="7xJ-rW-QNy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="darkTextColor"/>
+                                        <color key="textColor" name="labelTextInActive"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fOg-7U-omB">
@@ -752,11 +752,11 @@
                                             </children>
                                         </menu>
                                         <state key="normal" title="Button">
-                                            <color key="titleColor" name="blackTextColor"/>
+                                            <color key="titleColor" name="valueInactiveText"/>
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="disabledColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="fOg-7U-omB" secondAttribute="bottom" constant="8" id="G4f-XU-c0J"/>
                                     <constraint firstItem="fOg-7U-omB" firstAttribute="leading" secondItem="xhC-S8-tSf" secondAttribute="trailing" constant="8" id="X3C-um-k96"/>
@@ -775,7 +775,7 @@
                                             <constraint firstAttribute="height" constant="21" id="aUC-3L-Tou"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="darkTextColor"/>
+                                        <color key="textColor" name="labelTextActive"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6uf-S4-cKg">
@@ -787,11 +787,11 @@
                                             </children>
                                         </menu>
                                         <state key="normal" title="Button">
-                                            <color key="titleColor" name="blackTextColor"/>
+                                            <color key="titleColor" name="valueActiveText"/>
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="cellActiveBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="6uf-S4-cKg" secondAttribute="trailing" constant="8" id="2pd-Oc-bsf"/>
                                     <constraint firstItem="6uf-S4-cKg" firstAttribute="top" secondItem="aIC-xO-a2F" secondAttribute="top" constant="8" id="LpN-i5-Iut"/>
@@ -816,7 +816,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="cellActiveBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="wFc-rN-pqq" secondAttribute="trailing" constant="8" id="MMC-4N-6Dx"/>
                                     <constraint firstItem="wFc-rN-pqq" firstAttribute="leading" secondItem="xXr-eo-35A" secondAttribute="leading" constant="8" id="TnB-ub-Kk4"/>
@@ -898,7 +898,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="cellActiveBackground"/>
                                 <constraints>
                                     <constraint firstItem="jCi-nk-d6b" firstAttribute="leading" secondItem="pps-XX-7E4" secondAttribute="leading" constant="8" id="76p-8e-VYz"/>
                                     <constraint firstAttribute="trailing" secondItem="pdP-in-OAq" secondAttribute="trailing" constant="16" id="88l-nh-XYe"/>
@@ -951,7 +951,7 @@
                                         </connections>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="cellActiveBackground"/>
                                 <constraints>
                                     <constraint firstItem="wRh-eT-A0U" firstAttribute="leading" secondItem="0f0-p5-BAk" secondAttribute="leading" constant="19" id="0rO-Et-f2I"/>
                                     <constraint firstAttribute="trailing" secondItem="APU-sW-hQy" secondAttribute="trailing" constant="8" id="8hZ-sy-SeD"/>
@@ -971,7 +971,7 @@
                                             <constraint firstAttribute="height" constant="21" id="jYe-90-QGQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="labelTextActive"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightChevron" translatesAutoresizingMaskIntoConstraints="NO" id="ccf-8v-smz">
@@ -993,7 +993,7 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="cellActiveBackground"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES"/>
                                 </accessibility>
@@ -1104,7 +1104,7 @@
                                             <constraint firstAttribute="height" constant="21" id="jyK-Tj-AgC"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="labelTextActive"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightChevron" translatesAutoresizingMaskIntoConstraints="NO" id="jXw-HT-Xv1">
@@ -1124,7 +1124,7 @@
                                         <state key="normal" image="exclamationmark.circle" catalog="system"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="cellActiveBackground"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES"/>
                                 </accessibility>
@@ -1151,7 +1151,7 @@
                                             <constraint firstAttribute="height" constant="21" id="cDF-en-QtQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="labelTextActive"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightChevron" translatesAutoresizingMaskIntoConstraints="NO" id="0Os-Dn-dNP">
@@ -1170,7 +1170,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="cellActiveBackground"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES"/>
                                 </accessibility>
@@ -1190,7 +1190,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kLc-FK-AsL">
                                 <rect key="frame" x="20" y="20" width="374" height="128"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="cellActiveBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="gVA-w6-ORP"/>
                                 </constraints>
@@ -1209,7 +1209,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="HRg-k3-BhS"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" name="labelTextActive"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightChevron" translatesAutoresizingMaskIntoConstraints="NO" id="hhx-9A-zSh">
@@ -1309,7 +1309,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Hours Worked" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoT-Yc-iPD">
                                                         <rect key="frame" x="153" y="4" width="108.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" name="hoursWorked"/>
+                                                        <color key="textColor" name="greenColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kss-xC-1KB" userLabel="InfoButton">
@@ -1323,7 +1323,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lH3-5h-4v6" userLabel="workedHoursCounterLabel">
                                                         <rect key="frame" x="0.0" y="40.5" width="414" height="66"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="55"/>
-                                                        <color key="textColor" name="hoursWorked"/>
+                                                        <color key="textColor" name="greenColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="Started work on 9/1/23, 1:18 PM" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5i-kn-XWE">
@@ -1443,13 +1443,13 @@
                                             </children>
                                         </menu>
                                         <state key="normal" title="Rate">
-                                            <color key="titleColor" name="blackTextColor"/>
+                                            <color key="titleColor" name="valueActiveText"/>
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMU-Ao-MDc">
                                         <rect key="frame" x="8" y="11" width="35" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="labelTextActive"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1638,13 +1638,13 @@
                                                             </children>
                                                         </menu>
                                                         <state key="normal" title="Rate">
-                                                            <color key="titleColor" name="blackTextColor"/>
+                                                            <color key="titleColor" name="valueActiveText"/>
                                                         </state>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Employer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbt-6g-hL6">
                                                         <rect key="frame" x="8" y="12" width="71" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" name="labelTextActive"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vn-aD-W25">
@@ -2889,7 +2889,7 @@
                                                             <constraint firstAttribute="height" constant="21" id="ITm-4K-kI9"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" name="darkTextColor"/>
+                                                        <color key="textColor" name="labelTextActive"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h80-tl-P27">
@@ -2901,7 +2901,7 @@
                                                             </children>
                                                         </menu>
                                                         <state key="normal" title="Button">
-                                                            <color key="titleColor" name="blackTextColor"/>
+                                                            <color key="titleColor" name="valueActiveText"/>
                                                         </state>
                                                     </button>
                                                 </subviews>
@@ -2930,7 +2930,7 @@
                                                             <constraint firstAttribute="height" constant="21" id="cFD-bj-AGH"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" name="darkTextColor"/>
+                                                        <color key="textColor" name="labelTextActive"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="11/02/1961 - 11/09/1961" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0q-fU-Yy8">
@@ -2939,7 +2939,7 @@
                                                             <constraint firstAttribute="height" constant="21" id="Mc9-V6-h7M"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" name="valueActiveText"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -3302,30 +3302,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you work an overnight shift, hours after midnight will populate your timesheet on the next day." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHa-ad-8A2">
-                                <rect key="frame" x="20" y="20" width="374" height="61"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rRI-M6-eDg">
+                                <rect key="frame" x="20" y="20" width="374" height="846"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ugj-vq-fH3"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
-                            <constraint firstItem="SHa-ad-8A2" firstAttribute="leading" secondItem="Ugj-vq-fH3" secondAttribute="leading" constant="20" id="Lem-la-ZX8"/>
-                            <constraint firstItem="Ugj-vq-fH3" firstAttribute="trailing" secondItem="SHa-ad-8A2" secondAttribute="trailing" constant="20" id="NwM-Qg-jLJ"/>
-                            <constraint firstItem="SHa-ad-8A2" firstAttribute="top" secondItem="Ugj-vq-fH3" secondAttribute="top" constant="20" id="fkC-lq-6bj"/>
+                            <constraint firstItem="Ugj-vq-fH3" firstAttribute="trailing" secondItem="rRI-M6-eDg" secondAttribute="trailing" constant="20" id="3C1-ha-V8x"/>
+                            <constraint firstItem="rRI-M6-eDg" firstAttribute="top" secondItem="Ugj-vq-fH3" secondAttribute="top" constant="20" id="Ozs-CB-LT1"/>
+                            <constraint firstItem="Ugj-vq-fH3" firstAttribute="bottom" secondItem="rRI-M6-eDg" secondAttribute="bottom" constant="20" id="hXj-gL-DxW"/>
+                            <constraint firstItem="rRI-M6-eDg" firstAttribute="leading" secondItem="Ugj-vq-fH3" secondAttribute="leading" constant="20" id="ouq-s2-480"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Break" id="wTU-cT-oup"/>
                     <connections>
-                        <outlet property="details" destination="SHa-ad-8A2" id="2TN-4p-LS9"/>
+                        <outlet property="details" destination="rRI-M6-eDg" id="TBz-cK-eer"/>
                         <outlet property="navBar" destination="wTU-cT-oup" id="pWF-4l-yeG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fl-4i-0YO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5639" y="-755"/>
+            <point key="canvasLocation" x="5637.68115942029" y="-755.35714285714278"/>
         </scene>
         <!--Profile-->
         <scene sceneID="kmY-Wy-2n1">
@@ -3366,12 +3368,12 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="raw-Tx-Vfv"/>
-        <segue reference="2Fb-bA-ARb"/>
+        <segue reference="7uc-bX-bfm"/>
         <segue reference="0RP-Z6-OgJ"/>
         <segue reference="GGP-HT-mqi"/>
         <segue reference="isf-7E-suF"/>
         <segue reference="KeN-5T-wEn"/>
-        <segue reference="gIR-CR-1ps"/>
+        <segue reference="wvV-4w-p5x"/>
         <segue reference="hY3-5d-BYp"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -3398,23 +3400,32 @@
         <namedColor name="appTextColor">
             <color red="0.12549019607843137" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="blackTextColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="borderColor">
             <color red="0.58039215686274515" green="0.58039215686274515" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="breakHours">
             <color red="0.72156862745098038" green="0.55294117647058827" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="cellActiveBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="darkTextColor">
             <color red="0.35686274509803922" green="0.38039215686274508" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="disabledColor">
+            <color red="0.80784320831298828" green="0.80784320831298828" blue="0.80784320831298828" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="enterTimeBackgroundColor">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="hoursWorked">
-            <color red="0.19215686274509805" green="0.6705882352941176" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="greenColor">
+            <color red="0.57647058823529407" green="0.8901960784313725" blue="0.5607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="labelTextActive">
+            <color red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="labelTextInActive">
+            <color red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3424,6 +3435,12 @@
         </namedColor>
         <namedColor name="timesheetSubviewColor">
             <color red="0.99607843137254903" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="valueActiveText">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="valueInactiveText">
+            <color red="0.54117647058823526" green="0.54117647058823526" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
