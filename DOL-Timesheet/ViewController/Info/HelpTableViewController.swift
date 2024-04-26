@@ -91,7 +91,6 @@ extension HelpTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "helpItem")
         
-        cell.textLabel?.scaleFont(forDataType: .infoSection)
         cell.textLabel?.text = helpItems[indexPath.row].title
         cell.textLabel?.numberOfLines = 0
         cell.accessoryType = .disclosureIndicator

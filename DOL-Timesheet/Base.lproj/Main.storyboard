@@ -564,16 +564,16 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OzL-EE-HsG" userLabel="PeriodOvertimeEarningsStack View">
                                                                 <rect key="frame" x="0.0" y="117.5" width="374" height="50"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X6g-uK-6r1">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6g-uK-6r1">
                                                                         <rect key="frame" x="0.0" y="0.0" width="341" height="50"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Overtime" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3l8-26-fiC" userLabel="InPeriodOvertimeTitle">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overtime" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3l8-26-fiC" userLabel="InPeriodOvertimeTitle">
                                                                                 <rect key="frame" x="0.0" y="18" width="52" height="14.5"/>
                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                                 <color key="textColor" name="appPrimaryColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbh-GE-xdm" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbh-GE-xdm" userLabel="InfoButton" customClass="InfoButton" customModule="Timesheet" customModuleProvider="target">
                                                                                 <rect key="frame" x="54" y="28" width="287" height="22"/>
                                                                                 <color key="tintColor" name="appPrimaryColor"/>
                                                                                 <state key="normal" image="questionmark.circle" catalog="system"/>
@@ -591,7 +591,7 @@
                                                                             <constraint firstItem="3l8-26-fiC" firstAttribute="centerY" secondItem="X6g-uK-6r1" secondAttribute="centerY" id="xEM-cJ-dI6"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-AW-UdP" userLabel="InPeriodOvertimeAmount">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-AW-UdP" userLabel="InPeriodOvertimeAmount">
                                                                         <rect key="frame" x="341" y="0.0" width="33" height="50"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                         <color key="textColor" name="appPrimaryColor"/>
@@ -3053,7 +3053,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pze-6V-0Ra">
-                                <rect key="frame" x="8" y="112" width="398" height="776"/>
+                                <rect key="frame" x="8" y="72" width="398" height="816"/>
                                 <color key="backgroundColor" name="timesheetBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" name="timesheetBackgroundColor"/>
                                 <prototypes>
@@ -3079,7 +3079,7 @@
                         <constraints>
                             <constraint firstItem="Pze-6V-0Ra" firstAttribute="leading" secondItem="WMz-XY-ppl" secondAttribute="leading" constant="8" id="4Qo-OQ-B93"/>
                             <constraint firstAttribute="bottom" secondItem="Pze-6V-0Ra" secondAttribute="bottom" constant="8" id="Fp2-3A-O31"/>
-                            <constraint firstItem="Pze-6V-0Ra" firstAttribute="top" secondItem="WMz-XY-ppl" secondAttribute="top" constant="20" id="ivV-G2-fFo"/>
+                            <constraint firstItem="Pze-6V-0Ra" firstAttribute="top" secondItem="WMz-XY-ppl" secondAttribute="top" constant="-20" id="ivV-G2-fFo"/>
                             <constraint firstItem="WMz-XY-ppl" firstAttribute="trailing" secondItem="Pze-6V-0Ra" secondAttribute="trailing" constant="8" id="p9N-57-ED4"/>
                         </constraints>
                     </view>
@@ -3425,7 +3425,7 @@
             <color red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="labelTextInActive">
-            <color red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -347,6 +347,14 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
         hourlyCell.rateName.textColor = UIColor(named: "valueActiveText")
         hourlyCell.timeFrame.textColor = UIColor(named: "labelTextActive")
         
+        let secondToLastSection = tableView.numberOfSections - 2
+        let secondToLastRow = tableView.numberOfRows(inSection: secondToLastSection) - 1
+        if numDays >= 7 {
+            if indexPath.section == secondToLastSection && indexPath.row == secondToLastRow {
+                hourlyCell.rateName.textColor = UIColor.linkColor
+            }
+        }
+        
         if section < numDays {
             let sectionDate = timesheetViewModel.currentPeriod?.date(at: indexPath.section)
             let timeEntryViewModel: EnterTimeViewModel = (timesheetViewModel.createEnterTimeViewModel(for: sectionDate!))!

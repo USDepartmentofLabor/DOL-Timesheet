@@ -37,7 +37,7 @@ class TimePickerViewController: UIViewController {
     }
     override var preferredContentSize: CGSize {
         get {
-            let height: CGFloat = 320
+            let height: CGFloat = 350
             return CGSize(width: super.preferredContentSize.width, height: height)
         }
         set { super.preferredContentSize = newValue }
