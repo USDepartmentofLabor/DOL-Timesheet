@@ -165,7 +165,7 @@ extension WeeklySummaryViewController: UITableViewDataSource {
         hourlyCell.rateName.text = title
         hourlyCell.timeFrame.text = ""
         hourlyCell.totalTime.text = totalTime
-        hourlyCell.totalTime.textColor = UIColor.purple
+        hourlyCell.totalTime.textColor = UIColor(named: "purpleColor")
         
         hourlyCell.addborder()
         hourlyCell.rightChevronIcon.isHidden = true

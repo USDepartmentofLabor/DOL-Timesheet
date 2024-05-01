@@ -145,7 +145,6 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         
         ratePopupButton.layer.borderWidth = 1.0
         ratePopupButton.layer.cornerRadius = 10.0
-        ratePopupButton.layer.borderColor = UIColor(named: "cellActiveBorder")?.cgColor
 
         workedHoursCounterLabel.scaleFont(forDataType: .timeCounterText)
         hoursWorkedTitleLabel.scaleFont(forDataType: .nameValueTitle)
@@ -333,16 +332,10 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     func rateButtonEnabled(enabled: Bool = true) {
         ratePopupButton.isEnabled = enabled
         if enabled {
-            ratePopupButton.backgroundColor = UIColor.white
-            ratePopupButton.layer.borderColor = UIColor(named: "cellActiveBorder")?.cgColor
-            rateLabel.textColor = UIColor(named: "labelTextActive")
-            ratePopupButton.setTitleColor(UIColor.black, for: .normal)
+            rateLabel.textColor = UIColor(named: "spinnerLabel")
             return
         }
-        ratePopupButton.layer.borderColor = UIColor(named: "cellInactiveBackground")?.cgColor
-        ratePopupButton.backgroundColor = UIColor(named: "disabledColor")
-        rateLabel.textColor = UIColor(named: "labelTextInActive")
-        ratePopupButton.setTitleColor(UIColor(named: "disabledDarkTextColor"), for: .normal)
+        ratePopupButton.setTitleColor(UIColor(named: "spinnerValueDisabled"), for: .normal)
 
     }
     
@@ -601,7 +594,7 @@ extension TimeCardViewController {
         }
         if actions.contains(.startWork) {
             let startWorkBtn = clockAction(title: ClockAction.startWork.title,
-                                            bgColor: UIColor(named: "greenColor"),
+                                            bgColor: UIColor(named: "lightGreenColor"),
                                             action: #selector(startWorkClick(_:)))
             actionStackView.addArrangedSubview(startWorkBtn)
 
@@ -634,7 +627,7 @@ extension TimeCardViewController {
         }
         if actions.contains(.endWork) {
             let endWorkBtn = clockAction(title: ClockAction.endWork.title,
-                                         bgColor: UIColor(named: "greenColor"),
+                                         bgColor: UIColor(named: "lightGreenColor"),
                                          action: #selector(endWorkClick(_:)))
             
             endWorkBtn.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
