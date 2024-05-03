@@ -181,20 +181,6 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             payPeriodSummaryData.append(PayPeriodSummary(name: "weekly_summary".localized, value1: "", value2: ""))
         }
         timeTableView.reloadData()
-
-//        self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
-//        UIView.animate(withDuration: 0, animations: {
-//            self.timeTableView.layoutIfNeeded()
-//        }) { (complete) in
-//            self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
-//            self.scrollView.contentSize = CGSize(
-//                width: self.scrollView.frame.size.width,
-//                height: self.timeTableView.contentSize.height + 140
-//            )
-//        }
-
-
-       // displayTotals()
     }
     
     @objc func share(_ sender: Any?) {
@@ -279,6 +265,22 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
                   employmentInfoVC.delegate = self
               }
     }
+    
+    func makeBold(input: String) -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: input)
+        
+        // Apply bold style to digits, dollar sign, and period
+        for i in 0..<input.count {
+            let index = input.index(input.startIndex, offsetBy: i)
+            let c = input[index]
+            
+            if c.isNumber || c == "$" || c == "." {
+                attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: UIFont.systemFontSize), range: NSRange(location: i, length: 1))
+            }
+        }
+        
+        return attributedString
+    }
 }
 
 ////MARK : TableView DataSource Delegate
@@ -306,7 +308,7 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
         titleLabel.text = sectionTitle // Customize the header text
         titleLabel.textColor = UIColor(named: "darkTextColor") // Customize the text color
         titleLabel.frame = CGRect(x: 0, y: 0, width: tableView.frame.width - 30, height: 30) // Adjust the frame as needed
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 10)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 11)
 
         headerView.addSubview(titleLabel)
 
@@ -367,8 +369,12 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
         } else if section == numDays {
             hourlyCell.rateName.text = payPeriodSummaryData[row].name
             hourlyCell.timeFrame.text = payPeriodSummaryData[row].value1
-            hourlyCell.totalTime.text = payPeriodSummaryData[row].value2
+            hourlyCell.totalTime.attributedText = makeBold(input: payPeriodSummaryData[row].value2)
             hourlyCell.totalTime.textColor = UIColor(named: "purpleColor")
+            
+            if (payPeriodSummaryData[row].name == "Weekly Sumary") {
+                hourlyCell.rateName.textColor = UIColor(named: "softLinkColor")
+            }
 
             hourlyCell.lastItem = indexPath.row == (payPeriodSummaryData.count - 1)
             hourlyCell.rightChevronIcon.isHidden = false
@@ -379,7 +385,7 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
         } else {
             hourlyCell.rateName.text = "earning_details".localized
             hourlyCell.timeFrame.text = ""
-            hourlyCell.totalTime.text = timesheetViewModel.totalEarningsStr
+            hourlyCell.totalTime.attributedText = makeBold(input: timesheetViewModel.totalEarningsStr)
             hourlyCell.totalTime.textColor = UIColor(named: "greenColor")
             hourlyCell.lastItem = true
             hourlyCell.rightChevronIcon.isHidden = false

@@ -110,6 +110,8 @@
 		03F2F5D922822CF8007B1B68 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2F5D822822CF8007B1B68 /* Date+Extension.swift */; };
 		110552742B2A8FC600EF5D1C /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110552732B2A8FC600EF5D1C /* HelpTableViewController.swift */; };
 		110552762B2AA5DB00EF5D1C /* HelpDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110552752B2AA5DB00EF5D1C /* HelpDetailViewController.swift */; };
+		11071F562BE487F200A3C1A9 /* EarningDetailsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11071F542BE487F200A3C1A9 /* EarningDetailsViewCell.xib */; };
+		11071F572BE487F200A3C1A9 /* EarningDetailsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11071F552BE487F200A3C1A9 /* EarningDetailsViewCell.swift */; };
 		1118714729DE569B00F087F3 /* StateMinWage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1118714629DE569B00F087F3 /* StateMinWage.swift */; };
 		1151B4202B6599D800157869 /* WHDTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151B41F2B6599D800157869 /* WHDTabBarController.swift */; };
 		59821CC122AABC1300436B03 /* PhoneFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59821CC022AABC1300436B03 /* PhoneFormatter.swift */; };
@@ -282,6 +284,8 @@
 		03F2F5D822822CF8007B1B68 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		110552732B2A8FC600EF5D1C /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		110552752B2AA5DB00EF5D1C /* HelpDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpDetailViewController.swift; sourceTree = "<group>"; };
+		11071F542BE487F200A3C1A9 /* EarningDetailsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EarningDetailsViewCell.xib; sourceTree = "<group>"; };
+		11071F552BE487F200A3C1A9 /* EarningDetailsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarningDetailsViewCell.swift; sourceTree = "<group>"; };
 		1118714629DE569B00F087F3 /* StateMinWage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMinWage.swift; sourceTree = "<group>"; };
 		1151B41F2B6599D800157869 /* WHDTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WHDTabBarController.swift; sourceTree = "<group>"; };
 		59821CC022AABC1300436B03 /* PhoneFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFormatter.swift; sourceTree = "<group>"; };
@@ -522,8 +526,8 @@
 				03264F7322835E4200FF6010 /* EnterHourlyTimeTableViewCell.swift */,
 				0329260E2289CB7D00DB69AD /* SummaryTableViewCell.swift */,
 				0328C44222BC0DC700B3C911 /* GlossaryTableViewCell.swift */,
-				690F8D5C2B5B2A1D00B7625E /* TimeEntryViewCell.swift */,
-				690F8D5D2B5B2A1D00B7625E /* TimeEntryViewCell.xib */,
+				11071F4E2BE4867300A3C1A9 /* TimeEntryViewCell */,
+				11071F512BE4872200A3C1A9 /* EarningDetailsViewCell */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -655,6 +659,24 @@
 				1118714629DE569B00F087F3 /* StateMinWage.swift */,
 			);
 			path = Setup;
+			sourceTree = "<group>";
+		};
+		11071F4E2BE4867300A3C1A9 /* TimeEntryViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				690F8D5C2B5B2A1D00B7625E /* TimeEntryViewCell.swift */,
+				690F8D5D2B5B2A1D00B7625E /* TimeEntryViewCell.xib */,
+			);
+			path = TimeEntryViewCell;
+			sourceTree = "<group>";
+		};
+		11071F512BE4872200A3C1A9 /* EarningDetailsViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				11071F552BE487F200A3C1A9 /* EarningDetailsViewCell.swift */,
+				11071F542BE487F200A3C1A9 /* EarningDetailsViewCell.xib */,
+			);
+			path = EarningDetailsViewCell;
 			sourceTree = "<group>";
 		};
 		59AD9E6022A1ADA300075193 /* TableViewHeader */ = {
@@ -851,6 +873,7 @@
 				037C226A2278B6400021A309 /* Profile.storyboard in Resources */,
 				69A71F3C29DC8C2A0017A1F6 /* StateMinimumWages.json in Resources */,
 				036D71952277445300CC62CE /* Localizable.strings in Resources */,
+				11071F562BE487F200A3C1A9 /* EarningDetailsViewCell.xib in Resources */,
 				0324C3EA2260E47200712576 /* LaunchScreen.storyboard in Resources */,
 				696D20DE28318CC9007E041F /* DOL_Timesheet.sqlite-wal in Resources */,
 				032DFD2C228B5774001A1C3B /* EarningsTableViewCell.xib in Resources */,
@@ -962,6 +985,7 @@
 				59AD9E6322A1ADB500075193 /* SummaryTableViewHeaderView.swift in Sources */,
 				0329BFF2237341F7006AB18A /* ImportDBViewController.swift in Sources */,
 				698CF4092B2A33C400E0F63A /* EnterTimeSoftenViewController.swift in Sources */,
+				11071F572BE487F200A3C1A9 /* EarningDetailsViewCell.swift in Sources */,
 				032C9F152264E83A00FB1468 /* IntroductionViewController.swift in Sources */,
 				0326DB622326C46500EDA2F7 /* ShadowView.swift in Sources */,
 				0324C41D2260FCF600712576 /* InfoViewController.swift in Sources */,

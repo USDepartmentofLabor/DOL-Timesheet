@@ -728,23 +728,23 @@
             <objects>
                 <viewController storyboardIdentifier="EnterTimeSoftenViewController" id="zY3-x1-MpB" customClass="EnterTimeSoftenViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7M4-h0-lY6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5d-UN-PS4" userLabel="EmployerView">
-                                <rect key="frame" x="20" y="20" width="374" height="46"/>
+                                <rect key="frame" x="20" y="112" width="374" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Employer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhC-S8-tSf">
-                                        <rect key="frame" x="8" y="12.5" width="71" height="21"/>
+                                        <rect key="frame" x="16" y="12.5" width="71" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="7xJ-rW-QNy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="labelTextInActive"/>
+                                        <color key="textColor" name="spinnerLabel"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fOg-7U-omB">
-                                        <rect key="frame" x="87" y="8" width="279" height="30"/>
+                                        <rect key="frame" x="95" y="8" width="271" height="30"/>
                                         <menu key="menu" id="AI5-Vh-MCV">
                                             <children>
                                                 <command title="Item 1" id="BCw-PP-O9v"/>
@@ -752,34 +752,34 @@
                                             </children>
                                         </menu>
                                         <state key="normal" title="Button">
-                                            <color key="titleColor" name="valueInactiveText"/>
+                                            <color key="titleColor" name="spinnerValueDisabled"/>
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" name="disabledColor"/>
+                                <color key="backgroundColor" name="cellActiveBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="fOg-7U-omB" secondAttribute="bottom" constant="8" id="G4f-XU-c0J"/>
                                     <constraint firstItem="fOg-7U-omB" firstAttribute="leading" secondItem="xhC-S8-tSf" secondAttribute="trailing" constant="8" id="X3C-um-k96"/>
-                                    <constraint firstItem="xhC-S8-tSf" firstAttribute="leading" secondItem="h5d-UN-PS4" secondAttribute="leading" constant="8" id="dCU-9E-wc2"/>
+                                    <constraint firstItem="xhC-S8-tSf" firstAttribute="leading" secondItem="h5d-UN-PS4" secondAttribute="leading" constant="15.800000000000001" id="dCU-9E-wc2"/>
                                     <constraint firstItem="fOg-7U-omB" firstAttribute="top" secondItem="h5d-UN-PS4" secondAttribute="top" constant="8" id="eqa-fu-ufx"/>
                                     <constraint firstItem="xhC-S8-tSf" firstAttribute="centerY" secondItem="fOg-7U-omB" secondAttribute="centerY" id="q9l-nm-03J"/>
                                     <constraint firstAttribute="trailing" secondItem="fOg-7U-omB" secondAttribute="trailing" constant="8" id="ztr-xe-CjT"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aIC-xO-a2F" userLabel="RateView">
-                                <rect key="frame" x="20" y="67" width="374" height="46"/>
+                                <rect key="frame" x="20" y="159" width="374" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2o-CX-gxe">
-                                        <rect key="frame" x="8" y="12.5" width="35" height="21"/>
+                                        <rect key="frame" x="16" y="12.5" width="35" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="aUC-3L-Tou"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="labelTextActive"/>
+                                        <color key="textColor" name="spinnerLabel"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6uf-S4-cKg">
-                                        <rect key="frame" x="51" y="8" width="315" height="30"/>
+                                        <rect key="frame" x="59" y="8" width="307" height="30"/>
                                         <menu key="menu" id="GE3-kj-d6M">
                                             <children>
                                                 <command title="Item 1" id="SAO-8h-csP"/>
@@ -787,7 +787,7 @@
                                             </children>
                                         </menu>
                                         <state key="normal" title="Button">
-                                            <color key="titleColor" name="valueActiveText"/>
+                                            <color key="titleColor" name="spinnerValueEnabled"/>
                                         </state>
                                     </button>
                                 </subviews>
@@ -795,14 +795,14 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="6uf-S4-cKg" secondAttribute="trailing" constant="8" id="2pd-Oc-bsf"/>
                                     <constraint firstItem="6uf-S4-cKg" firstAttribute="top" secondItem="aIC-xO-a2F" secondAttribute="top" constant="8" id="LpN-i5-Iut"/>
-                                    <constraint firstItem="U2o-CX-gxe" firstAttribute="leading" secondItem="aIC-xO-a2F" secondAttribute="leading" constant="8" id="N3R-Di-Zn5"/>
+                                    <constraint firstItem="U2o-CX-gxe" firstAttribute="leading" secondItem="aIC-xO-a2F" secondAttribute="leading" constant="15.800000000000001" id="N3R-Di-Zn5"/>
                                     <constraint firstItem="6uf-S4-cKg" firstAttribute="centerY" secondItem="U2o-CX-gxe" secondAttribute="centerY" id="b9C-9V-seS"/>
                                     <constraint firstItem="6uf-S4-cKg" firstAttribute="leading" secondItem="U2o-CX-gxe" secondAttribute="trailing" constant="8" id="cqy-PX-utL"/>
                                     <constraint firstAttribute="bottom" secondItem="6uf-S4-cKg" secondAttribute="bottom" constant="8" id="zlk-6a-L98"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXr-eo-35A" userLabel="Date View">
-                                <rect key="frame" x="20" y="121" width="374" height="46"/>
+                                <rect key="frame" x="20" y="213" width="374" height="46"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wFc-rN-pqq" customClass="DropDownSoftenView" customModule="Timesheet" customModuleProvider="target">
                                         <rect key="frame" x="8" y="8" width="358" height="30"/>
@@ -825,7 +825,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pps-XX-7E4">
-                                <rect key="frame" x="20" y="187" width="374" height="198.5"/>
+                                <rect key="frame" x="20" y="279" width="374" height="198.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Nb-zk-Kzq" userLabel="StartTimeView" customClass="DropDownSoftenView" customModule="Timesheet" customModuleProvider="target">
                                         <rect key="frame" x="8" y="8" width="358" height="30"/>
@@ -844,7 +844,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a ferer ladna  aslfjsldfjksd alskdjfl sdf ljasdf lsd" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdP-in-OAq">
                                         <rect key="frame" x="16" y="33" width="342" height="33.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" name="appSecondaryColor"/>
+                                        <color key="textColor" name="redColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxe-c7-9AA" userLabel="Border">
@@ -869,7 +869,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkH-n8-xgx">
                                         <rect key="frame" x="16" y="110.5" width="342" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" name="appSecondaryColor"/>
+                                        <color key="textColor" name="redColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRK-hQ-z5D" userLabel="Border">
@@ -894,7 +894,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSg-Oz-DN6">
                                         <rect key="frame" x="16" y="171.5" width="342" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" name="appSecondaryColor"/>
+                                        <color key="textColor" name="redColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -928,7 +928,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0f0-p5-BAk">
-                                <rect key="frame" x="20" y="405.5" width="374" height="46"/>
+                                <rect key="frame" x="20" y="497.5" width="374" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRh-eT-A0U">
                                         <rect key="frame" x="19" y="12.5" width="83" height="21"/>
@@ -943,7 +943,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="enY-yi-pBy"/>
                                         </constraints>
-                                        <color key="textColor" systemColor="darkTextColor"/>
+                                        <color key="textColor" name="spinnerLabel"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
@@ -963,7 +963,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qk-Wq-zas">
-                                <rect key="frame" x="20" y="471.5" width="374" height="44"/>
+                                <rect key="frame" x="20" y="563.5" width="374" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEe-aR-4mh">
                                         <rect key="frame" x="38" y="11.5" width="35.5" height="21"/>
@@ -971,7 +971,7 @@
                                             <constraint firstAttribute="height" constant="21" id="jYe-90-QGQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="labelTextActive"/>
+                                        <color key="textColor" name="spinnerLabel"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightChevron" translatesAutoresizingMaskIntoConstraints="NO" id="ccf-8v-smz">
@@ -1013,7 +1013,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVi-c4-VOK">
-                                <rect key="frame" x="87" y="535.5" width="240" height="34.5"/>
+                                <rect key="frame" x="87" y="627.5" width="240" height="34.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="aWK-pA-J1o"/>
                                 </constraints>
@@ -1025,7 +1025,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fZo-VG-2aG"/>
-                        <color key="backgroundColor" name="enterTimeBackgroundColor"/>
+                        <color key="backgroundColor" name="timesheetBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fZo-VG-2aG" firstAttribute="trailing" secondItem="h5d-UN-PS4" secondAttribute="trailing" constant="20" id="3gC-Az-HjZ"/>
                             <constraint firstItem="fZo-VG-2aG" firstAttribute="trailing" secondItem="0f0-p5-BAk" secondAttribute="trailing" constant="20" id="5uo-wm-M1h"/>
@@ -1092,11 +1092,11 @@
             <objects>
                 <viewController id="zZ2-Em-sed" customClass="HelpTableViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oWm-zq-EII">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gf8-5A-ckc">
-                                <rect key="frame" x="20" y="168" width="374" height="44"/>
+                                <rect key="frame" x="20" y="260" width="374" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Glossary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZZ-qS-oUT">
                                         <rect key="frame" x="38" y="11.5" width="66.5" height="21"/>
@@ -1143,7 +1143,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RvB-GH-khT">
-                                <rect key="frame" x="20" y="232" width="374" height="44"/>
+                                <rect key="frame" x="20" y="324" width="374" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hd-pf-Hws">
                                         <rect key="frame" x="38" y="11.5" width="85.5" height="21"/>
@@ -1189,7 +1189,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kLc-FK-AsL">
-                                <rect key="frame" x="20" y="20" width="374" height="128"/>
+                                <rect key="frame" x="20" y="112" width="374" height="128"/>
                                 <color key="backgroundColor" name="cellActiveBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="gVA-w6-ORP"/>
@@ -1236,7 +1236,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sqH-yn-oKW"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <color key="backgroundColor" name="timesheetBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sqH-yn-oKW" firstAttribute="trailing" secondItem="RvB-GH-khT" secondAttribute="trailing" constant="20" id="1kK-cc-Yyq"/>
                             <constraint firstItem="RvB-GH-khT" firstAttribute="top" secondItem="Gf8-5A-ckc" secondAttribute="bottom" constant="20" id="3ud-uA-ZIi"/>
@@ -1993,11 +1993,11 @@
             <objects>
                 <viewController id="YeA-yJ-t1m" customClass="GlossaryViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="teS-fg-GOF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QTk-lu-S07">
-                                <rect key="frame" x="0.0" y="5" width="414" height="881"/>
+                                <rect key="frame" x="0.0" y="97" width="414" height="716"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GlossaryTableViewCell" rowHeight="500" id="qGr-d7-sj1" customClass="GlossaryTableViewCell" customModule="Timesheet" customModuleProvider="target">
@@ -2078,11 +2078,11 @@
             <objects>
                 <viewController storyboardIdentifier="ResourcesViewController" id="FeP-NS-JCI" customClass="ResourcesViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SoT-m9-UfL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rg9-xc-zIs">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQE-5W-1Bn">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="622"/>
@@ -3156,7 +3156,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lt0-PK-gmp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wrz-Ua-wOr">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3300,11 +3300,11 @@
             <objects>
                 <viewController id="7lm-wm-pPj" customClass="HelpDetailViewController" customModule="Timesheet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pkc-TY-juz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rRI-M6-eDg">
-                                <rect key="frame" x="20" y="20" width="374" height="846"/>
+                                <rect key="frame" x="20" y="112" width="374" height="681"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -3312,7 +3312,7 @@
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ugj-vq-fH3"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <color key="backgroundColor" name="timesheetBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ugj-vq-fH3" firstAttribute="trailing" secondItem="rRI-M6-eDg" secondAttribute="trailing" constant="20" id="3C1-ha-V8x"/>
                             <constraint firstItem="rRI-M6-eDg" firstAttribute="top" secondItem="Ugj-vq-fH3" secondAttribute="top" constant="20" id="Ozs-CB-LT1"/>
@@ -3499,14 +3499,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AVg-wA-CjU"/>
+        <segue reference="KJz-zA-nJd"/>
         <segue reference="7uc-bX-bfm"/>
         <segue reference="0RP-Z6-OgJ"/>
         <segue reference="GGP-HT-mqi"/>
         <segue reference="isf-7E-suF"/>
         <segue reference="KeN-5T-wEn"/>
         <segue reference="wvV-4w-p5x"/>
-        <segue reference="hY3-5d-BYp"/>
+        <segue reference="80M-Vn-wJ3"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DOLLogo" width="60" height="60"/>
@@ -3544,9 +3544,6 @@
         <namedColor name="darkTextColor">
             <color red="0.35686274509803922" green="0.38039215686274508" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="disabledColor">
-            <color red="0.80784320831298828" green="0.80784320831298828" blue="0.80784320831298828" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="enterTimeBackgroundColor">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -3556,16 +3553,19 @@
         <namedColor name="labelTextActive">
             <color red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="labelTextInActive">
-            <color red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="redColor">
+            <color red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="spinnerBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="spinnerLabel">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="spinnerValueDisabled">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="spinnerValueEnabled">
@@ -3576,12 +3576,6 @@
         </namedColor>
         <namedColor name="timesheetSubviewColor">
             <color red="0.99607843137254903" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="valueActiveText">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="valueInactiveText">
-            <color red="0.54117647058823526" green="0.54117647058823526" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

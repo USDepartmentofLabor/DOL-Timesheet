@@ -34,7 +34,7 @@ class WeeklySummaryViewController: UIViewController, TimeViewDelegate, TimePicke
         title = "weekly_summary".localized
                 
         
-        weeklyTableView.register(UINib(nibName: TimeEntryViewCell.nibName, bundle: nil), forCellReuseIdentifier: TimeEntryViewCell.reuseIdentifier)
+        weeklyTableView.register(UINib(nibName: EarningDetailsViewCell.nibName, bundle: nil), forCellReuseIdentifier: EarningDetailsViewCell.reuseIdentifier)
         weeklyTableView.rowHeight = UITableView.automaticDimension
         weeklyTableView.estimatedRowHeight = 40
         
@@ -105,14 +105,14 @@ extension WeeklySummaryViewController: UITableViewDataSource {
         
         let paymentType = timesheetViewModel.currentEmploymentModel?.paymentType
         
-        let hourlyCell = tableView.dequeueReusableCell(withIdentifier: TimeEntryViewCell.reuseIdentifier) as! TimeEntryViewCell
+        let hourlyCell = tableView.dequeueReusableCell(withIdentifier: EarningDetailsViewCell.reuseIdentifier) as! EarningDetailsViewCell
         let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         let section = indexPath.section
         let row = indexPath.row
         
         var title = ""
         var totalTime = ""
-        
+                
         if row == 0 {
             // TOTAL HOURS WORKED
             // Section Identifies Work Week
@@ -163,12 +163,10 @@ extension WeeklySummaryViewController: UITableViewDataSource {
         }
         
         hourlyCell.rateName.text = title
-        hourlyCell.timeFrame.text = ""
         hourlyCell.totalTime.text = totalTime
         hourlyCell.totalTime.textColor = UIColor(named: "purpleColor")
         
         hourlyCell.addborder()
-        hourlyCell.rightChevronIcon.isHidden = true
         
         return hourlyCell
     }
