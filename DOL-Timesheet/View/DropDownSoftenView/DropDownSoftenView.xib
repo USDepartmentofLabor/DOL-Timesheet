@@ -30,8 +30,8 @@
                     <color key="textColor" name="spinnerLabel"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="       " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fv-0I-ca4" userLabel="Value">
-                    <rect key="frame" x="377" y="53" width="29" height="60"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placeholder" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fv-0I-ca4" userLabel="Value">
+                    <rect key="frame" x="311.5" y="53" width="94.5" height="60"/>
                     <color key="tintColor" name="appPrimaryColor"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <color key="textColor" name="spinnerValueEnabled"/>

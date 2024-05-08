@@ -18,6 +18,7 @@ class EarningDetailsViewCell: UITableViewCell {
     
     var firstItem: Bool = false
     var lastItem: Bool = false
+    
     @IBOutlet weak var topBackgroundView: UIView!
     @IBOutlet weak var bottomBackgroundView: UIView!
     

@@ -261,9 +261,17 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         } else if segue.identifier == "addEmploymentInfo",
                   let navVC = segue.destination as? UINavigationController,
                   let employmentInfoVC = navVC.topViewController as? EmploymentInfoViewController {
-                  employmentInfoVC.employmentModel = timesheetViewModel.userProfileModel.newTempEmploymentModel()
-                  employmentInfoVC.delegate = self
-              }
+            employmentInfoVC.employmentModel = timesheetViewModel.userProfileModel.newTempEmploymentModel()
+            employmentInfoVC.delegate = self
+        } else if segue.identifier == "timesheetEarningDetailSegue",
+                  let earningDetailVC = segue.destination as? EarningDetailViewController {
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = "back".localized
+            navigationItem.backBarButtonItem = backItem
+            
+            earningDetailVC.timesheetViewModel = timesheetViewModel
+        }
     }
     
     func makeBold(input: String) -> NSMutableAttributedString {
@@ -440,6 +448,9 @@ extension TimesheetSoftenViewController: UITableViewDelegate {
         if numDays >= 7 {
             if indexPath.section == secondToLastSection && indexPath.row == secondToLastRow {
                 performSegue(withIdentifier: "weeklySummary", sender: self)
+            }
+            if indexPath.section == tableView.numberOfSections - 1 && indexPath.row == 0 {
+                performSegue(withIdentifier: "timesheetEarningDetailSegue", sender: self)
             }
         }
 //        if indexPath.section < numDays {
