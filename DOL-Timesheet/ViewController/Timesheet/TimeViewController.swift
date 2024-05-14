@@ -59,6 +59,9 @@ class TimeViewController: UIViewController, TimeCardDelegate {
 
     func setupView() {
         
+        selectEmployerPopupButton.setBorderColor(named: "cellActiveBorder")
+        selectEmployerPopupButton.layer.borderWidth = 1.0
+
 
         selectEmployerPopupButton.isHidden = false
         selectEmployerPopupLabel.isHidden = false

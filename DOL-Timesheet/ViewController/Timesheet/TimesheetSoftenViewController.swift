@@ -453,11 +453,6 @@ extension TimesheetSoftenViewController: UITableViewDelegate {
                 performSegue(withIdentifier: "timesheetEarningDetailSegue", sender: self)
             }
         }
-//        if indexPath.section < numDays {
-//            
-//        } else if indexPath.section < numDays + 1 {
-//            
-//        }
     }
     
     func titleForWorkWeek(week: Int) -> String? {

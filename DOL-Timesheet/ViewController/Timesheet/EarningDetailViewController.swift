@@ -40,12 +40,11 @@ class EarningDetailViewController: UIViewController {
                 
         
         earningTableView.register(UINib(nibName: EarningDetailTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: EarningDetailTableViewCell.reuseIdentifier)
+        earningTableView.register(UINib(nibName: HelpTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: HelpTableViewCell.reuseIdentifier)
+
         earningTableView.rowHeight = UITableView.automaticDimension
-        earningTableView.estimatedRowHeight = 70
+        earningTableView.estimatedRowHeight = 90
         
-//        timeTableView.backgroundColor = UIColor.systemGray5
-//        2C2C2E dark
-//        E5E5EA light
     }
     
     func displayInfo() {
@@ -73,9 +72,11 @@ class EarningDetailViewController: UIViewController {
             let helpVC = segue.destination as? HelpTableViewController {
             helpVC.helpItems = [
                 HelpItem(
-                    title: "info_break_time_title".localized,
-                    body: "info_break_time".localized),
-                HelpItem(title: "overnight_hours".localized, body: "info_end_time".localized)]
+                    title: "overtime_pay".localized,
+                    body: "info_glossary_overtime".localized),
+                HelpItem(
+                    title: "regular_rate_of_pay".localized,
+                    body: "info_regular_rate_pay".localized)]
         }
     }
 }
@@ -83,8 +84,7 @@ class EarningDetailViewController: UIViewController {
 
 extension EarningDetailViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("Earning setion: \(timesheetViewModel.numberOfWorkWeeks + 1)")
-        return timesheetViewModel.numberOfWorkWeeks + 1
+        return timesheetViewModel.numberOfWorkWeeks + 2
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -93,8 +93,10 @@ extension EarningDetailViewController: UITableViewDataSource {
 
         let titleLabel = UILabel()
         
-        var sectionTitle = "Pay Period Total"
-        if (section > 0) {
+        var sectionTitle = ""
+        if (section == 0) {
+            sectionTitle = "Pay Period Total"
+        } else if (section > 0 && section < timesheetViewModel.numberOfWorkWeeks + 1) {
             sectionTitle = titleForWorkWeek(week: section-1)!
         }
         
@@ -109,70 +111,90 @@ extension EarningDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 3 : 4
+        switch section {
+            case 0: return 3
+            case timesheetViewModel.numberOfWorkWeeks + 1: return 1
+            default: return 4
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let paymentType = timesheetViewModel.currentEmploymentModel?.paymentType
         
         let earningCell = tableView.dequeueReusableCell(withIdentifier: EarningDetailTableViewCell.reuseIdentifier) as! EarningDetailTableViewCell
-        let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
+        let helpCell = tableView.dequeueReusableCell(withIdentifier: HelpTableViewCell.reuseIdentifier) as! HelpTableViewCell
+        
         let section = indexPath.section
         let row = indexPath.row
         
-        var title = ""
-        var totalTime = ""
-        
-        var belowMinimumWage = timesheetViewModel.isBelowMinimumWage()
+        let belowMinimumWage = timesheetViewModel.isBelowMinimumWage()
         
         if section == 0 {
             switch row {
             case 0:
                 earningCell.rateTitle.text = "Earnings"
                 earningCell.rateValue.text = timesheetViewModel.totalEarningsStr
+                earningCell.firstItem = true
+                earningCell.lastItem = false
                 
                 earningCell.configure(isTotalEarnings: true, isBelowMinimumWage: belowMinimumWage)
             case 1:
                 earningCell.rateTitle.text = "Straight Time"
                 earningCell.rateValue.text = timesheetViewModel.currentPeriod?.straightTimeAmountStr ?? "$0.00"
+                earningCell.firstItem = false
+                earningCell.lastItem = false
                 
                 earningCell.configure(isTotalEarnings: true, isBelowMinimumWage: belowMinimumWage)
             case 2:
                 earningCell.rateTitle.text = "Overtime"
                 earningCell.rateValue.text = timesheetViewModel.periodOvertimeAmountStr
-               
+                earningCell.firstItem = false
+                earningCell.lastItem = true
+                
                 earningCell.configure(isTotalEarnings: true, isBelowMinimumWage: belowMinimumWage)
             default:
                 break
             }
+        } else if (section == timesheetViewModel.numberOfWorkWeeks + 1) {
+            helpCell.setup()
+            return helpCell
         } else {
+            let workWeekViewModel = timesheetViewModel.workWeekViewModel(at: indexPath.section - 1)
+            
             switch row {
             case 0:
                 earningCell.rateTitle.text = "Earnings"
-                earningCell.rateValue.text = timesheetViewModel.totalEarningsStr
+                earningCell.rateValue.text = workWeekViewModel?.totalEarningsStr ?? "0.00"
+                earningCell.firstItem = true
+                earningCell.lastItem = false
                 
                 earningCell.configure(isTotalEarnings: true, isBelowMinimumWage: belowMinimumWage)
             case 1:
                 earningCell.rateTitle.text = "Straight Time"
                 earningCell.rateHintTitle.text = "(Hrs x Rate)"
-                earningCell.rateHint.text = "9 hrs x $1.00 = $9.00"
-                earningCell.rateValue.text = timesheetViewModel.currentPeriod?.straightTimeAmountStr ?? "$0.00"
+                earningCell.rateHint.text = workWeekViewModel?.straightTimeCalculationsStr ?? "9 hrs x $1.00 = $9.00"
+                earningCell.rateValue.text = workWeekViewModel?.straightTimeAmountStr ?? "0.00"
+                earningCell.firstItem = false
+                earningCell.lastItem = false
                 
                 earningCell.configure(isTotalEarnings: false, isBelowMinimumWage: belowMinimumWage)
             case 2:
                 earningCell.rateTitle.text = "Overtime"
                 earningCell.rateHintTitle.text = "(Rate x 0.5 x Hrs)"
-                earningCell.rateHint.text = "$3.00 / hr x 0.5 x 0 Hrs"
-                earningCell.rateValue.text = timesheetViewModel.periodOvertimeAmountStr
+                earningCell.rateHint.text = workWeekViewModel?.overtimeCalculationStr ?? "$3.00 / hr x 0.5 x 0 Hrs"
+                earningCell.rateValue.text = workWeekViewModel?.overtimeAmountStr
+                earningCell.firstItem = false
+                earningCell.lastItem = false
                 
                 earningCell.configure(isTotalEarnings: false, isBelowMinimumWage: belowMinimumWage)
             case 3:
                 earningCell.rateTitle.text = "Regular Rate of Pay"
                 earningCell.rateHintTitle.text = "(Straight Time Earnings / Hrs)"
-                earningCell.rateHint.text = "$54.00 / 18 Hrs = $3.00 / Hr"
-                earningCell.rateValue.text = "$7.25/hr"
-               
+                earningCell.rateHint.text = workWeekViewModel?.regularRateCalculationStr ?? "$54.00 / 18 Hrs = $3.00 / Hr"
+                earningCell.rateValue.text = workWeekViewModel?.regularRateStr ?? "$7.25/hr"
+                earningCell.firstItem = false
+                earningCell.lastItem = true
+                
                 earningCell.configure(isTotalEarnings: false, isBelowMinimumWage: belowMinimumWage)
             default:
                 break
@@ -198,6 +220,11 @@ extension EarningDetailViewController: UITableViewDataSource {
 //MARK : TableView DataSource Delegate
 extension EarningDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true) // Deselect the row after selection
+
+        if indexPath.section == timesheetViewModel.numberOfWorkWeeks + 1 {
+            performSegue(withIdentifier: "earningDetailHelpSegue", sender: self)
+        }
         
         return
     }

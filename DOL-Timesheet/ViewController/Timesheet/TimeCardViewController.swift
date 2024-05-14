@@ -142,7 +142,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
 //    }
 //
     func setupView() {
-        
+        ratePopupButton.setBorderColor(named: "cellActiveBorder")
         ratePopupButton.layer.borderWidth = 1.0
         ratePopupButton.layer.cornerRadius = 10.0
 

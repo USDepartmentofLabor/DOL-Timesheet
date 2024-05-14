@@ -36,7 +36,8 @@ class HelpDetailViewController: UIViewController {
         }
         
         details.textColor = UIColor(named: "valueActiveText")
-        details.font = UIFont.systemFont(ofSize: 17)
+        details.font = UIFont.systemFont(ofSize: 15)
+        details.scaleFont(forDataType: .glossaryText)
         setupAccessibility()
     }
     

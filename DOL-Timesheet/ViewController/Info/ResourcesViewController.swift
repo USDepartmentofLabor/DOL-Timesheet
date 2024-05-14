@@ -46,18 +46,25 @@ class ResourcesViewController: UIViewController, MFMailComposeViewControllerDele
     func setupView() {
         title = "contact_us".localized
 //        contactTitleLabel.scaleFont(forDataType: .resourcesTitleText)
-        phoneTextView1.scaleFont(forDataType: .resourcesText)
-        phoneTextView2.scaleFont(forDataType: .resourcesText)
-        phoneHoursLabel.scaleFont(forDataType: .contactUsLabel)
+        contactTitleLabel.scaleFont(forDataType: .glossaryTitle)
+        phoneTextView1.scaleFont(forDataType: .glossaryText)
+        phoneTextView2.scaleFont(forDataType: .glossaryText)
+        phoneHoursLabel.scaleFont(forDataType: .glossaryText)
 //        emailTextView.scaleFont(forDataType: .resourcesTitleText)
-        contactTextView.scaleFont(forDataType: .resourcesTitleText)
+        
+        contactTitleLabel2.scaleFont(forDataType: .glossaryTitle)
+        contactTextView.scaleFont(forDataType: .glossaryText)
 //        whdWebsiteTextView.scaleFont(forDataType: .resourcesTitleText)
         
 //        submitIssuesTitleLabel.scaleFont(forDataType: .resourcesTitleText)
-        webadminTextView.scaleFont(forDataType: .resourcesText)
-        gitHubTextView.scaleFont(forDataType: .resourcesText)
-        secondGitHubTextView.scaleFont(forDataType: .resourcesText)
-        servicesLabel.scaleFont(forDataType: .contactUsLabel)
+        webadminTextView.scaleFont(forDataType: .glossaryText)
+        gitHubTextView.scaleFont(forDataType: .glossaryText)
+        
+        submitIssuesTitleLabel.scaleFont(forDataType: .glossaryTitle)
+        
+        vistUsLabel.scaleFont(forDataType: .glossaryTitle)
+        secondGitHubTextView.scaleFont(forDataType: .glossaryText)
+        servicesLabel.scaleFont(forDataType: .glossaryText)
         
         phoneTextView1.textContainerInset = UIEdgeInsets.zero
         phoneTextView1.textContainer.lineFragmentPadding = 0

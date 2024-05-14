@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class WeeklySummaryViewController: UIViewController, TimeViewDelegate, TimePickerProtocol {
+class WeeklySummaryViewController: UIViewController {
 
     @IBOutlet weak var weeklyTableView: UITableView!
 
@@ -55,17 +55,21 @@ class WeeklySummaryViewController: UIViewController, TimeViewDelegate, TimePicke
         
        // displayTotals()
     }
-
-    func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
-        return
-    }
     
-    @IBAction func payPeriodPressed(_ sender: Any) {
+    func makeBold(input: String) -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: input)
         
-    }
-    
-    func donePressed() {
+        // Apply bold style to digits, dollar sign, and period
+        for i in 0..<input.count {
+            let index = input.index(input.startIndex, offsetBy: i)
+            let c = input[index]
+            
+            if c.isNumber || c == "$" || c == "." {
+                attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: UIFont.systemFontSize), range: NSRange(location: i, length: 1))
+            }
+        }
         
+        return attributedString
     }
 }
 
@@ -126,18 +130,16 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             // Section Identifies Work Week
             // Row - 1 Identifies rate to get total for and set hrs / mins
             
+            title = "payment_type_salary".localized
+            totalTime = "xx hrs xx mins"
+            
             if timesheetViewModel.currentEmploymentModel?.paymentType == .hourly {
+                title = "Rate Title"
+                totalTime = "xx hrs xx mins"
                 if let rate = timesheetViewModel.currentEmploymentModel?.hourlyRates?[row-1] {
                     title = rate.title
                     totalTime = calcRateHoursWorked(weekIndex: section, rate: rate)
-                } else {
-                    title = "Rate Title"
-                    totalTime = "xx hrs xx mins"
                 }
-            } else {
-                let salary = timesheetViewModel.currentEmploymentModel?.salary
-                title = "payment_type_salary".localized
-                totalTime = "xx hrs xx mins"
             }
             hourlyCell.firstItem = false
             hourlyCell.lastItem = false
@@ -163,7 +165,15 @@ extension WeeklySummaryViewController: UITableViewDataSource {
         }
         
         hourlyCell.rateName.text = title
-        hourlyCell.totalTime.text = totalTime
+        
+        if row == 0 {
+            let attributedString = NSMutableAttributedString(string: title)
+            let range = NSRange(location: 0, length: attributedString.length)
+            attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: UIFont.systemFontSize), range: range)
+            hourlyCell.rateName.attributedText = attributedString
+        }
+        
+        hourlyCell.totalTime.attributedText = makeBold(input: totalTime)
         hourlyCell.totalTime.textColor = UIColor(named: "purpleColor")
         
         hourlyCell.addborder()
