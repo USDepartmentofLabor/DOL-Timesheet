@@ -3325,35 +3325,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5C4-dA-bIH">
-                                <rect key="frame" x="20" y="8" width="374" height="797"/>
-                                <color key="backgroundColor" name="timesheetBackgroundColor"/>
-                                <color key="sectionIndexBackgroundColor" name="timesheetBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="132" id="Gpl-Xo-GnP">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="132"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gpl-Xo-GnP" id="pHs-Fu-6Vo">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="132"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" name="timesheetSubviewColor"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" name="timesheetSubviewColor"/>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="3cb-Cm-1I9" id="muV-GM-NEu"/>
-                                    <outlet property="delegate" destination="3cb-Cm-1I9" id="FEy-Ug-jmb"/>
-                                </connections>
-                            </tableView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZ9-IV-aeE">
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-Hm-nX5">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="0.0" placeholderIntrinsicHeight="797" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5C4-dA-bIH" customClass="SelfSizedTableView" customModule="Timesheet" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="8" width="398" height="797"/>
+                                                <color key="backgroundColor" name="timesheetBackgroundColor"/>
+                                                <color key="sectionIndexBackgroundColor" name="timesheetBackgroundColor"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="132" id="Gpl-Xo-GnP">
+                                                        <rect key="frame" x="0.0" y="50" width="398" height="132"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gpl-Xo-GnP" id="pHs-Fu-6Vo">
+                                                            <rect key="frame" x="0.0" y="0.0" width="398" height="132"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <color key="backgroundColor" name="timesheetSubviewColor"/>
+                                                        </tableViewCellContentView>
+                                                        <color key="backgroundColor" name="timesheetSubviewColor"/>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="3cb-Cm-1I9" id="muV-GM-NEu"/>
+                                                    <outlet property="delegate" destination="3cb-Cm-1I9" id="FEy-Ug-jmb"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" name="timesheetBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="5C4-dA-bIH" secondAttribute="bottom" constant="8" id="8tz-NK-lqz"/>
+                                            <constraint firstItem="5C4-dA-bIH" firstAttribute="top" secondItem="vCR-Hm-nX5" secondAttribute="top" constant="8" id="ZoP-Uz-fXh"/>
+                                            <constraint firstItem="5C4-dA-bIH" firstAttribute="leading" secondItem="vCR-Hm-nX5" secondAttribute="leading" constant="8" id="nEL-o7-rzf"/>
+                                            <constraint firstAttribute="trailing" secondItem="5C4-dA-bIH" secondAttribute="trailing" constant="8" id="wnu-0A-qKR"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="vCR-Hm-nX5" firstAttribute="trailing" secondItem="C81-lh-YKv" secondAttribute="trailing" id="F7J-Wn-JZF"/>
+                                    <constraint firstItem="vCR-Hm-nX5" firstAttribute="width" secondItem="Z9O-GR-iDR" secondAttribute="width" id="I7Y-Le-8Wt"/>
+                                    <constraint firstItem="vCR-Hm-nX5" firstAttribute="leading" secondItem="C81-lh-YKv" secondAttribute="leading" id="a7O-FZ-g1E"/>
+                                    <constraint firstItem="C81-lh-YKv" firstAttribute="bottom" secondItem="vCR-Hm-nX5" secondAttribute="bottom" id="eWe-zr-TZf"/>
+                                    <constraint firstItem="vCR-Hm-nX5" firstAttribute="top" secondItem="C81-lh-YKv" secondAttribute="top" id="szW-sn-jpC"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="C81-lh-YKv"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Z9O-GR-iDR"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fT0-NR-mcl"/>
                         <color key="backgroundColor" name="timesheetBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5C4-dA-bIH" firstAttribute="top" secondItem="qd5-ee-Vvj" secondAttribute="top" constant="8" id="BeN-d8-wnE"/>
-                            <constraint firstItem="fT0-NR-mcl" firstAttribute="bottom" secondItem="5C4-dA-bIH" secondAttribute="bottom" constant="8" id="Dim-Vz-5NL"/>
-                            <constraint firstItem="fT0-NR-mcl" firstAttribute="trailing" secondItem="5C4-dA-bIH" secondAttribute="trailing" constant="20" id="Loo-Hu-REF"/>
-                            <constraint firstItem="5C4-dA-bIH" firstAttribute="leading" secondItem="fT0-NR-mcl" secondAttribute="leading" constant="20" id="oge-aw-lAp"/>
+                            <constraint firstItem="fT0-NR-mcl" firstAttribute="trailing" secondItem="pZ9-IV-aeE" secondAttribute="trailing" id="FcC-vc-Amh"/>
+                            <constraint firstItem="pZ9-IV-aeE" firstAttribute="top" secondItem="fT0-NR-mcl" secondAttribute="top" id="XfD-PD-vO1"/>
+                            <constraint firstItem="pZ9-IV-aeE" firstAttribute="leading" secondItem="fT0-NR-mcl" secondAttribute="leading" id="vUv-Ok-WyD"/>
+                            <constraint firstItem="pZ9-IV-aeE" firstAttribute="bottom" secondItem="fT0-NR-mcl" secondAttribute="bottom" id="ykG-hD-oEI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Earnings Detail" id="dnP-nL-8CV">
@@ -3369,7 +3395,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCz-i7-SeE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="KUC-4k-6Sr"/>
             </objects>
-            <point key="canvasLocation" x="-494" y="-2641"/>
+            <point key="canvasLocation" x="-494.20289855072468" y="-2641.0714285714284"/>
         </scene>
         <!--Weekly Summary-->
         <scene sceneID="x42-hN-CQr">
@@ -3379,35 +3405,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pze-6V-0Ra">
-                                <rect key="frame" x="20" y="100" width="374" height="705"/>
-                                <color key="backgroundColor" name="timesheetBackgroundColor"/>
-                                <color key="sectionIndexBackgroundColor" name="timesheetBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="132" id="bul-wL-fDU">
-                                        <rect key="frame" x="0.0" y="50" width="374" height="132"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bul-wL-fDU" id="Csa-RH-orH">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="132"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" name="timesheetSubviewColor"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" name="timesheetSubviewColor"/>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="THZ-Xp-jbU" id="4er-QN-Kbt"/>
-                                    <outlet property="delegate" destination="THZ-Xp-jbU" id="csQ-uu-swl"/>
-                                </connections>
-                            </tableView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDE-Ql-9mC">
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lc1-Ti-eXp" userLabel="ScrollContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="516"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="500" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pze-6V-0Ra" customClass="SelfSizedTableView" customModule="Timesheet" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="8" width="398" height="500"/>
+                                                <color key="backgroundColor" name="timesheetBackgroundColor"/>
+                                                <color key="sectionIndexBackgroundColor" name="timesheetBackgroundColor"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="132" id="bul-wL-fDU">
+                                                        <rect key="frame" x="0.0" y="50" width="398" height="132"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bul-wL-fDU" id="Csa-RH-orH">
+                                                            <rect key="frame" x="0.0" y="0.0" width="398" height="132"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <color key="backgroundColor" name="timesheetSubviewColor"/>
+                                                        </tableViewCellContentView>
+                                                        <color key="backgroundColor" name="timesheetSubviewColor"/>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="THZ-Xp-jbU" id="4er-QN-Kbt"/>
+                                                    <outlet property="delegate" destination="THZ-Xp-jbU" id="csQ-uu-swl"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" name="timesheetBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Pze-6V-0Ra" firstAttribute="top" secondItem="Lc1-Ti-eXp" secondAttribute="top" constant="8" id="2cm-dJ-2sj"/>
+                                            <constraint firstAttribute="trailing" secondItem="Pze-6V-0Ra" secondAttribute="trailing" constant="8" id="9OT-Cn-Snn"/>
+                                            <constraint firstAttribute="bottom" secondItem="Pze-6V-0Ra" secondAttribute="bottom" constant="8" id="bw6-Xv-eMo"/>
+                                            <constraint firstItem="Pze-6V-0Ra" firstAttribute="leading" secondItem="Lc1-Ti-eXp" secondAttribute="leading" constant="8" id="rKg-a4-aKZ"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Lc1-Ti-eXp" firstAttribute="leading" secondItem="zx7-om-Qf3" secondAttribute="leading" id="GEs-fB-xg1"/>
+                                    <constraint firstItem="Lc1-Ti-eXp" firstAttribute="trailing" secondItem="zx7-om-Qf3" secondAttribute="trailing" id="K7W-Gt-8Aj"/>
+                                    <constraint firstItem="Lc1-Ti-eXp" firstAttribute="bottom" secondItem="zx7-om-Qf3" secondAttribute="bottom" id="hoX-0r-xt6"/>
+                                    <constraint firstItem="Lc1-Ti-eXp" firstAttribute="width" secondItem="SFn-cd-SXs" secondAttribute="width" id="uL2-gN-Juu"/>
+                                    <constraint firstItem="Lc1-Ti-eXp" firstAttribute="top" secondItem="zx7-om-Qf3" secondAttribute="top" id="wqg-G1-hnF"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="zx7-om-Qf3"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="SFn-cd-SXs"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WMz-XY-ppl"/>
                         <color key="backgroundColor" name="timesheetBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Pze-6V-0Ra" firstAttribute="top" secondItem="WMz-XY-ppl" secondAttribute="top" constant="8" id="Qjh-AF-3h1"/>
-                            <constraint firstItem="WMz-XY-ppl" firstAttribute="bottom" secondItem="Pze-6V-0Ra" secondAttribute="bottom" constant="8" id="X3t-Gk-jZf"/>
-                            <constraint firstItem="Pze-6V-0Ra" firstAttribute="leading" secondItem="WMz-XY-ppl" secondAttribute="leading" constant="20" id="pyq-8E-rI9"/>
-                            <constraint firstItem="WMz-XY-ppl" firstAttribute="trailing" secondItem="Pze-6V-0Ra" secondAttribute="trailing" constant="20" id="wmA-ok-M99"/>
+                            <constraint firstItem="MDE-Ql-9mC" firstAttribute="leading" secondItem="WMz-XY-ppl" secondAttribute="leading" id="3nx-g8-eKg"/>
+                            <constraint firstItem="WMz-XY-ppl" firstAttribute="bottom" secondItem="MDE-Ql-9mC" secondAttribute="bottom" id="5hL-2R-dL0"/>
+                            <constraint firstItem="WMz-XY-ppl" firstAttribute="trailing" secondItem="MDE-Ql-9mC" secondAttribute="trailing" id="6Dc-2i-eT7"/>
+                            <constraint firstItem="MDE-Ql-9mC" firstAttribute="top" secondItem="WMz-XY-ppl" secondAttribute="top" id="Q9n-KT-1Ng"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Weekly Summary" id="2CD-8s-knY">
@@ -3419,7 +3471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewK-eZ-Bxf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-494" y="-1983"/>
+            <point key="canvasLocation" x="-494.20289855072468" y="-1983.4821428571427"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
