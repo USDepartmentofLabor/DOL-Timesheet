@@ -127,7 +127,16 @@ extension EarningDetailViewController: UITableViewDataSource {
         let section = indexPath.section
         let row = indexPath.row
         
-        let belowMinimumWage = timesheetViewModel.isBelowMinimumWage()
+        var belowMinimumWage: Bool
+        
+        if timesheetViewModel.currentEmploymentModel?.paymentType == .salary {
+            belowMinimumWage = timesheetViewModel.isBelowSalaryWeeklyWage()
+        } else {
+            belowMinimumWage = timesheetViewModel.isBelowMinimumWage()
+        }
+        
+        earningCell.minimumWarningTitle.text = "minimum_wage_warning".localized
+
         
         if section == 0 {
             switch row {
@@ -137,21 +146,21 @@ extension EarningDetailViewController: UITableViewDataSource {
                 earningCell.firstItem = true
                 earningCell.lastItem = false
                 
-                earningCell.configure(isTotalEarnings: true, isBelowMinimumWage: belowMinimumWage)
+                earningCell.configure(isTotalEarnings: true, hasWarning: true, warningEnabled: belowMinimumWage)
             case 1:
                 earningCell.rateTitle.text = "Straight Time"
                 earningCell.rateValue.text = timesheetViewModel.currentPeriod?.straightTimeAmountStr ?? "$0.00"
                 earningCell.firstItem = false
                 earningCell.lastItem = false
                 
-                earningCell.configure(isTotalEarnings: true, isBelowMinimumWage: belowMinimumWage)
+                earningCell.configure(isTotalEarnings: true)
             case 2:
                 earningCell.rateTitle.text = "Overtime"
                 earningCell.rateValue.text = timesheetViewModel.periodOvertimeAmountStr
                 earningCell.firstItem = false
                 earningCell.lastItem = true
                 
-                earningCell.configure(isTotalEarnings: true, isBelowMinimumWage: belowMinimumWage)
+                earningCell.configure(isTotalEarnings: true)
             default:
                 break
             }
@@ -168,7 +177,7 @@ extension EarningDetailViewController: UITableViewDataSource {
                 earningCell.firstItem = true
                 earningCell.lastItem = false
                 
-                earningCell.configure(isTotalEarnings: true, isBelowMinimumWage: belowMinimumWage)
+                earningCell.configure(isTotalEarnings: true)
             case 1:
                 earningCell.rateTitle.text = "Straight Time"
                 earningCell.rateHintTitle.text = "(Hrs x Rate)"
@@ -177,7 +186,7 @@ extension EarningDetailViewController: UITableViewDataSource {
                 earningCell.firstItem = false
                 earningCell.lastItem = false
                 
-                earningCell.configure(isTotalEarnings: false, isBelowMinimumWage: belowMinimumWage)
+                earningCell.configure(isTotalEarnings: false)
             case 2:
                 earningCell.rateTitle.text = "Overtime"
                 earningCell.rateHintTitle.text = "(Rate x 0.5 x Hrs)"
@@ -186,7 +195,7 @@ extension EarningDetailViewController: UITableViewDataSource {
                 earningCell.firstItem = false
                 earningCell.lastItem = false
                 
-                earningCell.configure(isTotalEarnings: false, isBelowMinimumWage: belowMinimumWage)
+                earningCell.configure(isTotalEarnings: false)
             case 3:
                 earningCell.rateTitle.text = "Regular Rate of Pay"
                 earningCell.rateHintTitle.text = "(Straight Time Earnings / Hrs)"
@@ -195,7 +204,7 @@ extension EarningDetailViewController: UITableViewDataSource {
                 earningCell.firstItem = false
                 earningCell.lastItem = true
                 
-                earningCell.configure(isTotalEarnings: false, isBelowMinimumWage: belowMinimumWage)
+                earningCell.configure(isTotalEarnings: false, hasWarning: true, warningEnabled: belowMinimumWage)
             default:
                 break
             }
@@ -207,7 +216,6 @@ extension EarningDetailViewController: UITableViewDataSource {
     func calcRateHoursWorked(weekIndex: Int, rate: HourlyRate)-> String {
         
         guard let workWeek = timesheetViewModel.currentPeriod?.workWeeks[weekIndex] else { return "xx hrs xx min" }
-        let workWeekDaysInPeriod = workWeek.days
         
         var totalRateHours = 0
         workWeek.days.forEach {

@@ -22,6 +22,12 @@ class EarningDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var minimumWarningTitle: UILabel!
     @IBOutlet weak var minimumWarningValue: UILabel!
     
+    @IBOutlet weak var rateHintTitleHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var rateHintHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mimimumWarningHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var minimumWarningValueHeightConstraint: NSLayoutConstraint!
+    
+    
     var firstItem: Bool = false
     var lastItem: Bool = false
     
@@ -34,7 +40,6 @@ class EarningDetailTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,39 +55,39 @@ class EarningDetailTableViewCell: UITableViewCell {
         bottomBackgroundView.clipsToBounds = true
     }
     
-    public func configure(isTotalEarnings: Bool = false, isBelowMinimumWage: Bool = false) {
+    public func configure(isTotalEarnings: Bool = false, hasWarning: Bool = false, warningEnabled: Bool = false) {
         self.addborder()
         
-        if isTotalEarnings {
-            setupTotalEarning(warning: isBelowMinimumWage)
-            return
-        }
-        setupEarningPeriod(warning: isBelowMinimumWage)
-    }
-    
-    private func setupTotalEarning(warning: Bool) {
+        minimumWarningTitle.text = "minimum_wage_warning".localized
+        
         rateHintTitle.isHidden = true
         rateHint.isHidden = true
-        minimumWarningTitle.isHidden = true
-        minimumWarningValue.isHidden = true
         
-        if warning {
-            minimumWarningTitle.isHidden = false
+        mimimumWarningHeightConstraint.isActive = true
+        mimimumWarningHeightConstraint.constant = 0
+        minimumWarningValueHeightConstraint.constant = 0
+        
+        
+        if isTotalEarnings {
+            
+            if hasWarning && warningEnabled {
+                mimimumWarningHeightConstraint.isActive = false
+                minimumWarningValueHeightConstraint.constant = 12
+            }
+            
+            contentView.layoutIfNeeded()
+            return
         }
         
-    }
-    
-    private func setupEarningPeriod(warning: Bool) {
         rateHintTitle.isHidden = false
         rateHint.isHidden = false
-        minimumWarningTitle.isHidden = true
-        minimumWarningValue.isHidden = true
         
-        if warning {
-            minimumWarningTitle.isHidden = false
-            minimumWarningValue.isHidden = false
+        if hasWarning && warningEnabled {
+            mimimumWarningHeightConstraint.isActive = false
+            minimumWarningValueHeightConstraint.constant = 12
         }
         
+        contentView.layoutIfNeeded()
     }
     
 }
