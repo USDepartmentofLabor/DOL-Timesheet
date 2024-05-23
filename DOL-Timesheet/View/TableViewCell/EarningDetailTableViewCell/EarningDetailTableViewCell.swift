@@ -61,6 +61,8 @@ class EarningDetailTableViewCell: UITableViewCell {
         minimumWarningTitle.text = "minimum_wage_warning".localized
         
         rateHintTitle.isHidden = true
+        rateHintTitleHeightConstraint.constant = 0
+        rateHintTitleHeightConstraint.isActive = true
         rateHint.isHidden = true
         
         mimimumWarningHeightConstraint.isActive = true
@@ -80,6 +82,7 @@ class EarningDetailTableViewCell: UITableViewCell {
         }
         
         rateHintTitle.isHidden = false
+        rateHintTitleHeightConstraint.constant = 15
         rateHint.isHidden = false
         
         if hasWarning && warningEnabled {

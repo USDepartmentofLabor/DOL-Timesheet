@@ -89,7 +89,7 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         employerButton.tintColor = UIColor(named: "onboardEmployerButtonColor")
         employerButton.setBorderColor(named: "onboardEmployerButtonColor")
         employeeButton.tintColor = .white
-        employeeButton.setBorderColor(named: "greenColor")
+        employeeButton.setBorderColor(named: "lightGreenColor")
         
         if let employee = profileViewModel!.profileModel.currentUser as? Employee {
             changeToEmployer(employee: employee)
@@ -106,8 +106,8 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         
         employerButton.tintColor = .white
         employerButton.setBorderColor(named: "onboardEmployerButtonColor")
-        employeeButton.tintColor = UIColor(named: "greenColor")
-        employeeButton.setBorderColor(named: "greenColor")
+        employeeButton.tintColor = UIColor(named: "lightGreenColor")
+        employeeButton.setBorderColor(named: "lightGreenColor")
         
         if let employer = profileViewModel?.profileModel.currentUser as? Employer {
             changeToEmployee(employer: employer)

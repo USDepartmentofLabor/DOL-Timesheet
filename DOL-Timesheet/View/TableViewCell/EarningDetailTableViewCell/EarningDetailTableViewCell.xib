@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,17 +19,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Occ-ow-EQU">
-                        <rect key="frame" x="0.0" y="0.0" width="340" height="35"/>
+                        <rect key="frame" x="0.0" y="0.0" width="340" height="40"/>
                         <color key="backgroundColor" name="timesheetSubviewColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="35" id="oGU-8f-h3y"/>
+                            <constraint firstAttribute="height" constant="40" id="oGU-8f-h3y"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dqA-PO-A5q">
-                        <rect key="frame" x="0.0" y="35" width="340" height="35"/>
+                        <rect key="frame" x="0.0" y="30" width="340" height="40"/>
                         <color key="backgroundColor" name="timesheetSubviewColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="35" id="T6R-bh-6Xm"/>
+                            <constraint firstAttribute="height" constant="40" id="T6R-bh-6Xm"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="TOTAL HOURS WORKED" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZu-PJ-S8D">
@@ -48,9 +48,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x hrs x $x.00 = $x.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kob-IZ-Dcs">
-                        <rect key="frame" x="8" y="23.666666666666668" width="93" height="15.333333333333332"/>
+                        <rect key="frame" x="8" y="23.666666666666668" width="93" height="15.000000000000004"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="15.33" id="WNV-j0-Ixm"/>
+                            <constraint firstAttribute="height" constant="15" id="WNV-j0-Ixm"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <color key="textColor" name="valueInactiveText"/>
@@ -63,7 +63,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="749" text="Your pay rate appears to be below the Federal Minimum Wage" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0u-si-bn9" userLabel="Minimum Warning">
-                        <rect key="frame" x="8" y="39" width="225" height="24"/>
+                        <rect key="frame" x="8" y="38.666666666666664" width="225" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="ltt-SL-XgU"/>
                             <constraint firstAttribute="width" constant="225" id="mWM-hY-Rkj"/>
@@ -73,7 +73,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7.25/hr" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcN-aG-2r8">
-                        <rect key="frame" x="298.66666666666669" y="45" width="33.333333333333314" height="12"/>
+                        <rect key="frame" x="298.66666666666669" y="44.666666666666664" width="33.333333333333314" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="r6B-Pl-tEE"/>
                         </constraints>
@@ -86,19 +86,19 @@
                 <constraints>
                     <constraint firstItem="kob-IZ-Dcs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="40y-q7-QV3"/>
                     <constraint firstItem="ZcN-aG-2r8" firstAttribute="centerY" secondItem="E0u-si-bn9" secondAttribute="centerY" id="4BS-dd-G3h"/>
-                    <constraint firstItem="E0u-si-bn9" firstAttribute="top" secondItem="kob-IZ-Dcs" secondAttribute="bottom" id="Jat-uy-HaJ"/>
                     <constraint firstItem="Occ-ow-EQU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NyL-2j-fq0"/>
                     <constraint firstItem="KZu-PJ-S8D" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Qc8-Zi-xen"/>
+                    <constraint firstItem="E0u-si-bn9" firstAttribute="top" secondItem="kob-IZ-Dcs" secondAttribute="bottom" constant="-7.1054273576010019e-15" id="Usb-fg-XBr"/>
                     <constraint firstItem="KZu-PJ-S8D" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="X3I-KB-ibW"/>
                     <constraint firstItem="kob-IZ-Dcs" firstAttribute="top" secondItem="KZu-PJ-S8D" secondAttribute="bottom" id="Zw6-bI-DWh"/>
                     <constraint firstItem="Occ-ow-EQU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="aw1-uM-F6X"/>
                     <constraint firstItem="dqA-PO-A5q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="cfD-ad-kQY"/>
                     <constraint firstAttribute="trailing" secondItem="dqA-PO-A5q" secondAttribute="trailing" id="feO-1N-qC8"/>
-                    <constraint firstAttribute="bottom" secondItem="E0u-si-bn9" secondAttribute="bottom" constant="7" id="fzO-06-fjm"/>
                     <constraint firstItem="A5o-lm-bMt" firstAttribute="leading" secondItem="KZu-PJ-S8D" secondAttribute="trailing" constant="7.6699999999999999" id="hNh-Vg-QMD"/>
                     <constraint firstItem="A5o-lm-bMt" firstAttribute="centerY" secondItem="KZu-PJ-S8D" secondAttribute="centerY" id="j8U-Nq-21r"/>
                     <constraint firstAttribute="bottom" secondItem="dqA-PO-A5q" secondAttribute="bottom" id="mQt-Qw-9Be"/>
                     <constraint firstItem="E0u-si-bn9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="qbZ-El-pLV"/>
+                    <constraint firstAttribute="bottom" secondItem="E0u-si-bn9" secondAttribute="bottom" constant="7.3333333333333357" id="soC-4b-Ycj"/>
                     <constraint firstAttribute="trailing" secondItem="qQC-06-enL" secondAttribute="trailing" constant="8" id="vE9-8x-Qsh"/>
                     <constraint firstItem="qQC-06-enL" firstAttribute="centerY" secondItem="KZu-PJ-S8D" secondAttribute="centerY" id="viW-Vh-fLh"/>
                     <constraint firstAttribute="trailing" secondItem="ZcN-aG-2r8" secondAttribute="trailing" constant="8" id="x5K-Ep-DAc"/>
