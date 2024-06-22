@@ -17,6 +17,7 @@ protocol OnboardingProtocol: AnyObject {
 }
 
 class OnboardBaseViewController: UIViewController {
+    public var firstUse: Bool = true
     let updatedDBVersion = "UpdatedDBVersion"
     var isWizard: Bool = false
     var userType: UserType = .employee

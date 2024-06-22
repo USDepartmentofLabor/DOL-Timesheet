@@ -23,6 +23,7 @@ class OnboardPageViewController: UIPageViewController {
     }()
     
     public var currentVC: OnboardBaseViewController?
+    public var firstUse: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,14 @@ class OnboardPageViewController: UIPageViewController {
                     }
                 }
             }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        orderedViewControllers.forEach { vc in
+            vc.firstUse = self.firstUse
+        }
     }
     
     func resetData() {

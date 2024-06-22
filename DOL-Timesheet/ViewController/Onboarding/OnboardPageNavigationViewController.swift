@@ -37,6 +37,8 @@ class OnboardPageNavigationViewController: UIViewController {
     var currentPage = 0
     var maxPageVisited = 0
     
+    public var firstUse: Bool = true
+    
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     
@@ -45,6 +47,7 @@ class OnboardPageNavigationViewController: UIViewController {
     var onboardPageViewController: OnboardPageViewController? {
         didSet {
             onboardPageViewController?.onboardDelegate = self
+            onboardPageViewController?.firstUse = self.firstUse
         }
     }
     

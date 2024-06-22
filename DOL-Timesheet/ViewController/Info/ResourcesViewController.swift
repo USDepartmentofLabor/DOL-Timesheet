@@ -165,6 +165,18 @@ class ResourcesViewController: UIViewController, MFMailComposeViewControllerDele
         UIApplication.shared.open(url)
     }
     
+    @IBAction func newUserWizard(_ sender: Any) {
+        performSegue(withIdentifier: "showOnboard", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showOnboard",
+            let onboardPageViewController = segue.destination as? OnboardPageNavigationViewController  {
+            onboardPageViewController.firstUse = false
+        }
+    }
+    
     @IBAction func copyDatabase(_ sender: Any) {
 //        let fileName1 = "DOL_Timesheet.sqlite"
 //        let fileName2 = "DOL_Timesheet.sqlite-shm"

@@ -59,6 +59,8 @@ class EnterTimeSoftenViewController: UIViewController {
     var breakTime: TimeInterval = 0.0
     var endTime: Date?
     var comment: String = ""
+    
+    var isCancelled: Bool = true
 
     var timeLogEntry: TimeLog?
 
@@ -78,25 +80,37 @@ class EnterTimeSoftenViewController: UIViewController {
         super.viewWillAppear(animated)
         UIBarButtonItem.appearance().setTitleTextAttributes(nil, for: .normal)
         
+        isCancelled = true
         setupView()
         displayInfo()
+        
+        setupRatePopupButton()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
-
+        setupRatePopupButton()
         
         if timeLogEntry != nil {
             setupTimeLog()
         } else {
-            selectedRate = 0
+            selectedRate = EnterTimeForm.shared.rateIndex
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        timeLog = nil
+        if !isCancelled {
+            EnterTimeForm.shared.timelogForm = timeLog
+            EnterTimeForm.shared.rateIndex = selectedRate ?? 0
+            EnterTimeForm.shared.startTimeForm = startTime
+            EnterTimeForm.shared.breakTimeForm = breakTime
+            EnterTimeForm.shared.endTimeForm = endTime
+            EnterTimeForm.shared.commentForm = comment
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -183,6 +197,10 @@ class EnterTimeSoftenViewController: UIViewController {
         
 //        commentTextView.delegate = self
         
+        if timeLog == nil {
+            timeLog = EnterTimeForm.shared.timelogForm
+        }
+        
         if let safeTimeLog = timeLog {
             startTime = safeTimeLog.startTime
             breakTime = safeTimeLog.totalBreakTime 
@@ -194,6 +212,8 @@ class EnterTimeSoftenViewController: UIViewController {
             endTime = nil
             comment = ""
         }
+        
+        checkForm()
         
         startTimeErrorMessage.text = ""
         breakTimeErrorMessage.text = ""
@@ -214,6 +234,26 @@ class EnterTimeSoftenViewController: UIViewController {
         setupEmploymentPopupButton()
         setupRatePopupButton()
         setupAccessibility()
+    }
+    
+    func checkForm() {
+        
+        
+        if (EnterTimeForm.shared.rateIndex != 0) {
+            selectedRate = EnterTimeForm.shared.rateIndex
+        }
+        if (EnterTimeForm.shared.startTimeForm != nil) {
+            startTime = EnterTimeForm.shared.startTimeForm
+        }
+        if (EnterTimeForm.shared.breakTimeForm != nil) {
+            breakTime = EnterTimeForm.shared.breakTimeForm!
+        }
+        if (EnterTimeForm.shared.endTimeForm != nil) {
+            endTime = EnterTimeForm.shared.endTimeForm
+        }
+        if (EnterTimeForm.shared.commentForm != nil) {
+            comment = EnterTimeForm.shared.commentForm!
+        }
     }
     
     func setupTimeView() {
@@ -339,6 +379,7 @@ class EnterTimeSoftenViewController: UIViewController {
             }
             
             let action = UIAction(title: option.title, state: state, handler: {_ in
+                self.selectedRate = index
                 self.currentHourlyRate = option
             })
             menuActions.append(action)
@@ -421,6 +462,8 @@ class EnterTimeSoftenViewController: UIViewController {
     }
 
     @objc func cancel(_ sender: Any?) {
+        isCancelled = true
+        EnterTimeForm.shared.clear()
         delegate?.didCancelEnterTime()
         navigationController?.popViewController(animated: true)
     }
@@ -501,6 +544,7 @@ class EnterTimeSoftenViewController: UIViewController {
 
         delegate?.didEnterTime(enterTimeModel: enterTimeViewModel)
         navigationController?.popViewController(animated: true)
+        isCancelled = true
         
         if let tabBarController = self.tabBarController {
             tabBarController.selectedIndex = 1 // 1 corresponds to the second tab, index starts from 0
@@ -636,6 +680,7 @@ extension EnterTimeSoftenViewController {
         
         if segue.identifier == "newTimeHelpScreen",
             let helpVC = segue.destination as? HelpTableViewController {
+            isCancelled = false
             helpVC.helpItems = [
                 HelpItem(
                     title: "info_break_time_title".localized,
@@ -744,5 +789,27 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
     
     func showAlert(sender: Any?, alertController: UIAlertController) {
         present(alertController, animated: false)
+    }
+}
+
+
+class EnterTimeForm {
+    static let shared = EnterTimeForm()
+    var timelogForm: TimeLog?
+    var rateIndex: Int = 0
+    var dateForm: Date?
+    var startTimeForm: Date?
+    var breakTimeForm: TimeInterval?
+    var endTimeForm: Date?
+    var commentForm: String?
+    
+    func clear() {
+        timelogForm = nil
+        rateIndex = 0
+        dateForm = nil
+        startTimeForm = nil
+        breakTimeForm = nil
+        endTimeForm = nil
+        commentForm = nil
     }
 }

@@ -96,10 +96,21 @@ class OnboardSummaryViewController: OnboardBaseViewController {
     }
     
     @IBAction func letsGoPressed(_ sender: Any) {
-        employmentModel?.save()
-        timeSheetDelegate?.didUpdateEmploymentInfo()
-       // delegate?.didUpdateUser()
-        dismiss(animated: true, completion: nil)
+        
+        if self.firstUse  {
+            employmentModel?.save()
+            timeSheetDelegate?.didUpdateEmploymentInfo()
+            dismiss(animated: true, completion: nil)
+        } else {
+            let alertController = UIAlertController(title: "New User Wizard Test Mode",
+                                                    message: "The changes will not be saved and the app will now close to ensure data consistency.",
+                                                    preferredStyle: .alert)
+            alertController.addAction(
+                UIAlertAction(title: "Ok", style: .destructive) { _ in
+                    exit(0)
+            })
+            present(alertController, animated: true)
+        }
     }
     
     func boldily(_ start: String, _ middle: String, _ end: String)-> NSMutableAttributedString {
