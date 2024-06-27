@@ -10,9 +10,19 @@ import UIKit
 
 class MyProfileViewController: UIViewController {
     
+    @IBOutlet weak var employmentLabel: UILabel!
+    @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var profileView: UIView!
     
-    var isWizard: Bool = false
-    lazy var profileViewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
+    @IBOutlet weak var employmentTable: UITableView!
+    @IBOutlet weak var employmentTableHeightConstraint: NSLayoutConstraint!
+        
+    var profileViewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,89 +37,98 @@ class MyProfileViewController: UIViewController {
     
     func setupView() {
         navigationItem.hidesBackButton = true
+        userLabel.text = profileViewModel.profileModel.currentUser?.name
         
-        
-        setupAccessibility()
-        
-        displayInfo()
-    }
-    
-    func setupAccessibility() {
-        
-    }
-    
-    func displayInfo() {
-        guard let profileUser = profileViewModel.profileModel.currentUser else {
-            
-            profileType = .employee
-            isWizard = true
-            
-            // if OldDB exists and hasn't been imported
-            let versionUpdated = UserDefaults.standard.bool(forKey: updatedDBVersion)
-            if versionUpdated == false, ImportDBService.dbExists {
-                employerBtn.setTitleColor(.lightGray, for: .disabled)
-                employerBtn.isEnabled = false
-                employerBtn.isAccessibilityElement = false
-                employeeEmployerInfoView.infoType = .importDBEmployee
-            }
-            setupLabels()
-            return
+        employmentLabel.text = "employee".localized
+        if profileViewModel.isProfileEmployer {
+            employmentLabel.text = "employer".localized
         }
-        setupLabels()
+    }
+}
 
-        employeeEmployerInfoView.infoType = .employee_Employer
-        headerView.removeFromSuperview()
-        footerView.removeFromSuperview()
-        
-//        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelClicked(_:)))
-//        navigationItem.leftBarButtonItem = cancelBtn
-//
-//        let saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveClicked(_:)))
-//        navigationItem.rightBarButtonItem = saveBtn
-        
-        nameTextField.text = profileUser.name
-        
-        profileType = profileViewModel.profileModel.isEmployer ? .employer : .employee
-        
+extension MyProfileViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
-    func setupLabels() {
-        if isWizard {
-            nextBtn.setTitle("next".localized, for: .normal)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return profileViewModel.numberOfEmploymentInfo + 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: SoftenProfileTableViewCell.reuseIdentifier) as! SoftenProfileTableViewCell
+        
+        let employmentModel = profileViewModel.employmentModels[indexPath.row]
+        
+        if profileViewModel.isProfileEmployer {
+            cell.employmentLabel.text = employmentModel.employeeName
         }
-        title = "my_profile".localized
-        if let profileTitle = profileTitleLabel{
-            profileTitle.text = "profile_setup".localized
+        else {
+            cell.employmentLabel.text = employmentModel.employerName
         }
-        if let profileSubTitle = profileSubTitleLabel{
-            profileSubTitle.text = "please_setup_your_profile".localized
-        }
-        myProfileTitleLabel.text = "my_profile".localized
-        requiredFooterLabel.text = "indicates_a_required_field".localized
-        nameTitleLabel.text = "full_name_intro".localized
-        nameTextField.placeholder = "required".localized
-        cityTitleLabel.text = "city".localized
-        stateTitleLabel.text = "state".localized
-        zipCodeTitleLabel.text = "zip_code".localized
-        zipcodeTextField.placeholder = "required".localized
-        phoneTitleLabel.text = "phone".localized
-        emailTitleLabel.text = "email".localized
-        
-        zipcodeTextField.attributedPlaceholder = NSAttributedString(string: "99999 or 99999-9999", attributes:
-            [NSAttributedString.Key.foregroundColor:  UIColor.borderColor,
-             NSAttributedString.Key.font: Style.scaledFont(forDataType: .nameValueText)])
-        
-        employeeEmployerInfoView.title = "employee_employer_profile".localized
-        
-        employeeBtn.setTitle("employee".localized, for: .normal)
-        employerBtn.setTitle("employer".localized, for: .normal)
-        
-        if isWizard == false {
-            let cancelBtn = UIBarButtonItem(title: "cancel".localized, style: .plain, target: self, action: #selector(cancelClicked(_:)))
-            navigationItem.leftBarButtonItem = cancelBtn
             
-            let saveBtn = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(saveClicked(_:)))
-            navigationItem.rightBarButtonItem = saveBtn
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteEmployment(indexPath: indexPath)
+        }
+    }
+    
+    func deleteEmployment(indexPath: IndexPath) {
+        let employmentModel = profileViewModel.employmentModels[indexPath.row]
+        
+        let titleMsg: String
+        let errorMsg: String
+        if employmentModel.isProfileEmployer {
+            titleMsg = "delete_employee".localized
+            errorMsg = "delete_confirm_employee_info".localized
+        }
+        else {
+            titleMsg = "delete_employer".localized
+            errorMsg = "delete_confirm_employer_info".localized
+        }
+        
+        let alertController = UIAlertController(title: titleMsg,
+                                                message: errorMsg,
+                                                preferredStyle: .alert)
+        
+        alertController.addAction(
+            UIAlertAction(title: "cancel".localized, style: .cancel))
+        alertController.addAction(
+            UIAlertAction(title: "delete".localized, style: .destructive) { _ in
+                self.profileViewModel.deleteEmploymentModel(employmentModel: employmentModel)
+                self.employmentTable.beginUpdates()
+                self.employmentTable.deleteRows(at: [indexPath], with: .automatic)
+                self.employmentTable.endUpdates()
+                self.employmentTableHeightConstraint.constant = self.employmentTable.contentSize.height
+        })
+        
+        present(alertController, animated: true)
+    }
+}
+
+extension MyProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let selectedModel = profileViewModel.employmentModels[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: false)
+        let employmentModel = profileViewModel.tempEmploymentModel(for: selectedModel)
+
+        
+        if let setupVC = navigationController?.topViewController as? UpdateEmploymentViewController,
+            let employmentModel = employmentModel {
+            //setupVC.editClicked(employmentModel: employmentModel)
+            performSegue(withIdentifier: "updateEmploymentSegue", sender: employmentModel)
+        }
+        else {
+            performSegue(withIdentifier: "updateEmploymentSegue", sender: employmentModel)
         }
     }
 }

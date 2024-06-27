@@ -9,7 +9,11 @@
 import UIKit
 
 class SoftenProfileTableViewCell: UITableViewCell {
+    class var nibName: String { return "SoftenProfileTableViewCell" }
+    class var reuseIdentifier: String { return "SoftenProfileTableViewCell" }
 
+    @IBOutlet weak var employmentLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

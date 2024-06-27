@@ -515,3 +515,5 @@
 "time_entry_start_and_end_time_error" = "Start Time and End Time must be set";
 
 "minimum_wage_warning" = "Your pay rate appears to be below the Federal Minimum Wage";
+
+"name_nickname" = "Name or Nickname";
