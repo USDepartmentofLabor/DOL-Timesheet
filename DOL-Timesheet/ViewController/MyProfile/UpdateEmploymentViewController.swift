@@ -19,19 +19,22 @@ class UpdateEmploymentViewController: UIViewController {
     @IBOutlet weak var startOfPayWeekHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var firstPayPeriodTitleLabel: UILabel!
-    @IBOutlet weak var firstPayPeriodLabel: UITextField!
+    @IBOutlet weak var firstPayPeriodTextField: UITextField!
     @IBOutlet weak var firstPayPeriodDatePicker: UIDatePicker!
+    @IBOutlet weak var firstPayPeriodDateHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var payFrequencyTitleLabel: UILabel!
-    @IBOutlet weak var payFrequencyLabel: UITextField!
+    @IBOutlet weak var payFrequencyTextField: UITextField!
     @IBOutlet weak var payFrequencyPicker: UIPickerView!
+    @IBOutlet weak var payFrequencyHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var overtimeLabel: UILabel!
     @IBOutlet weak var overtimeSwitch: UISwitch!
     
     @IBOutlet weak var stateTitleLabel: UILabel!
-    @IBOutlet weak var stateLabel: UITextField!
+    @IBOutlet weak var stateTextField: UITextField!
     @IBOutlet weak var statePicker: UIPickerView!
+    @IBOutlet weak var stateHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var stateMinimumWageLabel: UILabel!
     @IBOutlet weak var stateMinimumWageTextField: UITextField!
@@ -43,46 +46,146 @@ class UpdateEmploymentViewController: UIViewController {
     @IBOutlet weak var helpView: UIView!
     
     
-    var profileViewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
-    var employmentModel: EmploymentModel!
-
-
+    let profileViewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
+    var employmentModel: EmploymentModel?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupView()
+    var firstPayPeriod: Date?
+    var dateFormatter = {
+        let formatter = DateFormatter()
+
+        var locale = "en_EN"
+        if (Localizer.currentLanguage == Localizer.SPANISH) {
+            locale = "es_ES"
+        }
+        
+        formatter.locale = Locale(identifier: locale)
+        return formatter
+    }()
+
+    var selectedWeekday: Weekday?
+    var selectedPayFrequency: PaymentFrequency? = .daily
+    var selectedState: State?
+    
+    var stateMinWages: StateMinWage = StateMinWage.init()
+    
+    var minimumWage: NSNumber = 0.0 {
+        didSet {
+            if isViewLoaded {
+                stateMinimumWageTextField.text = NumberFormatter.localisedCurrencyStr(from: minimumWage)
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupView()
+        if employmentModel != nil {
+            setupData()
+        }
     }
     
     func setupView() {
-//        nameLabel.text = "name_or_nickname"
-//        nameTextField.
-//        startOfPayWeekLabel.text = "name_or_nickname"
-//        startOfPayWeekTextField
-//        startOfPayWeekPicker
-//        startOfPayWeekHeightConstraint
-//        firstPayPeriodTitleLabel.text = "name_or_nickname"
-//        firstPayPeriodLabel.text = "name_or_nickname"
-//        firstPayPeriodDatePicker
-//        payFrequencyTitleLabel.text = "name_or_nickname"
-//        payFrequencyLabel.text = "name_or_nickname"
-//        payFrequencyPicker
-//        overtimeLabel.text = "name_or_nickname"
-//        overtimeSwitch
-//        stateTitleLabel.text = "name_or_nickname"
-//        stateLabel.text = "name_or_nickname"
-//        statePicker
-//        stateMinimumWageLabel.text = "name_or_nickname"
-//        stateMinimumWageTextField
-//        rateTable
-//        helpLabel.text = "name_or_nickname"
-//        helpView
+        nameLabel.text = "name_or_nickname".localized
+        nameTextField.text = ""
         
+        startOfPayWeekLabel.text = "start_of_pay_week".localized
+        startOfPayWeekTextField.text = ""
+        startOfPayWeekHeightConstraint.constant = 0
+        
+        firstPayPeriodTitleLabel.text = "start_date_of_first_pay_period".localized
+        firstPayPeriodTextField.text = ""
+        firstPayPeriodDateHeightConstraint.constant = 0
+        firstPayPeriodDatePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+        
+        let locale = Localizer.currentLanguage == Localizer.SPANISH ? Locale(identifier: "es_ES") : Locale(identifier: "en_EN")
+
+        
+        firstPayPeriodDatePicker.locale = locale
+        firstPayPeriodDatePicker.calendar = locale.calendar
+        firstPayPeriodDatePicker.calendar.firstWeekday = 1
+
+        payFrequencyTitleLabel.text = "pay_frequency".localized
+        payFrequencyTextField.text = ""
+        payFrequencyHeightConstraint.constant = 0
+        
+        overtimeLabel.text = "eligible_for_overtime_non_Exempt".localized
+        overtimeSwitch.isOn = true
+        
+        stateTitleLabel.text = "state_you_work_in".localized
+        stateTextField.text = ""
+        stateHeightConstraint.constant = 0
+        
+        stateMinimumWageLabel.text = "state_minimum_wage".localized
+        stateMinimumWageTextField.text = ""
+        
+        helpLabel.text = "help".localized
+        
+    }
+    
+    func setupData() {
+        guard let safeEmploymentModel = employmentModel else {return}
+        
+        nameTextField.text = safeEmploymentModel.employmentUser?.name
+        
+//        startOfPayWeekPicker.value(forKey: safeEmploymentModel.employmentInfo.workWeekStartDay.title)
+        startOfPayWeekTextField.text = safeEmploymentModel.employmentInfo.workWeekStartDay.title
+                
+        
+        if let selectedStartOfPayWeek = Weekday.allCases.firstIndex(where: { $0.title == safeEmploymentModel.employmentInfo.workWeekStartDay.title }) {
+            // Set the selected row in the picker view
+            startOfPayWeekPicker.selectRow(selectedStartOfPayWeek, inComponent: 0, animated: true)
+        }
+        
+        let startDate = safeEmploymentModel.employmentInfo.startDate ?? Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE MM/dd/yy"
+        
+        firstPayPeriodTextField.text = dateFormatter.string(from: startDate)
+        firstPayPeriodDatePicker.setDate(startDate, animated: true)
+        
+//        payFrequencyPicker.value(forKey: safeEmploymentModel.employmentInfo.payFrequency.title)
+        payFrequencyTextField.text = safeEmploymentModel.employmentInfo.payFrequency.title
+        
+        if let selectedPayFrequency = PaymentFrequency.allCases.firstIndex(where: { $0.title == safeEmploymentModel.employmentInfo.payFrequency.title }) {
+            // Set the selected row in the picker view
+            payFrequencyPicker.selectRow(selectedPayFrequency, inComponent: 0, animated: true)
+        }
+        
+//        statePicker.value(forKey: safeEmploymentModel.employmentUser?.address?.state ?? "West Virginia")
+        stateTextField.text = safeEmploymentModel.employmentUser?.address?.state
+//        stateMinimumWageTextField.text = String(format: "%.2f", safeEmploymentModel.minimumWage)
+        stateMinimumWageTextField.text = String(NumberFormatter.localisedCurrencyStr(from: safeEmploymentModel.minimumWage))
+        
+        
+        
+        if let selectedState = State.states.firstIndex(where: { $0.title == safeEmploymentModel.employmentUser?.address?.state }) {
+            // Set the selected row in the picker view
+            statePicker.selectRow(selectedState, inComponent: 0, animated: true)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "updateEmploymentHelpScreen",
+            let helpVC = segue.destination as? HelpTableViewController {
+            helpVC.helpItems = [
+                HelpItem(
+                    title: "info_break_time_title".localized,
+                    body: "info_break_time".localized),
+                HelpItem(title: "overnight_hours".localized, body: "info_end_time".localized)]
+        }
+        
+        if segue.identifier == "updateRateSegue" {
+            if let destinationVC = segue.destination as? UpdateRateViewController {
+                destinationVC.hourlyRate = sender as? HourlyRate
+                destinationVC.employmentModel = employmentModel
+            }
+        }
     }
 }
 
@@ -92,21 +195,36 @@ extension UpdateEmploymentViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profileViewModel.numberOfEmploymentInfo + 1
+        if employmentModel?.paymentType == .salary {
+            return 1
+        }
+        
+        let numberOfRates = employmentModel?.hourlyRates?.count ?? 0
+        return numberOfRates + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: SoftenProfileTableViewCell.reuseIdentifier) as! SoftenProfileTableViewCell
         
-        let employmentModel = profileViewModel.employmentModels[indexPath.row]
+        guard let safeEmploymentModel = employmentModel else {
+            cell.employmentLabel.text = "Add a Rate..."
+            return cell
+        }
         
-        if profileViewModel.isProfileEmployer {
-            cell.employmentLabel.text = employmentModel.employeeName
+        if employmentModel?.paymentType == .hourly {
+            if indexPath.row == safeEmploymentModel.hourlyRates?.count {
+                cell.employmentLabel.text = "Add a Rate..."
+                return cell
+            }
+            
+            let rate = safeEmploymentModel.hourlyRates?[indexPath.row]
+            cell.employmentLabel.text = rate?.name
+            
+            return cell
         }
-        else {
-            cell.employmentLabel.text = employmentModel.employerName
-        }
+        
+        cell.employmentLabel.text = safeEmploymentModel.paymentType.title
             
         return cell
     }
@@ -156,19 +274,209 @@ extension UpdateEmploymentViewController: UITableViewDataSource {
 
 extension UpdateEmploymentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        let selectedModel = profileViewModel.employmentModels[indexPath.row]
-        tableView.deselectRow(at: indexPath, animated: false)
-        let employmentModel = profileViewModel.tempEmploymentModel(for: selectedModel)
-
         
-        if let setupVC = navigationController?.topViewController as? UpdateEmploymentViewController,
-            let employmentModel = employmentModel {
-            //setupVC.editClicked(employmentModel: employmentModel)
-            performSegue(withIdentifier: "updateEmploymentSegue", sender: employmentModel)
+        guard let safeEmploymentModel = employmentModel else {
+            tableView.deselectRow(at: indexPath, animated: false)
+            performSegue(withIdentifier: "updateRateSegue", sender: nil)
+            return
         }
-        else {
-            performSegue(withIdentifier: "updateEmploymentSegue", sender: employmentModel)
+
+        if indexPath.row == safeEmploymentModel.hourlyRates?.count {
+            tableView.deselectRow(at: indexPath, animated: false)
+            performSegue(withIdentifier: "updateRateSegue", sender: nil)
+            return
         }
+
+        let selectedRate = safeEmploymentModel.hourlyRates?[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: false)
+        performSegue(withIdentifier: "updateRateSegue", sender: selectedRate)
+    }
+}
+
+extension UpdateEmploymentViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        if textField == otherNameField {
+//            
+//        }
+//        else {
+//            
+//        }
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == startOfPayWeekTextField {
+            if startOfPayWeekHeightConstraint.constant > 1 {
+                startOfPayWeekHeightConstraint.constant = 0
+            } else {
+                if startOfPayWeekTextField.text?.count == 0 {
+                    startOfPayWeekTextField.text? = Weekday.sunday.title
+                }
+                startOfPayWeekHeightConstraint.constant = 216
+                setFirstDatePickerHeight(height: 0, relatedBy: .equal)
+                payFrequencyHeightConstraint.constant = 0
+                stateHeightConstraint.constant = 0
+            }
+            return false
+        } else if textField == firstPayPeriodTextField {
+            if firstPayPeriodDateHeightConstraint.constant > 1 {
+                setFirstDatePickerHeight(height: 0, relatedBy: .equal)
+            } else {
+                if firstPayPeriodTextField.text?.count == 0 {
+                    firstPayPeriod = Date()
+                    dateFormatter.dateFormat = "MMMM d, YYYY"
+                    dateFormatter.locale = Locale(identifier: Localizer.currentLanguage)
+                    let formattedDate = dateFormatter.string(from: firstPayPeriod!)
+                    let formattedDateCapitalized = formattedDate.prefix(1).capitalized + formattedDate.dropFirst()
+                    
+                    firstPayPeriodTextField.text = formattedDateCapitalized
+                }
+                
+                startOfPayWeekHeightConstraint.constant = 0
+                setFirstDatePickerHeight(height: 307, relatedBy: .greaterThanOrEqual)
+                payFrequencyHeightConstraint.constant = 0
+                stateHeightConstraint.constant = 0
+            }
+            return false
+        } else if textField == payFrequencyTextField {
+            if payFrequencyHeightConstraint.constant > 1 {
+                payFrequencyHeightConstraint.constant = 0
+            } else {
+                if payFrequencyTextField.text?.count == 0 {
+                    payFrequencyTextField.text? = PaymentFrequency.daily.title
+                }
+                
+                startOfPayWeekHeightConstraint.constant = 0
+                setFirstDatePickerHeight(height: 0, relatedBy: .equal)
+                payFrequencyHeightConstraint.constant = 216
+                stateHeightConstraint.constant = 0
+            }
+            return false
+        } else if textField == stateTextField {
+            if stateHeightConstraint.constant > 1 {
+                stateHeightConstraint.constant = 0
+            } else {
+                if stateTextField.text?.count == 0 {
+                    stateTextField.text? = State.states[0].title
+                }
+                if stateMinimumWageTextField.text?.count == 0 {
+                    stateTextField.text = State.states[0].title
+                    selectedState = State.states[0]
+                    if let state = stateMinWages.data.first(where: { $0.state == State.states[0].title }),
+                       let minWage = state.minimumWage {
+                        minimumWage = minWage as NSNumber
+                        stateMinimumWageTextField.text = String(NumberFormatter.localisedCurrencyStr(from: minWage))
+                    }
+                }
+                
+                startOfPayWeekHeightConstraint.constant = 0
+                setFirstDatePickerHeight(height: 0, relatedBy: .equal)
+                payFrequencyHeightConstraint.constant = 0
+                stateHeightConstraint.constant = 216
+                
+                
+                
+                
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+//                    self.scrollView.scrollToBottom()
+//                }
+            }
+            return false
+        }
+        
+        startOfPayWeekHeightConstraint.constant = 0
+        setFirstDatePickerHeight(height: 0, relatedBy: .equal)
+        payFrequencyHeightConstraint.constant = 0
+        stateHeightConstraint.constant = 0
+        return true
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+    
+    func setFirstDatePickerHeight(height: CGFloat, relatedBy: NSLayoutConstraint.Relation) {
+        firstPayPeriodDateHeightConstraint.constant = height
+        
+
+        // Create a new constraint with a greater than or equal to relation
+        let newHeightConstraint = NSLayoutConstraint(item: firstPayPeriodDateHeightConstraint.firstItem,
+                                                      attribute: firstPayPeriodDateHeightConstraint.firstAttribute,
+                                                      relatedBy: relatedBy,
+                                                      toItem: firstPayPeriodDateHeightConstraint.secondItem,
+                                                      attribute: firstPayPeriodDateHeightConstraint.secondAttribute,
+                                                      multiplier: firstPayPeriodDateHeightConstraint.multiplier,
+                                                      constant: firstPayPeriodDateHeightConstraint.constant)
+
+        firstPayPeriodDateHeightConstraint.isActive = false
+        newHeightConstraint.isActive = true
+
+        // Optionally, update the IBOutlet reference
+        firstPayPeriodDateHeightConstraint = newHeightConstraint
+        
+    }
+}
+
+
+extension UpdateEmploymentViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == startOfPayWeekPicker {
+            startOfPayWeekTextField.text = Weekday.allCases[row].title
+            selectedWeekday = Weekday.allCases[row]
+            
+        } else if pickerView == payFrequencyPicker {
+            payFrequencyTextField.text = PaymentFrequency.allCases[row].title
+            selectedPayFrequency = PaymentFrequency.allCases[row]
+            
+        } else {
+            stateTextField.text = State.states[row].title
+            selectedState = State.states[row]
+            if let state = stateMinWages.data.first(where: { $0.state == State.states[row].title }),
+               let minWage = state.minimumWage {
+                minimumWage = minWage as NSNumber
+                stateMinimumWageTextField.text = String(NumberFormatter.localisedCurrencyStr(from: minWage))
+            }
+            
+        }
+        
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        if pickerView == startOfPayWeekPicker {
+            return Weekday.allCases[row].title
+        } else if pickerView == payFrequencyPicker {
+            return PaymentFrequency.allCases[row].title
+        } else {
+            return State.states[row].title
+        }
+    }
+}
+
+extension UpdateEmploymentViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        if pickerView == startOfPayWeekPicker {
+            return Weekday.allCases.count
+        } else if pickerView == payFrequencyPicker {
+            return PaymentFrequency.allCases.count
+        } else  {
+            return State.states.count
+        }
+    }
+}
+
+extension UpdateEmploymentViewController {
+    
+    @objc func datePickerValueChanged(_ sender: UIDatePicker) {
+        let selectedDate = sender.date
+        firstPayPeriod = selectedDate
+        dateFormatter.dateFormat = "MMMM d, YYYY"
+        dateFormatter.locale = Locale(identifier: Localizer.currentLanguage)
+        let formattedDate = dateFormatter.string(from: firstPayPeriod!)
+        let formattedDateCapitalized = formattedDate.prefix(1).capitalized + formattedDate.dropFirst()
+        
+        firstPayPeriodTextField.text = formattedDateCapitalized
     }
 }

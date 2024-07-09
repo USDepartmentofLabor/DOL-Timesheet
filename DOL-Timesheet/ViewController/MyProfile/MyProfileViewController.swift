@@ -43,6 +43,7 @@ class MyProfileViewController: UIViewController {
         if profileViewModel.isProfileEmployer {
             employmentLabel.text = "employer".localized
         }
+        
     }
 }
 
@@ -52,20 +53,29 @@ extension MyProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        employmentTableHeightConstraint.constant = employmentTable.contentSize.height
         return profileViewModel.numberOfEmploymentInfo + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCell(withIdentifier: SoftenProfileTableViewCell.reuseIdentifier) as! SoftenProfileTableViewCell
+
+        if indexPath.row == profileViewModel.numberOfEmploymentInfo {
+            cell.employmentLabel.text = "Add an Employee..."
+            
+            if profileViewModel.isProfileEmployer {
+                cell.employmentLabel.text = "Add an Employer..."
+            }
+            
+            return cell
+        }
         
         let employmentModel = profileViewModel.employmentModels[indexPath.row]
         
+        cell.employmentLabel.text = employmentModel.employerName
+
         if profileViewModel.isProfileEmployer {
             cell.employmentLabel.text = employmentModel.employeeName
-        }
-        else {
-            cell.employmentLabel.text = employmentModel.employerName
         }
             
         return cell
@@ -76,6 +86,10 @@ extension MyProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if indexPath.row == profileViewModel.numberOfEmploymentInfo {
+            return
+        }
+        
         if editingStyle == .delete {
             deleteEmployment(indexPath: indexPath)
         }
@@ -116,19 +130,26 @@ extension MyProfileViewController: UITableViewDataSource {
 
 extension MyProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == profileViewModel.numberOfEmploymentInfo {
+            tableView.deselectRow(at: indexPath, animated: false)
+            performSegue(withIdentifier: "updateEmploymentSegue", sender: nil)
+            return
+        }
 
         let selectedModel = profileViewModel.employmentModels[indexPath.row]
-        tableView.deselectRow(at: indexPath, animated: false)
         let employmentModel = profileViewModel.tempEmploymentModel(for: selectedModel)
 
-        
-        if let setupVC = navigationController?.topViewController as? UpdateEmploymentViewController,
-            let employmentModel = employmentModel {
-            //setupVC.editClicked(employmentModel: employmentModel)
-            performSegue(withIdentifier: "updateEmploymentSegue", sender: employmentModel)
-        }
-        else {
-            performSegue(withIdentifier: "updateEmploymentSegue", sender: employmentModel)
+        tableView.deselectRow(at: indexPath, animated: false)
+        performSegue(withIdentifier: "updateEmploymentSegue", sender: employmentModel)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "updateEmploymentSegue" {
+            if let destinationVC = segue.destination as? UpdateEmploymentViewController,
+               let model = sender as? EmploymentModel {
+                destinationVC.employmentModel = model
+            }
         }
     }
 }

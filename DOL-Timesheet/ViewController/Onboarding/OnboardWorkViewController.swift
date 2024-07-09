@@ -143,10 +143,8 @@ class OnboardWorkViewController: OnboardBaseViewController {
         workWeekStartPicker.selectRow(currentRow, inComponent: 0, animated: true)
         
         
-        var locale = Locale(identifier: "en_EN")
-        if (Localizer.currentLanguage == Localizer.SPANISH) {
-            locale = Locale(identifier: "es_ES")
-        }
+        let locale = Localizer.currentLanguage == Localizer.SPANISH ? Locale(identifier: "es_ES") : Locale(identifier: "en_EN")
+
         
         firstDayDatePicker.locale = locale
         firstDayDatePicker.calendar = locale.calendar

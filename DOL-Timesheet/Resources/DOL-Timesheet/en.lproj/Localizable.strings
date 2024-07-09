@@ -516,4 +516,9 @@
 
 "minimum_wage_warning" = "Your pay rate appears to be below the Federal Minimum Wage";
 
-"name_nickname" = "Name or Nickname";
+"name_or_nickname" = "Name or Nickname";
+"start_of_pay_week" = "Start of Pay Week";
+"start_date_of_first_pay_period" = "Start Date of First Pay Period";
+"eligible_for_overtime_non_Exempt" = "Eligible for Overtime (Non-Exempt)";
+"state_you_work_in" = "State you work in";
+"state_minimum_wage" = "State Minimum Wage";
