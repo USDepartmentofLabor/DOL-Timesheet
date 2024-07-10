@@ -12,6 +12,7 @@ class UpdateRateViewController: UIViewController {
     
     @IBOutlet weak var rateNameTitleLabel: UILabel!
     @IBOutlet weak var rateNameTextField: UITextField!
+    @IBOutlet weak var rateNameView: UIView!
     
     @IBOutlet weak var payTitleLabel: UILabel!
     @IBOutlet weak var payTitleTextField: UITextField!
@@ -20,9 +21,12 @@ class UpdateRateViewController: UIViewController {
     @IBOutlet weak var frequencyTextField: UITextField!
     @IBOutlet weak var frequencyPicker: UIPickerView!
     @IBOutlet weak var frequencyPickerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var frequencyView: UIView!
     
     @IBOutlet weak var helpView: UIView!
     @IBOutlet weak var helpLabel: UILabel!
+    
+    @IBOutlet weak var discardButton: UIButton!
     
     var employmentModel: EmploymentModel?
     var hourlyRate: HourlyRate?
@@ -33,6 +37,7 @@ class UpdateRateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
+        self.navigationController?.navigationBar.tintColor = .linkColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +46,16 @@ class UpdateRateViewController: UIViewController {
         setupData()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        rateNameView.roundCorners(corners: [.topLeft,.topRight], radius: 10.0)
+        frequencyView.roundCorners(corners: [.bottomLeft,.bottomRight], radius: 10.0)
+        helpView.layer.cornerRadius = 10.0
+    }
+    
     func setupView() {
+        title = "new_rate".localized
+        
         rateNameTitleLabel.text = "rate_name".localized
         payTitleLabel.text = "pay".localized
         frequencyTitleLabel.text = "frequency".localized
@@ -58,6 +72,16 @@ class UpdateRateViewController: UIViewController {
         frequencyTextField.text = ""
         
         frequencyPickerHeightConstraint.constant = 0
+        
+        discardButton.layer.borderWidth = 1.0
+        discardButton.layer.cornerRadius = 5.0
+        discardButton.layer.borderColor = UIColor.red.cgColor
+
+        discardButton.setTitleColor(UIColor.red, for: .normal)
+        discardButton.setTitleColor(UIColor.white, for: .highlighted)
+        discardButton.setTitle("discard".localized, for: .normal)
+        
+        discardButton.isHidden = true
     }
     
     func setupData() {
@@ -66,12 +90,14 @@ class UpdateRateViewController: UIViewController {
         if safeEmploymentModel.paymentType == .hourly {
             guard let safeRate = hourlyRate else { return }
 
-            
+            title = safeRate.name
             rateNameTextField.text = safeRate.name
             payTitleTextField.text = String(safeRate.value)
             frequencyTextField.text = "payment_type_hourly".localized
             return
         }
+        
+        title = safeEmploymentModel.salary.salaryType.title.localized
         
         rateNameTextField.text = safeEmploymentModel.salary.salaryType.title.localized
         payTitleTextField.text = NumberFormatter.localisedCurrencyStr(from: safeEmploymentModel.salary.amount)
@@ -88,6 +114,8 @@ class UpdateRateViewController: UIViewController {
             frequencyPicker.selectRow(3, inComponent: 0, animated: false)
 
         }
+        
+        discardButton.isHidden = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -100,6 +128,28 @@ class UpdateRateViewController: UIViewController {
                     body: "info_break_time".localized),
                 HelpItem(title: "overnight_hours".localized, body: "info_end_time".localized)]
         }
+    }
+    
+    @IBAction func discardPressed(_ sender: Any) {
+        var title = "delete_hourly_rate".localized
+        var message = "delete_hourly_rate_warning".localized
+        if employmentModel?.paymentType != .hourly {
+            title = "delete_salary".localized
+            message = "delete_salary_warning".localized
+        }
+        
+        let alertController =
+        UIAlertController(title: title,
+                          message: message,
+                          preferredStyle: .alert)
+        
+        alertController.addAction(
+            UIAlertAction(title: "cancel".localized, style: .cancel))
+        alertController.addAction(
+            UIAlertAction(title: "delete".localized, style: .destructive) { _ in
+            }
+        )
+        present(alertController, animated: true)
     }
 }
 

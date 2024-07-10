@@ -11,8 +11,10 @@ import UIKit
 class UpdateProfileViewController: UIViewController {
     @IBOutlet weak var nameTitleLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var employmentTitleLabel: UILabel!
     @IBOutlet weak var employmentTypeLabel: UILabel!
+    @IBOutlet weak var employmentView: UIView!
     
     lazy var profileViewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
     
@@ -21,6 +23,7 @@ class UpdateProfileViewController: UIViewController {
 
         setupNavigationBarSettings()
         setupView()
+        self.navigationController?.navigationBar.tintColor = .linkColor
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -29,13 +32,23 @@ class UpdateProfileViewController: UIViewController {
         saveName()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        nameView.roundCorners(corners: [.topLeft,.topRight], radius: 10.0)
+        employmentView.roundCorners(corners: [.bottomLeft,.bottomRight], radius: 10.0)
+        
+    }
+    
     func setupView() {
-        nameTitleLabel.text = "name_nickname".localized
+        title = "employee".localized
+
+        nameTitleLabel.text = "name_or_nickname".localized
         nameTextField.text = profileViewModel.profileModel.currentUser?.name
         
         employmentTitleLabel.text = "I am an..."
         employmentTypeLabel.text = "employee".localized
         if profileViewModel.isProfileEmployer {
+            title = "employer".localized
             employmentTypeLabel.text = "employer".localized
         }
     }

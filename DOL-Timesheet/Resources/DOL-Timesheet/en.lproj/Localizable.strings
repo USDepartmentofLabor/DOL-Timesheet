@@ -522,3 +522,27 @@
 "eligible_for_overtime_non_Exempt" = "Eligible for Overtime (Non-Exempt)";
 "state_you_work_in" = "State you work in";
 "state_minimum_wage" = "State Minimum Wage";
+"frequency" = "Frequency";
+"swicth_between_employment" = "Switch between using this app as an employee or an employer.";
+"warning_swicth_between_employment" = "Warning: Switching will delete all information from the app except for your name/nickname.";
+
+"delete_employer" = "Delete Employer";
+"delete_employer_warning" = "Deleting employer will delete all time logged for employer. Are you sure you want to delete employer?";
+"delete_employee" = "Delete Employee";
+"delete_employee_warning" = "Deleting employee will delete all time logged for employee. Are you sure you want to delete employee?";
+
+"delete_hourly_rate" = "Delete Hourly Rate";
+"delete_hourly_rate_warning" = "Are you sure you want to delete hourly rate?";
+"delete_salary" = "Delete Salary";
+"delete_salary_warning" = "Are you sure you want to delete salary?";
+
+"my_employees" = "MY EMPLOYEES";
+"my_employers" = "MY EMPLOYERS";
+"rates" = "RATES";
+
+"my_profile" = "My Profile";
+"i_am_employee" = "I am an Employee";
+"i_am_employer" = "I am an Employer";
+"new_employer" = "New Employer";
+"new_employee" = "New Employee";
+"new_rate" = "New Rate";

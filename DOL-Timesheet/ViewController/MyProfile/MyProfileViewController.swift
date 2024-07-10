@@ -28,6 +28,7 @@ class MyProfileViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBarSettings()
         setupView()
+        self.navigationController?.navigationBar.tintColor = .linkColor
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -35,8 +36,16 @@ class MyProfileViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        profileView.layer.cornerRadius = 10.0
+        updateCellCorners()
+    }
+    
     func setupView() {
         navigationItem.hidesBackButton = true
+        title = "my_profile".localized
+        
         userLabel.text = profileViewModel.profileModel.currentUser?.name
         
         employmentLabel.text = "employee".localized
@@ -61,10 +70,10 @@ extension MyProfileViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: SoftenProfileTableViewCell.reuseIdentifier) as! SoftenProfileTableViewCell
 
         if indexPath.row == profileViewModel.numberOfEmploymentInfo {
-            cell.employmentLabel.text = "Add an Employee..."
-            
+            cell.employmentLabel.text = "Add an Employer..."
+
             if profileViewModel.isProfileEmployer {
-                cell.employmentLabel.text = "Add an Employer..."
+                cell.employmentLabel.text = "Add an Employee..."
             }
             
             return cell
@@ -79,6 +88,27 @@ extension MyProfileViewController: UITableViewDataSource {
         }
             
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var title = "my_employers".localized
+        if profileViewModel.isProfileEmployer {
+            title = "my_employees".localized
+        }
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(named: "timesheetBackgroundColor")
+
+        let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.width - 30, height: 12))
+        headerLabel.text = title
+        headerLabel.textColor = UIColor(named: "labelTextInactive")
+        headerLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        
+        headerView.addSubview(headerLabel)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 15 // Change this to your desired height
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -125,6 +155,24 @@ extension MyProfileViewController: UITableViewDataSource {
         })
         
         present(alertController, animated: true)
+    }
+    
+    private func updateCellCorners() {
+        let numberOfRows = employmentTable.numberOfRows(inSection: 0)
+        
+        for (index, cell) in employmentTable.visibleCells.enumerated() {
+            guard let roundedCell = cell as? SoftenProfileTableViewCell else { continue }
+            
+            roundedCell.layer.mask = nil
+            
+            if numberOfRows - 1 == 0 {
+                roundedCell.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10)
+            } else if index == numberOfRows - 1 {
+                roundedCell.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
+            } else if index == 0{
+                roundedCell.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+            }
+        }
     }
 }
 

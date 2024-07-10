@@ -45,6 +45,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="employmentLabel" destination="M4y-j4-URW" id="63A-K1-6nc"/>
+                <outlet property="profileCellView" destination="H2p-sc-9uM" id="iTj-sW-ubR"/>
             </connections>
             <point key="canvasLocation" x="21" y="20"/>
         </tableViewCell>

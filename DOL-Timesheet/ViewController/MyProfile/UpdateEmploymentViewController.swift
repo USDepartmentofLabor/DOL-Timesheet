@@ -12,6 +12,7 @@ class UpdateEmploymentViewController: UIViewController {
         
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nameView: UIView!
     
     @IBOutlet weak var startOfPayWeekLabel: UILabel!
     @IBOutlet weak var startOfPayWeekTextField: UITextField!
@@ -38,6 +39,7 @@ class UpdateEmploymentViewController: UIViewController {
     
     @IBOutlet weak var stateMinimumWageLabel: UILabel!
     @IBOutlet weak var stateMinimumWageTextField: UITextField!
+    @IBOutlet weak var stateView: UIView!
     
     @IBOutlet weak var rateTable: SelfSizedTableView!
     
@@ -45,6 +47,7 @@ class UpdateEmploymentViewController: UIViewController {
     @IBOutlet weak var helpLabel: UILabel!
     @IBOutlet weak var helpView: UIView!
     
+    @IBOutlet weak var discardButton: UIButton!
     
     let profileViewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
     var employmentModel: EmploymentModel?
@@ -79,6 +82,7 @@ class UpdateEmploymentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
+        self.navigationController?.navigationBar.tintColor = .linkColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +93,22 @@ class UpdateEmploymentViewController: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        nameView.roundCorners(corners: [.topLeft,.topRight], radius: 10.0)
+        stateView.roundCorners(corners: [.bottomLeft,.bottomRight], radius: 10.0)
+        
+        updateCellCorners()
+
+        helpView.layer.cornerRadius = 10.0
+    }
+    
     func setupView() {
+        title = "new_employer".localized
+        if profileViewModel.isProfileEmployer {
+            title = "new_employee".localized
+        }
+        
         nameLabel.text = "name_or_nickname".localized
         nameTextField.text = ""
         
@@ -125,11 +144,22 @@ class UpdateEmploymentViewController: UIViewController {
         
         helpLabel.text = "help".localized
         
+        discardButton.layer.borderWidth = 1.0
+        discardButton.layer.cornerRadius = 5.0
+        discardButton.layer.borderColor = UIColor.red.cgColor
+
+        discardButton.setTitleColor(UIColor.red, for: .normal)
+        discardButton.setTitleColor(UIColor.white, for: .highlighted)
+        discardButton.setTitle("discard".localized, for: .normal)
+        
+        discardButton.isHidden = true
+        
     }
     
     func setupData() {
         guard let safeEmploymentModel = employmentModel else {return}
         
+        title = safeEmploymentModel.employmentUser?.name
         nameTextField.text = safeEmploymentModel.employmentUser?.name
         
 //        startOfPayWeekPicker.value(forKey: safeEmploymentModel.employmentInfo.workWeekStartDay.title)
@@ -156,6 +186,11 @@ class UpdateEmploymentViewController: UIViewController {
             payFrequencyPicker.selectRow(selectedPayFrequency, inComponent: 0, animated: true)
         }
         
+        overtimeSwitch.isOn = false
+        if safeEmploymentModel.overtimeEligible {
+            overtimeSwitch.isOn = true
+        }
+        
 //        statePicker.value(forKey: safeEmploymentModel.employmentUser?.address?.state ?? "West Virginia")
         stateTextField.text = safeEmploymentModel.employmentUser?.address?.state
 //        stateMinimumWageTextField.text = String(format: "%.2f", safeEmploymentModel.minimumWage)
@@ -167,6 +202,8 @@ class UpdateEmploymentViewController: UIViewController {
             // Set the selected row in the picker view
             statePicker.selectRow(selectedState, inComponent: 0, animated: true)
         }
+        
+        discardButton.isHidden = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -186,6 +223,29 @@ class UpdateEmploymentViewController: UIViewController {
                 destinationVC.employmentModel = employmentModel
             }
         }
+    }
+    
+    
+    @IBAction func discardPressed(_ sender: Any) {
+        var title = "delete_employee".localized
+        var message = "delete_employee_warning".localized
+        if !profileViewModel.isProfileEmployer {
+            title = "delete_employer".localized
+            message = "delete_employer_warning".localized
+        }
+        
+        let alertController =
+        UIAlertController(title: title,
+                          message: message,
+                          preferredStyle: .alert)
+        
+        alertController.addAction(
+            UIAlertAction(title: "cancel".localized, style: .cancel))
+        alertController.addAction(
+            UIAlertAction(title: "delete".localized, style: .destructive) { _ in
+            }
+        )
+        present(alertController, animated: true)
     }
 }
 
@@ -228,6 +288,25 @@ extension UpdateEmploymentViewController: UITableViewDataSource {
             
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let title = "rates".localized
+        
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(named: "timesheetBackgroundColor")
+
+        let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.width - 30, height: 12))
+        headerLabel.text = title
+        headerLabel.textColor = UIColor(named: "labelTextInactive")
+        headerLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        
+        headerView.addSubview(headerLabel)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 15 // Change this to your desired height
+    }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -269,6 +348,24 @@ extension UpdateEmploymentViewController: UITableViewDataSource {
         })
         
         present(alertController, animated: true)
+    }
+    
+    private func updateCellCorners() {
+        let numberOfRows = rateTable.numberOfRows(inSection: 0)
+        
+        for (index, cell) in rateTable.visibleCells.enumerated() {
+            guard let roundedCell = cell as? SoftenProfileTableViewCell else { continue }
+            
+            roundedCell.layer.mask = nil
+            
+            if numberOfRows - 1 == 0 {
+                roundedCell.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10)
+            } else if index == numberOfRows - 1 {
+                roundedCell.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
+            } else if index == 0{
+                roundedCell.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+            }
+        }
     }
 }
 

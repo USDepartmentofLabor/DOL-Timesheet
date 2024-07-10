@@ -11,8 +11,13 @@ import UIKit
 class UpdateEmploymentTypeViewController: UIViewController {
     @IBOutlet weak var employeeTitleLabel: UILabel!
     @IBOutlet weak var employeeCheckmarkImageView: UIImageView!
+    @IBOutlet weak var employeeView: UIView!
     @IBOutlet weak var employerTitleLabel: UILabel!
     @IBOutlet weak var employerCheckmarkImageView: UIImageView!
+    @IBOutlet weak var employerView: UIView!
+    
+    @IBOutlet weak var switchLabel: UILabel!
+    @IBOutlet weak var warningLabel: UILabel!
     
     weak var manageVC: ManageUsersViewController?
     lazy var profileViewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
@@ -21,6 +26,7 @@ class UpdateEmploymentTypeViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBarSettings()
         setupView()
+        self.navigationController?.navigationBar.tintColor = .linkColor
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -28,21 +34,31 @@ class UpdateEmploymentTypeViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        employeeView.roundCorners(corners: [.topLeft,.topRight], radius: 10.0)
+        employerView.roundCorners(corners: [.bottomLeft,.bottomRight], radius: 10.0)
+    }
+    
     func setupView() {
-        
         setupLabels()
     }
     
     func setupLabels() {
+        title = "i_am_employee".localized
         employeeTitleLabel.text = "employee".localized
         employerTitleLabel.text = "employer".localized
 
         employeeCheckmarkImageView.isHidden = false
         employerCheckmarkImageView.isHidden = true
         if profileViewModel.isProfileEmployer {
+            title = "i_am_employer".localized
             employeeCheckmarkImageView.isHidden = true
             employerCheckmarkImageView.isHidden = false
         }
+        
+        switchLabel.text = "swicth_between_employment".localized
+        warningLabel.text = "warning_swicth_between_employment".localized
     }
     
     @IBAction func employeePressed(_ sender: Any) {

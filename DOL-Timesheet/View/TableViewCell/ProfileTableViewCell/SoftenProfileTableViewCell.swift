@@ -13,6 +13,10 @@ class SoftenProfileTableViewCell: UITableViewCell {
     class var reuseIdentifier: String { return "SoftenProfileTableViewCell" }
 
     @IBOutlet weak var employmentLabel: UILabel!
+    @IBOutlet weak var profileCellView: UIView!
+
+    var firstItem: Bool = false
+    var lastItem: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +27,32 @@ class SoftenProfileTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if firstItem {
+            profileCellView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+        } else if lastItem {
+            profileCellView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
+        } else if firstItem && lastItem {
+            profileCellView.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10)
+        }
+    }
+    
+    public func addborder() {
+//        topBackgroundView.layer.cornerRadius = firstItem ? 10.0 : 0.0
+//        topBackgroundView.clipsToBounds = true
+//        bottomBackgroundView.layer.cornerRadius = lastItem ? 10.0 : 0.0
+//        bottomBackgroundView.clipsToBounds = true
+        
+        if firstItem {
+            profileCellView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+        } else if lastItem {
+            profileCellView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
+        } else if firstItem && lastItem {
+            profileCellView.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10)
+        }
     }
     
 }
