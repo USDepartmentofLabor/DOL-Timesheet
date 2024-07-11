@@ -529,3 +529,7 @@ empleado?";
 "new_employer" = "New Employer";
 "new_employee" = "New Employee";
 "new_rate" = "New Rate";
+
+"pay_type" = "Pay Type";
+"overtime_eligibility" = "Overtime Eligibility";
+"flsa" = "FLSA";

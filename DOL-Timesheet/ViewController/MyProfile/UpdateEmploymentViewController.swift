@@ -211,10 +211,12 @@ class UpdateEmploymentViewController: UIViewController {
         if segue.identifier == "updateEmploymentHelpScreen",
             let helpVC = segue.destination as? HelpTableViewController {
             helpVC.helpItems = [
-                HelpItem(
-                    title: "info_break_time_title".localized,
-                    body: "info_break_time".localized),
-                HelpItem(title: "overnight_hours".localized, body: "info_end_time".localized)]
+                HelpItem(title: "pay_frequency".localized, body: "info_employee_payment_frequency".localized),
+                HelpItem(title: "start_of_pay_week".localized, body: "info_employee_workweek".localized),
+                HelpItem(title: "overtime_eligibility".localized, body: "info_overtime_eligible".localized),
+                HelpItem(title: "state_minimum_wage".localized, body: "info_state_minimumWage".localized),
+                HelpItem(title: "flsa".localized, body: "fsla_info1".localized + " " + "fsla_info2".localized)
+            ]
         }
         
         if segue.identifier == "updateRateSegue" {

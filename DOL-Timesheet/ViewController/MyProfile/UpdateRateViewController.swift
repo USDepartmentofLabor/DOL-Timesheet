@@ -123,10 +123,8 @@ class UpdateRateViewController: UIViewController {
         if segue.identifier == "updateRateHelpScreen",
             let helpVC = segue.destination as? HelpTableViewController {
             helpVC.helpItems = [
-                HelpItem(
-                    title: "info_break_time_title".localized,
-                    body: "info_break_time".localized),
-                HelpItem(title: "overnight_hours".localized, body: "info_end_time".localized)]
+                HelpItem(title: "pay_rate".localized, body: "info_employee_hourly_pay_rate".localized),
+                HelpItem(title: "pay_type".localized, body: "info_employee_payment_type".localized)]
         }
     }
     

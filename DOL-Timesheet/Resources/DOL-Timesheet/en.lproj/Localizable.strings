@@ -492,7 +492,7 @@
 "onboarding_name_nickname" = "Your name or nickname";
 "onboarding_employee_pay_week" = "Start of pay week";
 "onboarding_employer_pay_week" = "Start of pay week";
-"pay_frequency" = "Pay frequency";
+"pay_frequency" = "Pay Frequency";
 "employee_pay_frequency" = "Employee's pay frequency";
 "onboarding_employee_first_day_pay" = "Start date of employee's current pay period";
 "onboarding_employer_first_day_pay" = "Start date of current pay period";
@@ -546,3 +546,7 @@
 "new_employer" = "New Employer";
 "new_employee" = "New Employee";
 "new_rate" = "New Rate";
+
+"pay_type" = "Pay Type";
+"overtime_eligibility" = "Overtime Eligibility";
+"flsa" = "FLSA";
