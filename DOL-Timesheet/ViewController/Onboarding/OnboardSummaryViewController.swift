@@ -317,7 +317,7 @@ class OnboardSummaryViewController: OnboardBaseViewController {
 
             var locale = "en_EN"
             if (Localizer.currentLanguage == Localizer.SPANISH) {
-                locale = "es_ES"
+                locale = "es_US"
             }
             
             formatter.locale = Locale(identifier: locale)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UpdateEmploymentViewController: UIViewController {
+class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -58,7 +58,7 @@ class UpdateEmploymentViewController: UIViewController {
 
         var locale = "en_EN"
         if (Localizer.currentLanguage == Localizer.SPANISH) {
-            locale = "es_ES"
+            locale = "es_US"
         }
         
         formatter.locale = Locale(identifier: locale)
@@ -70,6 +70,8 @@ class UpdateEmploymentViewController: UIViewController {
     var selectedState: State?
     
     var stateMinWages: StateMinWage = StateMinWage.init()
+    
+    var rates: [TempRate]?
     
     var minimumWage: NSNumber = 0.0 {
         didSet {
@@ -103,6 +105,18 @@ class UpdateEmploymentViewController: UIViewController {
         helpView.layer.cornerRadius = 10.0
     }
     
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            // Back button pressed
+            handleBackButton()
+        }
+    }
+
+    func handleBackButton() {
+        save()
+    }
+    
     func setupView() {
         title = "new_employer".localized
         if profileViewModel.isProfileEmployer {
@@ -121,7 +135,7 @@ class UpdateEmploymentViewController: UIViewController {
         firstPayPeriodDateHeightConstraint.constant = 0
         firstPayPeriodDatePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
         
-        let locale = Localizer.currentLanguage == Localizer.SPANISH ? Locale(identifier: "es_ES") : Locale(identifier: "en_EN")
+        let locale = Localizer.currentLanguage == Localizer.SPANISH ? Locale(identifier: "es_US") : Locale(identifier: "en_EN")
 
         
         firstPayPeriodDatePicker.locale = locale
@@ -204,6 +218,23 @@ class UpdateEmploymentViewController: UIViewController {
         }
         
         discardButton.isHidden = false
+        
+        if safeEmploymentModel.paymentType == .salary {
+            rates = [
+                TempRate(
+                    rateName: "Salary",
+                    rateValue: safeEmploymentModel.salary.amount.doubleValue,
+                    type: safeEmploymentModel.paymentType,
+                    frequency: safeEmploymentModel.salary.salaryType)
+            ]
+        }
+        if let ratesArray = safeEmploymentModel.hourlyRates {
+            rates = ratesArray.map {
+                TempRate(rateName: $0.name ?? "Rate", rateValue: $0.value, type: .hourly)
+            }
+        } else {
+            rates = []
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -221,8 +252,7 @@ class UpdateEmploymentViewController: UIViewController {
         
         if segue.identifier == "updateRateSegue" {
             if let destinationVC = segue.destination as? UpdateRateViewController {
-                destinationVC.hourlyRate = sender as? HourlyRate
-                destinationVC.employmentModel = employmentModel
+                destinationVC.tempRate = sender as? TempRate
             }
         }
     }
@@ -261,7 +291,7 @@ extension UpdateEmploymentViewController: UITableViewDataSource {
             return 1
         }
         
-        let numberOfRates = employmentModel?.hourlyRates?.count ?? 0
+        let numberOfRates = rates?.count ?? 0
         return numberOfRates + 1
     }
     
@@ -274,20 +304,12 @@ extension UpdateEmploymentViewController: UITableViewDataSource {
             return cell
         }
         
-        if employmentModel?.paymentType == .hourly {
-            if indexPath.row == safeEmploymentModel.hourlyRates?.count {
-                cell.employmentLabel.text = "Add a Rate..."
-                return cell
-            }
-            
+        if indexPath.row == rates?.count {
+            cell.employmentLabel.text = "Add a Rate..."
+        } else {
             let rate = safeEmploymentModel.hourlyRates?[indexPath.row]
-            cell.employmentLabel.text = rate?.name
-            
-            return cell
+            cell.employmentLabel.text = rates![indexPath.row].rateName
         }
-        
-        cell.employmentLabel.text = safeEmploymentModel.paymentType.title
-            
         return cell
     }
     
@@ -512,6 +534,48 @@ extension UpdateEmploymentViewController: UITextFieldDelegate {
         firstPayPeriodDateHeightConstraint = newHeightConstraint
         
     }
+    
+    func save() {
+        if !validateInput() {
+            return
+        }
+        employmentModel?.save()
+    }
+    
+    func validateInput()-> Bool {
+        
+        let user = employmentModel?.employmentUser
+        user?.name = nameTextField.text?.trimmingCharacters(in: .whitespaces)
+        
+        employmentModel!.workWeekStartDay = selectedWeekday ?? .sunday
+        employmentModel?.employmentInfo.startDate = firstPayPeriod
+        
+        employmentModel?.paymentFrequency = selectedPayFrequency!
+        employmentModel?.overtimeEligible = overtimeSwitch.isOn
+        employmentModel?.minimumWage = minimumWage
+        
+//        
+//        employmentModel?.paymentType = .salary
+//        if selectedPayPeriod! == "payment_hour".localized {
+//            employmentModel?.paymentType = .hourly
+//            if employmentModel?.hourlyRates?.count == 0 {
+//                employmentModel?.newHourlyRate()
+//            }
+//            employmentModel?.hourlyRates?[0].value = selectedPayRate
+////            employmentModel?.hourlyRates?[0].createdAt = Date()
+//            
+//        } else if selectedPayPeriod! == "salary_weekly".localized {
+//            deleteHourlyRate()
+//            employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .weekly)
+//        } else if selectedPayPeriod! == "salary_monthly".localized {
+//            deleteHourlyRate()
+//            employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .monthly)
+//        } else if selectedPayPeriod! == "salary_annually".localized {
+//            deleteHourlyRate()
+//            employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .annually)
+//        }
+        return true
+    }
 }
 
 
@@ -577,5 +641,15 @@ extension UpdateEmploymentViewController {
         let formattedDateCapitalized = formattedDate.prefix(1).capitalized + formattedDate.dropFirst()
         
         firstPayPeriodTextField.text = formattedDateCapitalized
+    }
+}
+
+extension UpdateEmploymentViewController {
+    func rateUpdated(_ rate: TempRate) {
+        // if  changing hourly to salary, rates array only has 1 Salary Entry
+    }
+    
+    func rateDelete() {
+        
     }
 }

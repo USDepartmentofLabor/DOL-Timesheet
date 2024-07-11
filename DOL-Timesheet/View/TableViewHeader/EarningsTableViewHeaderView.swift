@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol EarningsHeaderViewDelegate: class {
+protocol EarningsHeaderViewDelegate: AnyObject {
     func sectionHeader(_ sectionHeader: EarningsTableViewHeaderView, toggleExpand section:Int)
 }
 

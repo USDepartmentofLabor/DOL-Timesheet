@@ -50,7 +50,7 @@ class TimePickerViewController: UIViewController {
             let loc = Locale(identifier: "en")
             datePicker.locale = loc
         } else {
-            let loc = Locale(identifier: "es")
+            let loc = Locale(identifier: "en_US")
             datePicker.locale = loc
         }
         

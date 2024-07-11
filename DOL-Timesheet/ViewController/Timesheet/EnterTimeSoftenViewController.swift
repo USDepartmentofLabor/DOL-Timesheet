@@ -419,6 +419,7 @@ class EnterTimeSoftenViewController: UIViewController {
         timePickerVC.delegate = self
         timePickerVC.sourceView = (sender as! UIView)
         timePickerVC.pickerMode = mode
+        
         if mode == .countDownTimer {
             timePickerVC.countdownDuration = countdownDuration
         }
