@@ -30,7 +30,7 @@ class UpdateRateViewController: UIViewController {
     @IBOutlet weak var rateNameView: UIView!
     
     @IBOutlet weak var payTitleLabel: UILabel!
-    @IBOutlet weak var payTitleTextField: UITextField!
+    @IBOutlet weak var payTextField: UITextField!
     
     @IBOutlet weak var frequencyTitleLabel: UILabel!
     @IBOutlet weak var frequencyTextField: UITextField!
@@ -124,6 +124,7 @@ class UpdateRateViewController: UIViewController {
         
         rateNameTitleLabel.text = "rate_name".localized
         payTitleLabel.text = "pay".localized
+        payTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         frequencyTitleLabel.text = "frequency".localized
         
         payFrequencyArray = ["payment_type_hourly".localized,
@@ -134,7 +135,7 @@ class UpdateRateViewController: UIViewController {
         helpLabel.text = "help".localized
         
         rateNameTextField.text = ""
-        payTitleTextField.text = ""
+        payTextField.text = ""
         frequencyTextField.text = ""
         
         frequencyPickerHeightConstraint.constant = 0
@@ -149,14 +150,14 @@ class UpdateRateViewController: UIViewController {
         
         if tempRate == nil {
             navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: "Save",
+                title: "save".localized,
                 style: .plain,
                 target: self,
                 action: #selector(editButtonTapped)
             )
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: "Edit",
+                title: "edit".localized,
                 style: .plain,
                 target: self,
                 action: #selector(editButtonTapped)
@@ -169,18 +170,19 @@ class UpdateRateViewController: UIViewController {
         if let rate = tempRate {
             title = rate.rateName
             rateNameTextField.text = rate.rateName
-            payTitleTextField.text = String(rate.rateValue)
+            payTextField.text =  NumberFormatter.localisedCurrencyStr(from: rate.rateValue)
             frequencyTextField.text = getFrequencyName(rate: rate)
             setFrequencyPicker(rate: rate)
             discardButton.isHidden = true
             setupNormalMode()
             return
         }
+        setupEditMode()
         discardButton.isHidden = true
     }
     
     @objc func editButtonTapped() {
-        if navigationItem.rightBarButtonItem?.title == "Edit" {
+        if navigationItem.rightBarButtonItem?.title == "edit".localized {
             setupEditMode()
         } else {
             if validateInput() {
@@ -194,9 +196,9 @@ class UpdateRateViewController: UIViewController {
     }
     
     func setupEditMode() {
-        navigationItem.rightBarButtonItem?.title = "Save"
+        navigationItem.rightBarButtonItem?.title = "save".localized
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-                  title: "Cancel",
+                  title: "cancel".localized,
                   style: .plain,
                   target: self,
                   action: #selector(cancelPressed)
@@ -204,8 +206,8 @@ class UpdateRateViewController: UIViewController {
 
         rateNameTextField.textColor = UIColor(named: "valueActiveText")
         rateNameTextField.isEnabled = true
-        payTitleTextField.textColor = UIColor(named: "valueActiveText")
-        payTitleTextField.isEnabled = true
+        payTextField.textColor = UIColor(named: "valueActiveText")
+        payTextField.isEnabled = true
         frequencyTextField.textColor = UIColor(named: "valueActiveText")
         frequencyTextField.isEnabled = true
         
@@ -213,13 +215,13 @@ class UpdateRateViewController: UIViewController {
     }
     
     func setupNormalMode() {
-        navigationItem.rightBarButtonItem?.title = "Edit"
+        navigationItem.rightBarButtonItem?.title = "edit".localized
         navigationItem.leftBarButtonItem = nil
         
         rateNameTextField.textColor = UIColor(named: "valueInactiveText")
         rateNameTextField.isEnabled = false
-        payTitleTextField.textColor = UIColor(named: "valueInactiveText")
-        payTitleTextField.isEnabled = false
+        payTextField.textColor = UIColor(named: "valueInactiveText")
+        payTextField.isEnabled = false
         frequencyTextField.textColor = UIColor(named: "valueInactiveText")
         frequencyTextField.isEnabled = false
         discardButton.isHidden = true
@@ -266,7 +268,7 @@ class UpdateRateViewController: UIViewController {
     
     func validateInput()->Bool {
         guard let freqText = frequencyTextField.text,
-              let payText = payTitleTextField.text,
+              let payText = payTextField.text,
               let rateNameText = rateNameTextField.text else { return false }
         
         if rateNameText.isEmpty && freqText == "payment_type_hourly".localized {
@@ -288,7 +290,7 @@ class UpdateRateViewController: UIViewController {
             if tempRate == nil { tempRate = TempRate(type: .hourly) }
             if tempRate!.type == .hourly {
                 tempRate!.rateName = rateNameText
-                tempRate!.rateValue = Double(payText) ?? 0.0
+                tempRate!.rateValue = payText.convertSkipNonNumeric()
                 delegate?.rateUpdated(tempRate!)
                 return true
             } else {
@@ -296,7 +298,7 @@ class UpdateRateViewController: UIViewController {
                 alertController.addAction(UIAlertAction(title: "OK".localized, style: .destructive){_ in
                     self.tempRate!.type = .hourly
                     self.tempRate!.rateName = rateNameText
-                    self.tempRate!.rateValue = Double(payText) ?? 0.0
+                    self.tempRate!.rateValue = payText.convertSkipNonNumeric()
                     self.delegate?.rateUpdated(self.tempRate!)
                     self.setupNormalMode()
                 })
@@ -307,8 +309,10 @@ class UpdateRateViewController: UIViewController {
         } else { // Salary Now Specified
             if tempRate == nil { tempRate = TempRate(type: .salary) }
             if tempRate!.type == .salary {
+                tempRate!.rateName = rateNameText
                 tempRate!.frequency = getSalaryType(freqText)
-                tempRate!.rateValue = Double(payText) ?? 0.0
+                
+                tempRate!.rateValue = payText.convertSkipNonNumeric()
                 delegate?.rateUpdated(tempRate!)
                 return true
             } else {
@@ -317,7 +321,7 @@ class UpdateRateViewController: UIViewController {
                     self.tempRate!.type = .salary
                     self.tempRate!.rateName = rateNameText
                     self.tempRate!.frequency = self.getSalaryType(freqText)
-                    self.tempRate!.rateValue = Double(payText) ?? 0.0
+                    self.tempRate!.rateValue = payText.convertSkipNonNumeric()
                     self.delegate?.rateUpdated(self.tempRate!)
                     self.setupNormalMode()
                 })
@@ -326,6 +330,14 @@ class UpdateRateViewController: UIViewController {
                 return false
             }
         }
+    }
+}
+
+extension String {
+    func convertSkipNonNumeric() -> Double {
+        var tempString = self.replacingOccurrences(of: "$", with: "")
+        tempString = tempString.replacingOccurrences(of: ",", with: "")
+        return Double(tempString) ?? 0.0
     }
 }
 
@@ -344,11 +356,7 @@ extension UpdateRateViewController: UITextFieldDelegate {
                 frequencyPickerHeightConstraint.constant = 216
             }
             return false
-        } else if textField == payTitleTextField {
-            guard let freqText = frequencyTitleLabel.text else { return false}
-            if freqText != "payment_type_hourly".localized {
-                return false
-            }
+        } else if textField == payTextField {
             return true
         }
         
@@ -357,6 +365,15 @@ extension UpdateRateViewController: UITextFieldDelegate {
         return true
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+}
+
+extension UpdateRateViewController {
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if textField == payTextField {
+            let rate = textField.text?.currencyAmount() ?? NSNumber(0)
+            textField.text = NumberFormatter.localisedCurrencyStr(from: rate)
+        }
     }
 }
 

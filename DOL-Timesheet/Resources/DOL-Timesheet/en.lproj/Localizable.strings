@@ -550,3 +550,6 @@
 "pay_type" = "Pay Type";
 "overtime_eligibility" = "Overtime Eligibility";
 "flsa" = "FLSA";
+"add_an_employer" = "Add an Employer...";
+"add_an_employee" = "Add an Employee...";
+"add_a_rate" = "Add a Rate...";

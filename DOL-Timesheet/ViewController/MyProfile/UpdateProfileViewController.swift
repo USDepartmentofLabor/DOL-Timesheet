@@ -45,14 +45,14 @@ class UpdateProfileViewController: UIViewController {
         nameTitleLabel.text = "name_or_nickname".localized
         nameTextField.text = profileViewModel.profileModel.currentUser?.name
         
-        employmentTitleLabel.text = "I am an..."
+        employmentTitleLabel.text = "i_am_an".localized
         employmentTypeLabel.text = "employee".localized
         if profileViewModel.isProfileEmployer {
             title = "employer".localized
             employmentTypeLabel.text = "employer".localized
         }
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Edit",
+            title: "edit".localized,
             style: .plain,
             target: self,
             action: #selector(editButtonTapped)
@@ -61,7 +61,7 @@ class UpdateProfileViewController: UIViewController {
     }
     
     @objc func editButtonTapped() {
-        if navigationItem.rightBarButtonItem?.title == "Edit" {
+        if navigationItem.rightBarButtonItem?.title == "edit".localized {
             setupEditMode()
         } else {
             setupNormalMode()
@@ -73,9 +73,9 @@ class UpdateProfileViewController: UIViewController {
     }
     
     func setupEditMode() {
-        navigationItem.rightBarButtonItem?.title = "Save"
+        navigationItem.rightBarButtonItem?.title = "save".localized
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-                  title: "Cancel",
+                  title: "cancel".localized,
                   style: .plain,
                   target: self,
                   action: #selector(cancelPressed)
@@ -88,7 +88,7 @@ class UpdateProfileViewController: UIViewController {
     }
     
     func setupNormalMode() {
-        navigationItem.rightBarButtonItem?.title = "Edit"
+        navigationItem.rightBarButtonItem?.title = "edit".localized
         navigationItem.leftBarButtonItem = nil
         
         nameTextField.textColor = UIColor(named: "valueInactiveText")
@@ -103,6 +103,7 @@ class UpdateProfileViewController: UIViewController {
         let name = nameTextField.text
         if name != nil && !name!.isEmpty {
             profileUser?.name = nameTextField.text
+            profileViewModel.saveProfile()
             navigationItem.backBarButtonItem?.isEnabled = true
         }
     }

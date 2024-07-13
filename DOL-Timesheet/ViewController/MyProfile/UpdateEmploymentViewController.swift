@@ -93,6 +93,8 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
             setupData()
             setupNormalMode()
             return
+        } else {
+            employmentModel = profileViewModel.newTempEmploymentModel()
         }
         setupEditMode()
     }
@@ -109,18 +111,6 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         updateCellCorners()
 
         helpView.layer.cornerRadius = 10.0
-    }
-    
-    override func willMove(toParent parent: UIViewController?) {
-        super.willMove(toParent: parent)
-        if parent == nil {
-            // Back button pressed
-            handleBackButton()
-        }
-    }
-
-    func handleBackButton() {
-        save()
     }
     
     func setupView() {
@@ -175,7 +165,7 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         discardButton.isHidden = true
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Save",
+            title: "save".localized,
             style: .plain,
             target: self,
             action: #selector(editButtonTapped)
@@ -235,21 +225,28 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         if safeEmploymentModel.paymentType == .salary {
             rates = [
                 TempRate(
-                    rateName: "Salary",
+                    rateName: "payment_type_salary".localized,
                     rateValue: safeEmploymentModel.salary.amount.doubleValue,
                     type: safeEmploymentModel.paymentType,
                     frequency: safeEmploymentModel.salary.salaryType)
             ]
         }
-        if let ratesArray = safeEmploymentModel.hourlyRates {
-            rates = ratesArray.map {
-                TempRate(rateName: $0.name ?? "Rate", rateValue: $0.value, type: .hourly)
-            }
+        
+        if safeEmploymentModel.paymentType == .salary {
+            rates = [
+                TempRate(rateName: "payment_type_salary".localized,
+                         rateValue: safeEmploymentModel.salary.amount.doubleValue,
+                         type:.salary,
+                         frequency: safeEmploymentModel.salary.salaryType)]
         } else {
-            rates = []
+            if let ratesArray = safeEmploymentModel.hourlyRates {
+                rates = ratesArray.map {
+                    TempRate(rateName: $0.name ?? "rate".localized, rateValue: $0.value, type: .hourly)
+                }
+            }
         }
         
-        navigationItem.rightBarButtonItem?.title = "Edit"
+        navigationItem.rightBarButtonItem?.title = "edit".localized
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -297,10 +294,12 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
     }
     
     @objc func editButtonTapped() {
-        if navigationItem.rightBarButtonItem?.title == "Edit" {
+        if navigationItem.rightBarButtonItem?.title == "edit".localized {
             setupEditMode()
         } else {
-            setupNormalMode()
+            if validateInput() {
+                setupNormalMode()
+            }
         }
     }
     @objc func cancelPressed() {
@@ -308,9 +307,9 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
     }
     
     func setupEditMode() {
-        navigationItem.rightBarButtonItem?.title = "Save"
+        navigationItem.rightBarButtonItem?.title = "save".localized
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-                  title: "Cancel",
+                  title: "cancel".localized,
                   style: .plain,
                   target: self,
                   action: #selector(cancelPressed)
@@ -333,7 +332,7 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
     }
     
     func setupNormalMode() {
-        navigationItem.rightBarButtonItem?.title = "Edit"
+        navigationItem.rightBarButtonItem?.title = "edit".localized
         navigationItem.leftBarButtonItem = nil
         
         nameTextField.textColor = UIColor(named: "valueInactiveText")
@@ -371,13 +370,8 @@ extension UpdateEmploymentViewController: UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: SoftenProfileTableViewCell.reuseIdentifier) as! SoftenProfileTableViewCell
         
-        guard let safeEmploymentModel = employmentModel else {
-            cell.employmentLabel.text = "Add a Rate..."
-            return cell
-        }
-        
-        if indexPath.row == rates?.count {
-            cell.employmentLabel.text = "Add a Rate..."
+        if rates == nil || indexPath.row == rates?.count {
+            cell.employmentLabel.text = "add_a_rate".localized
         } else {
             cell.employmentLabel.text = rates![indexPath.row].rateName
         }
@@ -618,35 +612,42 @@ extension UpdateEmploymentViewController: UITextFieldDelegate {
               let stateMinimumWageText = stateMinimumWageTextField.text else { return false }
         
         if nameText.isEmpty {
+            validateError(message: "name_not_specified".localized)
             return false
         }
         if startOfPayWeekText.isEmpty {
+            validateError(message: "start_of_pay_week_not_specified".localized)
             return false
         }
         if firstPayPeriodText.isEmpty {
+            validateError(message: "first_pay_not_specified".localized)
             return false
         }
         if payFrequencyText.isEmpty {
-            return false
-        }
-        if stateText.isEmpty {
+            validateError(message: "pay_freqency_not_specified".localized)
             return false
         }
         if stateMinimumWageText.isEmpty {
+            validateError(message: "minmum_wage_not_specified".localized)
             return false
         }
         
-        guard let safeEmploymentModel = employmentModel else {return false}
+        guard let empModel = employmentModel else {return false}
 
-        let user = employmentModel?.employmentUser
+        var user = employmentModel?.employmentUser
+        if user == nil {
+            user = empModel.newEmploymentUser()
+        }
         user?.name = nameTextField.text?.trimmingCharacters(in: .whitespaces)
         
-        safeEmploymentModel.workWeekStartDay = selectedWeekday ?? .sunday
-        safeEmploymentModel.employmentInfo.startDate = firstPayPeriod
+        empModel.workWeekStartDay = selectedWeekday ?? .sunday
+        empModel.employmentInfo.startDate = firstPayPeriod
         
-        safeEmploymentModel.paymentFrequency = selectedPayFrequency!
-        safeEmploymentModel.overtimeEligible = overtimeSwitch.isOn
-        safeEmploymentModel.minimumWage = minimumWage
+        empModel.paymentFrequency = selectedPayFrequency!
+        empModel.overtimeEligible = overtimeSwitch.isOn
+        empModel.minimumWage = minimumWage
+        
+        empModel.save()
         
 //        
 //        employmentModel?.paymentType = .salary
@@ -670,9 +671,14 @@ extension UpdateEmploymentViewController: UITextFieldDelegate {
 //        }
         return true
     }
+    
+    func validateError(message: String) {
+        let alertController = UIAlertController(title: "error_title".localized, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK".localized, style: .default))
+        present(alertController, animated: true)
+    }
+
 }
-
-
 extension UpdateEmploymentViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == startOfPayWeekPicker {
@@ -746,19 +752,24 @@ extension UpdateEmploymentViewController {
             rates = [rate]
             empModel.paymentType = .salary
             empModel.salary = (NSNumber(value: rate.rateValue), rate.frequency)
-            empModel.save()
         } else {
             empModel.paymentType = .hourly
             if selectedRate != nil {
                 rates![selectedRateIndex] = rate
                 empModel.hourlyRates?[selectedRateIndex].name = rate.rateName
                 empModel.hourlyRates?[selectedRateIndex].value = rate.rateValue
-                empModel.save()
+    
             } else {
                 if rates != nil {
+                    guard  let newRate = empModel.newHourlyRate() else { return }
                     rates?.append(rate)
+                    newRate.name = rate.rateName
+                    newRate.value = rate.rateValue
                 } else {
+                    guard  let newRate = empModel.newHourlyRate() else { return }
                     rates = [rate]
+                    newRate.name = rate.rateName
+                    newRate.value = rate.rateValue
                 }
             }
         }

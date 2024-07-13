@@ -70,10 +70,10 @@ extension MyProfileViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: SoftenProfileTableViewCell.reuseIdentifier) as! SoftenProfileTableViewCell
 
         if indexPath.row == profileViewModel.numberOfEmploymentInfo {
-            cell.employmentLabel.text = "Add an Employer..."
+            cell.employmentLabel.text = "add_an_employer".localized
 
             if profileViewModel.isProfileEmployer {
-                cell.employmentLabel.text = "Add an Employee..."
+                cell.employmentLabel.text = "add_an_employee".localized
             }
             
             return cell

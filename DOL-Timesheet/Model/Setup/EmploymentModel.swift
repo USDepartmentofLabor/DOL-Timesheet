@@ -162,13 +162,15 @@ class EmploymentModel {
         }
     }
     
-    func newHourlyRate() {
+    func newHourlyRate()-> HourlyRate? {
         if let context = employmentInfo.managedObjectContext {
             let hourlyRate = HourlyRate(context: context)
             let existingCount = employmentInfo.hourlyRate?.count ?? 0
             hourlyRate.name = "rate".localized + " \(existingCount + 1)"
             employmentInfo.addToHourlyRate(hourlyRate)
+            return hourlyRate
         }
+        return nil
     }
     
     func deleteHourlyRate(hourlyRate: HourlyRate) {
