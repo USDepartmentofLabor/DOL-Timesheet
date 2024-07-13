@@ -74,72 +74,13 @@ class UpdateRateViewController: UIViewController {
     }
 
     func handleBackButton() {
-        validateInput()
-    }
-    
-    func validateInput() {
-        guard let freqText = frequencyTitleLabel.text,
-              let payText = payTitleTextField.text,
-              let rateNameText = rateNameTextField.text else { return }
-        
-        if rateNameText.isEmpty && freqText == "payment_type_hourly".localized {
-            validateError(message: "rate_name_not_specified".localized)
-        }
-        
-        if payText.isEmpty {
-            validateError(message: "pay_not_specified".localized)
-        }
-        
-        if freqText.isEmpty {
-            validateError(message: "pay_frequency_not_selected".localized)
-        }
-        
-        if freqText == "payment_type_hourly".localized  {
-            if tempRate == nil { tempRate = TempRate(type: .hourly) }
-            if tempRate!.type == .hourly {
-                tempRate!.rateName = rateNameText
-                tempRate!.rateValue = Double(payText) ?? 0.0
-                delegate?.rateUpdated(tempRate!)
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                let alertController = UIAlertController(title: "warning".localized, message: "switching_from_salary", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK".localized, style: .destructive){_ in
-                    self.tempRate!.type = .hourly
-                    self.tempRate!.rateName = rateNameText
-                    self.tempRate!.rateValue = Double(payText) ?? 0.0
-                    self.delegate?.rateUpdated(self.tempRate!)
-                    self.navigationController?.popViewController(animated: true)
-                })
-                alertController.addAction(UIAlertAction(title: "Cancel".localized, style: .destructive))
-                present(alertController, animated: true)
-            }
-        } else { // Salary Now Specified
-            if tempRate == nil { tempRate = TempRate(type: .salary) }
-            if tempRate!.type == .salary {
-                tempRate!.frequency = getSalaryType(freqText)
-                tempRate!.rateValue = Double(payText) ?? 0.0
-                delegate?.rateUpdated(tempRate!)
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                let alertController = UIAlertController(title: "warning".localized, message: "switching_from_hourly", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK".localized, style: .destructive){_ in
-                    self.tempRate!.type = .hourly
-                    self.tempRate!.rateName = rateNameText
-                    self.tempRate!.frequency = self.getSalaryType(freqText)
-                    self.tempRate!.rateValue = Double(payText) ?? 0.0
-                    self.delegate?.rateUpdated(self.tempRate!)
-                    self.navigationController?.popViewController(animated: true)
-                })
-                alertController.addAction(UIAlertAction(title: "Cancel".localized, style: .destructive))
-                present(alertController, animated: true)
-            }
-        }
+      //  validateInput()
     }
     
     func getSalaryType(_ freqText: String)-> SalaryType {
-        if freqText == "salary_weekly".localized {
+        if freqText == SalaryType.weekly.title {
             return .weekly
-        } else if freqText == "salary_monthly".localized {
+        } else if freqText == SalaryType.monthly.title {
             return .monthly
         } else {
             return .annually
@@ -151,11 +92,11 @@ class UpdateRateViewController: UIViewController {
         if rate.type == .hourly {
             return "payment_type_hourly".localized
         } else if rate.frequency == .weekly {
-            return  "salary_weekly".localized
+            return  SalaryType.weekly.title
         } else if rate.frequency == .monthly {
-            return "salary_monthly".localized
+            return SalaryType.monthly.title
         } else {
-            return  "salary_annually".localized
+            return  SalaryType.annually.title
         }
     }
     
@@ -174,12 +115,7 @@ class UpdateRateViewController: UIViewController {
     
     func validateError(message: String) {
         let alertController = UIAlertController(title: "error_title".localized, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK".localized, style: .default){_ in
-            return
-        })
-        alertController.addAction(UIAlertAction(title: "Cancel".localized, style: .destructive) { _ in
-            self.navigationController?.popViewController(animated: true)
-        })
+        alertController.addAction(UIAlertAction(title: "OK".localized, style: .default))
         present(alertController, animated: true)
     }
     
@@ -191,9 +127,9 @@ class UpdateRateViewController: UIViewController {
         frequencyTitleLabel.text = "frequency".localized
         
         payFrequencyArray = ["payment_type_hourly".localized,
-                          "salary_weekly".localized,
-                          "salary_monthly".localized,
-                          "salary_annually".localized]
+                             SalaryType.weekly.title,
+                             SalaryType.monthly.title,
+                             SalaryType.annually.title]
         
         helpLabel.text = "help".localized
         
@@ -211,6 +147,22 @@ class UpdateRateViewController: UIViewController {
         discardButton.setTitleColor(UIColor.white, for: .highlighted)
         discardButton.setTitle("discard".localized, for: .normal)
         
+        if tempRate == nil {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(
+                title: "Save",
+                style: .plain,
+                target: self,
+                action: #selector(editButtonTapped)
+            )
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(
+                title: "Edit",
+                style: .plain,
+                target: self,
+                action: #selector(editButtonTapped)
+            )
+        }
+        discardButton.isHidden = true
     }
     
     func setupData() {
@@ -220,9 +172,56 @@ class UpdateRateViewController: UIViewController {
             payTitleTextField.text = String(rate.rateValue)
             frequencyTextField.text = getFrequencyName(rate: rate)
             setFrequencyPicker(rate: rate)
-            discardButton.isHidden = false
+            discardButton.isHidden = true
+            setupNormalMode()
             return
         }
+        discardButton.isHidden = true
+    }
+    
+    @objc func editButtonTapped() {
+        if navigationItem.rightBarButtonItem?.title == "Edit" {
+            setupEditMode()
+        } else {
+            if validateInput() {
+                setupNormalMode()
+            }
+        }
+    }
+    
+    @objc func cancelPressed() {
+        setupNormalMode()
+    }
+    
+    func setupEditMode() {
+        navigationItem.rightBarButtonItem?.title = "Save"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+                  title: "Cancel",
+                  style: .plain,
+                  target: self,
+                  action: #selector(cancelPressed)
+              )
+
+        rateNameTextField.textColor = UIColor(named: "valueActiveText")
+        rateNameTextField.isEnabled = true
+        payTitleTextField.textColor = UIColor(named: "valueActiveText")
+        payTitleTextField.isEnabled = true
+        frequencyTextField.textColor = UIColor(named: "valueActiveText")
+        frequencyTextField.isEnabled = true
+        
+        discardButton.isHidden = false
+    }
+    
+    func setupNormalMode() {
+        navigationItem.rightBarButtonItem?.title = "Edit"
+        navigationItem.leftBarButtonItem = nil
+        
+        rateNameTextField.textColor = UIColor(named: "valueInactiveText")
+        rateNameTextField.isEnabled = false
+        payTitleTextField.textColor = UIColor(named: "valueInactiveText")
+        payTitleTextField.isEnabled = false
+        frequencyTextField.textColor = UIColor(named: "valueInactiveText")
+        frequencyTextField.isEnabled = false
         discardButton.isHidden = true
     }
     
@@ -257,9 +256,76 @@ class UpdateRateViewController: UIViewController {
             UIAlertAction(title: "cancel".localized, style: .cancel))
         alertController.addAction(
             UIAlertAction(title: "delete".localized, style: .destructive) { _ in
+                self.delegate?.rateDelete()
+                self.navigationController?.popViewController(animated: true)
             }
         )
         present(alertController, animated: true)
+    }
+    
+    
+    func validateInput()->Bool {
+        guard let freqText = frequencyTextField.text,
+              let payText = payTitleTextField.text,
+              let rateNameText = rateNameTextField.text else { return false }
+        
+        if rateNameText.isEmpty && freqText == "payment_type_hourly".localized {
+            validateError(message: "rate_name_not_specified".localized)
+            return false
+        }
+        
+        if payText.isEmpty {
+            validateError(message: "pay_not_specified".localized)
+            return false
+        }
+        
+        if freqText.isEmpty {
+            validateError(message: "pay_frequency_not_selected".localized)
+            return false
+        }
+        
+        if freqText == "payment_type_hourly".localized  {
+            if tempRate == nil { tempRate = TempRate(type: .hourly) }
+            if tempRate!.type == .hourly {
+                tempRate!.rateName = rateNameText
+                tempRate!.rateValue = Double(payText) ?? 0.0
+                delegate?.rateUpdated(tempRate!)
+                return true
+            } else {
+                let alertController = UIAlertController(title: "warning".localized, message: "switching_from_salary", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK".localized, style: .destructive){_ in
+                    self.tempRate!.type = .hourly
+                    self.tempRate!.rateName = rateNameText
+                    self.tempRate!.rateValue = Double(payText) ?? 0.0
+                    self.delegate?.rateUpdated(self.tempRate!)
+                    self.setupNormalMode()
+                })
+                alertController.addAction(UIAlertAction(title: "Cancel".localized, style: .destructive))
+                present(alertController, animated: true)
+                return false
+            }
+        } else { // Salary Now Specified
+            if tempRate == nil { tempRate = TempRate(type: .salary) }
+            if tempRate!.type == .salary {
+                tempRate!.frequency = getSalaryType(freqText)
+                tempRate!.rateValue = Double(payText) ?? 0.0
+                delegate?.rateUpdated(tempRate!)
+                return true
+            } else {
+                let alertController = UIAlertController(title: "warning".localized, message: "switching_from_hourly", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK".localized, style: .destructive){_ in
+                    self.tempRate!.type = .salary
+                    self.tempRate!.rateName = rateNameText
+                    self.tempRate!.frequency = self.getSalaryType(freqText)
+                    self.tempRate!.rateValue = Double(payText) ?? 0.0
+                    self.delegate?.rateUpdated(self.tempRate!)
+                    self.setupNormalMode()
+                })
+                alertController.addAction(UIAlertAction(title: "Cancel".localized, style: .destructive))
+                present(alertController, animated: true)
+                return false
+            }
+        }
     }
 }
 
@@ -273,7 +339,7 @@ extension UpdateRateViewController: UITextFieldDelegate {
                 frequencyPickerHeightConstraint.constant = 0
             } else {
                 if frequencyTextField.text?.count == 0 {
-                    frequencyTextField.text? = "payment_hour".localized
+                    frequencyTextField.text? = "payment_type_hourly".localized
                 }
                 frequencyPickerHeightConstraint.constant = 216
             }

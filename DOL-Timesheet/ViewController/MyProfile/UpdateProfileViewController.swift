@@ -51,6 +51,50 @@ class UpdateProfileViewController: UIViewController {
             title = "employer".localized
             employmentTypeLabel.text = "employer".localized
         }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Edit",
+            style: .plain,
+            target: self,
+            action: #selector(editButtonTapped)
+        )
+        setupNormalMode()
+    }
+    
+    @objc func editButtonTapped() {
+        if navigationItem.rightBarButtonItem?.title == "Edit" {
+            setupEditMode()
+        } else {
+            setupNormalMode()
+        }
+    }
+    
+    @objc func cancelPressed() {
+        setupNormalMode()
+    }
+    
+    func setupEditMode() {
+        navigationItem.rightBarButtonItem?.title = "Save"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+                  title: "Cancel",
+                  style: .plain,
+                  target: self,
+                  action: #selector(cancelPressed)
+              )
+
+        nameTextField.textColor = UIColor(named: "valueActiveText")
+        nameTextField.isEnabled = true
+        employmentTypeLabel.textColor = UIColor(named: "valueActiveText")
+        employmentTypeLabel.isEnabled = true
+    }
+    
+    func setupNormalMode() {
+        navigationItem.rightBarButtonItem?.title = "Edit"
+        navigationItem.leftBarButtonItem = nil
+        
+        nameTextField.textColor = UIColor(named: "valueInactiveText")
+        nameTextField.isEnabled = false
+        employmentTypeLabel.textColor = UIColor(named: "valueInactiveText")
+        employmentTypeLabel.isEnabled = false
     }
     
     func saveName() {

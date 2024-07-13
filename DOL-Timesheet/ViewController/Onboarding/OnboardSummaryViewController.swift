@@ -173,27 +173,27 @@ class OnboardSummaryViewController: OnboardBaseViewController {
                 
             } else {
                 
-                let SalaryType = employmentModel?.employmentInfo.salary?.salaryType
+                let salaryType = employmentModel?.employmentInfo.salary?.salaryType
                 let salary = employmentModel?.employmentInfo.salary
                 let amount = salary?.value ?? 10.00
                 
                 
-                if SalaryType == .annually {
+                if salaryType == .annually {
                     
                     reviewPayRateLabel.attributedText = boldily(
-                        "$" + String(format: "%.2f", amount) + "/" + "salary_annually".localized
+                        "$" + String(format: "%.2f", amount) + "/" + SalaryType.annually.title
                     )
                     
-                } else if SalaryType == .monthly {
+                } else if salaryType == .monthly {
                     
                     reviewPayRateLabel.attributedText = boldily(
-                        "$" + String(format: "%.2f", amount) + "/" + "salary_monthly".localized
+                        "$" + String(format: "%.2f", amount) + "/" + SalaryType.monthly.title
                     )
                         
-                } else if SalaryType == .weekly {
+                } else if salaryType == .weekly {
                     
                     reviewPayRateLabel.attributedText = boldily(
-                        "$" + String(format: "%.2f", amount) + "/" + "salary_weekly".localized
+                        "$" + String(format: "%.2f", amount) + "/" + SalaryType.weekly.title
                     )
                 }
             }
@@ -258,24 +258,24 @@ class OnboardSummaryViewController: OnboardBaseViewController {
                 )
                 
             }else {
-                let SalaryType = employmentModel?.employmentInfo.salary?.salaryType
+                let salaryType = employmentModel?.employmentInfo.salary?.salaryType
                 let salary = employmentModel?.employmentInfo.salary
                 let amount = salary?.value ?? 10.00
                 
                 
-                if SalaryType == .annually {
+                if salaryType == .annually {
                     reviewPayRateLabel.attributedText = boldily(
-                        "$" + String(format: "%.2f", amount) + "/" + "salary_annually".localized
+                        "$" + String(format: "%.2f", amount) + "/" + SalaryType.annually.title
                     )
                     
-                } else if SalaryType == .monthly {
+                } else if salaryType == .monthly {
                     reviewPayRateLabel.attributedText = boldily(
-                        "$" + String(format: "%.2f", amount) + "/" + "salary_monthly".localized
+                        "$" + String(format: "%.2f", amount) + "/" + SalaryType.monthly.title
                     )
                     
-                } else if SalaryType == .weekly {
+                } else if salaryType == .weekly {
                     reviewPayRateLabel.attributedText = boldily(
-                        "$" + String(format: "%.2f", amount) + "/" + "salary_weekly".localized)
+                        "$" + String(format: "%.2f", amount) + "/" + SalaryType.weekly.title)
                 }
             }
             

@@ -98,7 +98,7 @@ extension MyProfileViewController: UITableViewDataSource {
         let headerView = UIView()
         headerView.backgroundColor = UIColor(named: "timesheetBackgroundColor")
 
-        let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.width - 30, height: 12))
+        let headerLabel = UILabel(frame: CGRect(x: 5, y: -5, width: tableView.frame.width - 30, height: 12))
         headerLabel.text = title
         headerLabel.textColor = UIColor(named: "labelTextInactive")
         headerLabel.font = UIFont.boldSystemFont(ofSize: 12)

@@ -43,11 +43,13 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
     
     @IBOutlet weak var rateTable: SelfSizedTableView!
     
-    
     @IBOutlet weak var helpLabel: UILabel!
     @IBOutlet weak var helpView: UIView!
     
     @IBOutlet weak var discardButton: UIButton!
+    
+    var selectedRate: TempRate?
+    var selectedRateIndex: Int = 0
     
     let profileViewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
     var employmentModel: EmploymentModel?
@@ -85,14 +87,18 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         super.viewDidLoad()
         setupNavigationBarSettings()
         self.navigationController?.navigationBar.tintColor = .linkColor
+        setupView()
+        
+        if employmentModel != nil {
+            setupData()
+            setupNormalMode()
+            return
+        }
+        setupEditMode()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupView()
-        if employmentModel != nil {
-            setupData()
-        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -168,6 +174,13 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         
         discardButton.isHidden = true
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Save",
+            style: .plain,
+            target: self,
+            action: #selector(editButtonTapped)
+        )
+        
     }
     
     func setupData() {
@@ -235,6 +248,8 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         } else {
             rates = []
         }
+        
+        navigationItem.rightBarButtonItem?.title = "Edit"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -252,7 +267,8 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         
         if segue.identifier == "updateRateSegue" {
             if let destinationVC = segue.destination as? UpdateRateViewController {
-                destinationVC.tempRate = sender as? TempRate
+                destinationVC.delegate = self
+                destinationVC.tempRate = selectedRate
             }
         }
     }
@@ -278,6 +294,62 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
             }
         )
         present(alertController, animated: true)
+    }
+    
+    @objc func editButtonTapped() {
+        if navigationItem.rightBarButtonItem?.title == "Edit" {
+            setupEditMode()
+        } else {
+            setupNormalMode()
+        }
+    }
+    @objc func cancelPressed() {
+        setupNormalMode()
+    }
+    
+    func setupEditMode() {
+        navigationItem.rightBarButtonItem?.title = "Save"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+                  title: "Cancel",
+                  style: .plain,
+                  target: self,
+                  action: #selector(cancelPressed)
+              )
+
+        nameTextField.textColor = UIColor(named: "valueActiveText")
+        nameTextField.isEnabled = true
+        startOfPayWeekTextField.textColor = UIColor(named: "valueActiveText")
+        startOfPayWeekTextField.isEnabled = true
+        firstPayPeriodTextField.textColor = UIColor(named: "valueActiveText")
+        firstPayPeriodTextField.isEnabled = true
+        payFrequencyTextField.textColor = UIColor(named: "valueActiveText")
+        payFrequencyTextField.isEnabled = true
+        stateTextField.textColor = UIColor(named: "valueActiveText")
+        stateTextField.isEnabled = true
+        stateMinimumWageTextField.textColor = UIColor(named: "valueActiveText")
+        stateMinimumWageTextField.isEnabled = true
+        
+        discardButton.isHidden = false
+    }
+    
+    func setupNormalMode() {
+        navigationItem.rightBarButtonItem?.title = "Edit"
+        navigationItem.leftBarButtonItem = nil
+        
+        nameTextField.textColor = UIColor(named: "valueInactiveText")
+        nameTextField.isEnabled = false
+        startOfPayWeekTextField.textColor = UIColor(named: "valueInactiveText")
+        startOfPayWeekTextField.isEnabled = false
+        firstPayPeriodTextField.textColor = UIColor(named: "valueInactiveText")
+        firstPayPeriodTextField.isEnabled = false
+        payFrequencyTextField.textColor = UIColor(named: "valueInactiveText")
+        payFrequencyTextField.isEnabled = false
+        stateTextField.textColor = UIColor(named: "valueInactiveText")
+        stateTextField.isEnabled = false
+        stateMinimumWageTextField.textColor = UIColor(named: "valueInactiveText")
+        stateMinimumWageTextField.isEnabled = false
+        
+        discardButton.isHidden = true
     }
 }
 
@@ -307,7 +379,6 @@ extension UpdateEmploymentViewController: UITableViewDataSource {
         if indexPath.row == rates?.count {
             cell.employmentLabel.text = "Add a Rate..."
         } else {
-            let rate = safeEmploymentModel.hourlyRates?[indexPath.row]
             cell.employmentLabel.text = rates![indexPath.row].rateName
         }
         return cell
@@ -319,7 +390,7 @@ extension UpdateEmploymentViewController: UITableViewDataSource {
         let headerView = UIView()
         headerView.backgroundColor = UIColor(named: "timesheetBackgroundColor")
 
-        let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.width - 30, height: 12))
+        let headerLabel = UILabel(frame: CGRect(x: 5, y: -5, width: tableView.frame.width - 30, height: 12))
         headerLabel.text = title
         headerLabel.textColor = UIColor(named: "labelTextInactive")
         headerLabel.font = UIFont.boldSystemFont(ofSize: 12)
@@ -396,19 +467,15 @@ extension UpdateEmploymentViewController: UITableViewDataSource {
 extension UpdateEmploymentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let safeEmploymentModel = employmentModel else {
+        if rates == nil || indexPath.row == rates!.count {
             tableView.deselectRow(at: indexPath, animated: false)
+            selectedRate = nil
             performSegue(withIdentifier: "updateRateSegue", sender: nil)
             return
         }
 
-        if indexPath.row == safeEmploymentModel.hourlyRates?.count {
-            tableView.deselectRow(at: indexPath, animated: false)
-            performSegue(withIdentifier: "updateRateSegue", sender: nil)
-            return
-        }
-
-        let selectedRate = safeEmploymentModel.hourlyRates?[indexPath.row]
+        selectedRate = rates![indexPath.row]
+        selectedRateIndex = indexPath.row
         tableView.deselectRow(at: indexPath, animated: false)
         performSegue(withIdentifier: "updateRateSegue", sender: selectedRate)
     }
@@ -543,16 +610,43 @@ extension UpdateEmploymentViewController: UITextFieldDelegate {
     }
     
     func validateInput()-> Bool {
+        guard let nameText = nameTextField.text,
+              let startOfPayWeekText = startOfPayWeekTextField.text,
+              let firstPayPeriodText = firstPayPeriodTextField.text,
+              let payFrequencyText = payFrequencyTextField.text,
+              let stateText = stateTextField.text,
+              let stateMinimumWageText = stateMinimumWageTextField.text else { return false }
         
+        if nameText.isEmpty {
+            return false
+        }
+        if startOfPayWeekText.isEmpty {
+            return false
+        }
+        if firstPayPeriodText.isEmpty {
+            return false
+        }
+        if payFrequencyText.isEmpty {
+            return false
+        }
+        if stateText.isEmpty {
+            return false
+        }
+        if stateMinimumWageText.isEmpty {
+            return false
+        }
+        
+        guard let safeEmploymentModel = employmentModel else {return false}
+
         let user = employmentModel?.employmentUser
         user?.name = nameTextField.text?.trimmingCharacters(in: .whitespaces)
         
-        employmentModel!.workWeekStartDay = selectedWeekday ?? .sunday
-        employmentModel?.employmentInfo.startDate = firstPayPeriod
+        safeEmploymentModel.workWeekStartDay = selectedWeekday ?? .sunday
+        safeEmploymentModel.employmentInfo.startDate = firstPayPeriod
         
-        employmentModel?.paymentFrequency = selectedPayFrequency!
-        employmentModel?.overtimeEligible = overtimeSwitch.isOn
-        employmentModel?.minimumWage = minimumWage
+        safeEmploymentModel.paymentFrequency = selectedPayFrequency!
+        safeEmploymentModel.overtimeEligible = overtimeSwitch.isOn
+        safeEmploymentModel.minimumWage = minimumWage
         
 //        
 //        employmentModel?.paymentType = .salary
@@ -646,10 +740,33 @@ extension UpdateEmploymentViewController {
 
 extension UpdateEmploymentViewController {
     func rateUpdated(_ rate: TempRate) {
+        guard let empModel = employmentModel else { return }
         // if  changing hourly to salary, rates array only has 1 Salary Entry
+        if rate.type == .salary {
+            rates = [rate]
+            empModel.paymentType = .salary
+            empModel.salary = (NSNumber(value: rate.rateValue), rate.frequency)
+            empModel.save()
+        } else {
+            empModel.paymentType = .hourly
+            if selectedRate != nil {
+                rates![selectedRateIndex] = rate
+                empModel.hourlyRates?[selectedRateIndex].name = rate.rateName
+                empModel.hourlyRates?[selectedRateIndex].value = rate.rateValue
+                empModel.save()
+            } else {
+                if rates != nil {
+                    rates?.append(rate)
+                } else {
+                    rates = [rate]
+                }
+            }
+        }
+        rateTable.reloadData()
     }
     
     func rateDelete() {
-        
+        rates?.remove(at: selectedRateIndex)
+        rateTable.reloadData()
     }
 }

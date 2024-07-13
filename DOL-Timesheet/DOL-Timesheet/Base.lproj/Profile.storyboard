@@ -2612,7 +2612,7 @@
                                             <constraint firstAttribute="height" constant="20" id="G4W-9d-uJM"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="labelTextInactive"/>
+                                        <color key="textColor" name="valueActiveText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -2655,7 +2655,7 @@
                                                         <constraint firstAttribute="height" constant="20" id="RWs-yq-0c4"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" name="labelTextInactive"/>
+                                                    <color key="textColor" name="valueActiveText"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightChevron" translatesAutoresizingMaskIntoConstraints="NO" id="PBa-Jp-vP0">
@@ -3493,7 +3493,7 @@
                                             <constraint firstAttribute="height" constant="21" id="1nK-O3-MGf"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="labelTextInactive"/>
+                                        <color key="textColor" name="valueActiveText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9Dp-lr-fV9">
@@ -3527,7 +3527,7 @@
                                             <constraint firstAttribute="height" constant="21" id="c5v-8b-B4k"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="labelTextInactive"/>
+                                        <color key="textColor" name="valueActiveText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zYj-Pa-Nu5">
@@ -3628,11 +3628,12 @@
                                         <color key="textColor" name="labelTextInactive"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Name" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DG1-Lb-KmK">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="User Name" placeholder="User Name" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DG1-Lb-KmK">
                                         <rect key="frame" x="161.5" y="12.5" width="185.5" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="rdE-n3-LKQ"/>
                                         </constraints>
+                                        <color key="textColor" name="valueActiveText"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -3668,7 +3669,7 @@
                                             <constraint firstAttribute="height" constant="20" id="xRm-mN-TZf"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="labelTextInactive"/>
+                                        <color key="textColor" name="valueActiveText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightChevron" translatesAutoresizingMaskIntoConstraints="NO" id="sQd-Rk-DSf">
@@ -3756,7 +3757,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="5WZ-G2-msV"/>
                                                         </constraints>
-                                                        <color key="textColor" name="labelTextActive"/>
+                                                        <color key="textColor" name="valueInactiveText"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
@@ -3792,7 +3793,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="9KL-Vk-NtG"/>
                                                         </constraints>
-                                                        <color key="textColor" name="labelTextActive"/>
+                                                        <color key="textColor" name="valueInactiveText"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
@@ -3841,7 +3842,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="tg6-7U-IxX"/>
                                                         </constraints>
-                                                        <color key="textColor" name="labelTextActive"/>
+                                                        <color key="textColor" name="valueInactiveText"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
@@ -3886,7 +3887,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="LRy-Lj-2kt"/>
                                                         </constraints>
-                                                        <color key="textColor" name="labelTextActive"/>
+                                                        <color key="textColor" name="valueInactiveText"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
@@ -3962,7 +3963,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="z2P-8k-Yev"/>
                                                         </constraints>
-                                                        <color key="textColor" name="labelTextActive"/>
+                                                        <color key="textColor" name="valueInactiveText"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
@@ -4011,7 +4012,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="JbN-bd-25i"/>
                                                         </constraints>
-                                                        <color key="textColor" name="labelTextActive"/>
+                                                        <color key="textColor" name="valueInactiveText"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
@@ -4048,7 +4049,7 @@
                                                                         <constraint firstAttribute="height" constant="21" id="wSN-pP-3iT"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" name="labelTextInactive"/>
+                                                                    <color key="textColor" name="valueInactiveText"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightChevron" translatesAutoresizingMaskIntoConstraints="NO" id="I0F-Ui-1vQ">
@@ -4269,7 +4270,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="SMJ-Ol-4Gq"/>
                                         </constraints>
-                                        <color key="textColor" name="labelTextActive"/>
+                                        <color key="textColor" name="valueInactiveText"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -4302,7 +4303,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="u6u-n1-4dG"/>
                                         </constraints>
-                                        <color key="textColor" name="labelTextActive"/>
+                                        <color key="textColor" name="valueInactiveText"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -4326,7 +4327,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="lrz-ZU-9JB"/>
                                         </constraints>
-                                        <color key="textColor" name="labelTextActive"/>
+                                        <color key="textColor" name="valueInactiveText"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -4486,7 +4487,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QWk-Iz-0dH"/>
+        <segue reference="zWa-kD-YhK"/>
         <segue reference="GvG-um-s8D"/>
         <segue reference="jna-rX-JMR"/>
     </inferredMetricsTieBreakers>
@@ -4524,9 +4525,6 @@
         <namedColor name="editColor">
             <color red="0.0078431372549019607" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="labelTextActive">
-            <color red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="labelTextInactive">
             <color red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
@@ -4538,6 +4536,9 @@
         </namedColor>
         <namedColor name="timesheetBackgroundColor">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="valueActiveText">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="valueInactiveText">
             <color red="0.54117647058823526" green="0.54117647058823526" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

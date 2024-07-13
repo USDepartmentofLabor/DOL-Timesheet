@@ -212,9 +212,9 @@ class OnboardPayViewController: OnboardBaseViewController {
         payPeriodPickerHeight.constant = 0
         
         payPeriodArray = ["payment_hour".localized,
-                          "salary_weekly".localized,
-                          "salary_monthly".localized,
-                          "salary_annually".localized]
+                          SalaryType.weekly.title,
+                          SalaryType.monthly.title,
+                          SalaryType.annually.title]
         
         if userType == .employee {
             payFrequencyTitle.text = "onboard_pay_frequency_employer".localized
@@ -283,13 +283,13 @@ class OnboardPayViewController: OnboardBaseViewController {
             employmentModel?.hourlyRates?[0].value = selectedPayRate
 //            employmentModel?.hourlyRates?[0].createdAt = Date()
             
-        } else if selectedPayPeriod! == "salary_weekly".localized {
+        } else if selectedPayPeriod! == SalaryType.weekly.title {
             deleteHourlyRate()
             employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .weekly)
-        } else if selectedPayPeriod! == "salary_monthly".localized {
+        } else if selectedPayPeriod! == SalaryType.monthly.title {
             deleteHourlyRate()
             employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .monthly)
-        } else if selectedPayPeriod! == "salary_annually".localized {
+        } else if selectedPayPeriod! == SalaryType.annually.title {
             deleteHourlyRate()
             employmentModel?.salary = (amount: NSNumber(value: selectedPayRate), salaryType: .annually)
         }
