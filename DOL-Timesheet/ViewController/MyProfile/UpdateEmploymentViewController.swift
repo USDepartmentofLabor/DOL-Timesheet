@@ -51,6 +51,8 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
     var selectedRate: TempRate?
     var selectedRateIndex: Int = 0
     
+    var editMode: Bool = false
+    
     let profileViewModel: ProfileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
     var employmentModel: EmploymentModel?
     
@@ -314,6 +316,8 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
                   target: self,
                   action: #selector(cancelPressed)
               )
+        
+        editMode = true
 
         nameTextField.textColor = UIColor(named: "valueActiveText")
         nameTextField.isEnabled = true
@@ -335,6 +339,8 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         navigationItem.rightBarButtonItem?.title = "edit".localized
         navigationItem.leftBarButtonItem = nil
         
+        editMode = false
+        
         nameTextField.textColor = UIColor(named: "valueInactiveText")
         nameTextField.isEnabled = false
         startOfPayWeekTextField.textColor = UIColor(named: "valueInactiveText")
@@ -350,6 +356,83 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         
         discardButton.isHidden = true
     }
+    
+    @IBAction func nameViewTapped(_ sender: Any) {
+        resetViews()
+        nameTextField.becomeFirstResponder()
+    }
+    
+    @IBAction func startOfWeekViewTapped(_ sender: Any) {
+        if editMode {
+            if startOfPayWeekHeightConstraint.constant >= 1 {
+                startOfPayWeekHeightConstraint.constant = 0
+            } else {
+                resetViews()
+                startOfPayWeekHeightConstraint.constant = 216
+            }
+
+        }
+    }
+    
+    @IBAction func firstPayPeriodViewTapped(_ sender: Any) {
+        if editMode {
+            if firstPayPeriodDateHeightConstraint.constant >= 1 {
+                setFirstDatePickerHeight(height: 0, relatedBy: .equal)
+            } else {
+                resetViews()
+                setFirstDatePickerHeight(height: 307, relatedBy: .greaterThanOrEqual)
+            }
+        }
+    }
+    
+    @IBAction func payFrequencyViewTapped(_ sender: Any) {
+        if editMode {
+            if payFrequencyHeightConstraint.constant >= 1 {
+                payFrequencyHeightConstraint.constant = 0
+            } else {
+                resetViews()
+                payFrequencyHeightConstraint.constant = 216
+            }
+
+        }
+    }
+    
+    @IBAction func overtimeViewTapped(_ sender: Any) {
+        if (editMode){
+            resetViews()
+        }
+    }
+    
+    @IBAction func stateViewTapped(_ sender: Any) {
+        if editMode {
+            if stateHeightConstraint.constant >= 1 {
+                stateHeightConstraint.constant = 0
+            } else {
+                resetViews()
+                stateHeightConstraint.constant = 216
+            }
+        }
+    }
+    
+    @IBAction func minimumWageViewTapped(_ sender: Any) {
+        if (editMode){
+            resetViews()
+            stateMinimumWageTextField.becomeFirstResponder()
+        }
+    }
+    
+    func resetViews() {
+        nameTextField.resignFirstResponder()
+        nameTextField.endEditing(true)
+
+        startOfPayWeekHeightConstraint.constant = 0
+        setFirstDatePickerHeight(height: 0, relatedBy: .equal)
+        payFrequencyHeightConstraint.constant = 0
+        stateHeightConstraint.constant = 0
+        stateMinimumWageTextField.resignFirstResponder()
+        stateMinimumWageTextField.endEditing(true)
+    }
+    
 }
 
 extension UpdateEmploymentViewController: UITableViewDataSource {

@@ -45,6 +45,7 @@ class UpdateRateViewController: UIViewController {
     
     var payFrequencyArray: [String] = []
     
+    var editMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -203,6 +204,8 @@ class UpdateRateViewController: UIViewController {
                   target: self,
                   action: #selector(cancelPressed)
               )
+        
+        editMode = true
 
         rateNameTextField.textColor = UIColor(named: "valueActiveText")
         rateNameTextField.isEnabled = true
@@ -217,6 +220,8 @@ class UpdateRateViewController: UIViewController {
     func setupNormalMode() {
         navigationItem.rightBarButtonItem?.title = "edit".localized
         navigationItem.leftBarButtonItem = nil
+        
+        editMode = false
         
         rateNameTextField.textColor = UIColor(named: "valueInactiveText")
         rateNameTextField.isEnabled = false
@@ -331,6 +336,41 @@ class UpdateRateViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func rateNameViewTapped(_ sender: Any) {
+        if editMode {
+            resetView()
+            rateNameTextField.becomeFirstResponder()
+        }
+    }
+    
+    @IBAction func rateAmountViewTapped(_ sender: Any) {
+        if editMode {
+            resetView()
+            payTextField.becomeFirstResponder()
+        }
+    }
+    
+    @IBAction func frequencyViewTapped(_ sender: Any) {
+        if editMode {
+            if frequencyPickerHeightConstraint.constant >= 1 {
+                frequencyPickerHeightConstraint.constant = 0
+            } else {
+                resetView()
+                frequencyPickerHeightConstraint.constant = 216
+            }
+        }
+    }
+    
+    func resetView() {
+        frequencyPickerHeightConstraint.constant = 0
+        rateNameTextField.resignFirstResponder()
+        rateNameTextField.endEditing(true)
+        payTextField.resignFirstResponder()
+        payTextField.endEditing(true)
+        
+    }
+    
 }
 
 extension String {

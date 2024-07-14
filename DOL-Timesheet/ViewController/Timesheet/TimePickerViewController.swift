@@ -46,13 +46,8 @@ class TimePickerViewController: UIViewController {
     func setupView() {
         datePicker.datePickerMode = pickerMode
         
-        if Localizer.currentLanguage == Localizer.ENGLISH {
-            let loc = Locale(identifier: "en")
-            datePicker.locale = loc
-        } else {
-            let loc = Locale(identifier: "en_US")
-            datePicker.locale = loc
-        }
+        let loc = Locale(identifier: "en")
+        datePicker.locale = loc
         
         datePicker.preferredDatePickerStyle = pickerStyle
         doneButton.setTitle("done".localized, for: .normal)

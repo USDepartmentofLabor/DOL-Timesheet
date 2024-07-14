@@ -38,7 +38,7 @@ class ResourcesViewController: UIViewController, MFMailComposeViewControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupNavigationBarSettings()
         setupView()
         displayInfo()
     }

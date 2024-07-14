@@ -112,4 +112,7 @@ class UpdateProfileViewController: UIViewController {
         saveName()
     }
 
+    @IBAction func nameViewTapped(_ sender: Any) {
+        nameTextField.becomeFirstResponder()
+    }
 }
