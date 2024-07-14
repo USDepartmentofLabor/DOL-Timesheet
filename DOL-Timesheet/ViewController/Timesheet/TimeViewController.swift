@@ -39,8 +39,10 @@ class TimeViewController: UIViewController, TimeCardDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard timesheetViewModel.userProfileExists else {
-            //performSegue(withIdentifier: "setupProfile", sender: nil)
+        
+        let forceOnboarding = UserDefaults.standard.string(forKey: TimesheetViewModel.forceOnboarding)
+        guard timesheetViewModel.userProfileExists,
+              forceOnboarding == nil else {
             performSegue(withIdentifier: "showOnboard", sender: nil)
             return
         }
@@ -81,11 +83,9 @@ class TimeViewController: UIViewController, TimeCardDelegate {
         }
         
         if timesheetViewModel.userProfileModel.isProfileEmployer {
-            //    employeeEmployerTitleLabel.text = "employee".localized
             selectEmployerPopupLabel.text = "employee".localized
         }
         else {
-            //    employeeEmployerTitleLabel.text = "employer".localized
             selectEmployerPopupLabel.text = "employer".localized
         }
         setupPopupButton()
@@ -218,12 +218,12 @@ extension TimeViewController {
             delegate.displayInfo()
             return
         }
-        if timesheetViewModel.userProfileModel.isProfileEmployer {
-            displayTimeSheet()
-        }
-        else {
+//        if timesheetViewModel.userProfileModel.isProfileEmployer {
+//            displayTimeSheet()
+//        }
+//        else {
             displayTimeCard()
-        }
+//        }
     }
 
     func displayTimeCard() {

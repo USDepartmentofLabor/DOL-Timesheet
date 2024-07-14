@@ -10,6 +10,10 @@ import Foundation
 
 class TimesheetViewModel {
     
+    static var forceOnboarding = "FORCE_ONBOARDING"
+    static var forceOnboardingEmployee = "FORCE_ONBOARDING_EMPLOYEE"
+    static var forceOnboardingEmployer = "FORCE_ONBOARDING_EMPLOYER"
+    
     private static var sharedTimesheetViewModel: TimesheetViewModel = {
         let coreDataManager = TimesheetViewModel()
         return coreDataManager

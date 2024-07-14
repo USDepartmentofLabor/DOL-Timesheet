@@ -524,7 +524,6 @@
 "state_minimum_wage" = "State Minimum Wage";
 "frequency" = "Frequency";
 "swicth_between_employment" = "Switch between using this app as an employee or an employer.";
-"warning_swicth_between_employment" = "Warning: Switching will delete all information from the app except for your name/nickname.";
 
 "delete_employer" = "Delete Employer";
 "delete_employer_warning" = "Deleting employer will delete all time logged for employer. Are you sure you want to delete employer?";
@@ -550,6 +549,11 @@
 "pay_type" = "Pay Type";
 "overtime_eligibility" = "Overtime Eligibility";
 "flsa" = "FLSA";
+
 "add_an_employer" = "Add an Employer...";
 "add_an_employee" = "Add an Employee...";
 "add_a_rate" = "Add a Rate...";
+"i_am_an" = "I am an...";
+"my_profile_confirm_delete_employers" = "Changing from employee to employer will delete all existing employers and you will go through onboarding again.  Are you sure you want to continue?";
+"my_profile_confirm_delete_employees" = "Changing from employer to employee will delete all existing employeesand you will go through onboarding again. Are you sure you want to continue?";
+"warning_swicth_between_employment" = "Warning: Switching will delete all information from the app.";

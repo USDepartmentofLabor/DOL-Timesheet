@@ -55,14 +55,23 @@ class OnboardPageNavigationViewController: UIViewController {
         super.viewDidLoad()
         
         let profileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
-        let user = profileViewModel.profileModel.newProfile(type: .employee, name: "")
- 
+        let forceOnboarding = UserDefaults.standard.string(forKey: TimesheetViewModel.forceOnboarding)
+        
+        if forceOnboarding == nil {
+            let user = profileViewModel.profileModel.newProfile(type: .employee, name: "")
+        }
+        
         if let vcs = onboardPageViewController?.orderedViewControllers {
             for (index, element) in vcs.enumerated() {
                 element.onboardingDelegate = self
                 element.vcIndex = index
                 element.profileViewModel = profileViewModel
                 element.timeSheetDelegate = delegate
+                if forceOnboarding == TimesheetViewModel.forceOnboardingEmployer {
+                    element.userType = .employer
+                } else {
+                    element.userType = .employee
+                }
             }
         }
         progressImages = [progress1, progress2, progress3, progress4, progress5]

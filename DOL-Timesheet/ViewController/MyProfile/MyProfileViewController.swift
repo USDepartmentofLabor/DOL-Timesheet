@@ -31,6 +31,12 @@ class MyProfileViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .linkColor
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupView()
+        employmentTable.reloadData()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)

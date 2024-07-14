@@ -71,7 +71,7 @@ class UpdateEmploymentTypeViewController: UIViewController {
         if (employer.employees?.count ?? 0) > 0 {
             let alertController =
             UIAlertController(title: "confirm_title".localized,
-                              message: "confirm_delete_employees".localized,
+                              message: "my_profile_confirm_delete_employees".localized,
                               preferredStyle: .alert)
             
             alertController.addAction(
@@ -99,7 +99,7 @@ class UpdateEmploymentTypeViewController: UIViewController {
         if (employee.employers?.count ?? 0) > 0 {
             let alertController =
             UIAlertController(title: "confirm_title".localized,
-                              message: "confirm_delete_employers".localized,
+                              message: "my_profile_confirm_delete_employers".localized,
                               preferredStyle: .alert)
             
             alertController.addAction(
@@ -117,18 +117,29 @@ class UpdateEmploymentTypeViewController: UIViewController {
     }
     
     func toggleUserType() {
+        var newEmpType = ""
         if let employer = profileViewModel.profileModel.currentUser as? Employer {
-            profileViewModel.changeToEmployee(employer: employer)
+        //    profileViewModel.changeToEmployee(employer: employer)
             employeeCheckmarkImageView.isHidden = false
             employerCheckmarkImageView.isHidden = true
-            
+            newEmpType = TimesheetViewModel.forceOnboardingEmployee
         }
         else if let employee = profileViewModel.profileModel.currentUser as? Employee {
-            profileViewModel.changeToEmployer(employee: employee)
+    //        profileViewModel.changeToEmployer(employee: employee)
             employeeCheckmarkImageView.isHidden = true
             employerCheckmarkImageView.isHidden = false
+            newEmpType = TimesheetViewModel.forceOnboardingEmployer
+        }
+   //     profileViewModel.saveProfile()
+        
+        UserDefaults.standard.set(newEmpType, forKey: TimesheetViewModel.forceOnboarding)
+        
+        if let tabBarController = self.tabBarController {
+            tabBarController.selectedIndex = 2 // 1 corresponds to the second tab, index starts from 0
         }
         
-        manageVC?.profileViewModel = ProfileViewModel(context: profileViewModel.managedObjectContext.childManagedObjectContext())
+   //     manageVC?.profileViewModel = ProfileViewModel(context: profileViewModel.managedObjectContext.childManagedObjectContext())
+        
+        self.navigationController?.popToRootViewController(animated: false)
     }
 }

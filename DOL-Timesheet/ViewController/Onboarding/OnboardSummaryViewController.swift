@@ -100,6 +100,7 @@ class OnboardSummaryViewController: OnboardBaseViewController {
         if self.firstUse  {
             employmentModel?.save()
             timeSheetDelegate?.didUpdateEmploymentInfo()
+            UserDefaults.standard.removeObject(forKey: TimesheetViewModel.forceOnboarding)
             dismiss(animated: true, completion: nil)
         } else {
             let alertController = UIAlertController(title: "New User Wizard Test Mode",

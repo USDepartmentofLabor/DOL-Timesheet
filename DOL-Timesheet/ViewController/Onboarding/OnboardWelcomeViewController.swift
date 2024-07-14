@@ -56,7 +56,20 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         
 //        employeeButton.addBorder(cornerRadius: 10.0)
 //        employerButton.addBorder(cornerRadius: 10.0)
-        employeeSelected(employeeButton)
+        
+        TimesheetViewModel.forceOnboarding
+        
+        let forceOnboarding = UserDefaults.standard.string(forKey: TimesheetViewModel.forceOnboarding)
+        if forceOnboarding != nil {
+            if profileViewModel == nil {
+                profileViewModel = ProfileViewModel(context: CoreDataManager.shared().viewManagedContext)
+            }
+            if forceOnboarding == TimesheetViewModel.forceOnboardingEmployer {
+                employerSelected(employerButton)
+            } else {
+                employeeSelected(employeeButton)
+            }
+        }
 
         setupAccessibility()
     }
@@ -91,8 +104,10 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         employeeButton.tintColor = .white
         employeeButton.setBorderColor(named: "lightGreenColor")
         
-        if let employee = profileViewModel!.profileModel.currentUser as? Employee {
+        if  let profile = profileViewModel,
+            let employee = profile.profileModel.currentUser as? Employee {
             changeToEmployer(employee: employee)
+
         }
         
         onboardingDelegate?.updateUserType(newUserType: .employer)
@@ -109,7 +124,8 @@ class OnboardWelcomeViewController: OnboardBaseViewController {
         employeeButton.tintColor = UIColor(named: "lightGreenColor")
         employeeButton.setBorderColor(named: "lightGreenColor")
         
-        if let employer = profileViewModel?.profileModel.currentUser as? Employer {
+        if  let profile = profileViewModel,
+            let employer = profile.profileModel.currentUser as? Employer {
             changeToEmployee(employer: employer)
         }
         

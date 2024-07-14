@@ -4554,6 +4554,7 @@
                         <outlet property="rateNameTextField" destination="oYu-MU-8f9" id="w7h-jf-Pac"/>
                         <outlet property="rateNameTitleLabel" destination="KCH-eX-96R" id="hUD-Tz-9MS"/>
                         <outlet property="rateNameView" destination="YJ1-tL-RV6" id="8Mt-9R-Foe"/>
+                        <segue destination="ySq-d1-6gR" kind="presentation" identifier="showOnboard" modalPresentationStyle="fullScreen" id="RdY-cd-flh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mDH-85-KXI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4589,6 +4590,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFa-qk-OSF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4724" y="1485"/>
+        </scene>
+        <!--OnboardViewController-->
+        <scene sceneID="seP-7y-8z1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Onboarding" referencedIdentifier="OnboardViewController" id="ySq-d1-6gR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="KPq-uo-PKF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GsW-sy-vwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5318" y="1510"/>
+        </scene>
+        <!--OnboardViewController-->
+        <scene sceneID="LGB-Tx-c5E">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Onboarding" referencedIdentifier="OnboardViewController" id="bzN-4d-FWR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="UhG-av-QMA"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gCj-sl-wWV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2220" y="-370"/>
+        </scene>
+        <!--OnboardViewController-->
+        <scene sceneID="Sm7-B6-Wba">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Onboarding" referencedIdentifier="OnboardViewController" id="YE7-PG-Eio" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="oTD-Ca-CLq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MGf-OF-YKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2220" y="-370"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
