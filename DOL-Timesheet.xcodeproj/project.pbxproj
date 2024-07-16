@@ -138,15 +138,15 @@
 		6923D0772A95573500C9210D /* PopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6923D0762A95573500C9210D /* PopUpView.xib */; };
 		6927AB6628D28BF0003AF1B0 /* OnboardBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6927AB6528D28BF0003AF1B0 /* OnboardBaseViewController.swift */; };
 		693BDBB92BAA3759000402E0 /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693BDBB82BAA3759000402E0 /* SelfSizedTableView.swift */; };
-		696D20DC28318CC9007E041F /* DOL_Timesheet.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */; };
-		696D20DD28318CC9007E041F /* DOL_Timesheet.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */; };
-		696D20DE28318CC9007E041F /* DOL_Timesheet.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */; };
 		697CACAC2BEC1BE1003021E5 /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697CACAA2BEC1BE1003021E5 /* HelpTableViewCell.swift */; };
 		697CACB02BEC2EB5003021E5 /* HelpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697CACAF2BEC2EB5003021E5 /* HelpTableViewCell.xib */; };
 		698AE54728C7ACBA0038945B /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 698AE54628C7ACBA0038945B /* Onboarding.storyboard */; };
 		698CF4092B2A33C400E0F63A /* EnterTimeSoftenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CF4082B2A33C400E0F63A /* EnterTimeSoftenViewController.swift */; };
 		6999703E290C942E00DCDE7C /* SwitchLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */; };
 		69997040290DDB8C00DCDE7C /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6999703F290DDB8B00DCDE7C /* Localizer.swift */; };
+		69A41D312C4718C30008292F /* DOL-Timesheet-Database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 69A41D2E2C4718C30008292F /* DOL-Timesheet-Database.sqlite */; };
+		69A41D322C4718C30008292F /* DOL-Timesheet-Database.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 69A41D2F2C4718C30008292F /* DOL-Timesheet-Database.sqlite-shm */; };
+		69A41D332C4718C30008292F /* DOL-Timesheet-Database.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 69A41D302C4718C30008292F /* DOL-Timesheet-Database.sqlite-wal */; };
 		69A71F3C29DC8C2A0017A1F6 /* StateMinimumWages.json in Resources */ = {isa = PBXBuildFile; fileRef = 69A71F3B29DC8C2A0017A1F6 /* StateMinimumWages.json */; };
 		69AA754A2B2AAC29005E7A44 /* DropDownSoftenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AA75482B2AAC29005E7A44 /* DropDownSoftenView.swift */; };
 		69AA754B2B2AAC29005E7A44 /* DropDownSoftenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69AA75492B2AAC29005E7A44 /* DropDownSoftenView.xib */; };
@@ -325,15 +325,15 @@
 		6927AB6528D28BF0003AF1B0 /* OnboardBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardBaseViewController.swift; sourceTree = "<group>"; };
 		693BDBB82BAA3759000402E0 /* SelfSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
 		69602727289840EB0033D6E3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "DOL-Timesheet/es.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = DOL_Timesheet.sqlite; sourceTree = "<group>"; };
-		696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-shm"; sourceTree = "<group>"; };
-		696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL_Timesheet.sqlite-wal"; sourceTree = "<group>"; };
 		697CACAA2BEC1BE1003021E5 /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
 		697CACAF2BEC2EB5003021E5 /* HelpTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpTableViewCell.xib; sourceTree = "<group>"; };
 		698AE54628C7ACBA0038945B /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		698CF4082B2A33C400E0F63A /* EnterTimeSoftenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterTimeSoftenViewController.swift; sourceTree = "<group>"; };
 		6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchLanguageViewController.swift; sourceTree = "<group>"; };
 		6999703F290DDB8B00DCDE7C /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
+		69A41D2E2C4718C30008292F /* DOL-Timesheet-Database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL-Timesheet-Database.sqlite"; sourceTree = "<group>"; };
+		69A41D2F2C4718C30008292F /* DOL-Timesheet-Database.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL-Timesheet-Database.sqlite-shm"; sourceTree = "<group>"; };
+		69A41D302C4718C30008292F /* DOL-Timesheet-Database.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL-Timesheet-Database.sqlite-wal"; sourceTree = "<group>"; };
 		69A71F3B29DC8C2A0017A1F6 /* StateMinimumWages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StateMinimumWages.json; sourceTree = "<group>"; };
 		69AA75482B2AAC29005E7A44 /* DropDownSoftenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownSoftenView.swift; sourceTree = "<group>"; };
 		69AA75492B2AAC29005E7A44 /* DropDownSoftenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownSoftenView.xib; sourceTree = "<group>"; };
@@ -751,10 +751,10 @@
 		691D8B6C2831D3C70050292C /* Datafiles */ = {
 			isa = PBXGroup;
 			children = (
-				696D20D928318CC9007E041F /* DOL_Timesheet.sqlite */,
+				69A41D2E2C4718C30008292F /* DOL-Timesheet-Database.sqlite */,
+				69A41D2F2C4718C30008292F /* DOL-Timesheet-Database.sqlite-shm */,
+				69A41D302C4718C30008292F /* DOL-Timesheet-Database.sqlite-wal */,
 				69A71F3B29DC8C2A0017A1F6 /* StateMinimumWages.json */,
-				696D20DA28318CC9007E041F /* DOL_Timesheet.sqlite-shm */,
-				696D20DB28318CC9007E041F /* DOL_Timesheet.sqlite-wal */,
 			);
 			path = Datafiles;
 			sourceTree = "<group>";
@@ -947,17 +947,15 @@
 			files = (
 				032DFD29228B2E00001A1C3B /* EarningsTableViewHeaderView.xib in Resources */,
 				69CB378C2C1CC2EE00F4616B /* SoftenProfileTableViewCell.xib in Resources */,
+				69A41D332C4718C30008292F /* DOL-Timesheet-Database.sqlite-wal in Resources */,
 				037C226A2278B6400021A309 /* Profile.storyboard in Resources */,
 				697CACB02BEC2EB5003021E5 /* HelpTableViewCell.xib in Resources */,
 				69A71F3C29DC8C2A0017A1F6 /* StateMinimumWages.json in Resources */,
 				036D71952277445300CC62CE /* Localizable.strings in Resources */,
 				0324C3EA2260E47200712576 /* LaunchScreen.storyboard in Resources */,
-				696D20DE28318CC9007E041F /* DOL_Timesheet.sqlite-wal in Resources */,
 				032920D822C103C9003E4732 /* DropDownView.xib in Resources */,
 				6902C11B2BEB149900C9493C /* EarningDetailsViewCell.xib in Resources */,
 				69AA754B2B2AAC29005E7A44 /* DropDownSoftenView.xib in Resources */,
-				696D20DC28318CC9007E041F /* DOL_Timesheet.sqlite in Resources */,
-				696D20DD28318CC9007E041F /* DOL_Timesheet.sqlite-shm in Resources */,
 				690F8D5F2B5B2A1D00B7625E /* TimeEntryViewCell.xib in Resources */,
 				69FBFCA328F74D8400FEED84 /* Settings.storyboard in Resources */,
 				6923D0772A95573500C9210D /* PopUpView.xib in Resources */,
@@ -965,6 +963,8 @@
 				59AD9E6422A1ADB500075193 /* SummaryTableViewHeaderView.xib in Resources */,
 				0324C3E72260E47200712576 /* Assets.xcassets in Resources */,
 				698AE54728C7ACBA0038945B /* Onboarding.storyboard in Resources */,
+				69A41D312C4718C30008292F /* DOL-Timesheet-Database.sqlite in Resources */,
+				69A41D322C4718C30008292F /* DOL-Timesheet-Database.sqlite-shm in Resources */,
 				032C9F1D2264FFFC00FB1468 /* LabelInfoView.xib in Resources */,
 				6902C1062BEB12C600C9493C /* EarningsTableViewCell.xib in Resources */,
 				0324C3E22260E47100712576 /* Main.storyboard in Resources */,
