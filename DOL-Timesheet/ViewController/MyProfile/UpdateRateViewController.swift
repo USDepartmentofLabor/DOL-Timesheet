@@ -46,6 +46,7 @@ class UpdateRateViewController: UIViewController {
     var payFrequencyArray: [String] = []
     
     var editMode = false
+    var lastRate = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -243,11 +244,32 @@ class UpdateRateViewController: UIViewController {
     }
     
     @IBAction func discardPressed(_ sender: Any) {
-        
+        var title: String
+        var message: String
         guard let freqText = frequencyTitleLabel.text else { return }
+
+        if lastRate {
+            title = "last_hourly_rate".localized
+            message = "last_hourly_rate_warning".localized
+            
+            if freqText != "payment_type_hourly".localized {
+                title = "last_salary".localized
+                message = "last_salary_warning".localized
+            }
+            
+            let alertController =
+            UIAlertController(title: title,
+                              message: message,
+                              preferredStyle: .alert)
+            
+            alertController.addAction(
+                UIAlertAction(title: "cancel".localized, style: .cancel))
+            present(alertController, animated: true)
+            return
+        }
         
-        var title = "delete_hourly_rate".localized
-        var message = "delete_hourly_rate_warning".localized
+        title = "delete_hourly_rate".localized
+        message = "delete_hourly_rate_warning".localized
         
         if freqText != "payment_type_hourly".localized {
             title = "delete_salary".localized

@@ -533,3 +533,8 @@ empleado?";
 "pay_type" = "Pay Type";
 "overtime_eligibility" = "Overtime Eligibility";
 "flsa" = "FLSA";
+
+"last_hourly_rate" = "Last Hourly Rate";
+"last_hourly_rate_warning" = "You cannot delete your last hourly rate. Either change this hourly rate or create a new one and then delete this one.";
+"last_salary" = "Last Salary";
+"last_salary_warning" = "You cannnot delete your Salary.";

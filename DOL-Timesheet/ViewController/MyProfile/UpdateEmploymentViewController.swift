@@ -266,8 +266,13 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         
         if segue.identifier == "updateRateSegue" {
             if let destinationVC = segue.destination as? UpdateRateViewController {
+                var setRate = false
+                if rates?.count ?? 0 <= 1{
+                    setRate = true
+                }
                 destinationVC.delegate = self
                 destinationVC.tempRate = selectedRate
+                destinationVC.lastRate = setRate
             }
         }
     }
@@ -368,7 +373,7 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
                 startOfPayWeekHeightConstraint.constant = 0
             } else {
                 resetViews()
-                startOfPayWeekHeightConstraint.constant = 216
+                startOfPayWeekHeightConstraint.constant = 100
             }
 
         }
@@ -391,7 +396,7 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
                 payFrequencyHeightConstraint.constant = 0
             } else {
                 resetViews()
-                payFrequencyHeightConstraint.constant = 216
+                payFrequencyHeightConstraint.constant = 100
             }
 
         }
@@ -409,7 +414,7 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
                 stateHeightConstraint.constant = 0
             } else {
                 resetViews()
-                stateHeightConstraint.constant = 216
+                stateHeightConstraint.constant = 100
             }
         }
     }
@@ -481,6 +486,13 @@ extension UpdateEmploymentViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let numberOfRates = rates?.count ?? 0
+        if numberOfRates <= 1 {
+            return false
+        }
+        if indexPath.row == 0 {
+            return false
+        }
         return true
     }
     
@@ -577,7 +589,7 @@ extension UpdateEmploymentViewController: UITextFieldDelegate {
                 if startOfPayWeekTextField.text?.count == 0 {
                     startOfPayWeekTextField.text? = Weekday.sunday.title
                 }
-                startOfPayWeekHeightConstraint.constant = 216
+                startOfPayWeekHeightConstraint.constant = 100
                 setFirstDatePickerHeight(height: 0, relatedBy: .equal)
                 payFrequencyHeightConstraint.constant = 0
                 stateHeightConstraint.constant = 0
@@ -613,7 +625,7 @@ extension UpdateEmploymentViewController: UITextFieldDelegate {
                 
                 startOfPayWeekHeightConstraint.constant = 0
                 setFirstDatePickerHeight(height: 0, relatedBy: .equal)
-                payFrequencyHeightConstraint.constant = 216
+                payFrequencyHeightConstraint.constant = 100
                 stateHeightConstraint.constant = 0
             }
             return false
@@ -637,7 +649,7 @@ extension UpdateEmploymentViewController: UITextFieldDelegate {
                 startOfPayWeekHeightConstraint.constant = 0
                 setFirstDatePickerHeight(height: 0, relatedBy: .equal)
                 payFrequencyHeightConstraint.constant = 0
-                stateHeightConstraint.constant = 216
+                stateHeightConstraint.constant = 100
                 
                 
                 

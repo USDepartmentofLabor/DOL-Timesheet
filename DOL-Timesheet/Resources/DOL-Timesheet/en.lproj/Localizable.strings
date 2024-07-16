@@ -557,3 +557,8 @@
 "my_profile_confirm_delete_employers" = "Changing from employee to employer will delete all existing employers and you will go through onboarding again.  Are you sure you want to continue?";
 "my_profile_confirm_delete_employees" = "Changing from employer to employee will delete all existing employeesand you will go through onboarding again. Are you sure you want to continue?";
 "warning_swicth_between_employment" = "Warning: Switching will delete all information from the app.";
+
+"last_hourly_rate" = "Last Hourly Rate";
+"last_hourly_rate_warning" = "You cannot delete your last hourly rate. Either change this hourly rate or create a new one and then delete this one.";
+"last_salary" = "Last Salary";
+"last_salary_warning" = "You cannnot delete your Salary.";
