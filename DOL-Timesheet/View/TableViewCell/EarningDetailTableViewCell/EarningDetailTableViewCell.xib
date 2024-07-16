@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -48,9 +48,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x hrs x $x.00 = $x.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kob-IZ-Dcs">
-                        <rect key="frame" x="8" y="23.666666666666668" width="93" height="0.0"/>
+                        <rect key="frame" x="8" y="23.666666666666668" width="93" height="11.000000000000004"/>
                         <constraints>
-                            <constraint firstAttribute="height" id="WNV-j0-Ixm"/>
+                            <constraint firstAttribute="height" constant="11" id="WNV-j0-Ixm"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <color key="textColor" name="valueInactiveText"/>
@@ -63,7 +63,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="749" text="Your pay rate appears to be below the Federal Minimum Wage" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0u-si-bn9" userLabel="Minimum Warning">
-                        <rect key="frame" x="8" y="23.666666666666671" width="225" height="24"/>
+                        <rect key="frame" x="8" y="34.666666666666664" width="225" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="ltt-SL-XgU"/>
                             <constraint firstAttribute="width" constant="225" id="mWM-hY-Rkj"/>
@@ -73,7 +73,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7.25/hr" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcN-aG-2r8">
-                        <rect key="frame" x="298.66666666666669" y="29.666666666666671" width="33.333333333333314" height="12"/>
+                        <rect key="frame" x="298.66666666666669" y="40.666666666666664" width="33.333333333333314" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="r6B-Pl-tEE"/>
                         </constraints>
