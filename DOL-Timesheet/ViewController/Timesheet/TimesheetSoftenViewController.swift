@@ -31,7 +31,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     
     var timePickerVC = TimePickerViewController.instantiateFromStoryboard()
     var newBarButtonItem: UIBarButtonItem?
-
+    var refreshOnAppear = true
 
     @IBOutlet weak var scrollView: UIScrollView!
     var timesheetViewModel = TimesheetViewModel.shared()
@@ -56,8 +56,11 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupEmploymentPopupButton()
-        setupView()
-        displayInfo()
+        if refreshOnAppear {
+            setupView()
+            displayInfo()
+        }
+        refreshOnAppear = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -155,7 +158,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             if timesheetViewModel.currentEmploymentModel?.paymentType == .salary {
                 var totalSalaryHours: Double = timesheetViewModel.totalHoursTime()
                 let hrsMinStr: String = Date.secondsToHoursMinutes(seconds: totalSalaryHours)
-                payPeriodSummaryData.append(PayPeriodSummary(name: (timesheetViewModel.currentEmploymentModel?.salary.salaryType.title.localized)!, value1: "", value2: hrsMinStr))
+                payPeriodSummaryData.append(PayPeriodSummary(name: "Salary".localized, value1: "", value2: hrsMinStr))
 
             } else {
                 timesheetViewModel.currentEmploymentModel?.hourlyRates?.forEach { rate in
@@ -240,7 +243,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             enterTimeVC.selectedEmployment = timesheetViewModel.userProfileModel.employmentUsers.firstIndex(of: (timesheetViewModel.currentEmploymentModel?.employmentUser)!)
             
             enterTimeVC.delegate = self
-            
+                        
         } else if segue.identifier == "enterTime",
            let enterTimeVC = segue.destination as? EnterTimeSoftenViewController,
            let currentDate = sender as? Date {
@@ -264,6 +267,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             navigationItem.backBarButtonItem = backItem
             
             weeklySummaryVC.timesheetViewModel = timesheetViewModel
+            refreshOnAppear = false
         } else if segue.identifier == "addEmploymentInfo",
                   let navVC = segue.destination as? UINavigationController,
                   let employmentInfoVC = navVC.topViewController as? EmploymentInfoViewController {
@@ -275,6 +279,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             let backItem = UIBarButtonItem()
             backItem.title = "back".localized
             navigationItem.backBarButtonItem = backItem
+            refreshOnAppear = false
             
             earningDetailVC.timesheetViewModel = timesheetViewModel
         }
