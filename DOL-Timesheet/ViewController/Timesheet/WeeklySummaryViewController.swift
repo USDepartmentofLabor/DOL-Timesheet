@@ -102,7 +102,7 @@ extension WeeklySummaryViewController: UITableViewDataSource {
         if timesheetViewModel.currentEmploymentModel?.paymentType == .hourly {
             return 3 + (timesheetViewModel.currentEmploymentModel?.hourlyRates?.count ?? 0)
         }
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,6 +113,11 @@ extension WeeklySummaryViewController: UITableViewDataSource {
         let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         let section = indexPath.section
         let row = indexPath.row
+        
+        var numberOfRates = 1
+        if timesheetViewModel.currentEmploymentModel?.paymentType == .hourly {
+            numberOfRates = timesheetViewModel.currentEmploymentModel?.hourlyRates?.count ?? 1
+        }
         
         var title = ""
         var totalTime = ""
@@ -125,7 +130,7 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             totalTime = timesheetViewModel.hoursWorked(workWeek: indexPath.section)
             hourlyCell.firstItem = true
             hourlyCell.lastItem = false
-        } else if (row < (1 + (timesheetViewModel.currentEmploymentModel?.hourlyRates?.count ?? 1)) && paymentType == .hourly) {
+        } else if (row < numberOfRates + 1) {
             // Multiple RATES
             // Section Identifies Work Week
             // Row - 1 Identifies rate to get total for and set hrs / mins
@@ -133,7 +138,12 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             title = "payment_type_salary".localized
             totalTime = "xx hrs xx mins"
             
-            if timesheetViewModel.currentEmploymentModel?.paymentType == .hourly {
+            if timesheetViewModel.currentEmploymentModel?.paymentType == .salary {
+                if let salary = timesheetViewModel.currentEmploymentModel?.salary.salaryType.title.localized {
+                    title = salary
+                    totalTime = calcSalaryHoursWorked(weekIndex: section)
+                }
+            } else {
                 title = "Rate Title"
                 totalTime = "xx hrs xx mins"
                 if let rate = timesheetViewModel.currentEmploymentModel?.hourlyRates?[row-1] {
@@ -144,7 +154,7 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             hourlyCell.firstItem = false
             hourlyCell.lastItem = false
             
-        } else if row == (1 + (timesheetViewModel.currentEmploymentModel?.hourlyRates?.count ?? 1)) {
+        } else if row == numberOfRates + 1 {
             // BREAK TIME
             // Section Identifies Work Week
             // Get break Time for work week and set hrs / mins
@@ -182,13 +192,22 @@ extension WeeklySummaryViewController: UITableViewDataSource {
     }
     
     func calcRateHoursWorked(weekIndex: Int, rate: HourlyRate)-> String {
-        
         guard let workWeek = timesheetViewModel.currentPeriod?.workWeeks[weekIndex] else { return "xx hrs xx min" }
-        let workWeekDaysInPeriod = workWeek.days
         
         var totalRateHours = 0
         workWeek.days.forEach {
             totalRateHours += timesheetViewModel.rateTotalHours(forRate: rate, forDate: $0)
+        }
+        let hrsMinStr: String = Date.secondsToHoursMinutes(seconds: Double(totalRateHours))
+        return hrsMinStr
+    }
+    
+    func calcSalaryHoursWorked(weekIndex: Int)-> String {
+        guard let workWeek = timesheetViewModel.currentPeriod?.workWeeks[weekIndex] else { return "xx hrs xx min" }
+        
+        var totalRateHours = 0.0
+        workWeek.days.forEach {
+            totalRateHours += timesheetViewModel.totalHoursTime(forDate: $0)
         }
         let hrsMinStr: String = Date.secondsToHoursMinutes(seconds: Double(totalRateHours))
         return hrsMinStr

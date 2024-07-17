@@ -92,7 +92,7 @@ class TimesheetViewModel {
         let endDate: Date
         
         switch paymentFrequency {
-        case .daily:
+            case .daily:
                 startDate = currentDate // currentDate.next(workweekStartDay, direction: .backward)
                 endDate = startDate
             case .weekly:

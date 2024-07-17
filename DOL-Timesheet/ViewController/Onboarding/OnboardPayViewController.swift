@@ -444,8 +444,10 @@ extension OnboardPayViewController: UITextFieldDelegate {
                     stateField.text? = "Alabama"
                     selectedState = State.states[0]
                     if let state = stateMinWages.data.first(where: { $0.state == State.states[0].title }),
-                       let minWage = state.minimumWage {
-                        minimumWage = minWage as NSNumber
+                       let minWage = state.minimumWage,
+                       let altMinWage = state.altMinimumWage{
+                        
+                        minimumWage = 7.25 > minWage ? altMinWage as NSNumber : minWage as NSNumber
                         stateMinimumField.text = String(NumberFormatter.localisedCurrencyStr(from: minWage))
                     }
                     stateValid = true

@@ -54,11 +54,10 @@ class TimeEntryViewCell: UITableViewCell {
             timeFrame.text = "\(start.formattedTime) - \(end.formattedTime)"
             
         }
-        let hours: Int = timeLog.hoursLogged / 3600
-        let minutes: Int = (timeLog.hoursLogged - (hours * 3600)) / 60
         
-        totalTime.attributedText = makeBold(input: "\(hours) hrs \(minutes) min")
-        totalTime.attributedText = makeBold(input: "\(hours) hrs \(minutes) min")
+        let hours: Int = timeLog.hoursWorked / 3600
+        let minutes: Int = (timeLog.hoursWorked - (hours * 3600)) / 60
+        
         totalTime.attributedText = makeBold(input: "\(hours) hrs \(minutes) min")
     }
     

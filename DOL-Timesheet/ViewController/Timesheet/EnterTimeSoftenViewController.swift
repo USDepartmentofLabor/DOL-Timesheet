@@ -780,7 +780,15 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
                 strongSelf.timeLog?.addBreak(duration: duration)
                 strongSelf.displayBreakTime(timeInSeconds: duration)
             }))
-            showAlert(sender: breakDropDownView, alertController: alertController)
+            
+            if let presentedViewController = self.presentedViewController {
+                presentedViewController.dismiss(animated: false, completion: {
+                    self.showAlert(sender: self.breakDropDownView, alertController: alertController)
+                })
+            } else {
+                showAlert(sender: breakDropDownView, alertController: alertController)
+            }
+            
         }
         else {
             breakTimeErrorMessage.text = ""

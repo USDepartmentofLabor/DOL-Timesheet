@@ -43,7 +43,7 @@ class EarningDetailViewController: UIViewController {
         earningTableView.register(UINib(nibName: HelpTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: HelpTableViewCell.reuseIdentifier)
 
         earningTableView.rowHeight = UITableView.automaticDimension
-        earningTableView.estimatedRowHeight = 90
+     //   earningTableView.estimatedRowHeight = 90
         
     }
     

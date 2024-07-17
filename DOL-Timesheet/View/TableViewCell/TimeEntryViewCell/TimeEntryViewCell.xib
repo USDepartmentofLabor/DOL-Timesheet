@@ -28,18 +28,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" name="timesheetSubviewColor"/>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="TOTAL HOURS WORKED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZu-PJ-S8D">
-                        <rect key="frame" x="10" y="15" width="118" height="14"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL HOURS WORKED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZu-PJ-S8D">
+                        <rect key="frame" x="8" y="15" width="159.66666666666666" height="14"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="140" id="O09-n2-nDf"/>
                             <constraint firstAttribute="height" constant="14" id="bjq-ZL-DKc"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="dAQ-JJ-ebZ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" name="valueActiveText"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="01:00 PM - 11:43 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xN-jm-NOJ">
-                        <rect key="frame" x="132" y="16" width="100" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="01:00 PM - 11:43 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xN-jm-NOJ">
+                        <rect key="frame" x="171.66666666666666" y="16" width="51" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="sqp-8m-O1x"/>
                         </constraints>
@@ -48,9 +48,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 hrs  10 min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQC-06-enL">
-                        <rect key="frame" x="235.33333333333334" y="15" width="79.666666666666657" height="14"/>
+                        <rect key="frame" x="226" y="15" width="91" height="14"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="79.670000000000002" id="2sd-J1-tpp"/>
+                            <constraint firstAttribute="width" constant="91" id="2sd-J1-tpp"/>
                             <constraint firstAttribute="height" constant="14" id="Pei-G9-gnk"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -73,9 +73,9 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="2xN-jm-NOJ" firstAttribute="leading" secondItem="KZu-PJ-S8D" secondAttribute="trailing" constant="4" id="1jo-hc-Ksy"/>
-                    <constraint firstItem="KZu-PJ-S8D" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="3QE-am-g1t"/>
+                    <constraint firstItem="KZu-PJ-S8D" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="3QE-am-g1t"/>
                     <constraint firstItem="qQC-06-enL" firstAttribute="leading" secondItem="2xN-jm-NOJ" secondAttribute="trailing" constant="3.3300000000000001" id="Rhf-dA-W9X"/>
-                    <constraint firstItem="Bjn-s2-sae" firstAttribute="leading" secondItem="qQC-06-enL" secondAttribute="trailing" constant="10" id="SCs-N7-tQu"/>
+                    <constraint firstItem="Bjn-s2-sae" firstAttribute="leading" secondItem="qQC-06-enL" secondAttribute="trailing" constant="8" id="SCs-N7-tQu"/>
                     <constraint firstItem="2xN-jm-NOJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Yfk-VL-p9I"/>
                     <constraint firstItem="Bjn-s2-sae" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="YxS-wx-CA7"/>
                     <constraint firstItem="qQC-06-enL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pRe-bG-ZfL"/>
@@ -102,7 +102,7 @@
     <resources>
         <image name="rightChevron" width="327" height="327"/>
         <namedColor name="greenColor">
-            <color red="0.57647058823529407" green="0.8901960784313725" blue="0.5607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19215686274509805" green="0.6705882352941176" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="timesheetBackgroundColor">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

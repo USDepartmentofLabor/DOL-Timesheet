@@ -152,16 +152,22 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         
         if let currentPeriod = timesheetViewModel.currentPeriod {
-            
-            timesheetViewModel.currentEmploymentModel?.hourlyRates?.forEach { rate in
-                var totalRateHours = 0
-                for dayIndex in 0..<numDays {
-                    let sectionDate = currentPeriod.date(at: dayIndex)
-                    totalRateHours += timesheetViewModel.rateTotalHours(forRate: rate, forDate: sectionDate)
-                }
-                let hrsMinStr: String = Date.secondsToHoursMinutes(seconds: Double(totalRateHours))
+            if timesheetViewModel.currentEmploymentModel?.paymentType == .salary {
+                var totalSalaryHours: Double = timesheetViewModel.totalHoursTime()
+                let hrsMinStr: String = Date.secondsToHoursMinutes(seconds: totalSalaryHours)
+                payPeriodSummaryData.append(PayPeriodSummary(name: (timesheetViewModel.currentEmploymentModel?.salary.salaryType.title.localized)!, value1: "", value2: hrsMinStr))
 
-                payPeriodSummaryData.append(PayPeriodSummary(name: rate.title, value1: "", value2: hrsMinStr))
+            } else {
+                timesheetViewModel.currentEmploymentModel?.hourlyRates?.forEach { rate in
+                    var totalRateHours = 0
+                    for dayIndex in 0..<numDays {
+                        let sectionDate = currentPeriod.date(at: dayIndex)
+                        totalRateHours += timesheetViewModel.rateTotalHours(forRate: rate, forDate: sectionDate)
+                    }
+                    let hrsMinStr: String = Date.secondsToHoursMinutes(seconds: Double(totalRateHours))
+                    
+                    payPeriodSummaryData.append(PayPeriodSummary(name: rate.title, value1: "", value2: hrsMinStr))
+                }
             }
         }
         
@@ -328,10 +334,8 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
         let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         
         if section >= numDays + 1 {
-            print("GGG: A 1 number of rows in section \(section) ")
             return 1
         } else if section >= numDays {
-            print("GGG: B \(payPeriodSummaryData.count) number of rows in section \(section) ")
             return payPeriodSummaryData.count
         }
         
@@ -339,16 +343,13 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
               let dateLog = timesheetViewModel.currentEmploymentModel?.employmentInfo.log(forDate: sectionDate),
               let count = dateLog.timeLogs?.count
         else {
-            print("GGG: C 1 number of rows in section \(section) ")
             return 0
         }
-        print("GGG: D \(count) number of rows in section \(section) ")
         return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        print("GGG: cell for row at index path \(indexPath) ")
         let hourlyCell = tableView.dequeueReusableCell(withIdentifier: TimeEntryViewCell.reuseIdentifier) as! TimeEntryViewCell
         let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
         let section = indexPath.section
