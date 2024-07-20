@@ -201,7 +201,7 @@ class OnboardPayViewController: OnboardBaseViewController {
             overtimeSwitch.isOn = false
         }
         
-        self.overtimeSwicthPressed(overtimeSwitch!)
+        self.overtimeSwitchPressed(overtimeSwitch!)
 
         
         payRateField.scaleFont(forDataType: .nameValueText)
@@ -371,7 +371,7 @@ class OnboardPayViewController: OnboardBaseViewController {
         displayInfoPopup(sender, info: .overtimeEligible)
     }
     
-    @IBAction func overtimeSwicthPressed(_ sender: Any) {
+    @IBAction func overtimeSwitchPressed(_ sender: Any) {
         overtimeLabel.text = "onboard_overtime_no".localized
         overtimeEligible = false
 
@@ -444,10 +444,8 @@ extension OnboardPayViewController: UITextFieldDelegate {
                     stateField.text? = "Alabama"
                     selectedState = State.states[0]
                     if let state = stateMinWages.data.first(where: { $0.state == State.states[0].title }),
-                       let minWage = state.minimumWage,
-                       let altMinWage = state.altMinimumWage{
-                        
-                        minimumWage = 7.25 > minWage ? altMinWage as NSNumber : minWage as NSNumber
+                       let minWage = state.minimumWage {
+                        minimumWage = minWage as NSNumber
                         stateMinimumField.text = String(NumberFormatter.localisedCurrencyStr(from: minWage))
                     }
                     stateValid = true

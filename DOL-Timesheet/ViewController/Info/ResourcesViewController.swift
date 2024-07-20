@@ -166,6 +166,7 @@ class ResourcesViewController: UIViewController, MFMailComposeViewControllerDele
     }
     
     @IBAction func newUserWizard(_ sender: Any) {
+        Localizer.clearSpanishOffered()
         performSegue(withIdentifier: "showOnboard", sender: nil)
     }
     

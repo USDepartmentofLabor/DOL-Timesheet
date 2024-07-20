@@ -747,7 +747,7 @@
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q1g-kb-4lz">
                                                 <rect key="frame" x="202.5" y="356.5" width="51" height="31"/>
                                                 <connections>
-                                                    <action selector="overtimeSwicthPressed:" destination="1cG-DH-Gtj" eventType="valueChanged" id="jWF-XD-cCZ"/>
+                                                    <action selector="overtimeSwitchPressed:" destination="1cG-DH-Gtj" eventType="valueChanged" id="jWF-XD-cCZ"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
