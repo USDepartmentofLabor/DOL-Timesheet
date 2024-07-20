@@ -341,6 +341,8 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         stateMinimumWageTextField.isEnabled = true
         
         discardButton.isHidden = false
+        
+        rateTable.reloadData()
     }
     
     func setupNormalMode() {
