@@ -176,6 +176,10 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
             action: #selector(editButtonTapped)
         )
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(tapGesture)
+        
     }
     
     func setupData() {
@@ -497,7 +501,10 @@ extension UpdateEmploymentViewController: UITableViewDataSource {
         }
         
         let numberOfRates = rates?.count ?? 0
-        return numberOfRates + 1
+        if editMode {
+            return numberOfRates + 1
+        }
+        return numberOfRates
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -748,6 +755,11 @@ extension UpdateEmploymentViewController: UITextFieldDelegate {
               let payFrequencyText = payFrequencyTextField.text,
               let stateText = stateTextField.text,
               let stateMinimumWageText = stateMinimumWageTextField.text else { return false }
+        
+        if (rates == nil || rates!.isEmpty) {
+            validateError(message: "rate_required".localized)
+            return false
+        }
         
         if nameText.isEmpty {
             validateError(message: "name_not_specified".localized)
