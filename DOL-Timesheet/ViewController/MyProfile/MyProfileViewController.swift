@@ -22,12 +22,15 @@ class MyProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupView()
+        employmentTable.reloadData()
+        updateCellCorners()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
         setupView()
+        employmentTable.reloadData()
         self.navigationController?.navigationBar.tintColor = .linkColor
     }
     
@@ -35,6 +38,7 @@ class MyProfileViewController: UIViewController {
         super.viewDidAppear(animated)
         setupView()
         employmentTable.reloadData()
+        updateCellCorners()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
