@@ -508,11 +508,7 @@ extension UpdateEmploymentViewController: UITableViewDataSource {
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            deleteEmployment(indexPath: indexPath)
-        }
-    }
+    
     
     func deleteEmployment(indexPath: IndexPath) {
         let employmentModel = profileViewModel.employmentModels[indexPath.row]
