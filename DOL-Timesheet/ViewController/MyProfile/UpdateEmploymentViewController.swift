@@ -280,10 +280,10 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
     
     @IBAction func discardPressed(_ sender: Any) {
         var title = "delete_employee".localized
-        var message = "delete_employee_warning".localized
+        var message = "delete_confirm_employee_info".localized
         if !profileViewModel.isProfileEmployer {
             title = "delete_employer".localized
-            message = "delete_employer_warning".localized
+            message = "delete_confirm_employer_info".localized
         }
         
         let alertController =

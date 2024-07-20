@@ -13,7 +13,6 @@
 "whd_logo" = "WHD Logo";
 "employee" = "Empleado";
 "employees" = "Empleados";
-"add_employee" = "Empleado";
 "employee_information" = "Información del Empleado";
 "who_works_for_you" = "¿Quién trabaja para ti?";
 "manage_employees" = "Administrar Empleados";
@@ -505,25 +504,23 @@ empleado?";
 
 "minimum_wage_warning" = "Your pay rate appears to be below the Federal Minimum Wage";
 
-"name_or_nickname" = "Name or Nickname";
-"start_of_pay_week" = "Start of Pay Week";
+"name_or_nickname" = "Nombre o apodo";
+"start_of_pay_week" = "Inicio de la semana de pago";
 "start_date_of_first_pay_period" = "Start Date of First Pay Period";
-"eligible_for_overtime_non_Exempt" = "Eligible for Overtime (Non-Exempt)";
-"state_you_work_in" = "State you work in";
-"state_minimum_wage" = "State Minimum Wage";
-"frequency" = "Frequency";
-
-"delete_employer" = "Delete Employer";
-"delete_employer_warning" = "Deleting employer will delete all time logged for employer. Are you sure you want to delete employer?";
-"delete_employee" = "Delete Employee";
-"delete_employee_warning" = "Deleting employee will delete all time logged for employee. Are you sure you want to delete employee?";
+"eligible_for_overtime_non_Exempt" = "Elegible para sobretiempo (no exento)";
+"state_you_work_in" = "Estado en el que trabaja";
+"frequency" = "Frecuencia";
+"switch_between_employment" = "Switch between using this app as an employee or an employer.";
 
 "delete_hourly_rate" = "Delete Hourly Rate";
 "delete_hourly_rate_warning" = "Are you sure you want to delete hourly rate?";
 "delete_salary" = "Delete Salary";
 "delete_salary_warning" = "Are you sure you want to delete salary?";
 
-"my_profile" = "My Profile";
+"my_employees" = "MY EMPLOYEES";
+"my_employers" = "MY EMPLOYERS";
+"rates" = "RATES";
+
 "i_am_employee" = "I am an Employee";
 "i_am_employer" = "I am an Employer";
 "new_employer" = "New Employer";
@@ -534,7 +531,20 @@ empleado?";
 "overtime_eligibility" = "Overtime Eligibility";
 "flsa" = "FLSA";
 
+"add_an_employer" = "Add an Employer...";
+"add_an_employee" = "Add an Employee...";
+"add_a_rate" = "Add a Rate...";
+"i_am_an" = "I am an...";
+"my_profile_confirm_delete_employers" = "Changing from employee to employer will delete all existing employers and you will go through onboarding again.  Are you sure you want to continue?";
+"my_profile_confirm_delete_employees" = "Changing from employer to employee will delete all existing employeesand you will go through onboarding again. Are you sure you want to continue?";
+"warning_switch_between_employment" = "Warning: Switching will delete all information from the app.";
+
 "last_hourly_rate" = "Last Hourly Rate";
 "last_hourly_rate_warning" = "You cannot delete your last hourly rate. Either change this hourly rate or create a new one and then delete this one.";
 "last_salary" = "Last Salary";
 "last_salary_warning" = "You cannnot delete your Salary.";
+"rate_required" = "You must add a Pay Rate before saving this employment.";
+"error_title" = "Error";
+
+"switching_from_hourly" = "Warning. Switching from Hourly Rates to Salary will delete all your other Hourly Rates and any entries associated with them.";
+"switching_from_salary" = "Warning. Switching from Salary to Hourly Rates will delete any entries asscoiated with your salary.";

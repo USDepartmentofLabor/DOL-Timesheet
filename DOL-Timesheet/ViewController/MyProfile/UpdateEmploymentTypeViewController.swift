@@ -57,8 +57,8 @@ class UpdateEmploymentTypeViewController: UIViewController {
             employerCheckmarkImageView.isHidden = false
         }
         
-        switchLabel.text = "swicth_between_employment".localized
-        warningLabel.text = "warning_swicth_between_employment".localized
+        switchLabel.text = "switch_between_employment".localized
+        warningLabel.text = "warning_switch_between_employment".localized
     }
     
     @IBAction func employeePressed(_ sender: Any) {
