@@ -312,11 +312,13 @@ class EnterTimeSoftenViewController: UIViewController {
             })
             menuActions.append(action)
         }
-                
-        employmentPopUp.menu = UIMenu(children : menuActions)
-        employmentPopUp.showsMenuAsPrimaryAction = true
-        
-        employmentPopUp.changesSelectionAsPrimaryAction = true
+             
+        if !menuActions.isEmpty {
+            employmentPopUp.menu = UIMenu(children : menuActions)
+            employmentPopUp.showsMenuAsPrimaryAction = true
+            
+            employmentPopUp.changesSelectionAsPrimaryAction = true
+        }
         
 //        employmentPopUp.menu?.selectedElements =
     }
@@ -385,9 +387,11 @@ class EnterTimeSoftenViewController: UIViewController {
             menuActions.append(action)
         }
         
-        ratePopUp.menu = UIMenu(children : menuActions)
-        ratePopUp.showsMenuAsPrimaryAction = true
-        ratePopUp.changesSelectionAsPrimaryAction = true
+        if !menuActions.isEmpty {
+            ratePopUp.menu = UIMenu(children : menuActions)
+            ratePopUp.showsMenuAsPrimaryAction = true
+            ratePopUp.changesSelectionAsPrimaryAction = true
+        }
     }
     
     @objc func dateBtnClick(_ sender: Any) {
