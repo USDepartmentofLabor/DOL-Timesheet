@@ -97,10 +97,11 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
             setupData()
             setupNormalMode()
             return
-        } else {
-            employmentModel = profileViewModel.newTempEmploymentModel()
         }
+        
+        employmentModel = profileViewModel.newTempEmploymentModel()
         setupEditMode()
+        discardButton.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
