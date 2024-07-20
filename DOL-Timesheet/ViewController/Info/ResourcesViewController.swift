@@ -237,14 +237,14 @@ class ResourcesViewController: UIViewController, MFMailComposeViewControllerDele
 
 extension CoreDataManager {
     class func populateDBData() {
-        // If SQL file version file and loadData has been run and the DB has been updated, increase the seedVersionValue
+        // If the Database needs to get updated, then makre sure the name is updated to the one here in Xcode project and it should work. Seed version can probably get removed.
         let seedVersionKey = "SeedVersion"
         let seedVersionValue = 1
         let seedVersion = UserDefaults.standard.integer(forKey: seedVersionKey)
-        if seedVersion != seedVersionValue {
-            copySeedDB()
-            UserDefaults.standard.set(seedVersionValue, forKey: seedVersionKey)
-        }
+//        if seedVersion == seedVersionValue {
+        copySeedDB()
+        UserDefaults.standard.set(seedVersionValue, forKey: seedVersionKey)
+//        }
     }
     
     static var storeDirectory = NSPersistentContainer.defaultDirectoryURL().relativePath
@@ -265,9 +265,12 @@ extension CoreDataManager {
             }
         }
         
-        guard let sqlitePath = Bundle.main.path(forResource: "DOL_Timesheet", ofType: "sqlite") else { return }
-        let sqlitePath_shm = Bundle.main.path(forResource: "DOL_Timesheet", ofType: "sqlite-shm")
-        let sqlitePath_wal = Bundle.main.path(forResource: "DOL_Timesheet", ofType: "sqlite-wal")
+        guard let sqlitePath = Bundle.main.path(forResource: "DOL-Timesheet-Database", ofType: "sqlite") else {
+            NSLog("Error: Couldn't get path")
+            return
+        }
+        let sqlitePath_shm = Bundle.main.path(forResource: "DOL-Timesheet-Database", ofType: "sqlite-shm")
+        let sqlitePath_wal = Bundle.main.path(forResource: "DOL-Timesheet-Database", ofType: "sqlite-wal")
         
         let URL1 = URL(fileURLWithPath: sqlitePath)
         let URL2 = URL(fileURLWithPath: sqlitePath_shm!)
