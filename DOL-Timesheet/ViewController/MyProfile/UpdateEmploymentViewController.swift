@@ -10,6 +10,8 @@ import UIKit
 
 class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nameView: UIView!
@@ -165,7 +167,7 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         discardButton.setTitle("discard".localized, for: .normal)
         
         discardButton.isHidden = true
-        
+                
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "save".localized,
             style: .plain,
@@ -360,6 +362,14 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         stateMinimumWageTextField.isEnabled = false
         
         discardButton.isHidden = true
+        
+        rateTable.reloadData()
+        
+        dismissKeyboard()
+    }
+    
+    @objc func dismissKeyboard() {
+        scrollView.endEditing(true)
     }
     
     @IBAction func nameViewTapped(_ sender: Any) {
@@ -436,6 +446,8 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         stateHeightConstraint.constant = 0
         stateMinimumWageTextField.resignFirstResponder()
         stateMinimumWageTextField.endEditing(true)
+        
+        dismissKeyboard()
     }
     
 }
@@ -555,7 +567,7 @@ extension UpdateEmploymentViewController: UITableViewDataSource {
 
 extension UpdateEmploymentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        resetViews()
         if rates == nil || indexPath.row == rates!.count {
             tableView.deselectRow(at: indexPath, animated: false)
             selectedRate = nil
@@ -593,6 +605,7 @@ extension UpdateEmploymentViewController: UITextFieldDelegate {
                 setFirstDatePickerHeight(height: 0, relatedBy: .equal)
                 payFrequencyHeightConstraint.constant = 0
                 stateHeightConstraint.constant = 0
+                dismissKeyboard()
             }
             return false
         } else if textField == firstPayPeriodTextField {
@@ -613,6 +626,7 @@ extension UpdateEmploymentViewController: UITextFieldDelegate {
                 setFirstDatePickerHeight(height: 307, relatedBy: .greaterThanOrEqual)
                 payFrequencyHeightConstraint.constant = 0
                 stateHeightConstraint.constant = 0
+                dismissKeyboard()
             }
             return false
         } else if textField == payFrequencyTextField {
@@ -627,6 +641,7 @@ extension UpdateEmploymentViewController: UITextFieldDelegate {
                 setFirstDatePickerHeight(height: 0, relatedBy: .equal)
                 payFrequencyHeightConstraint.constant = 100
                 stateHeightConstraint.constant = 0
+                dismissKeyboard()
             }
             return false
         } else if textField == stateTextField {
@@ -650,9 +665,7 @@ extension UpdateEmploymentViewController: UITextFieldDelegate {
                 setFirstDatePickerHeight(height: 0, relatedBy: .equal)
                 payFrequencyHeightConstraint.constant = 0
                 stateHeightConstraint.constant = 100
-                
-                
-                
+                dismissKeyboard()
                 
 //                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
 //                    self.scrollView.scrollToBottom()

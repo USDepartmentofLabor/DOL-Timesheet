@@ -25,6 +25,8 @@ class UpdateRateViewController: UIViewController {
     var tempRate: TempRate?
     weak var delegate: UpdateRateDelegate?
     
+    @IBOutlet var contentView: UIView!
+    
     @IBOutlet weak var rateNameTitleLabel: UILabel!
     @IBOutlet weak var rateNameTextField: UITextField!
     @IBOutlet weak var rateNameView: UIView!
@@ -166,6 +168,13 @@ class UpdateRateViewController: UIViewController {
             )
         }
         discardButton.isHidden = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func setupData() {
@@ -231,6 +240,8 @@ class UpdateRateViewController: UIViewController {
         frequencyTextField.textColor = UIColor(named: "valueInactiveText")
         frequencyTextField.isEnabled = false
         discardButton.isHidden = true
+        
+        resetView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

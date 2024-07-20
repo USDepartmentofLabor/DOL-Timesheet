@@ -9,6 +9,7 @@
 import UIKit
 
 class UpdateProfileViewController: UIViewController {
+    @IBOutlet var contentView: UIView!
     @IBOutlet weak var nameTitleLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nameView: UIView!
@@ -30,6 +31,7 @@ class UpdateProfileViewController: UIViewController {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
         saveName()
+        dismissKeyboard()
     }
     
     override func viewDidLayoutSubviews() {
@@ -58,6 +60,13 @@ class UpdateProfileViewController: UIViewController {
             action: #selector(editButtonTapped)
         )
         setupNormalMode()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @objc func editButtonTapped() {
@@ -95,6 +104,8 @@ class UpdateProfileViewController: UIViewController {
         nameTextField.isEnabled = false
         employmentTypeLabel.textColor = UIColor(named: "valueInactiveText")
         employmentTypeLabel.isEnabled = false
+        
+        dismissKeyboard()
     }
     
     func saveName() {
