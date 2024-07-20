@@ -389,6 +389,10 @@ class UpdateRateViewController: UIViewController {
             if frequencyPickerHeightConstraint.constant >= 1 {
                 frequencyPickerHeightConstraint.constant = 0
             } else {
+                if frequencyTextField.text?.count == 0 {
+                    frequencyTextField.text? = "payment_type_hourly".localized
+                }
+                
                 resetView()
                 frequencyPickerHeightConstraint.constant = 216
             }

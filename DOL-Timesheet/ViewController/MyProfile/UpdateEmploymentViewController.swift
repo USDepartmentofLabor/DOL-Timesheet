@@ -383,6 +383,9 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
                 startOfPayWeekHeightConstraint.constant = 0
             } else {
                 resetViews()
+                if startOfPayWeekTextField.text?.count == 0 {
+                    startOfPayWeekTextField.text? = Weekday.sunday.title
+                }
                 startOfPayWeekHeightConstraint.constant = 100
             }
 
@@ -395,6 +398,16 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
                 setFirstDatePickerHeight(height: 0, relatedBy: .equal)
             } else {
                 resetViews()
+                if firstPayPeriodTextField.text?.count == 0 {
+                    firstPayPeriod = Date()
+                    dateFormatter.dateFormat = "MMMM d, YYYY"
+                    dateFormatter.locale = Locale(identifier: Localizer.currentLanguage)
+                    let formattedDate = dateFormatter.string(from: firstPayPeriod!)
+                    let formattedDateCapitalized = formattedDate.prefix(1).capitalized + formattedDate.dropFirst()
+                    
+                    firstPayPeriodTextField.text = formattedDateCapitalized
+                }
+                
                 setFirstDatePickerHeight(height: 307, relatedBy: .greaterThanOrEqual)
             }
         }
@@ -406,6 +419,10 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
                 payFrequencyHeightConstraint.constant = 0
             } else {
                 resetViews()
+                if payFrequencyTextField.text?.count == 0 {
+                    payFrequencyTextField.text? = PaymentFrequency.daily.title
+                }
+                
                 payFrequencyHeightConstraint.constant = 100
             }
 
@@ -424,6 +441,20 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
                 stateHeightConstraint.constant = 0
             } else {
                 resetViews()
+                
+                if stateTextField.text?.count == 0 {
+                    stateTextField.text? = State.states[0].title
+                }
+                if stateMinimumWageTextField.text?.count == 0 {
+                    stateTextField.text = State.states[0].title
+                    selectedState = State.states[0]
+                    if let state = stateMinWages.data.first(where: { $0.state == State.states[0].title }),
+                       let minWage = state.minimumWage {
+                        minimumWage = minWage as NSNumber
+                        stateMinimumWageTextField.text = String(NumberFormatter.localisedCurrencyStr(from: minWage))
+                    }
+                }
+                
                 stateHeightConstraint.constant = 100
             }
         }
