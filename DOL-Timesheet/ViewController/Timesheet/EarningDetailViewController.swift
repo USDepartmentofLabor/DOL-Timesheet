@@ -102,7 +102,7 @@ extension EarningDetailViewController: UITableViewDataSource {
         
         titleLabel.text = sectionTitle // Customize the header text
         titleLabel.textColor = UIColor(named: "darkTextColor") // Customize the text color
-        titleLabel.frame = CGRect(x: 0, y: 0, width: tableView.frame.width - 30, height: 30) // Adjust the frame as needed
+        titleLabel.frame = CGRect(x: 8, y: 0, width: tableView.frame.width - 30, height: 30) // Adjust the frame as needed
         titleLabel.font = UIFont.boldSystemFont(ofSize: 10)
 
         headerView.addSubview(titleLabel)

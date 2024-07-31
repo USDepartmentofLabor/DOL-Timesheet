@@ -405,8 +405,8 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         }
         breakViewHeightConstraint.constant = 0.0
         if ( timesheetViewModel.currentEmploymentModel?.employmentInfo.clock?.totalBreakTime() ?? 0 >= 0) {
-            breakHoursView.isHidden = true
-            view.layoutIfNeeded()
+//            breakHoursView.isHidden = true
+//            view.layoutIfNeeded()
             timesheetViewModel.clock(action: .endBreak, comments: "")
             displayClock()
         } else {

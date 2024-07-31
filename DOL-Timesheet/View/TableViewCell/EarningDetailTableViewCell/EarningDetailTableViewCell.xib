@@ -33,13 +33,13 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="TOTAL HOURS WORKED" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZu-PJ-S8D">
-                        <rect key="frame" x="8" y="7.9999999999999991" width="149.33333333333334" height="15.666666666666664"/>
+                        <rect key="frame" x="8" y="8" width="149.33333333333334" height="26"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" name="valueActiveText"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Hrs x Rate)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5o-lm-bMt">
-                        <rect key="frame" x="165" y="10.333333333333334" width="47.666666666666657" height="11.000000000000002"/>
+                        <rect key="frame" x="165" y="15.666666666666664" width="47.666666666666657" height="11"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="11" id="7GF-Ty-kyF"/>
                         </constraints>
@@ -48,7 +48,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x hrs x $x.00 = $x.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kob-IZ-Dcs">
-                        <rect key="frame" x="8" y="23.666666666666668" width="93" height="11.000000000000004"/>
+                        <rect key="frame" x="8" y="34" width="93" height="11"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="11" id="WNV-j0-Ixm"/>
                         </constraints>
@@ -57,13 +57,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$x.00 /hr" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQC-06-enL">
-                        <rect key="frame" x="273" y="7.9999999999999991" width="59" height="15.666666666666664"/>
+                        <rect key="frame" x="273" y="13.333333333333336" width="59" height="15.666666666666664"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                         <color key="textColor" name="greenColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="749" text="Your pay rate appears to be below the Federal Minimum Wage" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0u-si-bn9" userLabel="Minimum Warning">
-                        <rect key="frame" x="8" y="34.666666666666664" width="272.33333333333331" height="24"/>
+                        <rect key="frame" x="8" y="45" width="272.33333333333331" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="ltt-SL-XgU"/>
                         </constraints>
@@ -72,7 +72,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7.25/hr" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcN-aG-2r8">
-                        <rect key="frame" x="301.66666666666669" y="40.666666666666664" width="30.333333333333314" height="12"/>
+                        <rect key="frame" x="301.66666666666669" y="51" width="30.333333333333314" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="r6B-Pl-tEE"/>
                         </constraints>
@@ -83,12 +83,13 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="E0u-si-bn9" secondAttribute="bottom" constant="8" id="23z-Xb-wTB"/>
                     <constraint firstItem="kob-IZ-Dcs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="40y-q7-QV3"/>
                     <constraint firstItem="ZcN-aG-2r8" firstAttribute="centerY" secondItem="E0u-si-bn9" secondAttribute="centerY" id="4BS-dd-G3h"/>
                     <constraint firstItem="ZcN-aG-2r8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="E0u-si-bn9" secondAttribute="trailing" constant="10" id="6yB-sb-7UA"/>
                     <constraint firstItem="Occ-ow-EQU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NyL-2j-fq0"/>
                     <constraint firstItem="KZu-PJ-S8D" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Qc8-Zi-xen"/>
-                    <constraint firstItem="E0u-si-bn9" firstAttribute="top" secondItem="kob-IZ-Dcs" secondAttribute="bottom" constant="-7.1054273576010019e-15" id="Usb-fg-XBr"/>
+                    <constraint firstItem="E0u-si-bn9" firstAttribute="top" secondItem="kob-IZ-Dcs" secondAttribute="bottom" id="Usb-fg-XBr"/>
                     <constraint firstItem="KZu-PJ-S8D" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="X3I-KB-ibW"/>
                     <constraint firstItem="kob-IZ-Dcs" firstAttribute="top" secondItem="KZu-PJ-S8D" secondAttribute="bottom" id="Zw6-bI-DWh"/>
                     <constraint firstItem="Occ-ow-EQU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="aw1-uM-F6X"/>
