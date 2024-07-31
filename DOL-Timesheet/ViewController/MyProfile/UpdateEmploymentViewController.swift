@@ -923,6 +923,7 @@ extension UpdateEmploymentViewController {
                 }
             }
         }
+        employmentModel?.save()
         rateTable.reloadData()
     }
     
