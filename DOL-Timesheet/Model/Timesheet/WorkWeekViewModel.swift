@@ -165,7 +165,7 @@ extension WorkWeekViewModel {
     
     var straightTimeCalculationsStr: String {
         get {
-            var straightTimeCalculationsStr = ""
+            var straightTimeCalculationsStr = "0 hrs x $0.00 hr"
             rateHours.forEach {
                 let hourlyRate = $0.key
                 let amountForRate = (Double($0.value)/3600) * hourlyRate

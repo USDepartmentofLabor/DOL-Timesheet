@@ -126,7 +126,7 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             // TOTAL HOURS WORKED
             // Section Identifies Work Week
             // Get total hours for work week and set hrs / mins
-            title = "total_hours_worked".localized.uppercased()
+            title = "total_hours_worked".localized
             totalTime = timesheetViewModel.hoursWorked(workWeek: indexPath.section)
             hourlyCell.firstItem = true
             hourlyCell.lastItem = false

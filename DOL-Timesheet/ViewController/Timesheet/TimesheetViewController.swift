@@ -274,7 +274,7 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
             periodOvertimeEarningsStackView.isHidden = false
             periodEarningsStackView.insertArrangedSubview(periodStraightTimeEarningsStackView, at: 0)
             periodEarningsStackView.isHidden = false
-            periodStraightTimeTitle.text = "straight_earnings".localized
+            periodStraightTimeTitle.text = "straight_time_earnings".localized
             periodStraightTimeAmount.text = timesheetViewModel.currentPeriod?.straightTimeAmountStr
             
             if timesheetViewModel.currentEmploymentModel?.overtimeEligible ?? false {

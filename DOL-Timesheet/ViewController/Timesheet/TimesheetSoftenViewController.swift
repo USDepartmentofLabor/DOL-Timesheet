@@ -186,9 +186,9 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
         let overtimeStr: String = Date.secondsToHoursMinutes(seconds: totalOvertime)
         payPeriodSummaryData.append(PayPeriodSummary(name: "overtime".localized, value1: "", value2: overtimeStr))
         
-        if numDays >= 7 {
+//        if numDays >= 7 {
             payPeriodSummaryData.append(PayPeriodSummary(name: "weekly_summary".localized, value1: "", value2: ""))
-        }
+//        }
         timeTableView.reloadData()
     }
     
@@ -243,6 +243,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             enterTimeVC.selectedEmployment = timesheetViewModel.userProfileModel.employmentUsers.firstIndex(of: (timesheetViewModel.currentEmploymentModel?.employmentUser)!)
             
             enterTimeVC.delegate = self
+            refreshOnAppear = false
                         
         } else if segue.identifier == "enterTime",
            let enterTimeVC = segue.destination as? EnterTimeSoftenViewController,
@@ -259,6 +260,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             enterTimeVC.timeLogEntry = timeLog
             
             enterTimeVC.delegate = self
+            refreshOnAppear = false
         } else if segue.identifier == "weeklySummary",
            let weeklySummaryVC = segue.destination as? WeeklySummaryViewController {
             
@@ -305,8 +307,12 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
 ////MARK : TableView DataSource Delegate
 extension TimesheetSoftenViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
+        var numberOfDays = (timesheetViewModel.currentPeriod?.numberOfDays() ?? 0)
+//        if numberOfDays == 1 {
+//            numberOfDays = 7
+//        }
 
-        return (timesheetViewModel.currentPeriod?.numberOfDays() ?? 0) + 2
+        return numberOfDays + 2
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -365,11 +371,11 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
         
         let secondToLastSection = tableView.numberOfSections - 2
         let secondToLastRow = tableView.numberOfRows(inSection: secondToLastSection) - 1
-        if numDays >= 7 {
+//        if numDays >= 7 {
             if indexPath.section == secondToLastSection && indexPath.row == secondToLastRow {
                 hourlyCell.rateName.textColor = UIColor.linkColor
             }
-        }
+//        }
         
         if section < numDays {
             let sectionDate = timesheetViewModel.currentPeriod?.date(at: indexPath.section)
@@ -392,14 +398,24 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
 
             hourlyCell.lastItem = indexPath.row == (payPeriodSummaryData.count - 1)
             hourlyCell.rightChevronIcon.isHidden = false
-            if (numDays < 7) || ((payPeriodSummaryData.count - 1) != row){
+            if ((payPeriodSummaryData.count - 1) != row){
                 hourlyCell.rightChevronIcon.isHidden = true
             }
             hourlyCell.addborder()
         } else {
             hourlyCell.rateName.text = "earning_details".localized
             hourlyCell.timeFrame.text = ""
-            hourlyCell.totalTime.attributedText = makeBold(input: timesheetViewModel.totalEarningsStr)
+            
+            var totalEarningsStr = timesheetViewModel.totalEarningsStr
+            
+            let currentDate = Date()
+            let startDate = timesheetViewModel.currentPeriod?.startDate ?? currentDate
+            
+            if (timesheetViewModel.currentEmploymentModel?.paymentType == .salary) && (startDate > currentDate) {
+                totalEarningsStr = "$0.00"
+            }
+            
+            hourlyCell.totalTime.attributedText = makeBold(input: totalEarningsStr)
             hourlyCell.totalTime.textColor = UIColor(named: "greenColor")
             hourlyCell.lastItem = true
             hourlyCell.rightChevronIcon.isHidden = false
@@ -451,14 +467,14 @@ extension TimesheetSoftenViewController: UITableViewDelegate {
             performSegue(withIdentifier: "enterTime", sender: currentDate)
         }
         
-        if numDays >= 7 {
+//        if numDays >= 7 {
             if indexPath.section == secondToLastSection && indexPath.row == secondToLastRow {
                 performSegue(withIdentifier: "weeklySummary", sender: self)
             }
             if indexPath.section == tableView.numberOfSections - 1 && indexPath.row == 0 {
                 performSegue(withIdentifier: "timesheetEarningDetailSegue", sender: self)
             }
-        }
+//        }
     }
     
     func titleForWorkWeek(week: Int) -> String? {

@@ -95,7 +95,7 @@ extension EarningDetailViewController: UITableViewDataSource {
         
         var sectionTitle = ""
         if (section == 0) {
-            sectionTitle = "Pay Period Total"
+            sectionTitle = "pay_period_total".localized
         } else if (section > 0 && section < timesheetViewModel.numberOfWorkWeeks + 1) {
             sectionTitle = titleForWorkWeek(week: section-1)!
         }
@@ -128,9 +128,10 @@ extension EarningDetailViewController: UITableViewDataSource {
         let row = indexPath.row
         
         var belowMinimumWage: Bool
-        
+        var isSalary = false
         if timesheetViewModel.currentEmploymentModel?.paymentType == .salary {
             belowMinimumWage = timesheetViewModel.isBelowSalaryWeeklyWage()
+            isSalary = true
         } else {
             belowMinimumWage = timesheetViewModel.isBelowMinimumWage()
         }
@@ -141,21 +142,39 @@ extension EarningDetailViewController: UITableViewDataSource {
         if section == 0 {
             switch row {
             case 0:
-                earningCell.rateTitle.text = "Earnings"
-                earningCell.rateValue.text = timesheetViewModel.totalEarningsStr
+                earningCell.rateTitle.text = "earnings".localized
+                
+                var totalEarningsStr = timesheetViewModel.totalEarningsStr
+                let currentDate = Date()
+                let startDate = timesheetViewModel.currentPeriod?.startDate ?? currentDate
+                
+                if isSalary && (startDate > currentDate) {
+                    totalEarningsStr = "$0.00"
+                }
+                earningCell.rateValue.text = totalEarningsStr
                 earningCell.firstItem = true
                 earningCell.lastItem = false
                 
                 earningCell.configure(isTotalEarnings: true, hasWarning: true, warningEnabled: belowMinimumWage)
             case 1:
-                earningCell.rateTitle.text = "Straight Time"
-                earningCell.rateValue.text = timesheetViewModel.currentPeriod?.straightTimeAmountStr ?? "$0.00"
+                earningCell.rateTitle.text = "straight_time".localized
+                
+                let currentDate = Date()
+                let startDate = timesheetViewModel.currentPeriod?.startDate ?? currentDate
+                
+                var straightTimeAmountStr = timesheetViewModel.currentPeriod?.straightTimeAmountStr
+                
+                if isSalary && (startDate > currentDate) {
+                    straightTimeAmountStr =  "$0.00"
+                }
+                earningCell.rateValue.text = straightTimeAmountStr
+                
                 earningCell.firstItem = false
                 earningCell.lastItem = false
                 
                 earningCell.configure(isTotalEarnings: true)
             case 2:
-                earningCell.rateTitle.text = "Overtime"
+                earningCell.rateTitle.text = "overtime".localized
                 earningCell.rateValue.text = timesheetViewModel.periodOvertimeAmountStr
                 earningCell.firstItem = false
                 earningCell.lastItem = true
@@ -172,24 +191,48 @@ extension EarningDetailViewController: UITableViewDataSource {
             
             switch row {
             case 0:
-                earningCell.rateTitle.text = "Earnings"
-                earningCell.rateValue.text = workWeekViewModel?.totalEarningsStr ?? "0.00"
+                earningCell.rateTitle.text = "earnings".localized
+                var totalEarningsStr = workWeekViewModel?.totalEarningsStr ?? "0.00"
+                
+                let currentDate = Date()
+                let startDate = workWeekViewModel?.period.startDate ?? currentDate
+                
+                if isSalary && (startDate > currentDate) {
+                    totalEarningsStr = "$0.00"
+                }
+                earningCell.rateValue.text = totalEarningsStr
+                
                 earningCell.firstItem = true
                 earningCell.lastItem = false
                 
                 earningCell.configure(isTotalEarnings: true)
             case 1:
-                earningCell.rateTitle.text = "Straight Time"
-                earningCell.rateHintTitle.text = "(Hrs x Rate)"
+                earningCell.rateTitle.text = "straight_time".localized
+                var straightTimeAmount = workWeekViewModel?.straightTimeAmountStr ?? "0.00"
+                
+                let currentDate = Date()
+                let startDate = workWeekViewModel?.period.startDate ?? currentDate
+                
+                if isSalary && (startDate > currentDate) {
+                    straightTimeAmount = "$0.00"
+                }
+                
+                earningCell.rateValue.text = straightTimeAmount
+                
+                earningCell.rateHintTitle.text = "straight_time_equation".localized
                 earningCell.rateHint.text = workWeekViewModel?.straightTimeCalculationsStr ?? "9 hrs x $1.00 = $9.00"
-                earningCell.rateValue.text = workWeekViewModel?.straightTimeAmountStr ?? "0.00"
+                
+                if timesheetViewModel.currentEmploymentModel?.paymentType == .salary {
+                    earningCell.rateHintTitle.text = ""
+                    earningCell.rateHintTitle.text = ""
+                }
                 earningCell.firstItem = false
                 earningCell.lastItem = false
                 
                 earningCell.configure(isTotalEarnings: false)
             case 2:
-                earningCell.rateTitle.text = "Overtime"
-                earningCell.rateHintTitle.text = "(Rate x 0.5 x Hrs)"
+                earningCell.rateTitle.text = "overtime".localized
+                earningCell.rateHintTitle.text = "overtime_equation".localized
                 earningCell.rateHint.text = workWeekViewModel?.overtimeCalculationStr ?? "$3.00 / hr x 0.5 x 0 Hrs"
                 earningCell.rateValue.text = workWeekViewModel?.overtimeAmountStr
                 earningCell.firstItem = false
@@ -197,8 +240,8 @@ extension EarningDetailViewController: UITableViewDataSource {
                 
                 earningCell.configure(isTotalEarnings: false)
             case 3:
-                earningCell.rateTitle.text = "Regular Rate of Pay"
-                earningCell.rateHintTitle.text = "(Straight Time Earnings / Hrs)"
+                earningCell.rateTitle.text = "regular_rate_of_pay".localized
+                earningCell.rateHintTitle.text = "regular_rate_of_pay_equation".localized
                 earningCell.rateHint.text = workWeekViewModel?.regularRateCalculationStr ?? "$54.00 / 18 Hrs = $3.00 / Hr"
                 earningCell.rateValue.text = workWeekViewModel?.regularRateStr ?? "$7.25/hr"
                 earningCell.firstItem = false

@@ -135,7 +135,6 @@ empleado?";
 
 "prev_period" = "Período Anterior";
 "next_period" = "Período Siguiente";
-"straight_earnings" = "Ingresos de Tiempo Regular";
 "straight_time_calculation" = "Horas Trabajadas x Tarifa por Hora";
 "overtime_pay" = "Pago de Sobretiempo";
 "details" = "Detalles";
@@ -227,7 +226,7 @@ empleado?";
 "info_employer_salary" = "Ingresa la cantidad de salario que le pagas a tu empleado y con qué frecuencia. ";
 "info_overtime" = "En general, el sobretiempo se paga por todas las horas que un empleado trabajó por encima de las 40 horas en una semana laboral, y se deben pagar a tiempo y medio con respecto a la tarifa de pago regular del empleado.";
 "info_overtime_pay" = "En general, el sobretiempo se paga por todas las horas que un empleado trabajó por encima de las 40 horas en una semana laboral, y se deben pagar a tiempo y medio con respecto a la tarifa de pago regular del empleado.";
-"info_break_time" = "Los períodos de descanso de corta duración, generalmente de 20 minutos o menos, son comunes en la industria y habitualmente se pagan como tiempo de trabajo. Estos breves períodos deben contabilizarse como horas trabajadas. \n\nLos períodos realmente para comer (típicamente 30 minutos o más) generalmente no necesitan ser compensados como tiempo de trabajo. El trabajador debe estar completamente relevado de sus funciones con el fin de comer comidas regulares para que ese tiempo no cuente como tiempo de trabajo. \n\nPara propósitos de la DOL-Hoja de Tiempo, todo el tiempo de descanso que exceda los 20 minutos se deducirá de sus horas totales de trabajo. \n\nSi tiene preguntas sobre las deducciones adecuadas por el tiempo de descanso, comuníquese con la <a href=\"https://www.dol.gov/agencies/whd/español\">Tabla de salario mínimo consolidada.</a>";
+"info_break_time" = "Los períodos de descanso de corta duración, generalmente de 20 minutos o menos, son comunes en la industria y habitualmente se pagan como tiempo de trabajo. Estos breves períodos deben contabilizarse como horas trabajadas. \n\nLos períodos realmente para comer (típicamente 30 minutos o más) generalmente no necesitan ser compensados como tiempo de trabajo. El trabajador debe estar completamente relevado de sus funciones con el fin de comer comidas regulares para que ese tiempo no cuente como tiempo de trabajo. \n\nPara propósitos de la DOL-Hoja de Tiempo, todo el tiempo de descanso que exceda los 20 minutos se deducirá de sus horas totales de trabajo. \n\nSi tiene preguntas sobre las deducciones adecuadas por el tiempo de descanso, comuníquese con la <a href=\"https://www.dol.gov/agencies/whd/español\">División de Horas y Salarios.</a>.";
 "info_end_time" = "Si trabaja un turno nocturno, las horas después de la medianoche se ingresarán en su hoja de tiempo del día siguiente.";
 "info_import_employee" = "Hemos detectado una base de datos de la WHD Hoja de Tiempo existente. En este caso, necesitamos que especifique un Empleado para asociarlo con estos registros de la base de datos. Más adelante tendrás la oportunidad de actualizar tu perfil y agregar un Empleador o varios Empleados. ";
 "info_regular_rate" = "Tarifa Regular";
@@ -350,6 +349,7 @@ empleado?";
 "summary" = "Resumen";
 "earnings" = "Ingresos";
 "total_earning" = "Total de Ingresos";
+"straight_time" = "Tiempo Regular";
 "straight_time_earnings" = "Ingresos de Tiempo Regular";
 "regular_rate_of_pay" = "Tarifa Regular de Pago";
 "regular_rate_of_pay_equation" = "Ingresos de Tiempo Regular/Horas Trabajadas";
@@ -472,7 +472,7 @@ empleado?";
 "info_dont_round_up_down_text" = "Los empleados que trabajan 7 horas y 55 minutos y reciben un pago exacto por 7 horas y 55 minutos de trabajo NO reciben su salario redondeado hacia arriba o hacia abajo a los 15 minutos más cercanos.";
 
 "info_state" = "Utilizamos el estado en el que trabaja para ayudar a detectar situaciones en las que tu salario podría estar por debajo del salario mínimo federal.";
-"info_state_minimumWage" = "Cuando una ley estatal de salario mínimo es menos restrictiva que la ley federal, se aplica la ley federal. Cuando una ley estatal sobre trabajo de menores de edad es más restrictiva que la ley federal, se aplica la ley estatal. Para obtener más informacion, visite: <a href=\"https://www.dol.gov/agencies/whd/mw-consolidated\" style=\"text-decoration:none\">Tabla de salario mínimo conslidada</a> o contáctanos al 1-866-4US-WAGE.";
+"info_state_minimumWage" = "Cuando una ley estatal de salario mínimo es menos restrictiva que la ley federal, se aplica la ley federal. Cuando una ley estatal sobre trabajo de menores de edad es más restrictiva que la ley federal, se aplica la ley estatal. Para obtener más informacion, visite: <a href=\"https://www.dol.gov/agencies/whd/mw-consolidated\" style=\"text-decoration:none\">Tabla de salario mínimo consolidada</a> o contáctanos al 1-866-4US-WAGE.";
 "employer_first_pay_period"= "¿Fecha de inicio de tu período de pago actual?​";
 "employee_first_pay_period"= "¿Fecha de inicio del período de pago actual del empleado?​";
 
@@ -548,3 +548,8 @@ empleado?";
 
 "switching_from_hourly" = "Warning. Switching from Hourly Rates to Salary will delete all your other Hourly Rates and any entries associated with them.";
 "switching_from_salary" = "Warning. Switching from Salary to Hourly Rates will delete any entries asscoiated with your salary.";
+
+"pay_period_total" = "Pay Period Total";
+"straight_time_equation" = "(Hrs x Rate)";
+"overtime_equation" = "(Rate x 0.5 x Hrs)";
+"regular_rate_of_pay_equation" = "(Straight Time Earnings / Hrs)";

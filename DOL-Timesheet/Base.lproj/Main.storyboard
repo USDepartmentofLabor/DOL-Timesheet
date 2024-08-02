@@ -2945,7 +2945,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lt0-PK-gmp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wrz-Ua-wOr">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3101,7 +3101,7 @@
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ugj-vq-fH3"/>
-                        <color key="backgroundColor" name="timesheetBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ugj-vq-fH3" firstAttribute="trailing" secondItem="rRI-M6-eDg" secondAttribute="trailing" constant="20" id="3C1-ha-V8x"/>
                             <constraint firstItem="rRI-M6-eDg" firstAttribute="top" secondItem="Ugj-vq-fH3" secondAttribute="top" constant="20" id="Ozs-CB-LT1"/>
@@ -3492,7 +3492,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AVg-wA-CjU"/>
+        <segue reference="KJz-zA-nJd"/>
         <segue reference="2Fb-bA-ARb"/>
         <segue reference="8od-yw-fB8"/>
         <segue reference="GGP-HT-mqi"/>

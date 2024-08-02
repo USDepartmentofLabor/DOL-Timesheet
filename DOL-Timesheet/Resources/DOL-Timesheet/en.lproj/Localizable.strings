@@ -135,7 +135,6 @@
 
 "prev_period" = "Previous Period";
 "next_period" = "Next Period";
-"straight_earnings" = "Straight Time Earnings";
 "straight_time_calculation" = "Hours Worked x Hourly Rate";
 "overtime_pay" = "Overtime Pay";
 "details" = "Details";
@@ -352,6 +351,7 @@
 
 "earnings" = "Earnings";
 "total_earning" = "Total Earning";
+"straight_time" = "Straight Time";
 "straight_time_earnings" = "Straight Time Earnings";
 "regular_rate_of_pay" = "Regular Rate Of Pay";
 "regular_rate_of_pay_equation" = "Straight Time Earnings / Hours Worked";
@@ -559,3 +559,9 @@
 
 "switching_from_hourly" = "Warning. Switching from Hourly Rates to Salary will delete all your other Hourly Rates and any entries associated with them.";
 "switching_from_salary" = "Warning. Switching from Salary to Hourly Rates will delete any entries asscoiated with your salary.";
+
+"pay_period_total" = "Pay Period Total";
+"straight_time_equation" = "(Hrs x Rate)";
+"overtime_equation" = "(Rate x 0.5 x Hrs)";
+"regular_rate_of_pay_equation" = "(Straight Time Earnings / Hrs)";
+
