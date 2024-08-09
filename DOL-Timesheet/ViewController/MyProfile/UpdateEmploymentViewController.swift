@@ -199,7 +199,7 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         
         let startDate = safeEmploymentModel.employmentInfo.startDate ?? Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEE MM/dd/yy"
+        dateFormatter.dateFormat = "MM/dd/yy"
         
         firstPayPeriodTextField.text = dateFormatter.string(from: startDate)
         firstPayPeriodDatePicker.setDate(startDate, animated: true)

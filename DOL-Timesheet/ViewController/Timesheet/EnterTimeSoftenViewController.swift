@@ -448,7 +448,7 @@ class EnterTimeSoftenViewController: UIViewController {
     }
     
     func displayInfo() {
-        dateDropDownView.value = enterTimeViewModel?.title ?? ""
+        dateDropDownView.value = enterTimeViewModel?.date ?? ""
         
         let formattedStartTime = startTime?.formattedTime
         startDropDownView.value = formattedStartTime ?? ""

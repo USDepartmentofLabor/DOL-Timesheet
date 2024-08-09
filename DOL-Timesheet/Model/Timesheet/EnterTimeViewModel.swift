@@ -30,6 +30,12 @@ struct EnterTimeViewModel {
         }
     }
     
+    var date: String {
+        get { let currentDate = dateLog.date ?? Date()
+        return "\(currentDate.formattedDate)"
+        }
+    }
+    
     var paymentType: PaymentType? {
         get {return dateLog.employmentInfo?.paymentType}
     }
