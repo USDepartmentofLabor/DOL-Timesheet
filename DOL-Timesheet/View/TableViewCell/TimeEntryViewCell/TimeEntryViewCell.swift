@@ -42,9 +42,8 @@ class TimeEntryViewCell: UITableViewCell {
         self.addborder()
     
         if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
-            let title = (hourlyTimeLog.value > 0) ? "\(hourlyTimeLog.hourlyRate?.name ?? "") \(NumberFormatter.localisedCurrencyStr(from: hourlyTimeLog.value))" :
-            hourlyTimeLog.hourlyRate?.title
-            rateName.text = title ?? ""
+            let title = hourlyTimeLog.hourlyRate?.name ?? "Rate"
+            rateName.text = title
         } else {
             rateName.text = "Rate"
         }

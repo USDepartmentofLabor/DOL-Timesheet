@@ -147,7 +147,7 @@ extension WeeklySummaryViewController: UITableViewDataSource {
                 title = "Rate Title"
                 totalTime = "xx hrs xx mins"
                 if let rate = timesheetViewModel.currentEmploymentModel?.hourlyRates?[row-1] {
-                    title = rate.title
+                    title = rate.name ?? "Rate"
                     totalTime = calcRateHoursWorked(weekIndex: section, rate: rate)
                 }
             }
