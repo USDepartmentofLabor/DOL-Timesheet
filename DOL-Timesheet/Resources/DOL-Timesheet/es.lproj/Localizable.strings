@@ -201,7 +201,7 @@ empleado?";
 "err_add_hourly_rate_value" = "Por favor, especifica la cantidad de la tarifa por hora.";
 "err_camera_denied_title" = "La hoja de tiempo no tiene acceso a su cámara. ";
 "err_camera_denied" = "Para permitir acceso";
-"err_title_minimum_wage" = "Tu pago parece estar por debajo del salario mínimo federal";
+"err_title_minimum_wage" = "Su pago parece estar por debajo del salario mínimo federal.";
 "err_title_minimum_weekly_wage" = "Tu salario parece estar por debajo del requisito federal";
 "err_invalid_supervisor_emailaddress" = "Por favor, ingresa dirección de correo electrónico válida del supervisor.";
 "warning" = "Aviso";
@@ -347,11 +347,11 @@ empleado?";
 "total" = "Total";
 
 "summary" = "Resumen";
-"earnings" = "Ingresos";
+"earnings" = "Ganacias";
 "total_earning" = "Total de Ingresos";
 "straight_time" = "Tiempo Regular";
-"straight_time_earnings" = "Ingresos de Tiempo Regular";
-"regular_rate_of_pay" = "Tarifa Regular de Pago";
+"straight_time_earnings" = "Ganacias de Tiempo Regular";
+"regular_rate_of_pay" = "Tarifa de pago regular";
 "regular_rate_of_pay_equation" = "Ingresos de Tiempo Regular/Horas Trabajadas";
 "overtime_pay" = "Pago de Sobretiempo";
 "overtime_pay_equation" = "Tarifa de Pago Regular x 0.5 x Horas de Sobretiempo";
@@ -502,7 +502,7 @@ empleado?";
 "time_entry_overlap_another_error" = "La entrada de tiempo no puede solaparse con otra entrada de hora para esta fecha. Ya existe una entrada de tiempo para";
 "time_entry_start_and_end_time_error" = "Se deben configurar la hora de inicio y la hora de salida";
 
-"minimum_wage_warning" = "Your pay rate appears to be below the Federal Minimum Wage";
+"minimum_wage_warning" = "Su pago parece estar por debajo del salario mínimo federal.";
 
 "name_or_nickname" = "Nombre o apodo";
 "start_of_pay_week" = "Inicio de la semana de pago";
@@ -549,7 +549,7 @@ empleado?";
 "switching_from_hourly" = "Warning. Switching from Hourly Rates to Salary will delete all your other Hourly Rates and any entries associated with them.";
 "switching_from_salary" = "Warning. Switching from Salary to Hourly Rates will delete any entries asscoiated with your salary.";
 
-"pay_period_total" = "Pay Period Total";
-"straight_time_equation" = "(Hrs x Rate)";
-"overtime_equation" = "(Rate x 0.5 x Hrs)";
-"regular_rate_of_pay_equation" = "(Straight Time Earnings / Hrs)";
+"pay_period_total" = "Totales Del Periodo De Pago";
+"straight_time_equation" = "(Hrs x Tarifa)";
+"overtime_equation" = "(Tarifa x 0.5 x Hrs)";
+"regular_rate_of_pay_equation" = "(Ingresos de Tiempo Regular / Hrs)";

@@ -222,10 +222,6 @@ extension EarningDetailViewController: UITableViewDataSource {
                 earningCell.rateHintTitle.text = "straight_time_equation".localized
                 earningCell.rateHint.text = workWeekViewModel?.straightTimeCalculationsStr ?? "9 hrs x $1.00 = $9.00"
                 
-                if timesheetViewModel.currentEmploymentModel?.paymentType == .salary {
-                    earningCell.rateHintTitle.text = ""
-                    earningCell.rateHintTitle.text = ""
-                }
                 earningCell.firstItem = false
                 earningCell.lastItem = false
                 
