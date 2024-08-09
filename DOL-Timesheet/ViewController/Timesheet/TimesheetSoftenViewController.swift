@@ -169,7 +169,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
                     }
                     let hrsMinStr: String = Date.secondsToHoursMinutes(seconds: Double(totalRateHours))
                     
-                    payPeriodSummaryData.append(PayPeriodSummary(name: rate.title, value1: "", value2: hrsMinStr))
+                    payPeriodSummaryData.append(PayPeriodSummary(name: rate.name ?? "Rate", value1: "", value2: hrsMinStr))
                 }
             }
         }
