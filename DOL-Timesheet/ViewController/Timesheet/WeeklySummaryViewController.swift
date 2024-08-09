@@ -139,10 +139,10 @@ extension WeeklySummaryViewController: UITableViewDataSource {
             totalTime = "xx hrs xx mins"
             
             if timesheetViewModel.currentEmploymentModel?.paymentType == .salary {
-                if let salary = timesheetViewModel.currentEmploymentModel?.salary.salaryType.title.localized {
-                    title = salary
+//                if let salary = timesheetViewModel.currentEmploymentModel?.salary.salaryType.title.localized {
+                    title = "payment_type_salary".localized
                     totalTime = calcSalaryHoursWorked(weekIndex: section)
-                }
+//                }
             } else {
                 title = "Rate Title"
                 totalTime = "xx hrs xx mins"
