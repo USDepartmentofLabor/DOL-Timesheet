@@ -32,7 +32,7 @@ public class DateLog: NSManagedObject {
         }
     }
     
-    func createTimeLog() -> TimeLog? {
+    func createTimeLog() -> TimeLog {
         if employmentInfo?.paymentType == .hourly {
             let newTimeLog = HourlyPaymentTimeLog(context: managedObjectContext!)
 
@@ -49,7 +49,7 @@ public class DateLog: NSManagedObject {
             addToTimeLogs(newTimeLog)
             return newTimeLog
         }
-        else if employmentInfo?.paymentType == .salary {
+        else {
             let newTimeLog = TimeLog(context: managedObjectContext!)
             
 //            if let date = date {
@@ -60,8 +60,6 @@ public class DateLog: NSManagedObject {
             addToTimeLogs(newTimeLog)
             return newTimeLog
         }
-
-        return nil
     }
     
     var totalHoursWorked: Double {

@@ -112,8 +112,9 @@ struct EnterTimeViewModel {
               let checkEndTime = checkTimeLog.endTime else {   orderingMsg = "time_entry_start_and_end_time_error".localized
             return orderingMsg
         }
-                
-        guard let sortedTimeLogs = dateLog.sortedTimeLogs else { return orderingMsg }
+                // Need Date log for TimeLog
+        guard let dateLogTmp = dateLog.employmentInfo?.log(forDate: checkStartTime) else { return nil }
+        guard let sortedTimeLogs = dateLogTmp.sortedTimeLogs else { return orderingMsg }
         sortedTimeLogs.forEach {
             guard let currentStartTime = $0.startTime,
                   let currentEndTime = $0.endTime else { return }

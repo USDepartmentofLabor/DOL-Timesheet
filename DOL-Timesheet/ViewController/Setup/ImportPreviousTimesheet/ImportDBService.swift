@@ -221,11 +221,11 @@ class ImportDBService {
                 employmentInfo.createLog(forDate: startTime)
                 let timeLog = dateLog.createTimeLog()
                 
-                timeLog?.startTime = startTime
-                timeLog?.endTime = $0.endTime
+                timeLog.startTime = startTime
+                timeLog.endTime = $0.endTime
                 let breakTimes = try db.getBreakTime(for: $0)
                 let breakDuration = breakTimes?.reduce(0) {$0 + $1.duration} ?? 0
-                timeLog?.addBreak(duration: breakDuration)
+                timeLog.addBreak(duration: breakDuration)
                 
                 if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
                     hourlyTimeLog.value = $0.hourlyRate.doubleValue
@@ -245,7 +245,7 @@ class ImportDBService {
                 if !allComments.isEmpty {
                     allComments.append("\n")
                 }
-                timeLog?.comment = allComments + (breakComments ?? "")
+                timeLog.comment = allComments + (breakComments ?? "")
             }
         } catch SQLiteError.Prepare(let message) {
             logDelegate?.addDetailLogs(logStr: "Unable to prepare stmt addTimeLogs, SQLError: \(message)")

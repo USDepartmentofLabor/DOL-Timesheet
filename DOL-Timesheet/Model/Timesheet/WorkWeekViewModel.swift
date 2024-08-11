@@ -96,11 +96,23 @@ extension WorkWeekViewModel {
     
     var totalHoursWorked: Double {
         let timeWorked = totalTimeWorked
-        if timeWorked > 0 {
-            return timeWorked / 3600
+        if employmentInfo.paymentType == .hourly {
+            if timeWorked > 0 {
+                return timeWorked / 3600
+            }
+            return 0
+        } else {
+            if period.startDate < Date() {
+                if timeWorked < (40 * 3600) {
+                    return 40
+                } else {
+                    return timeWorked / 3600
+                }
+            }
+            else {
+                return 0
+            }
         }
-        
-        return 0
     }
     
     var totalHoursWorkedStr: String {
@@ -165,19 +177,23 @@ extension WorkWeekViewModel {
     
     var straightTimeCalculationsStr: String {
         get {
-            var straightTimeCalculationsStr = "0 hrs x $0.00 hr"
-            rateHours.forEach {
-                let hourlyRate = $0.key
-                let amountForRate = (Double($0.value)/3600) * hourlyRate
-                
-                if !straightTimeCalculationsStr.isEmpty {
-                    straightTimeCalculationsStr.append("\n")
+            var straightTimeCalculationsStr = ""
+            if employmentInfo.paymentType == .hourly {
+                rateHours.forEach {
+                    let hourlyRate = $0.key
+                    let amountForRate = (Double($0.value)/3600) * hourlyRate
+                    
+                    if !straightTimeCalculationsStr.isEmpty {
+                        straightTimeCalculationsStr.append("\n")
+                    }
+                    
+                    let hoursWorkedStr: String = Date.secondsToHoursMinutes(seconds: Double($0.value))
+                    let atRateStr: String = NumberFormatter.localisedRateStr(from: hourlyRate)
+                    let amountForRateStr: String = NumberFormatter.localisedCurrencyStr(from: amountForRate)
+                    straightTimeCalculationsStr.append("\(hoursWorkedStr) x \(atRateStr) = \(amountForRateStr)")
                 }
-                
-                let hoursWorkedStr: String = Date.secondsToHoursMinutes(seconds: Double($0.value))
-                let atRateStr: String = NumberFormatter.localisedRateStr(from: hourlyRate)
-                let amountForRateStr: String = NumberFormatter.localisedCurrencyStr(from: amountForRate)
-                straightTimeCalculationsStr.append("\(hoursWorkedStr) x \(atRateStr) = \(amountForRateStr)")
+            } else {
+                straightTimeCalculationsStr =  "\(totalHoursWorked) hrs * \(regularRateStr)"
             }
             
             return straightTimeCalculationsStr
@@ -190,11 +206,18 @@ extension WorkWeekViewModel {
     // Regular Rate = Staright Time Hours / Total Hours Worked
     var regularRate: Double {
         get {
-            if totalHoursWorked > 0 {
-                return straightTimeAmount / Double(totalHoursWorked)
+            if employmentInfo.paymentType == .hourly {
+                if totalHoursWorked > 0 {
+                    return straightTimeAmount / Double(totalHoursWorked)
+                }
+                return 0.0
+            } else {
+                if period.startDate < Date() {
+                    return straightTimeAmount / Double(40.0)
+                } else {
+                    return 0.0
+                }
             }
-            
-            return 0.0
         }
     }
     var regularRateStr: String {
@@ -203,7 +226,7 @@ extension WorkWeekViewModel {
     
     var regularRateCalculationStr: String {
         
-        return "\(straightTimeAmountStr) / \(totalHoursWorkedStr) = \(regularRateStr)"
+        return "\(straightTimeAmountStr) / \(totalHoursWorked) = \(regularRateStr)"
     }
 }
 

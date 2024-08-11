@@ -395,16 +395,16 @@ extension TimesheetViewModel {
                 hourlyTimeLog.value = childHourlyRate.value
             }
             
-            timeLog?.startTime = $0.startTime
-            timeLog?.endTime = $0.endTime
-            timeLog?.comment = clock.comments
+            timeLog.startTime = $0.startTime
+            timeLog.endTime = $0.endTime
+            timeLog.comment = clock.comments
             
             let breakTimeEntries = clock.breakTimesEntries(for: $0.startTime)
             breakTimeEntries?.forEach {
-                timeLog?.addBreak(startTime: $0.startTime, endTime: $0.endTime)
+                timeLog.addBreak(startTime: $0.startTime, endTime: $0.endTime)
             }
 
-            timeLog?.comment = clock.comments
+            timeLog.comment = clock.comments
         }
 
         let dateLog = childEmploymentInfo.log(forDate: clockStartTime)  ?? childEmploymentInfo.createLog(forDate: clockStartTime)
@@ -414,6 +414,40 @@ extension TimesheetViewModel {
         }
         return EnterTimeViewModel(dateLog: dateLog)
     }
+}
+
+extension TimesheetViewModel {
+    
+    func validate(timeLog: TimeLog) -> [String] {
+        
+        guard let currentEmploymentModel = currentEmploymentModel else { return ["Missing Employment Model"] }
+        guard let startTime = timeLog.startTime else { return ["Missing StartTime"] }
+        guard let endTime = timeLog.endTime else { return ["Missing EndTime"] }
+        
+        var foundErrors: [String] = []
+        
+        let todayDateLog = currentEmploymentModel.employmentInfo.log(forDate: startTime)
+        todayDateLog?.sortedTimeLogs?.forEach { currentTimeLog in
+            guard let currentTimeLogStart = currentTimeLog.startTime,
+                  let currentTimeLogEnd = currentTimeLog.endTime else {
+                      return
+                  }
+            if currentTimeLog.isTimeInside(time: startTime.timeIntervalSinceReferenceDate) ||
+               currentTimeLog.isTimeInside(time: endTime.timeIntervalSinceReferenceDate)
+            {
+                foundErrors.append(currentTimeLog.description())
+            }
+            
+            if timeLog.isTimeInside(time: currentTimeLogStart.timeIntervalSinceReferenceDate) ||
+                timeLog.isTimeInside(time: currentTimeLogEnd.timeIntervalSinceReferenceDate)
+            {
+                foundErrors.append(currentTimeLog.description())
+            }
+            
+        }
+        return foundErrors
+    }
+
 }
 
 extension TimesheetViewModel {

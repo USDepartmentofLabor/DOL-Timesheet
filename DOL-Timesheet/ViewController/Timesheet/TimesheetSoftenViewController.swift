@@ -239,9 +239,7 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             
             let enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: Date())
             enterTimeVC.enterTimeViewModel = enterTimeViewModel
-            
-            enterTimeVC.selectedEmployment = timesheetViewModel.userProfileModel.employmentUsers.firstIndex(of: (timesheetViewModel.currentEmploymentModel?.employmentUser)!)
-            
+              
             enterTimeVC.delegate = self
             refreshOnAppear = false
                         
@@ -252,9 +250,6 @@ class TimesheetSoftenViewController: UIViewController, TimeViewDelegate, TimePic
             
             let enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: currentDate)
             enterTimeVC.enterTimeViewModel = enterTimeViewModel
-            
-            enterTimeVC.selectedEmployment = timesheetViewModel.userProfileModel.employmentUsers.firstIndex(of: (timesheetViewModel.currentEmploymentModel?.employmentUser)!)
-            
             let timeLog = enterTimeViewModel?.timeLogs![selectedTimeLog]
             
             enterTimeVC.timeLogEntry = timeLog
@@ -385,6 +380,9 @@ extension TimesheetSoftenViewController: UITableViewDataSource {
             hourlyCell.lastItem = indexPath.row == (timeEntryViewModel.timeLogs!.count - 1)
             hourlyCell.configure(timeLog: timeLog)
             hourlyCell.rightChevronIcon.isHidden = false
+            if timesheetViewModel.currentEmploymentModel?.paymentType == .salary {
+                hourlyCell.rateName.text = "payment_type_salary".localized
+            }
             
         } else if section == numDays {
             hourlyCell.rateName.text = payPeriodSummaryData[row].name
@@ -567,6 +565,9 @@ extension TimesheetSoftenViewController: TimeViewControllerDelegate {
 
 extension TimesheetSoftenViewController: EnterTimeViewControllerDelegate {
     func didEnterTime(enterTimeModel: EnterTimeViewModel?) {
+        if let newDate = enterTimeModel?.dateLog.date {
+            timesheetViewModel.updatePeriod(currentDate: (newDate))
+        }
         displayPeriodInfo()
     }
     

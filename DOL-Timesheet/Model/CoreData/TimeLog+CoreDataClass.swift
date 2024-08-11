@@ -62,6 +62,10 @@ public class TimeLog: NSManagedObject {
         return 0
     }
     
+    func description() -> String {
+        return (startTime?.formattedTime ?? "No Start") + " - " + (endTime?.formattedTime ?? "End Time")
+    }
+    
     func validate() -> String? {
         var errorStr: String? = nil
         
@@ -72,6 +76,14 @@ public class TimeLog: NSManagedObject {
         }
         
         return errorStr
+    }
+    
+    func isTimeInside(time: TimeInterval) -> Bool {
+        guard let start = startTime?.timeIntervalSinceReferenceDate,
+              let end = endTime?.timeIntervalSinceReferenceDate else {
+            return false
+        }
+        return time > start && time < end
     }
     
 //    public override func didChangeValue(forKey key: String) {

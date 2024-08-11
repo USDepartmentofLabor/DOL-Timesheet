@@ -480,14 +480,14 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             let startTime = clock.startTime {
 
             let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .short
-            dateFormatter.timeStyle = .short
+            dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
             
             let startTimeStr = dateFormatter.string(from: startTime)
             let workString = "started_work".localized
             timeInfoLabel.text = workString + startTimeStr
             
             var breakTimeStr: String = ""
+            dateFormatter.dateFormat = "hh:mm a"
             clock.breaksSorted?.forEach {
                 if let startTime = $0.startTime, let endTime = $0.endTime {
                     let breakStartStr = dateFormatter.string(from: startTime)
@@ -495,12 +495,12 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
                     if !breakTimeStr.isEmpty {
                         breakTimeStr.append("\n")
                     }
-                    breakTimeStr.append("- Break \(breakStartStr) - \(breakEndStr)")
+                    breakTimeStr = ("\("last_break".localized) \(breakStartStr) - \(breakEndStr)")
                 }
                 else if let startTime = $0.startTime {
                     let breakStartStr = dateFormatter.string(from: startTime)
                     let breakString = "started_break".localized
-                    breakTimeStr.append(breakString + breakStartStr)
+                    breakTimeStr = (breakString + breakStartStr)
                 }
             }
             
@@ -535,9 +535,6 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
                 paymentType != .salary {
                 enterTimeVC.selectedRate = selectedRate
             }
-            
-            enterTimeVC.selectedEmployment = timesheetViewModel.userProfileModel.employmentUsers.firstIndex(of: (timesheetViewModel.currentEmploymentModel?.employmentUser)!)
-    
         }
         else if segue.identifier == "showUserProfile",
              let navVC = segue.destination as? UINavigationController,

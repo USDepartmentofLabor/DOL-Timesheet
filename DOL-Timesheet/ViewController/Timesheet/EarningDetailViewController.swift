@@ -220,7 +220,7 @@ extension EarningDetailViewController: UITableViewDataSource {
                 earningCell.rateValue.text = straightTimeAmount
                 
                 earningCell.rateHintTitle.text = "straight_time_equation".localized
-                earningCell.rateHint.text = workWeekViewModel?.straightTimeCalculationsStr ?? "9 hrs x $1.00 = $9.00"
+                earningCell.rateHint.text = workWeekViewModel?.straightTimeCalculationsStr ?? ""
                 
                 earningCell.firstItem = false
                 earningCell.lastItem = false
@@ -229,7 +229,7 @@ extension EarningDetailViewController: UITableViewDataSource {
             case 2:
                 earningCell.rateTitle.text = "overtime".localized
                 earningCell.rateHintTitle.text = "overtime_equation".localized
-                earningCell.rateHint.text = workWeekViewModel?.overtimeCalculationStr ?? "$3.00 / hr x 0.5 x 0 Hrs"
+                earningCell.rateHint.text = workWeekViewModel?.overtimeCalculationStr ?? ""
                 earningCell.rateValue.text = workWeekViewModel?.overtimeAmountStr
                 earningCell.firstItem = false
                 earningCell.lastItem = false
@@ -238,7 +238,7 @@ extension EarningDetailViewController: UITableViewDataSource {
             case 3:
                 earningCell.rateTitle.text = "regular_rate_of_pay".localized
                 earningCell.rateHintTitle.text = "regular_rate_of_pay_equation".localized
-                earningCell.rateHint.text = workWeekViewModel?.regularRateCalculationStr ?? "$54.00 / 18 Hrs = $3.00 / Hr"
+                earningCell.rateHint.text = workWeekViewModel?.regularRateCalculationStr ?? ""
                 earningCell.rateValue.text = workWeekViewModel?.regularRateStr ?? "$7.25/hr"
                 earningCell.firstItem = false
                 earningCell.lastItem = true

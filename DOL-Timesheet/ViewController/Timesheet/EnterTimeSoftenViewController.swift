@@ -50,7 +50,6 @@ class EnterTimeSoftenViewController: UIViewController {
     weak var delegate: EnterTimeViewControllerDelegate?
     var timePickerVC: TimePickerViewController?
     
-    var selectedEmployment: Int?
     var selectedRate: Int?
     
     var rateOptions: [HourlyRate]?
@@ -474,11 +473,7 @@ class EnterTimeSoftenViewController: UIViewController {
     }
 
     @objc func save(_ sender: Any?) {
-        guard let safeViewModel = enterTimeViewModel,
-        let safeStartTime = startTime else { return }
-        if startTime == nil || endTime == nil {
-            return
-        }
+        guard let safeViewModel = enterTimeViewModel, startTime != nil, endTime != nil else { return }
         
         if timeLog == nil {
 //            if let safeTimeLogs = safeViewModel.timeLogs,
@@ -489,15 +484,17 @@ class EnterTimeSoftenViewController: UIViewController {
                 timeLog = safeViewModel.addTimeLog()
 //            }
         }
+        guard let timeLog else { return }
+        
         print("GGG: timelog count \(enterTimeViewModel!.dateLog.timeLogs!.count)")
         
-        timeLog!.startTime = startTime
-        timeLog!.addBreak(duration: breakTime)
-        timeLog!.endTime = endTime
+        timeLog.startTime = startTime
+        timeLog.addBreak(duration: breakTime)
+        timeLog.endTime = endTime
         
         if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
             
-            if let rateOptions = timeLog?.dateLog?.employmentInfo?.sortedRates() {
+            if let rateOptions = timeLog.dateLog?.employmentInfo?.sortedRates() {
                 let selectedRate =  rateOptions.filter { $0.name == currentHourlyRate!.name && $0.value == currentHourlyRate!.value}.first
                 currentHourlyRate = selectedRate
             }
@@ -506,14 +503,14 @@ class EnterTimeSoftenViewController: UIViewController {
             hourlyTimeLog.value = currentHourlyRate?.value ?? 0
         }
         
-        timeLog?.comment = comment
+        timeLog.comment = comment
         
-        if timeLog!.startTime?.compare(endTime!) != .orderedAscending {
-            handleNightShift(endTime: endTime!, for: timeLog!)
+        if timeLog.startTime?.compare(endTime!) != .orderedAscending {
+            handleNightShift(endTime: endTime!, for: timeLog)
             return
         }
         
-        if let errMsg = enterTimeViewModel!.orderingCheck(for: timeLog!) {
+        if let errMsg = enterTimeViewModel!.orderingCheck(for: timeLog) {
             alert(message: errMsg)
             return
         }
@@ -736,10 +733,11 @@ extension EnterTimeSoftenViewController: TimePickerProtocol {
         if sourceView == dateDropDownView {
             selectedDate = datePicker.date
             enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: datePicker.date)
-            timeLog = enterTimeViewModel?.timeLogs?.first
+            timeLog = nil
+        //    timeLog = enterTimeViewModel?.timeLogs?.first
 //            timeLog?.startTime = selectedDate + (8*60*60)
 //            timeLog?.endTime = selectedDate + (17*60*60)
-            timeLog?.comment = ""
+         //   timeLog?.comment = ""
             setupView()
             UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: dateDropDownView)
         } else if sourceView == startDropDownView {

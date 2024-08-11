@@ -564,4 +564,5 @@
 "straight_time_equation" = "(Hrs x Rate)";
 "overtime_equation" = "(Rate x 0.5 x Hrs)";
 "regular_rate_of_pay_equation" = "(Straight Time Earnings / Hrs)";
+"last_break" = "Last Break";
 
