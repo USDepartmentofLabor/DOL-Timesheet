@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1371,7 +1371,7 @@
                                                         <color key="textColor" name="breakHours"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1S-yc-BdG" userLabel="BreakInfoLabel">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="751" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1S-yc-BdG" userLabel="BreakInfoLabel">
                                                         <rect key="frame" x="87" y="98.5" width="240.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -1385,6 +1385,7 @@
                                                     <constraint firstAttribute="height" constant="119" id="Ba6-FV-PZ5"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xck-2b-Cqf" secondAttribute="trailing" constant="8" id="IAd-DA-vXJ"/>
                                                     <constraint firstItem="xck-2b-Cqf" firstAttribute="centerY" secondItem="Cgs-LS-hLE" secondAttribute="centerY" id="KQH-Ne-5SD"/>
+                                                    <constraint firstAttribute="bottom" secondItem="C1S-yc-BdG" secondAttribute="bottom" id="anJ-I0-IC5"/>
                                                     <constraint firstItem="5Uo-XB-yhV" firstAttribute="top" secondItem="Cgs-LS-hLE" secondAttribute="bottom" constant="4" id="ca9-iv-G6G"/>
                                                     <constraint firstItem="5Uo-XB-yhV" firstAttribute="leading" secondItem="wwX-Cf-acN" secondAttribute="leading" id="oud-yJ-2Yg"/>
                                                     <constraint firstItem="Cgs-LS-hLE" firstAttribute="top" secondItem="wwX-Cf-acN" secondAttribute="top" constant="4" id="u0S-Pi-BWD"/>
@@ -1421,7 +1422,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ywk-ow-xla">
-                                        <rect key="frame" x="87" y="477" width="240" height="34.5"/>
+                                        <rect key="frame" x="87" y="437" width="240" height="34.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="nIg-RL-fSM"/>
                                         </constraints>
@@ -1457,7 +1458,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="nM2-pb-L5c" firstAttribute="top" secondItem="Ddh-2s-YTh" secondAttribute="bottom" constant="8" id="4Yn-B6-tBb"/>
-                                    <constraint firstItem="Ywk-ow-xla" firstAttribute="top" secondItem="NeJ-x8-7qj" secondAttribute="bottom" constant="100" id="4tL-Bz-hF4"/>
+                                    <constraint firstItem="Ywk-ow-xla" firstAttribute="top" secondItem="NeJ-x8-7qj" secondAttribute="bottom" constant="60" id="4tL-Bz-hF4"/>
                                     <constraint firstItem="wMU-Ao-MDc" firstAttribute="leading" secondItem="xkI-Ca-cHN" secondAttribute="leading" constant="8" id="E8n-AW-gND"/>
                                     <constraint firstItem="Ddh-2s-YTh" firstAttribute="leading" secondItem="xkI-Ca-cHN" secondAttribute="leading" id="JU6-43-YeK"/>
                                     <constraint firstItem="Ddh-2s-YTh" firstAttribute="top" secondItem="xkI-Ca-cHN" secondAttribute="top" id="Knu-GZ-Nn4"/>

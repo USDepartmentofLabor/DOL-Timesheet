@@ -161,6 +161,12 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         breakHoursView.isHidden = true
         breakViewHeightConstraint.constant = 0.0
         
+        if (breakHoursCounter != 0){
+            breakHoursView.isHidden = false
+            breakViewHeightConstraint.constant = 119.0
+
+        }
+        
 //        commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
 //        commentsTextView.addBorder()
         
@@ -329,6 +335,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
         rateButtonEnabled(enabled: false)
         timesheetViewModel.clock(action: .startWork, hourlyRate: currentHourlyRate, comments: nil)
         displayClock()
+        breakViewHeightConstraint.constant = 0.0
     }
     
     func rateButtonEnabled(enabled: Bool = true) {
@@ -388,9 +395,9 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     
     @IBAction func startBreakClick(_ sender: Any) {
         breakViewHeightConstraint.constant = 119.0
+        breakHoursView.isHidden = false
         if isValidHourlyRate() {
             timesheetViewModel.clock(action: .startBreak, comments: "")
-            breakHoursView.isHidden = false
             view.layoutSubviews()
             view.layoutIfNeeded()
             displayClock()
@@ -488,20 +495,31 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             
             var breakTimeStr: String = ""
             dateFormatter.dateFormat = "hh:mm a"
-            clock.breaksSorted?.forEach {
-                if let startTime = $0.startTime, let endTime = $0.endTime {
-                    let breakStartStr = dateFormatter.string(from: startTime)
-                    let breakEndStr = dateFormatter.string(from: endTime)
-                    if !breakTimeStr.isEmpty {
-                        breakTimeStr.append("\n")
+            
+            if let breaks = clock.breaksSorted, breaks.count > 0 {
+                let max = breaks.count - 1
+                var min = max - 3
+                if min < 0 { min = 0 }
+                breakViewHeightConstraint.constant = 119.0 + (CGFloat((max - min)) * 20.0)
+                
+                for i in min...max {
+                    let nextBreak = breaks[i]
+                    
+                    if !breakTimeStr.isEmpty { breakTimeStr.append("\n") }
+                    
+                    if let startTime = nextBreak.startTime, let endTime = nextBreak.endTime {
+                        let breakStartStr = dateFormatter.string(from: startTime)
+                        let breakEndStr = dateFormatter.string(from: endTime)
+                        breakTimeStr += ("\("break".localized) \(breakStartStr) - \(breakEndStr)")
                     }
-                    breakTimeStr = ("\("last_break".localized) \(breakStartStr) - \(breakEndStr)")
+                    else if let startTime = nextBreak.startTime {
+                        let breakStartStr = dateFormatter.string(from: startTime)
+                        let breakString = "started_break".localized
+                        breakTimeStr += ("\(breakString) - \(breakStartStr)")
+                    }
                 }
-                else if let startTime = $0.startTime {
-                    let breakStartStr = dateFormatter.string(from: startTime)
-                    let breakString = "started_break".localized
-                    breakTimeStr = (breakString + breakStartStr)
-                }
+            } else {
+                breakViewHeightConstraint.constant = 119.0
             }
             
             breakTimeInfoLabel.text = breakTimeStr
