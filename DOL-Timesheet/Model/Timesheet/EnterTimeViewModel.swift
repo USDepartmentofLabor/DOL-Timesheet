@@ -45,26 +45,6 @@ struct EnterTimeViewModel {
         
         CoreDataManager.shared().saveContext(context: context)
     }
-    
-    // Validate TimeLogs and return Error String
-    func validate() -> String? {
-        guard let timeLogs = dateLog.timeLogs as? Set<TimeLog>  else {
-            return nil
-        }
-        
-        for timeLog in timeLogs {
-            if let errorStr = timeLog.validate() {
-                return errorStr
-            }
-        }
-
-        // If Total Hours Worked + breaktime should be less that 24 hours
-        if dateLog.totalHoursWorked + dateLog.totalBreak > (24 * 60 * 60) {
-            return "err_more_than_24_hours".localized
-        }
-        
-        return nil
-    }
 
     func isValid(breakTime: Double, for currentTimeLog: TimeLog?) -> String {
         var errStr: String = ""
@@ -74,13 +54,6 @@ struct EnterTimeViewModel {
                 errStr = "err_break_more_than_hours_worked".localized
         }
         
-        return errStr
-    }
-    
-    func isValid(startTime: Date, for currentTimeLog: TimeLog?) -> String {
-        var errStr: String = ""
-        
-   
         return errStr
     }
 
@@ -106,7 +79,7 @@ struct EnterTimeViewModel {
         return errStr
     }
     
-    func orderingCheck(for checkTimeLog: TimeLog) -> String? {
+    func validateTimeEntries(for checkTimeLog: TimeLog) -> String? {
         var orderingMsg: String? = nil
         guard let checkStartTime = checkTimeLog.startTime,
               let checkEndTime = checkTimeLog.endTime else {   orderingMsg = "time_entry_start_and_end_time_error".localized
@@ -132,6 +105,20 @@ struct EnterTimeViewModel {
                 orderingMsg = "time_entry_overlap_another_error".localized + " \n \(currentTimeStr)"
                 return
             }
+        }
+        guard let timeLogs = dateLog.timeLogs as? Set<TimeLog>  else {
+            return nil
+        }
+        
+        for timeLog in timeLogs {
+            if let errorStr = timeLog.validate() {
+                return errorStr
+            }
+        }
+
+        // If Total Hours Worked + breaktime should be less that 24 hours
+        if dateLog.totalHoursWorked + dateLog.totalBreak > (24 * 60 * 60) {
+            return "err_more_than_24_hours".localized
         }
         return orderingMsg
     }

@@ -1,5 +1,5 @@
 //
-//  EnnterTimeViewController.swift
+//  EnterTimeSoftenViewController.swift
 //  DOL-Timesheet
 //
 //  Created by Nidhi Chawla on 5/8/19.
@@ -11,109 +11,351 @@ import UIKit
 class EnterTimeViewController: UIViewController {
 
     var enterTimeViewModel: EnterTimeViewModel?
-    var timeSheetModel = TimesheetViewModel.shared()
+    var timesheetViewModel = TimesheetViewModel.shared()
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var commentsHint: UILabel!
+    @IBOutlet weak var dateView: UIView!
+    @IBOutlet weak var timeView: UIView!
+    @IBOutlet weak var commentView: UIView!
+    @IBOutlet weak var helpView: UIView!
     
-    @IBOutlet weak var paymentTypeLabel: UILabel!
+    @IBOutlet weak var startTimeErrorMessage: UILabel!
+    @IBOutlet weak var breakTimeErrorMessage: UILabel!
+    @IBOutlet weak var endTimeErrorMessage: UILabel!
     
-    @IBOutlet weak var dateTitleLabel: UILabel!
-    @IBOutlet weak var dateDropDownView: DropDownView!
+    @IBOutlet weak var dateDropDownView: DropDownSoftenView!
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var enterTimeView: UIView!
-    @IBOutlet weak var editBtn: UIButton!
-    @IBOutlet weak var startTitleLabel: UILabel!
-    @IBOutlet weak var endTitleLabel: UILabel!
-    @IBOutlet weak var breakTimeTitleLabel: UILabel!
+    @IBOutlet weak var startDropDownView: DropDownSoftenView!
+    @IBOutlet weak var breakDropDownView: DropDownSoftenView!
+    @IBOutlet weak var endDropDownView: DropDownSoftenView!
     
-    
-    @IBOutlet weak var endTimeInfoBtn: InfoButton!
-    @IBOutlet weak var breakTimeInfoButton: InfoButton!
     @IBOutlet weak var hourlyRateTitleLabel: UILabel!
-    @IBOutlet weak var commentsTitleLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
+    weak var textViewDelegate: UITextViewDelegate?
+
+    @IBOutlet weak var helpLabel: UILabel!
     
-    @IBOutlet weak var footerLabel: UILabel!
-    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var employmentTitleLabel: UILabel!
+    @IBOutlet weak var employmentPopUp: UIButton!
+    @IBOutlet weak var employmentView: UIView!
+    
+    @IBOutlet weak var rateTitleLabel: UILabel!
+    @IBOutlet weak var ratePopUp: UIButton!
+    @IBOutlet weak var rateView: UIView!
+    
+    @IBOutlet weak var discardButton: UIButton!
+    var discardHidden = true
+    
     
     weak var delegate: EnterTimeViewControllerDelegate?
     var timePickerVC: TimePickerViewController?
-
-    var keyboardHeight: CGFloat = 0
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupNavigationBarSettings()
-        setupView()
-        displayInfo()
+    var selectedRate: Int?
+    
+    var rateOptions: [HourlyRate]?
+    var selectedDate: Date = Date().removeTimeStamp()
+    var startTime: Date?
+    var breakTime: TimeInterval = 0.0
+    var endTime: Date?
+    var comment: String = ""
+    
+    var isCancelled: Bool = true
+
+    var timeLogEntry: TimeLog?
+
+    private var timeLog: TimeLog? {
+        didSet {
+            displayInfo()
+        }
+    }
+
+    var currentHourlyRate: HourlyRate? {
+        didSet {
+            ratePopUp.setTitle(currentHourlyRate?.title ?? "", for: .normal)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        registerKeyboardNotifications()
+        UIBarButtonItem.appearance().setTitleTextAttributes(nil, for: .normal)
+        
+        isCancelled = true
+        setupView()
+        displayInfo()
+        
+        setupRatePopupButton()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupNavigationBarSettings()
+        setupRatePopupButton()
+        
+        if timeLogEntry != nil {
+            setupTimeLog()
+        } else {
+            selectedRate = EnterTimeForm.shared.rateIndex
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        timeLog = nil
+        if !isCancelled {
+            EnterTimeForm.shared.timelogForm = timeLog
+            EnterTimeForm.shared.rateIndex = selectedRate ?? 0
+            EnterTimeForm.shared.startTimeForm = startTime
+            EnterTimeForm.shared.breakTimeForm = breakTime
+            EnterTimeForm.shared.endTimeForm = endTime
+            EnterTimeForm.shared.commentForm = comment
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
+    func setupTimeLog() {
+        timeLog = timeLogEntry
+        
+        var rateName = "Rate"
+        
+        if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
+            let title = (hourlyTimeLog.value > 0) ? 
+            "\(hourlyTimeLog.hourlyRate?.name ?? "") (\(NumberFormatter.localisedCurrencyStr(from: hourlyTimeLog.value)))" :
+            hourlyTimeLog.hourlyRate?.title
+            rateName = title ?? ""
+        }
+        
+        rateOptions = timeLog?.dateLog?.employmentInfo?.sortedRates()
+        
+        selectedRate = rateOptions!.firstIndex(where: {
+            $0.title == rateName
+        })
+        
+        discardHidden = false
+        
+    }
+    
     func setupView() {
+
         let cancelBtn = UIBarButtonItem(title: "cancel".localized, style: .plain, target: self, action: #selector(cancel(_:)))
+        cancelBtn.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.red], for: .normal)
         navigationItem.leftBarButtonItem = cancelBtn
 
         let saveBtn = UIBarButtonItem(title: "save".localized, style: .plain, target: self, action: #selector(save(_:)))
+        saveBtn.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(named: "blackTextColor")], for: .normal)
         navigationItem.rightBarButtonItem = saveBtn
-//        title = viewModel?.title
-        title = "manual_time_entry".localized
+        title = "new_time_entry".localized
         
-        tableView.estimatedRowHeight = 150
-        tableView.rowHeight = UITableView.automaticDimension
-
-        enterTimeView.addBorder()
-        commentTextView.addBorder()
-        paymentTypeLabel.scaleFont(forDataType: .enterTimePaymentType)
-        dateTitleLabel.scaleFont(forDataType: .enterTimeTitle)
-        dateTitleLabel.text = "date".localized
-        titleLabel.scaleFont(forDataType: .enterTimeTitle)
-        commentsTitleLabel.scaleFont(forDataType: .enterTimeTitle)
-        editBtn.titleLabel?.scaleFont(forDataType: .actionButton)
-        scrollView.keyboardDismissMode = .onDrag
+        employmentTitleLabel.text = "employer".localized
+        
+        if timesheetViewModel.currentEmploymentModel?.isProfileEmployer ?? false {
+            employmentTitleLabel.text = "employee".localized
+        }
+                
+        employmentPopUp.isEnabled = false
+        
+        rateTitleLabel.text = "rate".localized
+        
+        startDropDownView.title = "start_time".localized
+        breakDropDownView.title = "break_time".localized
+        endDropDownView.title = "end_time".localized
+        
+        commentsHint.text = "comments".localized
+        
+        helpLabel.text = "help".localized
 
         let dateTapGesture = UITapGestureRecognizer(target: self, action: #selector(dateBtnClick(_:)))
         dateTapGesture.cancelsTouchesInView = false
         dateDropDownView.addGestureRecognizer(dateTapGesture)
+        
+        let startTapGesture = UITapGestureRecognizer(target: self, action: #selector(startBtnClick(_:)))
+        startTapGesture.cancelsTouchesInView = false
+        startDropDownView.addGestureRecognizer(startTapGesture)
+        
+        let breakTapGesture = UITapGestureRecognizer(target: self, action: #selector(breakBtnClick(_:)))
+        breakTapGesture.cancelsTouchesInView = false
+        breakDropDownView.addGestureRecognizer(breakTapGesture)
+        
+        let endTapGesture = UITapGestureRecognizer(target: self, action: #selector(endBtnClick(_:)))
+        endTapGesture.cancelsTouchesInView = false
+        endDropDownView.addGestureRecognizer(endTapGesture)
 
-        commentTextView.delegate = self
+        if timeLog == nil {
+            timeLog = EnterTimeForm.shared.timelogForm
+        }
+        
+        if let safeTimeLog = timeLog {
+            startTime = safeTimeLog.startTime
+            breakTime = safeTimeLog.totalBreakTime 
+            endTime = safeTimeLog.endTime
+            comment = safeTimeLog.comment ?? ""
+        } else {
+            startTime = nil
+            breakTime = 0
+            endTime = nil
+            comment = ""
+        }
+        
+        checkForm()
+        
+        startTimeErrorMessage.text = ""
+        breakTimeErrorMessage.text = ""
+        endTimeErrorMessage.text = ""
+        
+        discardButton.layer.borderWidth = 1.0
+        discardButton.layer.cornerRadius = 5.0
+        discardButton.layer.borderColor = UIColor.red.cgColor
+
+        discardButton.setTitleColor(UIColor.red, for: .normal)
+        discardButton.setTitleColor(UIColor.white, for: .highlighted)
+        discardButton.setTitle("discard".localized, for: .normal)
+        
+        discardButton.isHidden = discardHidden
+        
         
         setupTimeView()
-        setupAccessibility()
+        setupEmploymentPopupButton()
+        setupRatePopupButton()
+    }
+    
+    func checkForm() {
+        
+        if (EnterTimeForm.shared.rateIndex != 0) {
+            selectedRate = EnterTimeForm.shared.rateIndex
+        }
+        if (EnterTimeForm.shared.startTimeForm != nil) {
+            startTime = EnterTimeForm.shared.startTimeForm
+        }
+        if (EnterTimeForm.shared.breakTimeForm != nil) {
+            breakTime = EnterTimeForm.shared.breakTimeForm!
+        }
+        if (EnterTimeForm.shared.endTimeForm != nil) {
+            endTime = EnterTimeForm.shared.endTimeForm
+        }
+        if (EnterTimeForm.shared.commentForm != nil) {
+            comment = EnterTimeForm.shared.commentForm!
+        }
     }
     
     func setupTimeView() {
-        paymentTypeLabel.accessibilityTraits = .header
-        titleLabel.accessibilityTraits = .header
-        startTitleLabel.scaleFont(forDataType: .columnHeader)
-        endTitleLabel.scaleFont(forDataType: .columnHeader)
-        breakTimeTitleLabel.scaleFont(forDataType: .columnHeader)
-        hourlyRateTitleLabel.scaleFont(forDataType: .columnHeader)
-        commentTextView.scaleFont(forDataType: .enterCommentsValue)
+        commentTextView.textColor = UIColor(named: "blackTextColor")
         
-        endTimeInfoBtn.infoType = .endTime
-        endTimeInfoBtn.delegate = self
+        dateView.layer.cornerRadius = 10
+        timeView.layer.cornerRadius = 10
+        commentView.layer.cornerRadius = 10
+        helpView.layer.cornerRadius = 10
         
-        breakTimeInfoButton.infoType = .breakTime
-        breakTimeInfoButton.delegate = self
+        dateDropDownView.title = "date".localized
+        startDropDownView.title = "start_time".localized
+        breakDropDownView.title = "break_time".localized
+        endDropDownView.title = "end_time".localized
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        employmentView.roundCorners(corners: [.topLeft, .topRight], radius: 10)
+        rateView.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 10)
+    }
+    
+    func setupEmploymentPopupButton(){
+        let optionClosure = {(action : UIAction) in
+            print(action.title)
+        }
         
-        if enterTimeViewModel?.paymentType == PaymentType.salary {
-            setupSalaryView()
+        var menuActions: [UIAction] = []
+        
+        let userProfileModel = timesheetViewModel.userProfileModel
+        
+        let users: [User] = userProfileModel.employmentUsers
+        guard users.count > 0 else {
+            return
+        }
+        
+        let selectedUserName = timesheetViewModel.selectedUserName
+        
+        for user in users {
+            var state: UIAction.State = .off
+            if user.name == selectedUserName {
+                state = .on
+            }
+            
+            let action = UIAction(title: user.name!, state: state, handler: {_ in
+                self.setCurrentUser(user: user)
+            })
+            menuActions.append(action)
+        }
+             
+        if !menuActions.isEmpty {
+            employmentPopUp.menu = UIMenu(children : menuActions)
+            employmentPopUp.showsMenuAsPrimaryAction = true
+            
+            employmentPopUp.changesSelectionAsPrimaryAction = true
+        }
+    }
+    
+    func setCurrentUser(user: User) {
+        selectedRate = 0
+        timesheetViewModel.setCurrentEmploymentModel(for: user)
+        setupRatePopupButton()
+    }
+    
+    func setupRatePopupButton(){
+        if let paymentType = timesheetViewModel.currentEmploymentModel?.paymentType,
+           paymentType == .salary {
+            
+            rateTitleLabel.isHidden = true
+            ratePopUp.isHidden =  true
+            rateView.isHidden =  true
+            return
+        }
+        
+        rateTitleLabel.isHidden = false
+        ratePopUp.isHidden =  false
+        rateView.isHidden =  false
+        
+        if timeLog == nil {
+            if enterTimeViewModel?.timeLogs?.count == 0 {
+                timeLog = enterTimeViewModel?.addTimeLog()
+            } else {
+                if let firstLog = enterTimeViewModel?.timeLogs?.first,
+                   firstLog.startTime == nil,
+                   firstLog.endTime == nil {
+                        timeLog = firstLog
+                } else {
+                    timeLog = enterTimeViewModel?.addTimeLog()
+                }
+            }
+        }
+        rateOptions = timeLog?.dateLog?.employmentInfo?.sortedRates()
+        
+        var menuActions: [UIAction] = []
+
+        guard  let options = rateOptions else {
+            return
+        }
+        
+        for (index, option) in options.enumerated() {
+            
+            var state: UIAction.State = .off
+            if index == selectedRate {
+                state = .on
+                self.currentHourlyRate = option
+            }
+            
+            let action = UIAction(title: option.title, state: state, handler: {_ in
+                self.selectedRate = index
+                self.currentHourlyRate = option
+            })
+            menuActions.append(action)
+        }
+        
+        if !menuActions.isEmpty {
+            ratePopUp.menu = UIMenu(children : menuActions)
+            ratePopUp.showsMenuAsPrimaryAction = true
+            ratePopUp.changesSelectionAsPrimaryAction = true
         }
     }
     
@@ -122,130 +364,142 @@ class EnterTimeViewController: UIViewController {
         datePickerVC.delegate = self
         datePickerVC.sourceView = (dateDropDownView)
         datePickerVC.pickerMode = .date
+        datePickerVC.currentDate = selectedDate
+        datePickerVC.pickerStyle = .inline
 
         showPopup(popupController: datePickerVC, sender: dateDropDownView)
         self.timePickerVC = datePickerVC
     }
     
-    func setupSalaryView() {
-        hourlyRateTitleLabel.removeFromSuperview()
+    @objc func startBtnClick(_ sender: Any) {
+        showPicker(mode: .time, sender: startDropDownView as Any, date: startTime)
     }
     
-    func setupAccessibility() {
-        commentTextView.accessibilityHint = "enter_daily_comments".localized
+    @objc func breakBtnClick(_ sender: Any) {
+        showPicker(mode: .countDownTimer, sender: breakDropDownView as Any, countdownDuration: breakTime)
+    }
+    
+    @objc func endBtnClick(_ sender: Any) {
+        showPicker(mode: .time, sender: endDropDownView as Any, date: endTime)
+    }
+    
+    func showPicker(mode: UIDatePicker.Mode, sender: Any, date: Date? = nil, countdownDuration: TimeInterval = 0) {
+        let timePickerVC = TimePickerViewController.instantiateFromStoryboard()
+        timePickerVC.delegate = self
+        timePickerVC.sourceView = (sender as! UIView)
+        timePickerVC.pickerMode = mode
+        
+        if mode == .countDownTimer {
+            timePickerVC.countdownDuration = countdownDuration
+        }
+        else if mode == .time {
+            if let date = date {
+                timePickerVC.currentDate = date
+            }
+            else if let logDate = timeLog?.dateLog?.date {
+                var dateComponent = Calendar.current.dateComponents([.year, .month, .day], from: logDate)
+                let timeComponent = Calendar.current.dateComponents([.hour, .minute], from: Date())
+                dateComponent.hour = timeComponent.hour
+                dateComponent.minute = timeComponent.minute
+                timePickerVC.currentDate = Calendar.current.date(from: dateComponent)
+            }
+        }
+        showPopup(popupController: timePickerVC, sender: sender as! UIView)
+        self.timePickerVC = timePickerVC
     }
     
     func displayInfo() {
-        titleLabel.text = "enter_time".localized
-        startTitleLabel.text = "start".localized
-        endTitleLabel.text = "end".localized
-        breakTimeTitleLabel.text = "break".localized
-        if let hourlyLabel = hourlyRateTitleLabel {
-            hourlyLabel.text = "rate".localized
-        }
-        commentsTitleLabel.text = "daily_comments".localized
-        editBtn.setTitle("edit".localized, for: .normal)
+        dateDropDownView.value = enterTimeViewModel?.date ?? ""
         
-        dateDropDownView.title = enterTimeViewModel?.title ?? ""
-        paymentTypeLabel.text = enterTimeViewModel?.paymentType?.title
-        commentTextView.text = enterTimeViewModel?.comment
-        displayTime()
-    }
-    
-    func displayTime() {
-        tableView.reloadData()
+        let formattedStartTime = startTime?.formattedTime
+        startDropDownView.value = formattedStartTime ?? ""
         
-        UIView.animate(withDuration: 0, animations: {
-            self.tableView.layoutIfNeeded()
-        }) { (complete) in
-            self.tableViewHeightConstraint.constant = self.tableView.contentSize.height
+        let formattedEndTime = endTime?.formattedTime
+        endDropDownView.value = formattedEndTime ?? ""
+        
+        displayBreakTime(timeInSeconds: breakTime)
+        
+        commentTextView.text = comment
+        
+        commentsHint.isHidden = true
+        if comment.count == 0 {
+            commentsHint.isHidden = false
         }
     }
 
     @objc func cancel(_ sender: Any?) {
+        isCancelled = true
+        EnterTimeForm.shared.clear()
         delegate?.didCancelEnterTime()
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
 
     @objc func save(_ sender: Any?) {
-        enterTimeViewModel?.comment = commentTextView.text
-                
-        if let errorStr = enterTimeViewModel?.validate() {
-            displayError(message: errorStr, title: "Error")
+        guard let safeViewModel = enterTimeViewModel, startTime != nil, endTime != nil else { return }
+        
+        if timeLog == nil {
+            timeLog = safeViewModel.addTimeLog()
+        }
+        guard let timeLog else { return }
+        
+        print("GGG: timelog count \(enterTimeViewModel!.dateLog.timeLogs!.count)")
+        
+        timeLog.startTime = startTime
+        timeLog.addBreak(duration: breakTime)
+        timeLog.endTime = endTime
+        
+        if let hourlyTimeLog = timeLog as? HourlyPaymentTimeLog {
+            
+            if let rateOptions = timeLog.dateLog?.employmentInfo?.sortedRates() {
+                let selectedRate =  rateOptions.filter { $0.name == currentHourlyRate!.name && $0.value == currentHourlyRate!.value}.first
+                currentHourlyRate = selectedRate
+            }
+            
+            hourlyTimeLog.hourlyRate = currentHourlyRate
+            hourlyTimeLog.value = currentHourlyRate?.value ?? 0
+        }
+        
+        timeLog.comment = comment
+        
+        if timeLog.startTime?.compare(endTime!) != .orderedAscending {
+            handleNightShift(endTime: endTime!, for: timeLog)
             return
         }
         
-        enterTimeViewModel?.save()
+        if let errMsg = enterTimeViewModel!.validateTimeEntries(for: timeLog) {
+            alert(message: errMsg)
+            return
+        }
+        handleSave(safeViewModel)
+    }
+    
+    func handleSave(_ viewModel: EnterTimeViewModel) {
+        viewModel.save()
         let annnouncementMsg = "save_time_entry".localized
         let announcementStr = String(format: annnouncementMsg, enterTimeViewModel?.title ?? "")
         UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementStr)
         
 
         delegate?.didEnterTime(enterTimeModel: enterTimeViewModel)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func addRowClick(_ sender: Any) {
-        _ = enterTimeViewModel?.addTimeLog()
-//        displayTime()
-//        return
+        navigationController?.popViewController(animated: true)
         
-        guard let safeEnterTimeViewModel = enterTimeViewModel, let totalLogs = safeEnterTimeViewModel.numberOfTimeLogs else {return}
-        
-        let newIndexPath = IndexPath(row: totalLogs-1, section: 0)
-        tableView.insertRows(at: [newIndexPath], with: .none)
-        
-        UIView.animate(withDuration: 0, animations: {
-            self.tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: false)
-        }) { (complete) in
-            self.tableViewHeightConstraint.constant = self.tableView.contentSize.height
-            if let cell = self.tableView.cellForRow(at: newIndexPath) as? EnterHourlyTimeTableViewCell {
-                UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: cell)
-            }
+        if let tabBarController = self.tabBarController {
+            tabBarController.selectedIndex = 1
         }
     }
     
-    @IBAction func editClick(_ sender: Any) {
-        tableView.isEditing = !tableView.isEditing
-        editTime(edit: tableView.isEditing)
-    }
-    
-    func editTime(edit: Bool) {
-        if edit {
-            editBtn.setTitle("done".localized, for: .normal)
-        }
-        else {
-            editBtn.setTitle("edit".localized, for: .normal)
-        }
-    }    
-}
+    @IBAction func discardPressed(_ sender: Any) {
+        guard let safeEnterTimeViewModel = enterTimeViewModel else { return }
+        safeEnterTimeViewModel.removeTimeLog(timeLog: timeLogEntry!)
+        safeEnterTimeViewModel.save()
 
-extension EnterTimeViewController {
-    func registerKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow(notification:)),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide(notification:)),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        let userInfo: NSDictionary = notification.userInfo! as NSDictionary
-        let keyboardInfo = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
-        let keyboardSize = keyboardInfo.cgRectValue.size
-        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + 15, right: 0)
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
+        delegate?.didEnterTime(enterTimeModel: enterTimeViewModel)
+        navigationController?.popViewController(animated: true)
+        isCancelled = true
         
-        keyboardHeight = contentInsets.bottom
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        scrollView.contentInset = .zero
-        scrollView.scrollIndicatorInsets = .zero
+        if let tabBarController = self.tabBarController {
+            tabBarController.selectedIndex = 1
+        }
     }
 }
 
@@ -263,8 +517,6 @@ extension EnterTimeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: EnterHourlyTimeTableViewCell.reuseIdentifier) as! EnterHourlyTimeTableViewCell
             
         cell.timeLog = timeLog
-        cell.delegate = self
-        cell.textViewDelegate = self
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
 
@@ -304,69 +556,25 @@ extension EnterTimeViewController: UITableViewDataSource {
         alertController.addAction(
             UIAlertAction(title: "delete".localized, style: .destructive) { _ in
                 self.enterTimeViewModel?.removeTimeLog(timeLog: timeLog)
-                self.displayTime()
         })
         present(alertController, animated: true)
+    }
+    
+    func displayBreakTime(timeInSeconds: Double?) {
+        guard let timeInSeconds = timeInSeconds else {
+            breakDropDownView.value = "0 Min"
+            return
+        }
+        
+        let timeStr: String = Date.secondsToHoursMinutes(seconds: timeInSeconds)
+        breakDropDownView.value = timeStr
     }
 
 }
 
-extension EnterTimeViewController: EnterTimeTableCellProtocol {
+extension EnterTimeViewController {
     func dismissPicker() {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    func remove(cell: UITableViewCell, timeLog: TimeLog) {
-        enterTimeViewModel?.removeTimeLog(timeLog: timeLog)
-        displayTime()
-    }
-    
-    func showPicker(cell: UITableViewCell, sender: Any?, pickerVC: UIViewController) {
-        view.endEditing(true)
-        showPopup(popupController: pickerVC, sender: sender as! UIView)
-    }
-    
-    func isValid(startTime: Date, for timeLog: TimeLog?) -> Bool {
-        guard let safeEnterTimeViewModel = enterTimeViewModel else {
-            return false
-        }
-        
-        let errorStr = safeEnterTimeViewModel.isValid(time: startTime, for: timeLog, isStartTime: true)
-        if !errorStr.isEmpty {
-            displayError(message: errorStr)
-            return false
-        }
-        
-        return true
-    }
-    
-    func isValid(endTime: Date, for timeLog: TimeLog?) -> Bool {
-        guard let safeEnterTimeViewModel = enterTimeViewModel, let timeLog = timeLog else {
-            return false
-        }
-        
-        if timeLog.startTime == nil {
-            let message = "set_start_time_before_end_time".localized
-            let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "ok".localized, style: .cancel, handler: nil))
-            present(alertController, animated: false)
-            return false
-        }
-
-        // If endTime is before StartTime
-        // Warn if this spans over next day?
-        if timeLog.startTime?.compare(endTime) != .orderedAscending {
-            handleNightShift(endTime: endTime, for: timeLog)
-            return false
-        }
-        
-        let errorStr = safeEnterTimeViewModel.isValid(time: endTime, for: timeLog)
-        if !errorStr.isEmpty {
-            displayError(message: errorStr)
-            return false
-        }
-        
-        return true
     }
     
     func handleNightShift(endTime: Date, for timeLog: TimeLog) {
@@ -374,8 +582,23 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
         let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "yes".localized, style: .default, handler: { [weak self] (action) in
             guard let strongSelf = self else { return }
-            strongSelf.enterTimeViewModel?.splitTime(endTime: endTime, for: timeLog)
-            strongSelf.tableView.reloadData()
+            let nextTimeLog = strongSelf.enterTimeViewModel?.splitTime(endTime: endTime, for: timeLog)
+            
+            if let errMsg = strongSelf.enterTimeViewModel!.validateTimeEntries(for: timeLog) {
+                strongSelf.alert(message: errMsg)
+                return
+            }
+            
+            guard let nextTimeLog = nextTimeLog,
+                  let safeViewModel = strongSelf.enterTimeViewModel else { return }
+            
+            if let errMsg = strongSelf.enterTimeViewModel!.validateTimeEntries(for: nextTimeLog) {
+                strongSelf.alert(message: errMsg)
+                return
+            }
+            
+            strongSelf.handleSave(safeViewModel)
+            
         }))
         
         alertController.addAction(UIAlertAction(title: "no".localized, style: .cancel, handler: nil))
@@ -383,11 +606,11 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
     }
     
     func isValid(breakTime: Double, for timeLog: TimeLog?) -> Bool {
-        guard let safeEnterTimeViewModel = enterTimeViewModel else {
+        guard let safeViewModel = enterTimeViewModel else {
             return false
         }
         
-        let errorStr = safeEnterTimeViewModel.isValid(breakTime: breakTime, for: timeLog)
+        let errorStr = safeViewModel.isValid(breakTime: breakTime, for: timeLog)
         if !errorStr.isEmpty {
             displayError(message: errorStr)
             return false
@@ -396,16 +619,18 @@ extension EnterTimeViewController: EnterTimeTableCellProtocol {
         return true
     }
     
-    func contentDidChange(cell: EnterHourlyTimeTableViewCell) {
-        tableView.beginUpdates()
-        tableView.endUpdates()
-        tableViewHeightConstraint.constant = tableView.contentSize.height
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "newTimeHelpScreen",
+            let helpVC = segue.destination as? HelpTableViewController {
+            isCancelled = false
+            helpVC.helpItems = [
+                HelpItem(
+                    title: "info_break_time_title".localized,
+                    body: "info_break_time".localized),
+                HelpItem(title: "overnight_hours".localized, body: "info_end_time".localized)]
+        }
     }
-    
-    func showAlert(cell: UITableViewCell, sender: Any?, alertController: UIAlertController) {
-        present(alertController, animated: false)
-    }
-
 }
 
 
@@ -421,9 +646,20 @@ extension EnterTimeViewController {
 
 extension EnterTimeViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        let aRect = textView.convert(textView.frame, to: scrollView)
-        scrollView.scrollRectToVisible(aRect, animated: true)
+        comment = textView.text
     }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        comment = textView.text
+    }
+    func textViewDidChange(_ textView: UITextView) {
+        comment = textView.text
+        commentsHint.isHidden = true
+        if comment.count == 0 {
+            commentsHint.isHidden = false
+        }
+    }
+    
 }
 
 
@@ -435,9 +671,92 @@ extension EnterTimeViewController: TimePickerProtocol {
     }
     
     func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
-        enterTimeViewModel = timeSheetModel.createEnterTimeViewModel(for: datePicker.date)
+        if sourceView == dateDropDownView {
+            selectedDate = datePicker.date
+            enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: datePicker.date)
+            timeLog = nil
+            setupView()
+            UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: dateDropDownView)
+        } else if sourceView == startDropDownView {
+            var time = selectedDate
+            let timeInterval = datePicker.date.removeDate()
+            time.addTimeInterval(timeInterval)
+            startTime = time
+            
+        } else if sourceView == endDropDownView {
+            var time = selectedDate
+            let timeInterval = datePicker.date.removeDate()
+            time.addTimeInterval(timeInterval)
+            
+            if time.isMidnight() {
+                time = time.addDays(days: 1)
+            }
+            
+            endTime = time
+            
+        } else if sourceView == breakDropDownView,
+                  isValid(breakTime: datePicker.countDownDuration, for: timeLog) {
+            updateBreakTime(duration: datePicker.countDownDuration)
+        }
         displayInfo()
-        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: dateDropDownView)
+    }
+    
+    func alert(message: String) {
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "ok".localized, style: .cancel, handler: nil))
+        present(alertController, animated: false)
+    }
+
+    func updateBreakTime(duration: TimeInterval) {
+        if duration <= EmploymentModel.ALLOWED_BREAK_SECONDS {
+     
+            let title = "info_break_time_title".localized
+            let message = "break_time_warning".localized
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { [weak self] (action) in
+                guard let strongSelf = self else {return}
+                strongSelf.timeLog?.addBreak(duration: duration)
+                strongSelf.displayBreakTime(timeInSeconds: duration)
+            }))
+            
+            if let presentedViewController = self.presentedViewController {
+                presentedViewController.dismiss(animated: false, completion: {
+                    self.showAlert(sender: self.breakDropDownView, alertController: alertController)
+                })
+            } else {
+                showAlert(sender: breakDropDownView, alertController: alertController)
+            }
+            
+        }
+        else {
+            breakTimeErrorMessage.text = ""
+            breakTime = duration
+        }
+    }
+    
+    func showAlert(sender: Any?, alertController: UIAlertController) {
+        present(alertController, animated: false)
     }
 }
 
+
+class EnterTimeForm {
+    static let shared = EnterTimeForm()
+    var timelogForm: TimeLog?
+    var rateIndex: Int = 0
+    var dateForm: Date?
+    var startTimeForm: Date?
+    var breakTimeForm: TimeInterval?
+    var endTimeForm: Date?
+    var commentForm: String?
+    
+    func clear() {
+        timelogForm = nil
+        rateIndex = 0
+        dateForm = nil
+        startTimeForm = nil
+        breakTimeForm = nil
+        endTimeForm = nil
+        commentForm = nil
+    }
+}

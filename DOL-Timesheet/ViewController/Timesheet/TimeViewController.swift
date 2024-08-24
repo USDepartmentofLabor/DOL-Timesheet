@@ -76,7 +76,7 @@ class TimeViewController: UIViewController, TimeCardDelegate {
     }
     
     func displayInfo() {
-        if currentTimeViewController is TimesheetSoftenViewController {
+        if currentTimeViewController is TimesheetViewController {
             title = "timesheet".localized
         } else {
             title = "timecard".localized

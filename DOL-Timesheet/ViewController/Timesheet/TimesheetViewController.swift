@@ -1,14 +1,13 @@
 //
-//  TimesheetViewController.swift
+//  TimesheetSoftenViewController.swift
 //  DOL-Timesheet
 //
-//  Created by Nidhi Chawla on 4/12/19.
-//  Copyright © 2019 Department of Labor. All rights reserved.
+//  Created by Greg Gruse on 1/19/24.
+//  Copyright © 2024 Department of Labor. All rights reserved.
 //
 
 import UIKit
 import MessageUI
-
 
 protocol TimeViewControllerDelegate: class {
     func didUpdateUser()
@@ -25,298 +24,206 @@ protocol TimeCardViewControllerDelegate: class {
     func didEnterTime(enterTimeModel: EnterTimeViewModel?)
 }
 
+struct PayPeriodSummary {
+    let name: String
+    let value1: String
+    let value2: String
+}
 
 class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerProtocol {
 
-    @IBOutlet weak var periodView: UIView!
+    @IBOutlet weak var employmentView: UIView!
+    @IBOutlet weak var employmentTitleLabel: UILabel!
+    @IBOutlet weak var employmentPopup: UIButton!
+    
+    @IBOutlet weak var payPeriodView: UIView!
+    @IBOutlet weak var payPeriodTitleLabel: UILabel!
     @IBOutlet weak var periodLabel: UILabel!
-    @IBOutlet weak var timeView: UIView!
-    
-    @IBOutlet weak var prevPeriodBtn: UIButton!
-    @IBOutlet weak var nextPeriodBtn: UIButton!
-    
-    @IBOutlet weak var enterTimeTitleLabel: UILabel!
-    @IBOutlet weak var headingDayLabel: UILabel!
-    @IBOutlet weak var headingTotalHoursLabel: UILabel!
-    @IBOutlet weak var headingTotalBreakLabel: UILabel!
-
-    @IBOutlet weak var breakInfoButton: InfoButton!
-    
+  
     @IBOutlet weak var timeTableView: UITableView!
     @IBOutlet weak var timeTableviewHeightConstraint: NSLayoutConstraint!
     
-    
-    @IBOutlet weak var totalTitleLabel: UILabel!
-    @IBOutlet weak var totalHoursWorkedLabel: UILabel!
-    @IBOutlet weak var totalBreakLabel: UILabel!
- 
-    // SummaryView
-    @IBOutlet weak var summaryContentView: UIView!
-    
-    @IBOutlet weak var summaryTitleLabel: UILabel!
-    @IBOutlet weak var summaryTableView: UITableView!
-    @IBOutlet weak var summaryTableViewHeightConstraint: NSLayoutConstraint!
-
-    @IBOutlet weak var earningsTitleLabel: UILabel!
-    @IBOutlet weak var totalEarningsBtn: UIButton!
-    @IBOutlet weak var totalEarningsAmountLabel: UILabel!
-    @IBOutlet weak var totalEarningsWarningLabel: UILabel!
-    
-    @IBOutlet weak var periodEarningsStackView: UIStackView!
-    @IBOutlet weak var periodStraightTimeEarningsStackView: UIStackView!
-    @IBOutlet weak var periodOvertimeEarningsStackView: UIStackView!
-    @IBOutlet weak var periodStraightTimeTitle: UILabel!
-    @IBOutlet weak var periodStraightTimeAmount: UILabel!
-    @IBOutlet weak var periodOvertimeTitle: UILabel!
-    @IBOutlet weak var periodOvertimeInfoBtn: InfoButton!
-    
-    @IBOutlet weak var periodOvertimeAmount: UILabel!
-    @IBOutlet weak var earningsTableView: UITableView!
-    @IBOutlet weak var earningsTableViewHeightConstraint: NSLayoutConstraint!
-    
     var timePickerVC = TimePickerViewController.instantiateFromStoryboard()
-    
-    var earningsCollapsed: Bool = true {
-        didSet {
-            let img: UIImage
-            let accessibilityHint: String
-            if earningsCollapsed {
-                img = #imageLiteral(resourceName: "collape")
-                accessibilityHint = "total_Earnings_expand_hint".localized
-            }
-            else {
-                img = #imageLiteral(resourceName: "expand")
-                accessibilityHint = "total_Earnings_collapse_hint".localized
-            }
-            totalEarningsBtn.setImage(img, for: .normal)
-            totalEarningsBtn.accessibilityHint = accessibilityHint
-            refreshEarnings()
-        }
-    }
-    
-    // Earnings View
-    @IBOutlet weak var earningsContentView: UIView!
-    
+    var newBarButtonItem: UIBarButtonItem?
+    var refreshOnAppear = true
+
+    @IBOutlet weak var scrollView: UIScrollView!
     var timesheetViewModel = TimesheetViewModel.shared()
+    var payPeriodSummaryData: [PayPeriodSummary] = []
+    var selectedTimeLog = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarSettings()
+        
+        let shareBtn = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share(_:)))
+        navigationItem.leftBarButtonItem = shareBtn
+
+        newBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNew(_:)))
+        navigationItem.rightBarButtonItem = newBarButtonItem
+        
         setupView()
         displayInfo()
-        self.setupLabelTap()
+       // self.setupLabelTap()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupEmploymentPopupButton()
+        if refreshOnAppear {
+            setupView()
+            displayInfo()
+        }
+        refreshOnAppear = true
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        timeTableviewHeightConstraint.constant = timeTableView.contentSize.height
-        earningsTableViewHeightConstraint.constant = earningsTableView.contentSize.height
-        summaryTableViewHeightConstraint.constant = summaryTableView.contentSize.height
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
-//        guard let viewModel = viewModel, viewModel.userProfileExists else {
-//            performSegue(withIdentifier: "setupProfile", sender: nil)
-//            return
-//        }
-//
-//        timeTableviewHeightConstraint.constant = timeTableView.contentSize.height
+        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: (timeTableView.contentSize.height+200))
+
     }
     
     func setupView() {
-        timeView.addBorder()
-        periodView.addBorder()
         
+        title = "timesheet".localized
+        
+        employmentTitleLabel.text = "employer".localized
+        if timesheetViewModel.currentEmploymentModel?.isProfileEmployer ?? false {
+            employmentTitleLabel.text = "employee".localized
+        }
+        
+        payPeriodTitleLabel.text = "pay_period".localized
+        
+        
+        
+        timeTableView.register(UINib(nibName: TimeEntryViewCell.nibName, bundle: nil), forCellReuseIdentifier: TimeEntryViewCell.reuseIdentifier)
         timeTableView.rowHeight = UITableView.automaticDimension
-        timeTableView.estimatedRowHeight = 50
+        timeTableView.estimatedRowHeight = 40
         
-        summaryTableView.rowHeight = UITableView.automaticDimension
-        summaryTableView.estimatedRowHeight = 30
-        summaryTableView.register(UINib(nibName: SummaryTableViewHeaderView.nibName, bundle: nil), forHeaderFooterViewReuseIdentifier: SummaryTableViewHeaderView.reuseIdentifier)
-        summaryTableView.sectionHeaderHeight = UITableView.automaticDimension;
-        summaryTableView.estimatedSectionHeaderHeight = 44
-
-        earningsTableView.register(UINib(nibName: EarningsTableViewHeaderView.nibName, bundle: nil), forHeaderFooterViewReuseIdentifier: EarningsTableViewHeaderView.reuseIdentifier)
-        earningsTableView.sectionHeaderHeight = UITableView.automaticDimension;
-        earningsTableView.estimatedSectionHeaderHeight = 44
-
-        earningsTableView.register(UINib(nibName: EarningsTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: EarningsTableViewCell.reuseIdentifier)
-        earningsTableView.rowHeight = UITableView.automaticDimension
-        earningsTableView.estimatedRowHeight = 200
-
-        periodLabel.scaleFont(forDataType: .timesheetPeriod)
-        headingDayLabel.scaleFont(forDataType: .columnHeader)
-        headingTotalHoursLabel.scaleFont(forDataType: .columnHeader)
-        headingTotalBreakLabel.scaleFont(forDataType: .columnHeader)
-        enterTimeTitleLabel.scaleFont(forDataType: .timesheetSectionTitle)
-        summaryTitleLabel.scaleFont(forDataType: .timesheetSectionTitle)
-        earningsTitleLabel.scaleFont(forDataType: .timesheetSectionTitle)
-        totalTitleLabel.scaleFont(forDataType: .timesheetTimeTotal)
-        totalHoursWorkedLabel.scaleFont(forDataType: .timesheetTimeTotal)
-        totalBreakLabel.scaleFont(forDataType: .timesheetTimeTotal)
-        breakInfoButton.delegate = self
-        breakInfoButton.infoType = .breakTime
+        employmentView.layer.cornerRadius = Style.CORNER_ROUNDING
+        employmentView.clipsToBounds = true
         
-        totalEarningsBtn.titleLabel?.scaleFont(forDataType: .timesheetEarningsTitle)
-        totalEarningsAmountLabel.scaleFont(forDataType: .timesheetEarningsTitle)
-        totalEarningsWarningLabel.scaleFont(forDataType: .earningsTitle)
-        periodStraightTimeTitle.scaleFont(forDataType: .earningsTitle)
-//        periodStraightTimeCalculations.scaleFont(forDataType: .earningsTitle)
-//        periodStraightTimeSubTitle.scaleFont(forDataType: .earningsValue)
-        periodOvertimeTitle.scaleFont(forDataType: .earningsTitle)
-        periodOvertimeAmount.scaleFont(forDataType: .earningsValue)
-        periodOvertimeInfoBtn.delegate = self
-        periodOvertimeInfoBtn.infoType = .overtime
+        payPeriodView.layer.cornerRadius = Style.CORNER_ROUNDING
+        payPeriodView.clipsToBounds = true
         
-        summaryContentView.addBorder(borderColor: UIColor(named: "appSecondaryColor"),
-                       borderWidth: 4.0,
-                       cornerRadius: 0.0)
-        earningsContentView.addBorder(borderColor: UIColor(named: "appSecondaryColor"),
-                                      borderWidth: 4.0,
-                                      cornerRadius: 0.0)
         
-        setupAccessibility()
-    }
-    
-    func setupAccessibility() {
-        periodView.isAccessibilityElement = false
-        periodView.accessibilityElements = [periodLabel as Any, prevPeriodBtn as Any, nextPeriodBtn as Any]
-        prevPeriodBtn.accessibilityLabel = "prev_period".localized
-        nextPeriodBtn.accessibilityLabel = "next_period".localized
-        
-        totalEarningsBtn.accessibilityHint = "total_Earnings_expand_hint".localized
-        
-        totalTitleLabel.accessibilityLabel = "period_total".localized
+//        timeTableView.backgroundColor = UIColor.systemGray5
+//        2C2C2E dark
+//        E5E5EA light
     }
     
     func displayInfo() {
-        title = "timesheet".localized
-        
-        enterTimeTitleLabel.text = "time_entries".localized
-        headingDayLabel.text = "day".localized
-        headingTotalHoursLabel.text = "total_worked_hours".localized
-        headingTotalBreakLabel.text = "total_break_hours".localized
-        totalTitleLabel.text = "total".localized
-        
-        summaryTitleLabel.text = "summary".localized
-        totalTitleLabel.text = "total".localized
-        totalBreakLabel.text = "overtime".localized
-        
-        earningsTitleLabel.text = "earnings".localized
-        totalEarningsBtn.setTitle("total_earning".localized, for: .normal)
-        
         timesheetViewModel.updatePeriod()
+        setupEmploymentPopupButton()
         displayPeriodInfo()
+    }
+    
+    func setupEmploymentPopupButton(){
+        let optionClosure = {(action : UIAction) in
+            print(action.title)
+        }
+        
+        var menuActions: [UIAction] = []
+        
+        let userProfileModel = timesheetViewModel.userProfileModel
+        
+        let users: [User] = userProfileModel.employmentUsers
+        guard users.count > 0 else {
+            return
+        }
+        
+        let selectedUserName = timesheetViewModel.selectedUserName
+        
+        for user in users {
+            var state: UIAction.State = .off
+            if user.name == selectedUserName {
+                state = .on
+            }
+            
+            let action = UIAction(title: user.name!, state: state, handler: {_ in
+                self.setCurrentUser(user: user)
+                self.displayPeriodInfo()
+            })
+            menuActions.append(action)
+        }
+        let newUserAction = UIAction(title: userProfileModel.addNewUserTitle, handler: {_ in
+            self.addNewUser()
+        })
+        
+        menuActions.append(newUserAction)
+        
+        employmentPopup.menu = UIMenu(children : menuActions)
+        employmentPopup.showsMenuAsPrimaryAction = true
+        employmentPopup.changesSelectionAsPrimaryAction = true
     }
     
     func displayPeriodInfo() {
         periodLabel.text = timesheetViewModel.currentPeriod?.title
+        payPeriodSummaryData = []
+        
+        
+        let hoursWorked: String = timesheetViewModel.totalHoursTime()
+        payPeriodSummaryData.append(PayPeriodSummary(name: "total_hours_worked".localized, value1: "", value2: hoursWorked))
+        
+        let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
+        
+        if let currentPeriod = timesheetViewModel.currentPeriod {
+            if timesheetViewModel.currentEmploymentModel?.paymentType == .salary {
+                var totalSalaryHours: Double = timesheetViewModel.totalHoursTime()
+                let hrsMinStr: String = Date.secondsToHoursMinutes(seconds: totalSalaryHours)
+                payPeriodSummaryData.append(PayPeriodSummary(name: "Salary".localized, value1: "", value2: hrsMinStr))
+
+            } else {
+                timesheetViewModel.currentEmploymentModel?.hourlyRates?.forEach { rate in
+                    var totalRateHours = 0
+                    for dayIndex in 0..<numDays {
+                        let sectionDate = currentPeriod.date(at: dayIndex)
+                        totalRateHours += timesheetViewModel.rateTotalHours(forRate: rate, forDate: sectionDate)
+                    }
+                    let hrsMinStr: String = Date.secondsToHoursMinutes(seconds: Double(totalRateHours))
+                    
+                    payPeriodSummaryData.append(PayPeriodSummary(name: rate.name ?? "Rate", value1: "", value2: hrsMinStr))
+                }
+            }
+        }
+        
+        let breakTimeHours: String = timesheetViewModel.totalBreakTime()
+        payPeriodSummaryData.append(PayPeriodSummary(name: "break_hours".localized, value1: "", value2: breakTimeHours))
+        
+        
+        var totalOvertime: Double = 0.0
+        for weekIndex in 0..<timesheetViewModel.numberOfWorkWeeks {
+            totalOvertime += timesheetViewModel.overTimeHours(workWeek: weekIndex)
+        }
+        
+        let overtimeStr: String = Date.secondsToHoursMinutes(seconds: totalOvertime)
+        payPeriodSummaryData.append(PayPeriodSummary(name: "overtime".localized, value1: "", value2: overtimeStr))
+        
+//        if numDays >= 7 {
+            payPeriodSummaryData.append(PayPeriodSummary(name: "weekly_summary".localized, value1: "", value2: ""))
+//        }
         timeTableView.reloadData()
-        
-        self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
-        
-        UIView.animate(withDuration: 0, animations: {
-            self.timeTableView.layoutIfNeeded()
-        }) { (complete) in
-            self.timeTableviewHeightConstraint.constant = self.timeTableView.contentSize.height
-        }
-
-        displayTotals()
     }
     
-    func displayTotals() {
-        
-
-        totalHoursWorkedLabel.text = timesheetViewModel.totalHoursTime()
-        totalBreakLabel.text = timesheetViewModel.totalBreakTime()
-        
-        let hoursWorkedAccessibilityLabel = "period_total_hours_worked".localized + (totalHoursWorkedLabel.text ?? "")
-        totalHoursWorkedLabel.accessibilityLabel = hoursWorkedAccessibilityLabel
-
-        let hoursBreakAccessibilityLabel = "period_total_hours_break".localized + (totalBreakLabel.text ?? "")
-        totalBreakLabel.accessibilityLabel = hoursBreakAccessibilityLabel
-
-        
-        timesheetViewModel.updateWorkWeeks()
-        displaySummary()
-        displayEarnings()
+    @objc func share(_ sender: Any?) {
+        export(sender!)
     }
     
-    func displaySummary() {
-        refreshSummary()
-    }
-    
-    func displayEarnings() {
-        totalEarningsAmountLabel.text = timesheetViewModel.totalEarningsStr
-        if timesheetViewModel.isBelowMinimumWage() {
-            totalEarningsWarningLabel.text = "err_title_minimum_wage".localized
-        } else if timesheetViewModel.isBelowSalaryWeeklyWage() {
-            totalEarningsWarningLabel.text = "err_title_minimum_weekly_wage".localized
-        }
-        else {
-            totalEarningsWarningLabel.text = ""
-        }
-        refreshEarnings()
+    @objc func addNew(_ sender: Any?) {
+        performSegue(withIdentifier: "enterTime", sender: newBarButtonItem)
     }
 
-    func displayPeriodEarnings() {
-        if earningsCollapsed {
-            periodStraightTimeEarningsStackView.isHidden = true
-            periodOvertimeEarningsStackView.isHidden = true
-            periodEarningsStackView.removeArrangedSubview(periodStraightTimeEarningsStackView)
-            periodEarningsStackView.removeArrangedSubview(periodOvertimeEarningsStackView)
-            periodEarningsStackView.isHidden = true
-        }
-        else {
-            periodStraightTimeEarningsStackView.isHidden = false
-            periodOvertimeEarningsStackView.isHidden = false
-            periodEarningsStackView.insertArrangedSubview(periodStraightTimeEarningsStackView, at: 0)
-            periodEarningsStackView.isHidden = false
-            periodStraightTimeTitle.text = "straight_time_earnings".localized
-            periodStraightTimeAmount.text = timesheetViewModel.currentPeriod?.straightTimeAmountStr
-            
-            if timesheetViewModel.currentEmploymentModel?.overtimeEligible ?? false {
-                periodEarningsStackView.insertArrangedSubview(periodOvertimeEarningsStackView, at: 1)
-                periodOvertimeTitle.text = "overtime_pay".localized
-                periodOvertimeAmount.text = timesheetViewModel.periodOvertimeAmountStr
-            }
-            else {
-                periodOvertimeEarningsStackView.isHidden = true
-                periodOvertimeTitle.text = ""
-                periodOvertimeAmount.text = ""
-            }
-        }
+    func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
+        return
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "enterTime",
-            let navVC = segue.destination as? UINavigationController,
-            let enterTimeVC = navVC.topViewController as? EnterTimeViewController,
-            let currentDate = sender as? Date {
-                enterTimeVC.enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: currentDate)
-                enterTimeVC.timeSheetModel = timesheetViewModel
-                enterTimeVC.delegate = self
-        }
-    }
-    
-    func setupLabelTap() {
-        let labelTap = UITapGestureRecognizer(target: self, action: #selector(self.labelTapped(_:)))
-        self.periodLabel.isUserInteractionEnabled = true
-        self.periodLabel.addGestureRecognizer(labelTap)
-    }
-    
-    @objc func labelTapped(_ sender: UITapGestureRecognizer) {
+    @IBAction func payPeriodPressed(_ sender: Any) {
         self.timePickerVC.sourceView = (periodLabel)
         self.timePickerVC.delegate = self
         self.timePickerVC.pickerMode = .date
+        self.timePickerVC.pickerStyle = .inline
         showPopup(popupController: self.timePickerVC, sender: periodLabel)
-    }
-    
-    func timeChanged(sourceView: UIView, datePicker: UIDatePicker) {
-        return
     }
     
     func donePressed() {
@@ -327,175 +234,259 @@ class TimesheetViewController: UIViewController, TimeViewDelegate, TimePickerPro
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func prevNextClick(_ sender: Any) {
-        timesheetViewModel.nextPeriod(direction: .backward)
-        displayPeriodInfo()
-        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: periodLabel)
-    }
-    
-    @IBAction func nextPeriodClick(_ sender: Any) {
-        timesheetViewModel.nextPeriod(direction: .forward)
-        displayPeriodInfo()
-        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: periodLabel)
-    }
-    
-    @IBAction func earningsToggle(_ sender: Any) {
-        earningsCollapsed = !earningsCollapsed
-    }
-    
-    func refreshSummary() {
-        summaryTableView.reloadData()
-        UIView.animate(withDuration: 0, animations: {
-            self.summaryTableView.layoutIfNeeded()
-        }) { (complete) in
-            self.summaryTableViewHeightConstraint.constant = self.summaryTableView.contentSize.height
-        }
-    }
-
-    func refreshEarnings() {
-        displayPeriodEarnings()
-
-        earningsTableView.reloadData()
-        UIView.animate(withDuration: 0, animations: {
-            self.earningsTableView.layoutIfNeeded()
-        }) { (complete) in
-            self.earningsTableViewHeightConstraint.constant = self.earningsTableView.contentSize.height
-        }
-    }
-}
-
-//MARK : Actions
-extension TimesheetViewController {
-    
-    @objc fileprivate func infoClicked(sender: Any?) {
-        let backItem = UIBarButtonItem()
-        backItem.title = " "
-        navigationItem.backBarButtonItem = backItem
+    func deleteTimeLog(indexPath: IndexPath) {
+        let sectionDate = (timesheetViewModel.currentPeriod?.date(at: indexPath.section))!
+        let enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: sectionDate)
         
-        performSegue(withIdentifier: "showInfo", sender: self)
+        let timeLog = enterTimeViewModel?.timeLogs![indexPath.row]
+
+        
+        guard let safeEnterTimeViewModel = enterTimeViewModel else { return }
+        safeEnterTimeViewModel.removeTimeLog(timeLog: timeLog!)
+        safeEnterTimeViewModel.save()
     }
     
-    @objc fileprivate func profileClicked(sender: Any?) {
-        performSegue(withIdentifier: "showProfile", sender: self)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if newBarButtonItem  == sender as? UIBarButtonItem,
+           let enterTimeVC = segue.destination as? EnterTimeViewController {
+            enterTimeVC.timesheetViewModel = timesheetViewModel
+            
+            let enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: Date())
+            enterTimeVC.enterTimeViewModel = enterTimeViewModel
+              
+            enterTimeVC.delegate = self
+            refreshOnAppear = false
+                        
+        } else if segue.identifier == "enterTime",
+           let enterTimeVC = segue.destination as? EnterTimeViewController,
+           let currentDate = sender as? Date {
+            enterTimeVC.timesheetViewModel = timesheetViewModel
+            
+            let enterTimeViewModel = timesheetViewModel.createEnterTimeViewModel(for: currentDate)
+            enterTimeVC.enterTimeViewModel = enterTimeViewModel
+            let timeLog = enterTimeViewModel?.timeLogs![selectedTimeLog]
+            
+            enterTimeVC.timeLogEntry = timeLog
+            
+            enterTimeVC.delegate = self
+            refreshOnAppear = false
+        } else if segue.identifier == "weeklySummary",
+           let weeklySummaryVC = segue.destination as? WeeklySummaryViewController {
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = "back".localized
+            navigationItem.backBarButtonItem = backItem
+            
+            weeklySummaryVC.timesheetViewModel = timesheetViewModel
+            refreshOnAppear = false
+        } else if segue.identifier == "addEmploymentInfo",
+                  let navVC = segue.destination as? UINavigationController,
+                  let employmentInfoVC = navVC.topViewController as? EmploymentInfoViewController {
+            employmentInfoVC.employmentModel = timesheetViewModel.userProfileModel.newTempEmploymentModel()
+            employmentInfoVC.delegate = self
+        } else if segue.identifier == "timesheetEarningDetailSegue",
+                  let earningDetailVC = segue.destination as? EarningDetailViewController {
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = "back".localized
+            navigationItem.backBarButtonItem = backItem
+            refreshOnAppear = false
+            
+            earningDetailVC.timesheetViewModel = timesheetViewModel
+        }
+    }
+    
+    func makeBold(input: String) -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: input)
+        
+        // Apply bold style to digits, dollar sign, and period
+        for i in 0..<input.count {
+            let index = input.index(input.startIndex, offsetBy: i)
+            let c = input[index]
+            
+            if c.isNumber || c == "$" || c == "." {
+                attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: UIFont.systemFontSize), range: NSRange(location: i, length: 1))
+            }
+        }
+        
+        return attributedString
     }
 }
 
-
-//MARK : TableView DataSource Delegate
+////MARK : TableView DataSource Delegate
 extension TimesheetViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        let numSections: Int
-        if tableView == timeTableView {
-            numSections = 1
+        var numberOfDays = (timesheetViewModel.currentPeriod?.numberOfDays() ?? 0)
+//        if numberOfDays == 1 {
+//            numberOfDays = 7
+//        }
+
+        return numberOfDays + 2
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+//        headerView.backgroundColor = UIColor.systemGray5
+
+        let titleLabel = UILabel()
+        var sectionTitle = ""
+        let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
+        if section < numDays {
+            let sectionDate = timesheetViewModel.currentPeriod?.date(at: section)
+            sectionTitle = "\(sectionDate?.formattedWeekday ?? "") \(sectionDate?.formattedDate ?? "")".uppercased()
+        } else if section < numDays + 1 {
+            sectionTitle = "pay_period_summary".localized.uppercased()
+        } else {
+            return nil
         }
-        else if tableView == summaryTableView {
-            numSections = timesheetViewModel.numberOfWorkWeeks
-        }
-        else if tableView == earningsTableView && !earningsCollapsed {
-            numSections = timesheetViewModel.numberOfWorkWeeks
-        }
-        else {
-            numSections = 0
-        }
-        
-        return numSections
+        titleLabel.text = sectionTitle // Customize the header text
+        titleLabel.textColor = UIColor(named: "darkTextColor") // Customize the text color
+        titleLabel.frame = CGRect(x: 0, y: 0, width: tableView.frame.width - 30, height: 30) // Adjust the frame as needed
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 11)
+
+        headerView.addSubview(titleLabel)
+
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        var numRows: Int = 0
-       
-        if tableView == timeTableView {
-            numRows = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
-        }
-        else if tableView == summaryTableView {
-            numRows = 1
-        }
-        else if tableView == earningsTableView {
-            if let workWeekViewModel = timesheetViewModel.workWeekViewModel(at: section), (!workWeekViewModel.isCollapsed || Util.isVoiceOverRunning) {
-                numRows = 1
-            }
+        let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
+        
+        if section >= numDays + 1 {
+            return 1
+        } else if section >= numDays {
+            return payPeriodSummaryData.count
         }
         
-        return numRows
+        guard let sectionDate = timesheetViewModel.currentPeriod?.date(at: section),
+              let dateLog = timesheetViewModel.currentEmploymentModel?.employmentInfo.log(forDate: sectionDate),
+              let count = dateLog.timeLogs?.count
+        else {
+            return 0
+        }
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell!
         
-        if tableView == timeTableView {
-            let hourlyCell = tableView.dequeueReusableCell(withIdentifier: HourlyTimeTableViewCell.reuseIdentifier) as! HourlyTimeTableViewCell
-            
-            configure(cell: hourlyCell, at: indexPath)
-            cell = hourlyCell
-        }
-        else if tableView == summaryTableView {
-            let summaryCell = tableView.dequeueReusableCell(withIdentifier: SummaryTableViewCell.reuseIdentifier) as! SummaryTableViewCell
-            
-            configure(cell: summaryCell, at: indexPath)
-            cell = summaryCell
-        }
-        else {
-            let earningsCell = tableView.dequeueReusableCell(withIdentifier: EarningsTableViewCell.reuseIdentifier) as! EarningsTableViewCell
-            
-            configure(cell: earningsCell, at: indexPath)
-            cell = earningsCell
-        }
-        return cell
-    }
+        let hourlyCell = tableView.dequeueReusableCell(withIdentifier: TimeEntryViewCell.reuseIdentifier) as! TimeEntryViewCell
+        let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
+        let section = indexPath.section
+        let row = indexPath.row
+        hourlyCell.firstItem = indexPath.row == 0
+        hourlyCell.rateName.textColor = UIColor(named: "valueActiveText")
+        hourlyCell.timeFrame.textColor = UIColor(named: "labelTextActive")
         
-    func configure(cell: HourlyTimeTableViewCell, at indexPath: IndexPath) {
-        cell.currentDate = timesheetViewModel.currentPeriod?.date(at: indexPath.row)
-        cell.workedHours = timesheetViewModel.totalHoursTime(forDate: (cell.currentDate!))
-        cell.breakHours = timesheetViewModel.totalBreakTime(forDate: (cell.currentDate!))
-    }
-    
-    func configure(cell: SummaryTableViewCell, at indexPath: IndexPath) {
-        cell.totalValueLabel.text = timesheetViewModel.hoursWorked(workWeek: indexPath.section)
+        let secondToLastSection = tableView.numberOfSections - 2
+        let secondToLastRow = tableView.numberOfRows(inSection: secondToLastSection) - 1
+//        if numDays >= 7 {
+            if indexPath.section == secondToLastSection && indexPath.row == secondToLastRow {
+                hourlyCell.rateName.textColor = UIColor.linkColor
+            }
+//        }
+        
+        if section < numDays {
+            let sectionDate = timesheetViewModel.currentPeriod?.date(at: indexPath.section)
+            let timeEntryViewModel: EnterTimeViewModel = (timesheetViewModel.createEnterTimeViewModel(for: sectionDate!))!
+            let timeLog = timeEntryViewModel.timeLogs![indexPath.row]
+            hourlyCell.totalTime.textColor = UIColor(named: "greenColor")
+            hourlyCell.lastItem = indexPath.row == (timeEntryViewModel.timeLogs!.count - 1)
+            hourlyCell.configure(timeLog: timeLog)
+            hourlyCell.rightChevronIcon.isHidden = false
+            if timesheetViewModel.currentEmploymentModel?.paymentType == .salary {
+                hourlyCell.rateName.text = "payment_type_salary".localized
+            }
+            
+        } else if section == numDays {
+            hourlyCell.rateName.text = payPeriodSummaryData[row].name
+            hourlyCell.timeFrame.text = payPeriodSummaryData[row].value1
+            hourlyCell.totalTime.attributedText = makeBold(input: payPeriodSummaryData[row].value2)
+            hourlyCell.totalTime.textColor = UIColor(named: "purpleColor")
+            
+            if (payPeriodSummaryData[row].name == "Weekly Sumary") {
+                hourlyCell.rateName.textColor = UIColor(named: "softLinkColor")
+            }
 
-        if timesheetViewModel.currentEmploymentModel?.overtimeEligible ?? false {
-            cell.totalOvertimeLabel.text = timesheetViewModel.overTimeHours(workWeek: indexPath.section)
-            cell.ovetimeHoursStackView.isHidden = false
-            cell.totalOvertimeLabel.isHidden = false
-            cell.totalOvertimeTitleLabel.isHidden = false
+            hourlyCell.lastItem = indexPath.row == (payPeriodSummaryData.count - 1)
+            hourlyCell.rightChevronIcon.isHidden = false
+            if ((payPeriodSummaryData.count - 1) != row){
+                hourlyCell.rightChevronIcon.isHidden = true
+            }
+            hourlyCell.addborder()
+        } else {
+            hourlyCell.rateName.text = "earning_details".localized
+            hourlyCell.timeFrame.text = ""
+            
+            var totalEarningsStr = timesheetViewModel.totalEarningsStr
+            
+            let currentDate = Date()
+            let startDate = timesheetViewModel.currentPeriod?.startDate ?? currentDate
+            
+            if (timesheetViewModel.currentEmploymentModel?.paymentType == .salary) && (startDate > currentDate) {
+                totalEarningsStr = "$0.00"
+            }
+            
+            hourlyCell.totalTime.attributedText = makeBold(input: totalEarningsStr)
+            hourlyCell.totalTime.textColor = UIColor(named: "greenColor")
+            hourlyCell.lastItem = true
+            hourlyCell.rightChevronIcon.isHidden = false
+            hourlyCell.addborder()
         }
-        else {
-            cell.ovetimeHoursStackView.isHidden = true
-            cell.totalOvertimeLabel.isHidden = true
-            cell.totalOvertimeTitleLabel.isHidden = true
-        }
+        
+       // hourlyCell.layer.cornerRadius = 10
+       // hourlyCell.layer.masksToBounds = true
+        
+        return hourlyCell
     }
     
-    func configure(cell: EarningsTableViewCell, at indexPath: IndexPath) {
-        let workWeekViewModel = timesheetViewModel.workWeekViewModel(at: indexPath.section)
+    func tableView(_ tableView:UITableView, editingStyleForRowAt: IndexPath) -> UITableViewCell.EditingStyle {
+        let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
+        let section = editingStyleForRowAt.section
         
-        cell.workWeekViewModel = workWeekViewModel
-        cell.regularRateInfoBtn.delegate = self
-        cell.overtimeInfoBtn.delegate = self
+        if section < numDays {
+            return .delete
+        }
+        
+        return .none
+    }
+    
+    func tableView(_ tableView:UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        tableView.beginUpdates()
+        
+        deleteTimeLog(indexPath: indexPath)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        
+        tableView.endUpdates()
     }
 }
 
 //MARK : TableView DataSource Delegate
 extension TimesheetViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard timesheetViewModel.currentEmploymentModel != nil else {
-            let errMsg: String
-            if timesheetViewModel.userProfileModel.isProfileEmployer {
-                errMsg = "err_add_employee".localized
-            }
-            else {
-                errMsg = "err_add_employer".localized
-            }
-            
-            displayError(message: errMsg, title: "")
-            return
-        }
-
-        guard let currentDate = timesheetViewModel.currentPeriod?.date(at: indexPath.row) else {
+        tableView.deselectRow(at: indexPath, animated: true) // Deselect the row after selection
+        
+        let secondToLastSection = tableView.numberOfSections - 2
+        let secondToLastRow = tableView.numberOfRows(inSection: secondToLastSection) - 1
+        let numDays = timesheetViewModel.currentPeriod?.numberOfDays() ?? 0
+        
+        guard let currentDate = timesheetViewModel.currentPeriod?.date(at: indexPath.section) else {
             return
         }
         
-        performSegue(withIdentifier: "enterTime", sender: currentDate)
+        if indexPath.section < secondToLastSection {
+            selectedTimeLog = indexPath.row
+            performSegue(withIdentifier: "enterTime", sender: currentDate)
+        }
+        
+//        if numDays >= 7 {
+            if indexPath.section == secondToLastSection && indexPath.row == secondToLastRow {
+                performSegue(withIdentifier: "weeklySummary", sender: self)
+            }
+            if indexPath.section == tableView.numberOfSections - 1 && indexPath.row == 0 {
+                performSegue(withIdentifier: "timesheetEarningDetailSegue", sender: self)
+            }
+//        }
     }
     
     func titleForWorkWeek(week: Int) -> String? {
@@ -506,59 +497,9 @@ extension TimesheetViewController: UITableViewDelegate {
         return "Work Week\(week+1): \(workWeekViewModel.title)"
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if tableView == summaryTableView {
-            let workWeekViewModel = timesheetViewModel.workWeekViewModel(at: section)
-            
-            guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: SummaryTableViewHeaderView.reuseIdentifier) as? SummaryTableViewHeaderView
-                else { return nil }
-            
-            headerView.section = section
-            headerView.workWeekViewModel = workWeekViewModel
-            return headerView
-        }
-        else if tableView == earningsTableView {
-            let workWeekViewModel = timesheetViewModel.workWeekViewModel(at: section)
-            
-            guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: EarningsTableViewHeaderView.reuseIdentifier) as? EarningsTableViewHeaderView
-                else { return nil }
-            
-            headerView.section = section
-            headerView.workWeekViewModel = workWeekViewModel
-            headerView.delegate = self
-            return headerView
-        }
-
-
-        return nil
-    }
-    
 }
 
-extension TimesheetViewController: EarningsHeaderViewDelegate {
-    func sectionHeader(_ sectionHeader: EarningsTableViewHeaderView, toggleExpand section: Int) {
-        let workWeekViewModel = timesheetViewModel.workWeekViewModel(at: section)
-        
-        workWeekViewModel!.isCollapsed = !workWeekViewModel!.isCollapsed
-        
-        earningsTableView.reloadSections([section], with: .bottom)
-        
-        self.earningsTableViewHeightConstraint.constant = self.earningsTableView.contentSize.height
-
-        earningsTableView.beginUpdates()
-        earningsTableView.endUpdates()
-        
-        UIView.animate(withDuration: 0, animations: {
-            self.earningsTableView.setNeedsLayout()
-            self.earningsTableView.layoutIfNeeded()
-        }) { (complete) in
-            self.earningsTableViewHeightConstraint.constant = self.earningsTableView.contentSize.height
-        }
-    }
-}
-
-
-// MARK: Toolbar Actions
+//// MARK: Toolbar Actions
 extension TimesheetViewController {
     
     func export(_ sender: Any) {
@@ -601,6 +542,14 @@ extension TimesheetViewController {
         mailComposerVC.setMessageBody("Body", isHTML: false)
         present(mailComposerVC, animated: true, completion: nil)
     }
+    
+    func addNewUser() {
+        performSegue(withIdentifier: "addEmploymentInfo", sender: self)
+    }
+    
+    func setCurrentUser(user: User) {
+        timesheetViewModel.setCurrentEmploymentModel(for: user)
+    }
 }
 
 extension TimesheetViewController: MFMailComposeViewControllerDelegate {
@@ -609,30 +558,41 @@ extension TimesheetViewController: MFMailComposeViewControllerDelegate {
     }
 }
 
+
+extension TimesheetViewController: TimeViewControllerDelegate {
+    func didUpdateUser() {
+        if let user = timesheetViewModel.userProfileModel.employmentUsers.first {
+            self.setCurrentUser(user: user)
+        }
+        displayInfo()
+    }
+    
+    func didUpdateEmploymentInfo() {
+     //   displayEmploymentInfo()
+    }
+    
+    func didUpdateLanguageChoice() {
+        displayInfo()
+     //   displayEmploymentInfo()
+    }
+}
+
 extension TimesheetViewController: EnterTimeViewControllerDelegate {
     func didEnterTime(enterTimeModel: EnterTimeViewModel?) {
-//        let annnouncementMsg = NSLocalizedString("save_time_entry", comment: "Saved time for")
-//        
-//        let announcementStr = String(format: annnouncementMsg, enterTimeModel?.title ?? "")
-//        UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: announcementStr)
-//
-        let selectedIndexPath = timeTableView.indexPathForSelectedRow
-        displayPeriodInfo()
-        
-        if Util.isVoiceOverRunning,
-            let selectedIndexPath = selectedIndexPath,
-            let cell = timeTableView.cellForRow(at: selectedIndexPath) {
-            UIAccessibility.post(notification: UIAccessibility.Notification.screenChanged, argument: cell)
+        if let newDate = enterTimeModel?.dateLog.date {
+            timesheetViewModel.updatePeriod(currentDate: (newDate))
         }
+        displayPeriodInfo()
     }
     
     func didCancelEnterTime() {
-        guard Util.isVoiceOverRunning else {return}
         
-        let selectedIndexPath = timeTableView.indexPathForSelectedRow
-        if let selectedIndexPath = selectedIndexPath,
-            let cell = timeTableView.cellForRow(at: selectedIndexPath) {
-            UIAccessibility.post(notification: UIAccessibility.Notification.screenChanged, argument: cell)
-        }
+    }
+}
+
+
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
     }
 }

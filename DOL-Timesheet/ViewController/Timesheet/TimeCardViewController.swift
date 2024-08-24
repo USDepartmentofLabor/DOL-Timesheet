@@ -331,6 +331,15 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     }
 
     @IBAction func startWorkClick(_ sender: Any) {
+        if !timesheetViewModel.validToStartClock() {
+            let message = "start_time_error".localized
+            let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok".localized, style: .default, handler: { [weak self] (action) in
+                return
+            }))
+            present(alertController, animated: false)
+            return
+        }
         discardButton.isHidden = false
         rateButtonEnabled(enabled: false)
         timesheetViewModel.clock(action: .startWork, hourlyRate: currentHourlyRate, comments: nil)
@@ -534,7 +543,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "enterTime",
-            let enterTimeVC = segue.destination as? EnterTimeSoftenViewController {
+            let enterTimeVC = segue.destination as? EnterTimeViewController {
             let enterTimeModel: EnterTimeViewModel?
             if let clock = sender as? PunchClock {
                 enterTimeModel = timesheetViewModel.createEnterTimeViewModel(for: clock, hourlyRate: currentHourlyRate)

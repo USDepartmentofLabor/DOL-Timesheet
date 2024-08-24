@@ -554,3 +554,4 @@ empleado?";
 "overtime_equation" = "(Tarifa x 0.5 x Hrs)";
 "regular_rate_of_pay_equation" = "(Ingresos de Tiempo Regular / Hrs)";
 "last_break" = "Último Descanso.";
+"start_time_error" = "You cannot start a clock at this time as you already have a time entry that covers this time.";

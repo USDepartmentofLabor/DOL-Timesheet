@@ -12,7 +12,6 @@
 		0323427C2322F398000450CB /* PunchBreakTime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323427A2322F398000450CB /* PunchBreakTime+CoreDataClass.swift */; };
 		032430DE2285D81800E86E3E /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032430DD2285D81800E86E3E /* TimePickerViewController.swift */; };
 		0324C3DD2260E47100712576 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324C3DC2260E47100712576 /* AppDelegate.swift */; };
-		0324C3DF2260E47100712576 /* TimesheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324C3DE2260E47100712576 /* TimesheetViewController.swift */; };
 		0324C3E22260E47100712576 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0324C3E02260E47100712576 /* Main.storyboard */; };
 		0324C3E52260E47100712576 /* DOL_Timesheet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0324C3E32260E47100712576 /* DOL_Timesheet.xcdatamodeld */; };
 		0324C3E72260E47200712576 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0324C3E62260E47200712576 /* Assets.xcassets */; };
@@ -31,7 +30,6 @@
 		032560112268BE8D00BF64C5 /* SetupHourlyPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032560102268BE8D00BF64C5 /* SetupHourlyPaymentViewController.swift */; };
 		032560152268C6DB00BF64C5 /* UnderlineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032560142268C6DB00BF64C5 /* UnderlineTextField.swift */; };
 		032560172268CC3E00BF64C5 /* HourlyRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032560162268CC3E00BF64C5 /* HourlyRateTableViewCell.swift */; };
-		03264F6F22834ED100FF6010 /* EnterTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03264F6E22834ED100FF6010 /* EnterTimeViewController.swift */; };
 		03264F7222834F8D00FF6010 /* EnterTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03264F7122834F8D00FF6010 /* EnterTimeViewModel.swift */; };
 		03264F7422835E4200FF6010 /* EnterHourlyTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03264F7322835E4200FF6010 /* EnterHourlyTimeTableViewCell.swift */; };
 		032665C222A5645F00F45288 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032665C122A5645F00F45288 /* Bundle+Extension.swift */; };
@@ -128,7 +126,7 @@
 		690CE2DD2B716BEB00A78D8A /* WeeklySummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690CE2DC2B716BEB00A78D8A /* WeeklySummaryViewController.swift */; };
 		690F8D5E2B5B2A1D00B7625E /* TimeEntryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690F8D5C2B5B2A1D00B7625E /* TimeEntryViewCell.swift */; };
 		690F8D5F2B5B2A1D00B7625E /* TimeEntryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 690F8D5D2B5B2A1D00B7625E /* TimeEntryViewCell.xib */; };
-		690F8D612B5B381200B7625E /* TimesheetSoftenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690F8D602B5B381200B7625E /* TimesheetSoftenViewController.swift */; };
+		690F8D612B5B381200B7625E /* TimesheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690F8D602B5B381200B7625E /* TimesheetViewController.swift */; };
 		6916129F2C261C4F00EE30BA /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6916129E2C261C4F00EE30BA /* UpdateProfileViewController.swift */; };
 		691612A12C261C6E00EE30BA /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691612A02C261C6E00EE30BA /* MyProfileViewController.swift */; };
 		691612A32C261C8300EE30BA /* UpdateEmploymentTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691612A22C261C8300EE30BA /* UpdateEmploymentTypeViewController.swift */; };
@@ -141,7 +139,7 @@
 		697CACAC2BEC1BE1003021E5 /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697CACAA2BEC1BE1003021E5 /* HelpTableViewCell.swift */; };
 		697CACB02BEC2EB5003021E5 /* HelpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697CACAF2BEC2EB5003021E5 /* HelpTableViewCell.xib */; };
 		698AE54728C7ACBA0038945B /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 698AE54628C7ACBA0038945B /* Onboarding.storyboard */; };
-		698CF4092B2A33C400E0F63A /* EnterTimeSoftenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CF4082B2A33C400E0F63A /* EnterTimeSoftenViewController.swift */; };
+		698CF4092B2A33C400E0F63A /* EnterTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CF4082B2A33C400E0F63A /* EnterTimeViewController.swift */; };
 		6999703E290C942E00DCDE7C /* SwitchLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */; };
 		69997040290DDB8C00DCDE7C /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6999703F290DDB8B00DCDE7C /* Localizer.swift */; };
 		69A41D312C4718C30008292F /* DOL-Timesheet-Database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 69A41D2E2C4718C30008292F /* DOL-Timesheet-Database.sqlite */; };
@@ -193,7 +191,6 @@
 		032430DD2285D81800E86E3E /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
 		0324C3D92260E47100712576 /* Timesheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timesheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0324C3DC2260E47100712576 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0324C3DE2260E47100712576 /* TimesheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetViewController.swift; sourceTree = "<group>"; };
 		0324C3E12260E47100712576 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0324C3E42260E47100712576 /* DOL_Timesheet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DOL_Timesheet.xcdatamodel; sourceTree = "<group>"; };
 		0324C3E62260E47200712576 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -217,7 +214,6 @@
 		032560102268BE8D00BF64C5 /* SetupHourlyPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupHourlyPaymentViewController.swift; sourceTree = "<group>"; };
 		032560142268C6DB00BF64C5 /* UnderlineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineTextField.swift; sourceTree = "<group>"; };
 		032560162268CC3E00BF64C5 /* HourlyRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyRateTableViewCell.swift; sourceTree = "<group>"; };
-		03264F6E22834ED100FF6010 /* EnterTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterTimeViewController.swift; sourceTree = "<group>"; };
 		03264F7122834F8D00FF6010 /* EnterTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterTimeViewModel.swift; sourceTree = "<group>"; };
 		03264F7322835E4200FF6010 /* EnterHourlyTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterHourlyTimeTableViewCell.swift; sourceTree = "<group>"; };
 		032665C122A5645F00F45288 /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
@@ -314,7 +310,7 @@
 		690CE2DC2B716BEB00A78D8A /* WeeklySummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklySummaryViewController.swift; sourceTree = "<group>"; };
 		690F8D5C2B5B2A1D00B7625E /* TimeEntryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryViewCell.swift; sourceTree = "<group>"; };
 		690F8D5D2B5B2A1D00B7625E /* TimeEntryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeEntryViewCell.xib; sourceTree = "<group>"; };
-		690F8D602B5B381200B7625E /* TimesheetSoftenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetSoftenViewController.swift; sourceTree = "<group>"; };
+		690F8D602B5B381200B7625E /* TimesheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetViewController.swift; sourceTree = "<group>"; };
 		6916129E2C261C4F00EE30BA /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		691612A02C261C6E00EE30BA /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		691612A22C261C8300EE30BA /* UpdateEmploymentTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEmploymentTypeViewController.swift; sourceTree = "<group>"; };
@@ -328,7 +324,7 @@
 		697CACAA2BEC1BE1003021E5 /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
 		697CACAF2BEC2EB5003021E5 /* HelpTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpTableViewCell.xib; sourceTree = "<group>"; };
 		698AE54628C7ACBA0038945B /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
-		698CF4082B2A33C400E0F63A /* EnterTimeSoftenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterTimeSoftenViewController.swift; sourceTree = "<group>"; };
+		698CF4082B2A33C400E0F63A /* EnterTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterTimeViewController.swift; sourceTree = "<group>"; };
 		6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchLanguageViewController.swift; sourceTree = "<group>"; };
 		6999703F290DDB8B00DCDE7C /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
 		69A41D2E2C4718C30008292F /* DOL-Timesheet-Database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL-Timesheet-Database.sqlite"; sourceTree = "<group>"; };
@@ -562,15 +558,12 @@
 		03264F6D22834EB200FF6010 /* Timesheet */ = {
 			isa = PBXGroup;
 			children = (
+				032D3CD1231EF9BA0095AAA8 /* TimeViewController.swift */,
+				032D3CCF231EBC930095AAA8 /* TimeCardViewController.swift */,
+				690F8D602B5B381200B7625E /* TimesheetViewController.swift */,
 				6902C1012BEB127600C9493C /* EarningDetailViewController.swift */,
 				690CE2DC2B716BEB00A78D8A /* WeeklySummaryViewController.swift */,
-				0324C3DE2260E47100712576 /* TimesheetViewController.swift */,
-				690F8D602B5B381200B7625E /* TimesheetSoftenViewController.swift */,
-				03264F6E22834ED100FF6010 /* EnterTimeViewController.swift */,
-				698CF4082B2A33C400E0F63A /* EnterTimeSoftenViewController.swift */,
-				032430DD2285D81800E86E3E /* TimePickerViewController.swift */,
-				032D3CCF231EBC930095AAA8 /* TimeCardViewController.swift */,
-				032D3CD1231EF9BA0095AAA8 /* TimeViewController.swift */,
+				698CF4082B2A33C400E0F63A /* EnterTimeViewController.swift */,
 			);
 			path = Timesheet;
 			sourceTree = "<group>";
@@ -614,6 +607,7 @@
 				032C514A22A7F03E0095C1A2 /* RadioButton.swift */,
 				0326DB612326C46500EDA2F7 /* ShadowView.swift */,
 				032E5F2B22A99EE400F6EC26 /* BorderedView.swift */,
+				032430DD2285D81800E86E3E /* TimePickerViewController.swift */,
 				693BDBB82BAA3759000402E0 /* SelfSizedTableView.swift */,
 			);
 			path = View;
@@ -999,9 +993,7 @@
 				693BDBB92BAA3759000402E0 /* SelfSizedTableView.swift in Sources */,
 				0328A18422661DDB00957F53 /* InfoPopupViewController.swift in Sources */,
 				037DD81423A2D07E00EB728E /* FSLAInfoViewController.swift in Sources */,
-				0324C3DF2260E47100712576 /* TimesheetViewController.swift in Sources */,
 				032430DE2285D81800E86E3E /* TimePickerViewController.swift in Sources */,
-				03264F6F22834ED100FF6010 /* EnterTimeViewController.swift in Sources */,
 				59AD9E5D22A16B7F00075193 /* UIFont+Extension.swift in Sources */,
 				03272CEA2319864E005A9DB0 /* PunchClock+CoreDataClass.swift in Sources */,
 				032D3CD2231EF9BA0095AAA8 /* TimeViewController.swift in Sources */,
@@ -1039,7 +1031,7 @@
 				1151B4202B6599D800157869 /* WHDTabBarController.swift in Sources */,
 				69ADCF8428CCDB91001AC363 /* OnboardPayViewController.swift in Sources */,
 				0329260F2289CB7D00DB69AD /* SummaryTableViewCell.swift in Sources */,
-				690F8D612B5B381200B7625E /* TimesheetSoftenViewController.swift in Sources */,
+				690F8D612B5B381200B7625E /* TimesheetViewController.swift in Sources */,
 				033225702295AA3400479578 /* ProfileViewModel.swift in Sources */,
 				110552762B2AA5DB00EF5D1C /* HelpDetailViewController.swift in Sources */,
 				0328C44322BC0DC700B3C911 /* GlossaryTableViewCell.swift in Sources */,
@@ -1065,7 +1057,7 @@
 				036D71982277529400CC62CE /* PaymentFrequencyTableViewCell.swift in Sources */,
 				59AD9E6322A1ADB500075193 /* SummaryTableViewHeaderView.swift in Sources */,
 				0329BFF2237341F7006AB18A /* ImportDBViewController.swift in Sources */,
-				698CF4092B2A33C400E0F63A /* EnterTimeSoftenViewController.swift in Sources */,
+				698CF4092B2A33C400E0F63A /* EnterTimeViewController.swift in Sources */,
 				032C9F152264E83A00FB1468 /* IntroductionViewController.swift in Sources */,
 				69CB378B2C1CC2EE00F4616B /* SoftenProfileTableViewCell.swift in Sources */,
 				0326DB622326C46500EDA2F7 /* ShadowView.swift in Sources */,
