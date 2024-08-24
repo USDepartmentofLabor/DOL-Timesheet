@@ -418,6 +418,22 @@ extension TimesheetViewModel {
 
 extension TimesheetViewModel {
     
+    func validToStartClock() -> Bool{
+        var retValue = true
+        guard let currentEmploymentModel = currentEmploymentModel else { return false }
+        let currentTime = Date()
+        let todayDateLog = currentEmploymentModel.employmentInfo.log(forDate: currentTime)
+        
+        todayDateLog?.sortedTimeLogs?.forEach { currentTimeLog in
+            guard let currentTimeLogStart = currentTimeLog.startTime,
+                  let currentTimeLogEnd = currentTimeLog.endTime else { return }
+            if currentTime >= currentTimeLogStart && currentTime <= currentTimeLogEnd {
+                retValue = false
+            }
+        }
+        return retValue
+    }
+    
     func validate(timeLog: TimeLog) -> [String] {
         
         guard let currentEmploymentModel = currentEmploymentModel else { return ["Missing Employment Model"] }
