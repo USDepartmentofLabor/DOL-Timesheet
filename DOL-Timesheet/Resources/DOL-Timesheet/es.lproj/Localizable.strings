@@ -512,8 +512,8 @@ empleado?";
 "frequency" = "Frecuencia";
 "switch_between_employment" = "Switch between using this app as an employee or an employer.";
 
-"delete_hourly_rate" = "Delete Hourly Rate";
-"delete_hourly_rate_warning" = "Are you sure you want to delete hourly rate?";
+"delete_hourly_rate" = "Eliminar tarifa por hora";
+"delete_hourly_rate_warning" = "¿Estás seguro de que quieres eliminar la tarifa por hora?";
 "delete_salary" = "Delete Salary";
 "delete_salary_warning" = "Are you sure you want to delete salary?";
 
