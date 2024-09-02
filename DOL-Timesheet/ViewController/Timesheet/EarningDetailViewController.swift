@@ -239,7 +239,7 @@ extension EarningDetailViewController: UITableViewDataSource {
                 earningCell.rateTitle.text = "regular_rate_of_pay".localized
                 earningCell.rateHintTitle.text = "regular_rate_of_pay_equation".localized
                 earningCell.rateHint.text = workWeekViewModel?.regularRateCalculationStr ?? ""
-                earningCell.rateValue.text = workWeekViewModel?.regularRateStr ?? "$7.25/hr"
+                earningCell.rateValue.text = workWeekViewModel?.regularRateStr ?? "$7.25"
                 earningCell.firstItem = false
                 earningCell.lastItem = true
                 

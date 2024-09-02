@@ -221,7 +221,7 @@ extension WorkWeekViewModel {
         }
     }
     var regularRateStr: String {
-        return NumberFormatter.localisedRateStr(from: regularRate)
+        return NumberFormatter.localisedCurrencyStr(from: regularRate)
     }
     
     var regularRateCalculationStr: String {

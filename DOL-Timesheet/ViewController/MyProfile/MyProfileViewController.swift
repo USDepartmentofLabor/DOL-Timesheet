@@ -13,6 +13,9 @@ class MyProfileViewController: UIViewController {
     @IBOutlet weak var employmentLabel: UILabel!
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var profileView: UIView!
+    @IBOutlet weak var languageTitleLabel: UILabel!
+    @IBOutlet weak var userLanguageLabel: UILabel!
+    @IBOutlet weak var languageView: UIView!
     
     @IBOutlet weak var employmentTable: UITableView!
     @IBOutlet weak var employmentTableHeightConstraint: NSLayoutConstraint!
@@ -47,8 +50,9 @@ class MyProfileViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        profileView.layer.cornerRadius = 10.0
+        super.viewDidLayoutSubviews()        
+        profileView.roundCorners(corners: [.topLeft,.topRight], radius: 10.0)
+        languageView.roundCorners(corners: [.bottomLeft,.bottomRight], radius: 10.0)
         updateCellCorners()
     }
     
@@ -63,6 +67,11 @@ class MyProfileViewController: UIViewController {
             employmentLabel.text = "employer".localized
         }
         
+        languageTitleLabel.text = "language_preference".localized
+        userLanguageLabel.text = "spanish".localized
+        if (Localizer.currentLanguage == Localizer.ENGLISH) {
+            userLanguageLabel.text = "english".localized
+        }
     }
 }
 

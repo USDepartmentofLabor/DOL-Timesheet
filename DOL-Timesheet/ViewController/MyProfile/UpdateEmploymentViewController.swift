@@ -346,6 +346,8 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         
         discardButton.isHidden = false
         
+        overtimeSwitch.isEnabled = true
+        
         rateTable.reloadData()
     }
     
@@ -369,6 +371,8 @@ class UpdateEmploymentViewController: UIViewController, UpdateRateDelegate {
         stateMinimumWageTextField.isEnabled = false
         
         discardButton.isHidden = true
+        
+        overtimeSwitch.isEnabled = false
         
         rateTable.reloadData()
         

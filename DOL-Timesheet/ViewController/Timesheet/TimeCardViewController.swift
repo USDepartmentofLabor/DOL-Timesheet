@@ -496,7 +496,7 @@ class TimeCardViewController: UIViewController, TimeViewDelegate, TimeViewContro
             let startTime = clock.startTime {
 
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
+            dateFormatter.dateFormat = "MM/dd/yyyy, hh:mm a"
             
             let startTimeStr = dateFormatter.string(from: startTime)
             let workString = "started_work".localized

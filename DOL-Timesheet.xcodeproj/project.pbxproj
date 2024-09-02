@@ -140,6 +140,7 @@
 		697CACB02BEC2EB5003021E5 /* HelpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697CACAF2BEC2EB5003021E5 /* HelpTableViewCell.xib */; };
 		698AE54728C7ACBA0038945B /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 698AE54628C7ACBA0038945B /* Onboarding.storyboard */; };
 		698CF4092B2A33C400E0F63A /* EnterTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CF4082B2A33C400E0F63A /* EnterTimeViewController.swift */; };
+		69976BC52C8139920091F8AB /* UpdateLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69976BC42C8139910091F8AB /* UpdateLanguageViewController.swift */; };
 		6999703E290C942E00DCDE7C /* SwitchLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */; };
 		69997040290DDB8C00DCDE7C /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6999703F290DDB8B00DCDE7C /* Localizer.swift */; };
 		69A41D312C4718C30008292F /* DOL-Timesheet-Database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 69A41D2E2C4718C30008292F /* DOL-Timesheet-Database.sqlite */; };
@@ -325,6 +326,7 @@
 		697CACAF2BEC2EB5003021E5 /* HelpTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpTableViewCell.xib; sourceTree = "<group>"; };
 		698AE54628C7ACBA0038945B /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		698CF4082B2A33C400E0F63A /* EnterTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterTimeViewController.swift; sourceTree = "<group>"; };
+		69976BC42C8139910091F8AB /* UpdateLanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateLanguageViewController.swift; sourceTree = "<group>"; };
 		6999703D290C942E00DCDE7C /* SwitchLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchLanguageViewController.swift; sourceTree = "<group>"; };
 		6999703F290DDB8B00DCDE7C /* Localizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
 		69A41D2E2C4718C30008292F /* DOL-Timesheet-Database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DOL-Timesheet-Database.sqlite"; sourceTree = "<group>"; };
@@ -736,6 +738,7 @@
 				691612A02C261C6E00EE30BA /* MyProfileViewController.swift */,
 				6916129E2C261C4F00EE30BA /* UpdateProfileViewController.swift */,
 				691612A22C261C8300EE30BA /* UpdateEmploymentTypeViewController.swift */,
+				69976BC42C8139910091F8AB /* UpdateLanguageViewController.swift */,
 				691612A42C261CD300EE30BA /* UpdateEmploymentViewController.swift */,
 				691612A62C261D0E00EE30BA /* UpdateRateViewController.swift */,
 			);
@@ -1017,6 +1020,7 @@
 				032EB05F237DA88500B8D92A /* UIScrollView+Extension.swift in Sources */,
 				03E6817922663604002F2345 /* EmploymentInfoViewController.swift in Sources */,
 				03F2F5D722821157007B1B68 /* ManageUsersViewController.swift in Sources */,
+				69976BC52C8139920091F8AB /* UpdateLanguageViewController.swift in Sources */,
 				0324C4192260F7E100712576 /* Salary+CoreDataClass.swift in Sources */,
 				59EB62F2229EE3EE00470AA4 /* ProfileModel.swift in Sources */,
 				59AD9E5F22A1806900075193 /* UILabel+Extension.swift in Sources */,
